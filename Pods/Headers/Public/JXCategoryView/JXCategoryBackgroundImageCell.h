@@ -1,0 +1,1 @@
+../../../JXCategoryView/Sources/BackgroundImage/JXCategoryBackgroundImageCell.h
