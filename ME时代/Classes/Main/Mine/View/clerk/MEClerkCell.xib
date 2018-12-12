@@ -27,6 +27,11 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qkL-C9-UBT" secondAttribute="height" multiplier="1:1" id="IJq-Ef-3Xb"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHf-pG-HLp">
                                 <rect key="frame" x="71.5" y="18" width="188.5" height="16"/>
@@ -40,12 +45,15 @@
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iy4-Ef-tvm">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iy4-Ef-tvm">
                                 <rect key="frame" x="270" y="0.0" width="50" height="73.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="AZ3-If-7CH"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="gjqq"/>
+                                <connections>
+                                    <action selector="moreAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="56y-Pi-SmV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -80,4 +88,7 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="gjqq" width="4" height="16"/>
+    </resources>
 </document>

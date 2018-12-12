@@ -13,6 +13,7 @@ const static CGFloat kMEMyAppointmentCellHeight = 165.0;
 
 @interface MEMyAppointmentCell : UITableViewCell
 
+- (void)setBUIWithModel:(MEAppointmentModel *)model Type:(MEAppointmenyStyle)type;
 - (void)setUIWithModel:(MEAppointmentModel *)model Type:(MEAppointmenyStyle)type;
 @property (nonatomic, copy) kMeBasicBlock cancelAppointBlock;
 

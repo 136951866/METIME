@@ -11,17 +11,26 @@
 #import "MEOrderDetailView.h"
 #import "MEOrderDetailContentCell.h"
 #import "MEAppointDetailModel.h"
+#import "MEAppointmentDetailBootomView.h"
 
 @interface MEAppointmentDetailVC ()<UITableViewDelegate, UITableViewDataSource>{
     MEAppointmenyStyle _appointType;
     NSString *_reserve_sn;
     MEAppointDetailModel *_detaliModel;
+    
+    //那个端进来
+    MELoginUserType _userType;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSArray *arrData;
+@property (nonatomic, strong) NSArray *arrData;//预约信息
 @property (nonatomic, strong) MEOrderDetailView *headerView;
 @property (nonatomic, strong) NSArray *arrDataStr;
+
+@property (nonatomic, strong) NSArray *arrUserData;//用户信息
+@property (nonatomic, strong) NSArray *arrUserDataStr;
+@property (nonatomic, strong) MEAppointmentDetailBootomView *bottomView;
+
 //@property (nonatomic, strong) NSArray *arrChild;
 @end
 
@@ -34,10 +43,11 @@
     return self;
 }
 
-- (instancetype)initWithType:(MEAppointmenyStyle)type reserve_sn:(NSString *)reserve_sn{
+- (instancetype)initWithType:(MEAppointmenyStyle)type reserve_sn:(NSString *)reserve_sn userType:(MELoginUserType)userType{
     if(self = [super init]){
         _appointType = type;
         _reserve_sn = reserve_sn;
+        _userType = userType;
     }
     return self;
 }
@@ -45,53 +55,123 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"预约详情";
-    kMeWEAKSELF
-    [MEPublicNetWorkTool postAppointDetailWithReserve_sn:_reserve_sn successBlock:^(ZLRequestResponse *responseObject) {
-        kMeSTRONGSELF
-        strongSelf->_detaliModel =  [MEAppointDetailModel mj_objectWithKeyValues:responseObject.data];
-        if( strongSelf->_detaliModel.is_first_buy){
-            strongSelf->_arrData = @[@(MEAppointmentSettlmentTime),@(MEAppointmentSettlmentFristBuy)];
-            strongSelf.arrDataStr = @[kMeUnNilStr(strongSelf->_detaliModel.arrive_time),@""];
+    if(_userType == MEClientCTypeStyle){
+        kMeWEAKSELF
+        [MEPublicNetWorkTool postAppointDetailWithReserve_sn:_reserve_sn successBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            strongSelf->_detaliModel =  [MEAppointDetailModel mj_objectWithKeyValues:responseObject.data];
+            if( strongSelf->_detaliModel.is_first_buy){
+                strongSelf->_arrData = @[@(MEAppointmentSettlmentTime),@(MEAppointmentSettlmentFristBuy)];
+                strongSelf.arrDataStr = @[kMeUnNilStr(strongSelf->_detaliModel.arrive_time),@""];
+            }else{
+                strongSelf->_arrData = @[@(MEAppointmentSettlmentTime)];
+                strongSelf.arrDataStr = @[kMeUnNilStr(strongSelf->_detaliModel.arrive_time)];
+            }
+            
+            //        strongSelf.arrChild = @[strongSelf->_detaliModel];
+            strongSelf.tableView.tableHeaderView =strongSelf.headerView;
+            [strongSelf.view addSubview:strongSelf.tableView];
+            [strongSelf.tableView reloadData];
+        } failure:^(id object) {
+            kMeSTRONGSELF
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+        }];
+    }else{
+        _detaliModel =  [MEAppointDetailModel new];
+        if( _detaliModel.is_first_buy){
+            _arrData = @[@(MEAppointmentSettlmentTime),@(MEAppointmentSettlmentFristBuy)];
+            _arrDataStr = @[kMeUnNilStr(_detaliModel.arrive_time),@""];
+            
+            _arrUserData = @[@(MEAppointmentSettlmentUserNameStyle),@(MEAppointmentSettlmentUserTelStyle)];
+            _arrUserDataStr = @[kMeUnNilStr(@""),kMeUnNilStr(@"")];
+            
         }else{
-            strongSelf->_arrData = @[@(MEAppointmentSettlmentTime)];
-            strongSelf.arrDataStr = @[kMeUnNilStr(strongSelf->_detaliModel.arrive_time)];
+           _arrData = @[@(MEAppointmentSettlmentTime)];
+            _arrDataStr = @[kMeUnNilStr(_detaliModel.arrive_time)];
+            
+            _arrUserData = @[@(MEAppointmentSettlmentUserNameStyle),@(MEAppointmentSettlmentUserTelStyle)];
+            _arrUserDataStr = @[kMeUnNilStr(@"dsadsadsadsadsadsadsadsadsadsda"),kMeUnNilStr(@"1111")];
         }
-
-//        strongSelf.arrChild = @[strongSelf->_detaliModel];
-        strongSelf.tableView.tableHeaderView =strongSelf.headerView;
-        [strongSelf.view addSubview:strongSelf.tableView];
-        [strongSelf.tableView reloadData];
-    } failure:^(id object) {
-        kMeSTRONGSELF
-        [strongSelf.navigationController popViewControllerAnimated:YES];
-    }];
-    // Do any additional setup after loading the view.
+        self.tableView.tableHeaderView =self.headerView;
+        if(_appointType == MEAppointmenyUseing){
+            self.tableView.tableFooterView = self.bottomView;
+        }
+        [self.view addSubview:self.tableView];
+        [self.tableView reloadData];
+    }
 }
-
 #pragma mark ------------------ <UITableViewDelegate, UITableViewDataSource> ----
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    if(_userType == MEClientCTypeStyle){
+        return 2;
+    }else{
+        return 3;
+    }
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if(section){
-        return _arrData.count;
+    if(_userType == MEClientCTypeStyle){
+        if(section){
+            return _arrData.count;
+        }else{
+            return 1;
+        }
     }else{
-        return 1;
+        switch (section) {
+            case 0:
+            {
+                return 1;
+            }
+                break;
+            case 1:
+            {
+                return _arrData.count;
+            }
+                break;
+            case 2:
+            {
+                return _arrUserData.count;
+            }
+                break;
+            default:
+                return 0;
+                break;
+        }
     }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if(indexPath.section){
-        MEMyOrderDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEMyOrderDetailCell class]) forIndexPath:indexPath];
-        ;
-        [cell setAppointUIWithModel:_arrDataStr[indexPath.row] appointType:[_arrData[indexPath.row] integerValue] orderType:_appointType];
-        return cell;
-    }else{
-        MEOrderDetailContentCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEOrderDetailContentCell class]) forIndexPath:indexPath];
-//        id model = _arrChild[indexPath.row];
-        [cell setAppointUIWithChildModel:_detaliModel];
-        return cell;
+    switch (indexPath.section) {
+        case 0:{
+            MEOrderDetailContentCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEOrderDetailContentCell class]) forIndexPath:indexPath];
+            //        id model = _arrChild[indexPath.row];
+            [cell setAppointUIWithChildModel:_detaliModel];
+            return cell;
+        }
+            break;
+        case 1:{
+            MEMyOrderDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEMyOrderDetailCell class]) forIndexPath:indexPath];
+            ;
+            [cell setAppointUIWithModel:_arrDataStr[indexPath.row] appointType:[_arrData[indexPath.row] integerValue] orderType:_appointType];
+            return cell;
+        }
+            break;
+        case 2:{
+            MEMyOrderDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEMyOrderDetailCell class]) forIndexPath:indexPath];
+            ;
+            [cell setAppointUIWithModel:_arrUserDataStr[indexPath.row] appointType:[_arrUserData[indexPath.row] integerValue] orderType:_appointType];
+            return cell;
+        }
+            break;
+        default:
+            return  [UITableViewCell new];
+            break;
     }
+    
+//    if(indexPath.section){
+//
+//    }else{
+//
+//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -107,6 +187,9 @@
     UILabel *lblTitle = [[UILabel alloc]init];
     [sectionView addSubview:lblTitle];
     lblTitle.text = @"预约信息";
+    if(section == 2){
+        lblTitle.text = @"客户信息";
+    }
     lblTitle.font = [UIFont systemFontOfSize:16];
     lblTitle.textColor = kMEHexColor(@"333333");
     [lblTitle mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -144,6 +227,22 @@
     }
     return _headerView;
 }
+
+- (MEAppointmentDetailBootomView *)bottomView{
+    if(!_bottomView){
+        _bottomView = [[[NSBundle mainBundle]loadNibNamed:@"MEAppointmentDetailBootomView" owner:nil options:nil] lastObject];
+        _bottomView.frame = CGRectMake(0, 0, SCREEN_WIDTH, kMEAppointmentDetailBootomViewheight);
+        _bottomView.cancelBlock = ^{
+            
+        };
+        _bottomView.finishBlock = ^{
+            
+        };
+    }
+    return _bottomView;
+}
+
+
 
 
 @end

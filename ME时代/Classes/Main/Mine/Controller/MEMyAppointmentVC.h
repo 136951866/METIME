@@ -9,5 +9,8 @@
 #import "MEBaseVC.h"
 
 @interface MEMyAppointmentVC : MEBaseVC
+
 - (instancetype)initWithType:(MEAppointmenyStyle)type;
+- (instancetype)initWithType:(MEAppointmenyStyle)type userType:(MELoginUserType)userType;
+
 @end

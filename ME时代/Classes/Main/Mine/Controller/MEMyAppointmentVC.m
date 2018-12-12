@@ -12,6 +12,7 @@
 @interface MEMyAppointmentVC ()<JXCategoryViewDelegate,UIScrollViewDelegate>{
     NSArray *_arrType;
     MEAppointmenyStyle _currentType;
+    MELoginUserType _userType;//那个端展示的预约
 }
 
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
@@ -27,13 +28,26 @@
 - (instancetype)initWithType:(MEAppointmenyStyle)type{
     if(self = [super init]){
         _currentType = type;
+        _userType = MELoginUserCType;
+    }
+    return self;
+}
+
+- (instancetype)initWithType:(MEAppointmenyStyle)type userType:(MELoginUserType)userType{
+    if(self = [super init]){
+        _currentType = type;
+        _userType = userType;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我的预约";
+    if(_userType == MELoginUserCType){
+         self.title = @"我的预约";
+    }else{
+        self.title = @"预约管理";
+    }
     _arrType = MEAppointmenyStyleTitle;
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kMeNavBarHeight+kCategoryViewHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight)];
     self.scrollView.delegate = self;
@@ -63,7 +77,7 @@
 
 - (MEMyAppointmentContentVC *)useingVC{
     if(!_useingVC){
-        _useingVC = [[MEMyAppointmentContentVC alloc]initWithType:0];
+        _useingVC = [[MEMyAppointmentContentVC alloc]initWithType:0 userType:_userType];
         _useingVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _useingVC.view.frame = CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight);
         [self addChildViewController:_useingVC];
@@ -73,7 +87,7 @@
 
 - (MEMyAppointmentContentVC *)usedVC{
     if(!_usedVC){
-        _usedVC = [[MEMyAppointmentContentVC alloc]initWithType:1];
+        _usedVC = [[MEMyAppointmentContentVC alloc]initWithType:1 userType:_userType];
         _usedVC.view.frame = CGRectMake(SCREEN_WIDTH,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight);
         _usedVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [self addChildViewController:_usedVC];
@@ -83,7 +97,7 @@
 
 - (MEMyAppointmentContentVC *)notUseVC{
     if(!_notUseVC){
-        _notUseVC = [[MEMyAppointmentContentVC alloc]initWithType:2];
+        _notUseVC = [[MEMyAppointmentContentVC alloc]initWithType:2 userType:_userType];
         _notUseVC.view.frame = CGRectMake(SCREEN_WIDTH*2,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight);
         _notUseVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [self addChildViewController:_notUseVC];

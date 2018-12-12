@@ -35,6 +35,20 @@
     // Initialization code
 }
 
+//B 店员端的 预约管理
+- (void)setBUIWithModel:(MEAppointmentModel *)model Type:(MEAppointmenyStyle)type{
+    _model = model;
+    kSDLoadImg(_imgPic, MELoadQiniuImagesWithUrl(kMeUnNilStr(model.images)));
+    _btnCancelOrder.hidden = YES;
+    _lblStatus.text = _arrType[type];
+    _lblTitle.text = kMeUnNilStr(model.title);
+    _lblDate.text = [NSString stringWithFormat:@"%@ 数量:%@",kMeUnNilStr(model.created_at),kMeUnNilStr(model.reserve_number)];
+    CGFloat price = [kMeUnNilStr(model.money) floatValue] * [kMeUnNilStr(model.reserve_number) floatValue];
+    _lblPrice.text = [NSString stringWithFormat:@"¥%@",@(price)];
+    _lblOrderNum.text = kMeUnNilStr(_model.reserve_sn);
+}
+
+//c端的 我的预约
 - (void)setUIWithModel:(MEAppointmentModel *)model Type:(MEAppointmenyStyle)type{
     _model = model;
     kSDLoadImg(_imgPic, MELoadQiniuImagesWithUrl(kMeUnNilStr(model.images)));

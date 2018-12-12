@@ -69,9 +69,11 @@ typedef enum : NSUInteger {
     MEAppointmentSettlmentTime = 0,
     MEAppointmentSettlmentTel = 1,
     MEAppointmentSettlmentFristBuy = 2,
+    MEAppointmentSettlmentUserNameStyle = 3,
+    MEAppointmentSettlmentUserTelStyle = 4
 } MEAppointmentSettlmentStyle;
 
-#define MEAppointmentSettlmentStyleTitle @[@"预约时间",@"店家手机",@"首次下单,新用户免费体验"];
+#define MEAppointmentSettlmentStyleTitle @[@"预约时间",@"店家手机",@"首次下单,新用户免费体验",@"客户名字",@"客户手机号"];
 
 //分销订单
 typedef enum : NSUInteger {
@@ -157,6 +159,12 @@ typedef enum : NSUInteger {
     MEOrderTypeNetFinishStyle = 4,
 }  MEOrderTypeNetStyle;
 
+//用户类型
+typedef enum : NSUInteger {
+    MELoginUserCType = 1,//C端用户
+    MELoginUserBType = 2,//B端用户
+    MELoginUserCLerkType = 3,//店员
+} MELoginUserType;
 
 
 #pragma mark- 系统相关枚举

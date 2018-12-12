@@ -18,6 +18,8 @@
 #warning --testNewSHare 2.0.2
 #import "MEMineNewShareVC.h"
 #import "MEClerkManngerVC.h"
+#import "MEBDataDealVC.h"
+#import "MEMyAppointmentVC.h"
 
 //b端model
 #import "MEadminDistributionModel.h"
@@ -136,12 +138,14 @@
             break;
             
         case MEMyAppintMannger:{
-
+            MEMyAppointmentVC *dvc = [[MEMyAppointmentVC alloc]initWithType:MEAppointmenyUseing userType:MELoginUserBType];
+            [self.navigationController pushViewController:dvc animated:YES];
         }
             break;
             
         case MEMyDataDeal:{
-
+            MEBDataDealVC *vc = [[MEBDataDealVC alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
             

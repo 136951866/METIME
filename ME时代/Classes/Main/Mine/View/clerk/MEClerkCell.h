@@ -14,5 +14,6 @@ const static CGFloat kMEClerkCellHeight = 84;
 
 - (void)setUIWIthModel:(id)model;
 - (void)setUIWithModel:(id )model withKey:(NSString *)key;
+@property (nonatomic, copy) kMeBasicBlock moreBlock;
 
 @end

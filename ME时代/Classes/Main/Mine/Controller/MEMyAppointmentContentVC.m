@@ -14,6 +14,7 @@
 
 @interface MEMyAppointmentContentVC ()<UITableViewDelegate, UITableViewDataSource,RefreshToolDelegate>{
     MEAppointmenyStyle _type;
+    MELoginUserType _userType;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -27,9 +28,10 @@
     kNSNotificationCenterDealloc
 }
 
-- (instancetype)initWithType:(MEAppointmenyStyle)type{
+- (instancetype)initWithType:(MEAppointmenyStyle)type userType:(MELoginUserType)userType{
     if(self = [super init]){
         _type = type;
+        _userType = userType;
     }
     return self;
 }
@@ -44,8 +46,12 @@
 
 - (NSDictionary *)requestParameter{
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    dic[@"token"] = kMeUnNilStr(kCurrentUser.token);
-    dic[@"is_use"] = @(_type).description;
+    if(_userType == MEClientCTypeStyle){
+        dic[@"token"] = kMeUnNilStr(kCurrentUser.token);
+        dic[@"is_use"] = @(_type).description;
+    }else{
+        
+    }
     return dic;
 }
 
@@ -66,10 +72,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MEAppointmentModel *model = self.refresh.arrData[indexPath.row];
     MEMyAppointmentCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEMyAppointmentCell class]) forIndexPath:indexPath];
-    cell.cancelAppointBlock = ^{
-        
-    };
-    [cell setUIWithModel:model Type:_type];
+    if(_userType == MEClientCTypeStyle){
+        cell.cancelAppointBlock = ^{
+            
+        };
+        [cell setUIWithModel:model Type:_type];
+    }else{
+        [cell setBUIWithModel:model Type:_type];
+    }
     return cell;
 }
 
@@ -79,7 +89,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MEAppointmentModel *model = self.refresh.arrData[indexPath.row];
-    MEAppointmentDetailVC *vc = [[MEAppointmentDetailVC alloc]initWithType:_type reserve_sn:kMeUnNilStr(model.reserve_sn)];
+    MEAppointmentDetailVC *vc = [[MEAppointmentDetailVC alloc]initWithType:_type reserve_sn:kMeUnNilStr(model.reserve_sn) userType:MELoginUserBType];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -102,7 +112,11 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonGetReserveList)];
+        NSString *IPStr = @"";
+        if(_userType == MEClientCTypeStyle){
+            IPStr = MEIPcommonGetReserveList;
+        }
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(IPStr)];
         _refresh.isDataInside = YES;
         _refresh.delegate = self;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {

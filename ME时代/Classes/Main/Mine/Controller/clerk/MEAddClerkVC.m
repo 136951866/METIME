@@ -1,16 +1,16 @@
 //
-//  MEClerkSearchDataVC.m
+//  MEAddClerkVC.m
 //  ME时代
 //
 //  Created by hank on 2018/12/12.
 //  Copyright © 2018年 hank. All rights reserved.
 //
 
-#import "MEClerkSearchDataVC.h"
-#import "MEClerkCell.h"
+#import "MEAddClerkVC.h"
+#import "MEAddClerkCell.h"
 #import "ZLRefreshTool.h"
 
-@interface MEClerkSearchDataVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
+@interface MEAddClerkVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSString *_key;
 }
 @property (nonatomic, strong) UITableView *tableView;
@@ -18,18 +18,11 @@
 
 @end
 
-@implementation MEClerkSearchDataVC
-
-- (instancetype)initWithKey:(NSString *)key{
-    if(self = [super init]){
-        _key = kMeUnNilStr(key);
-    }
-    return self;
-}
+@implementation MEAddClerkVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = [NSString stringWithFormat:@"搜索%@",_key];
+    self.title = @"添加店员";
     [self.view addSubview:self.tableView];
     [self.refresh addRefreshView];
 }
@@ -38,7 +31,7 @@
 
 - (NSDictionary *)requestParameter{
     [self.refresh.arrData addObjectsFromArray:@[@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@""]];
-    return @{@"keyword":_key};
+    return @{@"":@""};
 }
 
 - (void)handleResponse:(id)data{
@@ -57,20 +50,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     id model = self.refresh.arrData[indexPath.row];
-    MEClerkCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEClerkCell class]) forIndexPath:indexPath];
-    [cell setUIWithModel:model withKey:_key];
-    cell.moreBlock = ^{
+    MEAddClerkCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEAddClerkCell class]) forIndexPath:indexPath];
+    [cell setUIWIthModel:model];
+    cell.updateBlock = ^{
         
     };
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return kMEClerkCellHeight;
+    return kMEAddClerkCellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
 }
 
 
@@ -79,7 +72,7 @@
 - (UITableView *)tableView{
     if(!_tableView){
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kMeNavBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight) style:UITableViewStylePlain];
-        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEClerkCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEClerkCell class])];
+        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEAddClerkCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEAddClerkCell class])];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.tableFooterView = [UIView new];
@@ -105,6 +98,5 @@
     }
     return _refresh;
 }
-
 
 @end

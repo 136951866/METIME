@@ -11,6 +11,7 @@
 #import "MEClerkSearchVC.h"
 #import "MENavigationVC.h"
 #import "MEClerkSearchDataVC.h"
+#import "MEAddClerkVC.h"
 
 @interface MEClerkManngerVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>
 
@@ -64,6 +65,9 @@
     id model = self.refresh.arrData[indexPath.row];
     MEClerkCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEClerkCell class]) forIndexPath:indexPath];
     [cell setUIWIthModel:model];
+    cell.moreBlock = ^{
+        
+    };
     return cell;
 }
 
@@ -76,7 +80,8 @@
 }
 
 - (void)toAddClerk:(UIButton *)btn{
-    
+    MEAddClerkVC *vc = [[MEAddClerkVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)toSearchClerk:(UIButton *)sender {

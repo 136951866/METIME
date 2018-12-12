@@ -41,4 +41,10 @@
         _lblPhone.attributedText = [kMeUnNilStr(@"") attributeWithRangeOfString:key color:kMEPink];
     }
 }
+
+- (IBAction)moreAction:(UIButton *)sender {
+    kMeCallBlock(_moreBlock);
+}
+
+
 @end
