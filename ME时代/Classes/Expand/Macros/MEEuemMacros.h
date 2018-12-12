@@ -46,6 +46,14 @@ typedef enum : NSUInteger {
 } MEOrderStyle;
 #define MEOrderStyleTitle @[@"全部",@"待付款",@"待发货",@"待收货",@"已完成",@"已取消"];
 
+typedef enum : NSUInteger {
+    MEGetCaseAllStyle = 0,
+    MEGetCaseingStyle = 1,
+    MEGetCaseedStyle = 2,
+    MEGetCasenotStyle = 3,
+} MEGetCaseStyle;
+#define MMEGetCaseStyleTitle @[@"全部",@"审核中",@"审核通过",@"审核失败"];
+
 //订单结算
 typedef enum : NSUInteger {
     MESettlmemtGoodsPrice = 0,

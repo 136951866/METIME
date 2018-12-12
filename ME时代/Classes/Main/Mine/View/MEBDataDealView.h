@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-const static CGFloat kMEBDataDealViewHeight = 457;
+const static CGFloat kMEBDataDealViewHeight = 513;
 
 @interface MEBDataDealView : UIView
 

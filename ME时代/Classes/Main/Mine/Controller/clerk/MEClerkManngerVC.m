@@ -12,6 +12,7 @@
 #import "MENavigationVC.h"
 #import "MEClerkSearchDataVC.h"
 #import "MEAddClerkVC.h"
+#import "MEClerkStatisticsVC.h"
 
 @interface MEClerkManngerVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>
 
@@ -65,8 +66,25 @@
     id model = self.refresh.arrData[indexPath.row];
     MEClerkCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEClerkCell class]) forIndexPath:indexPath];
     [cell setUIWIthModel:model];
+    kMeWEAKSELF
     cell.moreBlock = ^{
-        
+        MECustomActionSheet *sheet = [[MECustomActionSheet alloc]initWithTitles:@[@"删除",@"查看店员佣金统计"]];
+        sheet.blockBtnTapHandle = ^(NSInteger index){
+            if(index){
+                kMeSTRONGSELF
+                MEClerkStatisticsVC *vc = [[MEClerkStatisticsVC alloc]init];
+                [strongSelf.navigationController pushViewController:vc animated:YES];
+            }else{
+                MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"" message:@"确定删除该员工?"];
+                [aler addButtonWithTitle:@"确定" block:^{
+                    kMeSTRONGSELF
+                   
+                }];
+                [aler addButtonWithTitle:@"取消"];
+                [aler show];
+            }
+        };
+        [sheet show];
     };
     return cell;
 }

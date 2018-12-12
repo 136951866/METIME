@@ -89,7 +89,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MEAppointmentModel *model = self.refresh.arrData[indexPath.row];
-    MEAppointmentDetailVC *vc = [[MEAppointmentDetailVC alloc]initWithType:_type reserve_sn:kMeUnNilStr(model.reserve_sn) userType:MELoginUserBType];
+    MEAppointmentDetailVC *vc = [[MEAppointmentDetailVC alloc]initWithType:_type reserve_sn:kMeUnNilStr(model.reserve_sn) userType:_userType];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
