@@ -17,6 +17,7 @@
 #import "MEMoneyDetailedVC.h"
 #warning --testNewSHare 2.0.2
 #import "MEMineNewShareVC.h"
+#import "MEClerkManngerVC.h"
 
 //b端model
 #import "MEadminDistributionModel.h"
@@ -129,7 +130,8 @@
             break;
             
         case MEMyClerk:{
-
+            MEClerkManngerVC *clerkVC = [[MEClerkManngerVC alloc]init];
+            [self.navigationController pushViewController:clerkVC animated:YES];
         }
             break;
             

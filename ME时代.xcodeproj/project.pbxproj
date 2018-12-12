@@ -154,6 +154,13 @@
 		3628476B2140FD78008FE7F9 /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 362847652140FD77008FE7F9 /* XMLDictionary.m */; };
 		3628476C2140FD79008FE7F9 /* DataMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 362847672140FD78008FE7F9 /* DataMD5.m */; };
 		3628476D2140FD79008FE7F9 /* getIPhoneIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 362847682140FD78008FE7F9 /* getIPhoneIP.m */; };
+		3628E7C421C09CC100D5405B /* MEClerkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3628E7C221C09CC100D5405B /* MEClerkCell.m */; };
+		3628E7C521C09CC100D5405B /* MEClerkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3628E7C321C09CC100D5405B /* MEClerkCell.xib */; };
+		3628E7CA21C09EE800D5405B /* MEClerkManngerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3628E7C821C09EE800D5405B /* MEClerkManngerVC.m */; };
+		3628E7CB21C09EE800D5405B /* MEClerkManngerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3628E7C921C09EE800D5405B /* MEClerkManngerVC.xib */; };
+		3628E7CE21C0A32000D5405B /* MEClerkSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3628E7CD21C0A32000D5405B /* MEClerkSearchVC.m */; };
+		3628E7D121C0A65C00D5405B /* MEClerkSearchDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3628E7D021C0A65C00D5405B /* MEClerkSearchDataVC.m */; };
+		3628E7D421C0AD1F00D5405B /* MEBDataDealHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3628E7D321C0AD1F00D5405B /* MEBDataDealHeaderView.m */; };
 		362C9E5C21BE62560001AABD /* MEMineNewShareVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9E5B21BE62560001AABD /* MEMineNewShareVC.m */; };
 		362C9E5F21BE62F70001AABD /* MEMineNewShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9E5E21BE62F70001AABD /* MEMineNewShareView.m */; };
 		362C9E6121BE63010001AABD /* MEMineNewShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362C9E6021BE63010001AABD /* MEMineNewShareView.xib */; };
@@ -709,6 +716,18 @@
 		362847672140FD78008FE7F9 /* DataMD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataMD5.m; sourceTree = "<group>"; };
 		362847682140FD78008FE7F9 /* getIPhoneIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getIPhoneIP.m; sourceTree = "<group>"; };
 		362847692140FD78008FE7F9 /* LVWxPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LVWxPay.h; sourceTree = "<group>"; };
+		3628E7C121C09CC100D5405B /* MEClerkCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEClerkCell.h; sourceTree = "<group>"; };
+		3628E7C221C09CC100D5405B /* MEClerkCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEClerkCell.m; sourceTree = "<group>"; };
+		3628E7C321C09CC100D5405B /* MEClerkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEClerkCell.xib; sourceTree = "<group>"; };
+		3628E7C721C09EE800D5405B /* MEClerkManngerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEClerkManngerVC.h; sourceTree = "<group>"; };
+		3628E7C821C09EE800D5405B /* MEClerkManngerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEClerkManngerVC.m; sourceTree = "<group>"; };
+		3628E7C921C09EE800D5405B /* MEClerkManngerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEClerkManngerVC.xib; sourceTree = "<group>"; };
+		3628E7CC21C0A32000D5405B /* MEClerkSearchVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEClerkSearchVC.h; sourceTree = "<group>"; };
+		3628E7CD21C0A32000D5405B /* MEClerkSearchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEClerkSearchVC.m; sourceTree = "<group>"; };
+		3628E7CF21C0A65C00D5405B /* MEClerkSearchDataVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEClerkSearchDataVC.h; sourceTree = "<group>"; };
+		3628E7D021C0A65C00D5405B /* MEClerkSearchDataVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEClerkSearchDataVC.m; sourceTree = "<group>"; };
+		3628E7D221C0AD1F00D5405B /* MEBDataDealHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MEBDataDealHeaderView.h; path = "ME时代/Classes/Main/Mine/Controller/clerk/MEBDataDealHeaderView.h"; sourceTree = SOURCE_ROOT; };
+		3628E7D321C0AD1F00D5405B /* MEBDataDealHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MEBDataDealHeaderView.m; path = "ME时代/Classes/Main/Mine/Controller/clerk/MEBDataDealHeaderView.m"; sourceTree = SOURCE_ROOT; };
 		362C9E5A21BE62560001AABD /* MEMineNewShareVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEMineNewShareVC.h; sourceTree = "<group>"; };
 		362C9E5B21BE62560001AABD /* MEMineNewShareVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEMineNewShareVC.m; sourceTree = "<group>"; };
 		362C9E5D21BE62F70001AABD /* MEMineNewShareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MEMineNewShareView.h; path = "ME时代/Classes/Main/Mine/Controller/MEMineNewShareView.h"; sourceTree = SOURCE_ROOT; };
@@ -1625,6 +1644,30 @@
 			path = Attribute;
 			sourceTree = "<group>";
 		};
+		3628E7C021C09C7300D5405B /* clerk */ = {
+			isa = PBXGroup;
+			children = (
+				3628E7C121C09CC100D5405B /* MEClerkCell.h */,
+				3628E7C221C09CC100D5405B /* MEClerkCell.m */,
+				3628E7C321C09CC100D5405B /* MEClerkCell.xib */,
+			);
+			path = clerk;
+			sourceTree = "<group>";
+		};
+		3628E7C621C09ECE00D5405B /* clerk */ = {
+			isa = PBXGroup;
+			children = (
+				3628E7C721C09EE800D5405B /* MEClerkManngerVC.h */,
+				3628E7C821C09EE800D5405B /* MEClerkManngerVC.m */,
+				3628E7C921C09EE800D5405B /* MEClerkManngerVC.xib */,
+				3628E7CC21C0A32000D5405B /* MEClerkSearchVC.h */,
+				3628E7CD21C0A32000D5405B /* MEClerkSearchVC.m */,
+				3628E7CF21C0A65C00D5405B /* MEClerkSearchDataVC.h */,
+				3628E7D021C0A65C00D5405B /* MEClerkSearchDataVC.m */,
+			);
+			path = clerk;
+			sourceTree = "<group>";
+		};
 		363006F12148A09800C88264 /* appointment */ = {
 			isa = PBXGroup;
 			children = (
@@ -1764,6 +1807,8 @@
 				362C9E5D21BE62F70001AABD /* MEMineNewShareView.h */,
 				362C9E5E21BE62F70001AABD /* MEMineNewShareView.m */,
 				362C9E6021BE63010001AABD /* MEMineNewShareView.xib */,
+				3628E7D221C0AD1F00D5405B /* MEBDataDealHeaderView.h */,
+				3628E7D321C0AD1F00D5405B /* MEBDataDealHeaderView.m */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -2179,6 +2224,7 @@
 		36D66EE2213F8200000476FF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3628E7C621C09ECE00D5405B /* clerk */,
 				365DB2552147601300001A04 /* MEMineHomeVC.h */,
 				365DB2562147601300001A04 /* MEMineHomeVC.m */,
 				367C84E7214799B800BEC7B1 /* MEMyDistrbutionVC.h */,
@@ -2297,6 +2343,7 @@
 		36D66EE7213F8216000476FF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3628E7C021C09C7300D5405B /* clerk */,
 				363007182148DF4800C88264 /* exchange */,
 				363006F12148A09800C88264 /* appointment */,
 				367C84EF2147A15600BEC7B1 /* order */,
@@ -2976,6 +3023,7 @@
 				36E3D1E12171DF170033B192 /* MELogisticsHeaderView.xib in Resources */,
 				36FEC25621AD345B00BB64A5 /* MEArticleCell.xib in Resources */,
 				360A992F21468598009775F4 /* MESkuBuyCell.xib in Resources */,
+				3628E7C521C09CC100D5405B /* MEClerkCell.xib in Resources */,
 				36E3D1E62171F26B0033B192 /* MELogisticsCell.xib in Resources */,
 				EB623E7E21549C6B007C949B /* MEMyChildOrderContentCell.xib in Resources */,
 				366D1CCD21B503460004295E /* MESNewHomeActiveCommondCell.xib in Resources */,
@@ -3041,6 +3089,7 @@
 				36022DFB2190105400DC9A8B /* MENewActiveCell.xib in Resources */,
 				36526014216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.xib in Resources */,
 				363007012148A9BC00C88264 /* MEDistributionOrderCell.xib in Resources */,
+				3628E7CB21C09EE800D5405B /* MEClerkManngerVC.xib in Resources */,
 				36D66ECE213F80A5000476FF /* Assets.xcassets in Resources */,
 				36EEC2F12181BAB700DEFCCB /* MEActiveCell.xib in Resources */,
 				EB28101D21539F04006A765A /* MEStoreSelectCityView.xib in Resources */,
@@ -3196,8 +3245,10 @@
 				36E3D1D72171C94A0033B192 /* MEExpireTipView.m in Sources */,
 				36FEC25C21AD3BA900BB64A5 /* MEArticelSearchDataVC.m in Sources */,
 				360830D6219AAE4300C72B22 /* NSString+HDExtension.m in Sources */,
+				3628E7D121C0A65C00D5405B /* MEClerkSearchDataVC.m in Sources */,
 				364B64F52174341F00094027 /* MEActiveVC.m in Sources */,
 				36FEEBD7214CEFB400060209 /* MEAlertView.m in Sources */,
+				3628E7C421C09CC100D5405B /* MEClerkCell.m in Sources */,
 				360830D5219AAE4300C72B22 /* UIView+HDExtension.m in Sources */,
 				360034C121AE823700BAF337 /* AAOptions.m in Sources */,
 				365DB2572147601300001A04 /* MEMineHomeVC.m in Sources */,
@@ -3256,6 +3307,7 @@
 				363007072148AEDA00C88264 /* MEDistributionOrderContentVC.m in Sources */,
 				36D66EB9213F7907000476FF /* main.m in Sources */,
 				EB28101821539B65006A765A /* MEStoreModel.m in Sources */,
+				3628E7CA21C09EE800D5405B /* MEClerkManngerVC.m in Sources */,
 				36022DFF2190123700DC9A8B /* MENewHomeMainCell.m in Sources */,
 				360830D7219AAE4300C72B22 /* HDAlertView.m in Sources */,
 				36FD6402213FAB37009743C5 /* NSString+MECategory.m in Sources */,
@@ -3391,6 +3443,7 @@
 				36356A722176E3E9004174E7 /* MEStoreDetailModel.m in Sources */,
 				EB28101521539424006A765A /* MELocationCLLModel.m in Sources */,
 				36FF4EB621AFB5EE0099DDB8 /* MESNewHomePageVC.m in Sources */,
+				3628E7CE21C0A32000D5405B /* MEClerkSearchVC.m in Sources */,
 				367C84FA2147AB8700BEC7B1 /* MEMyOrderContentVC.m in Sources */,
 				360034B721AE823700BAF337 /* AAArea.m in Sources */,
 				366D5B18214A46130021C1BB /* MESelectAddressVC.m in Sources */,
@@ -3442,6 +3495,7 @@
 				360034B021AE823700BAF337 /* AACrosshair.m in Sources */,
 				3600346321AE816900BAF337 /* MEVisterTodyCell.m in Sources */,
 				36FD63F0213FA84C009743C5 /* MEBaseModel.m in Sources */,
+				3628E7D421C0AD1F00D5405B /* MEBDataDealHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
