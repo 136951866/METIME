@@ -64,7 +64,7 @@
         [MEShowViewTool showMessage:@"银行支行不能为空" view:kMeCurrentWindow];
         return;
     }
-    
+    [self endEditing:YES];
     kMeWEAKSELF
     [MEPublicNetWorkTool postDestoonFinanceCashWithAttrModel:self.parModel successBlock:^(ZLRequestResponse *responseObject) {
         kMeSTRONGSELF

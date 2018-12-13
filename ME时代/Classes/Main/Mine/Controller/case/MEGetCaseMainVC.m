@@ -94,7 +94,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return kMEGetCaseMainCellHeight;
+    MEGetCaseMainModel *model = self.refresh.arrData[indexPath.row];
+    return [MEGetCaseMainCell getCellHeightWithModel:model];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

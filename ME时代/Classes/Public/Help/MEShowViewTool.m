@@ -34,6 +34,7 @@
 + (void)SHOWHUDWITHHUD:(MBProgressHUD *)HUD test:(NSString *)text{
     HUD.mode = MBProgressHUDModeCustomView;
     HUD.userInteractionEnabled = YES;
+    HUD.label.numberOfLines = 0;
     if ([text isKindOfClass:[NSString class]]) {
         HUD.label.text = text;
     }

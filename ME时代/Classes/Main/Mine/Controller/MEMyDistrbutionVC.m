@@ -199,6 +199,10 @@
             headerView.costBlock = ^{
                 kMeSTRONGSELF
                 MEWithdrawalVC *vc = [[MEWithdrawalVC alloc]init];
+                vc.applySucessBlock = ^{
+                    kMeSTRONGSELF
+                    [strongSelf.collectionView.mj_header beginRefreshing];
+                };
                 [strongSelf.navigationController pushViewController:vc animated:YES];
             };
         }else{

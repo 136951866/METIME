@@ -10,4 +10,6 @@
 
 @interface MEWithdrawalVC : MEBaseVC
 
+@property (nonatomic, copy) kMeBasicBlock applySucessBlock;
+
 @end

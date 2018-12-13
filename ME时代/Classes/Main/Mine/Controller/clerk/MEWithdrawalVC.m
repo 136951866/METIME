@@ -28,6 +28,7 @@
     kMeWEAKSELF
     self.cview.applyFinishBlock = ^{
         kMeSTRONGSELF
+//        kMeCallBlock(strongSelf->_applySucessBlock);
         [strongSelf.navigationController popViewControllerAnimated:YES];
     };
     // Do any additional setup after loading the view.
@@ -41,6 +42,7 @@
         _scrollerView.bounces = YES;
         _scrollerView.showsVerticalScrollIndicator =NO;
         _scrollerView.delegate = self;
+        _scrollerView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     }
     return _scrollerView;
 }
