@@ -61,7 +61,7 @@
 }
 
 - (IBAction)caseAction:(UIButton *)sender {
-    
+    kMeCallBlock(_costBlock);
 }
 
 @end

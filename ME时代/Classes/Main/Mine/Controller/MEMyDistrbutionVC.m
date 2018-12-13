@@ -21,8 +21,10 @@
 #import "MEBDataDealVC.h"
 #import "MEMyAppointmentVC.h"
 #import "MEGetCaseMainVC.h"
+#import "MEWithdrawalVC.h"
 //b端model
 #import "MEadminDistributionModel.h"
+
 
 @interface MEMyDistrbutionVC ()<UICollectionViewDelegate,UICollectionViewDataSource>{
     //c端model
@@ -192,7 +194,13 @@
     if (kind == UICollectionElementKindSectionHeader){//处理头视图
         MEMyDistributionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([MEMyDistributionReusableView class]) forIndexPath:indexPath];
         if(_type == MEClientBTypeStyle){
-             [headerView setUIBWithModel:_bModel];
+            [headerView setUIBWithModel:_bModel];
+            kMeWEAKSELF
+            headerView.costBlock = ^{
+                kMeSTRONGSELF
+                MEWithdrawalVC *vc = [[MEWithdrawalVC alloc]init];
+                [strongSelf.navigationController pushViewController:vc animated:YES];
+            };
         }else{
             [headerView setUIWithModel:_cModel];
         }

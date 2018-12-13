@@ -222,6 +222,11 @@
 		36435C3C214F808C00F823B4 /* MEOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36435C3B214F808C00F823B4 /* MEOrderDetailModel.m */; };
 		36435C3F214F8DD500F823B4 /* MEHomePageSaveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36435C3E214F8DD500F823B4 /* MEHomePageSaveModel.m */; };
 		36435C42214FA1BC00F823B4 /* MEGoodDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36435C41214FA1BC00F823B4 /* MEGoodDetailModel.m */; };
+		36445B2B21C1E8C900CDBCBA /* MEWithdrawalTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 36445B2A21C1E8C900CDBCBA /* MEWithdrawalTextField.m */; };
+		36445B2E21C1E92900CDBCBA /* MEWithdrawalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36445B2D21C1E92900CDBCBA /* MEWithdrawalView.m */; };
+		36445B3021C1E93A00CDBCBA /* MEWithdrawalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36445B2F21C1E93A00CDBCBA /* MEWithdrawalView.xib */; };
+		36445B3421C1ED5B00CDBCBA /* MEWithdrawalParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36445B3321C1ED5B00CDBCBA /* MEWithdrawalParamModel.m */; };
+		36445B3721C1F10B00CDBCBA /* MEWithdrawalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36445B3621C1F10B00CDBCBA /* MEWithdrawalVC.m */; };
 		364B64F52174341F00094027 /* MEActiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 364B64F42174341E00094027 /* MEActiveVC.m */; };
 		364B64F9217496B200094027 /* MEWxLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 364B64F7217496B100094027 /* MEWxLoginVC.m */; };
 		364B64FA217496B200094027 /* MEWxLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 364B64F8217496B100094027 /* MEWxLoginVC.xib */; };
@@ -854,6 +859,15 @@
 		36435C3E214F8DD500F823B4 /* MEHomePageSaveModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEHomePageSaveModel.m; sourceTree = "<group>"; };
 		36435C40214FA1BC00F823B4 /* MEGoodDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEGoodDetailModel.h; sourceTree = "<group>"; };
 		36435C41214FA1BC00F823B4 /* MEGoodDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEGoodDetailModel.m; sourceTree = "<group>"; };
+		36445B2921C1E8C900CDBCBA /* MEWithdrawalTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MEWithdrawalTextField.h; path = "ME时代/Classes/Main/Mine/View/clerk/MEWithdrawalTextField.h"; sourceTree = SOURCE_ROOT; };
+		36445B2A21C1E8C900CDBCBA /* MEWithdrawalTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MEWithdrawalTextField.m; path = "ME时代/Classes/Main/Mine/View/clerk/MEWithdrawalTextField.m"; sourceTree = SOURCE_ROOT; };
+		36445B2C21C1E92900CDBCBA /* MEWithdrawalView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MEWithdrawalView.h; path = "ME时代/Classes/Main/Mine/View/clerk/MEWithdrawalView.h"; sourceTree = SOURCE_ROOT; };
+		36445B2D21C1E92900CDBCBA /* MEWithdrawalView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MEWithdrawalView.m; path = "ME时代/Classes/Main/Mine/View/clerk/MEWithdrawalView.m"; sourceTree = SOURCE_ROOT; };
+		36445B2F21C1E93A00CDBCBA /* MEWithdrawalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MEWithdrawalView.xib; path = "ME时代/Classes/Main/Mine/View/clerk/MEWithdrawalView.xib"; sourceTree = SOURCE_ROOT; };
+		36445B3221C1ED5B00CDBCBA /* MEWithdrawalParamModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEWithdrawalParamModel.h; sourceTree = "<group>"; };
+		36445B3321C1ED5B00CDBCBA /* MEWithdrawalParamModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEWithdrawalParamModel.m; sourceTree = "<group>"; };
+		36445B3521C1F10B00CDBCBA /* MEWithdrawalVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEWithdrawalVC.h; sourceTree = "<group>"; };
+		36445B3621C1F10B00CDBCBA /* MEWithdrawalVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEWithdrawalVC.m; sourceTree = "<group>"; };
 		364B64F32174341E00094027 /* MEActiveVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEActiveVC.h; sourceTree = "<group>"; };
 		364B64F42174341E00094027 /* MEActiveVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEActiveVC.m; sourceTree = "<group>"; };
 		364B64F6217496B100094027 /* MEWxLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEWxLoginVC.h; sourceTree = "<group>"; };
@@ -1724,6 +1738,8 @@
 				3628E7E721C0BE0300D5405B /* MEAddClerkVC.m */,
 				3628E80821C10E9800D5405B /* MEClerkStatisticsVC.h */,
 				3628E80921C10E9800D5405B /* MEClerkStatisticsVC.m */,
+				36445B3521C1F10B00CDBCBA /* MEWithdrawalVC.h */,
+				36445B3621C1F10B00CDBCBA /* MEWithdrawalVC.m */,
 			);
 			path = clerk;
 			sourceTree = "<group>";
@@ -1851,6 +1867,15 @@
 			path = PayTool;
 			sourceTree = "<group>";
 		};
+		36445B3121C1ED3F00CDBCBA /* home */ = {
+			isa = PBXGroup;
+			children = (
+				36445B3221C1ED5B00CDBCBA /* MEWithdrawalParamModel.h */,
+				36445B3321C1ED5B00CDBCBA /* MEWithdrawalParamModel.m */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
 		3650F3F12179BE06007EA97F /* appointment */ = {
 			isa = PBXGroup;
 			children = (
@@ -1902,6 +1927,11 @@
 				3628E7D921C0AEB200D5405B /* MEBDataDealView.h */,
 				3628E7DA21C0AEB200D5405B /* MEBDataDealView.m */,
 				3628E7DC21C0AF2100D5405B /* MEBDataDealView.xib */,
+				36445B2921C1E8C900CDBCBA /* MEWithdrawalTextField.h */,
+				36445B2A21C1E8C900CDBCBA /* MEWithdrawalTextField.m */,
+				36445B2C21C1E92900CDBCBA /* MEWithdrawalView.h */,
+				36445B2D21C1E92900CDBCBA /* MEWithdrawalView.m */,
+				36445B2F21C1E93A00CDBCBA /* MEWithdrawalView.xib */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -2504,6 +2534,7 @@
 		36D66EEC213F822A000476FF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				36445B3121C1ED3F00CDBCBA /* home */,
 				3650F3F12179BE06007EA97F /* appointment */,
 				EB623E7F2154CDF8007C949B /* distribution */,
 				36435C36214F7E9400F823B4 /* order */,
@@ -3122,6 +3153,7 @@
 				36FFD85A2143D1480094D781 /* MEProductDetalsBuyedCell.xib in Resources */,
 				3628E7E521C0BC0C00D5405B /* MEAddClerkCell.xib in Resources */,
 				36E3D1E12171DF170033B192 /* MELogisticsHeaderView.xib in Resources */,
+				36445B3021C1E93A00CDBCBA /* MEWithdrawalView.xib in Resources */,
 				36FEC25621AD345B00BB64A5 /* MEArticleCell.xib in Resources */,
 				360A992F21468598009775F4 /* MESkuBuyCell.xib in Resources */,
 				3628E7C521C09CC100D5405B /* MEClerkCell.xib in Resources */,
@@ -3288,6 +3320,7 @@
 				366D1CD421B5197F0004295E /* MEArticelModel.m in Sources */,
 				36009D3C21428C480034747C /* MEProductDetailsBottomView.m in Sources */,
 				367C85032147C5CB00BEC7B1 /* MEMyOrderDetailVC.m in Sources */,
+				36445B2E21C1E92900CDBCBA /* MEWithdrawalView.m in Sources */,
 				3628E7F721C0F31000D5405B /* MEGetCaseMainVC.m in Sources */,
 				360034B921AE823700BAF337 /* AALegend.m in Sources */,
 				365DB25221475C2A00001A04 /* MEMineHomeHeaderView.m in Sources */,
@@ -3386,6 +3419,7 @@
 				365151BC214133440044C763 /* ZLRefreshTool.m in Sources */,
 				3600A73F215A15C700195484 /* MEAboutWeVC.m in Sources */,
 				360034AC21AE823700BAF337 /* AALine.m in Sources */,
+				36445B3421C1ED5B00CDBCBA /* MEWithdrawalParamModel.m in Sources */,
 				36FB9E2D21997A9100B3DDD3 /* MENoticeTypeVC.m in Sources */,
 				36FF4EBA21AFB6160099DDB8 /* MESNewHomePageView.m in Sources */,
 				3628E80A21C10E9800D5405B /* MEClerkStatisticsVC.m in Sources */,
@@ -3401,6 +3435,7 @@
 				36021B02214BB59F001B8DAF /* MEAppointOrderMainCell.m in Sources */,
 				36526013216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.m in Sources */,
 				3637155A218ADFAE0057E59F /* MEFilterGoodVC.m in Sources */,
+				36445B2B21C1E8C900CDBCBA /* MEWithdrawalTextField.m in Sources */,
 				365151C0214134380044C763 /* MBProgressHUD+MJ.m in Sources */,
 				EB6D029F2151D99A0053B19E /* NSMutableArray+MEErrorHandle.m in Sources */,
 				36FEEBB6214CD02A00060209 /* MEAddTelView.m in Sources */,
@@ -3562,6 +3597,7 @@
 				360034B721AE823700BAF337 /* AAArea.m in Sources */,
 				366D5B18214A46130021C1BB /* MESelectAddressVC.m in Sources */,
 				360034BF21AE823700BAF337 /* AAChartView.m in Sources */,
+				36445B3721C1F10B00CDBCBA /* MEWithdrawalVC.m in Sources */,
 				36FEC24921AD2D8B00BB64A5 /* MEPosterMoreListVC.m in Sources */,
 				360351D7215C82CE004BDD62 /* MEShoppingCartMakeOrderAttrModel.m in Sources */,
 				363007002148A9BC00C88264 /* MEDistributionOrderCell.m in Sources */,

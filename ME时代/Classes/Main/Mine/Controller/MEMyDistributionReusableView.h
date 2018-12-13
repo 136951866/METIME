@@ -18,4 +18,6 @@ const static CGFloat kMEMyDistributionHeaderViewHeight = 290.0;
 - (void)setUIWithModel:(MEDistributionCentreModel *)model;
 //B端
 - (void)setUIBWithModel:(MEadminDistributionModel *)model;
+//提现
+@property (nonatomic, copy) kMeBasicBlock costBlock;
 @end
