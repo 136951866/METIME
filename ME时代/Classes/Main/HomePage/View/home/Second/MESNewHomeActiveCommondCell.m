@@ -81,7 +81,7 @@
 }
 
 + (CGFloat)getCellHeightWithModel:(NSArray *)arr{
-    CGFloat height = 28;
+    CGFloat height = 20;
     NSInteger section = (arr.count/2)+((arr.count%2)==1?1:0);
     height+= (section * kMEProductCellHeight);
     return height;

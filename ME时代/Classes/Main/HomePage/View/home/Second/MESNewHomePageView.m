@@ -53,22 +53,22 @@
     _consVisterBottomMargin.constant = 10 *kMeFrameScaleY();
     
     //4image的左右宽度相加
-    CGFloat k4ImageMargin = 8.5+8.5+6;
+    CGFloat k4ImageMargin = 8.25+8.25+3.5;//8.5+8.5+6;
     CGFloat kMargin = 12;
     CGFloat scellWdith = ((SCREEN_WIDTH - (k4ImageMargin))/2);
     //4个image 的height 340 224
     _consFCellHeight.constant = (scellWdith * 224)/340;
     _consFCellWdith.constant = scellWdith;
-    _consAdvHeight.constant = 48 *kMeFrameScaleY();
+    _consAdvHeight.constant = 48 *kMeFrameScaleX();
     CGFloat tcellWdith = SCREEN_WIDTH - (kMargin * 2);
     //轮播的height
     _consTCellHeight.constant = (tcellWdith * 90)/351;
     _conslblBottomMargin.constant = - (30 * kMeFrameScaleX());
     
     //CGFloat kMarginS = 6 ;//* kMeFrameScaleX();
-    _consFMargin.constant = 10-2.5;//kMarginS;
-    _consSMargin.constant = 5;//kMarginS;
-    _consTMargin.constant = 10-2.5;//kMarginS;
+    _consFMargin.constant = 10-3.75;//kMarginS;
+    _consSMargin.constant = 2.5;//kMarginS;
+    _consTMargin.constant = 10-3.75;//kMarginS;
     
     _lblPoster.adjustsFontSizeToFitWidth = YES;
     _lblArticle.adjustsFontSizeToFitWidth = YES;
@@ -174,16 +174,16 @@
 + (CGFloat)getViewHeight{
     CGFloat height = 0;
     //top margin 4个top相加,2个有阴影
-    CGFloat kMarginS = 30;//*kMeFrameScaleX();
+    CGFloat kMarginS = 25;//30;//*kMeFrameScaleX();
     CGFloat kMargin = 12;
     //top margin
     CGFloat topMargin = 224 * kMeFrameScaleX();
     // 第一个view高度
     CGFloat fcellHeight = 90*kMeFrameScaleY();
     // 第二个view的高度
-    CGFloat advHeight = 48 *kMeFrameScaleY();
+    CGFloat advHeight = 48 *kMeFrameScaleX();
     //  4image的左右宽度相加
-    CGFloat k4ImageMargin = 8.5+8.5+6;
+    CGFloat k4ImageMargin = 8.25+8.25+3.5;//8.5+8.5+6;
     CGFloat scellWdith = ((SCREEN_WIDTH - (k4ImageMargin))/2);
     //4个image的高度 的height 340 224
     CGFloat scellHeight = (scellWdith * 224)/340;
