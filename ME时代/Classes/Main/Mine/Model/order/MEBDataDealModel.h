@@ -10,27 +10,31 @@
 
 @interface  MEBDataDealmemberModel: MEBaseModel
 
-@property (nonatomic, assign) NSInteger man;
-@property (nonatomic, assign) NSInteger privary;
-@property (nonatomic, assign) NSInteger today_new_member;
-@property (nonatomic, assign) NSInteger total;
-@property (nonatomic, assign) NSInteger women;
+@property (nonatomic, strong) NSString * man;
+@property (nonatomic, strong) NSString * privary;
+@property (nonatomic, strong) NSString * today_new_member;
+@property (nonatomic, strong) NSString * total;
+@property (nonatomic, strong) NSString * women;
 
 @end
 
 @interface MEBDataDealgoodsModel : MEBaseModel
-@property (nonatomic, assign) NSInteger man_sales;
-@property (nonatomic, assign) NSInteger privary_sales;
+@property (nonatomic, strong) NSString * man_sales;
+@property (nonatomic, strong) NSString * privary_sales;
 @property (nonatomic, strong) NSString * total_sales;
-@property (nonatomic, assign) NSInteger women_sales;
+@property (nonatomic, strong) NSString * women_sales;
 @end
 
 @interface  MEBDataDealbrokerageModel: MEBaseModel
-
+@property (nonatomic, strong) NSString * can_use_brokerage;
+@property (nonatomic, strong) NSString * settle_accounts_ok;
+@property (nonatomic, strong) NSString * settle_accounts_no;
+@property (nonatomic, strong) NSString * today_brokerage;
 @end
 
 @interface MEBDataDealorderModel : MEBaseModel
-
+@property (nonatomic, strong) NSString * total_order_count;
+@property (nonatomic, strong) NSString * today_order_count;
 @end
 
 @interface MEBDataDealModel : MEBaseModel

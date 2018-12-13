@@ -46,12 +46,8 @@
 
 - (NSDictionary *)requestParameter{
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    if(_userType == MEClientCTypeStyle){
-        dic[@"token"] = kMeUnNilStr(kCurrentUser.token);
-        dic[@"is_use"] = @(_type).description;
-    }else{
-        
-    }
+    dic[@"token"] = kMeUnNilStr(kCurrentUser.token);
+    dic[@"is_use"] = @(_type).description;
     return dic;
 }
 
@@ -112,7 +108,7 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        NSString *IPStr = @"";
+        NSString *IPStr = MEIPcommonreserveListB;
         if(_userType == MEClientCTypeStyle){
             IPStr = MEIPcommonGetReserveList;
         }

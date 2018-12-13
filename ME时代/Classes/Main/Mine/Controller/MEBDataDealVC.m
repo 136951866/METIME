@@ -8,8 +8,11 @@
 
 #import "MEBDataDealVC.h"
 #import "MEBDataDealView.h"
+#import "MEBDataDealModel.h"
 
-@interface MEBDataDealVC ()<UIScrollViewDelegate>
+@interface MEBDataDealVC ()<UIScrollViewDelegate>{
+    MEBDataDealModel *_model;
+}
 
 @property (nonatomic, strong) MEBDataDealView *cview;
 @property (nonatomic, strong) UIScrollView *scrollerView;
@@ -31,9 +34,14 @@
 
 - (void)requestNetWork{
     kMeWEAKSELF
-    [MEPublicNetWorkTool postAdWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+    [MEPublicNetWorkTool postGetBstatisticsWithSuccessBlock:^(ZLRequestResponse *responseObject) {
         kMeSTRONGSELF
-        [strongSelf.cview setUIWithModel:nil];
+        if(![responseObject.data isKindOfClass:[NSDictionary class]]){
+            [strongSelf.scrollerView.mj_header endRefreshing];
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+        }
+        strongSelf->_model = [MEBDataDealModel mj_objectWithKeyValues:responseObject.data ];
+        [strongSelf.cview setUIWithModel:strongSelf->_model];
         [strongSelf.scrollerView.mj_header endRefreshing];
     } failure:^(id object) {
         kMeSTRONGSELF

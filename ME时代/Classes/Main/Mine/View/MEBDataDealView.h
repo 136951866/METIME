@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class MEBDataDealModel;
 const static CGFloat kMEBDataDealViewHeight = 513;
 
 @interface MEBDataDealView : UIView
 
-- (void)setUIWithModel:(id)Model;
+- (void)setUIWithModel:(MEBDataDealModel *)Model;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "MEBDataDealView.h"
+#import "MEBDataDealModel.h"
 
 @interface MEBDataDealView ()
 
@@ -26,18 +27,18 @@
 
 @implementation MEBDataDealView
 
-- (void)setUIWithModel:(id)Model{
-    _lblGengerRate.text = kMeUnNilStr(@"");
-    _lblAllUserCount.text = kMeUnNilStr(@"");
-    _lblTodayUserCount.text = kMeUnNilStr(@"");
-    _lblAllCost.text = kMeUnNilStr(@"");
-    _lblGenerCostRate.text = kMeUnNilStr(@"");
-    _lblAllOrder.text = kMeUnNilStr(@"");
-    _lblTodayOrder.text = kMeUnNilStr(@"");
-    _lblCanUserMoney.text = kMeUnNilStr(@"");
-    _lblNotUseMoney.text = kMeUnNilStr(@"");
-    _lblUsedMoney.text = kMeUnNilStr(@"");
-    _lblTodayMoney.text = kMeUnNilStr(@"");
+- (void)setUIWithModel:(MEBDataDealModel *)Model{
+    _lblGengerRate.text = [NSString stringWithFormat:@"%@/%@/%@",kMeUnNilStr(Model.member.man),kMeUnNilStr(Model.member.women),kMeUnNilStr(Model.member.privary)];
+    _lblAllUserCount.text = kMeUnNilStr(Model.member.total);
+    _lblTodayUserCount.text = kMeUnNilStr(Model.member.today_new_member);
+    _lblAllCost.text = kMeUnNilStr(Model.goods.total_sales);
+    _lblGenerCostRate.text = [NSString stringWithFormat:@"%@/%@/%@",kMeUnNilStr(Model.goods.man_sales),kMeUnNilStr(Model.goods.women_sales),kMeUnNilStr(Model.goods.privary_sales)];
+    _lblAllOrder.text = kMeUnNilStr(Model.order.total_order_count);
+    _lblTodayOrder.text = kMeUnNilStr(Model.order.today_order_count);
+    _lblCanUserMoney.text = kMeUnNilStr(Model.brokerage.can_use_brokerage);
+    _lblNotUseMoney.text = kMeUnNilStr(Model.brokerage.settle_accounts_no);
+    _lblUsedMoney.text = kMeUnNilStr(Model.brokerage.settle_accounts_ok);
+    _lblTodayMoney.text = kMeUnNilStr(Model.brokerage.today_brokerage);
 }
 
 @end
