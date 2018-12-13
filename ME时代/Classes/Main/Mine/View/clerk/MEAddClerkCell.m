@@ -7,9 +7,10 @@
 //
 
 #import "MEAddClerkCell.h"
+#import "MEClerkModel.h"
 
 @interface MEAddClerkCell (){
-    id _model;
+    MEClerkModel *_model;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imgHeader;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
@@ -25,11 +26,21 @@
     // Initialization code
 }
 
-- (void)setUIWIthModel:(id)model{
+- (void)setUIWIthModel:(MEClerkModel *)model{
     _model = model;
-    kSDLoadImg(_imgHeader, @"11");
-    _lblName.text = kMeUnNilStr(@"1111");
-    _lblTime.text = kMeUnNilStr(@"22222");
+    kSDLoadImg(_imgHeader, kMeUnNilStr(model.header_pic));
+    _lblName.text = kMeUnNilStr(model.name);
+    _lblTime.text = kMeUnNilStr(model.cellphone);
+}
+
+- (void)setUIWithModel:(MEClerkModel *)model withKey:(NSString *)key{
+    [self setUIWIthModel:model];
+    if(kMeUnNilStr(key).length>0){
+        _lblName.text = nil;
+        _lblName.attributedText = [kMeUnNilStr(model.name) attributeWithRangeOfString:key color:kMEPink];
+        _lblTime.text = nil;
+        _lblTime.attributedText = [kMeUnNilStr(model.cellphone) attributeWithRangeOfString:key color:kMEPink];
+    }
 }
 
 - (IBAction)updatClerkAction:(UIButton *)sender {

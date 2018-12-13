@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class MEClerkModel;
 const static CGFloat kMEAddClerkCellHeight = 84;
 
 @interface MEAddClerkCell : UITableViewCell
 
-- (void)setUIWIthModel:(id)model;
+- (void)setUIWIthModel:(MEClerkModel *)model;
+- (void)setUIWithModel:(MEClerkModel *)model withKey:(NSString *)key;
 @property (nonatomic, copy) kMeBasicBlock updateBlock;
 
 @end

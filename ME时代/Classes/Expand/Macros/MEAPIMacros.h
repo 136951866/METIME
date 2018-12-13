@@ -41,6 +41,21 @@
 
 
 /*********************************************/
+#pragma makr - clerk
+
+//店员列表
+#define MEIPcommonMyClerk @"common/user/myClerk"
+//会员列表
+#define MEIPcommonMemberList @"common/user/memberList"
+//删除店员
+#define MEIPcommonClerkToMember @"common/user/clerkToMember"
+//会员升级为店员
+#define MEIPcommonMemberToClerk @"common/user/memberToClerk"
+/*********************************************/
+
+
+
+/*********************************************/
 #pragma makr - AD
 
 //广告banner

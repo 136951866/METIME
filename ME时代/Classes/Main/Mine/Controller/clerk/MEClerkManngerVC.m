@@ -11,8 +11,9 @@
 #import "MEClerkSearchVC.h"
 #import "MENavigationVC.h"
 #import "MEClerkSearchDataVC.h"
-#import "MEAddClerkVC.h"
+#import "MEAddClerksVC.h"
 #import "MEClerkStatisticsVC.h"
+#import "MEClerkModel.h"
 
 @interface MEClerkManngerVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>
 
@@ -45,15 +46,14 @@
 #pragma mark - RefreshToolDelegate
 
 - (NSDictionary *)requestParameter{
-    [self.refresh.arrData addObjectsFromArray:@[@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@""]];
-    return @{};
+    return @{@"token":kMeUnNilStr(kCurrentUser.token)};
 }
 
 - (void)handleResponse:(id)data{
     if(![data isKindOfClass:[NSArray class]]){
         return;
     }
-    [self.refresh.arrData addObjectsFromArray:[NSObject mj_objectArrayWithKeyValuesArray:data]];
+    [self.refresh.arrData addObjectsFromArray:[MEClerkModel mj_objectArrayWithKeyValuesArray:data]];
 }
 
 #pragma mark - tableView deleagte and sourcedata
@@ -63,7 +63,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    id model = self.refresh.arrData[indexPath.row];
+    MEClerkModel *model = self.refresh.arrData[indexPath.row];
     MEClerkCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEClerkCell class]) forIndexPath:indexPath];
     [cell setUIWIthModel:model];
     kMeWEAKSELF
@@ -77,8 +77,12 @@
             }else{
                 MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"" message:@"确定删除该员工?"];
                 [aler addButtonWithTitle:@"确定" block:^{
-                    kMeSTRONGSELF
-                   
+                    [MEPublicNetWorkTool postClerkToMemberWithmemberId:kMeUnNilStr(model.member_id) successBlock:^(ZLRequestResponse *responseObject) {
+                        kMeSTRONGSELF
+                        [strongSelf.refresh reload];
+                    } failure:^(id object) {
+                        
+                    }];
                 }];
                 [aler addButtonWithTitle:@"取消"];
                 [aler show];
@@ -98,24 +102,30 @@
 }
 
 - (void)toAddClerk:(UIButton *)btn{
-    MEAddClerkVC *vc = [[MEAddClerkVC alloc]init];
+    MEAddClerksVC *vc = [[MEAddClerksVC alloc]init];
+    kMeWEAKSELF
+    vc.finishUpdatClerkBlock = ^{
+        kMeSTRONGSELF
+        [strongSelf.refresh reload];
+    };
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (IBAction)toSearchClerk:(UIButton *)sender {
-    MEClerkSearchVC *searchViewController = [MEClerkSearchVC searchViewControllerWithHotSearches:@[] searchBarPlaceholder:@"搜索店员" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
-        MEClerkSearchDataVC *dataVC = [[MEClerkSearchDataVC alloc]initWithKey:searchText];
-        [searchViewController.navigationController pushViewController:dataVC animated:YES];
-    }];
-    MENavigationVC *nav = [[MENavigationVC alloc] initWithRootViewController:searchViewController];
-    [self presentViewController:nav  animated:NO completion:nil];
-}
+//- (IBAction)toSearchClerk:(UIButton *)sender {
+//    MEClerkSearchVC *searchViewController = [MEClerkSearchVC searchViewControllerWithHotSearches:@[] searchBarPlaceholder:@"搜索店员" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
+//        MEClerkSearchDataVC *dataVC = [[MEClerkSearchDataVC alloc]initWithKey:searchText];
+//        [searchViewController.navigationController pushViewController:dataVC animated:YES];
+//    }];
+//    MENavigationVC *nav = [[MENavigationVC alloc] initWithRootViewController:searchViewController];
+//    [self presentViewController:nav  animated:NO completion:nil];
+//}
 
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableVIew url:kGetApiWithUrl(@"")];
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableVIew url:kGetApiWithUrl(MEIPcommonMyClerk)];
         _refresh.delegate = self;
+        _refresh.isGet = YES;
         _refresh.isDataInside = YES;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
             failView.backgroundColor = [UIColor whiteColor];

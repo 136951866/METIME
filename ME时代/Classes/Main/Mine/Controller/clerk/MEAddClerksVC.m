@@ -1,44 +1,48 @@
 //
-//  MEClerkSearchDataVC.m
+//  MEAddClerksVC.m
 //  ME时代
 //
-//  Created by hank on 2018/12/12.
+//  Created by hank on 2018/12/13.
 //  Copyright © 2018年 hank. All rights reserved.
 //
 
-#import "MEClerkSearchDataVC.h"
+#import "MEAddClerksVC.h"
 #import "MEAddClerkCell.h"
 #import "ZLRefreshTool.h"
 #import "MEClerkModel.h"
+#import "MEClerkSearchVC.h"
+#import "MENavigationVC.h"
+#import "MEClerkSearchDataVC.h"
 
-@interface MEClerkSearchDataVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
-    NSString *_key;
-}
-@property (nonatomic, strong) UITableView *tableView;
+@interface MEAddClerksVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *consTopMargin;
+@property (weak, nonatomic) IBOutlet UITableView *tableVIew;
 @property (nonatomic, strong) ZLRefreshTool         *refresh;
-
 @end
 
-@implementation MEClerkSearchDataVC
+@implementation MEAddClerksVC
 
-- (instancetype)initWithKey:(NSString *)key{
-    if(self = [super init]){
-        _key = kMeUnNilStr(key);
-    }
-    return self;
-}
+#pragma mark - LifeCycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = [NSString stringWithFormat:@"搜索%@",_key];
-    [self.view addSubview:self.tableView];
+    [self initSomeThing];
+}
+
+- (void)initSomeThing{
+    self.title = @"添加店员";
+    _consTopMargin.constant = kMeNavBarHeight;
+    [_tableVIew registerNib:[UINib nibWithNibName:NSStringFromClass([MEAddClerkCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEAddClerkCell class])];
+    _tableVIew.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableVIew.showsVerticalScrollIndicator = NO;
+    _tableVIew.backgroundColor = [UIColor colorWithHexString:@"fbfbfb"];
     [self.refresh addRefreshView];
 }
 
 #pragma mark - RefreshToolDelegate
 
 - (NSDictionary *)requestParameter{
-    return @{@"token":kMeUnNilStr(kCurrentUser.token),@"select":kMeUnNilStr(_key)};
+    return @{@"token":kMeUnNilStr(kCurrentUser.token)};
 }
 
 - (void)handleResponse:(id)data{
@@ -58,7 +62,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MEClerkModel *model = self.refresh.arrData[indexPath.row];
     MEAddClerkCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEAddClerkCell class]) forIndexPath:indexPath];
-    [cell setUIWithModel:model withKey:_key];
+    [cell setUIWIthModel:model];
     kMeWEAKSELF
     cell.updateBlock = ^{
         MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"" message:@"确定升级为该员工?"];
@@ -75,7 +79,6 @@
         [aler show];
     };
     return cell;
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -83,42 +86,39 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
 }
 
-
-#pragma MARK - Setter
-
-- (UITableView *)tableView{
-    if(!_tableView){
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kMeNavBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight) style:UITableViewStylePlain];
-        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEAddClerkCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEAddClerkCell class])];
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.showsVerticalScrollIndicator = NO;
-        _tableView.tableFooterView = [UIView new];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
-        view.backgroundColor = [UIColor colorWithHexString:@"f1f2f6"];
-        _tableView.tableFooterView = view;
-        _tableView.backgroundColor = [UIColor colorWithHexString:@"f1f2f6"];
-    }
-    return _tableView;
+- (IBAction)toSearchClerk:(UIButton *)sender {
+    MEClerkSearchVC *searchViewController = [MEClerkSearchVC searchViewControllerWithHotSearches:@[] searchBarPlaceholder:@"搜索会员" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
+        MEClerkSearchDataVC *dataVC = [[MEClerkSearchDataVC alloc]initWithKey:searchText];
+        kMeWEAKSELF
+        dataVC.finishUpdatClerkBlock = ^{
+            kMeSTRONGSELF
+            kMeCallBlock(strongSelf->_finishUpdatClerkBlock);
+            [strongSelf.refresh reload];
+        };
+        [searchViewController.navigationController pushViewController:dataVC animated:YES];
+    }];
+    MENavigationVC *nav = [[MENavigationVC alloc] initWithRootViewController:searchViewController];
+    [self presentViewController:nav  animated:NO completion:nil];
 }
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonMemberList)];
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableVIew url:kGetApiWithUrl(MEIPcommonMemberList)];
         _refresh.isGet = YES;
         _refresh.delegate = self;
         _refresh.isDataInside = YES;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
             failView.backgroundColor = [UIColor whiteColor];
-            failView.lblOfNodata.text = @"没有店员";
+            failView.lblOfNodata.text = @"没有会员";
         }];
     }
     return _refresh;
 }
+
+
 
 
 @end

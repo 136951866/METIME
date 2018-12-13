@@ -1,16 +1,15 @@
 //
-//  MEClerkSearchDataVC.h
+//  MEAddClerksVC.h
 //  ME时代
 //
-//  Created by hank on 2018/12/12.
+//  Created by hank on 2018/12/13.
 //  Copyright © 2018年 hank. All rights reserved.
 //
 
 #import "MEBaseVC.h"
 
-@interface MEClerkSearchDataVC : MEBaseVC
-
-- (instancetype)initWithKey:(NSString *)key;
+@interface MEAddClerksVC : MEBaseVC
 
 @property (nonatomic, copy) kMeBasicBlock finishUpdatClerkBlock;
+
 @end

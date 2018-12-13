@@ -22,6 +22,17 @@
 
 + (void)getUserGetTokenByFourWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 
+
+/***************************************/
+#pragma mark - clerk
+//删除店员
++ (void)postClerkToMemberWithmemberId:(NSString *)memberId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+//会员升级为店员
++ (void)posMemberToClerkWithmemberId:(NSString *)memberId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+
+/***************************************/
+
+
 /***************************************/
 
 #pragma mark - HomePage
