@@ -12,6 +12,7 @@
 @interface MEGetCaseCell : UITableViewCell
 
 + (CGFloat)getCellHeightWithModel:(MEGetCaseModel *)model;
++ (CGFloat)getCellDataDealHeightWithModel:(id)model;
 - (void)setUIDataDealWIthModel:(id)model;
 - (void)setUIWithModel:(MEGetCaseModel *)model;
 

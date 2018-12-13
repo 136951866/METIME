@@ -83,13 +83,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfs-lK-ETd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfs-lK-ETd">
                                 <rect key="frame" x="12" y="202" width="272" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="USu-HI-2ZV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -147,6 +147,7 @@
                 <outlet property="lblMoney" destination="fEv-gv-Zpk" id="7Ig-Gz-gd4"/>
                 <outlet property="lblName" destination="sB8-FL-a3I" id="Am1-1k-7kQ"/>
                 <outlet property="lblOrderNo" destination="gCy-1f-FDI" id="r1x-5w-mtk"/>
+                <outlet property="lblStatus" destination="dYf-Xy-98I" id="2qU-4H-ix3"/>
                 <outlet property="lblTime" destination="la9-Je-QT7" id="XNE-OR-rtE"/>
                 <outlet property="lnlFee" destination="GKC-CX-Zf2" id="cdQ-w5-h0k"/>
             </connections>

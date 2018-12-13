@@ -40,6 +40,18 @@
 /*********************************************/
 
 /*********************************************/
+#pragma makr - B deal
+//预约完成B端
+#define MEIPcommonfinishReserve @"common/reserve/finishReserve"
+//预约取消B端
+#define MEIPcommoncancelReserve @"common/reserve/cancelReserve"
+//预约列表B端
+#define MEIPcommonreserveListB @"common/reserve/reserveListB"
+//B端数据统计
+#define MEIPcommonstatistics @"common/order/statistics"
+/*********************************************/
+
+/*********************************************/
 #pragma makr - Withdrawal
 //提现申请
 #define MEIPcommondestoonFinanceCash @"common/money/destoonFinanceCash"

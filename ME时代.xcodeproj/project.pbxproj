@@ -231,6 +231,7 @@
 		36445B4421C2339C00CDBCBA /* MEGetCaseMainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36445B4321C2339C00CDBCBA /* MEGetCaseMainModel.m */; };
 		36445B4721C235A900CDBCBA /* MEGetCaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36445B4621C235A900CDBCBA /* MEGetCaseModel.m */; };
 		36445B4A21C23B8A00CDBCBA /* MEGetCaseMainSVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36445B4921C23B8A00CDBCBA /* MEGetCaseMainSVC.m */; };
+		36445B4D21C24FFF00CDBCBA /* MEBDataDealModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36445B4C21C24FFF00CDBCBA /* MEBDataDealModel.m */; };
 		364B64F52174341F00094027 /* MEActiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 364B64F42174341E00094027 /* MEActiveVC.m */; };
 		364B64F9217496B200094027 /* MEWxLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 364B64F7217496B100094027 /* MEWxLoginVC.m */; };
 		364B64FA217496B200094027 /* MEWxLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 364B64F8217496B100094027 /* MEWxLoginVC.xib */; };
@@ -879,6 +880,8 @@
 		36445B4621C235A900CDBCBA /* MEGetCaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEGetCaseModel.m; sourceTree = "<group>"; };
 		36445B4821C23B8A00CDBCBA /* MEGetCaseMainSVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEGetCaseMainSVC.h; sourceTree = "<group>"; };
 		36445B4921C23B8A00CDBCBA /* MEGetCaseMainSVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEGetCaseMainSVC.m; sourceTree = "<group>"; };
+		36445B4B21C24FFE00CDBCBA /* MEBDataDealModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBDataDealModel.h; sourceTree = "<group>"; };
+		36445B4C21C24FFF00CDBCBA /* MEBDataDealModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBDataDealModel.m; sourceTree = "<group>"; };
 		364B64F32174341E00094027 /* MEActiveVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEActiveVC.h; sourceTree = "<group>"; };
 		364B64F42174341E00094027 /* MEActiveVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEActiveVC.m; sourceTree = "<group>"; };
 		364B64F6217496B100094027 /* MEWxLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEWxLoginVC.h; sourceTree = "<group>"; };
@@ -1868,6 +1871,8 @@
 				36F0FE79215E2F0F006D30BB /* MEPayModel.m */,
 				3650F3F52179F17C007EA97F /* MELogistModel.h */,
 				3650F3F62179F17C007EA97F /* MELogistModel.m */,
+				36445B4B21C24FFE00CDBCBA /* MEBDataDealModel.h */,
+				36445B4C21C24FFF00CDBCBA /* MEBDataDealModel.m */,
 			);
 			path = order;
 			sourceTree = "<group>";
@@ -3410,6 +3415,7 @@
 				3601765D215B1B240080EB00 /* MEMoneyDetailedCell.m in Sources */,
 				36FEC23021AD12A400BB64A5 /* MEPosterListVC.m in Sources */,
 				36FEC24C21AD2DCD00BB64A5 /* MEPosterMoreListContentVC.m in Sources */,
+				36445B4D21C24FFF00CDBCBA /* MEBDataDealModel.m in Sources */,
 				36E3D1DF2171DF0F0033B192 /* MELogisticsHeaderView.m in Sources */,
 				36E3D1E52171F26B0033B192 /* MELogisticsCell.m in Sources */,
 				363007202148E30E00C88264 /* MEInteralExchangVC.m in Sources */,

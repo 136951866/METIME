@@ -28,7 +28,7 @@
     [super awakeFromNib];
     self.selectionStyle = 0;
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEGetCaseContentCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEGetCaseContentCell class])];
-    _tableView.rowHeight = kMEGetCaseContentCellHeight;
+//    _tableView.rowHeight = kMEGetCaseContentCellHeight;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.showsVerticalScrollIndicator = NO;
     _tableView.scrollEnabled = NO;
@@ -45,7 +45,11 @@
     _lblNo.text = kMeUnNilStr(model.order_sn);
     _lblStatus.text = kMeUnNilStr(model.order_goods_status_name);
     _arrData = kMeUnArr(model.goods);
-    _consTableHeight.constant = kMEGetCaseContentCellHeight * kMeUnArr(_arrData).count;
+    CGFloat height = 0;
+    for (MEGetCaseContentModel *model in _arrData) {
+        height += [MEGetCaseContentCell getCellHeightWithModel:model];
+    }
+    _consTableHeight.constant = height;
     [self.tableView reloadData];
 }
 
@@ -80,10 +84,26 @@
 
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(_isDataDeal){
+        return kMEGetCaseContentCellHeight;
+    }
+    MEGetCaseContentModel *model = kMeUnArr(_arrData)[indexPath.row];
+    return [MEGetCaseContentCell getCellHeightWithModel:model];
+}
+
++ (CGFloat)getCellDataDealHeightWithModel:(id)model{
+    CGFloat height = 56;
+    height += kMEGetCaseContentCellHeight * 3;
+    return height;
+}
+
 + (CGFloat)getCellHeightWithModel:(MEGetCaseModel *)model{
     CGFloat height = 56;
     NSArray *arrdata =  kMeUnArr(model.goods);
-    height += (kMEGetCaseContentCellHeight * kMeUnArr(arrdata).count);
+    for (MEGetCaseContentModel *model in arrdata) {
+        height += [MEGetCaseContentCell getCellHeightWithModel:model];
+    }
     return height;
 }
 

@@ -61,7 +61,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     id model = self.refresh.arrData[indexPath.row];
-    return [MEGetCaseCell getCellHeightWithModel:model];
+    return [MEGetCaseCell getCellDataDealHeightWithModel:model];
 }
 
 #pragma mark - Set And Get

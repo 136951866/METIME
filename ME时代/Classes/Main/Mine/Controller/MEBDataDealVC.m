@@ -30,8 +30,16 @@
 }
 
 - (void)requestNetWork{
-    [self.cview setUIWithModel:nil];
-    [self.scrollerView.mj_header endRefreshing];
+    kMeWEAKSELF
+    [MEPublicNetWorkTool postAdWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        [strongSelf.cview setUIWithModel:nil];
+        [strongSelf.scrollerView.mj_header endRefreshing];
+    } failure:^(id object) {
+        kMeSTRONGSELF
+        [strongSelf.scrollerView.mj_header endRefreshing];
+        [strongSelf.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 - (UIScrollView *)scrollerView{
