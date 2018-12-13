@@ -10,4 +10,6 @@
 
 @interface MEGetCaseMainVC : MEBaseVC
 
+- (instancetype)initWithType:(MEGetCaseStyle)type;
+
 @end

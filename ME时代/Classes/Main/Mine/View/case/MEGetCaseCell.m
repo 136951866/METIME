@@ -8,6 +8,7 @@
 
 #import "MEGetCaseCell.h"
 #import "MEGetCaseContentCell.h"
+#import "MEGetCaseModel.h"
 
 @interface MEGetCaseCell ()<UITableViewDelegate,UITableViewDataSource>{
     NSArray *_arrData;
@@ -39,11 +40,11 @@
     // Initialization code
 }
 
-- (void)setUIWithModel:(id)model{
+- (void)setUIWithModel:(MEGetCaseModel *)model{
     _isDataDeal = NO;
-    _lblNo.text = kMeUnNilStr(@"");
-    _lblStatus.text = kMeUnNilStr(@"");
-    _arrData = @[@"",@"",@""];
+    _lblNo.text = kMeUnNilStr(model.order_sn);
+    _lblStatus.text = kMeUnNilStr(model.order_goods_status_name);
+    _arrData = kMeUnArr(model.goods);
     _consTableHeight.constant = kMEGetCaseContentCellHeight * kMeUnArr(_arrData).count;
     [self.tableView reloadData];
 }
@@ -65,10 +66,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MEGetCaseContentCell *cell=[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEGetCaseContentCell class]) forIndexPath:indexPath];
-    id model = kMeUnArr(_arrData)[indexPath.row];
     if(_isDataDeal){
-        [cell setUIDataDealWIthModel:model];
+        [cell setUIDataDealWIthModel:nil];
     }else{
+        MEGetCaseContentModel *model = kMeUnArr(_arrData)[indexPath.row];
         [cell setUIWIthModel:model];
     }
     return cell;
@@ -79,9 +80,9 @@
 
 }
 
-+ (CGFloat)getCellHeightWithModel:(id )model{
++ (CGFloat)getCellHeightWithModel:(MEGetCaseModel *)model{
     CGFloat height = 56;
-    NSArray *arrdata =  @[@"",@"",@""];
+    NSArray *arrdata =  kMeUnArr(model.goods);
     height += (kMEGetCaseContentCellHeight * kMeUnArr(arrdata).count);
     return height;
 }

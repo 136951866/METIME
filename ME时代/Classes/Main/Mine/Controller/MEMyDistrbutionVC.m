@@ -20,7 +20,7 @@
 #import "MEClerkManngerVC.h"
 #import "MEBDataDealVC.h"
 #import "MEMyAppointmentVC.h"
-#import "MEGetCaseMainVC.h"
+#import "MEGetCaseMainSVC.h"
 #import "MEWithdrawalVC.h"
 //b端model
 #import "MEadminDistributionModel.h"
@@ -152,7 +152,7 @@
             break;
             
         case MEMyCash:{
-            MEGetCaseMainVC *vc = [[MEGetCaseMainVC alloc]init];
+            MEGetCaseMainSVC *vc = [[MEGetCaseMainSVC alloc]initWithType:MEGetCaseAllStyle];
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;

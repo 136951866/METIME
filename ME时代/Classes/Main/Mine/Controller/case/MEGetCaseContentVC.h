@@ -10,6 +10,6 @@
 
 @interface MEGetCaseContentVC : MEBaseVC
 
-- (instancetype)initWithType:(MEGetCaseStyle)type;
+- (instancetype)initWithMoney_check_sn:(NSString *)money_check_sn;
 
 @end

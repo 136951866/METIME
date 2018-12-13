@@ -7,6 +7,7 @@
 //
 
 #import "MEGetCaseMainCell.h"
+#import "MEGetCaseMainModel.h"
 
 @interface MEGetCaseMainCell ()
 
@@ -27,13 +28,13 @@
     self.selectionStyle = 0;
 }
 
-- (void)setUIWithModel:(id)model{
-    _lblOrderNo.text = [NSString stringWithFormat:@"提现单号:%@",kMeUnNilStr(@"")];
-    _lblName.text = [NSString stringWithFormat:@"真实姓名:%@",kMeUnNilStr(@"")];
-    _lblBankNo.text = [NSString stringWithFormat:@"银行卡号:%@",kMeUnNilStr(@"")];
-    _lblMoney.text = [NSString stringWithFormat:@"提现金额:%@",kMeUnNilStr(@"")];
-    _lnlFee.text = [NSString stringWithFormat:@"手续费:%@",kMeUnNilStr(@"")];
-    _lblTime.text = [NSString stringWithFormat:@"申请时间:%@",kMeUnNilStr(@"")];
+- (void)setUIWithModel:(MEGetCaseMainModel *)model{
+    _lblOrderNo.text = [NSString stringWithFormat:@"提现单号:%@",kMeUnNilStr(model.order_sn)];
+    _lblName.text = [NSString stringWithFormat:@"真实姓名:%@",kMeUnNilStr(model.true_name)];
+    _lblBankNo.text = [NSString stringWithFormat:@"银行卡号:%@",kMeUnNilStr(model.account)];
+    _lblMoney.text = [NSString stringWithFormat:@"提现金额:%@",kMeUnNilStr(model.all_money)];
+    _lnlFee.text = [NSString stringWithFormat:@"手续费:%@",kMeUnNilStr(model.service_money)];
+    _lblTime.text = [NSString stringWithFormat:@"申请时间:%@",kMeUnNilStr(model.created_at)];
 }
 
 

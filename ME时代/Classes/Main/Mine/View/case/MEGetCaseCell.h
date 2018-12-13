@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class MEGetCaseModel;
 @interface MEGetCaseCell : UITableViewCell
 
-+ (CGFloat)getCellHeightWithModel:(id)model;
++ (CGFloat)getCellHeightWithModel:(MEGetCaseModel *)model;
 - (void)setUIDataDealWIthModel:(id)model;
-- (void)setUIWithModel:(id)model;
+- (void)setUIWithModel:(MEGetCaseModel *)model;
 
 @end

@@ -17,10 +17,21 @@
 @class MEShoppingCartMakeOrderAttrModel;
 @class MEWxAuthModel;
 @class MEAppointAttrModel;
+@class MEWithdrawalParamModel;
 
 @interface MEPublicNetWorkTool : NSObject
 
 + (void)getUserGetTokenByFourWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+
+
+
+/*********************************************/
+#pragma makr - Withdrawal
+//提现申请
++ (void)postDestoonFinanceCashWithAttrModel:(MEWithdrawalParamModel *)attrModel successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+
+
+/***************************************/
 
 
 /***************************************/

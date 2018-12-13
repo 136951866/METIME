@@ -10,9 +10,10 @@
 
 @interface MEWithdrawalParamModel : MEBaseModel
 
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *bankName;
-@property (nonatomic, copy) NSString *bankNo;
-@property (nonatomic, copy) NSString *bankBelong;
+@property (nonatomic, copy) NSString *true_name;
+@property (nonatomic, copy) NSString *bank;
+@property (nonatomic, copy) NSString *account;
+@property (nonatomic, copy) NSString *branch;
+@property (nonatomic, copy) NSString *token;
 
 @end

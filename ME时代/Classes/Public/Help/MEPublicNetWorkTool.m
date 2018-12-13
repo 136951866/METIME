@@ -15,8 +15,33 @@
 #import "MEShoppingCartMakeOrderAttrModel.h"
 #import "MEWxAuthModel.h"
 #import "MEAppointAttrModel.h"
+#import "MEWithdrawalParamModel.h"
 
 @implementation MEPublicNetWorkTool
+
+/*********************************************/
+#pragma makr - Withdrawal
+
++ (void)postDestoonFinanceCashWithAttrModel:(MEWithdrawalParamModel *)attrModel successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSMutableDictionary *dic = [attrModel mj_keyValues];
+    NSLog(@"%@",dic);
+    NSString *url = kGetApiWithUrl(MEIPcommondestoonFinanceCash);
+    MBProgressHUD *HUD = [self commitWithHUD:@"申请提现中"];
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [MEShowViewTool SHOWHUDWITHHUD:HUD test:@"申请成功"];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
+/***************************************/
+
 
 /***************************************/
 #pragma mark - clerk

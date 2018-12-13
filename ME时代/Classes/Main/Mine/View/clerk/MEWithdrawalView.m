@@ -30,27 +30,48 @@
     kMeWEAKSELF
     _tfName.contentBlock = ^(NSString *str) {
         kMeSTRONGSELF
-        strongSelf.parModel.name = str;
+        strongSelf.parModel.true_name = str;
     };
     _tfBankName.contentBlock = ^(NSString *str) {
         kMeSTRONGSELF
-        strongSelf.parModel.bankName = str;
+        strongSelf.parModel.bank = str;
     };
     _tfBnkNo.contentBlock = ^(NSString *str) {
         kMeSTRONGSELF
-        strongSelf.parModel.bankNo = str;
+        strongSelf.parModel.account = str;
     };
     _tfBankBelong.contentBlock = ^(NSString *str) {
         kMeSTRONGSELF
-        strongSelf.parModel.bankBelong = str;
+        strongSelf.parModel.branch = str;
     };
 }
 
 
 - (IBAction)applyAction:(UIButton *)sender {
-    NSDictionary *dic = [self.parModel mj_keyValues];
-    NSLog(@"----%@",dic);
-    kMeCallBlock(_applyFinishBlock);
+    if(!kMeUnNilStr(self.parModel.true_name).length){
+        [MEShowViewTool showMessage:@"名字不能为空" view:kMeCurrentWindow];
+        return;
+    }
+    if(!kMeUnNilStr(self.parModel.bank).length){
+        [MEShowViewTool showMessage:@"银行名称不能为空" view:kMeCurrentWindow];
+        return;
+    }
+    if(!kMeUnNilStr(self.parModel.account).length){
+        [MEShowViewTool showMessage:@"银行卡号不能为空" view:kMeCurrentWindow];
+        return;
+    }
+    if(!kMeUnNilStr(self.parModel.branch).length){
+        [MEShowViewTool showMessage:@"银行支行不能为空" view:kMeCurrentWindow];
+        return;
+    }
+    
+    kMeWEAKSELF
+    [MEPublicNetWorkTool postDestoonFinanceCashWithAttrModel:self.parModel successBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        kMeCallBlock(strongSelf->_applyFinishBlock);
+    } failure:^(id object) {
+        
+    }];
 }
 
 
@@ -63,6 +84,7 @@
 - (MEWithdrawalParamModel*)parModel{
     if(!_parModel){
         _parModel = [MEWithdrawalParamModel new];
+        _parModel.token = kMeUnNilStr(kCurrentUser.token);
     }
     return _parModel;
 }

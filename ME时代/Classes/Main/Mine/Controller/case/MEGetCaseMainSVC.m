@@ -1,29 +1,30 @@
 //
-//  MEGetCaseVC.m
+//  MEGetCaseMainSVC.m
 //  ME时代
 //
-//  Created by hank on 2018/12/12.
+//  Created by hank on 2018/12/13.
 //  Copyright © 2018年 hank. All rights reserved.
 //
 
-#import "MEGetCaseVC.h"
-#import "MEGetCaseContentVC.h"
+#import "MEGetCaseMainSVC.h"
+#import "MEGetCaseMainVC.h"
 
-@interface MEGetCaseVC ()<JXCategoryViewDelegate,UIScrollViewDelegate>{
+@interface MEGetCaseMainSVC ()<JXCategoryViewDelegate,UIScrollViewDelegate>{
     NSArray *_arrType;
     MEGetCaseStyle _currentType;
 }
 
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) UIScrollView *scrollView;
-@property (nonatomic, strong) MEGetCaseContentVC *allVC;
-@property (nonatomic, strong) MEGetCaseContentVC *getCaseIngVC;
-@property (nonatomic, strong) MEGetCaseContentVC *GetCaseedVC;
-@property (nonatomic, strong) MEGetCaseContentVC *notGetCaseVC;
+@property (nonatomic, strong) MEGetCaseMainVC *allVC;
+@property (nonatomic, strong) MEGetCaseMainVC *getCaseIngVC;
+@property (nonatomic, strong) MEGetCaseMainVC *GetCaseedVC;
+@property (nonatomic, strong) MEGetCaseMainVC *notGetCaseVC;
+@property (nonatomic, strong) MEGetCaseMainVC *payedGetCaseVC;
 
 @end
 
-@implementation MEGetCaseVC
+@implementation MEGetCaseMainSVC
 
 - (instancetype)initWithType:(MEGetCaseStyle)type{
     if(self = [super init]){
@@ -32,9 +33,10 @@
     return self;
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"提现明细";
+    self.title = @"提现";
     _arrType = MMEGetCaseStyleTitle;
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kMeNavBarHeight+kCategoryViewHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight)];
@@ -48,6 +50,7 @@
     [self.scrollView addSubview:self.getCaseIngVC.view];
     [self.scrollView addSubview:self.GetCaseedVC.view];
     [self.scrollView addSubview:self.notGetCaseVC.view];
+    [self.scrollView addSubview:self.payedGetCaseVC.view];
     [self.view addSubview:self.scrollView];
     
     //1、初始化JXCategoryTitleView
@@ -59,14 +62,13 @@
     self.categoryView.contentScrollView = self.scrollView;
     [self.view addSubview:self.categoryView];
     self.categoryView.defaultSelectedIndex = _currentType;
-    // Do any additional setup after loading the view.
 }
 
 #pragma mark - Setter And Getter
 
-- (MEGetCaseContentVC *)allVC{
+- (MEGetCaseMainVC *)allVC{
     if(!_allVC){
-        _allVC = [[MEGetCaseContentVC alloc]initWithType:MEGetCaseAllStyle];
+        _allVC = [[MEGetCaseMainVC alloc]initWithType:MEGetCaseAllStyle];
         _allVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _allVC.view.frame = CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight);
         [self addChildViewController:_allVC];
@@ -74,9 +76,9 @@
     return _allVC;
 }
 
-- (MEGetCaseContentVC *)getCaseIngVC{
+- (MEGetCaseMainVC *)getCaseIngVC{
     if(!_getCaseIngVC){
-        _getCaseIngVC = [[MEGetCaseContentVC alloc]initWithType:MEGetCaseingStyle];
+        _getCaseIngVC = [[MEGetCaseMainVC alloc]initWithType:MEGetCaseingStyle];
         _getCaseIngVC.view.frame = CGRectMake(SCREEN_WIDTH,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight);
         _getCaseIngVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [self addChildViewController:_getCaseIngVC];
@@ -84,9 +86,9 @@
     return _getCaseIngVC;
 }
 
-- (MEGetCaseContentVC *)GetCaseedVC{
+- (MEGetCaseMainVC *)GetCaseedVC{
     if(!_GetCaseedVC){
-        _GetCaseedVC = [[MEGetCaseContentVC alloc]initWithType:MEGetCaseedStyle];
+        _GetCaseedVC = [[MEGetCaseMainVC alloc]initWithType:MEGetCaseedStyle];
         _GetCaseedVC.view.frame = CGRectMake(SCREEN_WIDTH*2,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight);
         _GetCaseedVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [self addChildViewController:_GetCaseedVC];
@@ -94,9 +96,9 @@
     return _GetCaseedVC;
 }
 
-- (MEGetCaseContentVC *)notGetCaseVC{
+- (MEGetCaseMainVC *)notGetCaseVC{
     if(!_notGetCaseVC){
-        _notGetCaseVC = [[MEGetCaseContentVC alloc]initWithType:MEGetCasenotStyle];
+        _notGetCaseVC = [[MEGetCaseMainVC alloc]initWithType:MEGetCasenotStyle];
         _notGetCaseVC.view.frame = CGRectMake(SCREEN_WIDTH*3,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight);
         _notGetCaseVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [self addChildViewController:_notGetCaseVC];
@@ -104,5 +106,14 @@
     return _notGetCaseVC;
 }
 
+- (MEGetCaseMainVC *)payedGetCaseVC{
+    if(!_payedGetCaseVC){
+        _payedGetCaseVC = [[MEGetCaseMainVC alloc]initWithType:MEGetCasePayEdStyle];
+        _payedGetCaseVC.view.frame = CGRectMake(SCREEN_WIDTH*4,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight);
+        _payedGetCaseVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        [self addChildViewController:_payedGetCaseVC];
+    }
+    return _payedGetCaseVC;
+}
 
 @end

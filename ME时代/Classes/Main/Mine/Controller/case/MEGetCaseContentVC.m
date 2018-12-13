@@ -8,9 +8,10 @@
 
 #import "MEGetCaseContentVC.h"
 #import "MEGetCaseCell.h"
+#import "MEGetCaseModel.h"
 
 @interface MEGetCaseContentVC ()<UITableViewDelegate, UITableViewDataSource,RefreshToolDelegate>{
-    MEGetCaseStyle _type;
+    NSString *_money_check_sn;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -20,24 +21,25 @@
 
 @implementation MEGetCaseContentVC
 
-- (instancetype)initWithType:(MEGetCaseStyle)type{
+- (instancetype)initWithMoney_check_sn:(NSString *)money_check_sn{
     if(self = [super init]){
-        _type = type;
+        _money_check_sn = money_check_sn;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"提现明细";
     [self.view addSubview:self.tableView];
     [self.refresh addRefreshView];
     // Do any additional setup after loading the view.
 }
 
 - (NSDictionary *)requestParameter{
-    [self.refresh.arrData addObjectsFromArray:@[@"",@"",@"",@"",@""]];
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     dic[@"token"] = kMeUnNilStr(kCurrentUser.token);
+    dic[@"money_check_sn"] = kMeUnNilStr(_money_check_sn);
     return dic;
 }
 
@@ -45,7 +47,7 @@
     if(![data isKindOfClass:[NSArray class]]){
         return;
     }
-    [self.refresh.arrData addObjectsFromArray:[NSObject mj_objectArrayWithKeyValuesArray:data]];
+    [self.refresh.arrData addObjectsFromArray:[MEGetCaseModel mj_objectArrayWithKeyValuesArray:data]];
 }
 
 #pragma mark ------------------ <UITableViewDelegate, UITableViewDataSource> ----
@@ -59,13 +61,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MEGetCaseCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEGetCaseCell class]) forIndexPath:indexPath];
-    id model = self.refresh.arrData[indexPath.row];
-    [cell setUIWithModel:nil];
+    MEGetCaseModel *model = self.refresh.arrData[indexPath.row];
+    [cell setUIWithModel:model];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    id model = self.refresh.arrData[indexPath.row];
+    MEGetCaseModel *model = self.refresh.arrData[indexPath.row];
     return [MEGetCaseCell getCellHeightWithModel:model];
 }
 
@@ -73,7 +75,7 @@
 
 - (UITableView *)tableView{
     if(!_tableView){
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,kMeNavBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight) style:UITableViewStylePlain];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEGetCaseCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEGetCaseCell class])];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
@@ -87,9 +89,8 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(@"")];
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommondestoonFinanceCashDetail)];
         _refresh.isDataInside = YES;
-        _refresh.isGet = YES;
         _refresh.delegate = self;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
             failView.backgroundColor = [UIColor whiteColor];

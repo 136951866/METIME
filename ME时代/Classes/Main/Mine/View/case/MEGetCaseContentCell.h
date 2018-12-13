@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class MEGetCaseContentModel;
 const static CGFloat kMEGetCaseContentCellHeight = 110;
 
 @interface MEGetCaseContentCell : UITableViewCell
 
-- (void)setUIWIthModel:(id)model;
+- (void)setUIWIthModel:(MEGetCaseContentModel *)model;
 - (void)setUIDataDealWIthModel:(id)model;
 
 @end

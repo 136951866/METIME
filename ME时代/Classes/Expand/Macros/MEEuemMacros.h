@@ -51,8 +51,9 @@ typedef enum : NSUInteger {
     MEGetCaseingStyle = 1,
     MEGetCaseedStyle = 2,
     MEGetCasenotStyle = 3,
+    MEGetCasePayEdStyle = 4,
 } MEGetCaseStyle;
-#define MMEGetCaseStyleTitle @[@"全部",@"审核中",@"审核通过",@"审核失败"];
+#define MMEGetCaseStyleTitle @[@"全部",@"审核中",@"审核通过",@"审核失败",@"已打款"];
 
 //订单结算
 typedef enum : NSUInteger {

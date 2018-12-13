@@ -8,9 +8,11 @@
 
 #import "MEGetCaseMainVC.h"
 #import "MEGetCaseMainCell.h"
-#import "MEGetCaseVC.h"
+#import "MEGetCaseContentVC.h"
+#import "MEGetCaseMainModel.h"
+
 @interface MEGetCaseMainVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
-    
+    MEGetCaseStyle _type;
 }
 
 @property (nonatomic, strong) UITableView           *tableView;
@@ -21,9 +23,15 @@
 
 @implementation MEGetCaseMainVC
 
+- (instancetype)initWithType:(MEGetCaseStyle)type{
+    if(self = [super init]){
+        _type = type;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"提现";
     [self.view addSubview:self.tableView];
     [self.refresh addRefreshView];
 }
@@ -31,15 +39,44 @@
 #pragma mark - RefreshToolDelegate
 
 - (NSDictionary *)requestParameter{
-       [self.refresh.arrData addObjectsFromArray:@[@"",@"",@"",@"",@"",@"",@""]];
-    return @{@"":@""};
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    dic[@"token"] = kMeUnNilStr(kCurrentUser.token);
+    switch (_type) {
+        case MEGetCaseAllStyle:{
+            
+        }
+            break;
+        case MEGetCaseingStyle:
+        {
+            dic[@"state"] = @"1";
+        }
+            break;
+        case MEGetCaseedStyle:
+        {
+            dic[@"state"] = @"2";
+        }
+            break;
+        case MEGetCasenotStyle:
+        {
+            dic[@"state"] = @"-1";
+        }
+            break;
+        case MEGetCasePayEdStyle:
+        {
+            dic[@"state"] = @"3";
+        }
+            break;
+        default:
+            break;
+    }
+    return dic;
 }
 
 - (void)handleResponse:(id)data{
     if(![data isKindOfClass:[NSArray class]]){
         return;
     }
-    [self.refresh.arrData addObjectsFromArray:[NSObject mj_objectArrayWithKeyValuesArray:data]];
+    [self.refresh.arrData addObjectsFromArray:[MEGetCaseMainModel mj_objectArrayWithKeyValuesArray:data]];
 }
 
 
@@ -50,7 +87,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    id model = self.refresh.arrData[indexPath.row];
+    MEGetCaseMainModel *model = self.refresh.arrData[indexPath.row];
     MEGetCaseMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEGetCaseMainCell class]) forIndexPath:indexPath];
     [cell setUIWithModel:model];
     return cell;
@@ -61,8 +98,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    id model = self.refresh.arrData[indexPath.row];
-    MEGetCaseVC *vc = [[MEGetCaseVC alloc]initWithType:MEGetCaseAllStyle];
+    MEGetCaseMainModel *model = self.refresh.arrData[indexPath.row];
+    MEGetCaseContentVC *vc = [[MEGetCaseContentVC alloc]initWithMoney_check_sn:kMeUnNilStr(model.order_sn)];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -70,7 +107,7 @@
 
 - (UITableView *)tableView{
     if(!_tableView){
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,kMeNavBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight) style:UITableViewStylePlain];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEGetCaseMainCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEGetCaseMainCell class])];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
@@ -86,7 +123,7 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(@"")];
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommondestoonFinanceCashListh)];
         _refresh.delegate = self;
         _refresh.isDataInside = YES;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {

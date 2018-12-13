@@ -7,6 +7,7 @@
 //
 
 #import "MEGetCaseContentCell.h"
+#import "MEGetCaseModel.h"
 
 @interface MEGetCaseContentCell ()
 
@@ -28,13 +29,13 @@
     // Initialization code
 }
 
-- (void)setUIWIthModel:(id)model{
+- (void)setUIWIthModel:(MEGetCaseContentModel *)model{
     _lblDataDealMoney.hidden = YES;
-    kSDLoadImg(_imgHeader, @"");
-    _lblTitle.text = kMeUnNilStr(@"");
-    _lblSku.text = kMeUnNilStr(@"");
-    _lblPrice.text = [NSString stringWithFormat:@"¥%@",kMeUnNilStr(@"")];
-    _lblMoney.text =  [NSString stringWithFormat:@"获得的佣金:%@",kMeUnNilStr(@"")];
+    kSDLoadImg(_imgHeader, kMeUnNilStr(model.product_image));
+    _lblTitle.text = kMeUnNilStr(model.product_name);
+    _lblSku.text = [NSString stringWithFormat:@"规格:%@ 数量%@",kMeUnNilStr(model.order_spec_name),kMeUnNilStr(model.product_number)];
+    _lblPrice.text = [NSString stringWithFormat:@"¥%@",kMeUnNilStr(model.all_amount)];
+    _lblMoney.text =  [NSString stringWithFormat:@"获得的佣金:%@",kMeUnNilStr(model.money)];
 }
 
 - (void)setUIDataDealWIthModel:(id)model{

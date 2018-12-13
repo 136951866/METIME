@@ -39,6 +39,16 @@
 
 /*********************************************/
 
+/*********************************************/
+#pragma makr - Withdrawal
+//提现申请
+#define MEIPcommondestoonFinanceCash @"common/money/destoonFinanceCash"
+//提现列表
+#define MEIPcommondestoonFinanceCashListh @"common/money/destoonFinanceCashList"
+//提现明细
+#define MEIPcommondestoonFinanceCashDetail @"common/money/destoonFinanceCashDetail"
+/*********************************************/
+
 
 /*********************************************/
 #pragma makr - clerk

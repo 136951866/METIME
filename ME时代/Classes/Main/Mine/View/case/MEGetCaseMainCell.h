@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class MEGetCaseMainModel;
 const static CGFloat kMEGetCaseMainCellHeight = 205;
 
 @interface MEGetCaseMainCell : UITableViewCell
 
-- (void)setUIWithModel:(id)model;
+- (void)setUIWithModel:(MEGetCaseMainModel *)model;
 
 @end
