@@ -110,13 +110,6 @@
         kMeSTRONGSELF
         //B我的中心 C中心管理 admin_id nil C notnil b
         NSString *admin = kCurrentUser.path.group;
-//        //store B member C
-//        if([kMeUnNilStr(admin) isEqualToString:@"store"]){
-//            strongSelf->_arrtype = @[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
-//        }else{
-//            strongSelf->_arrtype = @[@(MeMyDistribution),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
-//        }
-        
         if([kMeUnNilStr(admin) isEqualToString:@"member"]){
             strongSelf->_arrtype = @[@(MeMyDistribution),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
         }else if([kMeUnNilStr(admin) isEqualToString:@"store"]){
@@ -124,13 +117,6 @@
         }else{
             strongSelf->_arrtype = @[@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
         }
-        
-//        if(kMeUnNilStr(admin).length){
-//            //MeMyAppointment ,
-//            strongSelf->_arrtype = @[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
-//        }else{
-//            strongSelf->_arrtype = @[@(MeMyDistribution),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
-//        }
         [strongSelf.headerView reloadUIWithUserInfo];
         strongSelf.tableView.tableHeaderView = strongSelf.headerView;
         [strongSelf.tableView reloadData];

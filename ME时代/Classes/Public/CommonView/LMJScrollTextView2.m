@@ -145,7 +145,7 @@
     _textStayTime  = 3;
     _scrollAnimationTime = 1;
     
-    _textFont      = [UIFont systemFontOfSize:11];
+    _textFont      = [UIFont systemFontOfSize:12];
     _textColor     = [UIColor colorWithHexString:@"0088fe"];
     _textAlignment = NSTextAlignmentLeft;
     
