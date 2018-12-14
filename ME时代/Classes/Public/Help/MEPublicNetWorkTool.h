@@ -25,6 +25,17 @@
 
 
 /*********************************************/
+#pragma makr - B&Clerk share
+//商品编码
++ (void)postGoodsEncodeWithProductrId:(NSString *)productrId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+//商品解码
++ (void)postGoodsEncodeWithStr:(NSString *)str successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+
+/*********************************************/
+
+
+
+/*********************************************/
 #pragma makr - B deal
 //数据统计
 + (void)postGetBstatisticsWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;

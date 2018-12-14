@@ -12,6 +12,8 @@
 #import <MapKit/MapKit.h>
 #import "ALAssetsLibrary+MECategory.h"
 #import "MEExitVC.h"
+#import "METabBarVC.h"
+#import "MEProductDetailsVC.h"
 
 
 @implementation MECommonTool
@@ -434,5 +436,41 @@
 //
 //    }];
 //}
+
++ (void)getUIPasteboardContent{
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    NSString *str = kMeUnNilStr([pasteboard string]);
+    if(str.length){
+        [MEPublicNetWorkTool postGoodsEncodeWithStr:str successBlock:^(ZLRequestResponse *responseObject) {
+            if([responseObject.data isKindOfClass:[NSDictionary class]]){
+                NSString *product_id = responseObject.data[@"product_id"];
+                NSString *uid = responseObject.data[@"uid"];
+                NSInteger isVaile = [responseObject.data[@"state"] integerValue];
+                if(isVaile){
+                    MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"提示" message:@"有来自好友的商品分享"];
+                    [aler addButtonWithTitle:@"立即前往" block:^{
+                        if (![kMeCurrentWindow.rootViewController isKindOfClass:[METabBarVC class]]) return;
+                        pasteboard.string = @"";
+                        METabBarVC *tabBarController = ( METabBarVC*)kMeCurrentWindow.rootViewController;
+                        MENavigationVC *nav = (MENavigationVC *)tabBarController.selectedViewController;
+                        UIViewController * baseVC = (UIViewController *)nav.visibleViewController;
+                        MEProductDetailsVC *vc = [[MEProductDetailsVC alloc]initWithId:[product_id integerValue]];
+                        [baseVC.navigationController pushViewController:vc animated:YES];
+                    }];
+                    [aler addButtonWithTitle:@"取消" block:nil];
+                    [aler show];
+                }else{
+                    MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"提示" message:@"有来自好友的商品分享,该链接已失效"];
+                    [aler addButtonWithTitle:@"确定" block:^{
+                        pasteboard.string = @"";
+                    }];
+                    [aler show];
+                }
+            }
+        } failure:^(id object) {
+            
+        }];
+    }
+}
 
 @end

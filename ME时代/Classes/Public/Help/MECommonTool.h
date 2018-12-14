@@ -45,4 +45,5 @@
 //检查版本
 + (void)checkVersion;
 + (void)newCheckVersion;
++ (void)getUIPasteboardContent;
 @end

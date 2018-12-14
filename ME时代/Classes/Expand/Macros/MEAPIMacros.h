@@ -39,6 +39,19 @@
 
 /*********************************************/
 
+
+/*********************************************/
+#pragma makr - B&Clerk share
+//商品编码
+#define MEIPcommonGoodsEncode @"common/goods/getProductShareText"
+//商品解码
+#define MEIPcommonGoodsDecode @"common/goods/getDecodeShareText"
+
+/*********************************************/
+
+
+
+
 /*********************************************/
 #pragma makr - B deal
 //预约完成B端

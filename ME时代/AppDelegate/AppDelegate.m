@@ -457,6 +457,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 - (void)applicationDidBecomeActive:(UIApplication *)application{
     kNoticeUnNoticeMessage
+    [MECommonTool getUIPasteboardContent];
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application{
