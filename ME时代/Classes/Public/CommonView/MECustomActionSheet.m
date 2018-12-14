@@ -70,7 +70,11 @@
     
     if ([_title isKindOfClass:[NSString class]]) {
         _lblTitle = [[UILabel alloc]initWithFrame:CGRectMake(0, y, _btnSize.width, _btnSize.height)];
-        _lblTitle.textColor = [UIColor colorWithHexString:@"#666666"];
+        if([_title isEqualToString:@"删除"]){
+            _lblTitle.textColor = [UIColor redColor];
+        }else{
+            _lblTitle.textColor = [UIColor colorWithHexString:@"#666666"];
+        }
         _lblTitle.font = [UIFont systemFontOfSize:14];
         _lblTitle.contentMode = NSTextAlignmentCenter;
         _lblTitle.text = _title;
@@ -93,9 +97,11 @@
         [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
         btn.tag = idx;
         [btn.titleLabel setFont:[UIFont systemFontOfSize:18]];
-        
-        
-        [btn setTitleColor:[UIColor colorWithHexString:@"#333333"] forState:UIControlStateNormal];
+        if([obj isEqualToString:@"删除"]){
+            [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        }else{
+            [btn setTitleColor:[UIColor colorWithHexString:@"#333333"] forState:UIControlStateNormal];
+        }
         [btn setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor] size:btn.size] forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHexString:@"#eeeeee"] size:btn.size] forState:UIControlStateSelected];
         [btn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHexString:@"#eeeeee"] size:btn.size] forState:UIControlStateHighlighted];
