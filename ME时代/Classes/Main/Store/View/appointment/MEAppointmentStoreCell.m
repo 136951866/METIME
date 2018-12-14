@@ -24,6 +24,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = 0;
+    _clickBtn.userInteractionEnabled = NO;
     // Initialization code
 }
 
