@@ -218,6 +218,11 @@
                     <state key="normal" title="提交申请">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="6"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="applyAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="RfF-F7-Sgn"/>
                     </connections>

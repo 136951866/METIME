@@ -430,7 +430,7 @@
 //
 //    }];
 //}
-
+//口令
 + (void)getUIPasteboardContent{
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     NSString *str = kMeUnNilStr([pasteboard string]);
@@ -467,7 +467,8 @@
                 }else{
                     HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:@"有来自好友的商品分享,该链接已失效"];
                     alertView.isSupportRotating = YES;
-                    [alertView addButtonWithTitle:@"取消" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
+                    [alertView addButtonWithTitle:@"确定" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
+                        pasteboard.string = @"";
                     }];
                     [alertView show];
 //                    MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"提示" message:@"有来自好友的商品分享,该链接已失效"];

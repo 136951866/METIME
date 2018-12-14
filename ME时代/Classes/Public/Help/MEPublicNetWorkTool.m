@@ -46,11 +46,11 @@
         kMeCallBlock(successBlock,responseObject);
     } failure:^(id error) {
         if([error isKindOfClass:[ZLRequestResponse class]]){
-            ZLRequestResponse *res = (ZLRequestResponse*)error;
-            [MEShowViewTool showMessage:kMeUnNilStr(res.message) view:kMeCurrentWindow];
+//            ZLRequestResponse *res = (ZLRequestResponse*)error;
+//            [MEShowViewTool showMessage:kMeUnNilStr(res.message) view:kMeCurrentWindow];
             //            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
         }else{
-            [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
+//            [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
             //            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
         }
         kMeCallBlock(failure,error);
