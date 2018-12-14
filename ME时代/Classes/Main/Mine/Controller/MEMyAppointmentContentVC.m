@@ -14,7 +14,7 @@
 
 @interface MEMyAppointmentContentVC ()<UITableViewDelegate, UITableViewDataSource,RefreshToolDelegate>{
     MEAppointmenyStyle _type;
-    MELoginUserType _userType;
+    MEClientTypeStyle _userType;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -28,7 +28,7 @@
     kNSNotificationCenterDealloc
 }
 
-- (instancetype)initWithType:(MEAppointmenyStyle)type userType:(MELoginUserType)userType{
+- (instancetype)initWithType:(MEAppointmenyStyle)type userType:(MEClientTypeStyle)userType{
     if(self = [super init]){
         _type = type;
         _userType = userType;

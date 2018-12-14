@@ -145,7 +145,8 @@ typedef enum : NSUInteger {
 
 typedef enum : NSUInteger {
     MEClientBTypeStyle,
-    MEClientCTypeStyle
+    MEClientCTypeStyle,
+    MEClientTypeClerkStyle
 }  MEClientTypeStyle;
 
 
@@ -169,11 +170,11 @@ typedef enum : NSUInteger {
 }  MEOrderTypeNetStyle;
 
 //用户类型
-typedef enum : NSUInteger {
-    MELoginUserCType = 1,//C端用户
-    MELoginUserBType = 2,//B端用户
-    MELoginUserCLerkType = 3,//店员
-} MELoginUserType;
+//typedef enum : NSUInteger {
+//    MELoginUserCType = 1,//C端用户
+//    MELoginUserBType = 2,//B端用户
+//    MELoginUserCLerkType = 3,//店员
+//} MELoginUserType;
 
 
 #pragma mark- 系统相关枚举

@@ -19,7 +19,7 @@
     MEAppointDetailModel *_detaliModel;
     
     //那个端进来
-    MELoginUserType _userType;
+    MEClientTypeStyle _userType;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -43,7 +43,7 @@
     return self;
 }
 
-- (instancetype)initWithType:(MEAppointmenyStyle)type reserve_sn:(NSString *)reserve_sn userType:(MELoginUserType)userType{
+- (instancetype)initWithType:(MEAppointmenyStyle)type reserve_sn:(NSString *)reserve_sn userType:(MEClientTypeStyle)userType{
     if(self = [super init]){
         _appointType = type;
         _reserve_sn = reserve_sn;
@@ -55,8 +55,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"预约详情";
+    kMeWEAKSELF
+    //c端
     if(_userType == MEClientCTypeStyle){
-        kMeWEAKSELF
         [MEPublicNetWorkTool postAppointDetailWithReserve_sn:_reserve_sn successBlock:^(ZLRequestResponse *responseObject) {
             kMeSTRONGSELF
             strongSelf->_detaliModel =  [MEAppointDetailModel mj_objectWithKeyValues:responseObject.data];
@@ -77,27 +78,34 @@
             [strongSelf.navigationController popViewControllerAnimated:YES];
         }];
     }else{
-        _detaliModel =  [MEAppointDetailModel new];
-        if( _detaliModel.is_first_buy){
-            _arrData = @[@(MEAppointmentSettlmentTime),@(MEAppointmentSettlmentFristBuy)];
-            _arrDataStr = @[kMeUnNilStr(_detaliModel.arrive_time),@""];
-            
-            _arrUserData = @[@(MEAppointmentSettlmentUserNameStyle),@(MEAppointmentSettlmentUserTelStyle)];
-            _arrUserDataStr = @[kMeUnNilStr(@""),kMeUnNilStr(@"")];
-            
-        }else{
-           _arrData = @[@(MEAppointmentSettlmentTime)];
-            _arrDataStr = @[kMeUnNilStr(_detaliModel.arrive_time)];
-            
-            _arrUserData = @[@(MEAppointmentSettlmentUserNameStyle),@(MEAppointmentSettlmentUserTelStyle)];
-            _arrUserDataStr = @[kMeUnNilStr(@"dsadsadsadsadsadsadsadsadsadsda"),kMeUnNilStr(@"1111")];
-        }
-        self.tableView.tableHeaderView =self.headerView;
-        if(_appointType == MEAppointmenyUseing){
-            self.tableView.tableFooterView = self.bottomView;
-        }
-        [self.view addSubview:self.tableView];
-        [self.tableView reloadData];
+        //B 店员 端
+        [MEPublicNetWorkTool postReserveDetailBlWithReserve_sn:_reserve_sn successBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            strongSelf->_detaliModel =  [MEAppointDetailModel mj_objectWithKeyValues:responseObject.data];
+            if( strongSelf->_detaliModel.is_first_buy){
+                strongSelf->_arrData = @[@(MEAppointmentSettlmentTime),@(MEAppointmentSettlmentFristBuy)];
+                strongSelf.arrDataStr = @[kMeUnNilStr(strongSelf->_detaliModel.arrive_time),@""];
+                strongSelf.arrUserData = @[@(MEAppointmentSettlmentUserNameStyle),@(MEAppointmentSettlmentUserTelStyle)];
+                strongSelf.arrUserDataStr = @[kMeUnNilStr(strongSelf->_detaliModel.name),kMeUnNilStr(strongSelf->_detaliModel.member_cellphone)];
+                
+            }else{
+                strongSelf->_arrData = @[@(MEAppointmentSettlmentTime)];
+                strongSelf.arrDataStr = @[kMeUnNilStr(strongSelf->_detaliModel.arrive_time)];
+                
+                strongSelf.arrUserData = @[@(MEAppointmentSettlmentUserNameStyle),@(MEAppointmentSettlmentUserTelStyle)];
+                strongSelf.arrUserDataStr = @[kMeUnNilStr(strongSelf->_detaliModel.name),kMeUnNilStr(strongSelf->_detaliModel.member_cellphone)];
+            }
+            strongSelf.tableView.tableHeaderView =strongSelf.headerView;
+            if(strongSelf->_appointType == MEAppointmenyUseing){
+                strongSelf.tableView.tableFooterView = strongSelf.bottomView;
+            }
+            [strongSelf.view addSubview:strongSelf.tableView];
+            [strongSelf.tableView reloadData];
+        } failure:^(id object) {
+            kMeSTRONGSELF
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+        }];
+ 
     }
 }
 #pragma mark ------------------ <UITableViewDelegate, UITableViewDataSource> ----
@@ -139,7 +147,6 @@
     }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     switch (indexPath.section) {
         case 0:{
             MEOrderDetailContentCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEOrderDetailContentCell class]) forIndexPath:indexPath];
@@ -232,11 +239,34 @@
     if(!_bottomView){
         _bottomView = [[[NSBundle mainBundle]loadNibNamed:@"MEAppointmentDetailBootomView" owner:nil options:nil] lastObject];
         _bottomView.frame = CGRectMake(0, 0, SCREEN_WIDTH, kMEAppointmentDetailBootomViewheight);
+        kMeWEAKSELF
         _bottomView.cancelBlock = ^{
-            
+            MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"" message:@"确定取消预约吗?"];
+            [aler addButtonWithTitle:@"确定" block:^{
+                kMeSTRONGSELF
+                [MEPublicNetWorkTool postCancelReserveWithReserveSn:strongSelf->_detaliModel.reserve_sn successBlock:^(ZLRequestResponse *responseObject) {
+                    kNoticeReloadAppoint
+                    [strongSelf.navigationController popViewControllerAnimated:YES];
+                } failure:^(id object) {
+                    
+                }];
+            }];
+            [aler addButtonWithTitle:@"取消"];
+            [aler show];
         };
         _bottomView.finishBlock = ^{
-            
+            MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"" message:@"确定完成预约吗?"];
+            [aler addButtonWithTitle:@"确定" block:^{
+                kMeSTRONGSELF
+                [MEPublicNetWorkTool postFinishReserveWithReserveSn:strongSelf->_detaliModel.reserve_sn successBlock:^(ZLRequestResponse *responseObject) {
+                    kNoticeReloadAppoint
+                    [strongSelf.navigationController popViewControllerAnimated:YES];
+                } failure:^(id object) {
+                    
+                }];
+            }];
+            [aler addButtonWithTitle:@"取消"];
+            [aler show];
         };
     }
     return _bottomView;

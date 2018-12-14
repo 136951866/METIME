@@ -12,7 +12,7 @@
 @interface MEMyAppointmentVC ()<JXCategoryViewDelegate,UIScrollViewDelegate>{
     NSArray *_arrType;
     MEAppointmenyStyle _currentType;
-    MELoginUserType _userType;//那个端展示的预约
+    MEClientTypeStyle _userType;//那个端展示的预约
 }
 
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
@@ -28,12 +28,12 @@
 - (instancetype)initWithType:(MEAppointmenyStyle)type{
     if(self = [super init]){
         _currentType = type;
-        _userType = MELoginUserCType;
+        _userType = MEClientCTypeStyle;
     }
     return self;
 }
 
-- (instancetype)initWithType:(MEAppointmenyStyle)type userType:(MELoginUserType)userType{
+- (instancetype)initWithType:(MEAppointmenyStyle)type userType:(MEClientTypeStyle)userType{
     if(self = [super init]){
         _currentType = type;
         _userType = userType;
@@ -43,7 +43,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if(_userType == MELoginUserCType){
+    if(_userType == MEClientCTypeStyle){
          self.title = @"我的预约";
     }else{
         self.title = @"预约管理";

@@ -140,7 +140,7 @@
             break;
             
         case MEMyAppintMannger:{
-            MEMyAppointmentVC *dvc = [[MEMyAppointmentVC alloc]initWithType:MEAppointmenyUseing userType:MELoginUserBType];
+            MEMyAppointmentVC *dvc = [[MEMyAppointmentVC alloc]initWithType:MEAppointmenyUseing userType:MEClientBTypeStyle];
             [self.navigationController pushViewController:dvc animated:YES];
         }
             break;

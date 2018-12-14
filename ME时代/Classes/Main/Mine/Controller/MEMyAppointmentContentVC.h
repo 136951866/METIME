@@ -10,6 +10,6 @@
 
 @interface MEMyAppointmentContentVC : MEBaseVC
 
-- (instancetype)initWithType:(MEAppointmenyStyle)type userType:(MELoginUserType)userType;
+- (instancetype)initWithType:(MEAppointmenyStyle)type userType:(MEClientTypeStyle)userType;
 
 @end

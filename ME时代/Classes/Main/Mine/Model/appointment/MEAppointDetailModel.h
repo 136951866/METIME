@@ -30,4 +30,7 @@
 @property (nonatomic, strong) NSString * money;
 @property (nonatomic, strong) NSString *reserve_number;
 @property (nonatomic, assign) NSInteger is_first_buy;
+
+@property (nonatomic, strong) NSString * name;//用户名称
+@property (nonatomic, strong) NSString * member_cellphone;//用户手机号
 @end

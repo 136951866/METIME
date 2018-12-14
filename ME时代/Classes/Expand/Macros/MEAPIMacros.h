@@ -49,6 +49,8 @@
 #define MEIPcommonreserveListB @"common/reserve/reserveListB"
 //B端数据统计
 #define MEIPcommonstatistics @"common/order/statistics"
+//预约祥情B端
+#define MEIPcommonreserveDetailB @"common/reserve/reserveDetailB"
 /*********************************************/
 
 /*********************************************/
