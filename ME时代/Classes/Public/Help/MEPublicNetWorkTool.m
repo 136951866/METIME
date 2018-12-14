@@ -24,16 +24,16 @@
 + (void)postGoodsEncodeWithProductrId:(NSString *)productrId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"token":kMeUnNilStr(kCurrentUser.token),@"product_id":kMeUnNilStr(productrId)};
     NSString *url = kGetApiWithUrl(MEIPcommonGoodsEncode);
+    MBProgressHUD *HUD = [self commitWithHUD:@"生成分享口令中"];
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
         kMeCallBlock(successBlock,responseObject);
     } failure:^(id error) {
         if([error isKindOfClass:[ZLRequestResponse class]]){
             ZLRequestResponse *res = (ZLRequestResponse*)error;
-            [MEShowViewTool showMessage:kMeUnNilStr(res.message) view:kMeCurrentWindow];
-            //            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
         }else{
-            [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
-            //            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
         }
         kMeCallBlock(failure,error);
     }];

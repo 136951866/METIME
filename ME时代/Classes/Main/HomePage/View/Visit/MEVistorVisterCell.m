@@ -49,7 +49,7 @@
     _lblDesc.text = [NSString stringWithFormat:@"第%@次访问",@(model.browse).description];
     _lblTitle.text = kMeUnNilStr(model.article.title);
     _lblTime.text = kMeUnNilStr(model.updated_at);
-    _lblComing.text = [NSString stringWithFormat:@"%@ >",kMeUnNilStr(model.source.nick_name)];
+    _lblComing.text = @"转发明细 >";//[NSString stringWithFormat:@"%@ >",kMeUnNilStr(model.source.nick_name)];
     if(model.is_intention==2){
         [_btnInvite setTitle:@"取消意向客户" forState:UIControlStateNormal];
 //        _btnInvite.hidden = YES;

@@ -88,6 +88,19 @@ static MEUserInfoModel *shareUser;
     }
 }
 
+- (MEClientTypeStyle)client_type{
+    //用户身份 4普通会员 3体验店 2营销中心 1售后中心 5店员
+    if(self.user_type == 4){
+        return MEClientCTypeStyle;
+    }else if (self.user_type == 3){
+         return MEClientBTypeStyle;
+    }else if (self.user_type == 5){
+        return MEClientTypeClerkStyle;
+    }else{
+        return MEClientTypeErrorStyle;
+    }
+}
+
 //#warning -- test
 //#ifdef TestVersion
 //- (NSString *)rongcloud_token{

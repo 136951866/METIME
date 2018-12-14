@@ -46,6 +46,9 @@
 @property (nonatomic, strong) NSString * skus;
 //属性id 1,2
 @property (nonatomic, strong) NSString * spec_ids;
+
+//0 不能分享 1 可以
+@property (nonatomic, strong) NSString *is_clerk_share;
 @end
 
 

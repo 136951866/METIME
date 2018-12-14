@@ -443,8 +443,8 @@
     if(str.length){
         [MEPublicNetWorkTool postGoodsEncodeWithStr:str successBlock:^(ZLRequestResponse *responseObject) {
             if([responseObject.data isKindOfClass:[NSDictionary class]]){
-                NSString *product_id = responseObject.data[@"product_id"];
-                NSString *uid = responseObject.data[@"uid"];
+                NSString *product_id = kMeUnNilStr(responseObject.data[@"product_id"]);
+                NSString *uid = kMeUnNilStr(responseObject.data[@"uid"]);
                 NSInteger isVaile = [responseObject.data[@"state"] integerValue];
                 if(isVaile){
                     MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"提示" message:@"有来自好友的商品分享"];
@@ -455,6 +455,7 @@
                         MENavigationVC *nav = (MENavigationVC *)tabBarController.selectedViewController;
                         UIViewController * baseVC = (UIViewController *)nav.visibleViewController;
                         MEProductDetailsVC *vc = [[MEProductDetailsVC alloc]initWithId:[product_id integerValue]];
+                        vc.uid = uid;
                         [baseVC.navigationController pushViewController:vc animated:YES];
                     }];
                     [aler addButtonWithTitle:@"取消" block:nil];

@@ -25,6 +25,9 @@
 // 默认 无
 @property (nonatomic, strong) NSString * remark;
 @property (nonatomic, strong) NSString * channel;
+
+//来自好友的分享
+@property (nonatomic, strong) NSString *uid;
 - (instancetype)initWithGoodDetailModel:(MEGoodDetailModel *)model;
 
 @end

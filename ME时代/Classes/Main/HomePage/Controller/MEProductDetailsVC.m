@@ -88,6 +88,8 @@ kTDWebViewCellDidFinishLoadNotificationMethod
     self.tableView.tableFooterView = self.tableViewBottomView;
     [self.headerView setUIWithModel:model];
     [self.view addSubview:self.bottomView];
+    self.bottomView.is_clerk_share = [_model.is_clerk_share integerValue];
+    self.bottomView.productId = @(_model.product_id).description;
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(kMEProductDetailsBottomViewHeight));
         make.width.equalTo(@(self.view.width));
@@ -100,13 +102,17 @@ kTDWebViewCellDidFinishLoadNotificationMethod
     self.purchaseView.confirmBlock = ^{
         kMeSTRONGSELF
         if(strongSelf->_isShopping){
+            //加入购物车
             MEShoppingCartAttrModel *attrModle = [[MEShoppingCartAttrModel alloc]initWithGoodmodel:strongSelf->_model];
+            attrModle.uid = kMeUnNilStr(strongSelf.uid);
             [MEPublicNetWorkTool postAddGoodForShopWithAttrModel:attrModle successBlock:^(ZLRequestResponse *responseObject) {
                 kNoticeReloadShopCart
             } failure:^(id object) {
             }];
         }else{
+            //生成订单
             MEMakeOrderVC *vc = [[MEMakeOrderVC alloc]initWithIsinteral:NO goodModel:strongSelf->_model];
+            vc.uid = kMeUnNilStr(strongSelf.uid);
             [strongSelf.navigationController pushViewController:vc animated:YES];
         }
     };

@@ -15,5 +15,8 @@ const static CGFloat kMEProductDetailsBottomViewHeight  = 50;
 @property (nonatomic, copy) kMeBasicBlock addShopcartBlock;
 @property (nonatomic, copy) kMeBasicBlock buyBlock;
 @property (nonatomic, copy) kMeBasicBlock customBlock;
+@property (nonatomic, copy) NSString *productId;
+//用户B clerk 分享
+@property (nonatomic, assign) NSInteger is_clerk_share;
 
 @end

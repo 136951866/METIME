@@ -16,4 +16,6 @@
 //产品的980活动   默认不是
 @property (nonatomic, assign) BOOL isProctComd;
 
+//来自好友分享
+@property(nonatomic, copy) NSString *uid;
 @end

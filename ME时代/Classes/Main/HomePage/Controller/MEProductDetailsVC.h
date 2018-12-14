@@ -11,5 +11,7 @@
 @interface MEProductDetailsVC : MEBaseVC
 
 - (instancetype)initWithId:(NSInteger)detailsId;
+//来自好友分享
+@property(nonatomic, copy) NSString *uid;
 
 @end

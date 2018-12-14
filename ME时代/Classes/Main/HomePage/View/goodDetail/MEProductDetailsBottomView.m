@@ -12,7 +12,9 @@
 #import "MEStoreHomeVC.h"
 #import "MEMidelButton.h"
 
-@interface MEProductDetailsBottomView()
+@interface MEProductDetailsBottomView(){
+    NSString *_paoductIdEndoceStr;
+}
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consPurchaseWdith;
 @property (weak, nonatomic) IBOutlet MEMidelButton *btnShare;
 
@@ -55,38 +57,104 @@
 }
 
 - (void)sharAction{
+    if(self.is_clerk_share){
+        if(kCurrentUser.client_type == MEClientCTypeStyle){
+            MEShareTool *shareTool = [MEShareTool me_instanceForTarget:self];
+            shareTool.sharWebpageUrl = MEIPShare;
+            NSLog(@"%@",MEIPShare);
+            shareTool.shareTitle = @"睁着眼洗的洁面慕斯,你见过吗?";
+            shareTool.shareDescriptionBody = @"你敢买我就敢送,ME时代氨基酸洁面慕斯(邮费10元)";
+            shareTool.shareImage = kMeGetAssetImage(@"icon-wgvilogo");
+            
+            [shareTool shareWebPageToPlatformType:UMSocialPlatformType_WechatSession success:^(id data) {
+                NSLog(@"分享成功%@",data);
+                [MEPublicNetWorkTool postAddShareWithSuccessBlock:nil failure:nil];
+                [MEShowViewTool showMessage:@"分享成功" view:kMeCurrentWindow];
+            } failure:^(NSError *error) {
+                NSLog(@"分享失败%@",error);
+                [MEShowViewTool showMessage:@"分享失败" view:kMeCurrentWindow];
+            }];
+        }else if (kCurrentUser.client_type == MEClientBTypeStyle){
+            [self getShareEncode];
+        }else if (kCurrentUser.client_type == MEClientTypeClerkStyle){
+            [self getShareEncode];
+        }else{
+            MEShareTool *shareTool = [MEShareTool me_instanceForTarget:self];
+            shareTool.sharWebpageUrl = MEIPShare;
+            NSLog(@"%@",MEIPShare);
+            shareTool.shareTitle = @"睁着眼洗的洁面慕斯,你见过吗?";
+            shareTool.shareDescriptionBody = @"你敢买我就敢送,ME时代氨基酸洁面慕斯(邮费10元)";
+            shareTool.shareImage = kMeGetAssetImage(@"icon-wgvilogo");
+            
+            [shareTool shareWebPageToPlatformType:UMSocialPlatformType_WechatSession success:^(id data) {
+                NSLog(@"分享成功%@",data);
+                [MEPublicNetWorkTool postAddShareWithSuccessBlock:nil failure:nil];
+                [MEShowViewTool showMessage:@"分享成功" view:kMeCurrentWindow];
+            } failure:^(NSError *error) {
+                NSLog(@"分享失败%@",error);
+                [MEShowViewTool showMessage:@"分享失败" view:kMeCurrentWindow];
+            }];
+        }
+    }else{
+        MEShareTool *shareTool = [MEShareTool me_instanceForTarget:self];
+        shareTool.sharWebpageUrl = MEIPShare;
+        NSLog(@"%@",MEIPShare);
+        shareTool.shareTitle = @"睁着眼洗的洁面慕斯,你见过吗?";
+        shareTool.shareDescriptionBody = @"你敢买我就敢送,ME时代氨基酸洁面慕斯(邮费10元)";
+        shareTool.shareImage = kMeGetAssetImage(@"icon-wgvilogo");
+        
+        [shareTool shareWebPageToPlatformType:UMSocialPlatformType_WechatSession success:^(id data) {
+            NSLog(@"分享成功%@",data);
+            [MEPublicNetWorkTool postAddShareWithSuccessBlock:nil failure:nil];
+            [MEShowViewTool showMessage:@"分享成功" view:kMeCurrentWindow];
+        } failure:^(NSError *error) {
+            NSLog(@"分享失败%@",error);
+            [MEShowViewTool showMessage:@"分享失败" view:kMeCurrentWindow];
+        }];
+    }
+}
+
+- (void)getShareEncode{
     MEShareTool *shareTool = [MEShareTool me_instanceForTarget:self];
-    shareTool.sharWebpageUrl = MEIPShare;
-    NSLog(@"%@",MEIPShare);
-    shareTool.shareTitle = @"睁着眼洗的洁面慕斯,你见过吗?";
-    shareTool.shareDescriptionBody = @"你敢买我就敢送,ME时代氨基酸洁面慕斯(邮费10元)";
-    shareTool.shareImage = kMeGetAssetImage(@"icon-wgvilogo");
-    
-    [shareTool shareWebPageToPlatformType:UMSocialPlatformType_WechatSession success:^(id data) {
-        NSLog(@"分享成功%@",data);
-        [MEPublicNetWorkTool postAddShareWithSuccessBlock:nil failure:nil];
-        [MEShowViewTool showMessage:@"分享成功" view:kMeCurrentWindow];
-    } failure:^(NSError *error) {
-        NSLog(@"分享失败%@",error);
-        [MEShowViewTool showMessage:@"分享失败" view:kMeCurrentWindow];
-    }];
+    if(kMeUnNilStr(_paoductIdEndoceStr).length){
+        shareTool.shareTitle = kMeUnNilStr(_paoductIdEndoceStr);
+        [shareTool showShareView:kShareTextContentType success:^(id data) {
+            
+        } failure:^(NSError *error) {
+            
+        }];
+    }else{
+        kMeWEAKSELF
+        [MEPublicNetWorkTool postGoodsEncodeWithProductrId:self.productId successBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            strongSelf->_paoductIdEndoceStr = kMeUnNilStr(responseObject.data[@"share_text"]);
+            shareTool.shareTitle = kMeUnNilStr(strongSelf->_paoductIdEndoceStr);
+            [shareTool showShareView:kShareTextContentType success:^(id data) {
+                
+            } failure:^(NSError *error) {
+                
+            }];
+        } failure:^(id object) {
+            
+        }];
+    }
 }
 
 
 - (IBAction)shareWxCrial:(UIButton *)sender {
-    MEShareTool *shareTool = [MEShareTool me_instanceForTarget:self];
-    shareTool.sharWebpageUrl = @"http://www.baidu.com";
-    shareTool.shareTitle = @"test";
-    shareTool.shareDescriptionBody = @"test";
-    shareTool.shareImage = kMeGetAssetImage(@"icon-wgvilogo");
-    
-    [shareTool shareWebPageToPlatformType:UMSocialPlatformType_WechatTimeLine success:^(id data) {
-        NSLog(@"分享成功%@",data);
-        [MEShowViewTool showMessage:@"分享成功" view:kMeCurrentWindow];
-    } failure:^(NSError *error) {
-        NSLog(@"分享失败%@",error);
-        [MEShowViewTool showMessage:@"分享失败" view:kMeCurrentWindow];
-    }];
+//    MEShareTool *shareTool = [MEShareTool me_instanceForTarget:self];
+//    shareTool.sharWebpageUrl = @"http://www.baidu.com";
+//    shareTool.shareTitle = @"test";
+//    shareTool.shareDescriptionBody = @"test";
+//    shareTool.shareImage = kMeGetAssetImage(@"icon-wgvilogo");
+//
+//    [shareTool shareWebPageToPlatformType:UMSocialPlatformType_WechatTimeLine success:^(id data) {
+//        NSLog(@"分享成功%@",data);
+//        [MEShowViewTool showMessage:@"分享成功" view:kMeCurrentWindow];
+//    } failure:^(NSError *error) {
+//        NSLog(@"分享失败%@",error);
+//        [MEShowViewTool showMessage:@"分享失败" view:kMeCurrentWindow];
+//    }];
 }
 
 - (IBAction)addShopcart:(UIButton *)sender {

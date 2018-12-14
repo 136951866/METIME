@@ -299,6 +299,7 @@
     }else{
         kMeWEAKSELF
         model.order_type = @"1";
+        model.uid = kMeUnNilStr(self.uid);
         [MEPublicNetWorkTool postCreateOrderWithAttrModel:model successBlock:^(ZLRequestResponse *responseObject) {
             kMeSTRONGSELF
             strongSelf->_order_sn = responseObject.data[@"order_sn"];
