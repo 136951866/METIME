@@ -10,6 +10,7 @@
 
 @interface MEMyDistrbutionVC : MEBaseVC
 
-- (instancetype)initWithClientType:(MEClientTypeStyle)type;
+- (instancetype)init;
+- (instancetype)initWithC;
 
 @end

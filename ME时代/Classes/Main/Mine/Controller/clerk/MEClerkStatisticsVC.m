@@ -9,8 +9,14 @@
 #import "MEClerkStatisticsVC.h"
 #import "MEGetCaseCell.h"
 #import "MEClerkStatisticHeaderView.h"
+#import "MEGetCaseModel.h"
+#import "MEMyBrokerageModel.h"
 
-@interface MEClerkStatisticsVC ()<UITableViewDelegate, UITableViewDataSource,RefreshToolDelegate>
+@interface MEClerkStatisticsVC ()<UITableViewDelegate, UITableViewDataSource,RefreshToolDelegate>{
+    MEClientTypeStyle _type;
+    NSString *_memberId;
+    MEMyBrokerageModel *_headerModel;
+}
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -19,6 +25,14 @@
 @end
 
 @implementation MEClerkStatisticsVC
+
+- (instancetype)initWithType:(MEClientTypeStyle)type memberId:(NSString *)memberId{
+    if(self = [super init]){
+        _type = type;
+        _memberId = kMeUnNilStr(memberId);
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,10 +43,32 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)requestNetHerderData{
+    kMeWEAKSELF
+    [MEPublicNetWorkTool postMyBrokerageWithType:_type memberId:_memberId SuccessBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        strongSelf->_headerModel = [MEMyBrokerageModel mj_objectWithKeyValues:responseObject.data];
+        strongSelf.headrView.lblAllMoney.text = kMeUnNilStr(strongSelf->_headerModel.brokerage);
+        strongSelf.headrView.lblTodayMoney.text = kMeUnNilStr(strongSelf->_headerModel.today_brokerage);
+        [strongSelf.tableView reloadData];
+    } failure:^(id object) {
+        kMeSTRONGSELF
+        strongSelf->_headerModel = [MEMyBrokerageModel new];
+        strongSelf.headrView.lblAllMoney.text =@"请求错误";
+        strongSelf.headrView.lblTodayMoney.text = @"请求错误";;
+        [strongSelf.tableView reloadData];
+    }];
+}
+
 - (NSDictionary *)requestParameter{
-    [self.refresh.arrData addObjectsFromArray:@[@"",@"",@"",@"",@""]];
+    if(self.refresh.pageIndex == 1){
+        [self requestNetHerderData];
+    }
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     dic[@"token"] = kMeUnNilStr(kCurrentUser.token);
+    if(_type == MEClientBTypeStyle){
+         dic[@"memberId"] = _memberId;
+    }
     return dic;
 }
 
@@ -40,7 +76,7 @@
     if(![data isKindOfClass:[NSArray class]]){
         return;
     }
-    [self.refresh.arrData addObjectsFromArray:[NSObject mj_objectArrayWithKeyValuesArray:data]];
+    [self.refresh.arrData addObjectsFromArray:[MEGetCaseModel mj_objectArrayWithKeyValuesArray:data]];
 }
 
 #pragma mark ------------------ <UITableViewDelegate, UITableViewDataSource> ----
@@ -54,13 +90,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MEGetCaseCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEGetCaseCell class]) forIndexPath:indexPath];
-    id model = self.refresh.arrData[indexPath.row];
-    [cell setUIDataDealWIthModel:nil];
+    MEGetCaseModel *model = self.refresh.arrData[indexPath.row];
+    [cell setUIDataDealWIthModel:model];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    id model = self.refresh.arrData[indexPath.row];
+    MEGetCaseModel *model = self.refresh.arrData[indexPath.row];
     return [MEGetCaseCell getCellDataDealHeightWithModel:model];
 }
 
@@ -82,9 +118,8 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(@"")];
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonBrokerageDetail)];
         _refresh.isDataInside = YES;
-        _refresh.isGet = YES;
         _refresh.delegate = self;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
             failView.backgroundColor = [UIColor whiteColor];

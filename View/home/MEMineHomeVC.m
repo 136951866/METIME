@@ -74,17 +74,39 @@
         kMeWEAKSELF
         dispatch_async(dispatch_get_main_queue(), ^{
             kMeSTRONGSELF
-            NSString *admin = kCurrentUser.path.group;
-            if([kMeUnNilStr(admin) isEqualToString:@"member"]){
-                MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
-                [cell setUnMeaasge];
-            }else if([kMeUnNilStr(admin) isEqualToString:@"store"]){
-                 MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
-                [cell setUnMeaasge];
-            }else{
-                MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-                [cell setUnMeaasge];
+            switch (kCurrentUser.user_type) {
+                case 4:{
+                    MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+                    [cell setUnMeaasge];
+                }
+                    break;
+                case 3:{
+                    MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+                    [cell setUnMeaasge];
+                }
+                    break;
+                case 5:{
+                    MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
+                    [cell setUnMeaasge];
+                }
+                    break;
+                default:{
+                    MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+                    [cell setUnMeaasge];
+                }
+                    break;
             }
+//            NSString *admin = kCurrentUser.path.group;
+//            if([kMeUnNilStr(admin) isEqualToString:@"member"]){
+//                MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+//                [cell setUnMeaasge];
+//            }else if([kMeUnNilStr(admin) isEqualToString:@"store"]){
+//                 MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+//                [cell setUnMeaasge];
+//            }else{
+//                MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+//                [cell setUnMeaasge];
+//            }
         });
     }
 }
@@ -104,18 +126,29 @@
 
 - (void)loadData{
     kMeWEAKSELF
-    [MEPublicNetWorkTool getUserCentreDataWithSuccessBlock:^(ZLRequestResponse *responseObject) {
-        [kCurrentUser setterWithDict:responseObject.data];
-        [kCurrentUser save];
+    [MEPublicNetWorkTool getUserGetUserWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+        NSLog(@"%@",kCurrentUser.uid);
         kMeSTRONGSELF
-        //B我的中心 C中心管理 admin_id nil C notnil b
-        NSString *admin = kCurrentUser.path.group;
-        if([kMeUnNilStr(admin) isEqualToString:@"member"]){
-            strongSelf->_arrtype = @[@(MeMyDistribution),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
-        }else if([kMeUnNilStr(admin) isEqualToString:@"store"]){
-            strongSelf->_arrtype = @[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
-        }else{
-            strongSelf->_arrtype = @[@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
+        switch (kCurrentUser.user_type) {
+            case 4:{
+                //C
+                strongSelf->_arrtype = @[@(MeMyDistribution),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
+            }
+                break;
+            case 3:{
+                //B
+                strongSelf->_arrtype = @[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
+            }
+                break;
+            case 5:{
+                //clerk
+                strongSelf->_arrtype = @[@(MeMyDistribution),@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
+            }
+                break;
+            default:{
+                strongSelf->_arrtype = @[@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
+            }
+                break;
         }
         [strongSelf.headerView reloadUIWithUserInfo];
         strongSelf.tableView.tableHeaderView = strongSelf.headerView;
@@ -123,8 +156,32 @@
         [strongSelf.tableView.mj_header endRefreshing];
     } failure:^(id object) {
         kMeSTRONGSELF
-         [strongSelf.tableView.mj_header endRefreshing];
+        [strongSelf.tableView.mj_header endRefreshing];
     }];
+
+    
+//    kMeWEAKSELF
+//    [MEPublicNetWorkTool getUserCentreDataWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+//        [kCurrentUser setterWithDict:responseObject.data];
+//        [kCurrentUser save];
+//        kMeSTRONGSELF
+//        //B我的中心 C中心管理 admin_id nil C notnil b
+//        NSString *admin = kCurrentUser.path.group;
+//        if([kMeUnNilStr(admin) isEqualToString:@"member"]){
+//            strongSelf->_arrtype = @[@(MeMyDistribution),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
+//        }else if([kMeUnNilStr(admin) isEqualToString:@"store"]){
+//            strongSelf->_arrtype = @[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
+//        }else{
+//            strongSelf->_arrtype = @[@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
+//        }
+//        [strongSelf.headerView reloadUIWithUserInfo];
+//        strongSelf.tableView.tableHeaderView = strongSelf.headerView;
+//        [strongSelf.tableView reloadData];
+//        [strongSelf.tableView.mj_header endRefreshing];
+//    } failure:^(id object) {
+//        kMeSTRONGSELF
+//         [strongSelf.tableView.mj_header endRefreshing];
+//    }];
 }
 
 #pragma mark - tableView deleagte and sourcedata
@@ -147,12 +204,14 @@
     MEMineHomeCellStyle type = [_arrtype[indexPath.row] intValue];
     switch (type) {
         case MeMyDistribution:{
-            MEMyDistrbutionVC *dvc = [[MEMyDistrbutionVC alloc]initWithClientType:MEClientCTypeStyle];
+            //我的中心
+            MEMyDistrbutionVC *dvc = [[MEMyDistrbutionVC alloc]initWithC];
             [self.navigationController pushViewController:dvc animated:YES];
         }
             break;
         case MeMyCentraManagertment:{
-            MEMyDistrbutionVC *dvc = [[MEMyDistrbutionVC alloc]initWithClientType:MEClientBTypeStyle];
+            //管理中心
+            MEMyDistrbutionVC *dvc = [[MEMyDistrbutionVC alloc]init];
             [self.navigationController pushViewController:dvc animated:YES];
         }
             break;

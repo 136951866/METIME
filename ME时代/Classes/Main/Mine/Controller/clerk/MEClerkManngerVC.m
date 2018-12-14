@@ -72,7 +72,7 @@
         sheet.blockBtnTapHandle = ^(NSInteger index){
             if(index){
                 kMeSTRONGSELF
-                MEClerkStatisticsVC *vc = [[MEClerkStatisticsVC alloc]init];
+                MEClerkStatisticsVC *vc = [[MEClerkStatisticsVC alloc]initWithType:MEClientBTypeStyle memberId:model.member_id];
                 [strongSelf.navigationController pushViewController:vc animated:YES];
             }else{
                 MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"" message:@"确定删除该员工?"];

@@ -51,6 +51,12 @@
 #define MEIPcommonstatistics @"common/order/statistics"
 //预约祥情B端
 #define MEIPcommonreserveDetailB @"common/reserve/reserveDetailB"
+
+//我的佣金
+#define MEIPcommonMyBrokerage @"common/order/myBrokerage"
+//佣金明细
+#define MEIPcommonBrokerageDetail @"common/order/brokerageDetail"
+
 /*********************************************/
 
 /*********************************************/
@@ -251,6 +257,8 @@
 //#define MEIPGetHomePageData @"homePageData"
 //判断是否完成首单
 #define MEIPcommonCheckFirstBuy @"common/user/checkFirstBuy"
+//获取用户信息
+#define MEIPcommonGetUser @"common/user/getUser"
 /*********************************************/
 
 

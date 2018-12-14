@@ -134,6 +134,7 @@
 		3604CA8E21707AA800F7471B /* UIImage+MEGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 3604CA8D21707AA800F7471B /* UIImage+MEGIF.m */; };
 		3604EF1821BF91EE0000DBDE /* LMJScrollTextView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3604EF1721BF91EE0000DBDE /* LMJScrollTextView2.m */; };
 		3604EF1B21BF9BCA0000DBDE /* MEAdvModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3604EF1A21BF9BCA0000DBDE /* MEAdvModel.m */; };
+		36054F3521C35BAA00CA7DF9 /* MEMyBrokerageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36054F3421C35BAA00CA7DF9 /* MEMyBrokerageModel.m */; };
 		360830D5219AAE4300C72B22 /* UIView+HDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 360830CD219AAE4200C72B22 /* UIView+HDExtension.m */; };
 		360830D6219AAE4300C72B22 /* NSString+HDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 360830CE219AAE4200C72B22 /* NSString+HDExtension.m */; };
 		360830D7219AAE4300C72B22 /* HDAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 360830D1219AAE4200C72B22 /* HDAlertView.m */; };
@@ -708,6 +709,8 @@
 		3604EF1721BF91EE0000DBDE /* LMJScrollTextView2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMJScrollTextView2.m; sourceTree = "<group>"; };
 		3604EF1921BF9BCA0000DBDE /* MEAdvModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEAdvModel.h; sourceTree = "<group>"; };
 		3604EF1A21BF9BCA0000DBDE /* MEAdvModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEAdvModel.m; sourceTree = "<group>"; };
+		36054F3321C35BAA00CA7DF9 /* MEMyBrokerageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEMyBrokerageModel.h; sourceTree = "<group>"; };
+		36054F3421C35BAA00CA7DF9 /* MEMyBrokerageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEMyBrokerageModel.m; sourceTree = "<group>"; };
 		360830CC219AAE4200C72B22 /* HDAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDAlertView.h; sourceTree = "<group>"; };
 		360830CD219AAE4200C72B22 /* UIView+HDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HDExtension.m"; sourceTree = "<group>"; };
 		360830CE219AAE4200C72B22 /* NSString+HDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HDExtension.m"; sourceTree = "<group>"; };
@@ -1909,6 +1912,8 @@
 				36445B4321C2339C00CDBCBA /* MEGetCaseMainModel.m */,
 				36445B4521C235A900CDBCBA /* MEGetCaseModel.h */,
 				36445B4621C235A900CDBCBA /* MEGetCaseModel.m */,
+				36054F3321C35BAA00CA7DF9 /* MEMyBrokerageModel.h */,
+				36054F3421C35BAA00CA7DF9 /* MEMyBrokerageModel.m */,
 			);
 			path = case;
 			sourceTree = "<group>";
@@ -3359,6 +3364,7 @@
 				36FD63FC213FAAD5009743C5 /* NSAttributedString+MESize.m in Sources */,
 				366D1CD421B5197F0004295E /* MEArticelModel.m in Sources */,
 				36009D3C21428C480034747C /* MEProductDetailsBottomView.m in Sources */,
+				36054F3521C35BAA00CA7DF9 /* MEMyBrokerageModel.m in Sources */,
 				367C85032147C5CB00BEC7B1 /* MEMyOrderDetailVC.m in Sources */,
 				36445B2E21C1E92900CDBCBA /* MEWithdrawalView.m in Sources */,
 				3628E7F721C0F31000D5405B /* MEGetCaseMainVC.m in Sources */,

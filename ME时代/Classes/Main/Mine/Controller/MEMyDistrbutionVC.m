@@ -22,6 +22,7 @@
 #import "MEMyAppointmentVC.h"
 #import "MEGetCaseMainSVC.h"
 #import "MEWithdrawalVC.h"
+#import "MEClerkStatisticsVC.h"
 //b端model
 #import "MEadminDistributionModel.h"
 
@@ -41,16 +42,44 @@
 
 @implementation MEMyDistrbutionVC
 
-- (instancetype)initWithClientType:(MEClientTypeStyle)type{
+- (instancetype)initWithC{
+    //我的中心入口
     if(self = [super init]){
-        _type = type;
+        _type = MEClientCTypeStyle;
+    }
+    return self;
+}
+
+- (instancetype)init{
+    if(self = [super init]){
+        switch (kCurrentUser.user_type) {
+            case 4:{
+                //C
+                _type = MEClientCTypeStyle;
+            }
+                break;
+            case 3:{
+                //B
+                _type = MEClientBTypeStyle;
+            }
+                break;
+            case 5:{
+                //clerk
+                _type = MEClientTypeClerkStyle;
+            }
+                break;
+            default:{
+                _type = MEClientTypeErrorStyle;
+            }
+                break;
+        }
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = _type==MEClientBTypeStyle?@"管理中心":@"我的中心";
+    self.title = _type==MEClientCTypeStyle?@"我的中心":@"管理中心";
     _levStr = @"";
     _arrData = @[];
     _arrDataStr = @[];
@@ -82,7 +111,24 @@
              [strongSelf.collectionView.mj_header endRefreshing];
             [strongSelf.navigationController popViewControllerAnimated:YES];
         }];
-    }else{
+    }else if(_type == MEClientTypeClerkStyle){
+        [MEPublicNetWorkTool getAdminDistributionWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            strongSelf->_bModel = [MEadminDistributionModel mj_objectWithKeyValues:responseObject.data];
+            //订单总额
+            CGFloat allMoney = strongSelf->_bModel.use_money + strongSelf->_bModel.ratio_money;
+            strongSelf->_arrData = @[@(MEMyMoney),@(MEMyAppintMannger),@(MEMyLeave),@(MEMyBelongStore),@(MEMyCode),@(MEMyCash),@(MEMyMoneyDeal)];
+            strongSelf->_arrDataStr = @[[NSString stringWithFormat:@"%.2f",allMoney],@"",[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.level)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.superior)],@"",@"",@""];
+            //            [self.view addSubview:self.collectionView];
+            strongSelf->_levStr = [NSString stringWithFormat:@"当前等级:%@",kMeUnNilStr(strongSelf->_bModel.level)];
+            [strongSelf.collectionView reloadData];
+            [strongSelf.collectionView.mj_header endRefreshing];
+        } failure:^(id object) {
+            kMeSTRONGSELF
+            [strongSelf.collectionView.mj_header endRefreshing];
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+        }];
+    }else if(_type == MEClientCTypeStyle){
         [MEPublicNetWorkTool getUserDistributionWithSuccessBlock:^(ZLRequestResponse *responseObject) {
             kMeSTRONGSELF
             strongSelf->_cModel = [MEDistributionCentreModel mj_objectWithKeyValues:responseObject.data];
@@ -97,6 +143,10 @@
              [strongSelf.collectionView.mj_header endRefreshing];
             [strongSelf.navigationController popViewControllerAnimated:YES];
         }];
+    }else{
+        [MEShowViewTool showMessage:@"数据错误,请重新登录" view:self.view];
+        [self.collectionView.mj_header endRefreshing];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
@@ -150,7 +200,11 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-            
+        case MEMyMoneyDeal:{
+            MEClerkStatisticsVC *vc = [[MEClerkStatisticsVC alloc]initWithType:MEClientTypeClerkStyle memberId:@""];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
         case MEMyCash:{
             MEGetCaseMainSVC *vc = [[MEGetCaseMainSVC alloc]initWithType:MEGetCaseAllStyle];
             [self.navigationController pushViewController:vc animated:YES];
@@ -205,7 +259,19 @@
                 };
                 [strongSelf.navigationController pushViewController:vc animated:YES];
             };
-        }else{
+        }else if(_type == MEClientTypeClerkStyle){
+            [headerView setUIBWithModel:_bModel];
+            kMeWEAKSELF
+            headerView.costBlock = ^{
+                kMeSTRONGSELF
+                MEWithdrawalVC *vc = [[MEWithdrawalVC alloc]init];
+                vc.applySucessBlock = ^{
+                    kMeSTRONGSELF
+                    [strongSelf.collectionView.mj_header beginRefreshing];
+                };
+                [strongSelf.navigationController pushViewController:vc animated:YES];
+            };
+        }else if(_type == MEClientCTypeStyle){
             [headerView setUIWithModel:_cModel];
         }
         return headerView;

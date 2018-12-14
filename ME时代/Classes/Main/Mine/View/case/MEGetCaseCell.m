@@ -53,11 +53,11 @@
     [self.tableView reloadData];
 }
 
-- (void)setUIDataDealWIthModel:(id)model{
+- (void)setUIDataDealWIthModel:(MEGetCaseModel *)model{
     _isDataDeal = YES;
-    _lblNo.text = kMeUnNilStr(@"");
+    _lblNo.text = kMeUnNilStr(model.order_sn);
     _lblStatus.hidden = YES;
-    _arrData = @[@"",@"",@""];
+    _arrData = kMeUnArr(model.goods);
     _consTableHeight.constant = kMEGetCaseContentCellHeight * kMeUnArr(_arrData).count;
     [self.tableView reloadData];
 }
@@ -71,7 +71,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MEGetCaseContentCell *cell=[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEGetCaseContentCell class]) forIndexPath:indexPath];
     if(_isDataDeal){
-        [cell setUIDataDealWIthModel:nil];
+         MEGetCaseContentModel *model = kMeUnArr(_arrData)[indexPath.row];
+        [cell setUIDataDealWIthModel:model];
     }else{
         MEGetCaseContentModel *model = kMeUnArr(_arrData)[indexPath.row];
         [cell setUIWIthModel:model];
@@ -92,9 +93,10 @@
     return [MEGetCaseContentCell getCellHeightWithModel:model];
 }
 
-+ (CGFloat)getCellDataDealHeightWithModel:(id)model{
++ (CGFloat)getCellDataDealHeightWithModel:(MEGetCaseModel *)model{
     CGFloat height = 56;
-    height += kMEGetCaseContentCellHeight * 3;
+    NSArray *arrdata =  kMeUnArr(model.goods);
+    height += kMEGetCaseContentCellHeight * arrdata.count;
     return height;
 }
 

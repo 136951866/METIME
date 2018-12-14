@@ -66,15 +66,15 @@
     }
 }
 
-- (void)setUIDataDealWIthModel:(id)model{
+- (void)setUIDataDealWIthModel:(MEGetCaseContentModel *)model{
     _lblPrice.hidden = YES;
     _lblMoney.hidden = YES;
     _lblStatus.hidden = YES;
     _lblError.hidden = YES;
-    kSDLoadImg(_imgHeader, @"");
-    _lblTitle.text = kMeUnNilStr(@"");
-    _lblSku.text = kMeUnNilStr(@"");
-    _lblDataDealMoney.text =  [NSString stringWithFormat:@"获得的佣金:%@",kMeUnNilStr(@"")];
+    kSDLoadImg(_imgHeader, model.product_image);
+    _lblTitle.text = kMeUnNilStr(model.product_name);
+    _lblSku.text  = [NSString stringWithFormat:@"规格:%@ 数量%@",kMeUnNilStr(model.order_spec_name),kMeUnNilStr(model.product_number)];
+    _lblDataDealMoney.text =  [NSString stringWithFormat:@"获得的佣金:%@",kMeUnNilStr(kMeUnNilStr(model.money))];
 }
 
 + (CGFloat)getCellHeightWithModel:(MEGetCaseContentModel *)model{

@@ -30,7 +30,7 @@ typedef enum : NSUInteger {
     MeMyCustomer,//我的客服
     MeMyCustomerPhone,//客服电话
     MeMyAddress,//收货地址
-    MeMyMobile
+    MeMyMobile//绑定的手机号
 } MEMineHomeCellStyle;
 #define MEMineHomeCellStyleTitle @[@"我的预约",@"中心管理",@"我的中心",@"兑换中心",@"我的收藏",@"ME聊",@"客服电话",@"收货地址",@"绑定的手机号"]
 #define MEMineHomeCellStyleImage @[@"icon_woddemiaosha",@"icon-khnytpgj",@"icon_fenxiaozhognxin",@"icon_zhuceyoujiang",@"icon_wodeshoucang",@"icon-qrpteb",@"icon-qrptebjnyt",@"nhwxfbfh",@"qlru"]
@@ -118,9 +118,11 @@ typedef enum : NSUInteger {
     MEMyAppintMannger,
     MEMyDataDeal,
     MEMyCash,
+    MEMyBelongStore,
+    MEMyMoneyDeal
 } MEDistrbutionCellStyle;
-#define MEDistrbutionCellStyleTitle @[@"我的美豆",@"我的订单",@"我的团队",@"推广二维码",@"订单金额",@"我的等级",@"我的上级",@"店员管理",@"预约管理",@"数据统计",@"提现明细"];
-#define MEDistrbutionCellStyleImage @[@"icon_fenxiaoyognjin",@"icon_fenxiaodigndan",@"icon_tuandui",@"icon_tuijian",@"icon_fenxiaoyognjin",@"icon_fenxiaodigndan",@"icon-qrhhxe",@"yhkmtpgj",@"cbxqtpgj",@"ovrntpgj",@"rjgmjexl"];
+#define MEDistrbutionCellStyleTitle @[@"我的美豆",@"我的订单",@"我的团队",@"推广二维码",@"订单金额",@"我的等级",@"我的上级",@"店员管理",@"预约管理",@"数据统计",@"提现明细",@"归属店",@"佣金统计"];
+#define MEDistrbutionCellStyleImage @[@"icon_fenxiaoyognjin",@"icon_fenxiaodigndan",@"icon_tuandui",@"icon_tuijian",@"icon_fenxiaoyognjin",@"icon_fenxiaodigndan",@"icon-qrhhxe",@"yhkmtpgj",@"cbxqtpgj",@"ovrntpgj",@"rjgmjexl",@"rnntuyyh",@""];
 
 //支付状态
 typedef enum : NSUInteger {
@@ -146,7 +148,8 @@ typedef enum : NSUInteger {
 typedef enum : NSUInteger {
     MEClientBTypeStyle,
     MEClientCTypeStyle,
-    MEClientTypeClerkStyle
+    MEClientTypeClerkStyle,
+    MEClientTypeErrorStyle
 }  MEClientTypeStyle;
 
 

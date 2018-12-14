@@ -26,8 +26,10 @@
 
 /*********************************************/
 #pragma makr - B deal
+//数据统计
 + (void)postGetBstatisticsWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
-
+//我的佣金
++ (void)postMyBrokerageWithType:(MEClientTypeStyle)type memberId:(NSString *)memberId SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 /***************************************/
 
 /*********************************************/
@@ -183,6 +185,8 @@
 
 /***************************************/
 #pragma mark - UserCentre
+//获取用户信息
++ (void)getUserGetUserWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //一键已读
 + (void)getUseAllReadedInfoWithType:(NSInteger)type SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //首页获取未读的推送信息

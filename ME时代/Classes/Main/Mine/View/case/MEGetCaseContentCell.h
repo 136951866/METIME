@@ -17,6 +17,6 @@ const static CGFloat kMEGetCaseContentCellHeight = 110;
 + (CGFloat)getCellHeightWithModel:(MEGetCaseContentModel *)model;
 
 
-- (void)setUIDataDealWIthModel:(id)model;
+- (void)setUIDataDealWIthModel:(MEGetCaseContentModel *)model;
 
 @end

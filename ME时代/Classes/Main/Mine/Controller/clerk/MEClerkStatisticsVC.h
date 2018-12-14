@@ -10,4 +10,6 @@
 
 @interface MEClerkStatisticsVC : MEBaseVC
 
+- (instancetype)initWithType:(MEClientTypeStyle)type memberId:(NSString *)memberId;
+
 @end
