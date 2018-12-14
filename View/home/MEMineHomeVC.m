@@ -52,15 +52,27 @@
     }
     NSInteger f = [[[NSUserDefaults standardUserDefaults] objectForKey:kcheckFirstBuy] integerValue];
     if(f){
-        MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"提示" message:@"您有一次免费预约门店服务的机会"];
-        [aler addButtonWithTitle:@"取消"];
+        HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:@"您有一次免费预约门店服务的机会"];
+        alertView.isSupportRotating = YES;
+        [alertView addButtonWithTitle:@"取消" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
+        }];
         kMeWEAKSELF
-        [aler addButtonWithTitle:@"确定" block:^{
+        [alertView addButtonWithTitle:@"确定" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
             kMeSTRONGSELF
             MEProductListVC *productList = [[MEProductListVC alloc]initWithType:MEGoodsTypeNetServiceStyle];
             [strongSelf.navigationController pushViewController:productList animated:YES];
         }];
-        [aler show];
+        [alertView show];
+        
+//        MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"提示" message:@"您有一次免费预约门店服务的机会"];
+//        [aler addButtonWithTitle:@"取消"];
+//        kMeWEAKSELF
+//        [aler addButtonWithTitle:@"确定" block:^{
+//            kMeSTRONGSELF
+//            MEProductListVC *productList = [[MEProductListVC alloc]initWithType:MEGoodsTypeNetServiceStyle];
+//            [strongSelf.navigationController pushViewController:productList animated:YES];
+//        }];
+//        [aler show];
     }
 }
 

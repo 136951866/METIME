@@ -223,12 +223,20 @@
 
 - (void)onRCIMConnectionStatusChanged:(RCConnectionStatus)status {
     if (status == ConnectionStatus_KICKED_OFFLINE_BY_OTHER_CLIENT) {
-        MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"提示" message:@"您的帐号在别的设备上登录，您被迫下线！请退出重新登录!"];
-        [aler addButtonWithTitle:@"确定" block:^{
+        
+        HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:@"您的帐号在别的设备上登录，您被迫下线！请退出重新登录!"];
+        alertView.isSupportRotating = YES;
+        [alertView addButtonWithTitle:@"确定" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
             [MEUserInfoModel logout];
             [MEWxLoginVC presentLoginVCWithIsShowCancel:NO SuccessHandler:nil failHandler:nil];
         }];
-        [aler show];
+        [alertView show];
+        
+//        MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"提示" message:@"您的帐号在别的设备上登录，您被迫下线！请退出重新登录!"];
+//        [aler addButtonWithTitle:@"确定" block:^{
+//
+//        }];
+//        [aler show];
     }
 }
 
@@ -483,6 +491,36 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         NSInteger msg_id = [contentDic[@"msg_id"] integerValue];
         if(type.length){
             //1跳商品  2跳订单详情 3更新
+            HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:messageStr];
+            alertView.isSupportRotating = YES;
+            [alertView addButtonWithTitle:@"取消" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
+            }];
+            [alertView addButtonWithTitle:@"立即前往" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
+                if (![self.window.rootViewController isKindOfClass:[METabBarVC class]]) return;
+                [MEPublicNetWorkTool getUserReadedNoticeWithNoticeId:msg_id SuccessBlock:^(ZLRequestResponse *responseObject) {
+                    kNoticeUnNoticeMessage
+                } failure:nil];
+                // 取到tabbarcontroller
+                METabBarVC *tabBarController = ( METabBarVC*)self.window.rootViewController;
+                // 取到navigationcontroller
+                MENavigationVC *nav = (MENavigationVC *)tabBarController.selectedViewController;
+                UIViewController * baseVC = (UIViewController *)nav.visibleViewController;
+                if([type isEqualToString:@"1"]){
+                    MEProductDetailsVC *dvc = [[MEProductDetailsVC alloc]initWithId:[TypeId integerValue]];
+                    [baseVC.navigationController pushViewController:dvc animated:YES];
+                }else if ([type isEqualToString:@"2"]){
+                    MEMyOrderDetailVC *dvc = [[MEMyOrderDetailVC alloc]initWithOrderGoodsSn:TypeId];
+                    [baseVC.navigationController pushViewController:dvc animated:YES];
+                }else if([type isEqualToString:@"3"]){
+                    NSString *urlStr = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/cn/app/id%@?mt=8",kMEAppId];
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                }else{
+                    
+                }
+            }];
+            [alertView show];
+            
+            /*
             MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"标题" message:messageStr];
             [aler addButtonWithTitle:@"立即前往" block:^{
                 if (![self.window.rootViewController isKindOfClass:[METabBarVC class]]) return;
@@ -508,7 +546,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 }
             }];
             [aler addButtonWithTitle:@"取消" block:nil];
-            [aler show];
+            [aler show];*/
         }
     }
 }

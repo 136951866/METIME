@@ -358,13 +358,7 @@
                                 [aler addButtonWithTitle:@"确定" block:^{
                                     MEExitVC *vc = [[MEExitVC alloc]init];
                                     [self presentViewController:vc animated:YES completion:nil];
-//                                    NSString *urlStr = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/cn/app/id%@?mt=8",kMEAppId];
-//                                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
                                 }];
-//                                [aler addButtonWithTitle:@"退出" block:^{
-//                                    MEExitVC *vc = [[MEExitVC alloc]init];
-//                                    [self presentViewController:vc animated:YES completion:nil];
-//                                }];
                                 [aler show];
                             }else{
                                 
@@ -447,8 +441,11 @@
                 NSString *uid = kMeUnNilStr(responseObject.data[@"uid"]);
                 NSInteger isVaile = [responseObject.data[@"state"] integerValue];
                 if(isVaile){
-                    MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"提示" message:@"有来自好友的商品分享"];
-                    [aler addButtonWithTitle:@"立即前往" block:^{
+                    HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:@"有来自好友的商品分享"];
+                    alertView.isSupportRotating = YES;
+                    [alertView addButtonWithTitle:@"取消" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
+                    }];
+                    [alertView addButtonWithTitle:@"立即前往" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
                         if (![kMeCurrentWindow.rootViewController isKindOfClass:[METabBarVC class]]) return;
                         pasteboard.string = @"";
                         METabBarVC *tabBarController = ( METabBarVC*)kMeCurrentWindow.rootViewController;
@@ -458,14 +455,26 @@
                         vc.uid = uid;
                         [baseVC.navigationController pushViewController:vc animated:YES];
                     }];
-                    [aler addButtonWithTitle:@"取消" block:nil];
-                    [aler show];
+                    [alertView show];
+                    
+                    
+//                    MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"提示" message:@"有来自好友的商品分享"];
+//                    [aler addButtonWithTitle:@"立即前往" block:^{
+//
+//                    }];
+//                    [aler addButtonWithTitle:@"取消" block:nil];
+//                    [aler show];
                 }else{
-                    MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"提示" message:@"有来自好友的商品分享,该链接已失效"];
-                    [aler addButtonWithTitle:@"确定" block:^{
-                        pasteboard.string = @"";
+                    HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:@"有来自好友的商品分享,该链接已失效"];
+                    alertView.isSupportRotating = YES;
+                    [alertView addButtonWithTitle:@"取消" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
                     }];
-                    [aler show];
+                    [alertView show];
+//                    MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"提示" message:@"有来自好友的商品分享,该链接已失效"];
+//                    [aler addButtonWithTitle:@"确定" block:^{
+//                        pasteboard.string = @"";
+//                    }];
+//                    [aler show];
                 }
             }
         } failure:^(id object) {

@@ -175,7 +175,7 @@ NSString *const HDAlertViewDidDismissNotification   = @"HDAlertViewDidDismissNot
     appearance.titleFont = [UIFont boldSystemFontOfSize:18.0];
     appearance.messageFont = [UIFont systemFontOfSize:16.0];
     appearance.buttonFont = [UIFont boldSystemFontOfSize:[UIFont buttonFontSize]];
-    appearance.defaultButtonTitleColor = [UIColor blueColor];
+    appearance.defaultButtonTitleColor =  [UIColor colorWithHexString:@"0381ec"];//[UIColor blueColor];
     appearance.cancelButtonTitleColor = [UIColor greenColor];
     appearance.destructiveButtonTitleColor = [UIColor redColor];
     appearance.cornerRadius = 10.0;
@@ -983,8 +983,8 @@ NSString *const HDAlertViewDidDismissNotification   = @"HDAlertViewDidDismissNot
     
     HDAlertView *alertView = [[HDAlertView alloc] initWithTitle:title andMessage:message];
     alertView.cancelButtonTitleColor = [UIColor blackColor];
-    alertView.defaultButtonTitleColor = HDColorFromHex(0x0093ff);
-    alertView.destructiveButtonTitleColor = HDColorFromHex(0xf74c31);
+    alertView.defaultButtonTitleColor = [UIColor colorWithHexString:@"0381ec"];
+    alertView.destructiveButtonTitleColor =  [UIColor colorWithHexString:@"0381ec"];//HDColorFromHex(0xf74c31);
     alertView.buttonFont = [UIFont systemFontOfSize:17.0];
     alertView.isSupportRotating = YES;
     
