@@ -44,37 +44,38 @@
     if(kMeUnNilStr(kCurrentUser.mobile).length){
         _btnAddPhone.hidden = YES;
         _lblNamWdith.constant = SCREEN_WIDTH - (26 + 90 + 26 +15);
-        switch (kCurrentUser.user_type) {
-            case 1:{
-                //C
-                _lblLevel.text =@"售后中心";
-            }
-                break;
-            case 2:{
-                //C
-                _lblLevel.text =@"营销中心";
-            }
-                break;
-            case 4:{
-                //C
-                _lblLevel.text =@"普通会员";
-            }
-                break;
-            case 3:{
-                //B
-                _lblLevel.text =@"体验店";
-            }
-                break;
-            case 5:{
-                //clerk
-                _lblLevel.text =@"店员";
-            }
-                break;
-            default:{
-                _lblLevel.text =@"未知身份";
-            }
-                break;
-        }
+        _lblLevel.text = [NSString stringWithFormat:@"手机:%@",kMeUnNilStr(kCurrentUser.mobile)];
+//        switch (kCurrentUser.user_type) {
+//            case 1:{
+//                //C
+//                _lblLevel.text =@"售后中心";
+//            }
+//                break;
+//            case 2:{
+//                //C
+//                _lblLevel.text =@"营销中心";
+//            }
+//                break;
+//            case 4:{
+//                //C
+//                _lblLevel.text =@"普通会员";
+//            }
+//                break;
+//            case 3:{
+//                //B
+//                _lblLevel.text =@"体验店";
+//            }
+//                break;
+//            case 5:{
+//                //clerk
+//                _lblLevel.text =@"店员";
+//            }
+//                break;
+//            default:{
+//                _lblLevel.text =@"未知身份";
+//            }
+//                break;
+//        }
     }else{
         _btnAddPhone.hidden = NO;
         NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObject:[UIFont systemFontOfSize:14] forKey:NSFontAttributeName];

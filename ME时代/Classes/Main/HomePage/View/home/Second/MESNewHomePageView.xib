@@ -183,13 +183,13 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yt0-w0-VqO">
-                    <rect key="frame" x="23" y="494" width="155" height="0.0"/>
+                    <rect key="frame" x="25" y="494" width="153" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zP1-dN-nGs">
-                    <rect key="frame" x="220.5" y="494" width="154.5" height="0.0"/>
+                    <rect key="frame" x="222.5" y="494.5" width="152.5" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -230,7 +230,7 @@
                 <constraint firstItem="s1W-rj-I2M" firstAttribute="leading" secondItem="gdg-TS-DU1" secondAttribute="leading" id="72j-kT-liu"/>
                 <constraint firstItem="I5n-Ye-7Sf" firstAttribute="leading" secondItem="H1r-ZB-l36" secondAttribute="leading" constant="11" id="7vZ-hU-T3u"/>
                 <constraint firstItem="yRF-qF-EX7" firstAttribute="trailing" secondItem="0Ik-H5-ptG" secondAttribute="trailing" id="8jl-sb-BXn"/>
-                <constraint firstItem="Yt0-w0-VqO" firstAttribute="leading" secondItem="0Ik-H5-ptG" secondAttribute="leading" constant="14.5" id="8ry-PZ-EvS"/>
+                <constraint firstItem="Yt0-w0-VqO" firstAttribute="leading" secondItem="0Ik-H5-ptG" secondAttribute="leading" constant="16.5" id="8ry-PZ-EvS"/>
                 <constraint firstItem="s1W-rj-I2M" firstAttribute="bottom" secondItem="gdg-TS-DU1" secondAttribute="bottom" id="8wz-F0-ShD"/>
                 <constraint firstItem="fdQ-aJ-RwP" firstAttribute="leading" secondItem="H1r-ZB-l36" secondAttribute="leading" constant="11" id="A09-bm-KwZ"/>
                 <constraint firstItem="ZGN-n3-GyD" firstAttribute="top" secondItem="0Ik-H5-ptG" secondAttribute="top" id="Bzn-cW-xGp"/>
@@ -238,7 +238,7 @@
                 <constraint firstItem="ZGN-n3-GyD" firstAttribute="centerX" secondItem="gdg-TS-DU1" secondAttribute="centerX" id="Dgx-Jx-Off"/>
                 <constraint firstItem="0Ik-H5-ptG" firstAttribute="leading" secondItem="6Gr-eh-ZMX" secondAttribute="leading" id="Foh-9D-ue6"/>
                 <constraint firstItem="ZGN-n3-GyD" firstAttribute="trailing" secondItem="gdg-TS-DU1" secondAttribute="trailing" id="GSm-Ea-gO1"/>
-                <constraint firstItem="zP1-dN-nGs" firstAttribute="leading" secondItem="ZGN-n3-GyD" secondAttribute="leading" constant="14.5" id="GWL-jk-QMA"/>
+                <constraint firstItem="zP1-dN-nGs" firstAttribute="leading" secondItem="ZGN-n3-GyD" secondAttribute="leading" constant="16.5" id="GWL-jk-QMA"/>
                 <constraint firstItem="0Ik-H5-ptG" firstAttribute="height" secondItem="6Gr-eh-ZMX" secondAttribute="height" id="HmE-mM-h7E"/>
                 <constraint firstItem="qzI-Xa-VwG" firstAttribute="top" secondItem="ZGN-n3-GyD" secondAttribute="top" id="I6K-gX-1WG"/>
                 <constraint firstItem="OzG-DS-S4t" firstAttribute="top" secondItem="fdQ-aJ-RwP" secondAttribute="bottom" id="I6s-WZ-6Is"/>
@@ -310,12 +310,12 @@
         </view>
     </objects>
     <resources>
-        <image name="MEyyuj" width="170" height="110"/>
+        <image name="MEyyuj" width="355" height="239"/>
         <image name="homeb" width="750" height="1334"/>
         <image name="qwqi" width="17" height="16"/>
-        <image name="talt" width="352" height="48"/>
-        <image name="tgdmitrb" width="170" height="110"/>
-        <image name="umkkumfd" width="170" height="110"/>
-        <image name="uyyhebtl" width="170" height="110"/>
+        <image name="talt" width="702" height="180"/>
+        <image name="tgdmitrb" width="355" height="239"/>
+        <image name="umkkumfd" width="355" height="239"/>
+        <image name="uyyhebtl" width="355" height="239"/>
     </resources>
 </document>
