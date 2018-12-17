@@ -93,8 +93,6 @@
                     [cell setUnMeaasge];
                 }
                     break;
-                case 2:
-                case 1:
                 case 3:{
                     MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
                     [cell setUnMeaasge];
@@ -150,8 +148,6 @@
                 strongSelf->_arrtype = @[@(MeMyDistribution),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
             }
                 break;
-            case 1:
-            case 2:
             case 3:{
                 //B
                 strongSelf->_arrtype = @[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
