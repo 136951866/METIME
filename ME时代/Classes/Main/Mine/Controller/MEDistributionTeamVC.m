@@ -104,6 +104,7 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
+#warning -B&C team
         _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(_type==MEClientCTypeStyle?MEIPcommonUserGetTeam:MEIPcommonUserGetAdminTeam)];
         _refresh.isGet = YES;
         _refresh.isDataInside = YES;

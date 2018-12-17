@@ -45,6 +45,16 @@
         _btnAddPhone.hidden = YES;
         _lblNamWdith.constant = SCREEN_WIDTH - (26 + 90 + 26 +15);
         switch (kCurrentUser.user_type) {
+            case 1:{
+                //C
+                _lblLevel.text =@"售后中心";
+            }
+                break;
+            case 2:{
+                //C
+                _lblLevel.text =@"营销中心";
+            }
+                break;
             case 4:{
                 //C
                 _lblLevel.text =@"普通会员";
