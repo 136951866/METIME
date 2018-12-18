@@ -133,6 +133,8 @@
 + (void)postGoodsTypeWithArticleCategoryId:(NSUInteger)ArticleCategoryId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //获取抢购商品
 + (void)postRushGoodWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+//获取商品分类
++ (void)postGoodFilterWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 /*
  获取库存和价格
  goods_id    是    string    商品的id

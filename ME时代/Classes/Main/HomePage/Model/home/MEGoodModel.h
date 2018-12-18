@@ -11,8 +11,8 @@
 @interface MEGoodModel : MEBaseModel
 
 @property (nonatomic, strong) NSString * images;
-@property (nonatomic, strong) NSString * market_price;
-@property (nonatomic, strong) NSString * money;
+@property (nonatomic, strong) NSString * market_price;//市场价
+@property (nonatomic, strong) NSString * money;//真实价格
 @property (nonatomic, assign) NSInteger product_id;
 @property (nonatomic, strong) NSString * title;
 

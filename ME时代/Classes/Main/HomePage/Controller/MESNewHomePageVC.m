@@ -18,7 +18,9 @@
 #import "MEProductDetailsVC.h"
 #import "MEAdModel.h"
 #import "MERushBuyView.h"
-#import "MENewHomePage.h"
+//#import "MENewHomePage.h"
+#warning --newproduct
+#import "MEShoppingMallVC.h"
 #import "MESNewHomeActiveVC.h"
 #import "MESActivityModel.h"
 #import "ZLWebVC.h"
@@ -275,7 +277,7 @@
 }
 
 - (void)toProdectVC{
-    MENewHomePage *svc = [[MENewHomePage alloc]init];
+    MEShoppingMallVC *svc = [[MEShoppingMallVC alloc]init];
     [self.navigationController pushViewController:svc animated:YES];
 }
 
