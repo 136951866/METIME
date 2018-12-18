@@ -82,15 +82,21 @@
     [self.view addSubview:self.scrollView];
     self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, kCategoryViewHeight)];
     //1、初始化JXCategoryTitleView
-    self.categoryView.lineStyle = JXCategoryLineStyle_None;
+//    self.categoryView.lineStyle = JXCategoryLineStyle_None;
+    JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
+    lineView.indicatorLineWidth = 20;
+    lineView.indicatorLineViewColor = kMEPink;
+    lineView.indicatorLineViewHeight = 2;
+    self.categoryView.indicators = @[lineView];
+    
     self.categoryView.titles = arrTitle;
     self.categoryView.delegate = self;
     self.categoryView.titleSelectedColor = kMEPink;
     self.categoryView.titleColor =  [UIColor colorWithHexString:@"999999"];
     self.categoryView.contentScrollView = self.scrollView;
-    self.categoryView.indicatorLineViewColor = kMEPink;
-    self.categoryView.indicatorLineWidth = 20;
-    self.categoryView.indicatorLineViewHeight = 2;
+//    self.categoryView.indicatorLineViewColor = kMEPink;
+//    self.categoryView.indicatorLineWidth = 20;
+//    self.categoryView.indicatorLineViewHeight = 2;
     [self.ccategoryView addSubview:self.categoryView];
     UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, kCategoryViewHeight-1, SCREEN_WIDTH, 1)];
     line.backgroundColor = kMeColor(222, 222, 222);

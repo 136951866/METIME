@@ -50,15 +50,18 @@
     
     //1、初始化JXCategoryTitleView
     self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0,kMeNavBarHeight, SCREEN_WIDTH, kCategoryViewHeight)];
-    self.categoryView.lineStyle = JXCategoryLineStyle_None;
+    JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
+    lineView.indicatorLineWidth = 55 *kMeFrameScaleX();
+    lineView.indicatorLineViewColor = [UIColor colorWithHexString:@"333333"];
+    lineView.indicatorLineViewHeight = 2;
+    self.categoryView.indicators = @[lineView];
+//    self.categoryView.lineStyle = JXCategoryLineStyle_None;
     self.categoryView.titles = _arrType;
     self.categoryView.delegate = self;
     self.categoryView.titleSelectedColor = [UIColor colorWithHexString:@"333333"];
     self.categoryView.titleColor =  [UIColor colorWithHexString:@"999999"];
     self.categoryView.contentScrollView = self.scrollView;
-    self.categoryView.indicatorLineWidth = 55 *kMeFrameScaleX();
-    self.categoryView.indicatorLineViewColor = [UIColor colorWithHexString:@"333333"];
-    self.categoryView.indicatorLineViewHeight = 2;
+
     [self.view addSubview:self.categoryView];
     self.categoryView.defaultSelectedIndex = _currentType;
 }

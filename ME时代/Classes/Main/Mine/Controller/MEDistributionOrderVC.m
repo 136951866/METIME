@@ -51,7 +51,10 @@
     
     //1、初始化JXCategoryTitleView
     self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0,kMeNavBarHeight, SCREEN_WIDTH, kCategoryViewHeight)];
-    self.categoryView.lineStyle = JXCategoryLineStyle_None;
+//    self.categoryView.lineStyle = JXCategoryLineStyle_None;
+    JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
+    self.categoryView.indicators = @[lineView];
+    
     self.categoryView.titles = _arrType;
     self.categoryView.delegate = self;
     self.categoryView.titleSelectedColor = kMEPink;

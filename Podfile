@@ -14,7 +14,7 @@ pod 'MBProgressHUD'
 pod 'SDCycleScrollView'
 pod 'MJRefresh'
 pod 'AFNetworking'
-pod 'JXCategoryView'
+#pod 'JXCategoryView'
 
 # U-Share SDK
 pod 'UMCCommon'
