@@ -23,7 +23,25 @@
 
 - (instancetype)initWithLevel:(NSString *)lev{
     if(self = [super init]){
-        _lev = lev;
+//        _lev = lev;
+        switch (kCurrentUser.client_type ) {
+            case MEClientTypeClerkStyle:{
+                _lev = [NSString stringWithFormat:@"当前等级:店员"];
+            }
+                break;
+            case MEClientBTypeStyle:{
+                _lev = [NSString stringWithFormat:@"当前等级:体验中心"];
+            }
+                break;
+            case MEClientCTypeStyle:{
+                _lev = [NSString stringWithFormat:@"当前等级:会员"];
+            }
+                break;
+            default:
+                _lev = @"";
+                break;
+        }
+        
     }
     return self;
 }

@@ -48,6 +48,8 @@
     _consImgCodeH.constant = 110 * kMeFrameScaleX();
     _consHw.constant = 50* kMeFrameScaleX();
     _conHh.constant = 50* kMeFrameScaleX();
+    _imgHeader.cornerRadius = (50* kMeFrameScaleX())/2;
+    _imgHeader.clipsToBounds = YES;
     _consNameTop.constant = 50* kMeFrameScaleX();
     _consLevTop.constant = 10* kMeFrameScaleX();
     if(kMeFrameScaleX()<1){

@@ -373,7 +373,7 @@
 
 #define MEIPShare [NSString stringWithFormat:@"%@?code=%@",kGetApiWithUrl(MEIPWechatAuthShare),kMeUnNilStr(kCurrentUser.uid)]
 #define MEIPArticelShare [NSString stringWithFormat:@"%@?code=%@&pid=0&article_id=",kGetApiWithUrl(MEIPWechatAuthArticelShare),kMeUnNilStr(kCurrentUser.uid)]
-
+#define MEIPposterShare @""
 //获取赠送小程序的到期时间
 #define MEIPExpMiniprogramAt @"common/user/getExpMiniprogramAt"
 //获取app版本
