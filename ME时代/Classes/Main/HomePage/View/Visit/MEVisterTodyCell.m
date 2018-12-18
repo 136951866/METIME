@@ -36,25 +36,26 @@
 
 
 - (void)setUiWithModel:(NSNumber *)model{
+    #warning --addPostSer
     self.aaChartModel
     .yAxisTickIntervalSet(@5)
     .yAxisMinSet(@(0))//Y轴最小值
     .seriesSet(@[
                  AASeriesElement.new
                  .nameSet(@"")
-                 .dataSet(@[@0]),
+                 .dataSet(@[]),
                  AASeriesElement.new
                  .nameSet(@"")
-                 .dataSet(@[@0]),
+                 .dataSet(@[]),
                  AASeriesElement.new
                  .nameSet(@"人数")
-                 .dataSet(@[model]),
+                 .dataSet(@[model,@0]),
                  AASeriesElement.new
                  .nameSet(@"")
-                 .dataSet(@[@0]),
+                 .dataSet(@[]),
                  AASeriesElement.new
                  .nameSet(@"")
-                 .dataSet(@[@0]),
+                 .dataSet(@[]),
                  ]
                );
     [self.aaChartView aa_refreshChartWithChartModel:self.aaChartModel];
@@ -73,22 +74,25 @@
         .colorsThemeSet(@[@"#ff88a4"])//设置主体颜色数组
         .yAxisTitleSet(@"")//设置 Y 轴标题
         .backgroundColorSet(@"#ffffff")
-        .yAxisGridLineWidthSet(@0)
+        .yAxisGridLineWidthSet(@1)
         .seriesSet(@[
                      AASeriesElement.new
                      .nameSet(@"人数")
-                     .dataSet(@[@0])
+                     .dataSet(@[@0,@0])
                      .lineWidthSet(@10),
                      ]
                    );
         //y轴横向分割线宽度为0(即是隐藏分割线)
-        _aaChartModel.categories = @[@"文章"];//设置 X 轴坐标文字内容
+#warning --addPostSer
+        _aaChartModel.categories = @[@"文章",@"海报"];//设置 X 轴坐标文字内容
         _aaChartModel.animationType = AAChartAnimationBounce;//图形的渲染动画为弹性动画
         _aaChartModel.yAxisTitle = @"";
         _aaChartModel.animationDuration = @10;//图形渲染动画时长为1200毫秒
         _aaChartModel.legendEnabled = NO;
         _aaChartModel.tooltipEnabled = NO;
         _aaChartModel.yAxisGridLineWidth =@1;
+        _aaChartModel.dataLabelEnabled = YES;
+        _aaChartModel.dataLabelFontColor = @"#818181";
         
     }
     return _aaChartModel;

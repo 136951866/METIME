@@ -220,6 +220,7 @@ AAPropSetFuncImplementation(AAOptions, NSString      *, zoomResetButtonText)  //
                         .styleSet(AAStyle.new
                                   .colorSet(aaChartModel.dataLabelFontColor)
                                   .fontSizeSet(AAFontSizeFormat(aaChartModel.dataLabelFontSize))
+                                  .textOutlineSet(@"0")
                                   .fontWeightSet(aaChartModel.dataLabelFontWeight)
                                   )
                         );
