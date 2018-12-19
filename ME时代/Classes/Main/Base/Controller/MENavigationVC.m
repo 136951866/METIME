@@ -234,12 +234,13 @@ const float kMargin = 60;
 
 - (MEEnlargeTouchButton *)btnRight{
     MEEnlargeTouchButton *btnRight= [MEEnlargeTouchButton buttonWithType:UIButtonTypeCustom];
-    btnRight.frame = CGRectMake(-20, 0, 60, 25);
+    btnRight.frame = CGRectMake(0, 0, 70, 25);
     [btnRight setImage:[UIImage imageNamed:@"inc-xz"] forState:UIControlStateNormal];
     [btnRight setTitle:@"返回" forState:UIControlStateNormal];
-    btnRight.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
+    btnRight.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 26);
+    btnRight.titleEdgeInsets = UIEdgeInsetsMake(0, -14, 0, 0);
     [btnRight setTitleColor:[UIColor colorWithHexString:@"e3e3e3"] forState:UIControlStateNormal];
-    btnRight.titleLabel.font = kMeFont(14);
+    btnRight.titleLabel.font = kMeFont(15);
     [btnRight setTitleColor:kMEblack forState:UIControlStateNormal];
     [btnRight addTarget:self action:@selector(popBackAction:) forControlEvents:UIControlEventTouchUpInside];
     return btnRight;
