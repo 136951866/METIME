@@ -46,7 +46,7 @@
 - (void)setUIWithModel:(MEGoodModel *)model{
     _lblTitle.text = kMeUnNilStr(model.title);
     _lblSubtitle.text = kMeUnNilStr(model.title);
-    [_imgProduct sd_setImageWithURL:[NSURL URLWithString:MELoadQiniuImagesWithUrl(kMeUnNilStr(model.images_hot))] placeholderImage:kImgPlaceholder];
+    [_imgProduct sd_setImageWithURL:[NSURL URLWithString:MELoadQiniuImagesWithUrl(kMeUnNilStr(model.images))] placeholderImage:kImgPlaceholder];
     NSString *commStr = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.market_price).floatValue)];
     [_lblComPrice setLineStrWithStr:commStr];
     _lblPrice.text = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.money).floatValue)];
