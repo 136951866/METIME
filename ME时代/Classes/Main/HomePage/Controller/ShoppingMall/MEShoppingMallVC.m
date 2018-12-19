@@ -92,7 +92,7 @@
     self.categoryView.titles = arrTitle;
     self.categoryView.delegate = self;
     self.categoryView.titleSelectedColor = kMEPink;
-    self.categoryView.titleColor =  [UIColor colorWithHexString:@"999999"];
+    self.categoryView.titleColor =  [UIColor colorWithHexString:@"080808"];
     self.categoryView.contentScrollView = self.scrollView;
 //    self.categoryView.indicatorLineViewColor = kMEPink;
 //    self.categoryView.indicatorLineWidth = 20;

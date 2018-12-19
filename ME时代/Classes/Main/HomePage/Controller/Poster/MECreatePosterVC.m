@@ -73,7 +73,7 @@
     kSDLoadImg(_imgHeader,kMeUnNilStr(kCurrentUser.header_pic));
     _lblName.text = kMeUnNilStr(kCurrentUser.name);
 #warning --poster
-    NSString *str =[NSString stringWithFormat:@"https://develop.meshidai.com/meShare/index.html?uid=%@&pid=0&poster_id=%@",kMeUnNilStr(kCurrentUser.uid),@(_model.idField)];
+    NSString *str =[NSString stringWithFormat:@"https://develop.meshidai.com/meShare/index.html?uid=%@&pid=0&posters_id=%@",kMeUnNilStr(kCurrentUser.uid),@(_model.idField)];
     _imgCode.image = [UIImage getCodeWithUrl:str];
     if([WXApi isWXAppInstalled]){
         [_btnShare setTitle:@"分享" forState:UIControlStateNormal];

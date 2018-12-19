@@ -22,6 +22,7 @@
 
 @property (nonatomic, strong) ZLRefreshTool         *refresh;
 @property(nonatomic,strong) SDCycleScrollView *cycleScrollView;
+@property(nonatomic,strong) UIView *sdView;
 @property (nonatomic,strong) NSArray *arrAdModel;
 @end
 
@@ -68,7 +69,7 @@
         [arrImage addObject:kMeUnNilStr(model.ad_img)];
     }];
     self.cycleScrollView.imageURLStringsGroup = arrImage;
-    self.tableView.tableHeaderView = self.cycleScrollView;
+    self.tableView.tableHeaderView = self.sdView;
     [self.tableView reloadData];
 }
 
@@ -148,7 +149,9 @@
 
 - (SDCycleScrollView *)cycleScrollView{
     if(!_cycleScrollView){
-        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200*kMeFrameScaleY()) imageURLStringsGroup:nil];
+        CGFloat w = SCREEN_WIDTH - 20;
+        CGFloat h = (w * 300)/710;
+        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(10, 10, w, h) imageURLStringsGroup:nil];
         _cycleScrollView.contentMode = UIViewContentModeScaleAspectFill;
         _cycleScrollView.clipsToBounds = YES;
         _cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
@@ -159,9 +162,23 @@
         _cycleScrollView.placeholderImage = kImgBannerPlaceholder;
         _cycleScrollView.currentPageDotColor = kMEPink;
         _cycleScrollView.contentMode = UIViewContentModeScaleAspectFill;
+        _cycleScrollView.cornerRadius = 8;
         _cycleScrollView.clipsToBounds = YES;
     }
     return _cycleScrollView;
+}
+
+- (UIView *)sdView{
+    if(!_sdView){
+        CGFloat w = SCREEN_WIDTH - 20;
+        CGFloat h = (w * 300)/710;
+        _sdView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, h+24+10)];
+        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, h+24, SCREEN_WIDTH, 10)];
+        lineView.backgroundColor = [UIColor colorWithHexString:@"f2f2f2"];
+        [_sdView addSubview:self.cycleScrollView];
+        [_sdView addSubview:lineView];
+    }
+    return _sdView;
 }
 
 
