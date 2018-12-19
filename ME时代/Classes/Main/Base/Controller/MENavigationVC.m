@@ -7,7 +7,7 @@
 //
 
 #import "MENavigationVC.h"
-
+#import "MEEnlargeTouchButton.h"
 
 #define kTOP_VIEW kMeKeyWindow.rootViewController.view
 const float kMargin = 60;
@@ -20,7 +20,6 @@ const float kMargin = 60;
 @property (nonatomic,strong) UIView *backgroundView;
 @property (nonatomic,strong) NSMutableArray *screenShotsList;
 @property (nonatomic,assign) BOOL isMoving;
-
 
 @end
 
@@ -216,7 +215,8 @@ const float kMargin = 60;
     }
     if (self.viewControllers.count > 0) { // 这时push进来的控制器viewController，不是第一个子控制器（不是根控制器）
         viewController.hidesBottomBarWhenPushed = YES;
-        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem enlargeTouchitemWithTarget:self action:@selector(popBackAction:) image:@"icon-tmda" highImage:@"icon-tmda"];
+//        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem enlargeTouchitemWithTarget:self action:@selector(popBackAction:) image:@"icon-tmda" highImage:@"icon-tmda"];
+        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[self btnRight]];
     }
     [super pushViewController:viewController animated:animated];
 }
@@ -230,6 +230,19 @@ const float kMargin = 60;
     [self.screenShotsList removeLastObject];
     
     return [super popViewControllerAnimated:animated];
+}
+
+- (MEEnlargeTouchButton *)btnRight{
+    MEEnlargeTouchButton *btnRight= [MEEnlargeTouchButton buttonWithType:UIButtonTypeCustom];
+    btnRight.frame = CGRectMake(-20, 0, 60, 25);
+    [btnRight setImage:[UIImage imageNamed:@"inc-xz"] forState:UIControlStateNormal];
+    [btnRight setTitle:@"返回" forState:UIControlStateNormal];
+    btnRight.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
+    [btnRight setTitleColor:[UIColor colorWithHexString:@"e3e3e3"] forState:UIControlStateNormal];
+    btnRight.titleLabel.font = kMeFont(14);
+    [btnRight setTitleColor:kMEblack forState:UIControlStateNormal];
+    [btnRight addTarget:self action:@selector(popBackAction:) forControlEvents:UIControlEventTouchUpInside];
+    return btnRight;
 }
 
 

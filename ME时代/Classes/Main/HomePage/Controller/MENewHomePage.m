@@ -4,7 +4,7 @@
 //
 //  Created by hank on 2018/11/5.
 //  Copyright © 2018年 hank. All rights reserved.
-//
+//  已废弃
 
 #import "MENewHomePage.h"
 #import "MENewHomePageHeaderView.h"

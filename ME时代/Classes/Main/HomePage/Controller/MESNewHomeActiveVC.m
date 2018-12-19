@@ -9,7 +9,8 @@
 #import "MESNewHomeActiveVC.h"
 #import "TDWebViewCell.h"
 #import "MESNewHomeActiveCommondCell.h"
-#import "MENewHomePage.h"
+//#import "MENewHomePage.h"
+#import "MEShoppingMallVC.h"
 #import "MEGoodModel.h"
 
 @interface MESNewHomeActiveVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -93,7 +94,7 @@ kTDWebViewCellDidFinishLoadNotificationMethod
 }
 
 - (void)ToProduct:(UIButton *)btn{
-    MENewHomePage *vc = [[MENewHomePage alloc]init];
+    MEShoppingMallVC *vc = [[MEShoppingMallVC alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

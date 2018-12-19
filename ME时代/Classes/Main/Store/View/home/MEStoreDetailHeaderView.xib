@@ -54,7 +54,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4g-zs-dW2">
-                    <rect key="frame" x="15" y="322" width="14" height="18"/>
+                    <rect key="frame" x="15" y="322" width="345" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="S1H-gW-FHc"/>
                     </constraints>
@@ -71,6 +71,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Hsx-jV-Flx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3kf-bW-UPE"/>
+                <constraint firstAttribute="trailing" secondItem="C4g-zs-dW2" secondAttribute="trailing" constant="15" id="8Sn-DL-81m"/>
                 <constraint firstItem="C4g-zs-dW2" firstAttribute="top" secondItem="cx2-sk-QFe" secondAttribute="bottom" constant="15" id="ABd-Pr-oXs"/>
                 <constraint firstItem="5bF-hI-NVm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Du8-fg-CPm"/>
                 <constraint firstItem="1ZK-PU-wGk" firstAttribute="trailing" secondItem="5bF-hI-NVm" secondAttribute="trailing" id="Pc5-Yp-twI"/>
