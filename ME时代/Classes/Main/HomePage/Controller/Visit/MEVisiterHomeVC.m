@@ -125,9 +125,8 @@
         if(!_vCell){
             _vCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEVisterTodyCell class]) forIndexPath:indexPath];
         }
-        NSInteger count = [self.countModel.today integerValue];
-        NSInteger countposter = [self.countModel.todayPoster integerValue];
-    #warning --addPostSer
+        NSInteger count = [self.countModel.article_count integerValue];
+        NSInteger countposter = [self.countModel.poster_count integerValue];
         NSNumber *countNum = [NSNumber numberWithInteger:count];
         NSNumber *countposterNum = [NSNumber numberWithInteger:countposter];
         [_vCell setUiWithModel:countNum posterCount:countposterNum];

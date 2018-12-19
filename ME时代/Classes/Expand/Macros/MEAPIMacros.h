@@ -9,12 +9,10 @@
 #ifndef MEAPIMacros_h
 #define MEAPIMacros_h
 
-#warning -mustNotes 上线一定要注释
+#warning -mustNotes 上线一定要注释/海报分享没有用BASEIP
+
 
 #define TestVersion
-
-
-
 
 //域名 develop
 #ifdef TestVersion
@@ -135,8 +133,10 @@
 #define MEIPcommonGetAccess @"common/article/getAccess"
 //获取客户
 #define MEIPcommonGetAccessUser @"common/article/getAccessUser"
-//传播路径
+//文章传播路径
 #define MEIPcommonGetSpreadPath @"common/article/spreadPath"
+//海报传播路径
+#define MEIPcommonGetPosterSpreadPath @"common/posters/posterSpreadPath"
 //设为意向客户
 #define MEIPcommonSetIntentioUser @"common/article/setIntentioUser"
 //访问用户详情

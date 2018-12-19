@@ -23,12 +23,15 @@
 @property (nonatomic, assign) NSInteger product_id;
 @property (nonatomic, strong) NSString * images;
 @property (nonatomic, strong) NSString * title;
+//市场价
 @property (nonatomic, strong) NSString * market_price;
+//原价
 @property (nonatomic, strong) NSString * money;
 @property (nonatomic, strong) NSArray *spec;
 @property (nonatomic, strong) NSString * content;
 @property (nonatomic, strong) NSString * custom_uid;
-
+//区间价 2.0.2
+@property (nonatomic, strong) NSString * interval_price;
 //美豆相关
 @property (nonatomic, strong) NSString * integral_lines;//美豆数
 @property (nonatomic, strong) NSString * postage;//邮费

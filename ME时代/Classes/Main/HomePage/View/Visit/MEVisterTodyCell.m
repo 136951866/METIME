@@ -82,7 +82,6 @@
                      ]
                    );
         //y轴横向分割线宽度为0(即是隐藏分割线)
-#warning --addPostSer
         _aaChartModel.categories = @[@"文章",@"海报"];//设置 X 轴坐标文字内容
         _aaChartModel.animationType = AAChartAnimationBounce;//图形的渲染动画为弹性动画
         _aaChartModel.yAxisTitle = @"";

@@ -15,7 +15,6 @@
 #import "MEDistributionOrderMainVC.h"
 #import "MEDistributionCentreModel.h"
 #import "MEMoneyDetailedVC.h"
-#warning --testNewSHare 2.0.2
 #import "MEMineNewShareVC.h"
 #import "MEClerkManngerVC.h"
 #import "MEBDataDealVC.h"

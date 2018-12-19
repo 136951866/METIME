@@ -19,7 +19,6 @@
 #import "MEAdModel.h"
 #import "MERushBuyView.h"
 //#import "MENewHomePage.h"
-#warning --newproduct
 #import "MEShoppingMallVC.h"
 #import "MESNewHomeActiveVC.h"
 #import "MESActivityModel.h"

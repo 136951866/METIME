@@ -47,6 +47,13 @@
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a3W-9Q-lnd">
+                                <rect key="frame" x="213.5" y="8.5" width="50" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="61J-aw-Os2"/>
+                                    <constraint firstAttribute="width" constant="50" id="mmX-GP-5PJ"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -54,9 +61,11 @@
                             <constraint firstItem="f3A-w4-A5q" firstAttribute="leading" secondItem="6G3-Il-T2F" secondAttribute="leading" constant="15" id="HMo-xz-Sgp"/>
                             <constraint firstItem="cNs-Qa-JjT" firstAttribute="top" secondItem="6G3-Il-T2F" secondAttribute="top" constant="16" id="IvW-uQ-K4Y"/>
                             <constraint firstItem="cNs-Qa-JjT" firstAttribute="leading" secondItem="6G3-Il-T2F" secondAttribute="leading" constant="15" id="MXh-DK-aLa"/>
+                            <constraint firstItem="a3W-9Q-lnd" firstAttribute="centerX" secondItem="PCn-rZ-KLW" secondAttribute="centerX" id="YZd-in-HsF"/>
                             <constraint firstAttribute="height" constant="82" id="esP-UI-ZVa"/>
                             <constraint firstItem="PCn-rZ-KLW" firstAttribute="leading" secondItem="cNs-Qa-JjT" secondAttribute="trailing" constant="15" id="fNz-1P-Zeb"/>
                             <constraint firstItem="PCn-rZ-KLW" firstAttribute="leading" secondItem="f3A-w4-A5q" secondAttribute="trailing" constant="15" id="gA7-I7-JsY"/>
+                            <constraint firstItem="a3W-9Q-lnd" firstAttribute="centerY" secondItem="PCn-rZ-KLW" secondAttribute="centerY" id="gGM-kN-7wY"/>
                             <constraint firstItem="PCn-rZ-KLW" firstAttribute="centerY" secondItem="6G3-Il-T2F" secondAttribute="centerY" id="mlv-mo-NRK"/>
                             <constraint firstAttribute="bottom" secondItem="f3A-w4-A5q" secondAttribute="bottom" constant="19" id="ygK-Bw-9tO"/>
                         </constraints>
@@ -78,6 +87,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="imgPic" destination="PCn-rZ-KLW" id="rkU-yy-FxB"/>
+                <outlet property="imgPoster" destination="a3W-9Q-lnd" id="VNp-L8-h2L"/>
                 <outlet property="lblTime" destination="f3A-w4-A5q" id="ewf-C7-ONX"/>
                 <outlet property="lblTitle" destination="cNs-Qa-JjT" id="Iuo-4J-I21"/>
                 <outlet property="viewForContent" destination="6G3-Il-T2F" id="6jF-cq-he2"/>

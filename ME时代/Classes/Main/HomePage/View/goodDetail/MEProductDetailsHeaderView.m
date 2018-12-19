@@ -27,6 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consSdHeight;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblIntervalPrice;
 @end
 
 
@@ -51,6 +52,7 @@
 }
 
 - (void)setUIWithModel:(MEGoodDetailModel *)model{
+    _lblIntervalPrice.hidden = NO;
     _isInteral = NO;
 //    __block NSMutableArray *arrImage = [NSMutableArray array];
 //    [arrModel enumerateObjectsUsingBlock:^(NSString *model, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -59,8 +61,9 @@
 //    }];
     self.sdView.imageURLStringsGroup = @[MELoadQiniuImagesWithUrl(kMeUnNilStr(model.images))];
     _lblTitle.text = kMeUnNilStr(model.title);
-    _lblCommonPrice.text = kMeUnNilStr(model.market_price);
-    _lblPrice.text = kMeUnNilStr(model.money);
+    _lblCommonPrice.text = @"";//[NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.market_price).floatValue)];
+    _lblPrice.text = @"";//kMeUnNilStr(model.interval_price);
+    _lblIntervalPrice.text = [NSString stringWithFormat:@"¥%@",kMeUnNilStr(model.interval_price)];
 //    _lblSave.text = [NSString stringWithFormat:@"为您节省¥%.2f",[kMeUnNilStr(model.market_price) floatValue]-[kMeUnNilStr(model.money) floatValue]];
     if(model.product_id == 4){
         _lblMember.text = @"每人限领一支,分享后可以再购买一支.";
@@ -72,6 +75,7 @@
 
 - (void)setIntergalUIWithModel:(MEGoodDetailModel *)model{
     _isInteral = YES;
+    _lblIntervalPrice.hidden = YES;
     self.sdView.imageURLStringsGroup = @[MELoadQiniuImagesWithUrl(kMeUnNilStr(model.images))];
     _lblSave.hidden = YES;
     _imgIcon.hidden = YES;

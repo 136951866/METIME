@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTime;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPic;
 @property (weak, nonatomic) IBOutlet UIView *viewForContent;
+@property (weak, nonatomic) IBOutlet UIImageView *imgPoster;
 
 @end
 
@@ -30,7 +31,15 @@
 }
 
 - (void)setUiWIthModle:(MEVistorUserModel *)model{
-    kSDLoadImg(_imgPic, kMeUnNilStr(model.article.images_url));
+    if(model.type == 1){
+        _imgPoster.hidden = YES;
+        _imgPic.hidden = NO;
+        kSDLoadImg(_imgPic, kMeUnNilStr(model.article.images_url));
+    }else{
+        _imgPic.hidden = YES;
+        _imgPoster.hidden = NO;
+        kSDLoadImg(_imgPoster, kMeUnNilStr(model.article.images_url));
+    }
     _lblTitle.text = kMeUnNilStr(model.article.title);
     _lblTime.text =  kMeUnNilStr(model.updated_at);
 }

@@ -40,7 +40,11 @@
 }
 
 - (NSDictionary *)requestParameter{
-    return @{@"token":kMeUnNilStr(kCurrentUser.token),@"share_id":@(_model.share_id)};
+    if(_model.type == 1){
+        return @{@"token":kMeUnNilStr(kCurrentUser.token),@"share_id":@(_model.share_id)};
+    }else{
+        return @{@"token":kMeUnNilStr(kCurrentUser.token),@"posters_id":@(_model.article_id)};
+    }
 }
 
 - (void)handleResponse:(id)data{
@@ -124,7 +128,8 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonGetSpreadPath)];
+        NSString *url = _model.type == 1?MEIPcommonGetSpreadPath:MEIPcommonGetPosterSpreadPath;
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(url)];
         _refresh.delegate = self;
         _refresh.showFailView = NO;
         _refresh.isDataInside = YES;

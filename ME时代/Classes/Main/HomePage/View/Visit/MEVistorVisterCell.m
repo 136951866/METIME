@@ -13,12 +13,16 @@
 #import "MEArticleDetailVC.h"
 #import "MEVistorUserModel.h"
 #import "MEArticelModel.h"
+#import "MECreatePosterVC.h"
+#import "MEPosterModel.h"
 
 @interface MEVistorVisterCell (){
     MEVistorUserModel *_model;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imgHeader;
 @property (weak, nonatomic) IBOutlet UIImageView *imgArticel;
+@property (weak, nonatomic) IBOutlet UIImageView *imgPoster;
+
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UILabel *lblDesc;
 @property (weak, nonatomic) IBOutlet UIButton *btnInvite;
@@ -40,7 +44,18 @@
 - (void)setUIWithModel:(MEVistorUserModel *)model{
     _model = model;
     kSDLoadImg(_imgHeader, kMeUnNilStr(model.user.header_pic));
-    kSDLoadImg(_imgArticel, kMeUnNilStr(model.article.images_url));
+    if(model.type == 1){
+        _imgPoster.hidden = YES;
+        _imgArticel.hidden = NO;
+        kSDLoadImg(_imgArticel, kMeUnNilStr(model.article.images_url));
+        _lblTime.text = [NSString stringWithFormat:@"%@ 时长:%@min",kMeUnNilStr(model.updated_at),@(model.wait_time)];
+    }else if (model.type == 2){
+        _imgArticel.hidden = YES;
+        _imgPoster.hidden = NO;
+        kSDLoadImg(_imgPoster, kMeUnNilStr(model.article.images_url));
+        _lblTime.text = kMeUnNilStr(model.updated_at);
+    }
+
     NSString *intentStr = @"访客";
     if(model.is_intention==2){
         intentStr = @"意向客户";
@@ -48,7 +63,7 @@
     _lblName.text = [NSString stringWithFormat:@"%@ %@",kMeUnNilStr(model.user.nick_name),intentStr];
     _lblDesc.text = [NSString stringWithFormat:@"第%@次访问",@(model.browse).description];
     _lblTitle.text = kMeUnNilStr(model.article.title);
-    _lblTime.text = kMeUnNilStr(model.updated_at);
+    
     _lblComing.text = @"转发明细 >";//[NSString stringWithFormat:@"%@ >",kMeUnNilStr(model.source.nick_name)];
     if(model.is_intention==2){
         [_btnInvite setTitle:@"取消意向客户" forState:UIControlStateNormal];
@@ -89,13 +104,25 @@
 
 - (IBAction)toArticelAction:(UIButton *)sender {
     MEVisiterHomeVC *homeVC = [MECommonTool getVCWithClassWtihClassName:[MEVisiterHomeVC class] targetResponderView:self];
-    if(homeVC){
-        MEArticelModel *modela = [MEArticelModel new];
-        modela.article_id = _model.article_id;
-        modela.images_url = _model.article.images_url;
-        modela.title = _model.article.title;
-        MEArticleDetailVC *pathVC = [[MEArticleDetailVC alloc]initWithModel:modela];
-        [homeVC.navigationController pushViewController:pathVC animated:YES];
+    if(_model.type ==1){
+        if(homeVC){
+            MEArticelModel *modela = [MEArticelModel new];
+            modela.article_id = _model.article_id;
+            modela.images_url = _model.article.images_url;
+            modela.title = _model.article.title;
+            MEArticleDetailVC *pathVC = [[MEArticleDetailVC alloc]initWithModel:modela];
+            [homeVC.navigationController pushViewController:pathVC animated:YES];
+        }
+    }else if (_model.type ==2){
+        if(homeVC){
+            MEPosterChildrenModel *modela = [MEPosterChildrenModel new];
+            modela.image = _model.article.images_url;
+            modela.idField = _model.article_id;
+            MECreatePosterVC *pathVC = [[MECreatePosterVC alloc]initWithModel:modela];
+            [homeVC.navigationController pushViewController:pathVC animated:YES];
+        }
+    }else{
+        
     }
 }
 

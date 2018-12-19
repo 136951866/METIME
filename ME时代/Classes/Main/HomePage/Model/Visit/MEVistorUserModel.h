@@ -41,4 +41,8 @@
 @property (nonatomic, strong) MEVistorUserSourceModel * user;
 @property (nonatomic, assign) NSInteger wait_time;
 
+//2.0.2新增
+//1 文章 2海报
+@property (nonatomic, assign) NSInteger type;
+
 @end
