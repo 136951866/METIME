@@ -35,8 +35,7 @@
 }
 
 
-- (void)setUiWithModel:(NSNumber *)model{
-    #warning --addPostSer
+- (void)setUiWithModel:(NSNumber *)model posterCount:(NSNumber*)posterCount{
     self.aaChartModel
     .yAxisTickIntervalSet(@5)
     .yAxisMinSet(@(0))//Y轴最小值
@@ -49,7 +48,7 @@
                  .dataSet(@[]),
                  AASeriesElement.new
                  .nameSet(@"人数")
-                 .dataSet(@[model,@0]),
+                 .dataSet(@[model,posterCount]),
                  AASeriesElement.new
                  .nameSet(@"")
                  .dataSet(@[]),

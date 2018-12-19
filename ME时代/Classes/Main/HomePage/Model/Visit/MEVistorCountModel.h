@@ -15,6 +15,8 @@
 @property (nonatomic, strong) NSString* share_count_all;
 @property (nonatomic, strong) NSString* share_count_today;
 @property (nonatomic, strong) NSString* share_today;
+//文章
 @property (nonatomic, strong) NSString* today;
-
+//海报
+@property (nonatomic, strong) NSString* todayPoster;
 @end

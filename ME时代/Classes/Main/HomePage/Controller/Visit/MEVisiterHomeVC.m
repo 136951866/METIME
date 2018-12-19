@@ -126,8 +126,11 @@
             _vCell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEVisterTodyCell class]) forIndexPath:indexPath];
         }
         NSInteger count = [self.countModel.today integerValue];
+        NSInteger countposter = [self.countModel.todayPoster integerValue];
+    #warning --addPostSer
         NSNumber *countNum = [NSNumber numberWithInteger:count];
-        [_vCell setUiWithModel:countNum];
+        NSNumber *countposterNum = [NSNumber numberWithInteger:countposter];
+        [_vCell setUiWithModel:countNum posterCount:countposterNum];
         return _vCell;
     }
     MEVistorUserModel *model = self.refresh.arrData[indexPath.row];

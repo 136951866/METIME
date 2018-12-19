@@ -12,5 +12,5 @@ const static CGFloat kMEVisterTodyCellwHeight = 214;
 
 
 @interface MEVisterTodyCell : UITableViewCell
-- (void)setUiWithModel:(NSNumber *)model;
+- (void)setUiWithModel:(NSNumber *)model posterCount:(NSNumber*)posterCount;
 @end
