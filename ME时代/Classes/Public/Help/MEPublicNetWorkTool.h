@@ -25,6 +25,12 @@
 
 
 /*********************************************/
+#pragma makr - couple
+//卷详情
++ (void)postCoupleDetailWithProductrId:(NSString *)productrId successBlock:(kMeDictionaryBlock)successBlock failure:(kMeObjBlock)failure;
+/*********************************************/
+
+/*********************************************/
 #pragma makr - B&Clerk share
 //商品编码
 + (void)postGoodsEncodeWithProductrId:(NSString *)productrId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;

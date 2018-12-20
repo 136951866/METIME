@@ -12,20 +12,20 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MEGiftHeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="307"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="258"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HNw-9L-Xni">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HNw-9L-Xni" customClass="SDCycleScrollView">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="175" id="jId-ok-5QT"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fJU-MK-IhJ">
-                    <rect key="frame" x="0.0" y="175" width="375" height="100"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="giftheader" translatesAutoresizingMaskIntoConstraints="NO" id="fJU-MK-IhJ">
+                    <rect key="frame" x="0.0" y="175" width="375" height="83"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="YQk-w7-cjz"/>
+                        <constraint firstAttribute="height" constant="83" id="A6B-5e-MuT"/>
                     </constraints>
                 </imageView>
             </subviews>
@@ -39,6 +39,16 @@
                 <constraint firstItem="HNw-9L-Xni" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rIw-0R-rC3"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="consSdHeight" destination="jId-ok-5QT" id="VEI-rj-bzp"/>
+                <outlet property="consVIewHeight" destination="A6B-5e-MuT" id="PWz-zD-loJ"/>
+                <outlet property="imgPic" destination="fJU-MK-IhJ" id="wlc-B6-534"/>
+                <outlet property="sdView" destination="HNw-9L-Xni" id="KAu-hS-umO"/>
+            </connections>
+            <point key="canvasLocation" x="31.5" y="66"/>
         </view>
     </objects>
+    <resources>
+        <image name="giftheader" width="750" height="166"/>
+    </resources>
 </document>

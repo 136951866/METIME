@@ -33,6 +33,7 @@ NSUInteger const kSizeNum = 10;
         _arrData = [[NSMutableArray alloc] initWithCapacity:26];
         _showFailView = YES;
         _url = url;
+        _isCouple = NO;
     }
     return self;
 }
@@ -134,7 +135,30 @@ NSUInteger const kSizeNum = 10;
         };
         
         if(_isGet){
-            [THTTPManager getWithParameter:parameter strUrl:self.url success:successBlock failure:failblock];
+            if(_isCouple){
+                [THTTPManager orgialGetWithUrlStr:self.url parameter:parameter success:^(NSDictionary *dic) {
+                    kMeSTRONGSELF
+                    if (!strongSelf ) {
+                        return;
+                    }
+                    
+                    if (strongSelf.pageIndex == 1) {
+                        [strongSelf.arrData removeAllObjects];
+                    }
+                    MENetListModel *nlModel = [MENetListModel mj_objectWithKeyValues:dic];
+                    strongSelf.allRows = [nlModel.data[@"total_num"] integerValue];
+                    [strongSelf.delegate handleResponse:nlModel.result];
+                    if ([strongSelf.contentView respondsToSelector:@selector(reloadData)]) {
+                        [(id)strongSelf.contentView reloadData];
+                    }
+                    [strongSelf endRefreshIsHead:isHead];
+                    //若有数据显示上拉控件
+                    [strongSelf showFailLoadViewWithResponse:nil];
+                    if (strongSelf.arrData.count > 0) strongSelf.contentView.mj_footer.hidden = NO;
+                } failure:failblock];
+            }else{
+                [THTTPManager getWithParameter:parameter strUrl:self.url success:successBlock failure:failblock];
+            }
         }else{
             [THTTPManager postWithParameter:parameter strUrl:self.url success:successBlock failure:failblock];
         }

@@ -20,6 +20,22 @@
 @implementation MEPublicNetWorkTool
 
 /*********************************************/
+#pragma makr - couple
+//卷详情
++ (void)postCoupleDetailWithProductrId:(NSString *)productrId successBlock:(kMeDictionaryBlock)successBlock failure:(kMeObjBlock)failure{
+    NSString *url = [NSString stringWithFormat:@"http://api.dataoke.com/index.php?r=port/index&appkey=58de5a1fe2&v=2&id=%@",kMeUnNilStr(productrId)];
+    MBProgressHUD *HUD = [self commitWithHUD:@""];
+    [THTTPManager orgialGetWithUrlStr:url parameter:@{} success:^(NSDictionary *dic) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,dic);
+    } failure:^(id object) {
+        [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        kMeCallBlock(failure,object);
+    }];
+}
+/*********************************************/
+
+/*********************************************/
 #pragma makr - B&Clerk share
 + (void)postGoodsEncodeWithProductrId:(NSString *)productrId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"token":kMeUnNilStr(kCurrentUser.token),@"product_id":kMeUnNilStr(productrId)};

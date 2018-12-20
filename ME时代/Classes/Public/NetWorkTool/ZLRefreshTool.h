@@ -47,6 +47,7 @@
 @property (nonatomic,assign) NSNumber *numOfsize;
 
 @property (nonatomic,assign) BOOL isDataInside;
+@property (nonatomic,assign) BOOL isCouple;
 @property (nonatomic,assign) BOOL isGet;
 
 

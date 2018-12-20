@@ -8,14 +8,51 @@
 
 #import "MEGiftHeaderView.h"
 
+@interface MEGiftHeaderView(){
+    NSArray *_arrData;
+}
+
+@property (weak, nonatomic) IBOutlet SDCycleScrollView *sdView;
+@property (weak, nonatomic) IBOutlet UIImageView *imgPic;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *consSdHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *consVIewHeight;
+
+@end
+
 @implementation MEGiftHeaderView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)awakeFromNib{
+    [super awakeFromNib];
+    _arrData = [NSArray array];
+    _sdView.contentMode = UIViewContentModeScaleAspectFill;
+    _sdView.clipsToBounds = YES;
+    _sdView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
+    _sdView.pageControlStyle =SDCycleScrollViewPageContolStyleClassic;
+    _sdView.autoScrollTimeInterval = 4;
+//    _sdView.delegate =self;
+    _sdView.backgroundColor = [UIColor clearColor];
+    _sdView.placeholderImage = kImgBannerPlaceholder;
+    _sdView.currentPageDotColor = kMEPink;
 }
-*/
+
+- (void)setUiWithModel:(id)model{
+    _sdView.height = 175*kMeFrameScaleY();
+    _consVIewHeight.constant = (166*SCREEN_WIDTH)/750;
+    _arrData = @[@"",@"",@""];
+    __block NSMutableArray *arrImage = [NSMutableArray array];
+//    [arrModel enumerateObjectsUsingBlock:^(MEAdModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+//        [arrImage addObject:kMeUnNilStr(model.ad_img)];
+//    }];
+    arrImage = [NSMutableArray arrayWithArray:_arrData];
+    _sdView.contentMode = UIViewContentModeScaleAspectFill;
+    _sdView.clipsToBounds = YES;
+    _sdView.imageURLStringsGroup = arrImage;
+}
+
++ (CGFloat)getViewHeight{
+    CGFloat height = 175*kMeFrameScaleY();
+    height+=  (166*SCREEN_WIDTH)/750;
+    return height;
+}
 
 @end

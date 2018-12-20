@@ -22,6 +22,29 @@
 
 @implementation ZLWebViewVC
 
+- (void)popBackAction:(UIButton *)btn{
+    if ([self.webView canGoBack]) {
+        [self.webView goBack];
+    }else{
+        [self.view resignFirstResponder];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+- (UIButton *)btnRight{
+    UIButton *btnRight= [UIButton buttonWithType:UIButtonTypeCustom];
+    btnRight.frame = CGRectMake(0, 0, 70, 25);
+    [btnRight setImage:[UIImage imageNamed:@"inc-xz"] forState:UIControlStateNormal];
+    [btnRight setTitle:@"返回" forState:UIControlStateNormal];
+    btnRight.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 26);
+    btnRight.titleEdgeInsets = UIEdgeInsetsMake(0, -14, 0, 0);
+    [btnRight setTitleColor:[UIColor colorWithHexString:@"e3e3e3"] forState:UIControlStateNormal];
+    btnRight.titleLabel.font = kMeFont(15);
+    [btnRight setTitleColor:kMEblack forState:UIControlStateNormal];
+    [btnRight addTarget:self action:@selector(popBackAction:) forControlEvents:UIControlEventTouchUpInside];
+    return btnRight;
+}
+
 #pragma mark - Dealloc
 
 - (void)dealloc {
@@ -73,7 +96,7 @@
     [self.progressView setFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height-self.progressView.frame.size.height, self.view.frame.size.width, self.progressView.frame.size.height)];
     [self.progressView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin];
     [[self webView] setDelegateViews: self];
-    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[self btnRight]];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

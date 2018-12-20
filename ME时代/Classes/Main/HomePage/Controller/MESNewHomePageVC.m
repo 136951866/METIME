@@ -29,6 +29,12 @@
 #import "MEAdvModel.h"
 #import "MEArticleDetailVC.h"
 #import "MEArticelModel.h"
+
+
+
+#import "MECoupleMailVC.h"
+#import "MEGiftVC.h"
+
 @interface MESNewHomePageVC ()<UIScrollViewDelegate,MESNewHomePageViewDelegate>{
     CGFloat _allHeight;
     NSString *_noticeStr;//通知数
@@ -282,8 +288,11 @@
 
 
 - (void)toServiceVC{
-    MEProductListVC *productList = [[MEProductListVC alloc]initWithType:MEGoodsTypeNetServiceStyle];
-    [self.navigationController pushViewController:productList animated:YES];
+#warning ---MECoupleMailVC
+    MEGiftVC *coupleVC = [[MEGiftVC alloc]init];
+    [self.navigationController pushViewController:coupleVC animated:YES];
+//    MEProductListVC *productList = [[MEProductListVC alloc]initWithType:MEGoodsTypeNetServiceStyle];
+//    [self.navigationController pushViewController:productList animated:YES];
 }
 
 - (void)toPosterVC{

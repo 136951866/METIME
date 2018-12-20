@@ -7,15 +7,32 @@
 //
 
 #import "MEGiftFooterView.h"
+#import "MEBlockTextField.h"
+
+@interface MEGiftFooterView(){
+    kMeTextBlock _contentBlock;
+}
+
+@property (weak, nonatomic) IBOutlet MEBlockTextField *tfSay;
+@property (weak, nonatomic) IBOutlet UILabel *lblPrice;
+
+@end
 
 @implementation MEGiftFooterView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)awakeFromNib{
+    [super awakeFromNib];
 }
-*/
+
+- (void)setUIWithModel:(id)model contentBlock:(kMeTextBlock)contentBlock{
+    _contentBlock = contentBlock;
+    _tfSay.text = kMeUnNilStr(@"");
+    kMeWEAKSELF
+    _tfSay.contentBlock = ^(NSString *str) {
+        kMeSTRONGSELF
+        kMeCallBlock(strongSelf->_contentBlock,str);
+    };
+    _lblPrice.text = [NSString stringWithFormat:@"¥@",kMeUnNilStr(@"100")];
+}
 
 @end

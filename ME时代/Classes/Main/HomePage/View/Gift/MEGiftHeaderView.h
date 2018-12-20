@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#define kMEGiftHeaderViewHeight (307 )
+
 @interface MEGiftHeaderView : UITableViewHeaderFooterView
+
++ (CGFloat)getViewHeight;
+- (void)setUiWithModel:(id)model;
 
 @end

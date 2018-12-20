@@ -30,7 +30,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OJA-wQ-TOj">
                             <rect key="frame" x="9" y="39" width="337" height="34"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="说点什么吧" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xYl-28-14K">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="说点什么吧" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xYl-28-14K" customClass="MEBlockTextField">
                                     <rect key="frame" x="19" y="0.0" width="299" height="34"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -51,9 +51,6 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inc-xz" translatesAutoresizingMaskIntoConstraints="NO" id="f4r-3o-K4x">
-                            <rect key="frame" x="330" y="11" width="10" height="18"/>
-                        </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5C9-7b-Kny">
                             <rect key="frame" x="9" y="12.5" width="9" height="15"/>
                             <color key="backgroundColor" red="1" green="0.53333333329999999" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -70,9 +67,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="f4r-3o-K4x" secondAttribute="trailing" constant="15" id="2ZN-Lm-Ofp"/>
                         <constraint firstItem="p9c-fV-Opt" firstAttribute="top" secondItem="jJF-bu-Bcb" secondAttribute="top" constant="8" id="RXy-cZ-ogC"/>
-                        <constraint firstItem="f4r-3o-K4x" firstAttribute="centerY" secondItem="p9c-fV-Opt" secondAttribute="centerY" id="fhO-2r-5AS"/>
                         <constraint firstItem="5C9-7b-Kny" firstAttribute="leading" secondItem="jJF-bu-Bcb" secondAttribute="leading" constant="9" id="fni-Li-JEk"/>
                         <constraint firstItem="p9c-fV-Opt" firstAttribute="centerY" secondItem="5C9-7b-Kny" secondAttribute="centerY" id="kZB-8l-uYU"/>
                         <constraint firstAttribute="height" constant="84" id="m1r-EA-ykK"/>
@@ -81,6 +76,11 @@
                         <constraint firstItem="p9c-fV-Opt" firstAttribute="leading" secondItem="jJF-bu-Bcb" secondAttribute="leading" constant="28" id="wgt-2Y-fED"/>
                         <constraint firstAttribute="bottom" secondItem="OJA-wQ-TOj" secondAttribute="bottom" constant="11" id="wzy-ys-wVu"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajK-xv-Y4z">
                     <rect key="frame" x="0.0" y="94" width="375" height="50"/>
@@ -121,10 +121,11 @@
                 <constraint firstItem="zJf-F4-RLc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="q3H-kQ-WYj"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="lblPrice" destination="ajK-xv-Y4z" id="F3y-u6-keY"/>
+                <outlet property="tfSay" destination="xYl-28-14K" id="cxV-Mh-99Y"/>
+            </connections>
             <point key="canvasLocation" x="35.5" y="103.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="inc-xz" width="10" height="18"/>
-    </resources>
 </document>

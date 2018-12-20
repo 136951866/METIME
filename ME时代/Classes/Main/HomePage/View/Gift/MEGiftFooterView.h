@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#define kMEGiftFooterViewHeight 275
+
 @interface MEGiftFooterView : UITableViewHeaderFooterView
+
+- (void)setUIWithModel:(id)model contentBlock:(kMeTextBlock)contentBlock;
 
 @end

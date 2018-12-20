@@ -13,5 +13,5 @@
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, strong) id data;
-
+@property (nonatomic, strong) id result;
 @end
