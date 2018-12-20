@@ -7,6 +7,7 @@
 //
 
 #import "MEGiftHeaderView.h"
+#import "MEAdModel.h"
 
 @interface MEGiftHeaderView(){
     NSArray *_arrData;
@@ -35,15 +36,13 @@
     _sdView.currentPageDotColor = kMEPink;
 }
 
-- (void)setUiWithModel:(id)model{
+- (void)setUiWithModel:(NSArray *)model{
     _sdView.height = 175*kMeFrameScaleY();
     _consVIewHeight.constant = (166*SCREEN_WIDTH)/750;
-    _arrData = @[@"",@"",@""];
     __block NSMutableArray *arrImage = [NSMutableArray array];
-//    [arrModel enumerateObjectsUsingBlock:^(MEAdModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-//        [arrImage addObject:kMeUnNilStr(model.ad_img)];
-//    }];
-    arrImage = [NSMutableArray arrayWithArray:_arrData];
+    [model enumerateObjectsUsingBlock:^(MEAdModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        [arrImage addObject:kMeUnNilStr(model.ad_img)];
+    }];
     _sdView.contentMode = UIViewContentModeScaleAspectFill;
     _sdView.clipsToBounds = YES;
     _sdView.imageURLStringsGroup = arrImage;

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class MEShoppingCartModel;
 const static CGFloat kMEGiftMainContentCellHeight = 85;
 
 @interface MEGiftMainContentCell : UITableViewCell
@@ -22,5 +23,5 @@ const static CGFloat kMEGiftMainContentCellHeight = 85;
  */
 @property (nonatomic, copy) kMeLblBlock CutBlock;
 
-- (void)setUIWIthModel:(id)model;
+- (void)setUIWIthModel:(MEShoppingCartModel *)model;
 @end

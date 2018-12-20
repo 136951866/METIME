@@ -20,6 +20,26 @@
 @implementation MEPublicNetWorkTool
 
 /*********************************************/
+#pragma makr - gift
++ (void)postAgetGiftBannerWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{@"tool":@"1",
+                          };
+    NSString *url = kGetApiWithUrl(MEIPcommonGetGiftBanner);
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool showMessage:kMeUnNilStr(res.message) view:kMeCurrentWindow];
+        }else{
+            [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
+
+
+/*********************************************/
 #pragma makr - couple
 //卷详情
 + (void)postCoupleDetailWithProductrId:(NSString *)productrId successBlock:(kMeDictionaryBlock)successBlock failure:(kMeObjBlock)failure{
@@ -876,7 +896,7 @@
 + (void)postAddGoodForShopWithAttrModel:(MEShoppingCartAttrModel *)attrModel successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = [attrModel mj_keyValues];
     NSString *url = kGetApiWithUrl(MEIPcommonCartAddCart);
-    MBProgressHUD *HUD = [self commitWithHUD:@"加入购物车中..."];
+    MBProgressHUD *HUD = [self commitWithHUD:@"加入中..."];
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
          [MEShowViewTool SHOWHUDWITHHUD:HUD test:@"加入成功"];
         kMeCallBlock(successBlock,responseObject);

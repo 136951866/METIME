@@ -26,6 +26,7 @@
 //@property (nonatomic, assign) NSInteger userid;
 @property (nonatomic, assign) NSInteger specId;
 @property (nonatomic, assign) NSInteger store_id;
+@property (nonatomic, assign) NSInteger type;
 //来自好友的分享
 @property (nonatomic, copy) NSString *uid;
 - (instancetype)initWithGoodmodel:(MEGoodDetailModel *)model;

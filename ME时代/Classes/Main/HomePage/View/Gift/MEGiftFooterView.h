@@ -12,6 +12,7 @@
 
 @interface MEGiftFooterView : UITableViewHeaderFooterView
 
-- (void)setUIWithModel:(id)model contentBlock:(kMeTextBlock)contentBlock;
+- (void)setUIWithModel:(NSString *)allPrice say:(NSString*)say contentBlock:(kMeTextBlock)contentBlock;
+@property (nonatomic, copy) kMeBasicBlock toAcount;
 
 @end

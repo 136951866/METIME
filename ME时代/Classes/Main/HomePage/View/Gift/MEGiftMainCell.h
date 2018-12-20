@@ -10,7 +10,7 @@
 
 @interface MEGiftMainCell : UITableViewCell
 
-- (void)setUIWithModel:(id)model block:(kMeBasicBlock)block;
-+ (CGFloat)getCellHeightWithModel:(id )model;
-
+- (void)setUIWithModel:(NSArray *)model block:(kMeBasicBlock)block;
++ (CGFloat)getCellHeightWithModel:(NSArray *)model;
+@property (nonatomic, copy) kMeTextBlock allPriceBlock;
 @end

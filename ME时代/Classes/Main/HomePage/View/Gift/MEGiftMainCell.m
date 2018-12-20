@@ -8,6 +8,7 @@
 
 #import "MEGiftMainCell.h"
 #import "MEGiftMainContentCell.h"
+#import "MEShoppingCartModel.h"
 @interface MEGiftMainCell ()<UITableViewDelegate,UITableViewDataSource>{
     kMeBasicBlock _block;
 
@@ -15,9 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableVIew;
 @property (weak, nonatomic) IBOutlet UILabel *lblNum;
-@property (nonatomic, strong) NSArray *arrData;
-@property (nonatomic, strong) id model;
-
+@property (nonatomic, strong) NSMutableArray *arrData;
 
 
 @end
@@ -28,7 +27,7 @@
     [super awakeFromNib];
     self.selectionStyle = 0;
     self.backgroundColor = [UIColor clearColor];
-    _arrData = [NSArray array];
+    _arrData = [NSMutableArray array];
     [_tableVIew registerNib:[UINib nibWithNibName:NSStringFromClass([MEGiftMainContentCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEGiftMainContentCell class])];
     _tableVIew.rowHeight = kMEGiftMainContentCellHeight;
     _tableVIew.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -41,16 +40,15 @@
     // Initialization code
 }
 
-- (void)setUIWithModel:(id)model block:(kMeBasicBlock)block{
+- (void)setUIWithModel:(NSArray *)model block:(kMeBasicBlock)block{
     _block = block;
-    self.model = model;
-    _arrData = @[@"",@"",@""];
+    _arrData = [NSMutableArray arrayWithArray:model];
     _lblNum.text = [NSString stringWithFormat:@"共%@件",@(_arrData.count)];
     [self.tableVIew reloadData];
 }
 
 - (IBAction)continuAction:(UIButton *)sender {
-    
+    kMeCallBlock(_block);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -59,18 +57,41 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MEGiftMainContentCell *cell=[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEGiftMainContentCell class]) forIndexPath:indexPath];
-    id model = _arrData[indexPath.row];
+    MEShoppingCartModel *goodsModel = _arrData[indexPath.row];
+    kMeWEAKSELF
+    cell.AddBlock = ^(UILabel *countLabel) {
+        kMeSTRONGSELF
+        goodsModel.goods_num = [countLabel.text integerValue];
+        [strongSelf.arrData replaceObjectAtIndex:indexPath.row withObject:goodsModel];
+        [strongSelf countPrice];
+    };
+    cell.CutBlock = ^(UILabel *countLabel) {
+        kMeSTRONGSELF
+        goodsModel.goods_num = [countLabel.text integerValue];
+        [strongSelf.arrData replaceObjectAtIndex:indexPath.row withObject:goodsModel];
+        [strongSelf countPrice];
+    };
+    MEShoppingCartModel *model = _arrData[indexPath.row];
     [cell setUIWIthModel:model];
     return cell;
 }
 
-+ (CGFloat)getCellHeightWithModel:(id )model{
-    NSArray *arr = @[@"",@"",@""];
-    if(arr.count == 0){
+- (void)countPrice{
+    double totlePrice = 0.0;
+    for (MEShoppingCartModel *goodsModel in _arrData) {
+        double price = [goodsModel.money doubleValue];
+        totlePrice += price * goodsModel.goods_num ;
+    }
+    NSString *price= [NSString stringWithFormat:@"￥%.2f", totlePrice];
+    kMeCallBlock(_allPriceBlock,price);
+}
+    
++ (CGFloat)getCellHeightWithModel:(NSArray *)model{
+    if(model.count == 0){
         return 0;
     }
     CGFloat height = 40;
-    height+=arr.count *kMEGiftMainContentCellHeight;
+    height+=model.count *kMEGiftMainContentCellHeight;
     return height;
 }
 

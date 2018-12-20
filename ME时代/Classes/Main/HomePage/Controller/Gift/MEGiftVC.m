@@ -11,34 +11,110 @@
 #import "MEGiftHeaderView.h"
 #import "MEGiftFooterView.h"
 #import "MEGiftMainNilCell.h"
+#import "MEAdModel.h"
+#import "MEShoppingCartModel.h"
+#import "MEProductGitfListVC.h"
+#import "MEMakeOrderVC.h"
+#import "MEShopCartMakeOrderVC.h"
 
-@interface MEGiftVC ()<UITableViewDelegate,UITableViewDataSource>{
-    id _model;
-    BOOL _isNil;
+@interface MEGiftVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
+    NSArray *_arrDv;
+    NSString *_allPrice;
+    NSString *_strMessage;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) MEGiftHeaderView         *headerView;
 @property (nonatomic, strong) MEGiftFooterView         *footerView;
+@property (nonatomic, strong) ZLRefreshTool         *refresh;
 @end
 
 @implementation MEGiftVC
 
+- (void)dealloc{
+    kNSNotificationCenterDealloc
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"许愿屋";
-    _isNil =YES;
+    _allPrice = @"¥0";
+    _strMessage = @"";
+    _arrDv = [NSArray array];
+    [self.view addSubview:self.tableView];
     self.view.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestNetWork)];
-    [self.tableView.mj_header beginRefreshing];
-
+//    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestNetWork)];
+//    [self.tableView.mj_header beginRefreshing];
+    [self.refresh addHeadRefreshView];
+    kShopCartReload
     // Do any additional setup after loading the view.
 }
 
+- (NSDictionary *)requestParameter{
+    if(self.refresh.pageIndex == 1){
+        [self requestNetWork];
+    }
+    return @{@"token":kMeUnNilStr(kCurrentUser.token),
+             @"product_type":@(6),
+             };
+}
+
+- (void)countPrice{
+    double totlePrice = 0.0;
+    for (MEShoppingCartModel *goodsModel in self.refresh.arrData) {
+        double price = [goodsModel.money doubleValue];
+        totlePrice += price * goodsModel.goods_num ;
+    }
+    NSString *price= [NSString stringWithFormat:@"￥%.2f", totlePrice];
+    _allPrice = price;
+}
+
+- (void)handleResponse:(id)data{
+    if(![data isKindOfClass:[NSArray class]]){
+        return;
+    }
+    [self.refresh.arrData addObjectsFromArray:[MEShoppingCartModel mj_objectArrayWithKeyValuesArray:data]];
+    [self countPrice];
+    kMeWEAKSELF
+    [self.footerView setUIWithModel:_allPrice say:_strMessage contentBlock:^(NSString *str) {
+        kMeSTRONGSELF
+        strongSelf->_strMessage = str;
+    }];
+    self.tableView.tableFooterView = self.footerView;
+    [self.tableView reloadData];
+}
+
 - (void)requestNetWork{
-    [self.view addSubview:self.tableView];
-    [self.headerView setUiWithModel:nil];
-    [self.tableView.mj_header endRefreshing];
+    kMeWEAKSELF
+    [MEPublicNetWorkTool postAgetGiftBannerWithsuccessBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        strongSelf->_arrDv = [MEAdModel mj_objectArrayWithKeyValuesArray:responseObject.data];
+        [strongSelf.headerView setUiWithModel:strongSelf->_arrDv];
+        strongSelf.tableView.tableHeaderView = strongSelf.headerView;
+        [strongSelf.tableView reloadData];
+    } failure:^(id object) {
+        kMeSTRONGSELF
+        [strongSelf.navigationController popViewControllerAnimated:YES];
+        
+    }];
+//    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+//    dispatch_group_t group = dispatch_group_create();
+//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    kMeWEAKSELF
+//    dispatch_group_async(group, queue, ^{
+//
+//    });
+//    dispatch_group_async(group, queue, ^{
+//        dispatch_semaphore_signal(semaphore);
+//    });
+//    dispatch_group_notify(group, queue, ^{
+//        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+//        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//
+//        });
+//    });
+
 }
 
 #pragma mark - tableView deleagte and sourcedata
@@ -48,33 +124,42 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(_isNil){
+    if(self.refresh.arrData.count == 0){
         MEGiftMainNilCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEGiftMainNilCell class]) forIndexPath:indexPath];
         return cell;
     }
     MEGiftMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEGiftMainCell class]) forIndexPath:indexPath];
-    [cell setUIWithModel:_model block:^{
-        
+    kMeWEAKSELF
+    cell.allPriceBlock = ^(NSString *str) {
+        kMeSTRONGSELF
+        strongSelf->_allPrice = str;
+        [self.footerView setUIWithModel:strongSelf->_allPrice  say:strongSelf->_strMessage contentBlock:^(NSString *str) {
+            kMeSTRONGSELF
+            strongSelf->_strMessage = str;
+        }];
+        self.tableView.tableFooterView = self.footerView;
+        [self.tableView reloadData];
+    };
+    [cell setUIWithModel:self.refresh.arrData block:^{
+        kMeSTRONGSELF
+        MEProductGitfListVC *vc = [[MEProductGitfListVC alloc]init];
+        [strongSelf.navigationController pushViewController:vc animated:YES];
     }];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(_isNil){
+    if(self.refresh.arrData.count == 0){
         return kMEGiftMainNilCellHeight;
     }
-    return [MEGiftMainCell getCellHeightWithModel:_model];
+    return [MEGiftMainCell getCellHeightWithModel:self.refresh.arrData];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    _isNil = !_isNil;
-    [self.headerView setUiWithModel:nil];
-    [self.footerView setUIWithModel:nil contentBlock:^(NSString *str) {
-        
-    }];
-    self.tableView.tableHeaderView = self.headerView;
-     self.tableView.tableFooterView = self.footerView;
-    [self.tableView reloadData];
+    if(self.refresh.arrData.count == 0){
+        MEProductGitfListVC *vc = [[MEProductGitfListVC alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (UITableView *)tableView{
@@ -89,6 +174,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     }
     return _tableView;
 }
@@ -105,8 +191,34 @@
     if(!_footerView){
         _footerView = [[[NSBundle mainBundle]loadNibNamed:@"MEGiftFooterView" owner:nil options:nil] lastObject];
         _footerView.frame =CGRectMake(0, 0, SCREEN_WIDTH, kMEGiftFooterViewHeight);
+        kMeWEAKSELF
+        _footerView.toAcount = ^{
+            kMeSTRONGSELF
+            if(strongSelf.refresh.arrData.count == 0){
+                [MEShowViewTool showMessage:@"请选择礼物" view:strongSelf.view];
+            }else{
+                MEShopCartMakeOrderVC *ovc = [[MEShopCartMakeOrderVC alloc]initWithIsinteral:NO WithArrChartGood:strongSelf.refresh.arrData];
+                ovc.isGift = YES;
+                ovc.giftMessage = kMeUnNilStr(strongSelf->_strMessage);
+                ovc.PayFinishBlock = ^{
+                    kMeSTRONGSELF
+                    [strongSelf.refresh reload];
+                };
+                [strongSelf.navigationController pushViewController:ovc animated:YES];
+            }
+        };
     }
     return _footerView;
+}
+
+
+- (ZLRefreshTool *)refresh{
+    if(!_refresh){
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonCartCartGoodsList)];
+        _refresh.delegate = self;
+        _refresh.showFailView = NO;
+    }
+    return _refresh;
 }
 
 @end

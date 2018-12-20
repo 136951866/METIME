@@ -13,5 +13,5 @@
 - (instancetype)initWithId:(NSInteger)detailsId;
 //来自好友分享
 @property(nonatomic, copy) NSString *uid;
-
+@property (nonatomic, assign) BOOL isGift;
 @end

@@ -75,6 +75,9 @@
 }
 
 - (void)initSomeThing {
+    if(self.isGift){
+        _strMeaasge = self.giftMessage;
+    }
     __block CGFloat p = 0;
     [_arrCartModel enumerateObjectsUsingBlock:^(MEShoppingCartModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
        p += [obj.money floatValue] * obj.goods_num;
@@ -181,8 +184,8 @@
     }else{
         MEMakrOrderCellStyle type = [_arrType[indexPath.row] integerValue];
         MEMakeOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEMakeOrderCell class]) forIndexPath:indexPath];
-        [cell setUIWithType:type model:@""];
         if(type == MEMakrOrderCellMessage){
+            [cell setUIWithType:type model:kMeUnNilStr(_strMeaasge)];
             kMeWEAKSELF
             cell.messageBlock = ^(NSString *str) {
                 NSLog(@"%@",str);
@@ -193,6 +196,8 @@
                 kMeSTRONGSELF
                 [strongSelf.view endEditing:YES];
             };
+        }else{
+            [cell setUIWithType:type model:@""];
         }
         return cell;
     }

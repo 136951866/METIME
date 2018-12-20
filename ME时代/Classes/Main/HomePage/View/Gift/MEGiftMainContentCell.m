@@ -7,8 +7,11 @@
 //
 
 #import "MEGiftMainContentCell.h"
+#import "MEShoppingCartModel.h"
 
-@interface MEGiftMainContentCell ()
+@interface MEGiftMainContentCell (){
+    MEShoppingCartModel *_goodsModel;
+}
 
 @property (weak, nonatomic) IBOutlet UIImageView *goodImageView;
 @property (weak, nonatomic) IBOutlet UILabel *lblSku;
@@ -29,8 +32,13 @@
     // Initialization code
 }
 
-- (void)setUIWIthModel:(id )model{
-    
+- (void)setUIWIthModel:(MEShoppingCartModel *)goodsModel{
+    _goodsModel = goodsModel;
+    [_goodImageView sd_setImageWithURL:[NSURL URLWithString:MELoadQiniuImagesWithUrl(kMeUnNilStr(goodsModel.images))] placeholderImage:kImgPlaceholder];
+    self.countLabel.text = [NSString stringWithFormat:@"%ld", goodsModel.goods_num];
+    self.goodsNameLabel.text = goodsModel.title;
+    self.priceLabel.text = [NSString stringWithFormat:@"¥%@元", goodsModel.money];
+    self.lblSku.text = kMeUnNilStr(goodsModel.spec_name);
 }
 
 //减
@@ -38,37 +46,42 @@
     NSInteger count = [self.countLabel.text integerValue];
     count--;
     if (count <= 0) {
-        return;
+        NSString *strCartId =  @(_goodsModel.product_cart_id).description;
+        [MEPublicNetWorkTool postDelGoodForShopWithMemberId:0 productCartId:strCartId successBlock:^(ZLRequestResponse *responseObject) {
+           kNoticeReloadShopCart
+        } failure:^(id object) {
+            
+        }];
+    }else{
+        kMeWEAKSELF
+        [MEPublicNetWorkTool posteditCartNumWithShopCartId:_goodsModel.product_cart_id num:count successBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            NSString *countStr = [NSString stringWithFormat:@"%ld", count];
+            strongSelf.countLabel.text = countStr;
+            kMeCallBlock(strongSelf.CutBlock,strongSelf.countLabel);
+        } failure:^(id object) {
+            
+        }];
     }
-    
-//    kMeWEAKSELF
-//    [MEPublicNetWorkTool posteditCartNumWithShopCartId:_goodsModel.product_cart_id num:count successBlock:^(ZLRequestResponse *responseObject) {
-//        kMeSTRONGSELF
-        NSString *countStr = [NSString stringWithFormat:@"%ld", count];
-        self.countLabel.text = countStr;
-        kMeCallBlock(self.CutBlock,self.countLabel);
-//    } failure:^(id object) {
-//
-//    }];
 }
 
 //加
 - (IBAction)add:(UIButton *)sender {
     NSInteger count = [self.countLabel.text integerValue];
     count++;
-//    if(count>_goodsModel.stock){
-//        [MEShowViewTool showMessage:@"库存不足" view:kMeCurrentWindow];
-//        return;
-//    }
-//    kMeWEAKSELF
-//    [MEPublicNetWorkTool posteditCartNumWithShopCartId:_goodsModel.product_cart_id num:count successBlock:^(ZLRequestResponse *responseObject) {
-//        kMeSTRONGSELF
+    if(count>_goodsModel.stock){
+        [MEShowViewTool showMessage:@"库存不足" view:kMeCurrentWindow];
+        return;
+    }
+    kMeWEAKSELF
+    [MEPublicNetWorkTool posteditCartNumWithShopCartId:_goodsModel.product_cart_id num:count successBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
         NSString *countStr = [NSString stringWithFormat:@"%ld", count];
-        self.countLabel.text = countStr;
-        kMeCallBlock(self.AddBlock,self.countLabel);
-//    } failure:^(id object) {
-//
-//    }];
+        strongSelf.countLabel.text = countStr;
+        kMeCallBlock(strongSelf.AddBlock,strongSelf.countLabel);
+    } failure:^(id object) {
+        
+    }];
 }
 
 

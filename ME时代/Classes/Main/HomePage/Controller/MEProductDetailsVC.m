@@ -104,9 +104,15 @@ kTDWebViewCellDidFinishLoadNotificationMethod
         if(strongSelf->_isShopping){
             //加入购物车
             MEShoppingCartAttrModel *attrModle = [[MEShoppingCartAttrModel alloc]initWithGoodmodel:strongSelf->_model];
+            if(strongSelf.isGift){
+                attrModle.type = 6;
+            }
             attrModle.uid = kMeUnNilStr(strongSelf.uid);
             [MEPublicNetWorkTool postAddGoodForShopWithAttrModel:attrModle successBlock:^(ZLRequestResponse *responseObject) {
                 kNoticeReloadShopCart
+                if(strongSelf.isGift){
+                    [MEShowViewTool showMessage:@"礼物加入成功,请返回" view:strongSelf.view];
+                }
             } failure:^(id object) {
             }];
         }else{
@@ -204,6 +210,7 @@ kTDWebViewCellDidFinishLoadNotificationMethod
 - (MEProductDetailsBottomView *)bottomView{
     if(!_bottomView){
         _bottomView = [[[NSBundle mainBundle]loadNibNamed:@"MEProductDetailsBottomView" owner:nil options:nil] lastObject];
+        _bottomView.btnGift.hidden = !self.isGift;
         kMeWEAKSELF
         _bottomView.buyBlock = ^{
             kMeSTRONGSELF

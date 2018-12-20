@@ -11,7 +11,8 @@
 @interface MEShopCartMakeOrderVC : MEBaseVC
 
 - (instancetype)initWithIsinteral:(BOOL)isInteral WithArrChartGood:(NSArray *)arrCartModel;
-
+@property (nonatomic, assign) BOOL isGift;
+@property (nonatomic, copy) NSString *giftMessage;
 @property (nonatomic, copy)kMeBasicBlock PayFinishBlock;
 
 @end

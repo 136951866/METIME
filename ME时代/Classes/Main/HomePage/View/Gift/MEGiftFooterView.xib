@@ -107,6 +107,9 @@
                             <real key="value" value="5"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="toaccountAction:" destination="-2" eventType="touchUpInside" id="z4e-MF-Trw"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -122,6 +125,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="btnGift" destination="zJf-F4-RLc" id="5AC-fC-phS"/>
                 <outlet property="lblPrice" destination="ajK-xv-Y4z" id="F3y-u6-keY"/>
                 <outlet property="tfSay" destination="xYl-28-14K" id="cxV-Mh-99Y"/>
             </connections>

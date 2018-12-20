@@ -16,6 +16,7 @@
         self.token = kMeUnNilStr(kCurrentUser.token);
         self.goodsId = model.product_id;
         self.goodsNum = model.buynum;
+        self.type = 0;
 //        self.userid = kCurrentUser.userId;
         NSMutableArray *arrSpc = [NSMutableArray array];
         [model.arrSelect enumerateObjectsUsingBlock:^(NSNumber *obj, NSUInteger idx, BOOL * _Nonnull stop) {\

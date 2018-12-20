@@ -40,6 +40,7 @@ const static CGFloat kTitleWdith = 92;
     _lblTitle.text = _arrType[type];
     if(type == MEMakrOrderCellMessage){
         kMeWEAKSELF
+        _txMessage.text = model;
         _txMessage.contentBlock = ^(NSString *str) {
             kMeSTRONGSELF
             kMeCallBlock(strongSelf.messageBlock,str);

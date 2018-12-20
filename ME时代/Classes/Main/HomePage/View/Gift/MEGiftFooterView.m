@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet MEBlockTextField *tfSay;
 @property (weak, nonatomic) IBOutlet UILabel *lblPrice;
+@property (weak, nonatomic) IBOutlet UIButton *btnGift;
 
 @end
 
@@ -22,17 +23,22 @@
 
 - (void)awakeFromNib{
     [super awakeFromNib];
+    [_btnGift addTarget:self action:@selector(toa:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)setUIWithModel:(id)model contentBlock:(kMeTextBlock)contentBlock{
+- (void)setUIWithModel:(NSString *)allPrice say:(NSString*)say contentBlock:(kMeTextBlock)contentBlock{
     _contentBlock = contentBlock;
-    _tfSay.text = kMeUnNilStr(@"");
+    _tfSay.text = kMeUnNilStr(say);
     kMeWEAKSELF
     _tfSay.contentBlock = ^(NSString *str) {
         kMeSTRONGSELF
         kMeCallBlock(strongSelf->_contentBlock,str);
     };
-    _lblPrice.text = [NSString stringWithFormat:@"¥@",kMeUnNilStr(@"100")];
+    _lblPrice.text = [NSString stringWithFormat:@"%@",kMeUnNilStr(allPrice)];
+}
+
+- (void)toa:(UIButton *)btn{
+    kMeCallBlock(_toAcount);
 }
 
 @end

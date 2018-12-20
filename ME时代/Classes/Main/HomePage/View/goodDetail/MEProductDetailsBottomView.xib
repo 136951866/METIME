@@ -115,19 +115,39 @@
                         <constraint firstAttribute="trailing" secondItem="Fzz-PT-81M" secondAttribute="trailing" id="q2D-NF-gQT"/>
                     </constraints>
                 </view>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fk-GY-Ik6">
+                    <rect key="frame" x="139" y="5" width="226" height="40"/>
+                    <color key="backgroundColor" red="1" green="0.52941176469999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="生成礼物">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="giftAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="hem-tp-ORq"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="KFz-l0-O8s" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="3N3-iC-eWN"/>
                 <constraint firstItem="Zhr-6g-dHw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3OU-Jp-Ppq"/>
+                <constraint firstItem="1fk-GY-Ik6" firstAttribute="bottom" secondItem="KFz-l0-O8s" secondAttribute="bottom" id="4mH-o4-7nF"/>
                 <constraint firstItem="Zhr-6g-dHw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="597-5y-nKi"/>
                 <constraint firstItem="KFz-l0-O8s" firstAttribute="leading" secondItem="Zhr-6g-dHw" secondAttribute="trailing" id="93v-GP-WO9"/>
+                <constraint firstItem="1fk-GY-Ik6" firstAttribute="top" secondItem="KFz-l0-O8s" secondAttribute="top" id="9G9-gg-1LF"/>
                 <constraint firstAttribute="trailing" secondItem="KFz-l0-O8s" secondAttribute="trailing" constant="10" id="EBd-Yx-o4a"/>
+                <constraint firstItem="1fk-GY-Ik6" firstAttribute="leading" secondItem="KFz-l0-O8s" secondAttribute="leading" id="GFF-Cn-xER"/>
+                <constraint firstItem="1fk-GY-Ik6" firstAttribute="trailing" secondItem="KFz-l0-O8s" secondAttribute="trailing" id="H6I-eG-3HB"/>
                 <constraint firstAttribute="bottom" secondItem="Zhr-6g-dHw" secondAttribute="bottom" id="qrL-PA-PG4"/>
                 <constraint firstAttribute="bottom" secondItem="KFz-l0-O8s" secondAttribute="bottom" constant="5" id="tJk-Zj-4bQ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="btnGift" destination="1fk-GY-Ik6" id="6bm-hx-QNB"/>
                 <outlet property="btnShare" destination="0B0-9w-x5u" id="qaO-jh-RBh"/>
                 <outlet property="consPurchaseWdith" destination="BDN-NY-25B" id="h8o-gz-sFe"/>
             </connections>

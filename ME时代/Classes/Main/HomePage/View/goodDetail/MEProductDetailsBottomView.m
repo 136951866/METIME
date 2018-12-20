@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consPurchaseWdith;
 @property (weak, nonatomic) IBOutlet MEMidelButton *btnShare;
 
+
 @end
 
 @implementation MEProductDetailsBottomView
@@ -151,6 +152,9 @@
     kMeCallBlock(self.customBlock);
 }
 
+- (IBAction)giftAction:(UIButton *)sender {
+    kMeCallBlock(self.addShopcartBlock);
+}
 
 
 @end

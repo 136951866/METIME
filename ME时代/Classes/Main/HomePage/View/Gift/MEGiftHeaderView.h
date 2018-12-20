@@ -13,6 +13,6 @@
 @interface MEGiftHeaderView : UITableViewHeaderFooterView
 
 + (CGFloat)getViewHeight;
-- (void)setUiWithModel:(id)model;
+- (void)setUiWithModel:(NSArray*)model;
 
 @end

@@ -23,6 +23,9 @@
 
 + (void)getUserGetTokenByFourWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 
+/*********************************************/
+#pragma makr - gift
++ (void)postAgetGiftBannerWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 
 /*********************************************/
 #pragma makr - couple

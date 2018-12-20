@@ -372,6 +372,7 @@
 		3683F7BE21CBAF22008139B0 /* MEGiftVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3683F7BD21CBAF22008139B0 /* MEGiftVC.m */; };
 		3683F7C221CBBBC7008139B0 /* MEGiftMainNilCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3683F7C021CBBBC7008139B0 /* MEGiftMainNilCell.m */; };
 		3683F7C321CBBBC7008139B0 /* MEGiftMainNilCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3683F7C121CBBBC7008139B0 /* MEGiftMainNilCell.xib */; };
+		3683F7C621CBC7DD008139B0 /* MEProductGitfListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3683F7C521CBC7DD008139B0 /* MEProductGitfListVC.m */; };
 		368ACD8F21CA1D0E009B87E6 /* MEGiftHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 368ACD8E21CA1D0E009B87E6 /* MEGiftHeaderView.m */; };
 		368ACD9121CA1D1B009B87E6 /* MEGiftHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368ACD9021CA1D1B009B87E6 /* MEGiftHeaderView.xib */; };
 		368ACD9421CA1E02009B87E6 /* MEGiftFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 368ACD9321CA1E02009B87E6 /* MEGiftFooterView.m */; };
@@ -1196,6 +1197,8 @@
 		3683F7BF21CBBBC7008139B0 /* MEGiftMainNilCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEGiftMainNilCell.h; sourceTree = "<group>"; };
 		3683F7C021CBBBC7008139B0 /* MEGiftMainNilCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEGiftMainNilCell.m; sourceTree = "<group>"; };
 		3683F7C121CBBBC7008139B0 /* MEGiftMainNilCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEGiftMainNilCell.xib; sourceTree = "<group>"; };
+		3683F7C421CBC7DD008139B0 /* MEProductGitfListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEProductGitfListVC.h; sourceTree = "<group>"; };
+		3683F7C521CBC7DD008139B0 /* MEProductGitfListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEProductGitfListVC.m; sourceTree = "<group>"; };
 		368ACD8D21CA1D0E009B87E6 /* MEGiftHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEGiftHeaderView.h; sourceTree = "<group>"; };
 		368ACD8E21CA1D0E009B87E6 /* MEGiftHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEGiftHeaderView.m; sourceTree = "<group>"; };
 		368ACD9021CA1D1B009B87E6 /* MEGiftHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEGiftHeaderView.xib; sourceTree = "<group>"; };
@@ -2476,6 +2479,8 @@
 			children = (
 				3683F7BC21CBAF22008139B0 /* MEGiftVC.h */,
 				3683F7BD21CBAF22008139B0 /* MEGiftVC.m */,
+				3683F7C421CBC7DD008139B0 /* MEProductGitfListVC.h */,
+				3683F7C521CBC7DD008139B0 /* MEProductGitfListVC.m */,
 			);
 			path = Gift;
 			sourceTree = "<group>";
@@ -4087,6 +4092,7 @@
 				EB28101221533123006A765A /* NSObject+MEDebugDescription.m in Sources */,
 				EB6D029C2151D9380053B19E /* NSArray+MEErrorHandle.m in Sources */,
 				367C84E9214799B800BEC7B1 /* MEMyDistrbutionVC.m in Sources */,
+				3683F7C621CBC7DD008139B0 /* MEProductGitfListVC.m in Sources */,
 				3628E7EB21C0E15F00D5405B /* MEAppointmentDetailBootomView.m in Sources */,
 				36F0FE7A215E2F0F006D30BB /* MEPayModel.m in Sources */,
 				EB2E1ABC2150E22D00A26BE3 /* MEAddAddressAttrModel.m in Sources */,

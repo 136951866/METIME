@@ -18,4 +18,5 @@
 
 //来自好友分享
 @property(nonatomic, copy) NSString *uid;
+
 @end

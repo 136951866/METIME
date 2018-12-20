@@ -18,5 +18,7 @@ const static CGFloat kMEProductDetailsBottomViewHeight  = 50;
 @property (nonatomic, copy) NSString *productId;
 //用户B clerk 分享
 @property (nonatomic, assign) NSInteger is_clerk_share;
+//@property (nonatomic, assign) BOOL isGift;
+@property (weak, nonatomic) IBOutlet UIButton *btnGift;
 
 @end
