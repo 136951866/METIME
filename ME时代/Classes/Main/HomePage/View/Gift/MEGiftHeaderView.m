@@ -24,6 +24,9 @@
 
 - (void)awakeFromNib{
     [super awakeFromNib];
+    self.backgroundColor = kMEPink;
+    _consSdHeight.constant = 175*kMeFrameScaleY();
+    _consVIewHeight.constant = (166*SCREEN_WIDTH)/750;
     _arrData = [NSArray array];
     _sdView.contentMode = UIViewContentModeScaleAspectFill;
     _sdView.clipsToBounds = YES;
@@ -37,8 +40,6 @@
 }
 
 - (void)setUiWithModel:(NSArray *)model{
-    _sdView.height = 175*kMeFrameScaleY();
-    _consVIewHeight.constant = (166*SCREEN_WIDTH)/750;
     __block NSMutableArray *arrImage = [NSMutableArray array];
     [model enumerateObjectsUsingBlock:^(MEAdModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         [arrImage addObject:kMeUnNilStr(model.ad_img)];

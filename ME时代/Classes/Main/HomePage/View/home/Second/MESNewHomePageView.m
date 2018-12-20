@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consAdvHeight;
 
 //3个top
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *consVMargin;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consFMargin;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consSMargin;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consTMargin;
@@ -69,7 +70,7 @@
     _consFMargin.constant = 10-3.75;//kMarginS;
     _consSMargin.constant = 2.5;//kMarginS;
     _consTMargin.constant = 10-3.75;//kMarginS;
-    
+    _consVMargin.constant = 2.5;
     _lblPoster.adjustsFontSizeToFitWidth = YES;
     _lblArticle.adjustsFontSizeToFitWidth = YES;
     _sdView.contentMode = UIViewContentModeScaleToFill;
@@ -139,16 +140,30 @@
         [_deleate toServiceVC];
     }
 }
-
-- (IBAction)posterAction:(UIButton *)sender {
+- (IBAction)posterNewAction:(UIButton *)sender {
     if ([_deleate respondsToSelector:@selector(toPosterVC)]) {
         [_deleate toPosterVC];
     }
 }
 
-- (IBAction)articelAction:(UIButton *)sender {
+- (IBAction)articelNewAction:(UIButton *)sender {
     if ([_deleate respondsToSelector:@selector(toArticelVC)]) {
         [_deleate toArticelVC];
+    }
+}
+
+
+- (IBAction)posterAction:(UIButton *)sender {
+    //couple
+    if ([_deleate respondsToSelector:@selector(toCoupleVC)]) {
+        [_deleate toCoupleVC];
+    }
+}
+
+- (IBAction)articelAction:(UIButton *)sender {
+    //gift
+    if ([_deleate respondsToSelector:@selector(toGiftVC)]) {
+        [_deleate toGiftVC];
     }
 }
 
@@ -174,7 +189,7 @@
 + (CGFloat)getViewHeight{
     CGFloat height = 0;
     //top margin 4个top相加,2个有阴影
-    CGFloat kMarginS = 25;//30;//*kMeFrameScaleX();
+    CGFloat kMarginS = 25+2.5;//30;//*kMeFrameScaleX();
     CGFloat kMargin = 12;
     //top margin
     CGFloat topMargin = 224 * kMeFrameScaleX();
@@ -187,10 +202,13 @@
     CGFloat scellWdith = ((SCREEN_WIDTH - (k4ImageMargin))/2);
     //4个image的高度 的height 340 224
     CGFloat scellHeight = (scellWdith * 224)/340;
+    
+    
+    ///轮播的w
     CGFloat tcellWdith = SCREEN_WIDTH - (kMargin * 2);
     //轮播的高度
     CGFloat tcellHeight =  (tcellWdith * 90)/351;
-    height = topMargin + advHeight+fcellHeight+(scellHeight * 2)+tcellHeight+(kMarginS);
+    height = topMargin + advHeight+fcellHeight+(scellHeight * 3)+tcellHeight+(kMarginS);
 //    if(height<(SCREEN_HEIGHT)){
 //        height = (SCREEN_HEIGHT);
 //    }

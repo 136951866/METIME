@@ -18,7 +18,7 @@
 #import "MEShoppingCartMakeOrderAttrModel.h"
 #import "MEPayStatusVC.h"
 #import "MEProductShoppingCartVC.h"
-
+#import "MEGiftVC.h"
 @interface MEShopCartMakeOrderVC ()<UITableViewDelegate,UITableViewDataSource>
 {
     BOOL _hasAdress;
@@ -124,9 +124,16 @@
         }
         MEPayStatusVC *svc = [[MEPayStatusVC alloc]initWithSucessConfireBlock:^{
             kMeSTRONGSELF
-            MEProductShoppingCartVC *vc = (MEProductShoppingCartVC *)[MECommonTool getClassWtihClassName:[MEProductShoppingCartVC class] targetVC:self];
-            if(vc){
-                [strongSelf.navigationController popToViewController:vc animated:YES];
+            if(self.isGift){
+                MEGiftVC *vc = (MEGiftVC *)[MECommonTool getClassWtihClassName:[MEGiftVC class] targetVC:self];
+                if(vc){
+                    [strongSelf.navigationController popToViewController:vc animated:YES];
+                }
+            }else{
+                MEProductShoppingCartVC *vc = (MEProductShoppingCartVC *)[MECommonTool getClassWtihClassName:[MEProductShoppingCartVC class] targetVC:self];
+                if(vc){
+                    [strongSelf.navigationController popToViewController:vc animated:YES];
+                }
             }
         }];
         kMeCallBlock(_PayFinishBlock);

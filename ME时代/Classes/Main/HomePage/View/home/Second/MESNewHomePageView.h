@@ -15,6 +15,8 @@
 - (void)toServiceVC;
 - (void)toPosterVC;
 - (void)toArticelVC;
+- (void)toCoupleVC;
+- (void)toGiftVC;
 - (void)tapBackGround;
 - (void)didSdSelectItemAtIndex:(NSInteger)index;
 - (void)didAdvdSelectItemAtIndex:(NSInteger)index;
@@ -35,7 +37,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgStore;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPoster;
 @property (weak, nonatomic) IBOutlet UIImageView *imgArticle;
-
+@property (weak, nonatomic) IBOutlet UIImageView *imgCouple;
+@property (weak, nonatomic) IBOutlet UIImageView *imgGift;
 
 
 + (CGFloat)getViewHeight;

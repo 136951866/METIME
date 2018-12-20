@@ -91,6 +91,7 @@
         strongSelf->_arrDv = [MEAdModel mj_objectArrayWithKeyValuesArray:responseObject.data];
         [strongSelf.headerView setUiWithModel:strongSelf->_arrDv];
         strongSelf.tableView.tableHeaderView = strongSelf.headerView;
+        strongSelf.tableView.tableHeaderView.backgroundColor = kMEPink;
         [strongSelf.tableView reloadData];
     } failure:^(id object) {
         kMeSTRONGSELF
@@ -171,6 +172,7 @@
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.tableFooterView = self.footerView;
         _tableView.tableHeaderView = self.headerView;
+        _tableView.tableHeaderView.backgroundColor = kMEPink;
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor clearColor];
@@ -183,6 +185,7 @@
     if(!_headerView){
         _headerView = [[[NSBundle mainBundle]loadNibNamed:@"MEGiftHeaderView" owner:nil options:nil] lastObject];
         _headerView.frame =CGRectMake(0, 0, SCREEN_WIDTH, [MEGiftHeaderView getViewHeight]);
+        _headerView.backgroundColor = kMEPink;
     }
     return _headerView;
 }

@@ -29,5 +29,6 @@
 @property (nonatomic, strong) MESNewContentHomeStyle * article_style;
 @property (nonatomic, strong) MESNewContentHomeStyle * store_style;
 
-
+@property (nonatomic, strong) MESNewContentHomeStyle * gift_style;
+@property (nonatomic, strong) MESNewContentHomeStyle * taobao_coupon_style;
 @end

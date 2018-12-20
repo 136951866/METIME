@@ -191,6 +191,8 @@
         [_sContenView.imgStore sd_setImageWithURL:[NSURL URLWithString:kMeUnNilStr(self.styleModel.store_style.img)] placeholderImage:[UIImage imageNamed:@"uyyhebtl"]];
         [_sContenView.imgPoster sd_setImageWithURL:[NSURL URLWithString:kMeUnNilStr(self.styleModel.posters_style.img)] placeholderImage:[UIImage imageNamed:@"tgdmitrb"]];
         [_sContenView.imgArticle sd_setImageWithURL:[NSURL URLWithString:kMeUnNilStr(self.styleModel.article_style.img)] placeholderImage:[UIImage imageNamed:@"MEyyuj"]];
+        [_sContenView.imgCouple sd_setImageWithURL:[NSURL URLWithString:kMeUnNilStr(self.styleModel.taobao_coupon_style.img)] placeholderImage:[UIImage imageNamed:@"couplehome"]];
+        [_sContenView.imgGift sd_setImageWithURL:[NSURL URLWithString:kMeUnNilStr(self.styleModel.gift_style.img)] placeholderImage:[UIImage imageNamed:@"gifthome"]];
     }
 }
 
@@ -286,13 +288,19 @@
     [self.navigationController pushViewController:svc animated:YES];
 }
 
-
 - (void)toServiceVC{
-#warning ---MECoupleMailVC
+    MEProductListVC *productList = [[MEProductListVC alloc]initWithType:MEGoodsTypeNetServiceStyle];
+    [self.navigationController pushViewController:productList animated:YES];
+}
+
+- (void)toCoupleVC{
+    MECoupleMailVC *coupleVC = [[MECoupleMailVC alloc]init];
+    [self.navigationController pushViewController:coupleVC animated:YES];
+}
+
+- (void)toGiftVC{
     MEGiftVC *coupleVC = [[MEGiftVC alloc]init];
     [self.navigationController pushViewController:coupleVC animated:YES];
-//    MEProductListVC *productList = [[MEProductListVC alloc]initWithType:MEGoodsTypeNetServiceStyle];
-//    [self.navigationController pushViewController:productList animated:YES];
 }
 
 - (void)toPosterVC{

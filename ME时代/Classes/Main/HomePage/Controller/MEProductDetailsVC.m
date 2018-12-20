@@ -20,6 +20,7 @@
 #import "MEGoodModel.h"
 #import "MELoginVC.h"
 #import "MERCConversationVC.h"
+#import "MEGiftVC.h"
 
 @interface MEProductDetailsVC ()<UITableViewDelegate,UITableViewDataSource>{
     NSInteger _detailsId;
@@ -109,9 +110,11 @@ kTDWebViewCellDidFinishLoadNotificationMethod
             }
             attrModle.uid = kMeUnNilStr(strongSelf.uid);
             [MEPublicNetWorkTool postAddGoodForShopWithAttrModel:attrModle successBlock:^(ZLRequestResponse *responseObject) {
-                kNoticeReloadShopCart
+                kMeSTRONGSELF
                 if(strongSelf.isGift){
-                    [MEShowViewTool showMessage:@"礼物加入成功,请返回" view:strongSelf.view];
+                    kNoticeReloadShopCart
+                    MEGiftVC *vc = (MEGiftVC *)[MECommonTool getClassWtihClassName:[MEGiftVC class] targetVC:strongSelf];
+                    [strongSelf.navigationController popToViewController:vc animated:YES];
                 }
             } failure:^(id object) {
             }];
