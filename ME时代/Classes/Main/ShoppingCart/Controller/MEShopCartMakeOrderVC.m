@@ -258,6 +258,9 @@
         [MEPublicNetWorkTool postPayOrderWithOrder_sn:kMeUnNilStr(strongSelf->_order_sn) successBlock:^(ZLRequestResponse *responseObject) {
             PAYPRE
             strongSelf->_isPayError= NO;
+            if(strongSelf.isGift){
+                kNoticeReloadShopCart
+            }
             MEPayModel *model = [MEPayModel mj_objectWithKeyValues:responseObject.data];
             BOOL isSucess =  [LVWxPay wxPayWithPayModel:model VC:strongSelf price:strongSelf->_lblAllPrice.text];
             if(!isSucess){
