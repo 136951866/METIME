@@ -90,6 +90,7 @@
             kMeSTRONGSELF
             ZLWebViewVC *vc = [[ZLWebViewVC alloc]init];
             [vc loadURL:[NSURL URLWithString:kMeUnNilStr(strongSelf->_detailModel.Quan_link)]];
+            vc.title = @"优惠卷";
             [strongSelf.navigationController pushViewController:vc animated:YES];
         };
     }
