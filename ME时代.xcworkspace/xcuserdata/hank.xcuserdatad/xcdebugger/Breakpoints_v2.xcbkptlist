@@ -372,7 +372,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/HomePage/Controller/MESNewHomePageVC.m"
-            timestampString = "567011853.052193"
+            timestampString = "567330127.448082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "107"
@@ -426,6 +426,22 @@
             startingLineNumber = "205"
             endingLineNumber = "205"
             landmarkName = "-footerView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/HomePage/View/Couple/MeCoupleFilterLeftCell.m"
+            timestampString = "567330127.451548"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "-setSelected:animated:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

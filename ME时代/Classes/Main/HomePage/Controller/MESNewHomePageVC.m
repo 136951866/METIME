@@ -29,11 +29,11 @@
 #import "MEAdvModel.h"
 #import "MEArticleDetailVC.h"
 #import "MEArticelModel.h"
-
-
-
 #import "MECoupleMailVC.h"
 #import "MEGiftVC.h"
+
+#warning ---test
+#import "MECoupleFilterVC.h"
 
 @interface MESNewHomePageVC ()<UIScrollViewDelegate,MESNewHomePageViewDelegate>{
     CGFloat _allHeight;
@@ -294,7 +294,7 @@
 }
 
 - (void)toCoupleVC{
-    MECoupleMailVC *coupleVC = [[MECoupleMailVC alloc]init];
+    MECoupleFilterVC *coupleVC = [[MECoupleFilterVC alloc]init];
     [self.navigationController pushViewController:coupleVC animated:YES];
 }
 
