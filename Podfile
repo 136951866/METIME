@@ -5,15 +5,15 @@ target 'ME时代' do
 
 source 'https://github.com/CocoaPods/Specs.git'
 
-pod 'Masonry'
+pod 'Masonry', '1.1.0'
 pod 'IQKeyboardManager','4.0.8'
-pod ‘MJExtension’
-pod ‘FMDB’
-pod 'SDWebImage'
-pod 'MBProgressHUD'
-pod 'SDCycleScrollView'
-pod 'MJRefresh'
-pod 'AFNetworking'
+pod ‘MJExtension’, '3.0.15.1'
+pod ‘FMDB’, '2.7.2'
+pod 'SDWebImage', '4.4.2'
+pod 'MBProgressHUD', '1.1.0'
+pod 'SDCycleScrollView', '1.75'
+pod 'MJRefresh', '3.1.15.3'
+pod 'AFNetworking', '3.2.1'
 #pod 'JXCategoryView'
 
 # U-Share SDK
@@ -28,5 +28,5 @@ pod 'UMCAnalytics'
 pod 'RongCloudIM/IMLib', '~> 2.8.3'
 pod 'RongCloudIM/IMKit', '~> 2.8.3'
 pod 'JPush', '3.1.0'
-pod 'PYSearch'
+pod 'PYSearch', '0.9.0'
 end

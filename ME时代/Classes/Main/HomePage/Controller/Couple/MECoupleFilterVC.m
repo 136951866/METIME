@@ -12,8 +12,8 @@
 #import "MECoupleFileCell.h"
 #import "MECoupleFilterHederView.h"
 #import "MeCoupleFilterLeftCell.h"
-
-
+#import "MECoupleFilterNavView.h"
+#import "MECoupleMailVC.h"
 
 static float kCollectionViewMargin = 3.f;
 
@@ -25,7 +25,7 @@ UICollectionViewDataSource>
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) NSMutableArray *collectionDatas;
 @property (nonatomic, strong) MECoupleFilterFlowLayout *flowLayout;
-
+@property (nonatomic, strong) MECoupleFilterNavView *navView;
 @end
 
 @implementation MECoupleFilterVC
@@ -38,7 +38,7 @@ UICollectionViewDataSource>
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.navBarHidden = YES;
     _selectIndex = 0;
     _isScrollDown = YES;
     
@@ -47,7 +47,7 @@ UICollectionViewDataSource>
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    [self.view addSubview:self.navView];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.collectionView];
     
@@ -122,6 +122,8 @@ UICollectionViewDataSource>
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     MECoupleFilterSubModel *model = self.collectionDatas[indexPath.section][indexPath.row];
     NSLog(@"%@",model.name);
+    MECoupleMailVC *vc = [[MECoupleMailVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -239,7 +241,7 @@ UICollectionViewDataSource>
 {
     if (!_tableView)
     {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kLeftTableViewWidth, SCREEN_HEIGHT)];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kMeNavBarHeight, kLeftTableViewWidth, SCREEN_HEIGHT)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [UIView new];
@@ -268,7 +270,7 @@ UICollectionViewDataSource>
 {
     if (!_collectionView)
     {
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(kCollectionViewMargin + kLeftTableViewWidth, kCollectionViewMargin, SCREEN_WIDTH - kLeftTableViewWidth - 2 * kCollectionViewMargin, SCREEN_HEIGHT - 2 * kCollectionViewMargin) collectionViewLayout:self.flowLayout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(kCollectionViewMargin + kLeftTableViewWidth, kCollectionViewMargin+kMeNavBarHeight, SCREEN_WIDTH - kLeftTableViewWidth - 2 * kCollectionViewMargin, SCREEN_HEIGHT - 2 * kCollectionViewMargin) collectionViewLayout:self.flowLayout];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
@@ -285,5 +287,20 @@ UICollectionViewDataSource>
     return _collectionView;
 }
 
+- (MECoupleFilterNavView *)navView{
+    if(!_navView){
+        _navView = [[[NSBundle mainBundle]loadNibNamed:@"MECoupleFilterNavView" owner:nil options:nil] lastObject];
+        _navView.frame = CGRectMake(0, 0, SCREEN_WIDTH, kMeNavBarHeight);
+        kMeWEAKSELF
+        _navView.backBlock = ^{
+            kMeSTRONGSELF
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+        };
+        _navView.searchBlock = ^{
+            kMeSTRONGSELF
+        };
+    }
+    return _navView;
+}
 
 @end

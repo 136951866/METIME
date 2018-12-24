@@ -51,19 +51,19 @@ PODS:
     - UMCShare/Core
 
 DEPENDENCIES:
-  - AFNetworking
-  - FMDB
+  - AFNetworking (= 3.2.1)
+  - FMDB (= 2.7.2)
   - IQKeyboardManager (= 4.0.8)
   - JPush (= 3.1.0)
-  - Masonry
-  - MBProgressHUD
-  - MJExtension
-  - MJRefresh
-  - PYSearch
+  - Masonry (= 1.1.0)
+  - MBProgressHUD (= 1.1.0)
+  - MJExtension (= 3.0.15.1)
+  - MJRefresh (= 3.1.15.3)
+  - PYSearch (= 0.9.0)
   - RongCloudIM/IMKit (~> 2.8.3)
   - RongCloudIM/IMLib (~> 2.8.3)
-  - SDCycleScrollView
-  - SDWebImage
+  - SDCycleScrollView (= 1.75)
+  - SDWebImage (= 4.4.2)
   - UMCAnalytics
   - UMCCommon
   - UMCShare/Social/WeChat
@@ -106,6 +106,6 @@ SPEC CHECKSUMS:
   UMCCommon: 4392868ac47ff1b101663106bb114ba616fabbad
   UMCShare: aa233aecad67979930fe43f3a2f676023b669439
 
-PODFILE CHECKSUM: 6f2e7a34236492a5e0c4914a7614c259b7059a03
+PODFILE CHECKSUM: 01d5b7d7dc2ce5cb6671da15bbf94dab11976367
 
 COCOAPODS: 1.5.3

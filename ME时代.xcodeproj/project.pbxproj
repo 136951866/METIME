@@ -158,6 +158,8 @@
 		3617C30D21D0ADCB00004072 /* MeCoupleFilterLeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3617C30C21D0ADCB00004072 /* MeCoupleFilterLeftCell.m */; };
 		3617C31021D0AE3800004072 /* MECoupleFilterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3617C30F21D0AE3800004072 /* MECoupleFilterVC.m */; };
 		3617C31221D0B00500004072 /* liwushuo.json in Resources */ = {isa = PBXBuildFile; fileRef = 3617C31121D0B00500004072 /* liwushuo.json */; };
+		3617C31821D0CDEA00004072 /* MECoupleFilterNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3617C31721D0CDEA00004072 /* MECoupleFilterNavView.m */; };
+		3617C31B21D0CF7F00004072 /* MECoupleFilterNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3617C31A21D0CF7F00004072 /* MECoupleFilterNavView.xib */; };
 		3628476A2140FD78008FE7F9 /* LVWxPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 362847642140FD77008FE7F9 /* LVWxPay.m */; };
 		3628476B2140FD78008FE7F9 /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 362847652140FD77008FE7F9 /* XMLDictionary.m */; };
 		3628476C2140FD79008FE7F9 /* DataMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 362847672140FD78008FE7F9 /* DataMD5.m */; };
@@ -818,6 +820,9 @@
 		3617C30E21D0AE3800004072 /* MECoupleFilterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECoupleFilterVC.h; sourceTree = "<group>"; };
 		3617C30F21D0AE3800004072 /* MECoupleFilterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECoupleFilterVC.m; sourceTree = "<group>"; };
 		3617C31121D0B00500004072 /* liwushuo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = liwushuo.json; sourceTree = "<group>"; };
+		3617C31621D0CDEA00004072 /* MECoupleFilterNavView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECoupleFilterNavView.h; sourceTree = "<group>"; };
+		3617C31721D0CDEA00004072 /* MECoupleFilterNavView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECoupleFilterNavView.m; sourceTree = "<group>"; };
+		3617C31A21D0CF7F00004072 /* MECoupleFilterNavView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MECoupleFilterNavView.xib; sourceTree = "<group>"; };
 		362847622140FD76008FE7F9 /* getIPhoneIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getIPhoneIP.h; sourceTree = "<group>"; };
 		362847632140FD76008FE7F9 /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
 		362847642140FD77008FE7F9 /* LVWxPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LVWxPay.m; sourceTree = "<group>"; };
@@ -2474,6 +2479,9 @@
 				3617C30621D0ACC200004072 /* MECoupleFilterHederView.m */,
 				3617C30B21D0ADCB00004072 /* MeCoupleFilterLeftCell.h */,
 				3617C30C21D0ADCB00004072 /* MeCoupleFilterLeftCell.m */,
+				3617C31621D0CDEA00004072 /* MECoupleFilterNavView.h */,
+				3617C31721D0CDEA00004072 /* MECoupleFilterNavView.m */,
+				3617C31A21D0CF7F00004072 /* MECoupleFilterNavView.xib */,
 			);
 			path = Couple;
 			sourceTree = "<group>";
@@ -3721,6 +3729,7 @@
 				36021B03214BB59F001B8DAF /* MEAppointOrderMainCell.xib in Resources */,
 				364B64FA217496B200094027 /* MEWxLoginVC.xib in Resources */,
 				3683F7BB21CBA656008139B0 /* MEGiftMainCell.xib in Resources */,
+				3617C31B21D0CF7F00004072 /* MECoupleFilterNavView.xib in Resources */,
 				36FEEBC0214CE74C00060209 /* MEPayStatusVC.xib in Resources */,
 				36FF6C53216C3D2B0056046F /* MEMineCustomerPhone.xib in Resources */,
 				36022DFB2190105400DC9A8B /* MENewActiveCell.xib in Resources */,
@@ -3921,6 +3930,7 @@
 				3628E7E021C0B53300D5405B /* MEBDataDealVC.m in Sources */,
 				36FDE3D0218A980900633C40 /* MEFilterMainCell.m in Sources */,
 				36021AE0214B8086001B8DAF /* MEServiceDetailTelAddressCell.m in Sources */,
+				3617C31821D0CDEA00004072 /* MECoupleFilterNavView.m in Sources */,
 				367C84E52147962B00BEC7B1 /* MEDistrbutionCell.m in Sources */,
 				366D1CD721B522780004295E /* MESActivityModel.m in Sources */,
 				EB2E1AC32150FF6500A26BE3 /* MEOrderDetailContentCell.m in Sources */,

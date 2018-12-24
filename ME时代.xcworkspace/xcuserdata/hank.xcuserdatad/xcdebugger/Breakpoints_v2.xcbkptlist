@@ -372,7 +372,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/HomePage/Controller/MESNewHomePageVC.m"
-            timestampString = "567330127.448082"
+            timestampString = "567334859.265684"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "107"
@@ -436,13 +436,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/HomePage/View/Couple/MeCoupleFilterLeftCell.m"
-            timestampString = "567330127.451548"
+            timestampString = "567334859.269715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
             endingLineNumber = "49"
             landmarkName = "-setSelected:animated:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/Login/Controller/MEWxLoginVC.m"
+            timestampString = "567334859.270436"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-wxlogin:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MEWxLoginVC wxlogin:]"
+                  moduleName = "ME&#x65f6;&#x4ee3;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hank/Desktop/METIME/ME%E6%97%B6%E4%BB%A3/Classes/Main/Login/Controller/MEWxLoginVC.m"
+                  timestampString = "567334860.286948"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "43">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__23-[MEWxLoginVC wxlogin:]_block_invoke"
+                  moduleName = "ME&#x65f6;&#x4ee3;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hank/Desktop/METIME/ME%E6%97%B6%E4%BB%A3/Classes/Main/Login/Controller/MEWxLoginVC.m"
+                  timestampString = "567334860.2900341"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "90">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.196"
+                  moduleName = "ME&#x65f6;&#x4ee3;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hank/Desktop/METIME/ME%E6%97%B6%E4%BB%A3/Classes/Main/Login/Controller/MEWxLoginVC.m"
+                  timestampString = "567334860.293406"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
