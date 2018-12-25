@@ -39,6 +39,7 @@ UICollectionViewDataSource>
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navBarHidden = YES;
+    self.view.backgroundColor = [UIColor whiteColor];
     _selectIndex = 0;
     _isScrollDown = YES;
     
@@ -46,11 +47,31 @@ UICollectionViewDataSource>
     self.extendedLayoutIncludesOpaqueBars = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.navView];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.collectionView];
     
+    kMeWEAKSELF
+    [MEPublicNetWorkTool postAddressTaobaokeGetCategoryWithsuccessBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        [strongSelf.dataSource addObjectsFromArray:[MECoupleFilterModel mj_objectArrayWithKeyValuesArray:responseObject.data]];
+        for (MECoupleFilterModel *model in strongSelf.dataSource){
+            NSMutableArray *datas = [NSMutableArray array];
+            for (MECoupleFilterSubModel *sModel in model.subcategories){
+                [datas addObject:sModel];
+            }
+            [strongSelf.collectionDatas addObject:datas];
+        }
+        [strongSelf.tableView reloadData];
+        [strongSelf.collectionView reloadData];
+        [strongSelf.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                                    animated:YES
+                              scrollPosition:UITableViewScrollPositionNone];
+    } failure:^(id object) {
+        kMeSTRONGSELF
+        [strongSelf.navigationController popViewControllerAnimated:YES];
+    }];
+    /*
     NSString *path = [[NSBundle mainBundle] pathForResource:@"liwushuo" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
@@ -68,13 +89,9 @@ UICollectionViewDataSource>
         }
         [self.collectionDatas addObject:datas];
     }
+    */
     
-    [self.tableView reloadData];
-    [self.collectionView reloadData];
-    
-    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
-                                animated:YES
-                          scrollPosition:UITableViewScrollPositionNone];
+
 }
 
 
@@ -241,7 +258,7 @@ UICollectionViewDataSource>
 {
     if (!_tableView)
     {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kMeNavBarHeight, kLeftTableViewWidth, SCREEN_HEIGHT)];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kMeNavBarHeight, kLeftTableViewWidth, SCREEN_HEIGHT-kMeNavBarHeight)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [UIView new];
@@ -270,7 +287,7 @@ UICollectionViewDataSource>
 {
     if (!_collectionView)
     {
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(kCollectionViewMargin + kLeftTableViewWidth, kCollectionViewMargin+kMeNavBarHeight, SCREEN_WIDTH - kLeftTableViewWidth - 2 * kCollectionViewMargin, SCREEN_HEIGHT - 2 * kCollectionViewMargin) collectionViewLayout:self.flowLayout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(kCollectionViewMargin + kLeftTableViewWidth, kCollectionViewMargin+kMeNavBarHeight, SCREEN_WIDTH - kLeftTableViewWidth - 2 * kCollectionViewMargin, SCREEN_HEIGHT - 2 * kCollectionViewMargin-kMeNavBarHeight) collectionViewLayout:self.flowLayout];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight;

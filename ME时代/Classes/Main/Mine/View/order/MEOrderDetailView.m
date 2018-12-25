@@ -66,7 +66,10 @@
         _viewForLogist.hidden = YES;
         _viewForLogist.userInteractionEnabled = NO;
     }
-    _lblOrderStatus.text = [NSString stringWithFormat:@"订单%@",_arrType[type]];
+#warning --2.0.4
+//    _lblOrderStatus.text = [NSString stringWithFormat:@"订单%@",_arrType[type]];
+    _lblOrderStatus.text = [NSString stringWithFormat:@"订单%@",kMeUnNilStr(model.order_status_name)];
+
     _lblOrderNum.text = [NSString stringWithFormat:@"订单编号:%@",kMeUnNilStr(model.order_sn)];
     _lblName.text = kMeUnNilStr(model.address.name);
     _lblPhone.text = kMeUnNilStr(model.address.mobile);

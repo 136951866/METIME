@@ -12,6 +12,7 @@
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
+    
     // UICollectionViewLayoutAttributes：我称它为collectionView中的item（包括cell和header、footer这些）的《结构信息》
     // 截取到父类所返回的数组（里面放的是当前屏幕所能展示的item的结构信息），并转化成不可变数组
     NSMutableArray *superArray = [[super layoutAttributesForElementsInRect:rect] mutableCopy];

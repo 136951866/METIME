@@ -20,6 +20,28 @@
 @implementation MEPublicNetWorkTool
 
 /*********************************************/
+#pragma makr - taobao
++ (void)postAddressTaobaokeGetCategoryWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{};
+    NSString *url = kGetApiWithUrl(MEIPcommonTaobaokeGetCategory);
+    MBProgressHUD *HUD = [self commitWithHUD:@""];
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
+/*********************************************/
+
+
+/*********************************************/
 #pragma makr - gift
 + (void)postAgetGiftBannerWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"tool":@"1",
@@ -1037,7 +1059,6 @@
         [HUD hideAnimated:YES];
         kMeCallBlock(successBlock,responseObject);
     } failure:^(id error) {
-         [HUD hideAnimated:YES];
         if([error isKindOfClass:[ZLRequestResponse class]]){
             ZLRequestResponse *res = (ZLRequestResponse*)error;
             [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
@@ -1059,7 +1080,6 @@
         [HUD hideAnimated:YES];
         kMeCallBlock(successBlock,responseObject);
     } failure:^(id error) {
-        [HUD hideAnimated:YES];
         if([error isKindOfClass:[ZLRequestResponse class]]){
             ZLRequestResponse *res = (ZLRequestResponse*)error;
             [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];

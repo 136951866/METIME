@@ -24,6 +24,11 @@
 + (void)getUserGetTokenByFourWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 
 /*********************************************/
+#pragma makr - taobao
++ (void)postAddressTaobaokeGetCategoryWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+/*********************************************/
+
+/*********************************************/
 #pragma makr - gift
 + (void)postAgetGiftBannerWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 
