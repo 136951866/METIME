@@ -7,10 +7,10 @@
 //
 
 #import "MECoupleMailHeaderVIew.h"
-#import "MECoupleDetailModle.h"
+#import "MECoupleModel.h"
 
 @interface MECoupleMailHeaderVIew (){
-    MECoupleDetailModle *_model;
+    MECoupleModel *_model;
 }
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consImgHeight;
@@ -34,14 +34,17 @@
     
 }
 
-- (void)setUIWithModel:(MECoupleDetailModle *)model{
+- (void)setUIWithModel:(MECoupleModel *)model{
     _model = model;
-    kSDLoadImg(_imgPic, kMeUnNilStr(model.Pic));
-    _lblTitle.text = kMeUnNilStr(model.Title);
-    _lblOralPrice.text =[NSString stringWithFormat:@"原价¥%@",@(kMeUnNilStr(model.Org_Price).floatValue)];
-    _lblJuanedPrice.text =[NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.Price).floatValue)];
-    _lblJuan.text =[NSString stringWithFormat:@"%@元卷",kMeUnNilStr(model.Quan_price)];
-    _lblTime.text =[NSString stringWithFormat:@"有效时间%@",kMeUnNilStr(model.Quan_time)];
+    kSDLoadImg(_imgPic, kMeUnNilStr(model.pict_url));
+    _lblTitle.text = kMeUnNilStr(model.title);
+    //原价
+    _lblOralPrice.text =[NSString stringWithFormat:@"原价¥%@",@(kMeUnNilStr(model.zk_final_price).floatValue)];
+    ////卷后价
+    _lblJuanedPrice.text =[NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.truePrice).floatValue)];
+    //卷价格
+    _lblJuan.text =[NSString stringWithFormat:@"%@元卷",kMeUnNilStr(model.couponPrice)];
+    _lblTime.text =[NSString stringWithFormat:@"有效时间%@~%@",kMeUnNilStr(model.coupon_start_time),kMeUnNilStr(model.coupon_end_time)];
 }
 
 - (IBAction)coupleAction:(UIButton *)sender {

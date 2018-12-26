@@ -11,7 +11,10 @@
 #import "MECoupleModel.h"
 #import "MECoupleMailDetalVC.h"
 
-@interface MECoupleMailVC ()<UICollectionViewDelegate,UICollectionViewDataSource,RefreshToolDelegate>
+
+@interface MECoupleMailVC ()<UICollectionViewDelegate,UICollectionViewDataSource,RefreshToolDelegate>{
+    NSString *_queryStr;
+}
 
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property (nonatomic, strong) ZLRefreshTool         *refresh;
@@ -20,9 +23,16 @@
 
 @implementation MECoupleMailVC
 
+- (instancetype)initWithQuery:(NSString *)query{
+    if(self = [super init]){
+        _queryStr = query;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"优惠卷";
+    self.title = _queryStr;
     [self.view addSubview:self.collectionView];
     [self.refresh addRefreshView];
     // Do any additional setup after loading the view.
@@ -31,7 +41,8 @@
 #pragma mark - RefreshToolDelegate
 
 - (NSDictionary *)requestParameter{
-    return @{@"r":@"Port/index",@"type":@"total",@"appkey":@"58de5a1fe2",@"v":@"2"};
+//    return @{@"r":@"Port/index",@"type":@"total",@"appkey":@"58de5a1fe2",@"v":@"2"};
+    return @{@"q":kMeUnNilStr(_queryStr),@"tool":@"ios"};
 }
 
 - (void)handleResponse:(id)data{
@@ -46,7 +57,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     MECoupleModel *model = self.refresh.arrData[indexPath.row];
-    MECoupleMailDetalVC *vc = [[MECoupleMailDetalVC alloc]initWithDetailId:model.ID];
+    MECoupleMailDetalVC *vc = [[MECoupleMailDetalVC alloc]initWithModel:model];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -98,11 +109,10 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.collectionView url:@"http://api.dataoke.com/index.php"];
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.collectionView url:kGetApiWithUrl(MEIPcommonTaobaokeGetCoupon)];
         _refresh.delegate = self;
-        _refresh.isGet = YES;
-        _refresh.isDataInside = YES;
         _refresh.isCouple = YES;
+        _refresh.isDataInside = YES;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
             failView.backgroundColor = [UIColor whiteColor];
             failView.lblOfNodata.text = @"没有优惠产品";

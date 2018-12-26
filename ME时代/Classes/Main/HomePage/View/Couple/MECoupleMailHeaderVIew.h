@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class MECoupleDetailModle;
+@class MECoupleModel;
 #define MECoupleMailHeaderVIewHeight (SCREEN_WIDTH + 205)
 
 @interface MECoupleMailHeaderVIew : UIView
 
-- (void)setUIWithModel:(MECoupleDetailModle *)model;
+- (void)setUIWithModel:(MECoupleModel *)model;
 @property (nonatomic ,copy)kMeBasicBlock getCoupleBlock;
 
 @end

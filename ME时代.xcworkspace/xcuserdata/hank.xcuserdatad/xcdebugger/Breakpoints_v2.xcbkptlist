@@ -132,7 +132,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/Classes/Public/MELocation/MELocationHelper.m"
-            timestampString = "566473770.893307"
+            timestampString = "567498780.959758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
@@ -148,7 +148,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/Classes/Public/MELocation/MELocationHelper.m"
-            timestampString = "566473770.893459"
+            timestampString = "567498780.959852"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
@@ -164,7 +164,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "567421729.825382"
+            timestampString = "567500128.976014"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "276"
@@ -180,7 +180,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "567421729.827306"
+            timestampString = "567500128.976143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
@@ -196,7 +196,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "567421729.827415"
+            timestampString = "567500128.976207"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "345"
@@ -212,7 +212,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "567421729.8275"
+            timestampString = "567500128.976253"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "338"
@@ -228,7 +228,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "567421729.827576"
+            timestampString = "567500128.9763139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "322"
@@ -244,7 +244,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "567421729.827667"
+            timestampString = "567500128.976357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "312"
@@ -260,7 +260,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "567421729.827747"
+            timestampString = "567500128.976397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "301"
@@ -452,12 +452,12 @@
                   moduleName = "ME&#x65f6;&#x4ee3;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hank/Desktop/METIME/ME%E6%97%B6%E4%BB%A3/Classes/Main/Login/Controller/MEWxLoginVC.m"
-                  timestampString = "567427176.747413"
+                  timestampString = "567500129.551265"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
                   endingLineNumber = "101"
-                  offsetFromSymbolStart = "43">
+                  offsetFromSymbolStart = "64">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -467,12 +467,12 @@
                   moduleName = "ME&#x65f6;&#x4ee3;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hank/Desktop/METIME/ME%E6%97%B6%E4%BB%A3/Classes/Main/Login/Controller/MEWxLoginVC.m"
-                  timestampString = "567427176.750737"
+                  timestampString = "567500129.553159"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "102"
                   endingLineNumber = "102"
-                  offsetFromSymbolStart = "90">
+                  offsetFromSymbolStart = "84">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -482,14 +482,30 @@
                   moduleName = "ME&#x65f6;&#x4ee3;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hank/Desktop/METIME/ME%E6%97%B6%E4%BB%A3/Classes/Main/Login/Controller/MEWxLoginVC.m"
-                  timestampString = "567427176.754115"
+                  timestampString = "567500129.555087"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
                   endingLineNumber = "101"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/HomePage/Model/Couple/MECoupleModel.m"
+            timestampString = "567500661.561327"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "-truePrice"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

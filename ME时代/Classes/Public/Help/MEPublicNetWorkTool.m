@@ -21,6 +21,51 @@
 
 /*********************************************/
 #pragma makr - taobao
+//淘口令
++ (void)postTaobaokeGetTpwdWithTitle:(NSString *)title url:(NSString*)url logo:(NSString*)logo successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{@"tool":@"ios",@"text":kMeUnNilStr(title),@"logo":kMeUnNilStr(logo),@"url":kMeUnNilStr(url)};
+    NSString *urlApi = kGetApiWithUrl(MEIPcommonTaobaokeGetGetTpwd);
+    MBProgressHUD *HUD = [self commitWithHUD:@"生成口令中"];
+    [THTTPManager postWithParameter:dic strUrl:urlApi success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
+//卷详情
++ (void)postCoupleDetailWithProductrId:(NSString *)productrId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    //    NSString *url = [NSString stringWithFormat:@"http://api.dataoke.com/index.php?r=port/index&appkey=58de5a1fe2&v=2&id=%@",kMeUnNilStr(productrId)];
+    //    MBProgressHUD *HUD = [self commitWithHUD:@""];
+    //    [THTTPManager orgialGetWithUrlStr:url parameter:@{} success:^(NSDictionary *dic) {
+    //        [HUD hideAnimated:YES];
+    //        kMeCallBlock(successBlock,dic);
+    //    } failure:^(id object) {
+    //        [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+    //        kMeCallBlock(failure,object);
+    //    }];
+    NSDictionary *dic = @{@"tool":@"ios",@"num_iids":kMeUnNilStr(productrId)};
+    NSString *url = kGetApiWithUrl(MEIPcommonTaobaokeGetGoodsInfo);
+    MBProgressHUD *HUD = [self commitWithHUD:@"获取详情中"];
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
 + (void)postAddressTaobaokeGetCategoryWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{};
     NSString *url = kGetApiWithUrl(MEIPcommonTaobaokeGetCategory);
@@ -63,18 +108,7 @@
 
 /*********************************************/
 #pragma makr - couple
-//卷详情
-+ (void)postCoupleDetailWithProductrId:(NSString *)productrId successBlock:(kMeDictionaryBlock)successBlock failure:(kMeObjBlock)failure{
-    NSString *url = [NSString stringWithFormat:@"http://api.dataoke.com/index.php?r=port/index&appkey=58de5a1fe2&v=2&id=%@",kMeUnNilStr(productrId)];
-    MBProgressHUD *HUD = [self commitWithHUD:@""];
-    [THTTPManager orgialGetWithUrlStr:url parameter:@{} success:^(NSDictionary *dic) {
-        [HUD hideAnimated:YES];
-        kMeCallBlock(successBlock,dic);
-    } failure:^(id object) {
-        [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
-        kMeCallBlock(failure,object);
-    }];
-}
+
 /*********************************************/
 
 /*********************************************/

@@ -24,8 +24,11 @@
 + (void)getUserGetTokenByFourWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 
 /*********************************************/
++ (void)postTaobaokeGetTpwdWithTitle:(NSString *)title url:(NSString*)url logo:(NSString*)logo successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 #pragma makr - taobao
 + (void)postAddressTaobaokeGetCategoryWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+//卷详情
++ (void)postCoupleDetailWithProductrId:(NSString *)productrId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 /*********************************************/
 
 /*********************************************/
@@ -33,9 +36,8 @@
 + (void)postAgetGiftBannerWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 
 /*********************************************/
-#pragma makr - couple
-//卷详情
-+ (void)postCoupleDetailWithProductrId:(NSString *)productrId successBlock:(kMeDictionaryBlock)successBlock failure:(kMeObjBlock)failure;
+
+
 /*********************************************/
 
 /*********************************************/

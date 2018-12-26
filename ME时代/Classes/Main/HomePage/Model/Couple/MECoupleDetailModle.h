@@ -8,35 +8,30 @@
 
 #import "MEBaseModel.h"
 
+@interface MECoupleDetailImageModle : MEBaseModel
+
+@property (nonatomic, copy) NSArray *string;
+
+@end
+
 @interface MECoupleDetailModle : MEBaseModel
 
-@property (nonatomic, strong) NSString * Cid;
-@property (nonatomic, strong) NSString * Commission;
-@property (nonatomic, strong) NSString * Commission_jihua;
-@property (nonatomic, strong) NSString * Commission_queqiao;
-@property (nonatomic, strong) NSString * D_title;
-@property (nonatomic, strong) NSString * Dsr;
-@property (nonatomic, strong) NSString * GoodsID;
-@property (nonatomic, strong) NSString * ID;
-@property (nonatomic, strong) NSString * Introduce;
-@property (nonatomic, strong) NSString * IsTmall;
-@property (nonatomic, strong) NSObject * Jihua_link;
-@property (nonatomic, strong) NSString * Jihua_shenhe;
-@property (nonatomic, strong) NSString * Org_Price;
-@property (nonatomic, strong) NSString * Pic;
-@property (nonatomic, strong) NSString * Price;
-@property (nonatomic, strong) NSString * Quan_condition;
-@property (nonatomic, strong) NSString * Quan_id;
-@property (nonatomic, strong) NSString * Quan_link;
-@property (nonatomic, strong) NSObject * Quan_m_link;
-@property (nonatomic, strong) NSString * Quan_price;
-@property (nonatomic, strong) NSString * Quan_receive;
-@property (nonatomic, strong) NSString * Quan_surplus;
-@property (nonatomic, strong) NSString * Quan_time;
-@property (nonatomic, strong) NSString * Que_siteid;
-@property (nonatomic, strong) NSString * Sales_num;
-@property (nonatomic, strong) NSString * SellerID;
-@property (nonatomic, strong) NSString * Title;
-@property (nonatomic, strong) NSString * Yongjin_type;
+@property (nonatomic, strong) NSString * cat_leaf_name;
+@property (nonatomic, strong) NSString * cat_name;
+@property (nonatomic, strong) NSString * item_url;
+@property (nonatomic, strong) NSString * material_lib_type;
+@property (nonatomic, strong) NSString * nick;
+@property (nonatomic, assign) NSInteger num_iid;
+@property (nonatomic, strong) NSString * pict_url;
+@property (nonatomic, strong) NSString * provcity;
+@property (nonatomic, strong) NSString * reserve_price;
+@property (nonatomic, assign) NSInteger seller_id;
+@property (nonatomic, strong) MECoupleDetailImageModle * small_images;
+@property (nonatomic, strong) NSString * title;
+@property (nonatomic, assign) NSInteger user_type;
+@property (nonatomic, assign) NSInteger volume;
+@property (nonatomic, strong) NSString * zk_final_price;
+
+
 
 @end

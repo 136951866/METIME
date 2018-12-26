@@ -14,6 +14,8 @@
 #import "MeCoupleFilterLeftCell.h"
 #import "MECoupleFilterNavView.h"
 #import "MECoupleMailVC.h"
+#import "MECouponSearchVC.h"
+#import "MENavigationVC.h"
 
 static float kCollectionViewMargin = 3.f;
 
@@ -138,8 +140,7 @@ UICollectionViewDataSource>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     MECoupleFilterSubModel *model = self.collectionDatas[indexPath.section][indexPath.row];
-    NSLog(@"%@",model.name);
-    MECoupleMailVC *vc = [[MECoupleMailVC alloc]init];
+    MECoupleMailVC *vc = [[MECoupleMailVC alloc]initWithQuery:kMeUnNilStr(model.name)];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -234,30 +235,33 @@ UICollectionViewDataSource>
     }
 }
 
+- (void)searchCoupon{
+    MECouponSearchVC *searchViewController = [MECouponSearchVC searchViewControllerWithHotSearches:@[] searchBarPlaceholder:@"搜索优惠卷" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
+        MECoupleMailVC *dataVC = [[MECoupleMailVC alloc]initWithQuery:searchText];
+        [searchViewController.navigationController pushViewController:dataVC animated:YES];
+    }];
+    MENavigationVC *nav = [[MENavigationVC alloc] initWithRootViewController:searchViewController];
+    [self presentViewController:nav  animated:NO completion:nil];
+}
+
 #pragma mark - Getters
 
-- (NSMutableArray *)dataSource
-{
-    if (!_dataSource)
-    {
+- (NSMutableArray *)dataSource{
+    if (!_dataSource){
         _dataSource = [NSMutableArray array];
     }
     return _dataSource;
 }
 
-- (NSMutableArray *)collectionDatas
-{
-    if (!_collectionDatas)
-    {
+- (NSMutableArray *)collectionDatas{
+    if (!_collectionDatas){
         _collectionDatas = [NSMutableArray array];
     }
     return _collectionDatas;
 }
 
-- (UITableView *)tableView
-{
-    if (!_tableView)
-    {
+- (UITableView *)tableView{
+    if (!_tableView){
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kMeNavBarHeight, kLeftTableViewWidth, SCREEN_HEIGHT-kMeNavBarHeight)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -271,10 +275,8 @@ UICollectionViewDataSource>
     return _tableView;
 }
 
-- (MECoupleFilterFlowLayout *)flowLayout
-{
-    if (!_flowLayout)
-    {
+- (MECoupleFilterFlowLayout *)flowLayout{
+    if (!_flowLayout){
         _flowLayout = [[MECoupleFilterFlowLayout alloc] init];
         _flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
         _flowLayout.minimumInteritemSpacing = 2;
@@ -283,10 +285,8 @@ UICollectionViewDataSource>
     return _flowLayout;
 }
 
-- (UICollectionView *)collectionView
-{
-    if (!_collectionView)
-    {
+- (UICollectionView *)collectionView{
+    if (!_collectionView){
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(kCollectionViewMargin + kLeftTableViewWidth, kCollectionViewMargin+kMeNavBarHeight, SCREEN_WIDTH - kLeftTableViewWidth - 2 * kCollectionViewMargin, SCREEN_HEIGHT - 2 * kCollectionViewMargin-kMeNavBarHeight) collectionViewLayout:self.flowLayout];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
@@ -315,6 +315,7 @@ UICollectionViewDataSource>
         };
         _navView.searchBlock = ^{
             kMeSTRONGSELF
+            [strongSelf searchCoupon];
         };
     }
     return _navView;

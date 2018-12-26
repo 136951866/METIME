@@ -41,8 +41,12 @@
 #pragma makr - taobao
 //淘宝分类
 #define MEIPcommonTaobaokeGetCategory @"common/taobaoke/getCategory"
-
-
+//好券列表
+#define MEIPcommonTaobaokeGetCoupon @"common/taobaoke/getCoupon"
+//好券商品祥情
+#define MEIPcommonTaobaokeGetGoodsInfo @"common/taobaoke/getGoodsInfo"
+//淘口令
+#define MEIPcommonTaobaokeGetGetTpwd @"common/taobaoke/getTpwd"
 /*********************************************/
 
 

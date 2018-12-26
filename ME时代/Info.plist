@@ -46,6 +46,7 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>iosamap</string>
+		<string>taobao</string>
 		<string>qqmap</string>
 		<string>comgooglemaps</string>
 		<string>baidumap</string>

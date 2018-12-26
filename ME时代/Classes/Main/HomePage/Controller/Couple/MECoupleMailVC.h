@@ -10,4 +10,6 @@
 
 @interface MECoupleMailVC : MEBaseVC
 
+- (instancetype)initWithQuery:(NSString *)query;
+
 @end

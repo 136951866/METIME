@@ -8,8 +8,9 @@
 
 #import "MEBaseVC.h"
 
+@class MECoupleModel;
 @interface MECoupleMailDetalVC : MEBaseVC
 
-- (instancetype)initWithDetailId:(NSString *)detailId;
+- (instancetype)initWithModel:(MECoupleModel *)model;
 
 @end

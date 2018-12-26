@@ -30,12 +30,17 @@
 }
 
 - (void)setUIWithModel:(MECoupleModel *)model{
-    [_imgPic sd_setImageWithURL:[NSURL URLWithString:kMeUnNilStr(model.Pic)] placeholderImage:kImgPlaceholder];
-    _lblTitle.text = kMeUnNilStr(model.D_title);
-    _lblSale.text = [NSString stringWithFormat:@"已售%@",kMeUnNilStr(model.Sales_num)];
-    _lblOrigalPrice.text =[NSString stringWithFormat:@"原价¥%@",@(kMeUnNilStr(model.Org_Price).floatValue)];
-    _lblJuanPrice.text =[NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.Price).floatValue)];
-    _lblJuan.text =[NSString stringWithFormat:@"%@元卷",kMeUnNilStr(model.Quan_price)];
+    [_imgPic sd_setImageWithURL:[NSURL URLWithString:kMeUnNilStr(model.pict_url)] placeholderImage:kImgPlaceholder];
+    _lblTitle.text = kMeUnNilStr(model.title);
+    _lblSale.text = [NSString stringWithFormat:@"已售%@",kMeUnNilStr(model.couponSale)];
+    //原价
+    _lblOrigalPrice.text =[NSString stringWithFormat:@"原价¥%@",@(kMeUnNilStr(model.zk_final_price).floatValue)];
+    //卷后价
+    _lblJuanPrice.text =[NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.truePrice).floatValue)];
+    //卷价格
+//    NSString *strJuan = kMeUnNilStr(model.coupon_info);
+    
+    _lblJuan.text =[NSString stringWithFormat:@"%@元卷",kMeUnNilStr(model.couponPrice)];
     
 }
 
