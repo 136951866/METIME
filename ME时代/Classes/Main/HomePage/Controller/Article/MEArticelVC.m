@@ -97,6 +97,7 @@
         MEArticelSearchDataVC *dataVC = [[MEArticelSearchDataVC alloc]initWithKey:searchText];
         [searchViewController.navigationController pushViewController:dataVC animated:YES];
     }];
+    [searchViewController setSearchHistoriesCachePath:kMEArticelVCSearchHistoriesCachePath];
     MENavigationVC *nav = [[MENavigationVC alloc] initWithRootViewController:searchViewController];
     [self presentViewController:nav  animated:NO completion:nil];
 }

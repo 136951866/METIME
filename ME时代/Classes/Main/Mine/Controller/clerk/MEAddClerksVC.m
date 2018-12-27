@@ -100,6 +100,7 @@
         };
         [searchViewController.navigationController pushViewController:dataVC animated:YES];
     }];
+    [searchViewController setSearchHistoriesCachePath:kMEClerkSearchVCSearchHistoriesCachePath];
     MENavigationVC *nav = [[MENavigationVC alloc] initWithRootViewController:searchViewController];
     [self presentViewController:nav  animated:NO completion:nil];
 }

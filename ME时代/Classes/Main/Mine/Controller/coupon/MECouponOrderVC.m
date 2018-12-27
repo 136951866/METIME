@@ -21,10 +21,11 @@
 @implementation MECouponOrderVC
 
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.title = @"淘优惠卷明细";
+    self.view.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
     [self.headerView setUIWithModel:@"" block:^{
         
     }];

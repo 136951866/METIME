@@ -240,6 +240,7 @@ UICollectionViewDataSource>
         MECoupleMailVC *dataVC = [[MECoupleMailVC alloc]initWithQuery:searchText];
         [searchViewController.navigationController pushViewController:dataVC animated:YES];
     }];
+    [searchViewController setSearchHistoriesCachePath:kMECouponSearchVCSearchHistoriesCachePath];
     MENavigationVC *nav = [[MENavigationVC alloc] initWithRootViewController:searchViewController];
     [self presentViewController:nav  animated:NO completion:nil];
 }

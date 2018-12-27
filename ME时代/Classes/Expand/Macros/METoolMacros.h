@@ -245,4 +245,10 @@ NS_INLINE NSString *kMeFilePathAtDocumentWithName(NSString *fileNAme){
 //判断是否完成首单Key
 #define kcheckFirstBuy  @"checkFirstBuy"
 
+//优惠卷搜索历史记录
+#define kMECouponSearchVCSearchHistoriesCachePath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"MECouponSearchVC.plist"]
+//文章搜索历史记录
+#define kMEArticelVCSearchHistoriesCachePath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"MEArticelVC.plist"]
+//会员搜索历史记录
+#define kMEClerkSearchVCSearchHistoriesCachePath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"MEClerkSearchVC.plist"]
 #endif /* METoolMacros_h */
