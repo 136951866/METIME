@@ -52,6 +52,14 @@
 - (instancetype)init{
     if(self = [super init]){
         switch (kCurrentUser.user_type) {
+            case 1:{
+                _type = MEClientOneTypeStyle;
+            }
+                break;
+            case 2:{
+                _type = MEClientTwoTypeStyle;
+            }
+                break;
             case 4:{
                 //C
                 _type = MEClientCTypeStyle;
@@ -108,6 +116,40 @@
         } failure:^(id object) {
             kMeSTRONGSELF
              [strongSelf.collectionView.mj_header endRefreshing];
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+        }];
+    }else if(_type == MEClientOneTypeStyle){
+        [MEPublicNetWorkTool getAdminDistributionWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            strongSelf->_bModel = [MEadminDistributionModel mj_objectWithKeyValues:responseObject.data];
+            //订单总额
+            CGFloat allMoney = strongSelf->_bModel.use_money + strongSelf->_bModel.ratio_money;
+            strongSelf->_arrData = @[@(MEMyMoney),@(MEMyTeam),@(MEMyLeave),@(MEMySuperior),@(MEMyCode),@(MEMyDataDeal),@(MEMyCash)];
+            strongSelf->_arrDataStr = @[[NSString stringWithFormat:@"%.2f",allMoney],[NSString stringWithFormat:@"%@",@(strongSelf->_bModel.admin_team)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.level)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.superior)],@"",@"",@""];
+            //            [self.view addSubview:self.collectionView];
+            strongSelf->_levStr = [NSString stringWithFormat:@"当前等级:%@",kMeUnNilStr(strongSelf->_bModel.level)];
+            [strongSelf.collectionView reloadData];
+            [strongSelf.collectionView.mj_header endRefreshing];
+        } failure:^(id object) {
+            kMeSTRONGSELF
+            [strongSelf.collectionView.mj_header endRefreshing];
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+        }];
+    }else if(_type == MEClientTwoTypeStyle){
+        [MEPublicNetWorkTool getAdminDistributionWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            strongSelf->_bModel = [MEadminDistributionModel mj_objectWithKeyValues:responseObject.data];
+            //订单总额
+            CGFloat allMoney = strongSelf->_bModel.use_money + strongSelf->_bModel.ratio_money;
+            strongSelf->_arrData = @[@(MEMyMoney),@(MEMyTeam),@(MEMyLeave),@(MEMySuperior),@(MEMyCode),@(MEMyDataDeal),@(MEMyCash)];
+            strongSelf->_arrDataStr = @[[NSString stringWithFormat:@"%.2f",allMoney],[NSString stringWithFormat:@"%@",@(strongSelf->_bModel.admin_team)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.level)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.superior)],@"",@"",@""];
+            //            [self.view addSubview:self.collectionView];
+            strongSelf->_levStr = [NSString stringWithFormat:@"当前等级:%@",kMeUnNilStr(strongSelf->_bModel.level)];
+            [strongSelf.collectionView reloadData];
+            [strongSelf.collectionView.mj_header endRefreshing];
+        } failure:^(id object) {
+            kMeSTRONGSELF
+            [strongSelf.collectionView.mj_header endRefreshing];
             [strongSelf.navigationController popViewControllerAnimated:YES];
         }];
     }else if(_type == MEClientTypeClerkStyle){
@@ -247,6 +289,30 @@
     if (kind == UICollectionElementKindSectionHeader){//处理头视图
         MEMyDistributionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([MEMyDistributionReusableView class]) forIndexPath:indexPath];
         if(_type == MEClientBTypeStyle){
+            [headerView setUIBWithModel:_bModel];
+            kMeWEAKSELF
+            headerView.costBlock = ^{
+                kMeSTRONGSELF
+                MEWithdrawalVC *vc = [[MEWithdrawalVC alloc]init];
+                vc.applySucessBlock = ^{
+                    kMeSTRONGSELF
+                    [strongSelf.collectionView.mj_header beginRefreshing];
+                };
+                [strongSelf.navigationController pushViewController:vc animated:YES];
+            };
+        }else if(_type == MEClientOneTypeStyle){
+            [headerView setUIBWithModel:_bModel];
+            kMeWEAKSELF
+            headerView.costBlock = ^{
+                kMeSTRONGSELF
+                MEWithdrawalVC *vc = [[MEWithdrawalVC alloc]init];
+                vc.applySucessBlock = ^{
+                    kMeSTRONGSELF
+                    [strongSelf.collectionView.mj_header beginRefreshing];
+                };
+                [strongSelf.navigationController pushViewController:vc animated:YES];
+            };
+        }else if(_type == MEClientTwoTypeStyle){
             [headerView setUIBWithModel:_bModel];
             kMeWEAKSELF
             headerView.costBlock = ^{

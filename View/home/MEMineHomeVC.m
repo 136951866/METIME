@@ -93,6 +93,16 @@
                     [cell setUnMeaasge];
                 }
                     break;
+                case 1:{
+                    MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+                    [cell setUnMeaasge];
+                }
+                    break;
+                case 2:{
+                        MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+                        [cell setUnMeaasge];
+                    }
+                    break;
                 case 3:{
                     MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
                     [cell setUnMeaasge];
@@ -143,6 +153,16 @@
         NSLog(@"%@",kCurrentUser.uid);
         kMeSTRONGSELF
         switch (kCurrentUser.user_type) {
+            case 1:{
+                //B
+                strongSelf->_arrtype = @[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
+            }
+                break;
+            case 2:{
+                //
+                strongSelf->_arrtype = @[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
+            }
+                break;
             case 4:{
                 //C
                 strongSelf->_arrtype = @[@(MeMyDistribution),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];

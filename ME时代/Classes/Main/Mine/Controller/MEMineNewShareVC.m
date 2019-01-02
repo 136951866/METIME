@@ -37,6 +37,14 @@
                 _lev = [NSString stringWithFormat:@"当前等级:会员"];
             }
                 break;
+            case MEClientOneTypeStyle:{
+                _lev = [NSString stringWithFormat:@"当前等级:售后中心"];
+            }
+                break;
+            case MEClientTwoTypeStyle:{
+                _lev = [NSString stringWithFormat:@"当前等级:营销中心"];
+            }
+                break;
             default:
                 _lev = @"";
                 break;

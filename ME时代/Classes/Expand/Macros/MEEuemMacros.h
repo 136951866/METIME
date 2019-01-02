@@ -149,6 +149,8 @@ typedef enum : NSUInteger {
     MEClientBTypeStyle,
     MEClientCTypeStyle,
     MEClientTypeClerkStyle,
+    MEClientOneTypeStyle,
+    MEClientTwoTypeStyle,
     MEClientTypeErrorStyle
 }  MEClientTypeStyle;
 

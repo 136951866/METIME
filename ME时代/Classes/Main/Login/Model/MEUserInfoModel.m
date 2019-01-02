@@ -96,6 +96,10 @@ static MEUserInfoModel *shareUser;
          return MEClientBTypeStyle;
     }else if (self.user_type == 5){
         return MEClientTypeClerkStyle;
+    }else if (self.user_type == 1){
+        return MEClientOneTypeStyle;
+    }else if (self.user_type == 2){
+        return MEClientTwoTypeStyle;
     }else{
         return MEClientTypeErrorStyle;
     }
