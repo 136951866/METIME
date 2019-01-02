@@ -111,34 +111,60 @@
 }
 
 - (void)shareAction:(UIButton *)btn{
-    if([MEUserInfoModel isLogin]){
-        [self shareTpw];
-    }else{
-        kMeWEAKSELF
-        [MEWxLoginVC presentLoginVCWithSuccessHandler:^(id object) {
-            kMeSTRONGSELF
-            [strongSelf shareTpw];
-        } failHandler:nil];
-    }
-}
-
-- (void)shareTpw{
-    if(kMeUnNilStr(_shareTpwd).length){
+//    [self shareTpw];
+    if(kMeUnNilStr(_Tpwd).length){
         UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-        pasteboard.string = kMeUnNilStr(_shareTpwd);
+        pasteboard.string = kMeUnNilStr(_Tpwd);
         [MEShowViewTool showMessage:@"分享口令复制成功,请发给朋友" view:self.view];
     }else{
         kMeWEAKSELF
-        [MEPublicNetWorkTool postShareTaobaokeGetTpwdWithTitle:kMeUnNilStr(_detailModel.title) url:kMeUnNilStr(_detailModel.coupon_click_url) logo:kMeUnNilStr(_detailModel.pict_url) successBlock:^(ZLRequestResponse *responseObject) {
+        [MEPublicNetWorkTool postTaobaokeGetTpwdWithTitle:kMeUnNilStr(_detailModel.title) url:kMeUnNilStr(_detailModel.coupon_click_url) logo:kMeUnNilStr(_detailModel.pict_url) successBlock:^(ZLRequestResponse *responseObject) {
             kMeSTRONGSELF
-            strongSelf->_shareTpwd = kMeUnNilStr(responseObject.data[@"tbk_tpwd_create_response"][@"data"][@"model"]);
+            strongSelf->_Tpwd = kMeUnNilStr(responseObject.data[@"tbk_tpwd_create_response"][@"data"][@"model"]);
             UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-            pasteboard.string = kMeUnNilStr(strongSelf->_shareTpwd);
+            pasteboard.string = kMeUnNilStr(strongSelf->_Tpwd);
             [MEShowViewTool showMessage:@"分享口令复制成功,请发给朋友" view:strongSelf.view];
         } failure:^(id object) {
             
         }];
     }
+//        kMeWEAKSELF
+//        [MEPublicNetWorkTool postTaobaokeGetTpwdWithTitle:kMeUnNilStr(_detailModel.title) url:kMeUnNilStr(_detailModel.coupon_click_url) logo:kMeUnNilStr(_detailModel.pict_url) successBlock:^(ZLRequestResponse *responseObject) {
+//            kMeSTRONGSELF
+//            strongSelf->_Tpwd = kMeUnNilStr(responseObject.data[@"tbk_tpwd_create_response"][@"data"][@"model"]);
+//            [strongSelf openTb];
+//        } failure:^(id object) {
+//
+//        }];
+//    }
+//    if([MEUserInfoModel isLogin]){
+//        [self shareTpw];
+//    }else{
+//        kMeWEAKSELF
+//        [MEWxLoginVC presentLoginVCWithSuccessHandler:^(id object) {
+//            kMeSTRONGSELF
+//            [strongSelf shareTpw];
+//        } failHandler:nil];
+//    }
+}
+
+- (void)shareTpw{
+//    if(kMeUnNilStr(_shareTpwd).length){
+//        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+//        pasteboard.string = kMeUnNilStr(_shareTpwd);
+//        [MEShowViewTool showMessage:@"分享口令复制成功,请发给朋友" view:self.view];
+//    }else{
+//        kMeWEAKSELF
+//        [MEPublicNetWorkTool postShareTaobaokeGetTpwdWithTitle:kMeUnNilStr(_detailModel.title) url:kMeUnNilStr(_detailModel.coupon_click_url) logo:kMeUnNilStr(_detailModel.pict_url) successBlock:^(ZLRequestResponse *responseObject) {
+//            kMeSTRONGSELF
+//            strongSelf->_shareTpwd = kMeUnNilStr(responseObject.data[@"tbk_tpwd_create_response"][@"data"][@"model"]);
+//            UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+//            pasteboard.string = kMeUnNilStr(strongSelf->_shareTpwd);
+//            [MEShowViewTool showMessage:@"分享口令复制成功,请发给朋友" view:strongSelf.view];
+//        } failure:^(id object) {
+//
+//        }];
+//    }
     
 }
 
