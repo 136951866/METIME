@@ -31,8 +31,6 @@
 #import "MEArticelModel.h"
 #import "MECoupleMailVC.h"
 #import "MEGiftVC.h"
-
-#warning ---test
 #import "MECoupleFilterVC.h"
 
 @interface MESNewHomePageVC ()<UIScrollViewDelegate,MESNewHomePageViewDelegate>{

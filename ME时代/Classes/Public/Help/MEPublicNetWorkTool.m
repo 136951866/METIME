@@ -285,7 +285,7 @@
 #pragma mark - Article
 //访问用户详情
 + (void)postVistorUserInfoWithuserId:(NSString *)userId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
-    NSDictionary *dic = @{@"token":kMeUnNilStr(kCurrentUser.token),@"member_id":kMeUnNilStr(userId)};
+    NSDictionary *dic = @{@"token":kMeUnNilStr(kCurrentUser.token),@"uid":kMeUnNilStr(userId)};
     NSString *url = kGetApiWithUrl(MEIPcommonVistorUserInfo);
     MBProgressHUD *HUD = [self commitWithHUD:@"获取用户详情"];
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {

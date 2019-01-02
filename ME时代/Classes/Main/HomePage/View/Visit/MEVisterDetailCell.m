@@ -26,6 +26,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.selectionStyle = 0;
     _lblCountPage.adjustsFontSizeToFitWidth = YES;
     _lblChatTime.adjustsFontSizeToFitWidth = YES;
     // Initialization code
