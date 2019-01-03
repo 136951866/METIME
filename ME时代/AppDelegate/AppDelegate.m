@@ -44,7 +44,9 @@
     [RCIM sharedRCIM].showUnkownMessage = YES;
     [RCIM sharedRCIM].showUnkownMessageNotificaiton = YES;
 #pragma mark 融云推送
-    
+    if (@available(iOS 11.0, *)) {
+        [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     if (@available(iOS 10.0, *)) {
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
         center.delegate = self;
