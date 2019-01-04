@@ -74,4 +74,11 @@
     CIImage *image = [filter outputImage];
     return [UIImage imageWithCIImage:image];
 }
++(UIImage *)getDataWithUrl:(NSString *)url{
+    UIImage * result;
+    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+    result = [UIImage imageWithData:data];
+    return result;
+}
 @end
+

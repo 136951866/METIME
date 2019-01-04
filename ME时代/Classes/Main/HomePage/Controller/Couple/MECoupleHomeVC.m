@@ -20,7 +20,7 @@
 @interface MECoupleHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSArray *_todayBuy;
     NSArray *_99BuyBuy;
-    NSArray *_BigJuanBuy;
+//    NSArray *_BigJuanBuy;
     NSArray *_advArr;
 }
 
@@ -28,6 +28,7 @@
 @property (nonatomic, strong) ZLRefreshTool         *refresh;
 @property (nonatomic, strong) MECoupleHomeNavView *navView;
 @property (nonatomic, strong) UITableView *tableView;
+
 @end
 
 @implementation MECoupleHomeVC
@@ -35,9 +36,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navBarHidden = YES;
+    self.view.backgroundColor = kMEfbfbfb;
     _todayBuy = [NSArray array];
     _99BuyBuy = [NSArray array];
-    _BigJuanBuy = [NSArray array];
+//    _BigJuanBuy = [NSArray array];
     _advArr = [NSArray array];
     [self.view addSubview:self.navView];
     [self.view addSubview:self.tableView];
@@ -49,8 +51,6 @@
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     dispatch_group_t group = dispatch_group_create();
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    kMeWEAKSELF
-    //
     dispatch_group_async(group, queue, ^{
         kMeWEAKSELF
         [MEPublicNetWorkTool postAgetTbkBannerWithsuccessBlock:^(ZLRequestResponse *responseObject) {
@@ -90,24 +90,25 @@
         }];
     });
     //大额券
-    dispatch_group_async(group, queue, ^{
-        kMeWEAKSELF
-        [MEPublicNetWorkTool postCoupledgMaterialOptionalWithType:MECouponSearchBigJuanType successBlock:^(ZLRequestResponse *responseObject) {
-            kMeSTRONGSELF
-            id arrDIc = responseObject.data[@"tbk_dg_material_optional_response"][@"result_list"][@"map_data"];
-            if([arrDIc isKindOfClass:[NSArray class]]){
-                strongSelf->_BigJuanBuy = [MECoupleModel mj_objectArrayWithKeyValuesArray:arrDIc];
-            }
-            dispatch_semaphore_signal(semaphore);
-        } failure:^(id object) {
-            dispatch_semaphore_signal(semaphore);
-        }];
-    });
+//    dispatch_group_async(group, queue, ^{
+//        kMeWEAKSELF
+//        [MEPublicNetWorkTool postCoupledgMaterialOptionalWithType:MECouponSearchBigJuanType successBlock:^(ZLRequestResponse *responseObject) {
+//            kMeSTRONGSELF
+//            id arrDIc = responseObject.data[@"tbk_dg_material_optional_response"][@"result_list"][@"map_data"];
+//            if([arrDIc isKindOfClass:[NSArray class]]){
+//                strongSelf->_BigJuanBuy = [MECoupleModel mj_objectArrayWithKeyValuesArray:arrDIc];
+//            }
+//            dispatch_semaphore_signal(semaphore);
+//        } failure:^(id object) {
+//            dispatch_semaphore_signal(semaphore);
+//        }];
+//    });
+    kMeWEAKSELF
     dispatch_group_notify(group, queue, ^{
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+//        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_async(dispatch_get_main_queue(), ^{
             kMeSTRONGSELF
             [strongSelf->_headerView setUiWithModel:strongSelf->_advArr];
@@ -155,7 +156,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(section == 0){
-        return 3;
+        return 2;
     }else{
         return 1;
     }
@@ -163,15 +164,22 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 0){
-        MECoupleHomeMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainCell class]) forIndexPath:indexPath];
         if(indexPath.row == 0){
+            MECoupleHomeMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainCell class]) forIndexPath:indexPath];
             [cell setUIWithArr:_todayBuy type:indexPath.row];
+            return cell;
         }else if(indexPath.row == 1){
+            MECoupleHomeMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainCell class]) forIndexPath:indexPath];
             [cell setUIWithArr:_99BuyBuy type:indexPath.row];
-        }else if(indexPath.row == 2){
-            [cell setUIWithArr:_BigJuanBuy type:indexPath.row];
+            return cell;
+        }else{
+            return [UITableViewCell new];
         }
-        return cell;
+//        else if(indexPath.row == 2){
+//            MECoupleHomeMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainCell class]) forIndexPath:indexPath];
+//            [cell setUIWithArr:_BigJuanBuy type:indexPath.row];
+//            return cell;
+//        }
     }else{
         MECoupleHomeMainGoodGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainGoodGoodsCell class]) forIndexPath:indexPath];
         [cell setUIWithArr:self.refresh.arrData];
@@ -185,11 +193,12 @@
            return [MECoupleHomeMainCell getCellHeightWithArr:_todayBuy];
         }else if(indexPath.row == 1){
            return [MECoupleHomeMainCell getCellHeightWithArr:_99BuyBuy];
-        }else if(indexPath.row == 2){
-            return [MECoupleHomeMainCell getCellHeightWithArr:_BigJuanBuy];
         }else{
             return 0;
         }
+//        else if(indexPath.row == 2){
+//            return [MECoupleHomeMainCell getCellHeightWithArr:_BigJuanBuy];
+//        }
     }
     return [MECoupleHomeMainGoodGoodsCell getCellHeightWithArr:self.refresh.arrData];
 }
@@ -213,7 +222,7 @@
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.backgroundColor = kMEfbfbfb;
     }
     return _tableView;
 }

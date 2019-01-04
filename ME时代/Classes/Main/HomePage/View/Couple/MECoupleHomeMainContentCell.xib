@@ -49,6 +49,7 @@
                     </label>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="LpD-1s-jeh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="4mI-T5-H1d"/>
                 <constraint firstItem="ip9-Uf-PWP" firstAttribute="width" secondItem="LpD-1s-jeh" secondAttribute="width" multiplier="0.5" id="6LP-q4-770"/>

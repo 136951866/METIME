@@ -24,6 +24,7 @@
     [super awakeFromNib];
     _lblPrice.adjustsFontSizeToFitWidth = YES;
     _lblLinePrice.adjustsFontSizeToFitWidth = YES;
+    self.backgroundColor = kMEfbfbfb;
     // Initialization code
 }
 

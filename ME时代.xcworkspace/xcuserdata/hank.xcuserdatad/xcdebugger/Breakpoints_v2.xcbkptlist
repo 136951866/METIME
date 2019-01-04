@@ -371,22 +371,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/HomePage/Controller/Poster/MECreatePosterVC.m"
-            timestampString = "566910989.477458"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/HomePage/Controller/Gift/MEGiftVC.m"
             timestampString = "568283882.867965"
             startingColumnNumber = "9223372036854775807"
@@ -436,7 +420,7 @@
                   moduleName = "ME&#x65f6;&#x4ee3;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hank/Desktop/METIME/ME%E6%97%B6%E4%BB%A3/Classes/Main/Login/Controller/MEWxLoginVC.m"
-                  timestampString = "568283925.89179"
+                  timestampString = "568286718.5318739"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
@@ -451,7 +435,7 @@
                   moduleName = "ME&#x65f6;&#x4ee3;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hank/Desktop/METIME/ME%E6%97%B6%E4%BB%A3/Classes/Main/Login/Controller/MEWxLoginVC.m"
-                  timestampString = "568283925.894364"
+                  timestampString = "568286718.535005"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "102"
@@ -466,7 +450,7 @@
                   moduleName = "ME&#x65f6;&#x4ee3;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hank/Desktop/METIME/ME%E6%97%B6%E4%BB%A3/Classes/Main/Login/Controller/MEWxLoginVC.m"
-                  timestampString = "568283925.8970211"
+                  timestampString = "568286718.537974"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
@@ -658,13 +642,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/HomePage/Controller/Couple/MECoupleHomeVC.m"
-            timestampString = "568283923.412478"
+            filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/HomePage/View/Couple/MECoupleHomeMainCell.m"
+            timestampString = "568287239.590758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "-handleResponse:"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "-setUIWithArr:type:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

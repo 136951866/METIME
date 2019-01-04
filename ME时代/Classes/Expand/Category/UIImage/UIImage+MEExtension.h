@@ -30,4 +30,6 @@
 + (UIImage *)imageWithView:(UIView *)view frame:(CGRect)frame;
 //url转二维码
 +(UIImage *)getCodeWithUrl:(NSString *)url;
+//根据url拿到data
++(UIImage *)getDataWithUrl:(NSString *)url;
 @end
