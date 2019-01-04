@@ -12,8 +12,17 @@
 #import "MECoupleHomeMainCell.h"
 #import "MECoupleHomeMainGoodGoodsCell.h"
 #import "MECoupleModel.h"
+#import "MECouponSearchVC.h"
+#import "MENavigationVC.h"
+#import "MECoupleMailVC.h"
+#import "MEAdModel.h"
 
-@interface MECoupleHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>
+@interface MECoupleHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
+    NSArray *_todayBuy;
+    NSArray *_99BuyBuy;
+    NSArray *_BigJuanBuy;
+    NSArray *_advArr;
+}
 
 @property (nonatomic, strong) MECoupleHomeHeaderView         *headerView;
 @property (nonatomic, strong) ZLRefreshTool         *refresh;
@@ -26,16 +35,94 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navBarHidden = YES;
+    _todayBuy = [NSArray array];
+    _99BuyBuy = [NSArray array];
+    _BigJuanBuy = [NSArray array];
+    _advArr = [NSArray array];
     [self.view addSubview:self.navView];
     [self.view addSubview:self.tableView];
-    [self.headerView setUiWithModel:@""];
     _tableView.tableHeaderView = self.headerView;
     [self.refresh addRefreshView];
 }
 
+- (void)requestNetWork{
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    kMeWEAKSELF
+    //
+    dispatch_group_async(group, queue, ^{
+        kMeWEAKSELF
+        [MEPublicNetWorkTool postAgetTbkBannerWithsuccessBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            strongSelf->_advArr = [MEAdModel mj_objectArrayWithKeyValuesArray:responseObject.data];
+            dispatch_semaphore_signal(semaphore);
+        } failure:^(id object) {
+            dispatch_semaphore_signal(semaphore);
+        }];
+    });
+    
+    dispatch_group_async(group, queue, ^{
+        kMeWEAKSELF
+        [MEPublicNetWorkTool postCoupledgMaterialOptionalWithType:MECouponSearchTopBuyType successBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            id arrDIc = responseObject.data[@"tbk_dg_material_optional_response"][@"result_list"][@"map_data"];
+            if([arrDIc isKindOfClass:[NSArray class]]){
+                strongSelf->_todayBuy = [MECoupleModel mj_objectArrayWithKeyValuesArray:arrDIc];
+            }
+            dispatch_semaphore_signal(semaphore);
+        } failure:^(id object) {
+            dispatch_semaphore_signal(semaphore);
+        }];
+    });
+    //9.9
+    dispatch_group_async(group, queue, ^{
+        kMeWEAKSELF
+        [MEPublicNetWorkTool postCoupledgMaterialOptionalWithType:MECouponSearch99BuyType successBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            id arrDIc = responseObject.data[@"tbk_dg_material_optional_response"][@"result_list"][@"map_data"];
+            if([arrDIc isKindOfClass:[NSArray class]]){
+                strongSelf->_99BuyBuy = [MECoupleModel mj_objectArrayWithKeyValuesArray:arrDIc];
+            }
+            dispatch_semaphore_signal(semaphore);
+        } failure:^(id object) {
+            dispatch_semaphore_signal(semaphore);
+        }];
+    });
+    //大额券
+    dispatch_group_async(group, queue, ^{
+        kMeWEAKSELF
+        [MEPublicNetWorkTool postCoupledgMaterialOptionalWithType:MECouponSearchBigJuanType successBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            id arrDIc = responseObject.data[@"tbk_dg_material_optional_response"][@"result_list"][@"map_data"];
+            if([arrDIc isKindOfClass:[NSArray class]]){
+                strongSelf->_BigJuanBuy = [MECoupleModel mj_objectArrayWithKeyValuesArray:arrDIc];
+            }
+            dispatch_semaphore_signal(semaphore);
+        } failure:^(id object) {
+            dispatch_semaphore_signal(semaphore);
+        }];
+    });
+    dispatch_group_notify(group, queue, ^{
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            kMeSTRONGSELF
+            [strongSelf->_headerView setUiWithModel:strongSelf->_advArr];
+            [strongSelf.tableView.mj_header endRefreshing];
+            [strongSelf.tableView reloadData];
+        });
+    });
+}
+
+
 - (NSDictionary *)requestParameter{
-    //    return @{@"r":@"Port/index",@"type":@"total",@"appkey":@"58de5a1fe2",@"v":@"2"};
-    return @{@"q":@"电子",@"tool":@"ios"};
+    if(self.refresh.pageIndex == 1){
+        [self requestNetWork];
+    }
+    return @{@"type":@(MECouponSearchGoodGoodsType)};
 }
 
 - (void)handleResponse:(id)data{
@@ -77,7 +164,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 0){
         MECoupleHomeMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainCell class]) forIndexPath:indexPath];
-        [cell setUIWithArr:@[@"",@"",@"",@"",@"",@""] type:indexPath.row];
+        if(indexPath.row == 0){
+            [cell setUIWithArr:_todayBuy type:indexPath.row];
+        }else if(indexPath.row == 1){
+            [cell setUIWithArr:_99BuyBuy type:indexPath.row];
+        }else if(indexPath.row == 2){
+            [cell setUIWithArr:_BigJuanBuy type:indexPath.row];
+        }
         return cell;
     }else{
         MECoupleHomeMainGoodGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainGoodGoodsCell class]) forIndexPath:indexPath];
@@ -88,9 +181,27 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 0){
-        return [MECoupleHomeMainCell getCellHeight];
+        if(indexPath.row == 0){
+           return [MECoupleHomeMainCell getCellHeightWithArr:_todayBuy];
+        }else if(indexPath.row == 1){
+           return [MECoupleHomeMainCell getCellHeightWithArr:_99BuyBuy];
+        }else if(indexPath.row == 2){
+            return [MECoupleHomeMainCell getCellHeightWithArr:_BigJuanBuy];
+        }else{
+            return 0;
+        }
     }
     return [MECoupleHomeMainGoodGoodsCell getCellHeightWithArr:self.refresh.arrData];
+}
+
+- (void)searchCoupon{
+    MECouponSearchVC *searchViewController = [MECouponSearchVC searchViewControllerWithHotSearches:@[] searchBarPlaceholder:@"搜索优惠卷" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
+        MECoupleMailVC *dataVC = [[MECoupleMailVC alloc]initWithQuery:searchText];
+        [searchViewController.navigationController pushViewController:dataVC animated:YES];
+    }];
+    [searchViewController setSearchHistoriesCachePath:kMECouponSearchVCSearchHistoriesCachePath];
+    MENavigationVC *nav = [[MENavigationVC alloc] initWithRootViewController:searchViewController];
+    [self presentViewController:nav  animated:NO completion:nil];
 }
 
 - (UITableView *)tableView{
@@ -119,15 +230,24 @@
     if(!_navView){
         _navView = [[[NSBundle mainBundle]loadNibNamed:@"MECoupleHomeNavView" owner:nil options:nil] lastObject];
         _navView.frame =CGRectMake(0, 0, SCREEN_WIDTH, kMeNavBarHeight);
+        kMeWEAKSELF
+        _navView.backBlock = ^{
+            kMeSTRONGSELF
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+        };
+        _navView.searchBlock = ^{
+            kMeSTRONGSELF
+            [strongSelf searchCoupon];
+        };
     }
     return _navView;
 }
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonTaobaokeGetCoupon)];
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonTaobaokeGetDgMaterialOptional)];
         _refresh.delegate = self;
-        _refresh.isCouple = YES;
+        _refresh.isCoupleMater = YES;
         _refresh.isDataInside = YES;
         _refresh.showFailView = NO;
     }

@@ -12,7 +12,7 @@
 #warning -mustNotes 上线一定要注释/海报分享没有用BASEIP
 
 
-//#define TestVersion
+#define TestVersion
 
 //域名 develop
 #ifdef TestVersion
@@ -39,6 +39,8 @@
 
 /*********************************************/
 #pragma makr - taobao
+//获取淘宝客Banner
+#define MEIPcommonTaobaokeGetgetTbkBanner @"common/taobaoke/getTbkBanner"
 //淘宝分类
 #define MEIPcommonTaobaokeGetCategory @"common/taobaoke/getCategory"
 //好券列表
@@ -47,6 +49,10 @@
 #define MEIPcommonTaobaokeGetGoodsInfo @"common/taobaoke/getGoodsInfo"
 //淘口令
 #define MEIPcommonTaobaokeGetGetTpwd @"common/taobaoke/getTpwd"
+//通用物料搜索API
+#define MEIPcommonTaobaokeGetDgMaterialOptional @"common/taobaoke/dgMaterialOptional"
+//推广券信息查询
+#define MEIPcommonTaobaokeGetTbkCouponGet @"common/taobaoke/tbkCouponGet"
 /*********************************************/
 
 

@@ -28,7 +28,7 @@
                         <constraint firstAttribute="height" constant="128" id="9Oa-md-PWL"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top" translatesAutoresizingMaskIntoConstraints="NO" id="bet-bz-GqN">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tehui" translatesAutoresizingMaskIntoConstraints="NO" id="bet-bz-GqN">
                     <rect key="frame" x="196.5" y="154" width="188.5" height="128"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shishang" translatesAutoresizingMaskIntoConstraints="NO" id="CAg-Y2-wkv">
@@ -112,6 +112,5 @@
         <image name="pingpai" width="182" height="89"/>
         <image name="shishang" width="182" height="89"/>
         <image name="tehui" width="182" height="89"/>
-        <image name="top" width="182" height="89"/>
     </resources>
 </document>

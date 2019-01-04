@@ -8,6 +8,8 @@
 
 #import "MEBaseModel.h"
 
+@class MECouponInfo;
+
 @interface MECoupleSmallImageModel : MEBaseModel
 
 @property (nonatomic, copy) NSArray *string;
@@ -69,5 +71,9 @@
 @property (nonatomic, strong) NSString * zk_final_price;
 @property (nonatomic, strong) NSString * couponPrice;
 @property (nonatomic, strong) NSString * truePrice;
+@property (nonatomic, strong) NSString * coupon_share_url;
+@property (nonatomic, strong) NSString * coupon_id;
 
+
+- (void)resetModelWithModel:(MECouponInfo *)model;
 @end

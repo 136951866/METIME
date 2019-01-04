@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MECoupleHomeNavView : UIView
 
+@property (nonatomic ,copy) kMeBasicBlock backBlock;
+@property (nonatomic ,copy) kMeBasicBlock searchBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

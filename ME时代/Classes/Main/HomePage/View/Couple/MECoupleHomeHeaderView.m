@@ -7,9 +7,15 @@
 //
 
 #import "MECoupleHomeHeaderView.h"
+#import "MECoupleHomeVC.h"
+#import "MECoupleMailVC.h"
+#import "MECoupleFilterVC.h"
+#import "MEAdModel.h"
+#import "MECoupleMailVC.h"
 
-
-@interface MECoupleHomeHeaderView ()<SDCycleScrollViewDelegate>
+@interface MECoupleHomeHeaderView ()<SDCycleScrollViewDelegate>{
+    NSArray *_Model;
+}
 
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *sdView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consSdViewHeight;
@@ -30,11 +36,12 @@
     [self layoutIfNeeded];
 }
 
-- (void)setUiWithModel:(id)Model{
-    __block NSMutableArray *arrImage = @[@"",@"",@""];//[NSMutableArray array];
-//    [model enumerateObjectsUsingBlock:^(MEAdModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-//        [arrImage addObject:kMeUnNilStr(model.ad_img)];
-//    }];
+- (void)setUiWithModel:(NSArray *)Model{
+    _Model = Model;
+    __block NSMutableArray *arrImage =[NSMutableArray array];
+    [_Model enumerateObjectsUsingBlock:^(MEAdModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        [arrImage addObject:kMeUnNilStr(model.ad_img)];
+    }];
     _sdView.contentMode = UIViewContentModeScaleAspectFill;
     _sdView.clipsToBounds = YES;
     _sdView.imageURLStringsGroup = arrImage;
@@ -51,25 +58,53 @@
 }
 
 
-
+//好卷
 - (IBAction)haoJuanAction:(UIButton *)sender {
-    
+    MECoupleHomeVC *homevc = [MECommonTool getVCWithClassWtihClassName:[MECoupleHomeVC class] targetResponderView:self];
+    if(homevc){
+        MECoupleMailVC *vc = [[MECoupleMailVC alloc]initWithType:MECouponSearchPinPaiType];
+        [homevc.navigationController pushViewController:vc animated:YES];
+    }
 }
-
+//特惠
 - (IBAction)topBuyAction:(UIButton *)sender {
-    
-}
-- (IBAction)shishangAction:(UIButton *)sender {
-}
+    MECoupleHomeVC *homevc = [MECommonTool getVCWithClassWtihClassName:[MECoupleHomeVC class] targetResponderView:self];
+    if(homevc){
+        MECoupleMailVC *vc = [[MECoupleMailVC alloc]initWithType:MECouponSearchTeHuiType];
+        [homevc.navigationController pushViewController:vc animated:YES];
+    }
 
+}
+//时尚
+- (IBAction)shishangAction:(UIButton *)sender {
+    MECoupleHomeVC *homevc = [MECommonTool getVCWithClassWtihClassName:[MECoupleHomeVC class] targetResponderView:self];
+    if(homevc){
+        MECoupleMailVC *vc = [[MECoupleMailVC alloc]initWithType:MECouponSearchShiShangType];
+        [homevc.navigationController pushViewController:vc animated:YES];
+    }
+}
+//分类
 - (IBAction)teHuiAction:(UIButton *)sender {
-    
+    MECoupleHomeVC *homevc = [MECommonTool getVCWithClassWtihClassName:[MECoupleHomeVC class] targetResponderView:self];
+    if(homevc){
+        MECoupleFilterVC *vc = [[MECoupleFilterVC alloc]init];
+        [homevc.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 
 #pragma mark - SDCycleScrollViewDelegate
 
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
+    if(index>_Model.count){
+        return;
+    }
+    MECoupleHomeVC *homevc = [MECommonTool getVCWithClassWtihClassName:[MECoupleHomeVC class] targetResponderView:self];
+    if(homevc){
+        MEAdModel *model = _Model[index];
+        MECoupleMailVC *vc = [[MECoupleMailVC alloc]initWithQuery:kMeUnNilStr(model.keywork)];
+        [homevc.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 + (CGFloat)getViewHeight{

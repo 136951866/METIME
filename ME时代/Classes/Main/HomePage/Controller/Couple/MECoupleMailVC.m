@@ -14,25 +14,91 @@
 
 @interface MECoupleMailVC ()<UICollectionViewDelegate,UICollectionViewDataSource,RefreshToolDelegate>{
     NSString *_queryStr;
+    MECouponSearchType _type;
 }
 
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property (nonatomic, strong) ZLRefreshTool         *refresh;
+@property (nonatomic, assign) BOOL isMater;
 
 @end
 
 @implementation MECoupleMailVC
 
+- (instancetype)initWithType:(MECouponSearchType)type{
+    if(self = [super init]){
+        _isMater = YES;
+        _type = type;
+    }
+    return self;
+}
+
 - (instancetype)initWithQuery:(NSString *)query{
     if(self = [super init]){
         _queryStr = query;
+        _isMater = NO;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = _queryStr;
+//    //type:1:9.9、2：时尚潮流、3人气爆款、4大额券、5特惠、6好货、7好券直播、8品牌
+//    typedef enum : NSUInteger {
+//        MECouponSearch99BuyType = 1,
+//        MECouponSearchShiShangType = 2,
+//        MECouponSearchTopBuyType = 3,
+//        MECouponSearchBigJuanType = 4,
+//        MECouponSearchTeHuiType = 5,
+//        MECouponSearchGoodGoodsType = 6,
+//        MECouponSearchGoodJuanType = 7,
+//        MECouponSearchPinPaiType = 8,
+//    }  MECouponSearchType;
+
+    if(_isMater){
+        NSString *str = @"";
+        switch (_type) {
+            case MECouponSearch99BuyType:{
+                str = @"9块9专场";
+            }
+                break;
+            case MECouponSearchShiShangType:{
+                str = @"时尚潮流专场";
+            }
+                break;
+            case MECouponSearchTopBuyType:{
+                str = @"人气爆款专场";
+            }
+                break;
+            case MECouponSearchBigJuanType:{
+                str = @"大额卷专场";
+            }
+                break;
+            case MECouponSearchTeHuiType:{
+                str = @"超值特惠专场";
+            }
+                break;
+            case MECouponSearchGoodGoodsType:{
+                str = @"精选好物专场";
+            }
+                break;
+            case MECouponSearchGoodJuanType:{
+                str = @"好卷直播专场";
+            }
+                break;
+            case MECouponSearchPinPaiType:{
+                str = @"品牌专场";
+            }
+                break;
+            default:
+                str = @"优惠卷";
+                break;
+        }
+        self.title = str;
+    }else{
+        self.title = _queryStr;
+    }
+    
     [self.view addSubview:self.collectionView];
     [self.refresh addRefreshView];
     // Do any additional setup after loading the view.
@@ -42,7 +108,11 @@
 
 - (NSDictionary *)requestParameter{
 //    return @{@"r":@"Port/index",@"type":@"total",@"appkey":@"58de5a1fe2",@"v":@"2"};
-    return @{@"q":kMeUnNilStr(_queryStr),@"tool":@"ios"};
+    if(_isMater){
+        return @{@"type":@(_type)};
+    }else{
+        return @{@"q":kMeUnNilStr(_queryStr),@"tool":@"ios"};
+    }
 }
 
 - (void)handleResponse:(id)data{
@@ -56,9 +126,16 @@
 #pragma mark- CollectionView Delegate And DataSource
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    MECoupleModel *model = self.refresh.arrData[indexPath.row];
-    MECoupleMailDetalVC *vc = [[MECoupleMailDetalVC alloc]initWithModel:model];
-    [self.navigationController pushViewController:vc animated:YES];
+    if(_isMater){
+        MECoupleModel *model = self.refresh.arrData[indexPath.row];
+        MECoupleMailDetalVC *vc = [[MECoupleMailDetalVC alloc]initWithProductrId:model.num_iid couponId:kMeUnNilStr(model.coupon_id) couponurl:kMeUnNilStr(model.coupon_share_url)];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        MECoupleModel *model = self.refresh.arrData[indexPath.row];
+        MECoupleMailDetalVC *vc = [[MECoupleMailDetalVC alloc]initWithModel:model];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -109,9 +186,17 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.collectionView url:kGetApiWithUrl(MEIPcommonTaobaokeGetCoupon)];
+        NSString *str = MEIPcommonTaobaokeGetCoupon;
+        if(_isMater){
+            str = MEIPcommonTaobaokeGetDgMaterialOptional;
+        }
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.collectionView url:kGetApiWithUrl(str)];
         _refresh.delegate = self;
-        _refresh.isCouple = YES;
+        if(_isMater){
+            _refresh.isCoupleMater = YES;
+        }else{
+            _refresh.isCouple = YES;
+        }
         _refresh.isDataInside = YES;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
             failView.backgroundColor = [UIColor whiteColor];

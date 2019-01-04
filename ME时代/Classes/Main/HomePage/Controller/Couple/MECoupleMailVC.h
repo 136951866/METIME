@@ -11,5 +11,6 @@
 @interface MECoupleMailVC : MEBaseVC
 
 - (instancetype)initWithQuery:(NSString *)query;
+- (instancetype)initWithType:(MECouponSearchType)type;
 
 @end

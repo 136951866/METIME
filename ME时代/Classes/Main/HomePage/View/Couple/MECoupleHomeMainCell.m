@@ -8,6 +8,10 @@
 
 #import "MECoupleHomeMainCell.h"
 #import "MECoupleHomeMainContentCell.h"
+#import "MECoupleModel.h"
+#import "MECoupleMailVC.h"
+#import "MECoupleHomeVC.h"
+#import "MECoupleMailDetalVC.h"
 
 const static CGFloat kMargin = 4;
 
@@ -18,6 +22,8 @@ const static CGFloat kMargin = 4;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consImageHeight;
 @property (nonatomic, strong) NSArray *arrModel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+
 @end
 
 @implementation MECoupleHomeMainCell
@@ -33,6 +39,7 @@ const static CGFloat kMargin = 4;
 }
 
 - (void)initSomeThing{
+    _arrModel = [NSArray array];
     [_collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([MECoupleHomeMainContentCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([MECoupleHomeMainContentCell class])];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
@@ -42,7 +49,12 @@ const static CGFloat kMargin = 4;
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+    MECoupleModel *model = _arrModel[indexPath.row];
+    MECoupleHomeVC *homevc = [MECommonTool getVCWithClassWtihClassName:[MECoupleHomeVC class] targetResponderView:self];
+    if(homevc){
+        MECoupleMailDetalVC *dvc = [[MECoupleMailDetalVC alloc]initWithProductrId:model.num_iid couponId:kMeUnNilStr(model.coupon_id) couponurl:kMeUnNilStr(model.coupon_share_url)];
+        [homevc.navigationController pushViewController:dvc animated:YES];
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -51,7 +63,8 @@ const static CGFloat kMargin = 4;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     MECoupleHomeMainContentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MECoupleHomeMainContentCell class]) forIndexPath:indexPath];
-    [cell setUIWIthModel:@""];
+    MECoupleModel *model = _arrModel[indexPath.row];
+    [cell setUIWIthModel:model];
     return cell;
 }
 
@@ -94,14 +107,41 @@ const static CGFloat kMargin = 4;
 }
 
 - (IBAction)tapAction:(UIButton *)sender {
-    
+    MECoupleHomeVC *homevc = [MECommonTool getVCWithClassWtihClassName:[MECoupleHomeVC class] targetResponderView:self];
+    if(homevc){
+        switch (_type) {
+            case kTodayHotImageType:
+            {
+                MECoupleMailVC *vc = [[MECoupleMailVC alloc]initWithType:MECouponSearchTopBuyType];
+                [homevc.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case k99BuyImageType:
+            {
+                MECoupleMailVC *vc = [[MECoupleMailVC alloc]initWithType:MECouponSearch99BuyType];
+                [homevc.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case kBigJuanImageType:
+            {
+                MECoupleMailVC *vc = [[MECoupleMailVC alloc]initWithType:MECouponSearchBigJuanType];
+                [homevc.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 
-+ (CGFloat)getCellHeight{
-    CGFloat height = 221-50;
++ (CGFloat)getCellHeightWithArr:(NSArray*)arr{
     CGFloat imaggW = SCREEN_WIDTH - 8;
     CGFloat imageH = (imaggW *100)/732;
+    if(arr.count == 0){
+        return imageH;
+    }
+    CGFloat height = 221-50;
     return height+imageH;
 }
 @end

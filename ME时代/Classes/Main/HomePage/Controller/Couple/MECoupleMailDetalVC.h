@@ -12,5 +12,6 @@
 @interface MECoupleMailDetalVC : MEBaseVC
 
 - (instancetype)initWithModel:(MECoupleModel *)model;
+- (instancetype)initWithProductrId:(NSString *)ProductrId couponId:(NSString *)couponId couponurl:(NSString *)couponurl;
 
 @end

@@ -12,14 +12,18 @@
 #import "ZLWebViewVC.h"
 #import "MECoupleModel.h"
 #import "MECoupleMailDetalImageCell.h"
+#import "MECouponInfo.h"
 
 #define MECoupleMailDetalVCbottomViewHeight 50
 
 @interface MECoupleMailDetalVC ()<UITableViewDelegate,UITableViewDataSource>{
     NSString *_detailId;
     MECoupleModel *_detailModel;
+    MECouponInfo *_couponInfoModel;
     NSString *_Tpwd;
     NSString *_shareTpwd;
+    NSString *_couponId;
+    NSString *_couponurl;
 }
 
 @property (nonatomic, strong) UITableView           *tableView;
@@ -38,26 +42,82 @@
     return self;
 }
 
+- (instancetype)initWithProductrId:(NSString *)ProductrId couponId:(NSString *)couponId couponurl:(NSString *)couponurl{
+    if(self = [super init]){
+        _detailId = ProductrId;
+        _couponId = couponId;
+        _couponurl = couponurl;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"商品详情";
-//    kMeWEAKSELF
-//    [MEPublicNetWorkTool postCoupleDetailWithProductrId:_detailId successBlock:^(ZLRequestResponse *responseObject) {
-//        kMeSTRONGSELF
-//        if([responseObject.data isKindOfClass:[NSDictionary class]]){
-//            strongSelf->_detailModel = [MECoupleDetailModle mj_objectWithKeyValues:responseObject.data[@"tbk_item_info_get_response"][@"results"][@"n_tbk_item"]];
-            [self.view addSubview:self.tableView];
-            [self.view addSubview:self.bottomView];
-            self.tableView.tableHeaderView = self.headerView;
-            [self.headerView setUIWithModel:_detailModel];
-            [self.tableView reloadData];
-//        }else{
-//             [strongSelf.navigationController popViewControllerAnimated:YES];
-//        }
-//    } failure:^(id object) {
-//        kMeSTRONGSELF
-//        [strongSelf.navigationController popViewControllerAnimated:YES];
-//    }];
+    if(_detailModel){
+        [self.view addSubview:self.tableView];
+        [self.view addSubview:self.bottomView];
+        self.tableView.tableHeaderView = self.headerView;
+        [self.headerView setUIWithModel:_detailModel];
+        [self.tableView reloadData];
+    }else{
+        [self requestNetWork];
+    }
+}
+
+- (void)requestNetWork{
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    [MBProgressHUD showMessage:@"获取详情中" toView:self.view];
+    kMeWEAKSELF
+    dispatch_group_async(group, queue, ^{
+        kMeSTRONGSELF
+        [MEPublicNetWorkTool postCoupleDetailWithProductrId:strongSelf->_detailId successBlock:^(ZLRequestResponse *responseObject) {
+            if([responseObject.data isKindOfClass:[NSDictionary class]]){
+                NSArray *arr= responseObject.data[@"tbk_item_info_get_response"][@"results"][@"n_tbk_item"];
+                if([arr isKindOfClass:[NSArray class]] && arr.count){
+                    strongSelf->_detailModel = [MECoupleModel mj_objectWithKeyValues:arr[0]];
+                }else{
+                    strongSelf->_detailModel = [MECoupleModel new];
+                }
+                dispatch_semaphore_signal(semaphore);
+            }else{
+                [strongSelf.navigationController popViewControllerAnimated:YES];
+            }
+        } failure:^(id object) {
+            kMeSTRONGSELF
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+            dispatch_semaphore_signal(semaphore);
+        }];
+    });
+    dispatch_group_async(group, queue, ^{
+        kMeSTRONGSELF
+        [MEPublicNetWorkTool postCoupleTbkCouponGetWithActivity_id:kMeUnNilStr(strongSelf->_couponId) item_id:kMeUnNilStr(strongSelf->_detailId) successBlock:^(ZLRequestResponse *responseObject) {
+            strongSelf->_couponInfoModel = [MECouponInfo mj_objectWithKeyValues:responseObject.data[@"tbk_coupon_get_response"][@"data"]];
+            dispatch_semaphore_signal(semaphore);
+        } failure:^(id object) {
+            kMeSTRONGSELF
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+            dispatch_semaphore_signal(semaphore);
+        }];
+    });
+    
+    dispatch_group_notify(group, queue, ^{
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            kMeSTRONGSELF
+            [MBProgressHUD hideHUDForView:strongSelf.view];
+            [strongSelf->_detailModel resetModelWithModel:strongSelf->_couponInfoModel];
+            strongSelf->_detailModel.coupon_click_url = [NSString stringWithFormat:@"https:%@",strongSelf->_couponurl];
+            [strongSelf.view addSubview:strongSelf.tableView];
+            [strongSelf.view addSubview:strongSelf.bottomView];
+            strongSelf.tableView.tableHeaderView = strongSelf.headerView;
+            [strongSelf.headerView setUIWithModel:strongSelf->_detailModel];
+            [strongSelf.tableView reloadData];
+        });
+    });
 }
 
 #pragma mark - tableView deleagte and sourcedata

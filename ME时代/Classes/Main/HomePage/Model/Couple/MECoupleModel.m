@@ -7,6 +7,7 @@
 //
 
 #import "MECoupleModel.h"
+#import "MECouponInfo.h"
 
 @implementation MECoupleSmallImageModel
 
@@ -14,6 +15,16 @@
 
 @implementation MECoupleModel
 
+- (void)resetModelWithModel:(MECouponInfo *)model{
+    self.couponPrice = model.coupon_amount;
+    self.coupon_end_time = model.coupon_end_time;
+    self.coupon_remain_count = model.coupon_remain_count;
+//    self.coupon_src_scene = model.coupon_src_scene;
+//    self.coupon_start_fee = model.coupon_start_fee;
+    self.coupon_start_time = model.coupon_start_time;
+    self.coupon_total_count = model.coupon_total_count;
+//    self.coupon_type = model.coupon_type;
+}
 
 - (NSString *)couponPrice{
     if(!_couponPrice){
@@ -34,7 +45,8 @@
             return @"";
         }
         CGFloat price = [self.zk_final_price floatValue] - [self.couponPrice floatValue];
-        return @(price).description;
+        NSString *strPrice = [NSString stringWithFormat:@"%.2f",price];
+        return strPrice;
     }
     return _truePrice;
 }
@@ -45,5 +57,6 @@
     }
     return _couponSale;
 }
+
 
 @end

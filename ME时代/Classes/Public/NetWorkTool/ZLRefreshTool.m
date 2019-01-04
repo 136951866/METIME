@@ -34,6 +34,7 @@ NSUInteger const kSizeNum = 10;
         _showFailView = YES;
         _url = url;
         _isCouple = NO;
+        _isCoupleMater = NO;
     }
     return self;
 }
@@ -98,16 +99,23 @@ NSUInteger const kSizeNum = 10;
                 [strongSelf.arrData removeAllObjects];
             }
             if(self.isDataInside){
+                //项目赶 以后优化
                 if(strongSelf->_isCouple){
                     NSInteger count = [responseObject.data[@"tbk_dg_item_coupon_get_response"][@"total_results"] integerValue];
                     strongSelf.allRows = count ;
                     [strongSelf.delegate handleResponse:responseObject.data[@"tbk_dg_item_coupon_get_response"][@"results"][@"tbk_coupon"]];
                 }else{
-                    MENetListModel *nlModel = [MENetListModel mj_objectWithKeyValues:responseObject.data];
-                    strongSelf.allRows = nlModel.count;
-                    [strongSelf.delegate handleResponse:nlModel.data];
+                    if(strongSelf->_isCoupleMater){
+                        NSInteger count = [responseObject.data[@"tbk_dg_material_optional_response"][@"total_results"] integerValue];
+                        count=count==0?1000:count;
+                        strongSelf.allRows = count ;
+                        [strongSelf.delegate handleResponse:responseObject.data[@"tbk_dg_material_optional_response"][@"result_list"][@"map_data"]];
+                    }else{
+                        MENetListModel *nlModel = [MENetListModel mj_objectWithKeyValues:responseObject.data];
+                        strongSelf.allRows = nlModel.count;
+                        [strongSelf.delegate handleResponse:nlModel.data];
+                    }
                 }
-                
             }else{
                 [strongSelf.delegate handleResponse:responseObject.data];
                 //                strongSelf.allRows = responseObject.amount;

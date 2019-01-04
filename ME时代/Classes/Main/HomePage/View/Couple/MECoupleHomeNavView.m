@@ -22,4 +22,13 @@
     [self layoutIfNeeded];
 }
 
+- (IBAction)backAction:(UIButton *)sender {
+    kMeCallBlock(_backBlock);
+}
+
+- (IBAction)searchAction:(UIButton *)sender {
+    kMeCallBlock(_searchBlock);
+}
+
+
 @end

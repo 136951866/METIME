@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, MECoupleHomeMainCellImageType) {
 @interface MECoupleHomeMainCell : UITableViewCell
 
 - (void)setUIWithArr:(NSArray *)arrModel type:(MECoupleHomeMainCellImageType)type;
-+ (CGFloat)getCellHeight;
++ (CGFloat)getCellHeightWithArr:(NSArray*)arr;
 
 @end
 

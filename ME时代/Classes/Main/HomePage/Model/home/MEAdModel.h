@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSString * ad_name;
 @property (nonatomic, strong) NSString * ad_url;
 @property (nonatomic, assign) NSInteger product_id;
+@property (nonatomic, strong) NSString *keywork;
 
 @end

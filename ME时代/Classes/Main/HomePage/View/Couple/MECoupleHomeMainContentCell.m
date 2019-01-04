@@ -7,6 +7,7 @@
 //
 
 #import "MECoupleHomeMainContentCell.h"
+#import "MECoupleModel.h"
 
 @interface MECoupleHomeMainContentCell ()
 
@@ -26,12 +27,12 @@
     // Initialization code
 }
 
-- (void)setUIWIthModel:(id)model{
-    kSDLoadImg(_imgPic, kMeUnNilStr(@"1"));
-    _lblTitle.text = kMeUnNilStr(@"11");
-    NSString *commStr = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(@"111").floatValue)];
+- (void)setUIWIthModel:(MECoupleModel *)model{
+    [_imgPic sd_setImageWithURL:[NSURL URLWithString:kMeUnNilStr(model.pict_url)] placeholderImage:kImgPlaceholder];
+    _lblTitle.text = kMeUnNilStr(model.title);
+    NSString *commStr = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.zk_final_price).floatValue)];
     [_lblLinePrice setLineStrWithStr:commStr];
-    _lblPrice.text = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(@"100").floatValue)];
+    _lblPrice.text = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.truePrice).floatValue)];
 
     
 }

@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblSale;
 @property (weak, nonatomic) IBOutlet UILabel *lblJuanPrice;
 @property (weak, nonatomic) IBOutlet UILabel *lblJuan;
+@property (weak, nonatomic) IBOutlet UIImageView *imgJuan;
+@property (weak, nonatomic) IBOutlet UILabel *lblMaterSale;
 
 @end
 
@@ -38,10 +40,26 @@
     //卷后价
     _lblJuanPrice.text =[NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.truePrice).floatValue)];
     //卷价格
-//    NSString *strJuan = kMeUnNilStr(model.coupon_info);
-    
-    _lblJuan.text =[NSString stringWithFormat:@"%@元卷",kMeUnNilStr(model.couponPrice)];
-    
+
+
+    if(kMeUnNilStr(model.coupon_info).length){
+        _imgJuan.hidden = NO;
+        _lblJuan.hidden = NO;
+        _lblTitle.numberOfLines = 1;
+        _lblJuan.text =[NSString stringWithFormat:@"%@元卷",kMeUnNilStr(model.couponPrice)];
+        _lblOrigalPrice.hidden = NO;
+        _lblSale.hidden = NO;
+        _lblMaterSale.hidden = YES;
+    }else{
+        _lblTitle.numberOfLines = 2;
+        _imgJuan.hidden = YES;
+        _lblJuan.hidden = YES;
+        _lblJuan.text = @"";
+        _lblOrigalPrice.hidden = YES;
+        _lblSale.hidden = YES;
+        _lblMaterSale.hidden = NO;
+        _lblMaterSale.text = [NSString stringWithFormat:@"已售%@",kMeUnNilStr(model.couponSale)];
+    }
 }
 
 @end

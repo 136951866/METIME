@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MECoupleHomeHeaderView : UIView
 
-- (void)setUiWithModel:(id)Model;
+- (void)setUiWithModel:(NSArray *)Model;
 + (CGFloat)getViewHeight;
 
 @end
