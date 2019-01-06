@@ -10,7 +10,7 @@
 
 @class MESpreadUserModel;
 @class MEVistorUserModel;
-const static CGFloat kMEVisterDetailCellHeight = 336;
+const static CGFloat kMEVisterDetailCellHeight = 436;
 
 @interface MEVisterDetailCell : UITableViewCell
 

@@ -10,4 +10,6 @@
 
 @interface MEMyPosterContentListVC : MEBaseVC
 
+- (instancetype)initWithActice;
+
 @end

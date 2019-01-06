@@ -81,7 +81,7 @@
         _tableView.tableFooterView = [UIView new];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.backgroundColor = kMEfbfbfb;
+        _tableView.backgroundColor = [UIColor whiteColor];
     }
     return _tableView;
 }

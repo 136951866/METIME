@@ -13,11 +13,6 @@ const static CGFloat kMEFilterGoodViewHeight = 40;
 
 @class MEFilterGoodView;
 
-typedef NS_ENUM(NSInteger,ButtonClickType){
-    ButtonClickTypeNormal = 0,
-    ButtonClickTypeUp = 1,
-    ButtonClickTypeDown = 2,
-};
 
 @protocol FilterSelectViewDelegate <NSObject>
 @optional

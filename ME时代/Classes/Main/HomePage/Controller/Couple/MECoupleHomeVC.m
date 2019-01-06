@@ -112,8 +112,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             kMeSTRONGSELF
             [strongSelf->_headerView setUiWithModel:strongSelf->_advArr];
-            [strongSelf.tableView.mj_header endRefreshing];
-            [strongSelf.tableView reloadData];
+//            [strongSelf.tableView.mj_header endRefreshing];
+            [strongSelf.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:0];
         });
     });
 }
@@ -199,8 +199,9 @@
 //        else if(indexPath.row == 2){
 //            return [MECoupleHomeMainCell getCellHeightWithArr:_BigJuanBuy];
 //        }
+    }else{
+       return [MECoupleHomeMainGoodGoodsCell getCellHeightWithArr:self.refresh.arrData];
     }
-    return [MECoupleHomeMainGoodGoodsCell getCellHeightWithArr:self.refresh.arrData];
 }
 
 - (void)searchCoupon{

@@ -21,6 +21,7 @@
 #import "MESelectAddressVC.h"
 #import "MEMyMobileVC.h"
 #import "MEProductListVC.h"
+#import "MeMyActityMineVC.h"
 
 @interface MEMineHomeVC ()<UITableViewDelegate,UITableViewDataSource>{
     NSArray *_arrtype;
@@ -89,32 +90,32 @@
             switch (kCurrentUser.user_type) {
                     
                 case 4:{
-                    MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
-                    [cell setUnMeaasge];
-                }
-                    break;
-                case 1:{
-                    MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
-                    [cell setUnMeaasge];
-                }
-                    break;
-                case 2:{
-                        MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
-                        [cell setUnMeaasge];
-                    }
-                    break;
-                case 3:{
-                    MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
-                    [cell setUnMeaasge];
-                }
-                    break;
-                case 5:{
                     MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
                     [cell setUnMeaasge];
                 }
                     break;
+                case 1:{
+                    MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
+                    [cell setUnMeaasge];
+                }
+                    break;
+                case 2:{
+                        MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
+                        [cell setUnMeaasge];
+                    }
+                    break;
+                case 3:{
+                    MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
+                    [cell setUnMeaasge];
+                }
+                    break;
+                case 5:{
+                    MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
+                    [cell setUnMeaasge];
+                }
+                    break;
                 default:{
-                    MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+                    MEMineHomeCell *cell = [strongSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
                     [cell setUnMeaasge];
                 }
                     break;
@@ -155,31 +156,31 @@
         switch (kCurrentUser.user_type) {
             case 1:{
                 //B
-                strongSelf->_arrtype = @[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
+                strongSelf->_arrtype = @[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyActity),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
             }
                 break;
             case 2:{
                 //
-                strongSelf->_arrtype = @[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
+                strongSelf->_arrtype = @[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyActity),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
             }
                 break;
             case 4:{
                 //C
-                strongSelf->_arrtype = @[@(MeMyDistribution),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
+                strongSelf->_arrtype = @[@(MeMyDistribution),@(MeMyExchange),@(MeMyAppointment),@(MeMyActity),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
             }
                 break;
             case 3:{
                 //B
-                strongSelf->_arrtype = @[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
+                strongSelf->_arrtype = @[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyActity),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
             }
                 break;
             case 5:{
                 //clerk
-                strongSelf->_arrtype = @[@(MeMyDistribution),@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
+                strongSelf->_arrtype = @[@(MeMyDistribution),@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyActity),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
             }
                 break;
             default:{
-                strongSelf->_arrtype = @[@(MeMyExchange),@(MeMyAppointment),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
+                strongSelf->_arrtype = @[@(MeMyExchange),@(MeMyAppointment),@(MeMyActity),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
             }
                 break;
         }
@@ -275,6 +276,11 @@
             break;
         case MeMyMobile:{
             MEMyMobileVC *mobile = [[MEMyMobileVC alloc]init];
+            [self.navigationController pushViewController:mobile animated:YES];
+        }
+            break;
+        case MeMyActity:{
+            MeMyActityMineVC *mobile = [[MeMyActityMineVC alloc]init];
             [self.navigationController pushViewController:mobile animated:YES];
         }
             break;

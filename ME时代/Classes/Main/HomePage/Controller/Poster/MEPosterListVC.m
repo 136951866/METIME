@@ -19,7 +19,7 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) MEPosterContentListVC *listVC;
 @property (nonatomic, strong) MEMyPosterContentListVC *mylistVC;
-
+@property (nonatomic, strong) MEMyPosterContentListVC *activictVC;
 @end
 
 @implementation MEPosterListVC
@@ -28,7 +28,7 @@
     [super viewDidLoad];
     self.title = @"海报";
     _currentType = 0;
-    _arrType = @[@"海报列表",@"我的分享"];
+    _arrType = @[@"海报列表",@"活动海报",@"我的分享"];
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kMeNavBarHeight+kCategoryViewHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight)];
     self.scrollView.delegate = self;
     self.scrollView.pagingEnabled = YES;
@@ -37,6 +37,7 @@
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     [self.scrollView addSubview:self.listVC.view];
+    [self.scrollView addSubview:self.activictVC.view];
     [self.scrollView addSubview:self.mylistVC.view];
     [self.view addSubview:self.scrollView];
     
@@ -76,9 +77,19 @@
     if(!_mylistVC){
         _mylistVC = [[MEMyPosterContentListVC alloc]init];
         _mylistVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        _mylistVC.view.frame = CGRectMake(SCREEN_WIDTH,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight);
+        _mylistVC.view.frame = CGRectMake(SCREEN_WIDTH*2,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight);
         [self addChildViewController:_mylistVC];
     }
     return _mylistVC;
+}
+
+- (MEMyPosterContentListVC *)activictVC{
+    if(!_activictVC){
+        _activictVC = [[MEMyPosterContentListVC alloc]initWithActice];
+        _activictVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        _activictVC.view.frame = CGRectMake(SCREEN_WIDTH,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight);
+        [self addChildViewController:_activictVC];
+    }
+    return _activictVC;
 }
 @end

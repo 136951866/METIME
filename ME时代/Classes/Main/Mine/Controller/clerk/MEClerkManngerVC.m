@@ -14,8 +14,10 @@
 #import "MEAddClerksVC.h"
 #import "MEClerkStatisticsVC.h"
 #import "MEClerkModel.h"
+#import "YBPopupMenu.h"
+#import "MEClerksSortVC.h"
 
-@interface MEClerkManngerVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>
+@interface MEClerkManngerVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate,YBPopupMenuDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consTopMargin;
 @property (weak, nonatomic) IBOutlet UITableView *tableVIew;
@@ -124,13 +126,29 @@
 }
 
 - (void)toAddClerk:(UIButton *)btn{
-    MEAddClerksVC *vc = [[MEAddClerksVC alloc]init];
     kMeWEAKSELF
-    vc.finishUpdatClerkBlock = ^{
+    [YBPopupMenu showRelyOnView:btn titles:@[@"添加店员",@"店员排名"] icons:nil menuWidth:100 otherSettings:^(YBPopupMenu *popupMenu) {
+        popupMenu.priorityDirection = YBPopupMenuPriorityDirectionBottom;
+        popupMenu.borderWidth = 1;
+        popupMenu.borderColor = kMEblack;
         kMeSTRONGSELF
-        [strongSelf.refresh reload];
-    };
-    [self.navigationController pushViewController:vc animated:YES];
+        popupMenu.delegate = strongSelf;
+    }];
+}
+
+- (void)ybPopupMenu:(YBPopupMenu *)ybPopupMenu didSelectedAtIndex:(NSInteger)index{
+    if(index==0){
+        MEAddClerksVC *vc = [[MEAddClerksVC alloc]init];
+        kMeWEAKSELF
+        vc.finishUpdatClerkBlock = ^{
+            kMeSTRONGSELF
+            [strongSelf.refresh reload];
+        };
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        MEClerksSortVC *vc = [[MEClerksSortVC alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 //- (IBAction)toSearchClerk:(UIButton *)sender {
@@ -161,9 +179,7 @@
     if(!_btnRight){
         _btnRight= [UIButton buttonWithType:UIButtonTypeCustom];
         _btnRight.frame = CGRectMake(-20, 0, 30, 25);
-        [_btnRight setTitle:@"添加" forState:UIControlStateNormal];
-        _btnRight.titleLabel.font = kMeFont(14);
-        [_btnRight setTitleColor:kMEPink forState:UIControlStateNormal];
+        [_btnRight setImage:[UIImage imageNamed:@"iglk"] forState:UIControlStateNormal];
         [_btnRight addTarget:self action:@selector(toAddClerk:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnRight;

@@ -19,6 +19,8 @@ const static CGFloat kMEMyPosterContentCellOrgialHeight  = 220;
 - (void)setiWithModel:(MEPosterChildrenModel *)Model;
 //更多
 - (void)setiWitMorehModel:(MEPosterChildrenModel *)Model;
+//活动
+- (void)setiActiveWithModel:(MEPosterChildrenModel *)Model;
 
 + (CGFloat)getCellHeight;
 

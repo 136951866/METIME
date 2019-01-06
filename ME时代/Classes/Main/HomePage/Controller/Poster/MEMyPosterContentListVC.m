@@ -13,6 +13,7 @@
 
 @interface MEMyPosterContentListVC ()<UICollectionViewDelegate,UICollectionViewDataSource,RefreshToolDelegate>{
     CGFloat _cellHeight;
+    BOOL _isActive;
 }
 
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -22,6 +23,13 @@
 
 @implementation MEMyPosterContentListVC
 
+- (instancetype)initWithActice{
+    if(self = [super init]){
+        _isActive = YES;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     _cellHeight = [MEMyPosterContentCell getCellHeight];
@@ -30,6 +38,9 @@
 }
 
 - (NSDictionary *)requestParameter{
+    if(_isActive){
+        return @{@"token":kMeUnNilStr(kCurrentUser.token)};
+    }
     return @{@"token":kMeUnNilStr(kCurrentUser.token)};
 }
 
@@ -43,9 +54,13 @@
 #pragma mark- CollectionView Delegate And DataSource
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    MEPosterChildrenModel *model = self.refresh.arrData[indexPath.row];
-    MECreatePosterVC *vc = [[MECreatePosterVC alloc]initWithModel:model];
-    [self.navigationController pushViewController:vc animated:YES];
+    if(_isActive){
+        
+    }else{
+        MEPosterChildrenModel *model = self.refresh.arrData[indexPath.row];
+        MECreatePosterVC *vc = [[MECreatePosterVC alloc]initWithModel:model];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -55,21 +70,25 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     MEMyPosterContentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MEMyPosterContentCell class]) forIndexPath:indexPath];
     MEPosterChildrenModel *model = self.refresh.arrData[indexPath.row];
-    kMeWEAKSELF
-    cell.delBlock = ^{
-        MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"" message:@"确定删除吗?"];
-        [aler addButtonWithTitle:@"确定" block:^{
-            NSString *strId = @(model.idField).description;
-            [MEPublicNetWorkTool postDelSharePosterWithId:kMeUnNilStr(strId) SuccessBlock:^(ZLRequestResponse *responseObject) {
-                kMeSTRONGSELF
-                [strongSelf.refresh reload];
-            } failure:nil];
-        }];
-        [aler addButtonWithTitle:@"取消"];
-        [aler show];
-
-    };
-    [cell setiWithModel:model];
+    if(!_isActive){
+        kMeWEAKSELF
+        cell.delBlock = ^{
+            MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"" message:@"确定删除吗?"];
+            [aler addButtonWithTitle:@"确定" block:^{
+                NSString *strId = @(model.idField).description;
+                [MEPublicNetWorkTool postDelSharePosterWithId:kMeUnNilStr(strId) SuccessBlock:^(ZLRequestResponse *responseObject) {
+                    kMeSTRONGSELF
+                    [strongSelf.refresh reload];
+                } failure:nil];
+            }];
+            [aler addButtonWithTitle:@"取消"];
+            [aler show];
+            
+        };
+        [cell setiWithModel:model];
+    }else{
+        [cell setiActiveWithModel:model];
+    }
     return cell;
 }
 
@@ -127,12 +146,22 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.collectionView url:kGetApiWithUrl(MEIPcommonGetSharePoster)];
+        NSString *str = MEIPcommonGetSharePoster;
+        if(!_isActive){
+            str = MEIPcommonGetSharePoster;
+        }
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.collectionView url:kGetApiWithUrl(str)];
         _refresh.delegate = self;
         _refresh.isDataInside = YES;
+        kMeWEAKSELF
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
+            kMeSTRONGSELF
             failView.backgroundColor = [UIColor whiteColor];
-            failView.lblOfNodata.text = @"没有分享";
+            if(strongSelf->_isActive){
+                failView.lblOfNodata.text = @"没有活动";
+            }else{
+               failView.lblOfNodata.text = @"没有分享";
+            }
         }];
     }
     return _refresh;
@@ -148,7 +177,12 @@
         UILabel *lbls = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, SCREEN_WIDTH-24-20, vHeight-20)];
         lbls.font = [UIFont systemFontOfSize:12];
         lbls.textColor = [UIColor colorWithHexString:@"5b5b5b"];
-        lbls.text = @"这里有您生成过的所有问候海报,可以重复分享哦";
+        if(_isActive){
+            lbls.text = @"这里是活动海报,d每一份海报都带着一份惊喜";
+        }else{
+            lbls.text = @"这里有您生成过的所有问候海报,可以重复分享哦";
+        }
+        
         [view addSubview:lbls];
         [_headerView addSubview:view];
     }
