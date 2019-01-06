@@ -10,6 +10,7 @@
 #import "MEMyPosterContentCell.h"
 #import "MEPosterModel.h"
 #import "MECreatePosterVC.h"
+#import "MEPosterActiveVC.h"
 
 @interface MEMyPosterContentListVC ()<UICollectionViewDelegate,UICollectionViewDataSource,RefreshToolDelegate>{
     CGFloat _cellHeight;
@@ -55,7 +56,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if(_isActive){
-        
+        MEPosterChildrenModel *model = self.refresh.arrData[indexPath.row];
+        MEPosterActiveVC *vc = [[MEPosterActiveVC alloc]initWithModel:model];
+        [self.navigationController pushViewController:vc animated:YES];
     }else{
         MEPosterChildrenModel *model = self.refresh.arrData[indexPath.row];
         MECreatePosterVC *vc = [[MECreatePosterVC alloc]initWithModel:model];
@@ -178,7 +181,7 @@
         lbls.font = [UIFont systemFontOfSize:12];
         lbls.textColor = [UIColor colorWithHexString:@"5b5b5b"];
         if(_isActive){
-            lbls.text = @"这里是活动海报,d每一份海报都带着一份惊喜";
+            lbls.text = @"这里是活动海报,每一份海报都带着一份惊喜";
         }else{
             lbls.text = @"这里有您生成过的所有问候海报,可以重复分享哦";
         }

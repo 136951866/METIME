@@ -160,6 +160,7 @@
 		3617C31021D0AE3800004072 /* MECoupleFilterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3617C30F21D0AE3800004072 /* MECoupleFilterVC.m */; };
 		3617C31821D0CDEA00004072 /* MECoupleFilterNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3617C31721D0CDEA00004072 /* MECoupleFilterNavView.m */; };
 		3617C31B21D0CF7F00004072 /* MECoupleFilterNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3617C31A21D0CF7F00004072 /* MECoupleFilterNavView.xib */; };
+		36224AC321E1F991007AD202 /* MEPosterActiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36224AC221E1F991007AD202 /* MEPosterActiveVC.m */; };
 		3628476A2140FD78008FE7F9 /* LVWxPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 362847642140FD77008FE7F9 /* LVWxPay.m */; };
 		3628476B2140FD78008FE7F9 /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 362847652140FD77008FE7F9 /* XMLDictionary.m */; };
 		3628476C2140FD79008FE7F9 /* DataMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 362847672140FD78008FE7F9 /* DataMD5.m */; };
@@ -851,6 +852,8 @@
 		3617C31621D0CDEA00004072 /* MECoupleFilterNavView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECoupleFilterNavView.h; sourceTree = "<group>"; };
 		3617C31721D0CDEA00004072 /* MECoupleFilterNavView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECoupleFilterNavView.m; sourceTree = "<group>"; };
 		3617C31A21D0CF7F00004072 /* MECoupleFilterNavView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MECoupleFilterNavView.xib; sourceTree = "<group>"; };
+		36224AC121E1F991007AD202 /* MEPosterActiveVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEPosterActiveVC.h; sourceTree = "<group>"; };
+		36224AC221E1F991007AD202 /* MEPosterActiveVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEPosterActiveVC.m; sourceTree = "<group>"; };
 		362847622140FD76008FE7F9 /* getIPhoneIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getIPhoneIP.h; sourceTree = "<group>"; };
 		362847632140FD76008FE7F9 /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
 		362847642140FD77008FE7F9 /* LVWxPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LVWxPay.m; sourceTree = "<group>"; };
@@ -3556,6 +3559,8 @@
 				36FDEFE821B0CB0C0022D374 /* MECreatePosterVC.h */,
 				36FDEFE921B0CB0C0022D374 /* MECreatePosterVC.m */,
 				36FDEFEA21B0CB0C0022D374 /* MECreatePosterVC.xib */,
+				36224AC121E1F991007AD202 /* MEPosterActiveVC.h */,
+				36224AC221E1F991007AD202 /* MEPosterActiveVC.m */,
 			);
 			path = Poster;
 			sourceTree = "<group>";
@@ -4283,6 +4288,7 @@
 				EB6D02A8215225740053B19E /* MEEqualSpaceFlowLayout.m in Sources */,
 				36A401CF2143F4D300B0BD4F /* MEShoppingCartModel.m in Sources */,
 				3628476D2140FD79008FE7F9 /* getIPhoneIP.m in Sources */,
+				36224AC321E1F991007AD202 /* MEPosterActiveVC.m in Sources */,
 				360351CF215C6D12004BDD62 /* MEMakeOrderAttrModel.m in Sources */,
 				36008A6B21B60CF30007BB46 /* MESNewHomeStyle.m in Sources */,
 				EB623E852154D3A4007C949B /* MEDistrbutionOrderModel.m in Sources */,
