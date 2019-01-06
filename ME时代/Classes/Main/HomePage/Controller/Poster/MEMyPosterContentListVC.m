@@ -142,7 +142,7 @@
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         _collectionView.alwaysBounceVertical = YES;
-        
+
     }
     return _collectionView;
 }
