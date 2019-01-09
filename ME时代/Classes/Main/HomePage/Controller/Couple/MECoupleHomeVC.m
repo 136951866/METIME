@@ -36,7 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navBarHidden = YES;
-    self.view.backgroundColor = kMEfbfbfb;
+    self.view.backgroundColor = kMEf5f4f4;
     _todayBuy = [NSArray array];
     _99BuyBuy = [NSArray array];
 //    _BigJuanBuy = [NSArray array];
@@ -223,7 +223,7 @@
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.backgroundColor = kMEfbfbfb;
+        _tableView.backgroundColor = kMEf5f4f4;
     }
     return _tableView;
 }

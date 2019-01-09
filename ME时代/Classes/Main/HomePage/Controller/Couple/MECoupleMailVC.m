@@ -79,7 +79,7 @@
             }
                 break;
             case MECouponSearchGoodGoodsType:{
-                str = @"精选好物专场";
+                str = @"人气爆款专场";//@"精选好物专场";
             }
                 break;
             case MECouponSearchGoodJuanType:{

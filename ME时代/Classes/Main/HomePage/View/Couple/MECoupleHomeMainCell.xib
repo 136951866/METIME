@@ -60,11 +60,12 @@
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="5"/>
+                                <real key="value" value="10"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
+                <color key="backgroundColor" red="0.96078431369999995" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="PK6-iG-5Bt" secondAttribute="bottom" id="Ca7-ls-NDx"/>
                     <constraint firstItem="PK6-iG-5Bt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="MTU-AE-h5N"/>

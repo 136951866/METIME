@@ -34,7 +34,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shishang" translatesAutoresizingMaskIntoConstraints="NO" id="CAg-Y2-wkv">
                     <rect key="frame" x="4" y="286" width="188.5" height="128"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tehui" translatesAutoresizingMaskIntoConstraints="NO" id="rz0-PC-uT8">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="couponFilter" translatesAutoresizingMaskIntoConstraints="NO" id="rz0-PC-uT8">
                     <rect key="frame" x="196.5" y="286" width="188.5" height="128"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zl4-bB-lsA">
@@ -62,7 +62,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.96078431372549022" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="rz0-PC-uT8" firstAttribute="leading" secondItem="CAg-Y2-wkv" secondAttribute="trailing" constant="4" id="0wV-mD-rmL"/>
                 <constraint firstItem="CAg-Y2-wkv" firstAttribute="height" secondItem="prL-TC-nrd" secondAttribute="height" id="2bz-0b-Zvc"/>
@@ -109,6 +109,7 @@
         </view>
     </objects>
     <resources>
+        <image name="couponFilter" width="273" height="133.5"/>
         <image name="pingpai" width="182" height="89"/>
         <image name="shishang" width="182" height="89"/>
         <image name="tehui" width="182" height="89"/>

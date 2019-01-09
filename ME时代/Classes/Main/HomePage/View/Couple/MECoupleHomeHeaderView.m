@@ -27,7 +27,7 @@
 
 - (void)awakeFromNib{
     [super awakeFromNib];
-    self.backgroundColor = kMEfbfbfb;
+    self.backgroundColor = kMEf5f4f4;
     _consSdViewHeight.constant = 150 *kMeFrameScaleX();
     [self initSD];
     CGFloat imageW = (SCREEN_WIDTH - 12)/2;
@@ -62,7 +62,7 @@
 - (IBAction)haoJuanAction:(UIButton *)sender {
     MECoupleHomeVC *homevc = [MECommonTool getVCWithClassWtihClassName:[MECoupleHomeVC class] targetResponderView:self];
     if(homevc){
-        MECoupleMailVC *vc = [[MECoupleMailVC alloc]initWithType:MECouponSearchPinPaiType];
+        MECoupleMailVC *vc = [[MECoupleMailVC alloc]initWithType:MECouponSearchGoodGoodsType];
         [homevc.navigationController pushViewController:vc animated:YES];
     }
 }

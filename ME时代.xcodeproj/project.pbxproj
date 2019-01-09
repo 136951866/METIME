@@ -395,6 +395,7 @@
 		368ACD9621CA1E19009B87E6 /* MEGiftFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368ACD9521CA1E19009B87E6 /* MEGiftFooterView.xib */; };
 		368CD6B9214112C9001926FF /* MEStoreHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 368CD6B8214112C9001926FF /* MEStoreHomeVC.m */; };
 		368CD6BC214112E9001926FF /* MEMemberHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 368CD6BB214112E9001926FF /* MEMemberHomeVC.m */; };
+		368E70BA21E5CD0F003009CA /* loading@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 368E70B921E5CD0F003009CA /* loading@2x.gif */; };
 		3695C3A721D4BDD500EDBCDF /* MECouponOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3695C3A521D4BDD500EDBCDF /* MECouponOrderCell.m */; };
 		3695C3A821D4BDD500EDBCDF /* MECouponOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3695C3A621D4BDD500EDBCDF /* MECouponOrderCell.xib */; };
 		3695C3AB21D4C3D700EDBCDF /* MECouponOrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3695C3AA21D4C3D700EDBCDF /* MECouponOrderHeaderView.m */; };
@@ -440,7 +441,6 @@
 		36E1BF14214906CB00E28301 /* MEMineExchangeRudeSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E1BF13214906CB00E28301 /* MEMineExchangeRudeSectionView.m */; };
 		36E1BF1821490C1F00E28301 /* MEMineExchangeRudeSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E1BF1721490C1F00E28301 /* MEMineExchangeRudeSectionView.xib */; };
 		36E1BF2121492F4D00E28301 /* MEAppointmentInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E1BF2021492F4D00E28301 /* MEAppointmentInfoVC.m */; };
-		36E3D1D42171849E0033B192 /* loading@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 36E3D1D32171849E0033B192 /* loading@2x.gif */; };
 		36E3D1D72171C94A0033B192 /* MEExpireTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3D1D62171C94A0033B192 /* MEExpireTipView.m */; };
 		36E3D1D92171C9590033B192 /* MEExpireTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E3D1D82171C9590033B192 /* MEExpireTipView.xib */; };
 		36E3D1DC2171DED60033B192 /* MELogisticsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3D1DB2171DED60033B192 /* MELogisticsVC.m */; };
@@ -1275,6 +1275,7 @@
 		368CD6B8214112C9001926FF /* MEStoreHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEStoreHomeVC.m; sourceTree = "<group>"; };
 		368CD6BA214112E9001926FF /* MEMemberHomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEMemberHomeVC.h; sourceTree = "<group>"; };
 		368CD6BB214112E9001926FF /* MEMemberHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEMemberHomeVC.m; sourceTree = "<group>"; };
+		368E70B921E5CD0F003009CA /* loading@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "loading@2x.gif"; sourceTree = "<group>"; };
 		3695C3A421D4BDD500EDBCDF /* MECouponOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECouponOrderCell.h; sourceTree = "<group>"; };
 		3695C3A521D4BDD500EDBCDF /* MECouponOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECouponOrderCell.m; sourceTree = "<group>"; };
 		3695C3A621D4BDD500EDBCDF /* MECouponOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MECouponOrderCell.xib; sourceTree = "<group>"; };
@@ -1350,7 +1351,6 @@
 		36E1BF1721490C1F00E28301 /* MEMineExchangeRudeSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEMineExchangeRudeSectionView.xib; sourceTree = "<group>"; };
 		36E1BF1F21492F4D00E28301 /* MEAppointmentInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEAppointmentInfoVC.h; sourceTree = "<group>"; };
 		36E1BF2021492F4D00E28301 /* MEAppointmentInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEAppointmentInfoVC.m; sourceTree = "<group>"; };
-		36E3D1D32171849E0033B192 /* loading@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "loading@2x.gif"; sourceTree = "<group>"; };
 		36E3D1D52171C94A0033B192 /* MEExpireTipView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MEExpireTipView.h; path = "ME时代/Classes/Expand/Category/UIImage/MEExpireTipView.h"; sourceTree = SOURCE_ROOT; };
 		36E3D1D62171C94A0033B192 /* MEExpireTipView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MEExpireTipView.m; path = "ME时代/Classes/Expand/Category/UIImage/MEExpireTipView.m"; sourceTree = SOURCE_ROOT; };
 		36E3D1D82171C9590033B192 /* MEExpireTipView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MEExpireTipView.xib; path = "ME时代/Classes/Expand/Category/UIImage/MEExpireTipView.xib"; sourceTree = SOURCE_ROOT; };
@@ -1872,7 +1872,7 @@
 		3604CA8F2170809400F7471B /* gif */ = {
 			isa = PBXGroup;
 			children = (
-				36E3D1D32171849E0033B192 /* loading@2x.gif */,
+				368E70B921E5CD0F003009CA /* loading@2x.gif */,
 			);
 			path = gif;
 			sourceTree = "<group>";
@@ -3839,6 +3839,7 @@
 				365151CB21413D340044C763 /* MEHomeHeaderMenuView.xib in Resources */,
 				367721E52147681000C1463A /* MEMineHomeCell.xib in Resources */,
 				362C9E6121BE63010001AABD /* MEMineNewShareView.xib in Resources */,
+				368E70BA21E5CD0F003009CA /* loading@2x.gif in Resources */,
 				360AF12121AFEB1E0039AB79 /* MEVistorPathCell.xib in Resources */,
 				36021AE1214B8086001B8DAF /* MEServiceDetailTelAddressCell.xib in Resources */,
 				365DB25421475C3300001A04 /* MEMineHomeHeaderView.xib in Resources */,
@@ -3862,7 +3863,6 @@
 				3628E80121C0FBC100D5405B /* MEGetCaseContentCell.xib in Resources */,
 				36FB082F218058CE003601FD /* MEProductSearchVC.xib in Resources */,
 				3600345721AE732A00BAF337 /* MEVisitHomeHeaderView.xib in Resources */,
-				36E3D1D42171849E0033B192 /* loading@2x.gif in Resources */,
 				366D5B37214A6E630021C1BB /* MEAppointmentDateMainCell.xib in Resources */,
 				3683F7B621CBA15B008139B0 /* MEGiftMainContentCell.xib in Resources */,
 				36FF4EBC21AFB6240099DDB8 /* MESNewHomePageView.xib in Resources */,

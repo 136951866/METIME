@@ -71,7 +71,7 @@
 - (void)initSomeThing{
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    _collectionView.backgroundColor = kMEfbfbfb;
+    _collectionView.backgroundColor = kMEf5f4f4;
     [_collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([MECoupleMailCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([MECoupleMailCell class])];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
