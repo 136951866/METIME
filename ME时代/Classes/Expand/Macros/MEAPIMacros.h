@@ -120,6 +120,8 @@
 #define MEIPcommonClerkToMember @"common/user/clerkToMember"
 //会员升级为店员
 #define MEIPcommonMemberToClerk @"common/user/memberToClerk"
+//店员排名列表
+#define MEIPcommonMyClerkOrder @"common/user/myClerkOrder"
 /*********************************************/
 
 

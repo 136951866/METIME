@@ -10,11 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MEClerksSortModel;
+
 const static CGFloat kMEClerksSortCellHeight = 142;
 
 @interface MEClerksSortCell : UITableViewCell
 
-- (void)setUIWithModel:(id)model;
+- (void)setUIWithModel:(MEClerksSortModel *)model;
 
 @end
 

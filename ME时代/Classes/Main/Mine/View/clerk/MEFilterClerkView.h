@@ -14,6 +14,7 @@ typedef NS_ENUM(NSUInteger, kMEFilterClerkViewType) {
     kMEFilterClerkViewReadType,
     kMEFilterClerkViewMoneyType,
 };
+
 const static CGFloat kMEFilterClerkViewHeight = 40;
 
 @class MEFilterClerkView;

@@ -9,8 +9,10 @@
 #import "MEProductDetailsVC.h"
 #import "MEProductDetailsBottomView.h"
 #import "TDWebViewCell.h"
-#import "MEProductDetailsHeaderView.h"
-#import "MEProductDetailsSectionView.h"
+//#import "MEProductDetailsHeaderView.h"
+#import "MENewProductDetailsHeaderView.h"
+//#import "MEProductDetailsSectionView.h"
+#import "MENewProductDetailsSectionView.h"
 #import "MEProductDetalsBuyedCell.h"
 #import "MEGoodsAttributeVC.h"
 #import "MESkuBuyView.h"
@@ -21,17 +23,22 @@
 #import "MELoginVC.h"
 #import "MERCConversationVC.h"
 #import "MEGiftVC.h"
-
+typedef NS_ENUM(NSUInteger, kpurchaseViewType) {
+    kpurchaseSelectSkuViewType,
+    kpurchaseViewBuyType,
+    kpurchaseViewShoppingType,
+};
 @interface MEProductDetailsVC ()<UITableViewDelegate,UITableViewDataSource>{
     NSInteger _detailsId;
     NSArray *_arrTitle;
-    BOOL _isShopping;
+//    BOOL _isShopping;
+    kpurchaseViewType _selectType;
     NSString *_customId;
 }
 
 @property (nonatomic, strong) UITableView           *tableView;
 @property (nonatomic, strong) MEProductDetailsBottomView *bottomView;
-@property (nonatomic, strong) MEProductDetailsHeaderView *headerView;;
+@property (nonatomic, strong) MENewProductDetailsHeaderView *headerView;;
 @property (strong, nonatomic) TDWebViewCell                  *webCell;
 @property (nonatomic, strong) UIView *tableViewBottomView;
 @property (nonatomic, strong) MESkuBuyView *purchaseView;
@@ -61,7 +68,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"产品详情";
-    _arrTitle = @[@"详情",@"买了这件商品的人也买了"];
+    _arrTitle = @[@"商品详情",@"买了这件商品的人也买了"];
     [self initWithSomeThing];
     kTDWebViewCellDidFinishLoadNotification
     // Do any additional setup after loading the view.
@@ -84,6 +91,7 @@ kTDWebViewCellDidFinishLoadNotificationMethod
 
 - (void)setUIWIthModel:(MEGoodDetailModel *)model{
     _model = model;
+    _selectType = kpurchaseSelectSkuViewType;
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.headerView;
     self.tableView.tableFooterView = self.tableViewBottomView;
@@ -102,32 +110,52 @@ kTDWebViewCellDidFinishLoadNotificationMethod
     kMeWEAKSELF
     self.purchaseView.confirmBlock = ^{
         kMeSTRONGSELF
-        if(strongSelf->_isShopping){
-            //加入购物车
-            MEShoppingCartAttrModel *attrModle = [[MEShoppingCartAttrModel alloc]initWithGoodmodel:strongSelf->_model];
-            if(strongSelf.isGift){
-                attrModle.type = 6;
+        switch (strongSelf->_selectType) {
+            case kpurchaseSelectSkuViewType:{
+                [strongSelf.headerView reloadStockAndSaled:strongSelf->_model];
             }
-            attrModle.uid = kMeUnNilStr(strongSelf.uid);
-            [MEPublicNetWorkTool postAddGoodForShopWithAttrModel:attrModle successBlock:^(ZLRequestResponse *responseObject) {
-                kMeSTRONGSELF
+                break;
+            case kpurchaseViewBuyType:{
+                //生成订单
+                MEMakeOrderVC *vc = [[MEMakeOrderVC alloc]initWithIsinteral:NO goodModel:strongSelf->_model];
+                vc.uid = kMeUnNilStr(strongSelf.uid);
+                [strongSelf.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case kpurchaseViewShoppingType:{
+                //加入购物车
+                MEShoppingCartAttrModel *attrModle = [[MEShoppingCartAttrModel alloc]initWithGoodmodel:strongSelf->_model];
                 if(strongSelf.isGift){
-                    kNoticeReloadShopCart
-                    MEGiftVC *vc = (MEGiftVC *)[MECommonTool getClassWtihClassName:[MEGiftVC class] targetVC:strongSelf];
-                    [strongSelf.navigationController popToViewController:vc animated:YES];
+                    attrModle.type = 6;
                 }
-            } failure:^(id object) {
-            }];
-        }else{
-            //生成订单
-            MEMakeOrderVC *vc = [[MEMakeOrderVC alloc]initWithIsinteral:NO goodModel:strongSelf->_model];
-            vc.uid = kMeUnNilStr(strongSelf.uid);
-            [strongSelf.navigationController pushViewController:vc animated:YES];
+                attrModle.uid = kMeUnNilStr(strongSelf.uid);
+                [MEPublicNetWorkTool postAddGoodForShopWithAttrModel:attrModle successBlock:^(ZLRequestResponse *responseObject) {
+                    kMeSTRONGSELF
+                    if(strongSelf.isGift){
+                        kNoticeReloadShopCart
+                        MEGiftVC *vc = (MEGiftVC *)[MECommonTool getClassWtihClassName:[MEGiftVC class] targetVC:strongSelf];
+                        [strongSelf.navigationController popToViewController:vc animated:YES];
+                    }
+                } failure:^(id object) {
+                }];
+            }
+                break;
+            default:
+                break;
         }
+        
     };
     self.purchaseView.failGetStoreBlock = ^{
         kMeSTRONGSELF
         [strongSelf.navigationController popViewControllerAnimated:YES];
+    };
+    self.purchaseView.sucessGetStoreBlock = ^{
+        kMeSTRONGSELF
+        [strongSelf.headerView reloadStockAndSaled:strongSelf->_model];
+    };
+    self.headerView.selectSkuBlock = ^{
+        kMeSTRONGSELF
+        [strongSelf showBuyViewWithTypy:kpurchaseSelectSkuViewType];
     };
     [MBProgressHUD showMessage:@"获取详情中" toView:self.view];
     [MEPublicNetWorkTool postGoodsListWithType:MEGoodsTypeNetCommendStyle successBlock:^(ZLRequestResponse *responseObject) {
@@ -182,12 +210,12 @@ kTDWebViewCellDidFinishLoadNotificationMethod
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return kMEProductDetailsSectionViewHeight;
+    return kMENewProductDetailsSectionViewHeight;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    MEProductDetailsSectionView *headview=[tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([MEProductDetailsSectionView class])];
-    headview.lblTitle.text = kMeUnArr(_arrTitle)[section];
+    MENewProductDetailsSectionView *headview=[tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([MENewProductDetailsSectionView class])];
+    headview.lbltitle.text = kMeUnArr(_arrTitle)[section];
     return headview;
 }
 
@@ -199,7 +227,7 @@ kTDWebViewCellDidFinishLoadNotificationMethod
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kMeNavBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kMEProductDetailsBottomViewHeight) style:UITableViewStylePlain];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TDWebViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([TDWebViewCell class])];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEProductDetalsBuyedCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEProductDetalsBuyedCell class])];
-        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEProductDetailsSectionView class]) bundle:nil] forHeaderFooterViewReuseIdentifier:NSStringFromClass([MEProductDetailsSectionView class])];
+        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MENewProductDetailsSectionView class]) bundle:nil] forHeaderFooterViewReuseIdentifier:NSStringFromClass([MENewProductDetailsSectionView class])];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.tableFooterView = [UIView new];
@@ -217,11 +245,11 @@ kTDWebViewCellDidFinishLoadNotificationMethod
         kMeWEAKSELF
         _bottomView.buyBlock = ^{
             kMeSTRONGSELF
-            [strongSelf showBuyViewWithIsShopp:NO];
+            [strongSelf showBuyViewWithTypy:kpurchaseViewBuyType];
         };
         _bottomView.addShopcartBlock = ^{
             kMeSTRONGSELF
-            [strongSelf showBuyViewWithIsShopp:YES];
+            [strongSelf showBuyViewWithTypy:kpurchaseViewShoppingType];
         };
         _bottomView.customBlock = ^{
             kMeSTRONGSELF
@@ -271,24 +299,24 @@ kTDWebViewCellDidFinishLoadNotificationMethod
 
 }
 
-- (void)showBuyViewWithIsShopp:(BOOL)isSHopping{
+- (void)showBuyViewWithTypy:(kpurchaseViewType)type{
     if([MEUserInfoModel isLogin]){
-        _isShopping = isSHopping;
+        _selectType = type;
         [self.purchaseView show];
     }else{
         kMeWEAKSELF
         [MEWxLoginVC presentLoginVCWithSuccessHandler:^(id object) {
             kMeSTRONGSELF
-            strongSelf->_isShopping = isSHopping;
+            strongSelf->_selectType = type;
             [strongSelf.purchaseView show];
         } failHandler:nil];
     }
 }
 
-- (MEProductDetailsHeaderView *)headerView{
+- (MENewProductDetailsHeaderView *)headerView{
     if(!_headerView){
-        _headerView = [[[NSBundle mainBundle]loadNibNamed:@"MEProductDetailsHeaderView" owner:nil options:nil] lastObject];
-        _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [MEProductDetailsHeaderView getViewHeight]);
+        _headerView = [[[NSBundle mainBundle]loadNibNamed:@"MENewProductDetailsHeaderView" owner:nil options:nil] lastObject];
+        _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [MENewProductDetailsHeaderView getHeightWithModel:_model]);
     }
     return _headerView;
 }

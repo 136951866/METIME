@@ -9,6 +9,7 @@
 #import "MEClerksSortVC.h"
 #import "MEClerksSortCell.h"
 #import "MEFilterClerkView.h"
+#import "MEClerksSortModel.h"
 
 @interface MEClerksSortVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate,FilterClerkViewDelegate>{
     kMEFilterClerkViewType _type;
@@ -38,15 +39,29 @@
 #pragma mark - RefreshToolDelegate
 
 - (NSDictionary *)requestParameter{
-    [self.refresh.arrData addObjectsFromArray:@[@"",@"",@"",@"",@"",@""]];
-    return @{};
+    NSString *order = @"";
+    switch (_type) {
+        case kMEFilterClerkViewZfType:
+            order = @"share";
+            break;
+        case kMEFilterClerkViewReadType:
+            order = @"read";
+            break;
+        case kMEFilterClerkViewMoneyType:
+            order = @"brokerage";
+            break;
+        default:
+            break;
+    }
+    NSString *order_type = _typeSort==ButtonClickTypeDown?@"desc":@"asc";
+    return @{@"order":order,@"order_type":order_type,@"token":kMeUnNilStr(kCurrentUser.token)};
 }
 
 - (void)handleResponse:(id)data{
     if(![data isKindOfClass:[NSArray class]]){
         return;
     }
-    [self.refresh.arrData addObjectsFromArray:[NSObject mj_objectArrayWithKeyValuesArray:data]];
+    [self.refresh.arrData addObjectsFromArray:[MEClerksSortModel mj_objectArrayWithKeyValuesArray:data]];
 }
 
 - (void)selectTopButton:(MEFilterClerkView *)selectView withIndex:(NSInteger)index withButtonType:(ButtonClickType)type{
@@ -63,7 +78,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    id model = self.refresh.arrData[indexPath.row];
+    MEClerksSortModel *model = self.refresh.arrData[indexPath.row];
     MEClerksSortCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEClerksSortCell class]) forIndexPath:indexPath];
     [cell setUIWithModel:model];
     return cell;
@@ -100,8 +115,9 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(@"")];
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonMyClerkOrder)];
         _refresh.delegate = self;
+        _refresh.isGet = YES;
         _refresh.isDataInside = YES;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
             failView.backgroundColor = [UIColor whiteColor];

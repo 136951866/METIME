@@ -7,6 +7,7 @@
 //
 
 #import "MEClerksSortCell.h"
+#import "MEClerksSortModel.h"
 
 @interface MEClerksSortCell ()
 
@@ -27,13 +28,13 @@
     // Initialization code
 }
 
-- (void)setUIWithModel:(id)model{
-    kSDLoadImg(_imgPic, kMeUnNilStr(@""));
-    _lblTitle.text = kMeUnNilStr(@"");
-    _lblTel.text = [NSString stringWithFormat:@"手机号:%@",kMeUnNilStr(@"")];
-    _lblZfNNum.text = kMeUnNilStr(@"0");
-    _lblReadNum.text = kMeUnNilStr(@"0");
-    _lblMoney.text = kMeUnNilStr(@"0");
+- (void)setUIWithModel:(MEClerksSortModel *)model{
+    kSDLoadImg(_imgPic, kMeUnNilStr(model.header_pic));
+    _lblTitle.text = kMeUnNilStr(model.name);
+    _lblTel.text = [NSString stringWithFormat:@"手机号:%@",kMeUnNilStr(model.cellphone)];
+    _lblZfNNum.text = kMeUnNilStr(model.share);
+    _lblReadNum.text = kMeUnNilStr(model.read);
+    _lblMoney.text = kMeUnNilStr(model.brokerage);
 }
 
 @end

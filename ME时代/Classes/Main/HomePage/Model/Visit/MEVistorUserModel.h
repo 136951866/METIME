@@ -20,6 +20,8 @@
 
 @property (nonatomic, strong) NSString * nick_name;
 @property (nonatomic, strong) NSString * header_pic;
+@property (nonatomic, strong) NSString * address;
+@property (nonatomic, strong) NSString * sex;
 
 @end
 

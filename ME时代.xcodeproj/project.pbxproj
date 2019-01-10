@@ -396,6 +396,10 @@
 		368CD6B9214112C9001926FF /* MEStoreHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 368CD6B8214112C9001926FF /* MEStoreHomeVC.m */; };
 		368CD6BC214112E9001926FF /* MEMemberHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 368CD6BB214112E9001926FF /* MEMemberHomeVC.m */; };
 		368E70BA21E5CD0F003009CA /* loading@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 368E70B921E5CD0F003009CA /* loading@2x.gif */; };
+		368E70BD21E5EE22003009CA /* MENewProductDetailsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 368E70BC21E5EE22003009CA /* MENewProductDetailsHeaderView.m */; };
+		368E70BF21E5EE2D003009CA /* MENewProductDetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368E70BE21E5EE2D003009CA /* MENewProductDetailsHeaderView.xib */; };
+		368E70C221E5FE54003009CA /* MENewProductDetailsSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 368E70C121E5FE54003009CA /* MENewProductDetailsSectionView.m */; };
+		368E70C421E5FE5F003009CA /* MENewProductDetailsSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368E70C321E5FE5F003009CA /* MENewProductDetailsSectionView.xib */; };
 		3695C3A721D4BDD500EDBCDF /* MECouponOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3695C3A521D4BDD500EDBCDF /* MECouponOrderCell.m */; };
 		3695C3A821D4BDD500EDBCDF /* MECouponOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3695C3A621D4BDD500EDBCDF /* MECouponOrderCell.xib */; };
 		3695C3AB21D4C3D700EDBCDF /* MECouponOrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3695C3AA21D4C3D700EDBCDF /* MECouponOrderHeaderView.m */; };
@@ -464,6 +468,7 @@
 		36F43DCD216C913E00FBA16E /* MEBankTransferAccountsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F43DCB216C913E00FBA16E /* MEBankTransferAccountsCell.xib */; };
 		36F43DD0216C942100FBA16E /* BankTransferAccountsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F43DCF216C942100FBA16E /* BankTransferAccountsVC.m */; };
 		36F48BC921DEFF8800A6A7B0 /* MECouponMaterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F48BC821DEFF8800A6A7B0 /* MECouponMaterModel.m */; };
+		36F528B421E6F2F500BB7388 /* MEClerksSortModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F528B321E6F2F500BB7388 /* MEClerksSortModel.m */; };
 		36FB082E218058CE003601FD /* MEProductSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB082C218058CE003601FD /* MEProductSearchVC.m */; };
 		36FB082F218058CE003601FD /* MEProductSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FB082D218058CE003601FD /* MEProductSearchVC.xib */; };
 		36FB9E152199193B00B3DDD3 /* MENoticeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB9E142199193B00B3DDD3 /* MENoticeVC.m */; };
@@ -1276,6 +1281,12 @@
 		368CD6BA214112E9001926FF /* MEMemberHomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEMemberHomeVC.h; sourceTree = "<group>"; };
 		368CD6BB214112E9001926FF /* MEMemberHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEMemberHomeVC.m; sourceTree = "<group>"; };
 		368E70B921E5CD0F003009CA /* loading@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "loading@2x.gif"; sourceTree = "<group>"; };
+		368E70BB21E5EE22003009CA /* MENewProductDetailsHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MENewProductDetailsHeaderView.h; sourceTree = "<group>"; };
+		368E70BC21E5EE22003009CA /* MENewProductDetailsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MENewProductDetailsHeaderView.m; sourceTree = "<group>"; };
+		368E70BE21E5EE2D003009CA /* MENewProductDetailsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MENewProductDetailsHeaderView.xib; sourceTree = "<group>"; };
+		368E70C021E5FE54003009CA /* MENewProductDetailsSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MENewProductDetailsSectionView.h; sourceTree = "<group>"; };
+		368E70C121E5FE54003009CA /* MENewProductDetailsSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MENewProductDetailsSectionView.m; sourceTree = "<group>"; };
+		368E70C321E5FE5F003009CA /* MENewProductDetailsSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MENewProductDetailsSectionView.xib; sourceTree = "<group>"; };
 		3695C3A421D4BDD500EDBCDF /* MECouponOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECouponOrderCell.h; sourceTree = "<group>"; };
 		3695C3A521D4BDD500EDBCDF /* MECouponOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECouponOrderCell.m; sourceTree = "<group>"; };
 		3695C3A621D4BDD500EDBCDF /* MECouponOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MECouponOrderCell.xib; sourceTree = "<group>"; };
@@ -1392,6 +1403,8 @@
 		36F43DD1216CAAAF00FBA16E /* ME时代.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ME时代.entitlements"; sourceTree = "<group>"; };
 		36F48BC721DEFF8700A6A7B0 /* MECouponMaterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECouponMaterModel.h; sourceTree = "<group>"; };
 		36F48BC821DEFF8800A6A7B0 /* MECouponMaterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECouponMaterModel.m; sourceTree = "<group>"; };
+		36F528B221E6F2F500BB7388 /* MEClerksSortModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEClerksSortModel.h; sourceTree = "<group>"; };
+		36F528B321E6F2F500BB7388 /* MEClerksSortModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEClerksSortModel.m; sourceTree = "<group>"; };
 		36FB082B218058CE003601FD /* MEProductSearchVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEProductSearchVC.h; sourceTree = "<group>"; };
 		36FB082C218058CE003601FD /* MEProductSearchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEProductSearchVC.m; sourceTree = "<group>"; };
 		36FB082D218058CE003601FD /* MEProductSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEProductSearchVC.xib; sourceTree = "<group>"; };
@@ -1911,6 +1924,12 @@
 				36A401B82143E10000B0BD4F /* MEProductDetalsBuyedContentCell.h */,
 				36A401B92143E10000B0BD4F /* MEProductDetalsBuyedContentCell.m */,
 				36A401BA2143E10000B0BD4F /* MEProductDetalsBuyedContentCell.xib */,
+				368E70BB21E5EE22003009CA /* MENewProductDetailsHeaderView.h */,
+				368E70BC21E5EE22003009CA /* MENewProductDetailsHeaderView.m */,
+				368E70BE21E5EE2D003009CA /* MENewProductDetailsHeaderView.xib */,
+				368E70C021E5FE54003009CA /* MENewProductDetailsSectionView.h */,
+				368E70C121E5FE54003009CA /* MENewProductDetailsSectionView.m */,
+				368E70C321E5FE5F003009CA /* MENewProductDetailsSectionView.xib */,
 			);
 			path = goodDetail;
 			sourceTree = "<group>";
@@ -2176,6 +2195,8 @@
 			children = (
 				36445B3921C2054600CDBCBA /* MEClerkModel.h */,
 				36445B3A21C2054600CDBCBA /* MEClerkModel.m */,
+				36F528B221E6F2F500BB7388 /* MEClerksSortModel.h */,
+				36F528B321E6F2F500BB7388 /* MEClerksSortModel.m */,
 			);
 			path = clerk;
 			sourceTree = "<group>";
@@ -3806,6 +3827,7 @@
 				36445B3021C1E93A00CDBCBA /* MEWithdrawalView.xib in Resources */,
 				36FEC25621AD345B00BB64A5 /* MEArticleCell.xib in Resources */,
 				360A992F21468598009775F4 /* MESkuBuyCell.xib in Resources */,
+				368E70BF21E5EE2D003009CA /* MENewProductDetailsHeaderView.xib in Resources */,
 				3628E7C521C09CC100D5405B /* MEClerkCell.xib in Resources */,
 				36E3D1E62171F26B0033B192 /* MELogisticsCell.xib in Resources */,
 				EB623E7E21549C6B007C949B /* MEMyChildOrderContentCell.xib in Resources */,
@@ -3889,6 +3911,7 @@
 				363007012148A9BC00C88264 /* MEDistributionOrderCell.xib in Resources */,
 				3628E7CB21C09EE800D5405B /* MEClerkManngerVC.xib in Resources */,
 				36D66ECE213F80A5000476FF /* Assets.xcassets in Resources */,
+				368E70C421E5FE5F003009CA /* MENewProductDetailsSectionView.xib in Resources */,
 				36EEC2F12181BAB700DEFCCB /* MEActiveCell.xib in Resources */,
 				EB28101D21539F04006A765A /* MEStoreSelectCityView.xib in Resources */,
 				3600345021AE708100BAF337 /* MEArticleDetailVC.xib in Resources */,
@@ -4006,6 +4029,7 @@
 				3600A73A215A0FBD00195484 /* MEMineSetCell.m in Sources */,
 				36E1BF2121492F4D00E28301 /* MEAppointmentInfoVC.m in Sources */,
 				360034BB21AE823700BAF337 /* AASpline.m in Sources */,
+				36F528B421E6F2F500BB7388 /* MEClerksSortModel.m in Sources */,
 				36017668215B870B0080EB00 /* MEMineShareVC.m in Sources */,
 				365DB25A2147628200001A04 /* UIView+MECommon.m in Sources */,
 				36FD6406213FABE2009743C5 /* UIBarButtonItem+MEExtension.m in Sources */,
@@ -4060,6 +4084,8 @@
 				36FEC24C21AD2DCD00BB64A5 /* MEPosterMoreListContentVC.m in Sources */,
 				36445B4D21C24FFF00CDBCBA /* MEBDataDealModel.m in Sources */,
 				36E3D1DF2171DF0F0033B192 /* MELogisticsHeaderView.m in Sources */,
+				368E70C221E5FE54003009CA /* MENewProductDetailsSectionView.m in Sources */,
+				368E70BD21E5EE22003009CA /* MENewProductDetailsHeaderView.m in Sources */,
 				36E3D1E52171F26B0033B192 /* MELogisticsCell.m in Sources */,
 				363007202148E30E00C88264 /* MEInteralExchangVC.m in Sources */,
 				366D5AF52149FD8B0021C1BB /* MEProductShoppingCartVC.m in Sources */,

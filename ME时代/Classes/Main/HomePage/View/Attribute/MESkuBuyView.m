@@ -60,6 +60,7 @@
                 }];
                 strongSelf->_goodModel.skus = [arrSpcName componentsJoinedByString:@","];;
                 [strongSelf setSubView];
+                kMeCallBlock(strongSelf.sucessGetStoreBlock);
             }
         } failure:^(id object) {
             kMeSTRONGSELF
@@ -109,6 +110,7 @@
 
 - (void)hide:(kMeBasicBlock)finishBlock{
     kMeWEAKSELF
+    kMeCallBlock(_sucessGetStoreBlock);
     [UIView animateWithDuration:0.3 animations:^{
         kMeSTRONGSELF
         strongSelf->_superView.layer.transform = [strongSelf transform1];

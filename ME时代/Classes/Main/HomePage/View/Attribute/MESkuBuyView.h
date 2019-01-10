@@ -21,5 +21,7 @@
 
 //获取库存失败
 @property (nonatomic, copy) kMeBasicBlock failGetStoreBlock;
+//获取库成功
+@property (nonatomic, copy) kMeBasicBlock sucessGetStoreBlock;
 
 @end

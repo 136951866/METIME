@@ -12,5 +12,7 @@
 
 @property (nonatomic, strong) NSString * browse;
 @property (nonatomic, strong) NSString * wait_time;
+@property (nonatomic, strong) NSString * share_total;
+@property (nonatomic, strong) NSString * valid;
 
 @end
