@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class MEStoreDetailModel;
+const static CGFloat kMEProductDetalsBuyedNewCellHeight = 212;
 const static CGFloat kMEProductDetalsBuyedCellHeight = 200;
 
 @interface MEProductDetalsBuyedCell : UITableViewCell

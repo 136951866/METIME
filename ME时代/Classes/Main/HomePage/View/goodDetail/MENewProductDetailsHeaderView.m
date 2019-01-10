@@ -32,6 +32,9 @@
     _lblPrice.adjustsFontSizeToFitWidth = YES;
     _lblSelectSku.adjustsFontSizeToFitWidth = YES;
     _consSdHeight.constant = SCREEN_WIDTH;
+    _lblStock.adjustsFontSizeToFitWidth = YES;
+    _lblExpress.adjustsFontSizeToFitWidth = YES;
+    _lblSaled.adjustsFontSizeToFitWidth = YES;
     [self initSD];
 }
 
@@ -70,9 +73,9 @@
 }
 
 - (void)reloadStockAndSaled:(MEGoodDetailModel *)model{
-    _lblStock.text = [NSString stringWithFormat:@"库存:%@",kMeUnNilStr(model.psmodel.stock)];
-#warning -2.0.5
-    _lblSaled.text = [NSString stringWithFormat:@"销量:%@",kMeUnNilStr(model.psmodel.stock)];
+    #warning -2.0.5
+    _lblStock.text = [NSString stringWithFormat:@"参与数:%@",kMeUnNilStr(model.browse)];
+    _lblSaled.text = [NSString stringWithFormat:@"销量:%@",kMeUnNilStr(model.sales)];
     _lblSelectSku.text = [NSString stringWithFormat:@"已选:数量x%@,规格:%@",@(model.buynum),kMeUnNilStr(model.skus)];
 }
 

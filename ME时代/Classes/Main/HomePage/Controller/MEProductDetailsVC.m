@@ -101,8 +101,10 @@ kTDWebViewCellDidFinishLoadNotificationMethod
     self.bottomView.productId = @(_model.product_id).description;
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(kMEProductDetailsBottomViewHeight));
-        make.width.equalTo(@(self.view.width));
+//        make.width.equalTo(@(self.view.width));
         make.top.equalTo(@(self.view.bottom-kMEProductDetailsBottomViewHeight));
+        make.left.equalTo(@(0));
+        make.right.equalTo(@(0));
     }];
     CGFloat width = [UIScreen mainScreen].bounds.size.width - 20;
     NSString *header = [NSString stringWithFormat:@"<head><style>img{max-width:%fpx !important;}</style></head>",width];
@@ -198,7 +200,7 @@ kTDWebViewCellDidFinishLoadNotificationMethod
             return [[self.webCell.webView stringByEvaluatingJavaScriptFromString: @"document.body.scrollHeight"] intValue];
         }
     }else if(indexPath.section == 1){
-        return kMeUnArr(self.arrCommendModel).count?kMEProductDetalsBuyedCellHeight:1;
+        return kMeUnArr(self.arrCommendModel).count?kMEProductDetalsBuyedNewCellHeight:1;
     }else{
         return 1;
     }

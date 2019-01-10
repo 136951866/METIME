@@ -39,6 +39,10 @@
 @property (nonatomic, strong) NSString *reserve_num;
 @property (nonatomic, assign) NSInteger is_first_buy;
 
+//销量
+@property (nonatomic, strong) NSString *sales;
+//访问量
+@property (nonatomic, strong) NSString *browse;
 //购买数量
 @property (nonatomic,assign) NSInteger buynum;
 //选中的price和stock
