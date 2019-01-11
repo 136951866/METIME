@@ -8,6 +8,8 @@
 
 #import "MeMyActityMineVC.h"
 #import "MeMyActityMineCell.h"
+#import "MEMineActiveModel.h"
+#import "MEMineMyActityDetailVC.h"
 
 @interface MeMyActityMineVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>
 
@@ -30,15 +32,14 @@
 #pragma mark - RefreshToolDelegate
 
 - (NSDictionary *)requestParameter{
-    [self.refresh.arrData addObjectsFromArray:@[@"",@"",@"",@"",@"",@""]];
-    return @{};
+    return @{@"token":kMeUnNilStr(kCurrentUser.token),@"uid":kMeUnNilStr(kCurrentUser.uid)};
 }
 
 - (void)handleResponse:(id)data{
     if(![data isKindOfClass:[NSArray class]]){
         return;
     }
-    [self.refresh.arrData addObjectsFromArray:[NSObject mj_objectArrayWithKeyValuesArray:data]];
+    [self.refresh.arrData addObjectsFromArray:[MEMineActiveModel mj_objectArrayWithKeyValuesArray:data]];
 }
 
 
@@ -49,7 +50,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    id model = self.refresh.arrData[indexPath.row];
+    MEMineActiveModel *model = self.refresh.arrData[indexPath.row];
     MeMyActityMineCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MeMyActityMineCell class]) forIndexPath:indexPath];
     [cell setUIWithModel:model];
     return cell;
@@ -61,9 +62,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    MEMineActiveModel *model = self.refresh.arrData[indexPath.row];
+    MEMineMyActityDetailVC *vc = [[MEMineMyActityDetailVC alloc]initWithModel:model];
+    [self.navigationController pushViewController:vc animated:YES];
 }
-
 
 #pragma MARK - Setter
 
@@ -86,7 +88,7 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(@"")];
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPadminGetAppGetShare)];
         _refresh.delegate = self;
         _refresh.isDataInside = YES;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {

@@ -325,6 +325,10 @@
 		366019B721E8634E00F1BB37 /* MENewMineHomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 366019B521E8634E00F1BB37 /* MENewMineHomeCell.xib */; };
 		366019BB21E8666000F1BB37 /* MENewMineHomeContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 366019B921E8666000F1BB37 /* MENewMineHomeContentCell.m */; };
 		366019BC21E8666000F1BB37 /* MENewMineHomeContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 366019BA21E8666000F1BB37 /* MENewMineHomeContentCell.xib */; };
+		366019BF21E8746700F1BB37 /* MEMineActiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 366019BE21E8746700F1BB37 /* MEMineActiveModel.m */; };
+		366019C221E878ED00F1BB37 /* MEMineMyActityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 366019C121E878ED00F1BB37 /* MEMineMyActityDetailVC.m */; };
+		366019C621E8798400F1BB37 /* MEMineMyActityDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 366019C421E8798400F1BB37 /* MEMineMyActityDetailCell.m */; };
+		366019C721E8798400F1BB37 /* MEMineMyActityDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 366019C521E8798400F1BB37 /* MEMineMyActityDetailCell.xib */; };
 		366A9907214F4378008EE888 /* MEPublicNetWorkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A9906214F4378008EE888 /* MEPublicNetWorkTool.m */; };
 		366D1CC821B4FEC00004295E /* MESNewHomeActiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D1CC721B4FEC00004295E /* MESNewHomeActiveVC.m */; };
 		366D1CCC21B503460004295E /* MESNewHomeActiveCommondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D1CCA21B503460004295E /* MESNewHomeActiveCommondCell.m */; };
@@ -1166,6 +1170,13 @@
 		366019B821E8666000F1BB37 /* MENewMineHomeContentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MENewMineHomeContentCell.h; path = "ME时代/Classes/Main/Mine/Controller/MENewMineHomeContentCell.h"; sourceTree = SOURCE_ROOT; };
 		366019B921E8666000F1BB37 /* MENewMineHomeContentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MENewMineHomeContentCell.m; path = "ME时代/Classes/Main/Mine/Controller/MENewMineHomeContentCell.m"; sourceTree = SOURCE_ROOT; };
 		366019BA21E8666000F1BB37 /* MENewMineHomeContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MENewMineHomeContentCell.xib; path = "ME时代/Classes/Main/Mine/Controller/MENewMineHomeContentCell.xib"; sourceTree = SOURCE_ROOT; };
+		366019BD21E8746700F1BB37 /* MEMineActiveModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEMineActiveModel.h; sourceTree = "<group>"; };
+		366019BE21E8746700F1BB37 /* MEMineActiveModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEMineActiveModel.m; sourceTree = "<group>"; };
+		366019C021E878ED00F1BB37 /* MEMineMyActityDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEMineMyActityDetailVC.h; sourceTree = "<group>"; };
+		366019C121E878ED00F1BB37 /* MEMineMyActityDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEMineMyActityDetailVC.m; sourceTree = "<group>"; };
+		366019C321E8798400F1BB37 /* MEMineMyActityDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MEMineMyActityDetailCell.h; path = "ME时代/Classes/Main/Mine/Controller/MEMineMyActityDetailCell.h"; sourceTree = SOURCE_ROOT; };
+		366019C421E8798400F1BB37 /* MEMineMyActityDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MEMineMyActityDetailCell.m; path = "ME时代/Classes/Main/Mine/Controller/MEMineMyActityDetailCell.m"; sourceTree = SOURCE_ROOT; };
+		366019C521E8798400F1BB37 /* MEMineMyActityDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MEMineMyActityDetailCell.xib; path = "ME时代/Classes/Main/Mine/Controller/MEMineMyActityDetailCell.xib"; sourceTree = SOURCE_ROOT; };
 		366A9905214F4378008EE888 /* MEPublicNetWorkTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEPublicNetWorkTool.h; sourceTree = "<group>"; };
 		366A9906214F4378008EE888 /* MEPublicNetWorkTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEPublicNetWorkTool.m; sourceTree = "<group>"; };
 		366A9908214F4753008EE888 /* MEAllToolHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEAllToolHeader.h; sourceTree = "<group>"; };
@@ -2207,6 +2218,8 @@
 			children = (
 				36445B3221C1ED5B00CDBCBA /* MEWithdrawalParamModel.h */,
 				36445B3321C1ED5B00CDBCBA /* MEWithdrawalParamModel.m */,
+				366019BD21E8746700F1BB37 /* MEMineActiveModel.h */,
+				366019BE21E8746700F1BB37 /* MEMineActiveModel.m */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -2473,6 +2486,9 @@
 				366019B821E8666000F1BB37 /* MENewMineHomeContentCell.h */,
 				366019B921E8666000F1BB37 /* MENewMineHomeContentCell.m */,
 				366019BA21E8666000F1BB37 /* MENewMineHomeContentCell.xib */,
+				366019C321E8798400F1BB37 /* MEMineMyActityDetailCell.h */,
+				366019C421E8798400F1BB37 /* MEMineMyActityDetailCell.m */,
+				366019C521E8798400F1BB37 /* MEMineMyActityDetailCell.xib */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -3095,6 +3111,8 @@
 				363A6BF921E19A4A008B303B /* MeMyActityMineVC.m */,
 				366019AB21E83ADD00F1BB37 /* MENewMineHomeVC.h */,
 				366019AC21E83ADD00F1BB37 /* MENewMineHomeVC.m */,
+				366019C021E878ED00F1BB37 /* MEMineMyActityDetailVC.h */,
+				366019C121E878ED00F1BB37 /* MEMineMyActityDetailVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3886,6 +3904,7 @@
 				360AF11C21AFE7A10039AB79 /* MEVistorPathMainCell.xib in Resources */,
 				366D5AFB214A09C40021C1BB /* MEMakeOrderSelectAddressView.xib in Resources */,
 				3695C3A821D4BDD500EDBCDF /* MECouponOrderCell.xib in Resources */,
+				366019C721E8798400F1BB37 /* MEMineMyActityDetailCell.xib in Resources */,
 				365151D0214147EA0044C763 /* MEHomeMiaoDongCell.xib in Resources */,
 				36E1BF112149010C00E28301 /* MEMineExchangeRudeCell.xib in Resources */,
 				36FB9E1A2199195D00B3DDD3 /* MENoticeCell.xib in Resources */,
@@ -4104,6 +4123,7 @@
 				36445B3B21C2054600CDBCBA /* MEClerkModel.m in Sources */,
 				3630070F2148B93300C88264 /* MEDistributionMoneyVC.m in Sources */,
 				360034BA21AE823700BAF337 /* AAMarker.m in Sources */,
+				366019C221E878ED00F1BB37 /* MEMineMyActityDetailVC.m in Sources */,
 				36526017216F3DD3003E3CB4 /* MENewStoreDetailsVC.m in Sources */,
 				36472B0121C8E15C00CC3E48 /* JXCategoryNumberCell.m in Sources */,
 				365151D421414C1B0044C763 /* MEBaoQiangCell.m in Sources */,
@@ -4229,6 +4249,7 @@
 				36FFD8592143D1480094D781 /* MEProductDetalsBuyedCell.m in Sources */,
 				3617C31021D0AE3800004072 /* MECoupleFilterVC.m in Sources */,
 				36009D3921428B9A0034747C /* MEProductDetailsVC.m in Sources */,
+				366019BF21E8746700F1BB37 /* MEMineActiveModel.m in Sources */,
 				36FB082E218058CE003601FD /* MEProductSearchVC.m in Sources */,
 				36FEC25521AD345B00BB64A5 /* MEArticleCell.m in Sources */,
 				366D1CDA21B522910004295E /* MESActivityContentModel.m in Sources */,
@@ -4358,6 +4379,7 @@
 				36008A6B21B60CF30007BB46 /* MESNewHomeStyle.m in Sources */,
 				EB623E852154D3A4007C949B /* MEDistrbutionOrderModel.m in Sources */,
 				36FB9E152199193B00B3DDD3 /* MENoticeVC.m in Sources */,
+				366019C621E8798400F1BB37 /* MEMineMyActityDetailCell.m in Sources */,
 				36472B0721C8E15C00CC3E48 /* UIColor+JXAdd.m in Sources */,
 				3683F7BE21CBAF22008139B0 /* MEGiftVC.m in Sources */,
 				36FFE965217DD89C00010AED /* MEEnlargeTouchButton.m in Sources */,

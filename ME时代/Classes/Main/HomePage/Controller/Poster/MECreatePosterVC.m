@@ -95,16 +95,9 @@
     _lblName.text = kMeUnNilStr(kCurrentUser.name);
     NSString *str = @"";
     if(_isActive){
-        //活动
-//        str = [NSString stringWithFormat:@"http://md.meshidai.com/api/qrcode?uid=%@&pid=0&posters_id=%@",kMeUnNilStr(kCurrentUser.uid),kMeUnNilStr(_activeModel.activity_id)];
+        str = [NSString stringWithFormat:@"%@?uid=%@&pid=0&activity_id=%@&token=%@",kGetApiWithUrl(MEIPadminappGetQrcode),kMeUnNilStr(kCurrentUser.uid),kMeUnNilStr(_activeModel.activity_id),kMeUnNilStr(kCurrentUser.token)];
         _imgCode.image = [UIImage getDataWithUrl:str];
     }else{
-//#ifdef TestVersion
-//        str =[NSString stringWithFormat:@"https://develop.meshidai.com/meShare/index.html?uid=%@&pid=0&posters_id=%@",kMeUnNilStr(kCurrentUser.uid),@(_model.idField)];
-//#else
-//        str = [NSString stringWithFormat:@"http://md.meshidai.com/api/qrcode?uid=%@&pid=0&posters_id=%@",kMeUnNilStr(kCurrentUser.uid),@(_model.idField)];
-//#endif
-//        _imgCode.image = [UIImage getCodeWithUrl:str];
         str = [NSString stringWithFormat:@"http://md.meshidai.com/api/qrcode?uid=%@&pid=0&posters_id=%@",kMeUnNilStr(kCurrentUser.uid),@(_model.idField)];
         _imgCode.image = [UIImage getDataWithUrl:str];
     }

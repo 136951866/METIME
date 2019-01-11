@@ -7,6 +7,7 @@
 //
 
 #import "MeMyActityMineCell.h"
+#import "MEMineActiveModel.h"
 
 @interface MeMyActityMineCell ()
 
@@ -28,13 +29,27 @@
     // Initialization code
 }
 
-- (void)setUIWithModel:(id)model{
-    _lblTime.text = [NSString stringWithFormat:@"发起时间:%@",kMeUnNilStr(@"")];
-    kSDLoadImg(_imgPic, kMeUnNilStr(@""));
-    _lblTitle.text = kMeUnNilStr(@"");
-    _lblStatus.text = kMeUnNilStr(@"");
-    _lblMoney.text = [NSString stringWithFormat:@"金额:%@",kMeUnNilStr(@"")];
-    _lblNum.text = [NSString stringWithFormat:@"达成条件:%@",kMeUnNilStr(@"")];
+- (void)setUIWithModel:(MEMineActiveModel *)model{
+    _lblMoney.hidden = NO;
+    _lblNum.hidden = NO;
+    _lblTime.text = [NSString stringWithFormat:@"发起时间:%@",kMeUnNilStr(model.created_at)];
+    kSDLoadImg(_imgPic, kMeUnNilStr(model.image));
+    _lblTitle.text = kMeUnNilStr(model.activity_name);
+    if(model.doing){
+        _lblStatus.text = @"未完成";
+        _lblMoney.text = [NSString stringWithFormat:@"金额:%@",kMeUnNilStr(model.doing.reward)];
+        _lblNum.text = [NSString stringWithFormat:@"达成条件%@:%@",kMeUnNilStr(model.share_number),kMeUnNilStr(model.doing.share_number)];
+    }else{
+        _lblStatus.text = @"已完成";
+        MEMineActiveLeveModel *lmodel = [model.complete lastObject];
+        if(lmodel){
+            _lblMoney.text = [NSString stringWithFormat:@"金额:%@",kMeUnNilStr(lmodel.reward)];
+            _lblNum.text = [NSString stringWithFormat:@"达成条件%@:%@",kMeUnNilStr(model.share_number),kMeUnNilStr(model.share_number)];
+        }else{
+            _lblMoney.hidden = YES;
+            _lblNum.hidden = YES;
+        }
+    }
 }
 
 @end

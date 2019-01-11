@@ -114,13 +114,14 @@
             [homeVC.navigationController pushViewController:pathVC animated:YES];
         }
     }else if (_model.type ==2){
-        if(homeVC){
-            MEPosterChildrenModel *modela = [MEPosterChildrenModel new];
-            modela.image = _model.article.images_url;
-            modela.idField = _model.article_id;
-            MECreatePosterVC *pathVC = [[MECreatePosterVC alloc]initWithModel:modela];
-            [homeVC.navigationController pushViewController:pathVC animated:YES];
-        }
+#warning -2.0.5//
+//        if(homeVC){
+//            MEPosterChildrenModel *modela = [MEPosterChildrenModel new];
+//            modela.image = _model.article.images_url;
+//            modela.idField = _model.article_id;
+//            MECreatePosterVC *pathVC = [[MECreatePosterVC alloc]initWithModel:modela];
+//            [homeVC.navigationController pushViewController:pathVC animated:YES];
+//        }
     }else{
         
     }

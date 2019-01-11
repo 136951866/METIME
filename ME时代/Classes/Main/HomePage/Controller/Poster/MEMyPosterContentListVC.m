@@ -157,7 +157,7 @@
     if(!_refresh){
         NSString *str = MEIPcommonGetSharePoster;
         if(_isActive){
-            str = MEIPcommonGetActivePoster;
+            str = MEIPadminGetActivePoster;
         }
         _refresh = [[ZLRefreshTool alloc]initWithContentView:self.collectionView url:kGetApiWithUrl(str)];
         _refresh.delegate = self;

@@ -186,10 +186,14 @@
 #define MEIPcommonSharePoster @"common/posters/sharePoster"
 //获取分享海报
 #define MEIPcommonGetSharePoster @"common/posters/getSharePoster"
-//获取分享海报
-#define MEIPcommonGetActivePoster @""
+//获取活动海报列表
+#define MEIPadminGetActivePoster @"admin/groupfission/getActivity"
+//查询会员当前活动任务情况
+#define MEIPadminGetAppGetShare @"admin/groupfission/appGetShare"
 //删除海报
 #define MEIPcommonDelSharePosters @"common/posters/delSharePosters"
+//获取活动海报二维码
+#define MEIPadminappGetQrcode @"admin/groupfission/appGetQrcode"
 /*********************************************/
 
 
