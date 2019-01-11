@@ -7,7 +7,7 @@
 //
 
 #import "MENewMineHomeContentCell.h"
-
+#import "AppDelegate.h"
 @interface MENewMineHomeContentCell (){
     NSArray *_arrTitle;
     NSArray *_arrImage;
@@ -15,6 +15,7 @@
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imgPic;
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblUnMessage;
 @end
 
 @implementation MENewMineHomeContentCell
@@ -30,6 +31,26 @@
     _type = type;
     _imgPic.image =  kMeGetAssetImage(_arrImage[type]);
     _lblTitle.text = _arrTitle[type];
+    if(type == MeMyCustomer){
+        _lblUnMessage.hidden = NO;
+        [self setUnMeaasge];
+    }else{
+        _lblUnMessage.hidden = YES;
+    }
+}
+
+- (void)setUnMeaasge{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSInteger unmessgae =  [[RCIMClient sharedRCIMClient] getUnreadCount:@[
+                                                                           @(ConversationType_PRIVATE),
+                                                                           ]];
+    appDelegate.unMessageCount = unmessgae;
+    NSString *str = @(unmessgae).description;
+    if(appDelegate.unMessageCount>99){
+        str = @"99+";
+    }
+    _lblUnMessage.hidden = appDelegate.unMessageCount == 0;
+    _lblUnMessage.text = [NSString stringWithFormat:@"%@",str];
 }
 
 @end

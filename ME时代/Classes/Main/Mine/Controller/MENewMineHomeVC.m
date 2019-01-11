@@ -67,7 +67,13 @@
 
 
 - (void)getUnMeaasge{
-#warning --2.0.5
+    if([MEUserInfoModel isLogin] && _arrtype.count && self.tableView){
+        kMeWEAKSELF
+        dispatch_async(dispatch_get_main_queue(), ^{
+            kMeSTRONGSELF
+             [strongSelf.tableView reloadData];
+        });
+    }
 }
 
 - (void)userLogout{

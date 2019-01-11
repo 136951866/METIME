@@ -13,6 +13,7 @@
 #import "MEMineSetVC.h"
 
 @interface MENewMineHomeHeaderView ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *consSetTopMargin;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consBtnW;
 @property (weak, nonatomic) IBOutlet UIView *viewLine;
@@ -26,9 +27,10 @@
 
 - (void)awakeFromNib{
     [super awakeFromNib];
-    [_viewLine addBottedlineWidth:1 lineColor:[UIColor whiteColor]];
+    [_viewLine addBottedlineWidth:2 lineColor:[UIColor whiteColor]];
     CGFloat w = (SCREEN_WIDTH - 60)/4;
     _consBtnW.constant = w;
+    _consSetTopMargin.constant = kMeStatusBarHeight+10;
 }
 
 - (void)reloadUIWithUserInfo{
