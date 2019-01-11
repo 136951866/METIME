@@ -33,7 +33,7 @@ typedef enum : NSUInteger {
     MeMyMobile,//绑定的手机号
     MeMyActity
 } MEMineHomeCellStyle;
-#define MEMineHomeCellStyleTitle @[@"我的预约",@"中心管理",@"我的中心",@"兑换中心",@"我的收藏",@"ME聊",@"客服电话",@"收货地址",@"绑定的手机号",@"我的活动"]
+#define MEMineHomeCellStyleTitle @[@"我的预约",@"中心管理",@"我的中心",@"兑换中心",@"我的收藏",@"ME聊",@"客服电话",@"收货地址",@"绑定手机",@"我的活动"]
 #define MEMineHomeCellStyleImage @[@"icon_woddemiaosha",@"icon-khnytpgj",@"icon_fenxiaozhognxin",@"icon_zhuceyoujiang",@"icon_wodeshoucang",@"icon-qrpteb",@"icon-qrptebjnyt",@"nhwxfbfh",@"qlru",@"qritfc"]
 
 //订单
