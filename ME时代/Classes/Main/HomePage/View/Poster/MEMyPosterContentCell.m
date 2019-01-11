@@ -8,6 +8,7 @@
 
 #import "MEMyPosterContentCell.h"
 #import "MEPosterModel.h"
+#import "MEActivePosterModel.h"
 
 @interface MEMyPosterContentCell ()
 
@@ -44,14 +45,12 @@
     _lblContent.text = [NSString stringWithFormat:@"被分享%@次",kMeUnNilStr(Model.share_amount)];
 }
 
-- (void)setiActiveWithModel:(MEPosterChildrenModel *)Model{
+- (void)setiActiveWithModel:(MEActivePosterModel *)Model{
     _btnDel.hidden = YES;
-//    _viewForMask.hidden = YES;
     [_btnShare setTitle:@"立即分享" forState:UIControlStateNormal];
     kSDLoadImg(_imgPIc, Model.image);
-    _lblTitle.text = kMeUnNilStr(Model.title);
-//    _lblContent.hidden = YES;
-    _lblContent.text = [NSString stringWithFormat:@"活动可赚¥%@",kMeUnNilStr(@"1")];
+    _lblTitle.text = kMeUnNilStr(Model.activity_name);
+    _lblContent.text = [NSString stringWithFormat:@"红包金额:¥%@",kMeUnNilStr(Model.total_reward)];
 }
 
 - (IBAction)DeleteAction:(UIButton *)sender {

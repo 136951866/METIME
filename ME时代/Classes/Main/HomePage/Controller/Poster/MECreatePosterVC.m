@@ -8,9 +8,12 @@
 
 #import "MECreatePosterVC.h"
 #import "MEPosterModel.h"
+#import "MEActivePosterModel.h"
 
 @interface MECreatePosterVC (){
     MEPosterChildrenModel *_model;
+    MEActivePosterModel *_activeModel;
+    BOOL _isActive;
 }
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consImgHeight;
@@ -37,14 +40,25 @@
 
 #pragma mark - LifeCycle
 
+- (instancetype)initWithActiveModel:(MEActivePosterModel *)model{
+    if(self = [super init]){
+        _activeModel = model;
+        _isActive = YES;
+    }
+    return self;
+}
+
+
 - (instancetype)initWithModel:(MEPosterChildrenModel *)model{
     if(self = [super init]){
         _model = model;
+        _isActive = NO;
     }
     return self;
 }
 
 - (void)viewDidLoad {
+#pragma mark - 2.0.5
     [super viewDidLoad];
     _btnShare.hidden = YES;
     self.title = @"分享海报生成器";
@@ -66,21 +80,34 @@
     _consCodeW.constant = 47* kMeFrameScaleX();
     _consBtnheight.constant = 49 * kMeFrameScaleX();
     kMeWEAKSELF
-    [_imgposter sd_setImageWithURL:[NSURL URLWithString:kMeUnNilStr(_model.image)] placeholderImage:kImgPlaceholder completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-        kMeSTRONGSELF
-        strongSelf->_btnShare.hidden = NO;
-    }];
+    if(_isActive){
+        [_imgposter sd_setImageWithURL:[NSURL URLWithString:kMeUnNilStr(_activeModel.image)] placeholderImage:kImgPlaceholder completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            kMeSTRONGSELF
+            strongSelf->_btnShare.hidden = NO;
+        }];
+    }else{
+        [_imgposter sd_setImageWithURL:[NSURL URLWithString:kMeUnNilStr(_model.image)] placeholderImage:kImgPlaceholder completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            kMeSTRONGSELF
+            strongSelf->_btnShare.hidden = NO;
+        }];
+    }
     kSDLoadImg(_imgHeader,kMeUnNilStr(kCurrentUser.header_pic));
     _lblName.text = kMeUnNilStr(kCurrentUser.name);
-#pragma mark - 2.0.5
-    #ifdef TestVersion
-    NSString *str = [NSString stringWithFormat:@"http://md.meshidai.com/api/qrcode?uid=%@&pid=0&posters_id=%@",kMeUnNilStr(kCurrentUser.uid),@(_model.idField)];
-//       NSString *str =[NSString stringWithFormat:@"https://develop.meshidai.com/meShare/index.html?uid=%@&pid=0&posters_id=%@",kMeUnNilStr(kCurrentUser.uid),@(_model.idField)];
-    #else
-         NSString *str = [NSString stringWithFormat:@"http://md.meshidai.com/api/qrcode?uid=%@&pid=0&posters_id=%@",kMeUnNilStr(kCurrentUser.uid),@(_model.idField)];
-    #endif
-    
-    _imgCode.image = [UIImage getDataWithUrl:str];
+    NSString *str = @"";
+    if(_isActive){
+        //活动
+//        str = [NSString stringWithFormat:@"http://md.meshidai.com/api/qrcode?uid=%@&pid=0&posters_id=%@",kMeUnNilStr(kCurrentUser.uid),kMeUnNilStr(_activeModel.activity_id)];
+        _imgCode.image = [UIImage getDataWithUrl:str];
+    }else{
+//#ifdef TestVersion
+//        str =[NSString stringWithFormat:@"https://develop.meshidai.com/meShare/index.html?uid=%@&pid=0&posters_id=%@",kMeUnNilStr(kCurrentUser.uid),@(_model.idField)];
+//#else
+//        str = [NSString stringWithFormat:@"http://md.meshidai.com/api/qrcode?uid=%@&pid=0&posters_id=%@",kMeUnNilStr(kCurrentUser.uid),@(_model.idField)];
+//#endif
+//        _imgCode.image = [UIImage getCodeWithUrl:str];
+        str = [NSString stringWithFormat:@"http://md.meshidai.com/api/qrcode?uid=%@&pid=0&posters_id=%@",kMeUnNilStr(kCurrentUser.uid),@(_model.idField)];
+        _imgCode.image = [UIImage getDataWithUrl:str];
+    }
     if([WXApi isWXAppInstalled]){
         [_btnShare setTitle:@"分享" forState:UIControlStateNormal];
     }else{
@@ -93,7 +120,11 @@
     if([WXApi isWXAppInstalled]){
         MEShareTool *shareTool = [MEShareTool me_instanceForTarget:self];
         shareTool.shareImage = self.imgShare;
-        shareTool.posterId = @(_model.idField).description;
+        if(_isActive){
+            shareTool.posterId = kMeUnNilStr(_activeModel.activity_id);
+        }else{
+            shareTool.posterId = @(_model.idField).description;
+        }
         [shareTool showShareView:kShareImageContentType success:^(id data) {
             NSLog(@"分享成功%@",data);
         } failure:^(NSError *error) {

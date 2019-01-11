@@ -186,6 +186,8 @@
 #define MEIPcommonSharePoster @"common/posters/sharePoster"
 //获取分享海报
 #define MEIPcommonGetSharePoster @"common/posters/getSharePoster"
+//获取分享海报
+#define MEIPcommonGetActivePoster @""
 //删除海报
 #define MEIPcommonDelSharePosters @"common/posters/delSharePosters"
 /*********************************************/

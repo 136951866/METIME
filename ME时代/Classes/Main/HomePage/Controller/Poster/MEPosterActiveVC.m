@@ -8,11 +8,11 @@
 
 #import "MEPosterActiveVC.h"
 #import "TDWebViewCell.h"
-#import "MEPosterModel.h"
+#import "MEActivePosterModel.h"
 #import "MECreatePosterVC.h"
 
 @interface MEPosterActiveVC ()<UITableViewDelegate,UITableViewDataSource>{
-    MEPosterChildrenModel *_model;
+    MEActivePosterModel *_model;
 }
 
 @property (nonatomic, strong) UITableView           *tableView;
@@ -26,7 +26,7 @@
     kNSNotificationCenterDealloc
 }
 
-- (instancetype)initWithModel:(MEPosterChildrenModel *)model{
+- (instancetype)initWithModel:(MEActivePosterModel *)model{
     if(self = [super init]){
         _model = model;
     }
@@ -54,14 +54,14 @@ kTDWebViewCellDidFinishLoadNotificationMethod
     }];
     CGFloat width = [UIScreen mainScreen].bounds.size.width - 20;
     NSString *header = [NSString stringWithFormat:@"<head><style>img{max-width:%fpx !important;}</style></head>",width];
-    [self.webCell.webView loadHTMLString:[NSString stringWithFormat:@"%@%@",header,kMeUnNilStr(@"哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈")] baseURL:nil];
+    [self.webCell.webView loadHTMLString:[NSString stringWithFormat:@"%@%@",header,kMeUnNilStr(_model.intro)] baseURL:nil];
     [MBProgressHUD showMessage:@"获取详情中" toView:self.view];
 }
 
 #pragma mark - Acion
 
 - (void)appointAction:(UIButton *)btn{
-    MECreatePosterVC *vc = [[MECreatePosterVC alloc]initWithModel:_model];
+    MECreatePosterVC *vc = [[MECreatePosterVC alloc]initWithActiveModel:_model];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -92,7 +92,7 @@ kTDWebViewCellDidFinishLoadNotificationMethod
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%ld",indexPath.section);
+    
     
 }
 

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class MEPosterChildrenModel;
+@class MEActivePosterModel;
 const static CGFloat kMEMyPosterContentIMageHeight  = 152;
 const static CGFloat kMEMyPosterContentCellOrgialHeight  = 220;
 //#define kMEMyPosterContentIMageWdith (102 *kMeFrameScaleX())
@@ -20,7 +21,7 @@ const static CGFloat kMEMyPosterContentCellOrgialHeight  = 220;
 //更多
 - (void)setiWitMorehModel:(MEPosterChildrenModel *)Model;
 //活动
-- (void)setiActiveWithModel:(MEPosterChildrenModel *)Model;
+- (void)setiActiveWithModel:(MEActivePosterModel *)Model;
 
 + (CGFloat)getCellHeight;
 

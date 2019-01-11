@@ -317,6 +317,7 @@
 		365DB25421475C3300001A04 /* MEMineHomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 365DB25321475C3300001A04 /* MEMineHomeHeaderView.xib */; };
 		365DB2572147601300001A04 /* MEMineHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 365DB2562147601300001A04 /* MEMineHomeVC.m */; };
 		365DB25A2147628200001A04 /* UIView+MECommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 365DB2592147628200001A04 /* UIView+MECommon.m */; };
+		366019AA21E8280100F1BB37 /* MEActivePosterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 366019A921E8280100F1BB37 /* MEActivePosterModel.m */; };
 		366A9907214F4378008EE888 /* MEPublicNetWorkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A9906214F4378008EE888 /* MEPublicNetWorkTool.m */; };
 		366D1CC821B4FEC00004295E /* MESNewHomeActiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D1CC721B4FEC00004295E /* MESNewHomeActiveVC.m */; };
 		366D1CCC21B503460004295E /* MESNewHomeActiveCommondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D1CCA21B503460004295E /* MESNewHomeActiveCommondCell.m */; };
@@ -1145,6 +1146,8 @@
 		365DB2562147601300001A04 /* MEMineHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MEMineHomeVC.m; path = View/home/MEMineHomeVC.m; sourceTree = SOURCE_ROOT; };
 		365DB2582147628200001A04 /* UIView+MECommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MECommon.h"; sourceTree = "<group>"; };
 		365DB2592147628200001A04 /* UIView+MECommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MECommon.m"; sourceTree = "<group>"; };
+		366019A821E8280100F1BB37 /* MEActivePosterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEActivePosterModel.h; sourceTree = "<group>"; };
+		366019A921E8280100F1BB37 /* MEActivePosterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEActivePosterModel.m; sourceTree = "<group>"; };
 		366A9905214F4378008EE888 /* MEPublicNetWorkTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEPublicNetWorkTool.h; sourceTree = "<group>"; };
 		366A9906214F4378008EE888 /* MEPublicNetWorkTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEPublicNetWorkTool.m; sourceTree = "<group>"; };
 		366A9908214F4753008EE888 /* MEAllToolHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEAllToolHeader.h; sourceTree = "<group>"; };
@@ -3560,6 +3563,8 @@
 			children = (
 				36FDEFF121B11A810022D374 /* MEPosterModel.h */,
 				36FDEFF221B11A810022D374 /* MEPosterModel.m */,
+				366019A821E8280100F1BB37 /* MEActivePosterModel.h */,
+				366019A921E8280100F1BB37 /* MEActivePosterModel.m */,
 			);
 			path = Poster;
 			sourceTree = "<group>";
@@ -4356,6 +4361,7 @@
 				360034BF21AE823700BAF337 /* AAChartView.m in Sources */,
 				36445B3721C1F10B00CDBCBA /* MEWithdrawalVC.m in Sources */,
 				36FEC24921AD2D8B00BB64A5 /* MEPosterMoreListVC.m in Sources */,
+				366019AA21E8280100F1BB37 /* MEActivePosterModel.m in Sources */,
 				360351D7215C82CE004BDD62 /* MEShoppingCartMakeOrderAttrModel.m in Sources */,
 				363007002148A9BC00C88264 /* MEDistributionOrderCell.m in Sources */,
 				36021B0E214BCBF2001B8DAF /* MELoginVC.m in Sources */,

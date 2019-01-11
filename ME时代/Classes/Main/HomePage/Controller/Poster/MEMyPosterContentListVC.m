@@ -11,6 +11,7 @@
 #import "MEPosterModel.h"
 #import "MECreatePosterVC.h"
 #import "MEPosterActiveVC.h"
+#import "MEActivePosterModel.h"
 
 @interface MEMyPosterContentListVC ()<UICollectionViewDelegate,UICollectionViewDataSource,RefreshToolDelegate>{
     CGFloat _cellHeight;
@@ -49,14 +50,18 @@
     if(![data isKindOfClass:[NSArray class]]){
         return;
     }
-    [self.refresh.arrData addObjectsFromArray:[MEPosterChildrenModel mj_objectArrayWithKeyValuesArray:data]];
+    if(_isActive){
+        [self.refresh.arrData addObjectsFromArray:[MEActivePosterModel mj_objectArrayWithKeyValuesArray:data]];
+    }else{
+        [self.refresh.arrData addObjectsFromArray:[MEPosterChildrenModel mj_objectArrayWithKeyValuesArray:data]];
+    }
 }
 
 #pragma mark- CollectionView Delegate And DataSource
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if(_isActive){
-        MEPosterChildrenModel *model = self.refresh.arrData[indexPath.row];
+        MEActivePosterModel *model = self.refresh.arrData[indexPath.row];
         MEPosterActiveVC *vc = [[MEPosterActiveVC alloc]initWithModel:model];
         [self.navigationController pushViewController:vc animated:YES];
     }else{
@@ -72,8 +77,8 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     MEMyPosterContentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MEMyPosterContentCell class]) forIndexPath:indexPath];
-    MEPosterChildrenModel *model = self.refresh.arrData[indexPath.row];
     if(!_isActive){
+         MEPosterChildrenModel *model = self.refresh.arrData[indexPath.row];
         kMeWEAKSELF
         cell.delBlock = ^{
             MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"" message:@"确定删除吗?"];
@@ -90,6 +95,7 @@
         };
         [cell setiWithModel:model];
     }else{
+        MEActivePosterModel *model = self.refresh.arrData[indexPath.row];
         [cell setiActiveWithModel:model];
     }
     return cell;
@@ -150,8 +156,8 @@
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
         NSString *str = MEIPcommonGetSharePoster;
-        if(!_isActive){
-            str = MEIPcommonGetSharePoster;
+        if(_isActive){
+            str = MEIPcommonGetActivePoster;
         }
         _refresh = [[ZLRefreshTool alloc]initWithContentView:self.collectionView url:kGetApiWithUrl(str)];
         _refresh.delegate = self;
@@ -185,7 +191,6 @@
         }else{
             lbls.text = @"这里有您生成过的所有问候海报,可以重复分享哦";
         }
-        
         [view addSubview:lbls];
         [_headerView addSubview:view];
     }

@@ -9,8 +9,10 @@
 #import "MEBaseVC.h"
 
 @class MEPosterChildrenModel;
+@class MEActivePosterModel;
 @interface MECreatePosterVC : MEBaseVC
 
 - (instancetype)initWithModel:(MEPosterChildrenModel *)model;
+- (instancetype)initWithActiveModel:(MEActivePosterModel *)model;
 
 @end

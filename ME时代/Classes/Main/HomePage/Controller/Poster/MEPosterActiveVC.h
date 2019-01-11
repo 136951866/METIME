@@ -10,10 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class MEPosterChildrenModel;
+@class MEActivePosterModel;
 @interface MEPosterActiveVC : MEBaseVC
 
-- (instancetype)initWithModel:(MEPosterChildrenModel *)model;
+- (instancetype)initWithModel:(MEActivePosterModel *)model;
 
 @end
 
