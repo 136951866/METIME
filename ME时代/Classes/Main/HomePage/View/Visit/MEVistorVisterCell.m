@@ -114,7 +114,7 @@
             [homeVC.navigationController pushViewController:pathVC animated:YES];
         }
     }else if (_model.type ==2){
-#warning -2.0.5//
+#warning -2.0.5
 //        if(homeVC){
 //            MEPosterChildrenModel *modela = [MEPosterChildrenModel new];
 //            modela.image = _model.article.images_url;
