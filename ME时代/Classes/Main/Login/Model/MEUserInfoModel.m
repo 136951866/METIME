@@ -105,12 +105,4 @@ static MEUserInfoModel *shareUser;
     }
 }
 
-//#warning -- test
-//#ifdef TestVersion
-//- (NSString *)rongcloud_token{
-//    return @"Sm5U9U4fdQcH7ZO77udmz46MxlOmTVqYSkXvJATWBY/vIsRP/etXQD70+BCSSUcbWKZFrAOQc0JYPjvCxEk9Gw==";
-//}
-//#endif
-
-//KaaoSYS0rAXs3xrNAU8mGbEZ9gxWI5776r2SqF+uTUwqDiPZFa5O0mZpKB1oSfLajHfDg+RAbbI7Kpyo4SMwxw==
 @end
