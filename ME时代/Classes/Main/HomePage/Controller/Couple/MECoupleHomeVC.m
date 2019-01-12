@@ -40,7 +40,10 @@
     _todayBuy = [NSArray array];
     _99BuyBuy = [NSArray array];
 //    _BigJuanBuy = [NSArray array];
-    _advArr = [NSArray array];
+    MEAdModel *model = [MEAdModel new];
+    model.keywork = @"羽绒服";
+    model.ad_img = @"testCoupon";
+    _advArr = @[model];
     [self.view addSubview:self.navView];
     [self.view addSubview:self.tableView];
     _tableView.tableHeaderView = self.headerView;
@@ -51,16 +54,16 @@
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     dispatch_group_t group = dispatch_group_create();
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_group_async(group, queue, ^{
-        kMeWEAKSELF
-        [MEPublicNetWorkTool postAgetTbkBannerWithsuccessBlock:^(ZLRequestResponse *responseObject) {
-            kMeSTRONGSELF
-            strongSelf->_advArr = [MEAdModel mj_objectArrayWithKeyValuesArray:responseObject.data];
-            dispatch_semaphore_signal(semaphore);
-        } failure:^(id object) {
-            dispatch_semaphore_signal(semaphore);
-        }];
-    });
+//    dispatch_group_async(group, queue, ^{
+//        kMeWEAKSELF
+//        [MEPublicNetWorkTool postAgetTbkBannerWithsuccessBlock:^(ZLRequestResponse *responseObject) {
+//            kMeSTRONGSELF
+//            strongSelf->_advArr = [MEAdModel mj_objectArrayWithKeyValuesArray:responseObject.data];
+//            dispatch_semaphore_signal(semaphore);
+//        } failure:^(id object) {
+//            dispatch_semaphore_signal(semaphore);
+//        }];
+//    });
     
     dispatch_group_async(group, queue, ^{
         kMeWEAKSELF
@@ -107,7 +110,7 @@
     dispatch_group_notify(group, queue, ^{
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+//        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
 //        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_async(dispatch_get_main_queue(), ^{
             kMeSTRONGSELF
