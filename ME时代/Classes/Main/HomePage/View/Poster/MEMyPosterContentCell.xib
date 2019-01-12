@@ -66,7 +66,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBf-Os-Vli">
-                        <rect key="frame" x="7" y="98" width="154" height="37"/>
+                        <rect key="frame" x="7" y="98" width="140" height="37"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -96,7 +96,7 @@
                 <constraint firstItem="h7R-0R-xI1" firstAttribute="trailing" secondItem="XYU-u1-SzR" secondAttribute="trailing" id="TpJ-tF-LRn"/>
                 <constraint firstItem="qBf-Os-Vli" firstAttribute="bottom" secondItem="h7R-0R-xI1" secondAttribute="bottom" constant="7" id="ZDh-fy-dSY"/>
                 <constraint firstItem="FeU-Fx-jkh" firstAttribute="top" secondItem="XYU-u1-SzR" secondAttribute="bottom" constant="7" id="ads-S2-2Na"/>
-                <constraint firstItem="qBf-Os-Vli" firstAttribute="trailing" secondItem="h7R-0R-xI1" secondAttribute="trailing" constant="7" id="hMw-9m-8Dq"/>
+                <constraint firstItem="qBf-Os-Vli" firstAttribute="trailing" secondItem="h7R-0R-xI1" secondAttribute="trailing" constant="-7" id="hMw-9m-8Dq"/>
                 <constraint firstAttribute="trailing" secondItem="FeU-Fx-jkh" secondAttribute="trailing" id="hxA-p1-0Uq"/>
                 <constraint firstItem="DY6-bJ-eP3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pXw-vN-QsQ"/>
                 <constraint firstItem="DY6-bJ-eP3" firstAttribute="top" secondItem="FeU-Fx-jkh" secondAttribute="bottom" constant="5" id="tNl-0C-w7N"/>

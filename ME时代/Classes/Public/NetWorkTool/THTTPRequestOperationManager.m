@@ -167,11 +167,15 @@ NSString *const kServerError = @"服务器无法连接";
 }
 
 - (void)orgialGetWithUrlStr:(NSString *)urlStr parameter:(NSDictionary *)parameter
-       success:(kMeDictionaryBlock)success
+       success:(kMeObjBlock)success
               failure:(kMeObjBlock)failure{
     NSDictionary *dicParmeter = [self dicParameterWithDic:parameter];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [self customProcessingForManager:manager];//设置相应内容类型
+//    NSMutableSet *types = [NSMutableSet setWithObjects:@"text/html",@"text/plain", nil];
+//    [types unionSet:manager.responseSerializer.acceptableContentTypes];
+//    manager.responseSerializer.acceptableContentTypes = types;
+    [manager.requestSerializer setValue:@"Wap" forHTTPHeaderField:@"ClientSystem"];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     [manager GET:urlStr parameters:dicParmeter progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
         kMeCallBlock(success,responseObject);

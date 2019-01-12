@@ -22,6 +22,7 @@
 - (instancetype)initWithModel:(MEMineActiveModel *)model{
     if(self = [super init]){
         _model = model;
+        _arrModel = [NSMutableArray array];
         NSArray *arrFinish = @[];
         if(kMeUnArr(_model.complete).count){
             arrFinish = kMeUnArr(_model.complete);
@@ -39,6 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"活动详情";
+    self.view.backgroundColor = [UIColor colorWithHexString:@"f2f1f1"];
     [self.view addSubview:self.tableView];
     [self.tableView reloadData];
 }
@@ -81,6 +83,7 @@
         _tableView.tableFooterView = [UIView new];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.backgroundColor = [UIColor colorWithHexString:@"f2f1f1"];
     }
     return _tableView;
 }

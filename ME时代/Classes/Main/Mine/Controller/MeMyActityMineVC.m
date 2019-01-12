@@ -90,9 +90,9 @@
     if(!_refresh){
         _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPadminGetAppGetShare)];
         _refresh.delegate = self;
-        _refresh.isDataInside = YES;
+//        _refresh.isDataInside = YES;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
-            failView.backgroundColor = [UIColor whiteColor];
+            failView.backgroundColor = kMEeeeeee;
             failView.lblOfNodata.text = @"没有活动";
         }];
     }

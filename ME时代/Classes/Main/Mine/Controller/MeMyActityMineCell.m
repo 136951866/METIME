@@ -37,14 +37,14 @@
     _lblTitle.text = kMeUnNilStr(model.activity_name);
     if(model.doing){
         _lblStatus.text = @"未完成";
-        _lblMoney.text = [NSString stringWithFormat:@"金额:%@",kMeUnNilStr(model.doing.reward)];
-        _lblNum.text = [NSString stringWithFormat:@"达成条件%@:%@",kMeUnNilStr(model.share_number),kMeUnNilStr(model.doing.share_number)];
+        _lblMoney.text = [NSString stringWithFormat:@"金额:¥%@元",kMeUnNilStr(model.doing.reward)];
+        _lblNum.text = [NSString stringWithFormat:@"达成条件:%@/%@人",kMeUnNilStr(model.share_number),kMeUnNilStr(model.doing.share_number)];
     }else{
         _lblStatus.text = @"已完成";
         MEMineActiveLeveModel *lmodel = [model.complete lastObject];
         if(lmodel){
-            _lblMoney.text = [NSString stringWithFormat:@"金额:%@",kMeUnNilStr(lmodel.reward)];
-            _lblNum.text = [NSString stringWithFormat:@"达成条件%@:%@",kMeUnNilStr(model.share_number),kMeUnNilStr(model.share_number)];
+            _lblMoney.text = [NSString stringWithFormat:@"金额:¥%@元",kMeUnNilStr(lmodel.reward)];
+            _lblNum.text = [NSString stringWithFormat:@"达成条件:%@/%@人",kMeUnNilStr(model.share_number),kMeUnNilStr(model.share_number)];
         }else{
             _lblMoney.hidden = YES;
             _lblNum.hidden = YES;

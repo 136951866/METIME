@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class MEMineActiveModel;
-const static CGFloat kMeMyActityMineCellHeight = 142;
+const static CGFloat kMeMyActityMineCellHeight = 162;
 
 @interface MeMyActityMineCell : UITableViewCell
 

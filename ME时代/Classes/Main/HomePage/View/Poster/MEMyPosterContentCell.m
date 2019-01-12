@@ -28,6 +28,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     _consIMageHeight.constant = (152 * kMEMyPosterContentCellWdith)/102;
+    _lblContent.adjustsFontSizeToFitWidth = YES;
     // Initialization code
 }
 
@@ -50,7 +51,8 @@
     [_btnShare setTitle:@"立即分享" forState:UIControlStateNormal];
     kSDLoadImg(_imgPIc, Model.image);
     _lblTitle.text = kMeUnNilStr(Model.activity_name);
-    _lblContent.text = [NSString stringWithFormat:@"红包金额:¥%@",kMeUnNilStr(Model.total_reward)];
+    
+    _lblContent.text = [NSString stringWithFormat:@"红包金额:¥%@",@(kMeUnNilStr(Model.total_reward).floatValue)];
 }
 
 - (IBAction)DeleteAction:(UIButton *)sender {

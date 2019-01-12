@@ -61,6 +61,6 @@ typedef void(^RequestResponse)(ZLRequestResponse *responseObject);
 
 //原生的get
 - (void)orgialGetWithUrlStr:(NSString *)urlStr parameter:(NSDictionary *)parameter
-                    success:(kMeDictionaryBlock)success
+                    success:(kMeObjBlock)success
                     failure:(kMeObjBlock)failure;
 @end
