@@ -27,14 +27,14 @@
 }
 
 - (void)setUIWIthModel:(MEMineActiveLeveModel *)model finish:(BOOL)finish nowNum:(NSString*)nowNum{
-    _lblTitle.text = [NSString stringWithFormat:@"%@级达成条件:%@/%@人",kMeUnNilStr(model.level),kMeUnNilStr(nowNum),kMeUnNilStr(model.share_number)];
-    if(finish){
-        _lblStatus.text = @"已完成";
-        _lblStatus.textColor = kMEPink;
-    }else{
-        _lblStatus.text = @"未完成";
-         _lblStatus.textColor = kMEblack;
-    }
+//    _lblTitle.text = [NSString stringWithFormat:@"%@级达成条件:%@/%@人",kMeUnNilStr(model.level),kMeUnNilStr(nowNum),kMeUnNilStr(model.share_number)];
+//    if(finish){
+//        _lblStatus.text = @"已完成";
+//        _lblStatus.textColor = kMEPink;
+//    }else{
+//        _lblStatus.text = @"未完成";
+//         _lblStatus.textColor = kMEblack;
+//    }
 }
 
 

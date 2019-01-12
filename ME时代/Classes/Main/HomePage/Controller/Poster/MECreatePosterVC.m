@@ -113,7 +113,7 @@
         MEShareTool *shareTool = [MEShareTool me_instanceForTarget:self];
         shareTool.shareImage = self.imgShare;
         if(_isActive){
-            shareTool.posterId = kMeUnNilStr(_activeModel.activity_id);
+//            shareTool.posterId = kMeUnNilStr(_activeModel.activity_id);
         }else{
             shareTool.posterId = @(_model.idField).description;
         }

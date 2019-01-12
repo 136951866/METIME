@@ -8,12 +8,12 @@
 
 #import "MEMineActiveModel.h"
 
-@implementation MEMineActiveLeveModel
+@implementation MEMineActiveactivityModel
 
 @end
 
 @implementation MEMineActiveModel
 
-MEModelObjectClassInArrayWithDic(@{@"complete":[MEMineActiveLeveModel class]})
-
+//MEModelObjectClassInArrayWithDic(@{@"complete":[MEMineActiveLeveModel class]})
+MEModelIdToIdField
 @end

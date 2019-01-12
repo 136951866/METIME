@@ -41,7 +41,7 @@
     kSDLoadImg(_imgHeader, kMeUnNilStr(model.user.header_pic));
     _lblName.text = kMeUnNilStr(model.user.nick_name);
     _lblCountPage.text =  [NSString stringWithFormat:@"%@篇",kMeUnNilStr(dicUser.browse)];
-    _lblChatTime.text = [NSString stringWithFormat:@"%@min/篇",kMeUnNilStr(dicUser.wait_time)];
+    _lblChatTime.text = [NSString stringWithFormat:@"%@/篇",kMeUnNilStr(dicUser.wait_time)];
     _lblZFNum.text = [NSString stringWithFormat:@"%@次",kMeUnNilStr(dicUser.share_total)];
     _lblInVialRead.text = [NSString stringWithFormat:@"%@篇",kMeUnNilStr(dicUser.valid)];
     _lblAddress.text = kMeUnNilStr(model.user.address);

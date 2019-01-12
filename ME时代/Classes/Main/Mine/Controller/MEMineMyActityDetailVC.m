@@ -21,18 +21,18 @@
 
 - (instancetype)initWithModel:(MEMineActiveModel *)model{
     if(self = [super init]){
-        _model = model;
-        _arrModel = [NSMutableArray array];
-        NSArray *arrFinish = @[];
-        if(kMeUnArr(_model.complete).count){
-            arrFinish = kMeUnArr(_model.complete);
-        }
-        [_arrModel addObject:arrFinish];
-        NSArray *arrDoing = @[];
-        if(model.doing){
-            arrDoing = @[model.doing];
-        }
-        [_arrModel addObject:arrDoing];
+//        _model = model;
+//        _arrModel = [NSMutableArray array];
+//        NSArray *arrFinish = @[];
+//        if(kMeUnArr(_model.complete).count){
+//            arrFinish = kMeUnArr(_model.complete);
+//        }
+//        [_arrModel addObject:arrFinish];
+//        NSArray *arrDoing = @[];
+//        if(model.doing){
+//            arrDoing = @[model.doing];
+//        }
+//        [_arrModel addObject:arrDoing];
     }
     return self;
 }
@@ -60,7 +60,7 @@
     NSArray *arr = _arrModel[indexPath.section];
     MEMineActiveLeveModel *model = arr[indexPath.row];
     MEMineMyActityDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEMineMyActityDetailCell class]) forIndexPath:indexPath];
-    [cell setUIWIthModel:model finish:indexPath.section == 0?YES:NO nowNum:_model.share_number];
+//    [cell setUIWIthModel:model finish:indexPath.section == 0?YES:NO nowNum:_model.share_number];
     return cell;
 }
 

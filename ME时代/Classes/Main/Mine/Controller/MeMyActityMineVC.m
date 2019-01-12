@@ -62,9 +62,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    MEMineActiveModel *model = self.refresh.arrData[indexPath.row];
-    MEMineMyActityDetailVC *vc = [[MEMineMyActityDetailVC alloc]initWithModel:model];
-    [self.navigationController pushViewController:vc animated:YES];
+//    MEMineActiveModel *model = self.refresh.arrData[indexPath.row];
+//    MEMineMyActityDetailVC *vc = [[MEMineMyActityDetailVC alloc]initWithModel:model];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma MARK - Setter
@@ -90,7 +90,7 @@
     if(!_refresh){
         _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPadminGetAppGetShare)];
         _refresh.delegate = self;
-//        _refresh.isDataInside = YES;
+        _refresh.isDataInside = YES;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
             failView.backgroundColor = kMEeeeeee;
             failView.lblOfNodata.text = @"没有活动";

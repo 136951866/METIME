@@ -189,7 +189,7 @@
 //获取活动海报列表
 #define MEIPadminGetActivePoster @"common/groupfission/getActivity"
 //查询会员当前活动任务情况
-#define MEIPadminGetAppGetShare @"common/groupfission/appGetShare"
+#define MEIPadminGetAppGetShare @"common/posters/getActivityLog"
 //删除海报
 #define MEIPcommonDelSharePosters @"common/posters/delSharePosters"
 //获取活动海报二维码
