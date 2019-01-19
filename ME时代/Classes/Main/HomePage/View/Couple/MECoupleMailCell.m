@@ -8,6 +8,7 @@
 
 #import "MECoupleMailCell.h"
 #import "MECoupleModel.h"
+#import "MEPinduoduoCoupleModel.h"
 
 @interface MECoupleMailCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *imgPic;
@@ -40,8 +41,6 @@
     //卷后价
     _lblJuanPrice.text =[NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.truePrice).floatValue)];
     //卷价格
-
-
     if(kMeUnNilStr(model.coupon_info).length){
         _imgJuan.hidden = NO;
         _lblJuan.hidden = NO;
@@ -60,6 +59,22 @@
         _lblMaterSale.hidden = NO;
         _lblMaterSale.text = [NSString stringWithFormat:@"已售%@",kMeUnNilStr(model.couponSale)];
     }
+}
+
+- (void)setpinduoduoUIWithModel:(MEPinduoduoCoupleModel *)model{
+    _imgJuan.hidden = NO;
+    _lblJuan.hidden = NO;
+    _lblMaterSale.hidden = YES;
+    _lblOrigalPrice.hidden = NO;
+    _lblSale.hidden = NO;
+    _lblTitle.numberOfLines = 1;
+    [_imgPic sd_setImageWithURL:[NSURL URLWithString:kMeUnNilStr(model.goods_thumbnail_url)] placeholderImage:kImgPlaceholder];
+    _lblTitle.text = kMeUnNilStr(model.goods_name);
+    _lblSale.text = [NSString stringWithFormat:@"已售%@",kMeUnNilStr(model.sold_quantity)];
+    _lblOrigalPrice.text = [NSString stringWithFormat:@"原价¥%@", [MECommonTool changeformatterWithFen:@(model.min_group_price)]];
+     _lblJuan.text =[NSString stringWithFormat:@"%@元卷",[MECommonTool changeformatterWithFen:@(model.coupon_discount)]];
+    _lblJuanPrice.text =[NSString stringWithFormat:@"¥%@", [MECommonTool changeformatterWithFen:@(model.min_group_price-model.coupon_discount)]];
+   
 }
 
 @end

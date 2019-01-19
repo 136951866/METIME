@@ -20,6 +20,53 @@
 @implementation MEPublicNetWorkTool
 
 /*********************************************/
+#pragma makr - pinduoduo
+
++ (void)postPinDuoduoGoodsDetailWithGoodsId:(NSString *)goodsId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{@"goods_id_list":[NSString stringWithFormat:@"[%@]",kMeUnNilStr(goodsId)],
+                          };
+    NSString *url = kGetApiWithUrl(MEIPcommonduoduokeGetgetGoodsInfo);
+    MBProgressHUD *HUD = [self commitWithHUD:@"获取详情中"];
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
+
+//多多进宝推广链接生成
++ (void)postPromotionUrlGenerateWithUid:(NSString *)uid goods_id_list:(NSString*)goods_id_list SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{@"goods_id_list":kMeUnNilStr(goods_id_list)};
+    if(kMeUnNilStr(uid).length){
+        dic = @{@"member_id":kMeUnNilStr(uid),
+                @"goods_id_list":kMeUnNilStr(goods_id_list)
+                };
+    }
+     MBProgressHUD *HUD = [self commitWithHUD:@"生成推广链接中"];
+    NSString *url = kGetApiWithUrl(MEIPcommonduoduokegoodsPromotionUrlGenerate);
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
+/*********************************************/
+
+/*********************************************/
 
 #pragma makr - taobao
 

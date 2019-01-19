@@ -31,10 +31,13 @@ typedef enum : NSUInteger {
     MeMyCustomerPhone,//客服电话
     MeMyAddress,//收货地址
     MeMyMobile,//绑定的手机号
-    MeMyActity
+    MeMyActity,
+    MemyData,
+    MeMyPoster,
+    MeMyArticel
 } MEMineHomeCellStyle;
-#define MEMineHomeCellStyleTitle @[@"我的预约",@"中心管理",@"我的中心",@"兑换中心",@"我的收藏",@"ME聊",@"客服电话",@"收货地址",@"绑定手机",@"我的活动"]
-#define MEMineHomeCellStyleImage @[@"icon_woddemiaosha",@"icon-khnytpgj",@"icon_fenxiaozhognxin",@"icon_zhuceyoujiang",@"icon_wodeshoucang",@"icon-qrpteb",@"icon-qrptebjnyt",@"nhwxfbfh",@"qlru",@"qritfc"]
+#define MEMineHomeCellStyleTitle @[@"我的预约",@"中心管理",@"我的中心",@"兑换中心",@"我的收藏",@"ME聊",@"客服电话",@"收货地址",@"绑定手机",@"我的活动",@"访客统计",@"获客海报",@"获客文章"]
+#define MEMineHomeCellStyleImage @[@"icon_woddemiaosha",@"icon-khnytpgj",@"icon_fenxiaozhognxin",@"icon_zhuceyoujiang",@"icon_wodeshoucang",@"icon-qrpteb",@"icon-qrptebjnyt",@"nhwxfbfh",@"qlru",@"qritfc",@"minedata",@"mineposter",@"minearticel"]
 
 //订单
 typedef enum : NSUInteger {

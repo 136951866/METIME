@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MECoupleHomeMainGoodGoodsCell : UITableViewCell
 
 - (void)setUIWithArr:(NSArray*)arr;
+- (void)setPinduoduoUIWithArr:(NSArray*)arr;
 + (CGFloat)getCellHeightWithArr:(NSArray*)arr;
 
 @end

@@ -13,6 +13,8 @@
 #import "MECoupleModel.h"
 #import "MECoupleMailDetalImageCell.h"
 #import "MECouponInfo.h"
+#import "MEPinduoduoCoupleModel.h"
+#import "MEPinduoduoCoupleInfoModel.h"
 
 #define MECoupleMailDetalVCbottomViewHeight 50
 
@@ -20,10 +22,14 @@
     NSString *_detailId;
     MECoupleModel *_detailModel;
     MECouponInfo *_couponInfoModel;
+    MEPinduoduoCoupleModel *_pinduoduomodel;
+    MEPinduoduoCoupleInfoModel *_pinduoduoDetailmodel;
     NSString *_Tpwd;
     NSString *_shareTpwd;
     NSString *_couponId;
     NSString *_couponurl;
+    NSDictionary *_goods_promotion_url;
+    NSDictionary *_sharegoods_promotion_url;
 }
 
 @property (nonatomic, strong) UITableView           *tableView;
@@ -34,6 +40,13 @@
 @end
 
 @implementation MECoupleMailDetalVC
+
+- (instancetype)initWithPinduoudoModel:(MEPinduoduoCoupleModel *)model{
+    if(self = [super init]){
+        _pinduoduomodel = model;
+    }
+    return self;
+}
 
 - (instancetype)initWithModel:(MECoupleModel *)model{
     if(self = [super init]){
@@ -54,15 +67,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"商品详情";
-    if(_detailModel){
-        [self.view addSubview:self.tableView];
-        [self.view addSubview:self.bottomView];
-        self.tableView.tableHeaderView = self.headerView;
-        [self.headerView setUIWithModel:_detailModel];
-        [self.tableView reloadData];
+    if(_pinduoduomodel){
+        [self requestPinduoduoNetWork];
     }else{
-        [self requestNetWork];
+        if(_detailModel){
+            [self.view addSubview:self.tableView];
+            [self.view addSubview:self.bottomView];
+            self.tableView.tableHeaderView = self.headerView;
+            [self.headerView setUIWithModel:_detailModel];
+            [self.tableView reloadData];
+        }else{
+            [self requestNetWork];
+        }
     }
+}
+
+- (void)requestPinduoduoNetWork{
+    kMeWEAKSELF
+    [MEPublicNetWorkTool postPinDuoduoGoodsDetailWithGoodsId:kMeUnNilStr(_pinduoduomodel.goods_id) successBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        NSArray *arr =  responseObject.data[@"goods_detail_response"][@"goods_details"];
+         if(kMeUnArr(arr).count){
+             strongSelf->_pinduoduoDetailmodel =[MEPinduoduoCoupleInfoModel mj_objectWithKeyValues:arr[0]];
+             [strongSelf.view addSubview:strongSelf.tableView];
+             [strongSelf.view addSubview:strongSelf.bottomView];
+             strongSelf.tableView.tableHeaderView = strongSelf.headerView;
+             [strongSelf.headerView setPinduoduoUIWithModel:strongSelf->_pinduoduoDetailmodel];
+             [strongSelf.tableView reloadData];
+         }else{
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+         }
+    } failure:^(id object) {
+        kMeSTRONGSELF
+        [strongSelf.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 - (void)requestNetWork{
@@ -123,13 +161,25 @@
 #pragma mark - tableView deleagte and sourcedata
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _detailModel.small_images.string.count;
+    if(_pinduoduomodel){
+        return _pinduoduoDetailmodel.goods_gallery_urls.count;
+    }else{
+         return _detailModel.small_images.string.count;
+    }
+   
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    MECoupleMailDetalImageCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleMailDetalImageCell class]) forIndexPath:indexPath];
-    kSDLoadImg(cell.imageView, kMeUnNilStr(_detailModel.small_images.string[indexPath.row]));
-    return cell;
+    if(_pinduoduomodel){
+        MECoupleMailDetalImageCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleMailDetalImageCell class]) forIndexPath:indexPath];
+        kSDLoadImg(cell.imageView, kMeUnNilStr(_pinduoduoDetailmodel.goods_gallery_urls[indexPath.row]));
+        return cell;
+    }else{
+        MECoupleMailDetalImageCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleMailDetalImageCell class]) forIndexPath:indexPath];
+        kSDLoadImg(cell.imageView, kMeUnNilStr(_detailModel.small_images.string[indexPath.row]));
+        return cell;
+    }
+
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -153,92 +203,122 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 44;
+   
 }
 
 - (void)buyAction:(UIButton *)btn{
-    if(kMeUnNilStr(_Tpwd).length){
-        [self openTb];
+    if(_pinduoduomodel){
+        if(_goods_promotion_url){
+             [self openTb];
+        }else{
+            NSString *goodId = [NSString stringWithFormat:@"[%@]",kMeUnNilStr(_pinduoduomodel.goods_id)];
+            kMeWEAKSELF
+            [MEPublicNetWorkTool postPromotionUrlGenerateWithUid:@"" goods_id_list:goodId SuccessBlock:^(ZLRequestResponse *responseObject) {
+                kMeSTRONGSELF
+                NSArray *arr = responseObject.data[@"goods_promotion_url_generate_response"][@"goods_promotion_url_list"];
+                if(arr && arr.count){
+                    strongSelf->_goods_promotion_url = arr[0];
+                }
+                [strongSelf openTb];
+            } failure:^(id object) {
+                
+            }];
+        }
     }else{
-        kMeWEAKSELF
-        [MEPublicNetWorkTool postTaobaokeGetTpwdWithTitle:kMeUnNilStr(_detailModel.title) url:kMeUnNilStr(_detailModel.coupon_click_url) logo:kMeUnNilStr(_detailModel.pict_url) successBlock:^(ZLRequestResponse *responseObject) {
-            kMeSTRONGSELF
-            strongSelf->_Tpwd = kMeUnNilStr(responseObject.data[@"tbk_tpwd_create_response"][@"data"][@"model"]);
-            [strongSelf openTb];
-        } failure:^(id object) {
-            
-        }];
+        if(kMeUnNilStr(_Tpwd).length){
+            [self openTb];
+        }else{
+            kMeWEAKSELF
+            [MEPublicNetWorkTool postTaobaokeGetTpwdWithTitle:kMeUnNilStr(_detailModel.title) url:kMeUnNilStr(_detailModel.coupon_click_url) logo:kMeUnNilStr(_detailModel.pict_url) successBlock:^(ZLRequestResponse *responseObject) {
+                kMeSTRONGSELF
+                strongSelf->_Tpwd = kMeUnNilStr(responseObject.data[@"tbk_tpwd_create_response"][@"data"][@"model"]);
+                [strongSelf openTb];
+            } failure:^(id object) {
+                
+            }];
+        }
     }
 }
 
 - (void)shareAction:(UIButton *)btn{
-//    [self shareTpw];
-    if(kMeUnNilStr(_Tpwd).length){
-        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-        pasteboard.string = kMeUnNilStr(_Tpwd);
-        [MEShowViewTool showMessage:@"分享口令复制成功,请发给朋友" view:self.view];
+    if(_pinduoduomodel){
+        if(_sharegoods_promotion_url){
+            MEShareTool *shareTool = [MEShareTool me_instanceForTarget:self];
+            shareTool.sharWebpageUrl = _sharegoods_promotion_url[@"we_app_web_view_short_url"];
+            shareTool.shareTitle = kMeUnNilStr(_pinduoduomodel.goods_name);
+            shareTool.shareDescriptionBody = kMeUnNilStr(_pinduoduomodel.goods_name);;
+            shareTool.shareImage = _headerView.imgPic.image;
+            [shareTool showShareView:kShareWebPageContentType success:^(id data) {
+                NSLog(@"分享成功%@",data);
+            } failure:^(NSError *error) {
+                
+            }];
+        }else{
+            NSString *goodId = [NSString stringWithFormat:@"[%@]",kMeUnNilStr(_pinduoduomodel.goods_id)];
+            kMeWEAKSELF
+            [MEPublicNetWorkTool postPromotionUrlGenerateWithUid:kMeUnNilStr(kCurrentUser.uid) goods_id_list:goodId SuccessBlock:^(ZLRequestResponse *responseObject) {
+                kMeSTRONGSELF
+                NSArray *arr = responseObject.data[@"goods_promotion_url_generate_response"][@"goods_promotion_url_list"];
+                if(arr && arr.count){
+                    strongSelf->_sharegoods_promotion_url = arr[0];
+                }
+                MEShareTool *shareTool = [MEShareTool me_instanceForTarget:strongSelf];
+                shareTool.sharWebpageUrl = strongSelf->_sharegoods_promotion_url[@"we_app_web_view_short_url"];
+                shareTool.shareTitle = kMeUnNilStr(strongSelf->_pinduoduomodel.goods_name);
+                shareTool.shareDescriptionBody = kMeUnNilStr(strongSelf->_pinduoduomodel.goods_name);;
+                shareTool.shareImage = strongSelf->_headerView.imgPic.image;
+                [shareTool showShareView:kShareWebPageContentType success:^(id data) {
+                    NSLog(@"分享成功%@",data);
+                } failure:^(NSError *error) {
+                    
+                }];
+                
+            } failure:^(id object) {
+                
+            }];
+        }
     }else{
-        kMeWEAKSELF
-        [MEPublicNetWorkTool postTaobaokeGetTpwdWithTitle:kMeUnNilStr(_detailModel.title) url:kMeUnNilStr(_detailModel.coupon_click_url) logo:kMeUnNilStr(_detailModel.pict_url) successBlock:^(ZLRequestResponse *responseObject) {
-            kMeSTRONGSELF
-            strongSelf->_Tpwd = kMeUnNilStr(responseObject.data[@"tbk_tpwd_create_response"][@"data"][@"model"]);
+        if(kMeUnNilStr(_Tpwd).length){
             UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-            pasteboard.string = kMeUnNilStr(strongSelf->_Tpwd);
-            [MEShowViewTool showMessage:@"分享口令复制成功,请发给朋友" view:strongSelf.view];
-        } failure:^(id object) {
-            
-        }];
+            pasteboard.string = kMeUnNilStr(_Tpwd);
+            [MEShowViewTool showMessage:@"分享口令复制成功,请发给朋友" view:self.view];
+        }else{
+            kMeWEAKSELF
+            [MEPublicNetWorkTool postTaobaokeGetTpwdWithTitle:kMeUnNilStr(_detailModel.title) url:kMeUnNilStr(_detailModel.coupon_click_url) logo:kMeUnNilStr(_detailModel.pict_url) successBlock:^(ZLRequestResponse *responseObject) {
+                kMeSTRONGSELF
+                strongSelf->_Tpwd = kMeUnNilStr(responseObject.data[@"tbk_tpwd_create_response"][@"data"][@"model"]);
+                UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+                pasteboard.string = kMeUnNilStr(strongSelf->_Tpwd);
+                [MEShowViewTool showMessage:@"分享口令复制成功,请发给朋友" view:strongSelf.view];
+            } failure:^(id object) {
+                
+            }];
+        }
     }
-//        kMeWEAKSELF
-//        [MEPublicNetWorkTool postTaobaokeGetTpwdWithTitle:kMeUnNilStr(_detailModel.title) url:kMeUnNilStr(_detailModel.coupon_click_url) logo:kMeUnNilStr(_detailModel.pict_url) successBlock:^(ZLRequestResponse *responseObject) {
-//            kMeSTRONGSELF
-//            strongSelf->_Tpwd = kMeUnNilStr(responseObject.data[@"tbk_tpwd_create_response"][@"data"][@"model"]);
-//            [strongSelf openTb];
-//        } failure:^(id object) {
-//
-//        }];
-//    }
-//    if([MEUserInfoModel isLogin]){
-//        [self shareTpw];
-//    }else{
-//        kMeWEAKSELF
-//        [MEWxLoginVC presentLoginVCWithSuccessHandler:^(id object) {
-//            kMeSTRONGSELF
-//            [strongSelf shareTpw];
-//        } failHandler:nil];
-//    }
-}
-
-- (void)shareTpw{
-//    if(kMeUnNilStr(_shareTpwd).length){
-//        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-//        pasteboard.string = kMeUnNilStr(_shareTpwd);
-//        [MEShowViewTool showMessage:@"分享口令复制成功,请发给朋友" view:self.view];
-//    }else{
-//        kMeWEAKSELF
-//        [MEPublicNetWorkTool postShareTaobaokeGetTpwdWithTitle:kMeUnNilStr(_detailModel.title) url:kMeUnNilStr(_detailModel.coupon_click_url) logo:kMeUnNilStr(_detailModel.pict_url) successBlock:^(ZLRequestResponse *responseObject) {
-//            kMeSTRONGSELF
-//            strongSelf->_shareTpwd = kMeUnNilStr(responseObject.data[@"tbk_tpwd_create_response"][@"data"][@"model"]);
-//            UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-//            pasteboard.string = kMeUnNilStr(strongSelf->_shareTpwd);
-//            [MEShowViewTool showMessage:@"分享口令复制成功,请发给朋友" view:strongSelf.view];
-//        } failure:^(id object) {
-//
-//        }];
-//    }
-    
 }
 
 - (void)openTb{
-    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = kMeUnNilStr(_Tpwd);
-    NSURL *url = [NSURL URLWithString:@"taobao://"];
-    // 判断当前系统是否有安装淘宝客户端
-    if ([[UIApplication sharedApplication] canOpenURL:url]) {
-        // 如果已经安装淘宝客户端，就使用客户端打开链接
-        [[UIApplication sharedApplication] openURL:url];
-    } else {
-        NSURL *url = [NSURL URLWithString:kMeUnNilStr(_detailModel.coupon_click_url)];
-        [[UIApplication sharedApplication] openURL:url];
+    if(_pinduoduomodel){
+        if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"pinduoduo://"]]) {
+            NSString *str = kMeUnNilStr(_goods_promotion_url[@"we_app_web_view_url"]);
+            NSString *newUrl = [str stringByReplacingOccurrencesOfString:@"https://mobile.yangkeduo.com/" withString:@"pinduoduo://com.xunmeng.pinduoduo/"];
+            NSURL *url = [NSURL URLWithString:newUrl];
+            [[UIApplication sharedApplication] openURL:url];
+        } else {
+            NSURL *newurl = [NSURL URLWithString:kMeUnNilStr(_goods_promotion_url[@"short_url"])];
+            [[UIApplication sharedApplication] openURL:newurl];
+        }
+    }else{
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string = kMeUnNilStr(_Tpwd);
+        NSURL *url = [NSURL URLWithString:@"taobao://"];
+        // 判断当前系统是否有安装淘宝客户端
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+            [[UIApplication sharedApplication] openURL:url];
+        } else {
+            NSURL *url = [NSURL URLWithString:kMeUnNilStr(_detailModel.coupon_click_url)];
+            [[UIApplication sharedApplication] openURL:url];
+        }
     }
 }
 

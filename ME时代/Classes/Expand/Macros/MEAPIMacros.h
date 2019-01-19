@@ -12,7 +12,7 @@
 #warning -mustNotes 上线一定要注释/海报分享没有用BASEIP
 
 
-//#define TestVersion
+#define TestVersion
 
 //域名 develop
 #ifdef TestVersion
@@ -36,6 +36,17 @@
 #define kNetInvateCode @"502"
 
 /*********************************************/
+
+/*********************************************/
+#pragma makr - pinduoduo
+//获取拼多多商品列表
+#define MEIPcommonduoduokeGetgetGoodsList @"common/duoduoke/getGoodsList"
+//商品详情
+#define MEIPcommonduoduokeGetgetGoodsInfo @"common/duoduoke/getGoodsInfo"
+//多多进宝推广链接生成
+#define MEIPcommonduoduokegoodsPromotionUrlGenerate @"common/duoduoke/goodsPromotionUrlGenerate"
+/*********************************************/
+
 
 /*********************************************/
 #pragma makr - taobao

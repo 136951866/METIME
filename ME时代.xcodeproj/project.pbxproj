@@ -160,6 +160,7 @@
 		3617C31021D0AE3800004072 /* MECoupleFilterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3617C30F21D0AE3800004072 /* MECoupleFilterVC.m */; };
 		3617C31821D0CDEA00004072 /* MECoupleFilterNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3617C31721D0CDEA00004072 /* MECoupleFilterNavView.m */; };
 		3617C31B21D0CF7F00004072 /* MECoupleFilterNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3617C31A21D0CF7F00004072 /* MECoupleFilterNavView.xib */; };
+		361B3D2721F01BBA00AB0778 /* MEPinduoduoCoupleInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B3D2621F01BBA00AB0778 /* MEPinduoduoCoupleInfoModel.m */; };
 		36224AC321E1F991007AD202 /* MEPosterActiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36224AC221E1F991007AD202 /* MEPosterActiveVC.m */; };
 		3628476A2140FD78008FE7F9 /* LVWxPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 362847642140FD77008FE7F9 /* LVWxPay.m */; };
 		3628476B2140FD78008FE7F9 /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 362847652140FD77008FE7F9 /* XMLDictionary.m */; };
@@ -443,6 +444,7 @@
 		36B77BC721DDFC1C00B4A207 /* MECoupleHomeMainContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36B77BC521DDFC1C00B4A207 /* MECoupleHomeMainContentCell.xib */; };
 		36B77BD021DE05CE00B4A207 /* MECoupleHomeMainGoodGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36B77BCE21DE05CE00B4A207 /* MECoupleHomeMainGoodGoodsCell.m */; };
 		36B77BD121DE05CE00B4A207 /* MECoupleHomeMainGoodGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36B77BCF21DE05CE00B4A207 /* MECoupleHomeMainGoodGoodsCell.xib */; };
+		36BE2A7B21EF04F600AAC33E /* MEPinduoduoCoupleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BE2A7A21EF04F600AAC33E /* MEPinduoduoCoupleModel.m */; };
 		36C0198D214260D20048734E /* MEProductListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C0198C214260D20048734E /* MEProductListVC.m */; };
 		36C01991214262230048734E /* MEProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C0198F214262230048734E /* MEProductCell.m */; };
 		36C01992214262230048734E /* MEProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36C01990214262230048734E /* MEProductCell.xib */; };
@@ -869,6 +871,8 @@
 		3617C31621D0CDEA00004072 /* MECoupleFilterNavView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECoupleFilterNavView.h; sourceTree = "<group>"; };
 		3617C31721D0CDEA00004072 /* MECoupleFilterNavView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECoupleFilterNavView.m; sourceTree = "<group>"; };
 		3617C31A21D0CF7F00004072 /* MECoupleFilterNavView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MECoupleFilterNavView.xib; sourceTree = "<group>"; };
+		361B3D2521F01BBA00AB0778 /* MEPinduoduoCoupleInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEPinduoduoCoupleInfoModel.h; sourceTree = "<group>"; };
+		361B3D2621F01BBA00AB0778 /* MEPinduoduoCoupleInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEPinduoduoCoupleInfoModel.m; sourceTree = "<group>"; };
 		36224AC121E1F991007AD202 /* MEPosterActiveVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEPosterActiveVC.h; sourceTree = "<group>"; };
 		36224AC221E1F991007AD202 /* MEPosterActiveVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEPosterActiveVC.m; sourceTree = "<group>"; };
 		362847622140FD76008FE7F9 /* getIPhoneIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getIPhoneIP.h; sourceTree = "<group>"; };
@@ -1369,6 +1373,8 @@
 		36B77BCD21DE05CE00B4A207 /* MECoupleHomeMainGoodGoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECoupleHomeMainGoodGoodsCell.h; sourceTree = "<group>"; };
 		36B77BCE21DE05CE00B4A207 /* MECoupleHomeMainGoodGoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECoupleHomeMainGoodGoodsCell.m; sourceTree = "<group>"; };
 		36B77BCF21DE05CE00B4A207 /* MECoupleHomeMainGoodGoodsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MECoupleHomeMainGoodGoodsCell.xib; sourceTree = "<group>"; };
+		36BE2A7921EF04F600AAC33E /* MEPinduoduoCoupleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEPinduoduoCoupleModel.h; sourceTree = "<group>"; };
+		36BE2A7A21EF04F600AAC33E /* MEPinduoduoCoupleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEPinduoduoCoupleModel.m; sourceTree = "<group>"; };
 		36C0198B214260D20048734E /* MEProductListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEProductListVC.h; sourceTree = "<group>"; };
 		36C0198C214260D20048734E /* MEProductListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEProductListVC.m; sourceTree = "<group>"; };
 		36C0198E214262230048734E /* MEProductCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEProductCell.h; sourceTree = "<group>"; };
@@ -2688,6 +2694,10 @@
 				36F48BC821DEFF8800A6A7B0 /* MECouponMaterModel.m */,
 				3612FB5921DF3D770024083F /* MECouponInfo.h */,
 				3612FB5A21DF3D770024083F /* MECouponInfo.m */,
+				36BE2A7921EF04F600AAC33E /* MEPinduoduoCoupleModel.h */,
+				36BE2A7A21EF04F600AAC33E /* MEPinduoduoCoupleModel.m */,
+				361B3D2521F01BBA00AB0778 /* MEPinduoduoCoupleInfoModel.h */,
+				361B3D2621F01BBA00AB0778 /* MEPinduoduoCoupleInfoModel.m */,
 			);
 			path = Couple;
 			sourceTree = "<group>";
@@ -4266,6 +4276,7 @@
 				36E1BF14214906CB00E28301 /* MEMineExchangeRudeSectionView.m in Sources */,
 				36FEC23621AD12DE00BB64A5 /* MEMyPosterContentListVC.m in Sources */,
 				36472AEC21C8E15C00CC3E48 /* JXCategoryIndicatorRainbowLineView.m in Sources */,
+				36BE2A7B21EF04F600AAC33E /* MEPinduoduoCoupleModel.m in Sources */,
 				36E4EBA0213FD3A400BCB1AA /* MEShareTool.m in Sources */,
 				36FEC23B21AD175400BB64A5 /* MEPosterContentListCell.m in Sources */,
 				36021AC5214B4E8F001B8DAF /* MEAppointmentTimeMainCell.m in Sources */,
@@ -4430,6 +4441,7 @@
 				3602A18D21424091004A6E1F /* ZLWebViewVC.m in Sources */,
 				3683F7C221CBBBC7008139B0 /* MEGiftMainNilCell.m in Sources */,
 				36472AF021C8E15C00CC3E48 /* JXCategoryIndicatorBackgroundView.m in Sources */,
+				361B3D2721F01BBA00AB0778 /* MEPinduoduoCoupleInfoModel.m in Sources */,
 				36FD6418213FAD20009743C5 /* UIView+MESubview.m in Sources */,
 				36E409CC21917D0C0090F7E1 /* MEMyMobileVC.m in Sources */,
 				366019B021E83B4B00F1BB37 /* MENewMineHomeHeaderView.m in Sources */,

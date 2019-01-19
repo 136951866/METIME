@@ -63,6 +63,7 @@
     }];
 }
 
+
 - (void)setAdUI{
     __block NSMutableArray *arrImage = [NSMutableArray array];
     [_arrAdModel enumerateObjectsUsingBlock:^(MEAdModel *model, NSUInteger idx, BOOL * _Nonnull stop) {

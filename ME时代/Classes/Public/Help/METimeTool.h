@@ -23,5 +23,5 @@
 
 + (NSMutableArray *)latelyWeekTime;
 + (NSMutableArray *)getTime;
-
++(NSString *)timestampSwitchTime:(NSString *)timestamp andFormatter:(NSString *)format;
 @end

@@ -22,6 +22,10 @@
 #import "MEProductListVC.h"
 #import "MeMyActityMineVC.h"
 #import "MENewMineHomeVC.h"
+#import "MEPosterListVC.h"
+#import "MEArticelVC.h"
+#import "MEVisiterHomeVC.h"
+
 @interface MENewMineHomeCell()<UICollectionViewDelegate,UICollectionViewDataSource>{
     NSArray *_arrModel;
 }
@@ -103,6 +107,21 @@
             break;
         case MeMyActity:{
             MeMyActityMineVC *mobile = [[MeMyActityMineVC alloc]init];
+            [homeVc.navigationController pushViewController:mobile animated:YES];
+        }
+            break;
+        case MemyData:{
+            MEVisiterHomeVC *mobile = [[MEVisiterHomeVC alloc]init];
+            [homeVc.navigationController pushViewController:mobile animated:YES];
+        }
+            break;
+        case MeMyPoster:{
+            MEPosterListVC *mobile = [[MEPosterListVC alloc]init];
+            [homeVc.navigationController pushViewController:mobile animated:YES];
+        }
+            break;
+        case MeMyArticel:{
+            MEArticelVC *mobile = [[MEArticelVC alloc]init];
             [homeVc.navigationController pushViewController:mobile animated:YES];
         }
             break;

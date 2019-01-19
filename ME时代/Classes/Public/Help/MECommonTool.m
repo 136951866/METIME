@@ -484,4 +484,49 @@
     }
 }
 
++ (NSString *)changeformatterWithFen:(id)money{
+    if ([money isKindOfClass:[NSString class]]) {
+        return money;
+    }else if([money isKindOfClass:[NSNumber class]]) {
+        NSString *yuanString = nil;
+        NSInteger moneyInt = ((NSNumber *)money).integerValue;
+        if (moneyInt % 100 == 0) {
+            yuanString = [NSString stringWithFormat:@"%d",moneyInt/100];
+        }else if(moneyInt%100%10 == 0){
+            yuanString = [NSString stringWithFormat:@"%.1f",moneyInt/100.0];
+        }else{
+            yuanString = [NSString stringWithFormat:@"%.2f",moneyInt/100.0];
+        }
+        return yuanString;
+    }else{
+        return @" ";
+    }
+}
+
+
++ (BOOL)openWXMiniProgram:(NSString *)path username:(NSString *)username{
+
+    WXLaunchMiniProgramReq *launchMiniProgramReq = [WXLaunchMiniProgramReq object];
+    launchMiniProgramReq.userName =@"gh_0e7477744313";
+    launchMiniProgramReq.path = @"package_a/welfare_coupon/welfare_coupon?goods_id=5606133618&pid=8304016_49962406&cpsSign=CC8304016_49962406_80113509609bd3236e28496b163f24fe&duoduo_type=2";
+    launchMiniProgramReq.miniProgramType = WXMiniProgramTypeRelease;
+    return  [WXApi sendReq:launchMiniProgramReq];
+}
+
++(BOOL) openWeChat:(NSString *)url
+{
+    //wx0b577bb0399ff7d7
+    NSString *headString = @"weixin://";
+    
+    headString =  [headString stringByAppendingString:url];
+    BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin:/"]];
+    if(canOpen)
+        //打开微信
+        return [[UIApplication sharedApplication] openURL:[NSURL URLWithString:headString]];
+
+    
+    return FALSE;
+}
+
+
 @end

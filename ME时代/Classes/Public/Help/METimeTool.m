@@ -63,6 +63,14 @@
     return timeArr;
 }
 
++(NSString *)timestampSwitchTime:(NSString *)timestamp andFormatter:(NSString *)format{
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[timestamp longLongValue]];
+    NSDateFormatter *fmt = [[NSDateFormatter alloc]init];
+    fmt.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    [fmt setDateFormat:format];
+    return [fmt stringFromDate:date];
+}
+
 //+(NSString*)getCurrentTimes{
 //    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 //    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];

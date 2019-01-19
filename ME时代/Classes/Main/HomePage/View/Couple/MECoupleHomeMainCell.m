@@ -57,6 +57,10 @@ const static CGFloat kMargin = 4;
     }
 }
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.arrModel.count;
 }
@@ -86,7 +90,6 @@ const static CGFloat kMargin = 4;
 
 
 - (void)setUIWithArr:(NSArray *)arrModel type:(MECoupleHomeMainCellImageType)type{
-    _arrModel = arrModel;
     _type = type;
     NSString *strImage = @"";
     switch (type) {
@@ -103,7 +106,14 @@ const static CGFloat kMargin = 4;
             break;
     }
     _imgPic.image = [UIImage imageNamed:strImage];
-    [self.collectionView reloadData];
+    _arrModel = arrModel;
+    if(arrModel.count){
+        kMeWEAKSELF
+        dispatch_async(dispatch_get_main_queue(), ^{
+            kMeSTRONGSELF
+            [strongSelf.collectionView reloadData];
+        });
+    }
 }
 
 - (IBAction)tapAction:(UIButton *)sender {

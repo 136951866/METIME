@@ -12,7 +12,8 @@
 #import "MEStoreHomeVC.h"
 #import "MEMemberHomeVC.h"
 #import "MEShoppingCartVC.h"
-#import "MEMineHomeVC.h"
+//#import "MEMineHomeVC.h"
+#import "MENewMineHomeVC.h"
 #import "ZLWebVC.h"
 #import "MEProductShoppingCartVC.h"
 #import "MELoginVC.h"
@@ -23,7 +24,7 @@
 #import "MESNewHomePageVC.h"
 @interface METabBarVC ()<UITabBarControllerDelegate>
 
-@property (nonatomic, strong) MEMineHomeVC *mine;
+@property (nonatomic, strong) MENewMineHomeVC *mine;
 @end
 
 @implementation METabBarVC
@@ -55,7 +56,7 @@
     MEProductShoppingCartVC *shopcart = [[MEProductShoppingCartVC alloc] init];
     [self addChildVc:shopcart title:@"购物车" image:@"shopcart" selectedImage:@"shopcart_s"];
     
-    self.mine = [[MEMineHomeVC alloc] init];
+    self.mine = [[MENewMineHomeVC alloc] init];
     [self addChildVc:self.mine  title:@"我的" image:@"mine" selectedImage:@"mine_s"];
     [self getUnMeaasge];
     

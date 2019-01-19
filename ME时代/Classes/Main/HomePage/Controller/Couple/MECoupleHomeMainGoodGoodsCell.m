@@ -11,9 +11,11 @@
 #import "MECoupleModel.h"
 #import "MECoupleMailDetalVC.h"
 #import "MECoupleHomeVC.h"
+#import "MEPinduoduoCoupleModel.h"
 
 @interface MECoupleHomeMainGoodGoodsCell ()<UICollectionViewDelegate,UICollectionViewDataSource>{
     NSArray *_arrModel;
+    BOOL _isTbK;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -32,11 +34,20 @@
 #pragma mark- CollectionView Delegate And DataSource
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    MECoupleModel *model = _arrModel[indexPath.row];
-    MECoupleMailDetalVC *vc = [[MECoupleMailDetalVC alloc]initWithProductrId:model.num_iid couponId:kMeUnNilStr(model.coupon_id) couponurl:kMeUnNilStr(model.coupon_share_url)];
-    MECoupleHomeVC *homevc = [MECommonTool getVCWithClassWtihClassName:[MECoupleHomeVC class] targetResponderView:self];
-    if(homevc){
-        [homevc.navigationController pushViewController:vc animated:YES];
+    if(_isTbK){
+         MECoupleModel *model = _arrModel[indexPath.row];
+        MECoupleMailDetalVC *vc = [[MECoupleMailDetalVC alloc]initWithProductrId:model.num_iid couponId:kMeUnNilStr(model.coupon_id) couponurl:kMeUnNilStr(model.coupon_share_url)];
+        MECoupleHomeVC *homevc = [MECommonTool getVCWithClassWtihClassName:[MECoupleHomeVC class] targetResponderView:self];
+        if(homevc){
+            [homevc.navigationController pushViewController:vc animated:YES];
+        }
+    }else{
+        MEPinduoduoCoupleModel *model = _arrModel[indexPath.row];
+        MECoupleMailDetalVC *vc = [[MECoupleMailDetalVC alloc]initWithPinduoudoModel:model];
+        MECoupleHomeVC *homevc = [MECommonTool getVCWithClassWtihClassName:[MECoupleHomeVC class] targetResponderView:self];
+        if(homevc){
+            [homevc.navigationController pushViewController:vc animated:YES];
+        }
     }
 }
 
@@ -46,8 +57,14 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     MECoupleMailCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MECoupleMailCell class]) forIndexPath:indexPath];
-    MECoupleModel *model = _arrModel[indexPath.row];
-    [cell setUIWithModel:model];
+    if(_isTbK){
+        MECoupleModel *model = _arrModel[indexPath.row];
+        [cell setUIWithModel:model];
+    }else{
+        MEPinduoduoCoupleModel *model = _arrModel[indexPath.row];
+        [cell setpinduoduoUIWithModel:model];
+    }
+    
     return cell;
 }
 
@@ -78,6 +95,13 @@
 }
 
 - (void)setUIWithArr:(NSArray*)arr{
+    _isTbK = YES;
+    _arrModel = kMeUnArr(arr);
+    [_collectionView reloadData];
+}
+
+- (void)setPinduoduoUIWithArr:(NSArray*)arr{
+    _isTbK = NO;
     _arrModel = kMeUnArr(arr);
     [_collectionView reloadData];
 }

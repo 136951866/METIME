@@ -32,7 +32,8 @@
 @property (nonatomic,strong) NSMutableArray *arrData;
 //是否显示错误视图
 @property (nonatomic,assign) BOOL showFailView;
-
+//是否显示错误视图
+@property (nonatomic,assign) BOOL showMaskView;
 //设置yes 用objec NO 为objects
 //@property (nonatomic,assign) BOOL isNeedObject;
 //总信息数
@@ -49,6 +50,7 @@
 @property (nonatomic,assign) BOOL isDataInside;
 @property (nonatomic,assign) BOOL isCouple;//优惠卷搜索
 @property (nonatomic,assign) BOOL isCoupleMater;//优惠卷物料搜索
+@property (nonatomic,assign) BOOL isPinduoduoCoupleMater;//pinduoduo优惠卷物料搜索
 @property (nonatomic,assign) BOOL isGet;
 
 

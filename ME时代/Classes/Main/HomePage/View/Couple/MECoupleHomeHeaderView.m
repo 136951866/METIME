@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *sdView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consSdViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consImageH;
+@property (weak, nonatomic) IBOutlet UIButton *btnT;
+@property (weak, nonatomic) IBOutlet UIButton *btnP;
+@property (weak, nonatomic) IBOutlet UIView *viewForSel;
 
 @end
 
@@ -33,6 +36,8 @@
     CGFloat imageW = (SCREEN_WIDTH - 12)/2;
     CGFloat imageH = (imageW * 178)/364;
     _consImageH.constant = imageH;
+    _btnT.selected = YES;
+    _btnP.selected = NO;
     [self layoutIfNeeded];
 }
 
@@ -92,6 +97,27 @@
     }
 }
 
+- (IBAction)tcouPonAction:(UIButton *)sender {
+    if(_btnT.selected){
+        return;
+    }
+    _viewForSel.centerX = sender.centerX;
+    _btnT.selected = YES;
+    _btnP.selected = NO;
+    kMeCallBlock(_isSelectTbkBlock,YES);
+}
+
+- (IBAction)pCouponAction:(UIButton *)sender {
+    if(_btnP.selected){
+        return;
+    }
+    _viewForSel.centerX = sender.centerX;
+    _btnT.selected = NO;
+    _btnP.selected = YES;
+     kMeCallBlock(_isSelectTbkBlock,NO);
+}
+
+
 
 #pragma mark - SDCycleScrollViewDelegate
 
@@ -112,8 +138,10 @@
     CGFloat sdHeight = 150 *kMeFrameScaleX();
     CGFloat imageW = (SCREEN_WIDTH - 12)/2;
     CGFloat imageH = (imageW * 178)/364;
-    height = sdHeight + (imageH*2) +8;
+    height = sdHeight + (imageH*2) +8+51;
     return height;
 }
+
+
 
 @end

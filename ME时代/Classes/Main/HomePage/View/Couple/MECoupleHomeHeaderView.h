@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setUiWithModel:(NSArray *)Model;
 + (CGFloat)getViewHeight;
+@property (nonatomic, copy) kMeBOOLBlock isSelectTbkBlock;
+
 
 @end
 

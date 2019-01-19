@@ -46,4 +46,8 @@
 + (void)checkVersion;
 + (void)newCheckVersion;
 + (void)getUIPasteboardContent;
+
++ (NSString *)changeformatterWithFen:(id)money;
++ (BOOL)openWXMiniProgram:(NSString *)path username:(NSString *)username;
++(BOOL) openWeChat:(NSString *)url;
 @end

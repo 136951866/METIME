@@ -16,12 +16,12 @@
 #import "MENavigationVC.h"
 #import "MECoupleMailVC.h"
 #import "MEAdModel.h"
+#import "MEPinduoduoCoupleModel.h"
 
 @interface MECoupleHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSArray *_todayBuy;
     NSArray *_99BuyBuy;
-//    NSArray *_BigJuanBuy;
-    NSArray *_advArr;
+    BOOL _isTBk;
 }
 
 @property (nonatomic, strong) MECoupleHomeHeaderView         *headerView;
@@ -36,14 +36,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navBarHidden = YES;
+    _isTBk = YES;
     self.view.backgroundColor = kMEf5f4f4;
     _todayBuy = [NSArray array];
     _99BuyBuy = [NSArray array];
-//    _BigJuanBuy = [NSArray array];
-    MEAdModel *model = [MEAdModel new];
-    model.keywork = @"羽绒服";
-    model.ad_img = @"testCoupon";
-    _advArr = @[model];
     [self.view addSubview:self.navView];
     [self.view addSubview:self.tableView];
     _tableView.tableHeaderView = self.headerView;
@@ -51,89 +47,67 @@
 }
 
 - (void)requestNetWork{
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-    dispatch_group_t group = dispatch_group_create();
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//    dispatch_group_async(group, queue, ^{
-//        kMeWEAKSELF
-//        [MEPublicNetWorkTool postAgetTbkBannerWithsuccessBlock:^(ZLRequestResponse *responseObject) {
-//            kMeSTRONGSELF
-//            strongSelf->_advArr = [MEAdModel mj_objectArrayWithKeyValuesArray:responseObject.data];
-//            dispatch_semaphore_signal(semaphore);
-//        } failure:^(id object) {
-//            dispatch_semaphore_signal(semaphore);
-//        }];
-//    });
-    
-    dispatch_group_async(group, queue, ^{
-        kMeWEAKSELF
-        [MEPublicNetWorkTool postCoupledgMaterialOptionalWithType:MECouponSearchTopBuyType successBlock:^(ZLRequestResponse *responseObject) {
-            kMeSTRONGSELF
-            id arrDIc = responseObject.data[@"tbk_dg_material_optional_response"][@"result_list"][@"map_data"];
-            if([arrDIc isKindOfClass:[NSArray class]]){
-                strongSelf->_todayBuy = [MECoupleModel mj_objectArrayWithKeyValuesArray:arrDIc];
-            }
-            dispatch_semaphore_signal(semaphore);
-        } failure:^(id object) {
-            dispatch_semaphore_signal(semaphore);
-        }];
-    });
-    //9.9
-    dispatch_group_async(group, queue, ^{
-        kMeWEAKSELF
-        [MEPublicNetWorkTool postCoupledgMaterialOptionalWithType:MECouponSearch99BuyType successBlock:^(ZLRequestResponse *responseObject) {
-            kMeSTRONGSELF
-            id arrDIc = responseObject.data[@"tbk_dg_material_optional_response"][@"result_list"][@"map_data"];
-            if([arrDIc isKindOfClass:[NSArray class]]){
-                strongSelf->_99BuyBuy = [MECoupleModel mj_objectArrayWithKeyValuesArray:arrDIc];
-            }
-            dispatch_semaphore_signal(semaphore);
-        } failure:^(id object) {
-            dispatch_semaphore_signal(semaphore);
-        }];
-    });
-    //大额券
-//    dispatch_group_async(group, queue, ^{
-//        kMeWEAKSELF
-//        [MEPublicNetWorkTool postCoupledgMaterialOptionalWithType:MECouponSearchBigJuanType successBlock:^(ZLRequestResponse *responseObject) {
-//            kMeSTRONGSELF
-//            id arrDIc = responseObject.data[@"tbk_dg_material_optional_response"][@"result_list"][@"map_data"];
-//            if([arrDIc isKindOfClass:[NSArray class]]){
-//                strongSelf->_BigJuanBuy = [MECoupleModel mj_objectArrayWithKeyValuesArray:arrDIc];
-//            }
-//            dispatch_semaphore_signal(semaphore);
-//        } failure:^(id object) {
-//            dispatch_semaphore_signal(semaphore);
-//        }];
-//    });
-    kMeWEAKSELF
-    dispatch_group_notify(group, queue, ^{
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-//        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-//        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            kMeSTRONGSELF
-            [strongSelf->_headerView setUiWithModel:strongSelf->_advArr];
-//            [strongSelf.tableView.mj_header endRefreshing];
-            [strongSelf.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:0];
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        dispatch_group_t group = dispatch_group_create();
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_group_async(group, queue, ^{
+            kMeWEAKSELF
+            [MEPublicNetWorkTool postCoupledgMaterialOptionalWithType:MECouponSearchTopBuyType successBlock:^(ZLRequestResponse *responseObject) {
+                kMeSTRONGSELF
+                id arrDIc = responseObject.data[@"tbk_dg_material_optional_response"][@"result_list"][@"map_data"];
+                if([arrDIc isKindOfClass:[NSArray class]]){
+                    strongSelf->_todayBuy = [MECoupleModel mj_objectArrayWithKeyValuesArray:arrDIc];
+                }
+                dispatch_semaphore_signal(semaphore);
+            } failure:^(id object) {
+                dispatch_semaphore_signal(semaphore);
+            }];
         });
-    });
+        //9.9
+        dispatch_group_async(group, queue, ^{
+            kMeWEAKSELF
+            [MEPublicNetWorkTool postCoupledgMaterialOptionalWithType:MECouponSearch99BuyType successBlock:^(ZLRequestResponse *responseObject) {
+                kMeSTRONGSELF
+                id arrDIc = responseObject.data[@"tbk_dg_material_optional_response"][@"result_list"][@"map_data"];
+                if([arrDIc isKindOfClass:[NSArray class]]){
+                    strongSelf->_99BuyBuy = [MECoupleModel mj_objectArrayWithKeyValuesArray:arrDIc];
+                }
+                dispatch_semaphore_signal(semaphore);
+            } failure:^(id object) {
+                dispatch_semaphore_signal(semaphore);
+            }];
+        });
+        kMeWEAKSELF
+        dispatch_group_notify(group, queue, ^{
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                kMeSTRONGSELF
+                [strongSelf.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:0];
+            });
+        });
 }
 
-
 - (NSDictionary *)requestParameter{
-    if(self.refresh.pageIndex == 1){
+    if(self.refresh.pageIndex == 1 && _isTBk){
         [self requestNetWork];
     }
-    return @{@"type":@(MECouponSearchGoodGoodsType)};
+    if(_isTBk){
+        return @{@"type":@(MECouponSearchGoodGoodsType)};
+    }else{
+        return @{@"sort_type":@"8"};
+    }
 }
 
 - (void)handleResponse:(id)data{
     if(![data isKindOfClass:[NSArray class]]){
         return;
     }
-    [self.refresh.arrData addObjectsFromArray:[MECoupleModel mj_objectArrayWithKeyValuesArray:data]];
+    if(_isTBk){
+        [self.refresh.arrData addObjectsFromArray:[MECoupleModel mj_objectArrayWithKeyValuesArray:data]];
+    }else{
+        [self.refresh.arrData addObjectsFromArray:[MEPinduoduoCoupleModel mj_objectArrayWithKeyValuesArray:data]];
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -159,7 +133,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(section == 0){
-        return 2;
+        return _isTBk?2:0;
     }else{
         return 1;
     }
@@ -167,43 +141,47 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 0){
-        if(indexPath.row == 0){
-            MECoupleHomeMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainCell class]) forIndexPath:indexPath];
-            [cell setUIWithArr:_todayBuy type:indexPath.row];
-            return cell;
-        }else if(indexPath.row == 1){
-            MECoupleHomeMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainCell class]) forIndexPath:indexPath];
-            [cell setUIWithArr:_99BuyBuy type:indexPath.row];
-            return cell;
+        if(_isTBk){
+            if(indexPath.row == 0){
+                MECoupleHomeMainCell *todaycell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainCell class]) forIndexPath:indexPath];
+                [todaycell setUIWithArr:_todayBuy type:indexPath.row];
+                return todaycell;
+            }else if(indexPath.row == 1){
+                MECoupleHomeMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainCell class]) forIndexPath:indexPath];
+                [cell setUIWithArr:_99BuyBuy type:indexPath.row];
+                return cell;
+            }else{
+                return [UITableViewCell new];
+            }
         }else{
             return [UITableViewCell new];
         }
-//        else if(indexPath.row == 2){
-//            MECoupleHomeMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainCell class]) forIndexPath:indexPath];
-//            [cell setUIWithArr:_BigJuanBuy type:indexPath.row];
-//            return cell;
-//        }
     }else{
         MECoupleHomeMainGoodGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainGoodGoodsCell class]) forIndexPath:indexPath];
-        [cell setUIWithArr:self.refresh.arrData];
+        if(_isTBk){
+            [cell setUIWithArr:self.refresh.arrData];
+        }else{
+            [cell setPinduoduoUIWithArr:self.refresh.arrData];
+        }
         return cell;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 0){
-        if(indexPath.row == 0){
-           return [MECoupleHomeMainCell getCellHeightWithArr:_todayBuy];
-        }else if(indexPath.row == 1){
-           return [MECoupleHomeMainCell getCellHeightWithArr:_99BuyBuy];
+        if(_isTBk){
+            if(indexPath.row == 0){
+                return [MECoupleHomeMainCell getCellHeightWithArr:_todayBuy];
+            }else if(indexPath.row == 1){
+                return [MECoupleHomeMainCell getCellHeightWithArr:_99BuyBuy];
+            }else{
+                return 0;
+            }
         }else{
             return 0;
         }
-//        else if(indexPath.row == 2){
-//            return [MECoupleHomeMainCell getCellHeightWithArr:_BigJuanBuy];
-//        }
     }else{
-       return [MECoupleHomeMainGoodGoodsCell getCellHeightWithArr:self.refresh.arrData];
+        return [MECoupleHomeMainGoodGoodsCell getCellHeightWithArr:self.refresh.arrData];
     }
 }
 
@@ -235,6 +213,22 @@
     if(!_headerView){
         _headerView = [[[NSBundle mainBundle]loadNibNamed:@"MECoupleHomeHeaderView" owner:nil options:nil] lastObject];
         _headerView.frame =CGRectMake(0, 0, SCREEN_WIDTH, [MECoupleHomeHeaderView getViewHeight]);
+        kMeWEAKSELF
+        _headerView.isSelectTbkBlock = ^(BOOL isT) {
+            kMeSTRONGSELF
+            strongSelf->_isTBk = isT;
+            if(isT){
+                strongSelf.refresh.isCoupleMater = YES;
+                strongSelf.refresh.isPinduoduoCoupleMater = NO;
+                strongSelf.refresh.url = kGetApiWithUrl(MEIPcommonTaobaokeGetDgMaterialOptional);
+            }else{
+                strongSelf.refresh.isCoupleMater = NO;
+                strongSelf.refresh.isPinduoduoCoupleMater = YES;
+                strongSelf.refresh.url = kGetApiWithUrl(MEIPcommonduoduokeGetgetGoodsList);
+            }
+            [strongSelf.refresh.arrData removeAllObjects];
+            [strongSelf.refresh reload];
+        };
     }
     return _headerView;
 }
@@ -263,6 +257,7 @@
         _refresh.isCoupleMater = YES;
         _refresh.isDataInside = YES;
         _refresh.showFailView = NO;
+        _refresh.showMaskView = YES;
     }
     return _refresh;
 }

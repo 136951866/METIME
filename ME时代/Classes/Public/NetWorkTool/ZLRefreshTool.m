@@ -35,6 +35,8 @@ NSUInteger const kSizeNum = 10;
         _url = url;
         _isCouple = NO;
         _isCoupleMater = NO;
+        _isPinduoduoCoupleMater = NO;
+        _showMaskView = NO;
     }
     return self;
 }
@@ -82,17 +84,30 @@ NSUInteger const kSizeNum = 10;
 
 - (void)requestNetWorkIsHead:(BOOL)isHead{
     [ZLFailLoadView removeFromView:self.contentView];
+    if(_showMaskView&&_pageIndex==1){
+//        [MEShowViewTool showMessage:@"" view:self.contentView];
+        [MBProgressHUD showMessage:@"" toView:self.contentView];
+    }
     if (self.delegate && [self.delegate respondsToSelector:@selector(requestParameter)] && [self.delegate respondsToSelector:@selector(handleResponse:)]) {
         
         NSDictionary *parameter = [self requestParameter];
         NSLog(@"MERefresh\n%@",parameter);
-        if (!self.url) return;
+        if (!self.url) {
+            if(_showMaskView&&_pageIndex==1){
+                [MBProgressHUD hideHUDForView:self.contentView];
+            }
+            return;
+        }
         
         kMeWEAKSELF
         RequestResponse successBlock = ^(ZLRequestResponse *responseObject){
             kMeSTRONGSELF
             if (!strongSelf ) {
+                [MBProgressHUD hideHUD];
                 return;
+            }
+            if(strongSelf->_showMaskView&&strongSelf->_pageIndex==1){
+                [MBProgressHUD hideHUDForView:strongSelf.contentView];
             }
             
             if (strongSelf.pageIndex == 1) {
@@ -111,9 +126,15 @@ NSUInteger const kSizeNum = 10;
                         strongSelf.allRows = count ;
                         [strongSelf.delegate handleResponse:responseObject.data[@"tbk_dg_material_optional_response"][@"result_list"][@"map_data"]];
                     }else{
-                        MENetListModel *nlModel = [MENetListModel mj_objectWithKeyValues:responseObject.data];
-                        strongSelf.allRows = nlModel.count;
-                        [strongSelf.delegate handleResponse:nlModel.data];
+                        if(strongSelf->_isPinduoduoCoupleMater){
+                            NSInteger count = [responseObject.data[@"goods_search_response"][@"total_count"] integerValue];
+                            count=count==0?1000:count;
+                            [strongSelf.delegate handleResponse:responseObject.data[@"goods_search_response"][@"goods_list"]];
+                        }else{
+                            MENetListModel *nlModel = [MENetListModel mj_objectWithKeyValues:responseObject.data];
+                            strongSelf.allRows = nlModel.count;
+                            [strongSelf.delegate handleResponse:nlModel.data];
+                        }
                     }
                 }
             }else{
@@ -136,7 +157,11 @@ NSUInteger const kSizeNum = 10;
         kMeObjBlock failblock = ^(id error){
             kMeSTRONGSELF
             if (!strongSelf) {
+                [MBProgressHUD hideHUD];
                 return;
+            }
+            if(strongSelf->_showMaskView&&strongSelf->_pageIndex==1){
+                [MBProgressHUD hideHUDForView:strongSelf.contentView];
             }
             [strongSelf endRefreshIsHead:isHead];
             if ([strongSelf.contentView respondsToSelector:@selector(reloadData)]) {
@@ -176,6 +201,10 @@ NSUInteger const kSizeNum = 10;
 //            }
         }else{
             [THTTPManager postWithParameter:parameter strUrl:self.url success:successBlock failure:failblock];
+        }
+    }else{
+        if(_showMaskView&&_pageIndex==1){
+            [MBProgressHUD hideHUDForView:self.contentView];
         }
     }
 }

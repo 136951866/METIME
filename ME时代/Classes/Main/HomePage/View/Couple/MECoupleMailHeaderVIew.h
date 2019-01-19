@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @class MECoupleModel;
+@class MEPinduoduoCoupleInfoModel;
 #define MECoupleMailHeaderVIewHeight (SCREEN_WIDTH + 205)
 
 @interface MECoupleMailHeaderVIew : UIView
-
+@property (weak, nonatomic) IBOutlet UIImageView *imgPic;
 - (void)setUIWithModel:(MECoupleModel *)model;
+- (void)setPinduoduoUIWithModel:(MEPinduoduoCoupleInfoModel *)model;
 @property (nonatomic ,copy)kMeBasicBlock getCoupleBlock;
 
 @end
