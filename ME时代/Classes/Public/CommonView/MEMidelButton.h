@@ -21,3 +21,10 @@
 
 
 @end
+
+@interface MEMidelMiddelImageButton : UIButton
+
+@property (nonatomic , assign)CGFloat IWTabBarButtonImageRatio;
+
+
+@end

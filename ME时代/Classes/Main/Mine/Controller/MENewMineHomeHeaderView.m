@@ -53,7 +53,7 @@
     }
 }
 
-- (IBAction)needPayAction:(MEMidelBigImageButton *)sender {
+- (IBAction)needPayAction:(MEMidelMiddelImageButton *)sender {
     MENewMineHomeVC *home = (MENewMineHomeVC *)[MECommonTool getVCWithClassWtihClassName:[MENewMineHomeVC class] targetResponderView:self];
     MEMyOrderVC *orderVC = [[MEMyOrderVC alloc]initWithType:MEAllNeedPayOrder];
     if(home){
@@ -61,21 +61,21 @@
     }
 }
 
-- (IBAction)diveryAction:(MEMidelBigImageButton *)sender {
+- (IBAction)diveryAction:(MEMidelMiddelImageButton *)sender {
     MENewMineHomeVC *home = (MENewMineHomeVC *)[MECommonTool getVCWithClassWtihClassName:[MENewMineHomeVC class] targetResponderView:self];
     MEMyOrderVC *orderVC = [[MEMyOrderVC alloc]initWithType:MEAllNeedDeliveryOrder];
     if(home){
         [home.navigationController pushViewController:orderVC animated:YES];
     }
 }
-- (IBAction)reviceAction:(MEMidelBigImageButton *)sender {
+- (IBAction)reviceAction:(MEMidelMiddelImageButton *)sender {
     MENewMineHomeVC *home = (MENewMineHomeVC *)[MECommonTool getVCWithClassWtihClassName:[MENewMineHomeVC class] targetResponderView:self];
     MEMyOrderVC *orderVC = [[MEMyOrderVC alloc]initWithType:MEAllNeedReceivedOrder];
     if(home){
         [home.navigationController pushViewController:orderVC animated:YES];
     }
 }
-- (IBAction)finishAction:(MEMidelBigImageButton *)sender {
+- (IBAction)finishAction:(MEMidelMiddelImageButton *)sender {
     MENewMineHomeVC *home = (MENewMineHomeVC *)[MECommonTool getVCWithClassWtihClassName:[MENewMineHomeVC class] targetResponderView:self];
     MEMyOrderVC *orderVC = [[MEMyOrderVC alloc]initWithType:MEAllFinishOrder];
     if(home){

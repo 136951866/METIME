@@ -59,19 +59,19 @@
                                 <constraint firstAttribute="height" constant="1" id="uVv-VG-gAp"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luw-Eq-y4j" customClass="MEMidelBigImageButton">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luw-Eq-y4j" customClass="MEMidelMiddelImageButton">
                             <rect key="frame" x="15" y="57" width="60" height="78"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="zR3-Yr-esp"/>
                             </constraints>
-                            <state key="normal" title="待付款" image="icon_yiwancheng">
+                            <state key="normal" title="待付款" image="icon_daifukuan">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="needPayAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="hmN-4p-G2X"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvu-g0-btn" customClass="MEMidelBigImageButton">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvu-g0-btn" customClass="MEMidelMiddelImageButton">
                             <rect key="frame" x="270" y="57" width="60" height="78"/>
                             <state key="normal" title="已完成" image="icon_yiwancheng">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -80,16 +80,16 @@
                                 <action selector="finishAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="dAL-ak-o1O"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KW-Tb-dl7" customClass="MEMidelBigImageButton">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KW-Tb-dl7" customClass="MEMidelMiddelImageButton">
                             <rect key="frame" x="210" y="57" width="60" height="78"/>
-                            <state key="normal" title="待收货" image="icon_daifahuo">
+                            <state key="normal" title="待收货" image="icon_daishouhuo">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="reviceAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="1rc-IH-6TI"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHW-Ax-JMJ" customClass="MEMidelBigImageButton">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHW-Ax-JMJ" customClass="MEMidelMiddelImageButton">
                             <rect key="frame" x="75" y="57" width="60" height="78"/>
                             <state key="normal" title="待发货" image="icon_daifahuo">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -229,6 +229,8 @@
     </objects>
     <resources>
         <image name="icon_daifahuo" width="20" height="20"/>
+        <image name="icon_daifukuan" width="20" height="20"/>
+        <image name="icon_daishouhuo" width="20" height="20"/>
         <image name="icon_more" width="7" height="11"/>
         <image name="icon_yiwancheng" width="20" height="20"/>
         <image name="newMIneSet" width="22" height="22"/>
