@@ -34,6 +34,10 @@
 #pragma mark- CollectionView Delegate And DataSource
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if(_selectBlock){
+        kMeCallBlock(_selectBlock);
+        return;
+    }
     if(_isTbK){
          MECoupleModel *model = _arrModel[indexPath.row];
         MECoupleMailDetalVC *vc = [[MECoupleMailDetalVC alloc]initWithProductrId:model.num_iid couponId:kMeUnNilStr(model.coupon_id) couponurl:kMeUnNilStr(model.coupon_share_url)];

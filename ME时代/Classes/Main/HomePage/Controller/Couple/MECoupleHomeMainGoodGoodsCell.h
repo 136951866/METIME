@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUIWithArr:(NSArray*)arr;
 - (void)setPinduoduoUIWithArr:(NSArray*)arr;
 + (CGFloat)getCellHeightWithArr:(NSArray*)arr;
+@property (nonatomic, copy) kMeBasicBlock selectBlock;
 
 @end
 

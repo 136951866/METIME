@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VLP-MQ-4BF">
-                        <rect key="frame" x="0.0" y="0.0" width="325" height="195.5"/>
+                        <rect key="frame" x="10" y="0.0" width="305" height="195.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PrD-SL-cck">
                             <size key="itemSize" width="50" height="50"/>
@@ -30,9 +30,9 @@
                     </collectionView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="VLP-MQ-4BF" secondAttribute="trailing" id="Ity-7a-BQd"/>
+                    <constraint firstAttribute="trailing" secondItem="VLP-MQ-4BF" secondAttribute="trailing" constant="10" id="Ity-7a-BQd"/>
                     <constraint firstItem="VLP-MQ-4BF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="VWm-Kv-RzG"/>
-                    <constraint firstItem="VLP-MQ-4BF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="qOw-K5-BXg"/>
+                    <constraint firstItem="VLP-MQ-4BF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="qOw-K5-BXg"/>
                     <constraint firstAttribute="bottom" secondItem="VLP-MQ-4BF" secondAttribute="bottom" id="u1W-6G-U9r"/>
                 </constraints>
             </tableViewCellContentView>

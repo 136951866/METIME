@@ -8,7 +8,8 @@
 
 #import "METabBarVC.h"
 #import "MENavigationVC.h"
-#import "MEHomePageVC.h"
+//#import "MEHomePageVC.h"
+#import "METhridHomeVC.h"
 #import "MEStoreHomeVC.h"
 #import "MEMemberHomeVC.h"
 #import "MEShoppingCartVC.h"
@@ -39,7 +40,7 @@
     self.tabBar.translucent = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     // 1.初始化子控制器
-    MESNewHomePageVC *home = [[MESNewHomePageVC alloc] init];
+    METhridHomeVC *home = [[METhridHomeVC alloc] init];
     [self addChildVc:home title:@"首页" image:@"home" selectedImage:@"home_s"];
     
     MEStoreHomeVC *store = [[MEStoreHomeVC alloc] init];
