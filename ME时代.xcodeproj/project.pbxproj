@@ -327,6 +327,8 @@
 		36526013216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36526011216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.m */; };
 		36526014216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36526012216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.xib */; };
 		36526017216F3DD3003E3CB4 /* MENewStoreDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36526016216F3DD3003E3CB4 /* MENewStoreDetailsVC.m */; };
+		3659508B21F6ADE200DDA2E5 /* MENewStoreHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3659508921F6ADE200DDA2E5 /* MENewStoreHomeCell.m */; };
+		3659508C21F6ADE200DDA2E5 /* MENewStoreHomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3659508A21F6ADE200DDA2E5 /* MENewStoreHomeCell.xib */; };
 		365DB25221475C2A00001A04 /* MEMineHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 365DB25121475C2A00001A04 /* MEMineHomeHeaderView.m */; };
 		365DB25421475C3300001A04 /* MEMineHomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 365DB25321475C3300001A04 /* MEMineHomeHeaderView.xib */; };
 		365DB2572147601300001A04 /* MEMineHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 365DB2562147601300001A04 /* MEMineHomeVC.m */; };
@@ -1192,6 +1194,9 @@
 		36526012216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEStoreHomeIntroduceCell.xib; sourceTree = "<group>"; };
 		36526015216F3DD3003E3CB4 /* MENewStoreDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MENewStoreDetailsVC.h; sourceTree = "<group>"; };
 		36526016216F3DD3003E3CB4 /* MENewStoreDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MENewStoreDetailsVC.m; sourceTree = "<group>"; };
+		3659508821F6ADE200DDA2E5 /* MENewStoreHomeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MENewStoreHomeCell.h; sourceTree = "<group>"; };
+		3659508921F6ADE200DDA2E5 /* MENewStoreHomeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MENewStoreHomeCell.m; sourceTree = "<group>"; };
+		3659508A21F6ADE200DDA2E5 /* MENewStoreHomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MENewStoreHomeCell.xib; sourceTree = "<group>"; };
 		365DB25021475C2A00001A04 /* MEMineHomeHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MEMineHomeHeaderView.h; path = View/home/MEMineHomeHeaderView.h; sourceTree = SOURCE_ROOT; };
 		365DB25121475C2A00001A04 /* MEMineHomeHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MEMineHomeHeaderView.m; path = View/home/MEMineHomeHeaderView.m; sourceTree = SOURCE_ROOT; };
 		365DB25321475C3300001A04 /* MEMineHomeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MEMineHomeHeaderView.xib; path = View/home/MEMineHomeHeaderView.xib; sourceTree = SOURCE_ROOT; };
@@ -3465,6 +3470,9 @@
 				36526010216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.h */,
 				36526011216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.m */,
 				36526012216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.xib */,
+				3659508821F6ADE200DDA2E5 /* MENewStoreHomeCell.h */,
+				3659508921F6ADE200DDA2E5 /* MENewStoreHomeCell.m */,
+				3659508A21F6ADE200DDA2E5 /* MENewStoreHomeCell.xib */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -4065,6 +4073,7 @@
 				36021B03214BB59F001B8DAF /* MEAppointOrderMainCell.xib in Resources */,
 				364B64FA217496B200094027 /* MEWxLoginVC.xib in Resources */,
 				3683F7BB21CBA656008139B0 /* MEGiftMainCell.xib in Resources */,
+				3659508C21F6ADE200DDA2E5 /* MENewStoreHomeCell.xib in Resources */,
 				3617C31B21D0CF7F00004072 /* MECoupleFilterNavView.xib in Resources */,
 				36FEEBC0214CE74C00060209 /* MEPayStatusVC.xib in Resources */,
 				36FF6C53216C3D2B0056046F /* MEMineCustomerPhone.xib in Resources */,
@@ -4480,6 +4489,7 @@
 				3600A72B2159C52B00195484 /* MEIMageVC.m in Sources */,
 				36371554218ACE9E0057E59F /* UIButton+ImageTitleStyle.m in Sources */,
 				3600B855217EF10700049F49 /* YBRectConst.m in Sources */,
+				3659508B21F6ADE200DDA2E5 /* MENewStoreHomeCell.m in Sources */,
 				36308E952150A0BD00B8E7D9 /* MEView.m in Sources */,
 				360034C221AE823700BAF337 /* AASeriesElement.m in Sources */,
 				36EEC2EC2181BA0200DEFCCB /* MEVActiveListVC.m in Sources */,

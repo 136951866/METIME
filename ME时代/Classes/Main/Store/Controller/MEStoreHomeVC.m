@@ -7,7 +7,7 @@
 //
 
 #import "MEStoreHomeVC.h"
-#import "MEStoreHomeCell.h"
+#import "MENewStoreHomeCell.h"
 #import "MEStoreSelectCityView.h"
 #import "MEStoreModel.h"
 #import "MELocationCLLModel.h"
@@ -126,14 +126,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MEStoreModel *model = self.refresh.arrData[indexPath.row];
-    MEStoreHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEStoreHomeCell class]) forIndexPath:indexPath];
+    MENewStoreHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MENewStoreHomeCell class]) forIndexPath:indexPath];
     [cell setUIWithModel:model];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     MEStoreModel *model = self.refresh.arrData[indexPath.row];
-    return [MEStoreHomeCell getCellHeightWithModel:model];
+    return kMENewStoreHomeCellHeight;//[MEStoreHomeCell getCellHeightWithModel:model];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -162,7 +162,7 @@
 - (UITableView *)tableView{
     if(!_tableView){
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kMeNavBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kMeTabBarHeight) style:UITableViewStylePlain];
-        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEStoreHomeCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEStoreHomeCell class])];
+        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MENewStoreHomeCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MENewStoreHomeCell class])];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.tableFooterView = [UIView new];

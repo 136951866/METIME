@@ -9,7 +9,7 @@
 #import "MEStoreSearchVC.h"
 #import "MESearchHistoryView.h"
 #import "MEStoreModel.h"
-#import "MEStoreHomeCell.h"
+#import "MENewStoreHomeCell.h"
 #import "MENewStoreDetailsVC.h"
 #import "MESearchHistoryModel.h"
 
@@ -41,7 +41,7 @@
     self.navBarHidden = YES;
     self.view.backgroundColor = [UIColor colorWithHexString:@"fbfbfb"];
     _consTopMargin.constant = kMeStatusBarHeight;
-    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEStoreHomeCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEStoreHomeCell class])];
+    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MENewStoreHomeCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MENewStoreHomeCell class])];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.dataSource = self;
     _tableView.delegate = self;
@@ -83,14 +83,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MEStoreModel *model = self.refresh.arrData[indexPath.row];
-    MEStoreHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEStoreHomeCell class]) forIndexPath:indexPath];
+    MENewStoreHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MENewStoreHomeCell class]) forIndexPath:indexPath];
     [cell setUIWithModel:model WithKey:_tfSearch.text];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     MEStoreModel *model = self.refresh.arrData[indexPath.row];
-    return [MEStoreHomeCell getCellHeightWithModel:model];
+    return kMENewStoreHomeCellHeight;//[MEStoreHomeCell getCellHeightWithModel:model];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
