@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (CGFloat)getViewHeightWIth:(NSArray *)arr;
 - (void)setImageViewWithArr:(NSArray *)arr;
-
+@property (nonatomic, copy)NSMutableArray *arrImageView;
+@property (nonatomic, copy) kMeIndexBlock selectBlock;
 @end
 
 NS_ASSUME_NONNULL_END

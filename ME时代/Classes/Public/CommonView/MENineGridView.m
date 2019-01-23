@@ -13,7 +13,7 @@ const static CGFloat kMENineGridViewpadding = 3;
 
 @interface MENineGridView ()
 
-@property (nonatomic, copy)NSMutableArray *arrImageView;
+
 
 @end
 
@@ -30,6 +30,10 @@ const static CGFloat kMENineGridViewpadding = 3;
     _arrImageView = [NSMutableArray array];
     for (NSInteger i=0; i<9; i++) {
         UIImageView *img = [[UIImageView alloc]init];
+        img.userInteractionEnabled = YES;
+        img.tag = i;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
+        [img addGestureRecognizer:tap];
         [_arrImageView addObject:img];
     }
 }
@@ -66,6 +70,14 @@ const static CGFloat kMENineGridViewpadding = 3;
             [self addSubview:img];
             kSDLoadImg(img, kMeUnNilStr(@""));
         }
+    }
+}
+
+- (void)tapAction:(UITapGestureRecognizer *)tap{
+    UIImageView *view = (UIImageView *)tap.view;
+    NSInteger index = view.tag;
+    if(index>=0 && index<=8){
+        kMeCallBlock(_selectBlock,index);
     }
 }
 

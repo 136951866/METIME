@@ -9,8 +9,9 @@
 #import "MEProductDetailCommentVC.h"
 #import "MEProductDetailCommentCell.h"
 #import "METhridProductCommentHeaderView.h"
+#import "YBImageBrowser.h"
 
-@interface MEProductDetailCommentVC ()<UITableViewDelegate,UITableViewDataSource>{
+@interface MEProductDetailCommentVC ()<UITableViewDelegate,UITableViewDataSource,YBImageBrowserDataSource>{
     NSArray *_arrModel;
     METhridProductCommentHeaderViewType _type;
 }
@@ -23,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _type = METhridProductCommentHeaderViewAllType;
-    _arrModel = @[@[],@[@""],@[@"",@""],@[@"",@"",@""],@[@"",@"",@"",@""],@[@"",@"",@"",@"",@""],@[@"",@"",@"",@"",@"",@""],@[@"",@"",@"",@"",@"",@"",@""],@[@"",@"",@"",@"",@"",@"",@"",@""],@[@"",@"",@"",@"",@"",@"",@"",@"",@""]];
+    _arrModel = @[@[],@[@""],@[@"",@""],@[@"",@"",@""],@[@"",@"",@"",@""],@[@"",@"",@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524118687954&di=d92e4024fe4c2e4379cce3d3771ae105&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201605%2F18%2F20160518181939_nCZWu.gif",@"",@""],@[@"",@"",@"",@"",@"",@""],@[@"",@"",@"",@"",@"",@"",@""],@[@"",@"",@"",@"",@"",@"",@"",@""],@[@"",@"",@"",@"",@"",@"",@"",@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524118687954&di=d92e4024fe4c2e4379cce3d3771ae105&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201605%2F18%2F20160518181939_nCZWu.gif",@""]];
     self.title = @"评论";
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.headerView;
@@ -43,6 +44,7 @@
     [cell setUiWIthModel:model];
     return cell;
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSArray *model = _arrModel[indexPath.row];
