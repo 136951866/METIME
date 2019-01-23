@@ -9,9 +9,9 @@
 #import "MEProductDetailCommentVC.h"
 #import "MEProductDetailCommentCell.h"
 #import "METhridProductCommentHeaderView.h"
-#import "YBImageBrowser.h"
 
-@interface MEProductDetailCommentVC ()<UITableViewDelegate,UITableViewDataSource,YBImageBrowserDataSource>{
+
+@interface MEProductDetailCommentVC ()<UITableViewDelegate,UITableViewDataSource>{
     NSArray *_arrModel;
     METhridProductCommentHeaderViewType _type;
 }

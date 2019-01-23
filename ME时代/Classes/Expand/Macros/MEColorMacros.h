@@ -30,4 +30,5 @@
 #define kMEe74291 [UIColor colorWithHexString:@"e74291"]
 #define kME666666 [UIColor colorWithHexString:@"666666"]
 #define kMEededed [UIColor colorWithHexString:@"ededed"]
+#define kME466889 [UIColor colorWithHexString:@"466889"]
 #endif /* MEColorMacros_h */

@@ -12,8 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MENineGridView : UIView
 
+
 + (CGFloat)getViewHeightWIth:(NSArray *)arr;
++ (CGFloat)getDymmaincViewHeightWIth:(NSArray *)arr;
 - (void)setImageViewWithArr:(NSArray *)arr;
+- (void)setImageDymamicViewWithArr:(NSArray *)arr;
 @property (nonatomic, copy)NSMutableArray *arrImageView;
 @property (nonatomic, copy) kMeIndexBlock selectBlock;
 @end

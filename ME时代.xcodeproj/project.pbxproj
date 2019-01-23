@@ -522,6 +522,15 @@
 		36F43DD0216C942100FBA16E /* BankTransferAccountsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F43DCF216C942100FBA16E /* BankTransferAccountsVC.m */; };
 		36F48BC921DEFF8800A6A7B0 /* MECouponMaterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F48BC821DEFF8800A6A7B0 /* MECouponMaterModel.m */; };
 		36F528B421E6F2F500BB7388 /* MEClerksSortModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F528B321E6F2F500BB7388 /* MEClerksSortModel.m */; };
+		36F6AF3A21F8519800CF6684 /* MEBynamicMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F6AF3821F8519800CF6684 /* MEBynamicMainCell.m */; };
+		36F6AF3B21F8519800CF6684 /* MEBynamicMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F6AF3921F8519800CF6684 /* MEBynamicMainCell.xib */; };
+		36F6AF3E21F851FF00CF6684 /* MEBynamicCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F6AF3D21F851FF00CF6684 /* MEBynamicCommentView.m */; };
+		36F6AF4921F8532300CF6684 /* MEBynamicHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F6AF4821F8532300CF6684 /* MEBynamicHomeVC.m */; };
+		36F6AF4D21F8546800CF6684 /* MEBynamicCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F6AF4B21F8546800CF6684 /* MEBynamicCommentCell.m */; };
+		36F6AF4E21F8546800CF6684 /* MEBynamicCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F6AF4C21F8546800CF6684 /* MEBynamicCommentCell.xib */; };
+		36F6AF5221F8548A00CF6684 /* MEBynamicLikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F6AF5021F8548A00CF6684 /* MEBynamicLikeCell.m */; };
+		36F6AF5321F8548A00CF6684 /* MEBynamicLikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F6AF5121F8548A00CF6684 /* MEBynamicLikeCell.xib */; };
+		36F6AF5921F8780500CF6684 /* CLInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F6AF5521F8780400CF6684 /* CLInputToolbar.m */; };
 		36FB082E218058CE003601FD /* MEProductSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB082C218058CE003601FD /* MEProductSearchVC.m */; };
 		36FB082F218058CE003601FD /* MEProductSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FB082D218058CE003601FD /* MEProductSearchVC.xib */; };
 		36FB9E152199193B00B3DDD3 /* MENoticeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB9E142199193B00B3DDD3 /* MENoticeVC.m */; };
@@ -1543,6 +1552,21 @@
 		36F48BC821DEFF8800A6A7B0 /* MECouponMaterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECouponMaterModel.m; sourceTree = "<group>"; };
 		36F528B221E6F2F500BB7388 /* MEClerksSortModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEClerksSortModel.h; sourceTree = "<group>"; };
 		36F528B321E6F2F500BB7388 /* MEClerksSortModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEClerksSortModel.m; sourceTree = "<group>"; };
+		36F6AF3721F8519800CF6684 /* MEBynamicMainCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBynamicMainCell.h; sourceTree = "<group>"; };
+		36F6AF3821F8519800CF6684 /* MEBynamicMainCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBynamicMainCell.m; sourceTree = "<group>"; };
+		36F6AF3921F8519800CF6684 /* MEBynamicMainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEBynamicMainCell.xib; sourceTree = "<group>"; };
+		36F6AF3C21F851FF00CF6684 /* MEBynamicCommentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBynamicCommentView.h; sourceTree = "<group>"; };
+		36F6AF3D21F851FF00CF6684 /* MEBynamicCommentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBynamicCommentView.m; sourceTree = "<group>"; };
+		36F6AF4721F8532300CF6684 /* MEBynamicHomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBynamicHomeVC.h; sourceTree = "<group>"; };
+		36F6AF4821F8532300CF6684 /* MEBynamicHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBynamicHomeVC.m; sourceTree = "<group>"; };
+		36F6AF4A21F8546800CF6684 /* MEBynamicCommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBynamicCommentCell.h; sourceTree = "<group>"; };
+		36F6AF4B21F8546800CF6684 /* MEBynamicCommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBynamicCommentCell.m; sourceTree = "<group>"; };
+		36F6AF4C21F8546800CF6684 /* MEBynamicCommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEBynamicCommentCell.xib; sourceTree = "<group>"; };
+		36F6AF4F21F8548A00CF6684 /* MEBynamicLikeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBynamicLikeCell.h; sourceTree = "<group>"; };
+		36F6AF5021F8548A00CF6684 /* MEBynamicLikeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBynamicLikeCell.m; sourceTree = "<group>"; };
+		36F6AF5121F8548A00CF6684 /* MEBynamicLikeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEBynamicLikeCell.xib; sourceTree = "<group>"; };
+		36F6AF5521F8780400CF6684 /* CLInputToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLInputToolbar.m; sourceTree = "<group>"; };
+		36F6AF5821F8780500CF6684 /* CLInputToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLInputToolbar.h; sourceTree = "<group>"; };
 		36FB082B218058CE003601FD /* MEProductSearchVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEProductSearchVC.h; sourceTree = "<group>"; };
 		36FB082C218058CE003601FD /* MEProductSearchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEProductSearchVC.m; sourceTree = "<group>"; };
 		36FB082D218058CE003601FD /* MEProductSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEProductSearchVC.xib; sourceTree = "<group>"; };
@@ -3022,6 +3046,7 @@
 				36021B04214BCA28001B8DAF /* Login */,
 				36D66ED9213F815D000476FF /* HomePage */,
 				36D66EDA213F8168000476FF /* Store */,
+				36F6AF3321F8505800CF6684 /* Bynamic */,
 				36D66EDB213F8193000476FF /* SuperMember */,
 				36D66EDC213F81B9000476FF /* ShoppingCart */,
 				36D66EDD213F81C6000476FF /* Mine */,
@@ -3032,6 +3057,7 @@
 		36D66ED1213F80DD000476FF /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				36F6AF5421F877DB00CF6684 /* CLInputToolbar */,
 				36E409C2219127600090F7E1 /* MELocation */,
 				EB6D02A02151DEA70053B19E /* MEAddressPickerView */,
 				36435C43214FB4D900F823B4 /* PayTool */,
@@ -3627,6 +3653,59 @@
 			path = Help;
 			sourceTree = "<group>";
 		};
+		36F6AF3321F8505800CF6684 /* Bynamic */ = {
+			isa = PBXGroup;
+			children = (
+				36F6AF3621F8508800CF6684 /* VC */,
+				36F6AF3521F8508300CF6684 /* View */,
+				36F6AF3421F8507C00CF6684 /* Model */,
+			);
+			path = Bynamic;
+			sourceTree = "<group>";
+		};
+		36F6AF3421F8507C00CF6684 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		36F6AF3521F8508300CF6684 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				36F6AF3721F8519800CF6684 /* MEBynamicMainCell.h */,
+				36F6AF3821F8519800CF6684 /* MEBynamicMainCell.m */,
+				36F6AF3921F8519800CF6684 /* MEBynamicMainCell.xib */,
+				36F6AF3C21F851FF00CF6684 /* MEBynamicCommentView.h */,
+				36F6AF3D21F851FF00CF6684 /* MEBynamicCommentView.m */,
+				36F6AF4A21F8546800CF6684 /* MEBynamicCommentCell.h */,
+				36F6AF4B21F8546800CF6684 /* MEBynamicCommentCell.m */,
+				36F6AF4C21F8546800CF6684 /* MEBynamicCommentCell.xib */,
+				36F6AF4F21F8548A00CF6684 /* MEBynamicLikeCell.h */,
+				36F6AF5021F8548A00CF6684 /* MEBynamicLikeCell.m */,
+				36F6AF5121F8548A00CF6684 /* MEBynamicLikeCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		36F6AF3621F8508800CF6684 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				36F6AF4721F8532300CF6684 /* MEBynamicHomeVC.h */,
+				36F6AF4821F8532300CF6684 /* MEBynamicHomeVC.m */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		36F6AF5421F877DB00CF6684 /* CLInputToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				36F6AF5821F8780500CF6684 /* CLInputToolbar.h */,
+				36F6AF5521F8780400CF6684 /* CLInputToolbar.m */,
+			);
+			path = CLInputToolbar;
+			sourceTree = "<group>";
+		};
 		36FBDD832140D1F400A11BF4 /* PayMentPlatForm */ = {
 			isa = PBXGroup;
 			children = (
@@ -4157,6 +4236,7 @@
 				3600345721AE732A00BAF337 /* MEVisitHomeHeaderView.xib in Resources */,
 				366D5B37214A6E630021C1BB /* MEAppointmentDateMainCell.xib in Resources */,
 				3683F7B621CBA15B008139B0 /* MEGiftMainContentCell.xib in Resources */,
+				36F6AF3B21F8519800CF6684 /* MEBynamicMainCell.xib in Resources */,
 				36FF4EBC21AFB6240099DDB8 /* MESNewHomePageView.xib in Resources */,
 				36021B0F214BCBF2001B8DAF /* MELoginVC.xib in Resources */,
 				36021ACB214B5F4C001B8DAF /* MEAppointmentStoreCell.xib in Resources */,
@@ -4167,6 +4247,7 @@
 				36FDE3CB218A8EFD00633C40 /* MEHomeSearchView.xib in Resources */,
 				36B77BD121DE05CE00B4A207 /* MECoupleHomeMainGoodGoodsCell.xib in Resources */,
 				36FEEBBA214CD20000060209 /* MEAddTelView.xib in Resources */,
+				36F6AF4E21F8546800CF6684 /* MEBynamicCommentCell.xib in Resources */,
 				367C84F42147A50600BEC7B1 /* MEOrderCell.xib in Resources */,
 				36445B4021C20C2C00CDBCBA /* MEAddClerksVC.xib in Resources */,
 				36FEC24121AD1AED00BB64A5 /* MEPosterContentListContentCell.xib in Resources */,
@@ -4178,6 +4259,7 @@
 				3659508C21F6ADE200DDA2E5 /* MENewStoreHomeCell.xib in Resources */,
 				3617C31B21D0CF7F00004072 /* MECoupleFilterNavView.xib in Resources */,
 				36FEEBC0214CE74C00060209 /* MEPayStatusVC.xib in Resources */,
+				36F6AF5321F8548A00CF6684 /* MEBynamicLikeCell.xib in Resources */,
 				36FF6C53216C3D2B0056046F /* MEMineCustomerPhone.xib in Resources */,
 				36022DFB2190105400DC9A8B /* MENewActiveCell.xib in Resources */,
 				36526014216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.xib in Resources */,
@@ -4345,6 +4427,7 @@
 				36D9E0C221F5BA5000687580 /* METhridNavView.m in Sources */,
 				36472AF121C8E15C00CC3E48 /* JXCategoryIndicatorCellModel.m in Sources */,
 				367721E42147681000C1463A /* MEMineHomeCell.m in Sources */,
+				36F6AF4D21F8546800CF6684 /* MEBynamicCommentCell.m in Sources */,
 				360034B621AE823700BAF337 /* AATitle.m in Sources */,
 				36445B3B21C2054600CDBCBA /* MEClerkModel.m in Sources */,
 				3630070F2148B93300C88264 /* MEDistributionMoneyVC.m in Sources */,
@@ -4447,6 +4530,7 @@
 				36472AFF21C8E15C00CC3E48 /* JXCategoryImageCellModel.m in Sources */,
 				36472B0921C8E15C00CC3E48 /* JXCategoryBaseCell.m in Sources */,
 				3617C30721D0ACC200004072 /* MECoupleFilterHederView.m in Sources */,
+				36F6AF3A21F8519800CF6684 /* MEBynamicMainCell.m in Sources */,
 				36FD640A213FAC28009743C5 /* UIImage+MECompress.m in Sources */,
 				36021B02214BB59F001B8DAF /* MEAppointOrderMainCell.m in Sources */,
 				36526013216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.m in Sources */,
@@ -4611,6 +4695,7 @@
 				360034B121AE823700BAF337 /* AAColumn.m in Sources */,
 				36472AF721C8E15C00CC3E48 /* JXCategoryTitleImageView.m in Sources */,
 				36472A9421C8C26500CC3E48 /* MEShoppingMallContentVC.m in Sources */,
+				36F6AF3E21F851FF00CF6684 /* MEBynamicCommentView.m in Sources */,
 				366D5B14214A3C440021C1BB /* MEMyAddressCell.m in Sources */,
 				36435C39214F7EA800F823B4 /* MEOrderModel.m in Sources */,
 				EB6D02A8215225740053B19E /* MEEqualSpaceFlowLayout.m in Sources */,
@@ -4698,16 +4783,19 @@
 				3602A18C21424091004A6E1F /* ZLWebVC.m in Sources */,
 				36017661215B1F490080EB00 /* MEMoneyDetailedVC.m in Sources */,
 				3612FB5B21DF3D770024083F /* MECouponInfo.m in Sources */,
+				36F6AF5921F8780500CF6684 /* CLInputToolbar.m in Sources */,
 				36008A7A21B68EA60007BB46 /* MEVistorUserPathModel.m in Sources */,
 				3650F3F021797BF4007EA97F /* MEAppointAttrModel.m in Sources */,
 				36FD63F5213FA9E7009743C5 /* UIColor+MeHexString.m in Sources */,
 				36FEEBE0214CF39C00060209 /* MEAppointmentDetailVC.m in Sources */,
+				36F6AF5221F8548A00CF6684 /* MEBynamicLikeCell.m in Sources */,
 				360034C521AE8A4F00BAF337 /* MEVisterSectionView.m in Sources */,
 				36FEC25921AD39E200BB64A5 /* MEArticelSearchVC.m in Sources */,
 				36C01991214262230048734E /* MEProductCell.m in Sources */,
 				360057FC2189F1B60010C21C /* MESearchHistoryView.m in Sources */,
 				36FDE3C9218A8EF300633C40 /* MEHomeSearchView.m in Sources */,
 				366D1CDD21B533710004295E /* MEArticelDetailModel.m in Sources */,
+				36F6AF4921F8532300CF6684 /* MEBynamicHomeVC.m in Sources */,
 				36FFA6A12195715F002B6FBE /* MEStoreSearchVC.m in Sources */,
 				36445B4421C2339C00CDBCBA /* MEGetCaseMainModel.m in Sources */,
 				36F43DD0216C942100FBA16E /* BankTransferAccountsVC.m in Sources */,

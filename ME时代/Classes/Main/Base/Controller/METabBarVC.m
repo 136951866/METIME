@@ -23,6 +23,7 @@
 #import "MEMemberHomeVC.h"
 
 #import "MESNewHomePageVC.h"
+#import "MEBynamicHomeVC.h"
 @interface METabBarVC ()<UITabBarControllerDelegate>
 
 @property (nonatomic, strong) MENewMineHomeVC *mine;
@@ -47,6 +48,10 @@
 //    MEIMageVC *store = [[MEIMageVC alloc]initWithType:MEMainStoreStyle];
     [self addChildVc:store title:@"门店" image:@"store" selectedImage:@"store_s"];
     
+    
+    MEBynamicHomeVC *dynamic = [[MEBynamicHomeVC alloc] init];
+    //    MEIMageVC *store = [[MEIMageVC alloc]initWithType:MEMainStoreStyle];
+    [self addChildVc:dynamic title:@"动态" image:@"dynamic" selectedImage:@"dynamic_s"];
 //    MEMemberHomeVC *member = [[MEMemberHomeVC alloc]init];
 ////    MEIMageVC *member = [[MEIMageVC alloc]initWithType:MEMainMemberStyle];
 ////    member.isNeedH5Title = NO;
