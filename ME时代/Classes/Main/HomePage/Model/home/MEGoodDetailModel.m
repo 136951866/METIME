@@ -27,6 +27,18 @@ MEModelObjectClassInArrayWithDic(@{@"spec" : [MEGoodDetailSpecModel class]})
     return _arrSelect;
 }
 
+- (NSString *)rudeTip{
+    return @"等哈记得回家撒谎的";
+}
+
+- (NSString *)notice{
+    return @"等哈记得回家撒谎的";
+}
+
+- (NSString *)tip{
+    return @"等哈记得回记得记得记得记得记得记得记得记得记得记得记得记得记得记得记得记得记得记得记得记得家撒谎的";
+}
+
 @end
 
 

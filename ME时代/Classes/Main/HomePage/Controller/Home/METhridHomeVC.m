@@ -14,6 +14,9 @@
 #import "MEPinduoduoCoupleModel.h"
 #import "MECoupleHomeMainGoodGoodsCell.h"
 #import "METhridHomeNavView.h"
+#import "MEShoppingMallVC.h"
+
+
 
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSInteger _selectTimeIndex;
@@ -40,6 +43,9 @@
     self.tableView.tableHeaderView = self.headerView;
     [self.headerView setUIWithModel:@[]];
     [self.refresh addRefreshView];
+#warning <#message#>
+    MEShoppingMallVC *vc = [[MEShoppingMallVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (NSDictionary *)requestParameter{

@@ -56,6 +56,14 @@
 
 //0 不能分享 1 可以
 @property (nonatomic, strong) NSString *is_clerk_share;
+
+//限时秒杀
+@property (nonatomic, strong) NSString *rudeTip;
+//通知
+@property (nonatomic, strong) NSString *notice;
+//tishi
+@property (nonatomic, strong) NSString *tip;
+
 @end
 
 

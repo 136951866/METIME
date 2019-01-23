@@ -8,7 +8,9 @@
 
 #import "MEShoppingMallContentVC.h"
 #import "MEFilterMainModel.h"
-#import "MEProductDetailsVC.h"
+#warning --
+//#import "MEProductDetailsVC.h"
+#import "METhridProductDetailsVC.h"
 #import "MEGoodModel.h"
 #import "MEAdModel.h"
 #import "MEHomePageSaveModel.h"
@@ -76,7 +78,7 @@
 
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     MEAdModel *model = kMeUnArr(_arrAdModel)[index];
-    MEProductDetailsVC *dvc = [[MEProductDetailsVC alloc]initWithId:model.product_id];
+    METhridProductDetailsVC *dvc = [[METhridProductDetailsVC alloc]initWithId:model.product_id];
     [self.navigationController pushViewController:dvc animated:YES];
 }
 
@@ -114,7 +116,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MEGoodModel *model = self.refresh.arrData[indexPath.row];
-    MEProductDetailsVC *dvc = [[MEProductDetailsVC alloc]initWithId:model.product_id];
+    METhridProductDetailsVC *dvc = [[METhridProductDetailsVC alloc]initWithId:model.product_id];
     [self.navigationController pushViewController:dvc animated:YES];
 }
 
