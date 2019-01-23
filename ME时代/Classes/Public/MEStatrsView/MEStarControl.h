@@ -73,5 +73,5 @@
 @property (nonatomic, assign, getter=isAllowFraction) BOOL allowFraction;
 //星星组件上的分数，可以直接设置
 @property (nonatomic, assign) CGFloat score;
-
+@property (nonatomic, assign) CGSize starSize;
 @end

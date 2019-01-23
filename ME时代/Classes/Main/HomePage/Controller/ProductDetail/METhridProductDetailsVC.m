@@ -23,6 +23,7 @@
 #import "MEProductDetalsBuyedCell.h"
 #import "MENewProductDetailsSectionView.h"
 #import "MERCConversationVC.h"
+#import "MEProductDetailCommentVC.h"
 
 typedef NS_ENUM(NSUInteger, kpurchaseViewType) {
     kpurchaseSelectSkuViewType,
@@ -301,6 +302,10 @@ kTDWebViewCellDidFinishLoadNotificationMethod
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 0 && indexPath.row==4){
         [self showBuyViewWithTypy:kpurchaseSelectSkuViewType];
+    }
+    if(indexPath.section == 0 && indexPath.row==3){
+        MEProductDetailCommentVC *vc = [[MEProductDetailCommentVC alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 

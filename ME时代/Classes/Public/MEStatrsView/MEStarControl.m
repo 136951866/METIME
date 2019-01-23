@@ -14,7 +14,7 @@
 @property (nonatomic, assign) NSInteger numberOfStars;
 @property (nonatomic, strong) UIImage *normalStarImage;
 @property (nonatomic, strong) UIImage *highlightedStarImage;
-@property (nonatomic, assign) CGSize starSize;
+
 @end
 
 @implementation MEStarControl
