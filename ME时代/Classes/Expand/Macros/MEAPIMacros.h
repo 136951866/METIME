@@ -35,6 +35,12 @@
 #define kNetError @"503"
 #define kNetInvateCode @"502"
 
+
+/*********************************************/
+#pragma makr - 动态
+//动态列表
+#define MEIPcommongetDynamicList @"common/dynamic/getDynamicList"
+
 /*********************************************/
 
 /*********************************************/

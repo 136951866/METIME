@@ -10,10 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MEBynamicHomecommentModel;
 @interface MEBynamicCommentCell : UITableViewCell
 
-- (void)setUIWithModel:(id)model;
-+ (CGFloat)getCellHeightWithhModel:(id)model;
+- (void)setUIWithModel:(MEBynamicHomecommentModel *)model;
++ (CGFloat)getCellHeightWithhModel:(MEBynamicHomecommentModel *)model;
 
 @end
 

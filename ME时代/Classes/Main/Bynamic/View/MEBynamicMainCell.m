@@ -9,10 +9,14 @@
 #import "MEBynamicMainCell.h"
 #import "MEBynamicCommentView.h"
 #import "MENineGridView.h"
+#import "MEBynamicHomeModel.h"
+#import "YBImageBrowser.h"
 
 #define kmainCommentCellWdith (SCREEN_WIDTH - 10 -36-10-10)
 
-@interface MEBynamicMainCell ()
+@interface MEBynamicMainCell ()<YBImageBrowserDataSource>{
+    NSInteger _currentIndex;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *imgHeader;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
@@ -22,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet MEBynamicCommentView *viewCommentAndLike;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consTitleHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consComentHeight;
+@property (strong, nonatomic) MEBynamicHomeModel *model;
+
 
 @end
 
@@ -29,35 +35,60 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    _currentIndex = 0;
     self.selectionStyle = 0;
     // Initialization code
 }
 
-- (void)setUIWithModel:(id)model{
-    kSDLoadImg(_imgHeader, kMeUnNilStr(@""));
-    _lblName.text = kMeUnNilStr(@"1111");
-    
-    NSString *str = kMeUnNilStr(@"对撒更好的骨灰级的感觉啊个电话就啊三个打火机噶伤筋动骨回家啊说过的话就撒过的话就撒过后觉得贵卅很简单噶伤感的");
+- (void)setUIWithModel:(MEBynamicHomeModel *)model{
+    _model = model;
+    _currentIndex = 0;
+    _imgHeader.image = [UIImage imageNamed:@"icon-wgvilogo"];
+//    kSDLoadImg(_imgHeader, kMeUnNilStr(@""));
+    _lblName.text = @"ME时代优选";
+    _lblTime.text = kMeUnNilStr(model.createdAt);
+    NSString *str = kMeUnNilStr(model.content);
     CGFloat titleHeight = [NSAttributedString heightForAtsWithStr:str font:[UIFont systemFontOfSize:14] width:kmainCommentCellWdith lineH:0 maxLine:0];
     _consTitleHeight.constant = titleHeight>17?titleHeight:17;
-    [_lblTitle setAtsWithStr:kMeUnNilStr(str) lineGap:0];
+    [_lblTitle setAtsWithStr:kMeUnNilStr(model.content) lineGap:0];
     
-     _consGridViewHeight.constant = [MENineGridView getDymmaincViewHeightWIth:@[@"",@"",@"",@""]];
-    [_gridView setImageDymamicViewWithArr:@[@"",@"",@"",@""]];
-   
+     _consGridViewHeight.constant = [MENineGridView getDymmaincViewHeightWIth:kMeUnArr(model.images)];
+    [_gridView setImageDymamicViewWithArr:kMeUnArr(model.images)];
+    kMeWEAKSELF
+    _gridView.selectBlock = ^(NSInteger index) {
+        kMeSTRONGSELF
+        strongSelf->_currentIndex = index;
+        YBImageBrowser *browser = [YBImageBrowser new];
+        browser.dataSource = strongSelf;
+        browser.currentIndex = index;
+        [browser show];
+    };
 
-    _consComentHeight.constant = [MEBynamicCommentView getViewHeightWithArrLike:@[] Arrcomment:@[]];
-    [_viewCommentAndLike setUIWithArrLike:@[@"",@""] Arrcomment:@[@"",@"",@"",@"",@"",@""]];
+    _consComentHeight.constant = [MEBynamicCommentView getViewHeightWithArrLike:kMeUnArr(model.praise) Arrcomment:kMeUnArr(model.comment)];
+    [_viewCommentAndLike setUIWithArrLike:kMeUnArr(model.praise) Arrcomment:kMeUnArr(model.comment)];
     [self layoutIfNeeded];
 }
 
-+ (CGFloat)getCellHeightithModel:(id)model{
+- (NSInteger)numberInYBImageBrowser:(YBImageBrowser *)imageBrowser {
+    return _model.images.count;
+}
+- (YBImageBrowserModel *)yBImageBrowser:(YBImageBrowser *)imageBrowser modelForCellAtIndex:(NSInteger)index {
+    NSString *urlStr = [_model.images objectAtIndex:index];
+    YBImageBrowserModel *model = [YBImageBrowserModel new];
+    model.url = [NSURL URLWithString:urlStr];
+    return model;
+}
+- (UIImageView *)imageViewOfTouchForImageBrowser:(YBImageBrowser *)imageBrowser {
+    return [_gridView.arrImageView objectAtIndex:_currentIndex];
+}
+
++ (CGFloat)getCellHeightithModel:(MEBynamicHomeModel *)model{
     CGFloat height = 11+20+7;
-    NSString *str = kMeUnNilStr(@"对撒更好的骨灰级的感觉啊个电话就啊三个打火机噶伤筋动骨回家啊说过的话就撒过的话就撒过后觉得贵卅很简单噶伤感的");
+    NSString *str = kMeUnNilStr(model.content);
     CGFloat titleHeight = [NSAttributedString heightForAtsWithStr:str font:[UIFont systemFontOfSize:14] width:kmainCommentCellWdith lineH:0 maxLine:0];
     height += titleHeight>17?titleHeight:17;
     
-    NSArray *photo = @[@"",@"",@"",@""];
+    NSArray *photo = kMeUnArr(model.images);
     if(photo.count){
         height+= [MENineGridView getDymmaincViewHeightWIth:photo];
         height+=14;
@@ -65,7 +96,7 @@
         height+=14;
     }
     height+=25;
-    height+=[MEBynamicCommentView getViewHeightWithArrLike:@[@"",@""] Arrcomment:@[@"",@"",@"",@"",@"",@""]];
+    height+=[MEBynamicCommentView getViewHeightWithArrLike:kMeUnArr(model.praise) Arrcomment:kMeUnArr(model.comment)];
     return height;
     
 }

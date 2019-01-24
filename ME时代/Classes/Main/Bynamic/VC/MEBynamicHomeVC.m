@@ -9,14 +9,15 @@
 #import "MEBynamicHomeVC.h"
 #import "MEBynamicMainCell.h"
 #import "CLInputToolbar.h"
+#import "MEBynamicHomeModel.h"
 
-@interface MEBynamicHomeVC ()<UITableViewDelegate,UITableViewDataSource>{
-    NSArray *_arrModel;
+@interface MEBynamicHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
+
 }
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) CLInputToolbar *inputToolbar;
-
+@property (nonatomic, strong) ZLRefreshTool         *refresh;
 @end
 
 @implementation MEBynamicHomeVC
@@ -24,19 +25,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"动态";
-    _arrModel = @[@"",@""];
     [self.view addSubview:self.tableView];
+    [self.refresh addRefreshView];
     [self setTextViewToolbar];
 }
+
+#pragma mark - RefreshToolDelegate
+
+- (NSDictionary *)requestParameter{
+    return @{@"token":kMeUnNilStr(kCurrentUser.token),@"tool":@"APP"};
+}
+
+- (void)handleResponse:(id)data{
+    if(![data isKindOfClass:[NSArray class]]){
+        return;
+    }
+    [self.refresh.arrData addObjectsFromArray:[MEBynamicHomeModel mj_objectArrayWithKeyValuesArray:data]];
+}
+
 
 #pragma mark - tableView deleagte and sourcedata
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _arrModel.count;
+    return self.refresh.arrData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    id model = _arrModel[indexPath.row];
+    MEBynamicHomeModel *model = self.refresh.arrData[indexPath.row];
     MEBynamicMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBynamicMainCell class]) forIndexPath:indexPath];
     [cell setUIWithModel:model];
     return cell;
@@ -44,7 +59,7 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-     id model = _arrModel[indexPath.row];
+    MEBynamicHomeModel *model = self.refresh.arrData[indexPath.row];
     return [MEBynamicMainCell getCellHeightithModel:model];
 }
 
@@ -55,12 +70,12 @@
 -(void)setTextViewToolbar {
     self.inputToolbar = [[CLInputToolbar alloc] init];
     self.inputToolbar.textViewMaxLine = 3;
-    self.inputToolbar.fontSize = 20;
+    self.inputToolbar.fontSize = 15;
     self.inputToolbar.placeholder = @"请输入...";
     self.inputToolbar.showMaskView = YES;
-    __weak __typeof(self) weakSelf = self;
+    kMeWEAKSELF
     [self.inputToolbar inputToolbarSendText:^(NSString *text) {
-        __typeof(&*weakSelf) strongSelf = weakSelf;
+        kMeSTRONGSELF
         NSLog(@"%@",strongSelf.inputToolbar.inputText);
         // 清空输入框文字
         [strongSelf.inputToolbar clearText];
@@ -83,6 +98,19 @@
         _tableView.backgroundColor = [UIColor whiteColor];
     }
     return _tableView;
+}
+
+- (ZLRefreshTool *)refresh{
+    if(!_refresh){
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommongetDynamicList)];
+        _refresh.delegate = self;
+        _refresh.isDataInside = YES;
+        [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
+            failView.backgroundColor = [UIColor whiteColor];
+            failView.lblOfNodata.text = @"没有动态";
+        }];
+    }
+    return _refresh;
 }
 
 @end

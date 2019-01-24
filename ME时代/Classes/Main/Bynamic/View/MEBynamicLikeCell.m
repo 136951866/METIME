@@ -7,6 +7,7 @@
 //
 
 #import "MEBynamicLikeCell.h"
+#import "MEBynamicHomeModel.h"
 
 #define kMEBynamicLikeCelllMagin (10+36+10+10+10+10+10+14)
 
@@ -29,17 +30,35 @@
     // Initialization code
 }
 
-- (void)setUIWithModel:(id)model{
-    NSString *str = kMeUnNilStr(@"hank,时代大厦,时代,时代的,说三道四,的撒的撒");
+- (void)setUIWithModel:(NSArray *)arrmodel{
+    NSString *str = @"";
+    for (NSInteger i=0; i<arrmodel.count; i++) {
+        MEBynamicHomepraiseModel *model = arrmodel[i];
+        NSLog(@"%@",model.nick_name);
+        if(i==arrmodel.count-1){
+             str = [str stringByAppendingString:[NSString stringWithFormat:@"%@",kMeUnNilStr(model.nick_name)]];
+        }else{
+             str = [str stringByAppendingString:[NSString stringWithFormat:@"%@,",kMeUnNilStr(model.nick_name)]];
+        }
+    }
+    NSLog(@"%@",str);
     CGFloat titleHeight = [NSAttributedString heightForAtsWithStr:str font:[UIFont systemFontOfSize:14] width:SCREEN_WIDTH-kMEBynamicLikeCelllMagin lineH:0 maxLine:0];
     _consTitleHeight.constant = titleHeight>17?titleHeight:17;
-    _lblTitle.text = nil;
-    _lblTitle.attributedText = [str attributeWithRangeOfString:@"hank:" color:kME466889];
+    [_lblTitle setAtsWithStr:str lineGap:0];
 }
 
-+ (CGFloat)getCellHeightWithhModel:(id)model{
++ (CGFloat)getCellHeightWithhModel:(NSArray *)arrmodel{
     CGFloat height = 8;
-    NSString *str = kMeUnNilStr(@"hank,时代大厦,时代,时代的,说三道四,的撒的撒");
+    NSString *str = @"";
+    for (NSInteger i=0; i<arrmodel.count; i++) {
+        MEBynamicHomepraiseModel *model = arrmodel[i];
+        if(i==arrmodel.count-1){
+             str = [str stringByAppendingString:[NSString stringWithFormat:@"%@",kMeUnNilStr(model.nick_name)]];
+            
+        }else{
+             str = [str stringByAppendingString:[NSString stringWithFormat:@"%@,",kMeUnNilStr(model.nick_name)]];
+        }
+    }
     CGFloat titleHeight = [NSAttributedString heightForAtsWithStr:str font:[UIFont systemFontOfSize:14] width:SCREEN_WIDTH-kMEBynamicLikeCelllMagin lineH:0 maxLine:0];
     height+=titleHeight>17?titleHeight:17;
     return height;

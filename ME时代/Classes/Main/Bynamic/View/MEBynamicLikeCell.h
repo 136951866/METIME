@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MEBynamicLikeCell : UITableViewCell
 
-- (void)setUIWithModel:(id)model;
-+ (CGFloat)getCellHeightWithhModel:(id)model;
+- (void)setUIWithModel:(NSArray *)arrmodel;
++ (CGFloat)getCellHeightWithhModel:(NSArray *)arrmodel;
 
 @end
 

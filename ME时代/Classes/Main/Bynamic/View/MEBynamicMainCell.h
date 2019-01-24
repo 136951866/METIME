@@ -10,9 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MEBynamicHomeModel;
 @interface MEBynamicMainCell : UITableViewCell
-- (void)setUIWithModel:(id)model;
-+ (CGFloat)getCellHeightithModel:(id)model;
+- (void)setUIWithModel:(MEBynamicHomeModel *)model;
++ (CGFloat)getCellHeightithModel:(MEBynamicHomeModel *)model;
 @end
 
 NS_ASSUME_NONNULL_END

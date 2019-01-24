@@ -9,6 +9,7 @@
 #import "MEBynamicCommentView.h"
 #import "MEBynamicCommentCell.h"
 #import "MEBynamicLikeCell.h"
+#import "MEBynamicHomeModel.h"
 
 #define kMEMEBynamicCommentViewW (SCREEN_WIDTH-(10+36+10+10))
 
@@ -58,25 +59,23 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section){
-        id model = _arrComment[indexPath.row];
+        MEBynamicHomecommentModel *model = _arrComment[indexPath.row];
         MEBynamicCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBynamicCommentCell class]) forIndexPath:indexPath];
         [cell setUIWithModel:model];
         return cell;
     }else{
-        id model = _arrLike[indexPath.row];
         MEBynamicLikeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBynamicLikeCell class]) forIndexPath:indexPath];
-        [cell setUIWithModel:model];
+        [cell setUIWithModel:_arrLike];
         return cell;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section){
-        id model = _arrComment[indexPath.row];
+        MEBynamicHomecommentModel *model = _arrComment[indexPath.row];
         return [MEBynamicCommentCell getCellHeightWithhModel:model];
     }else{
-        id model = _arrLike[indexPath.row];
-        return [MEBynamicLikeCell getCellHeightWithhModel:model];
+        return [MEBynamicLikeCell getCellHeightWithhModel:_arrLike];
     }
 }
 
@@ -103,12 +102,11 @@
 
 + (CGFloat )getViewHeightWithArrLike:(NSArray *)arrLike Arrcomment:(NSArray*)arrcomment{
     CGFloat height = 0;
-    for (NSInteger i=0; i<arrLike.count; i++) {
-        id model = arrLike[i];
-        height += [MEBynamicLikeCell getCellHeightWithhModel:model];
+    if(arrLike.count){
+        height += [MEBynamicLikeCell getCellHeightWithhModel:arrLike];
     }
     for (NSInteger i=0; i<arrcomment.count; i++) {
-        id model = arrcomment[i];
+        MEBynamicHomecommentModel *model = arrcomment[i];
         height += [MEBynamicCommentCell getCellHeightWithhModel:model];
     }
     if(arrLike.count || arrcomment.count){
