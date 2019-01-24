@@ -479,6 +479,8 @@
 		36BF3E4A21F94CF300C8F856 /* MEBynamicHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BF3E4921F94CF300C8F856 /* MEBynamicHomeModel.m */; };
 		36BF3E4D21F9921000C8F856 /* MECouponMoneyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BF3E4C21F9921000C8F856 /* MECouponMoneyModel.m */; };
 		36BF3E5021F9974900C8F856 /* MECouponDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BF3E4F21F9974900C8F856 /* MECouponDetailModel.m */; };
+		36BF3E5321F9A58600C8F856 /* METhridNoticeProductDetailsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BF3E5221F9A58500C8F856 /* METhridNoticeProductDetailsHeaderView.m */; };
+		36BF3E5521F9A5A800C8F856 /* METhridNoticeProductDetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36BF3E5421F9A5A800C8F856 /* METhridNoticeProductDetailsHeaderView.xib */; };
 		36C0198D214260D20048734E /* MEProductListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C0198C214260D20048734E /* MEProductListVC.m */; };
 		36C01991214262230048734E /* MEProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C0198F214262230048734E /* MEProductCell.m */; };
 		36C01992214262230048734E /* MEProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36C01990214262230048734E /* MEProductCell.xib */; };
@@ -1480,6 +1482,9 @@
 		36BF3E4C21F9921000C8F856 /* MECouponMoneyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECouponMoneyModel.m; sourceTree = "<group>"; };
 		36BF3E4E21F9974900C8F856 /* MECouponDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECouponDetailModel.h; sourceTree = "<group>"; };
 		36BF3E4F21F9974900C8F856 /* MECouponDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECouponDetailModel.m; sourceTree = "<group>"; };
+		36BF3E5121F9A58500C8F856 /* METhridNoticeProductDetailsHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = METhridNoticeProductDetailsHeaderView.h; sourceTree = "<group>"; };
+		36BF3E5221F9A58500C8F856 /* METhridNoticeProductDetailsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = METhridNoticeProductDetailsHeaderView.m; sourceTree = "<group>"; };
+		36BF3E5421F9A5A800C8F856 /* METhridNoticeProductDetailsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = METhridNoticeProductDetailsHeaderView.xib; sourceTree = "<group>"; };
 		36C0198B214260D20048734E /* MEProductListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEProductListVC.h; sourceTree = "<group>"; };
 		36C0198C214260D20048734E /* MEProductListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEProductListVC.m; sourceTree = "<group>"; };
 		36C0198E214262230048734E /* MEProductCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEProductCell.h; sourceTree = "<group>"; };
@@ -2338,6 +2343,9 @@
 				3630AC3B21F6F296006C3F8D /* METhridProductDetailsHeaderView.h */,
 				3630AC3C21F6F296006C3F8D /* METhridProductDetailsHeaderView.m */,
 				3630AC3E21F6F2A8006C3F8D /* METhridProductDetailsHeaderView.xib */,
+				36BF3E5121F9A58500C8F856 /* METhridNoticeProductDetailsHeaderView.h */,
+				36BF3E5221F9A58500C8F856 /* METhridNoticeProductDetailsHeaderView.m */,
+				36BF3E5421F9A5A800C8F856 /* METhridNoticeProductDetailsHeaderView.xib */,
 				3630AC4021F6F827006C3F8D /* METhridProductDetailsRushCell.h */,
 				3630AC4121F6F827006C3F8D /* METhridProductDetailsRushCell.m */,
 				3630AC4221F6F827006C3F8D /* METhridProductDetailsRushCell.xib */,
@@ -4203,6 +4211,7 @@
 				360034C721AE8A6600BAF337 /* MEVisterSectionView.xib in Resources */,
 				3695C3AD21D4C3E200EDBCDF /* MECouponOrderHeaderView.xib in Resources */,
 				363007142148BCBA00C88264 /* MEDistrbutionMyTeamCell.xib in Resources */,
+				36BF3E5521F9A5A800C8F856 /* METhridNoticeProductDetailsHeaderView.xib in Resources */,
 				36B77BB821DDE76B00B4A207 /* MECoupleHomeHeaderView.xib in Resources */,
 				3630AC4E21F70449006C3F8D /* METhridProductDetailsCommentCell.xib in Resources */,
 				360AF11C21AFE7A10039AB79 /* MEVistorPathMainCell.xib in Resources */,
@@ -4445,6 +4454,7 @@
 				36F6AF4D21F8546800CF6684 /* MEBynamicCommentCell.m in Sources */,
 				360034B621AE823700BAF337 /* AATitle.m in Sources */,
 				36445B3B21C2054600CDBCBA /* MEClerkModel.m in Sources */,
+				36BF3E5321F9A58600C8F856 /* METhridNoticeProductDetailsHeaderView.m in Sources */,
 				3630070F2148B93300C88264 /* MEDistributionMoneyVC.m in Sources */,
 				360034BA21AE823700BAF337 /* AAMarker.m in Sources */,
 				366019C221E878ED00F1BB37 /* MEMineMyActityDetailVC.m in Sources */,

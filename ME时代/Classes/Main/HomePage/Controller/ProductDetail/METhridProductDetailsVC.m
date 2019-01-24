@@ -8,6 +8,7 @@
 
 #import "METhridProductDetailsVC.h"
 #import "METhridProductDetailsHeaderView.h"
+#import "METhridNoticeProductDetailsHeaderView.h"
 #import "METhridProductDetailsRushCell.h"
 #import "METhridProductDetailsTipCell.h"
 #import "METhridProductDetailsCommentCell.h"
@@ -41,7 +42,8 @@ typedef NS_ENUM(NSUInteger, kpurchaseViewType) {
 
 @property (nonatomic, strong) UITableView           *tableView;
 @property (nonatomic, strong) MEProductDetailsBottomView *bottomView;
-@property (nonatomic, strong) METhridProductDetailsHeaderView *headerView;;
+@property (nonatomic, strong) METhridProductDetailsHeaderView *headerView;
+@property (nonatomic, strong) METhridNoticeProductDetailsHeaderView *normalheaderView;;
 @property (strong, nonatomic) TDWebViewCell                  *webCell;
 @property (nonatomic, strong) UIView *tableViewBottomView;
 @property (nonatomic, strong) MESkuBuyView *purchaseView;
@@ -101,10 +103,27 @@ kTDWebViewCellDidFinishLoadNotificationMethod
     _model = model;
     _selectType = kpurchaseSelectSkuViewType;
     [self.view addSubview:self.tableView];
-    self.tableView.tableHeaderView = self.headerView;
+    switch (_type) {
+        case METhridProductDetailsVCRudeType:{
+            self.tableView.tableHeaderView = self.headerView;
+            [self.headerView setUIWithModel:model];
+            [self.headerView downSecondHandle:@""];
+            }
+            break;
+        case METhridProductDetailsVCNoticeType:{
+            self.tableView.tableHeaderView = self.normalheaderView;
+            [self.normalheaderView setUINoticeWithModel:model];
+        }
+            break;
+        case METhridProductDetailsVCNormalType:{
+            self.tableView.tableHeaderView = self.normalheaderView;
+            [self.normalheaderView setNormalUIWithModel:model];
+        }
+            break;
+        default:
+            break;
+    }
     self.tableView.tableFooterView = self.tableViewBottomView;
-    [self.headerView setUIWithModel:model];
-    [self.headerView downSecondHandle:@""];
     [self.view addSubview:self.bottomView];
     self.bottomView.is_clerk_share = [_model.is_clerk_share integerValue];
     self.bottomView.productId = @(_model.product_id).description;
@@ -123,8 +142,25 @@ kTDWebViewCellDidFinishLoadNotificationMethod
         kMeSTRONGSELF
         switch (strongSelf->_selectType) {
             case kpurchaseSelectSkuViewType:{
-               [strongSelf.headerView setUIWithModel:strongSelf->_model];
-                [strongSelf.tableView reloadData];
+                switch (strongSelf->_type) {
+                    case METhridProductDetailsVCRudeType:{
+                         [strongSelf.headerView setUIWithModel:strongSelf->_model];
+                    }
+                        break;
+                    case METhridProductDetailsVCNoticeType:{
+                      
+                        [strongSelf.normalheaderView setUINoticeWithModel:strongSelf->_model];
+                    }
+                        break;
+                    case METhridProductDetailsVCNormalType:{
+                   
+                        [strongSelf.normalheaderView setNormalUIWithModel:strongSelf->_model];
+                    }
+                        break;
+                    default:
+                        break;
+                }
+               [strongSelf.tableView reloadData];
             }
                 break;
             case kpurchaseViewBuyType:{
@@ -163,7 +199,24 @@ kTDWebViewCellDidFinishLoadNotificationMethod
     };
     self.purchaseView.sucessGetStoreBlock = ^{
         kMeSTRONGSELF
-        [strongSelf.headerView setUIWithModel:strongSelf->_model];
+        switch (strongSelf->_type) {
+            case METhridProductDetailsVCRudeType:{
+                [strongSelf.headerView setUIWithModel:strongSelf->_model];
+            }
+                break;
+            case METhridProductDetailsVCNoticeType:{
+                
+                [strongSelf.normalheaderView setUINoticeWithModel:strongSelf->_model];
+            }
+                break;
+            case METhridProductDetailsVCNormalType:{
+                
+                [strongSelf.normalheaderView setNormalUIWithModel:strongSelf->_model];
+            }
+                break;
+            default:
+                break;
+        }
     };
     [MBProgressHUD showMessage:@"获取详情中" toView:self.view];
     [MEPublicNetWorkTool postGoodsListWithType:MEGoodsTypeNetCommendStyle successBlock:^(ZLRequestResponse *responseObject) {
@@ -193,7 +246,7 @@ kTDWebViewCellDidFinishLoadNotificationMethod
     if(indexPath.section == 0){
         switch (indexPath.row) {
             case 0: {
-                if(kMeUnNilStr(_model.rudeTip).length){
+                if(kMeUnNilStr(_model.rudeTip).length && _type == METhridProductDetailsVCRudeType){
                     METhridProductDetailsRushCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([METhridProductDetailsRushCell class]) forIndexPath:indexPath];
                     cell.lblTitle.text = kMeUnNilStr(_model.rudeTip);
                     return cell;
@@ -253,7 +306,7 @@ kTDWebViewCellDidFinishLoadNotificationMethod
     if(indexPath.section==0){
         switch (indexPath.row) {
             case 0: {
-                if(kMeUnNilStr(_model.rudeTip).length){
+                if(kMeUnNilStr(_model.rudeTip).length && _type == METhridProductDetailsVCRudeType){
                     return kMEThridProductDetailsRushCellHeight;
                 }
             }
@@ -430,6 +483,19 @@ kTDWebViewCellDidFinishLoadNotificationMethod
         _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [METhridProductDetailsHeaderView getHeightWithModel:_model]);
     }
     return _headerView;
+}
+
+- (METhridNoticeProductDetailsHeaderView *)normalheaderView{
+    if(!_normalheaderView){
+        _normalheaderView = [[[NSBundle mainBundle]loadNibNamed:@"METhridNoticeProductDetailsHeaderView" owner:nil options:nil] lastObject];
+        if(_type == METhridProductDetailsVCNormalType){
+            _normalheaderView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [METhridNoticeProductDetailsHeaderView getNormalHeightWithModel:_model]);
+        }
+        else if(_type == METhridProductDetailsVCNoticeType){
+            _normalheaderView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [METhridNoticeProductDetailsHeaderView getNoticeHeightWithModel:_model]);
+        }
+    }
+    return _normalheaderView;
 }
 
 - (UIView *)tableViewBottomView{

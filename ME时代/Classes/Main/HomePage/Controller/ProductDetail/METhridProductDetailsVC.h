@@ -9,13 +9,18 @@
 #import "MEBaseVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+typedef NS_ENUM(NSUInteger, METhridProductDetailsVCType) {
+    METhridProductDetailsVCNormalType,
+    METhridProductDetailsVCNoticeType,
+    METhridProductDetailsVCRudeType,
+};
 @interface METhridProductDetailsVC : MEBaseVC
 
 - (instancetype)initWithId:(NSInteger)detailsId;
 //来自好友分享
 @property(nonatomic, copy) NSString *uid;
 @property (nonatomic, assign) BOOL isGift;
+@property (nonatomic, assign) METhridProductDetailsVCType type;
 
 @end
 

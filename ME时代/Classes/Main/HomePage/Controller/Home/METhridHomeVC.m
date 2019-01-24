@@ -43,7 +43,7 @@
     self.tableView.tableHeaderView = self.headerView;
     [self.headerView setUIWithModel:@[]];
     [self.refresh addRefreshView];
-#warning <#message#>
+#warning 
     MEShoppingMallVC *vc = [[MEShoppingMallVC alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }

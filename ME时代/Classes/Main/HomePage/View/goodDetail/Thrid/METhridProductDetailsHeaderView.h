@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setUIWithModel:(MEGoodDetailModel *)model;
 + (CGFloat)getHeightWithModel:(MEGoodDetailModel *)model;
 -(void)downSecondHandle:(NSString *)aTimeString;
+
 @end
 
 NS_ASSUME_NONNULL_END

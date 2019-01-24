@@ -32,7 +32,7 @@
 #pragma mark - RefreshToolDelegate
 
 - (NSDictionary *)requestParameter{
-    return @{@"token":kMeUnNilStr(kCurrentUser.token),@"tool":@"APP"};
+    return @{@"token":kMeUnNilStr(kCurrentUser.token),@"tool":@"2"};
 }
 
 - (void)handleResponse:(id)data{
