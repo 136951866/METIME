@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consComentHeight;
 @property (strong, nonatomic) MEBynamicHomeModel *model;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnLike;
 
 @end
 
@@ -43,9 +44,10 @@
 - (void)setUIWithModel:(MEBynamicHomeModel *)model{
     _model = model;
     _currentIndex = 0;
-    _imgHeader.image = [UIImage imageNamed:@"icon-wgvilogo"];
-//    kSDLoadImg(_imgHeader, kMeUnNilStr(@""));
-    _lblName.text = @"ME时代优选";
+    _btnLike.selected =  model.praise_over;
+//    _imgHeader.image = [UIImage imageNamed:@"icon-wgvilogo"];
+    kSDLoadImg(_imgHeader, kMeUnNilStr(model.header_pic));
+    _lblName.text = kMeUnNilStr(model.author);
     _lblTime.text = kMeUnNilStr(model.createdAt);
     NSString *str = kMeUnNilStr(model.content);
     CGFloat titleHeight = [NSAttributedString heightForAtsWithStr:str font:[UIFont systemFontOfSize:14] width:kmainCommentCellWdith lineH:0 maxLine:0];
@@ -81,6 +83,21 @@
 - (UIImageView *)imageViewOfTouchForImageBrowser:(YBImageBrowser *)imageBrowser {
     return [_gridView.arrImageView objectAtIndex:_currentIndex];
 }
+
+- (IBAction)shareAction:(UIButton *)sender {
+    kMeCallBlock(_shareBlock);
+}
+
+- (IBAction)likeAction:(UIButton *)sender {
+    if(!sender.selected){
+        kMeCallBlock(_LikeBlock);
+    }
+}
+
+- (IBAction)commentAction:(UIButton *)sender {
+    kMeCallBlock(_CommentBlock);
+}
+
 
 + (CGFloat)getCellHeightithModel:(MEBynamicHomeModel *)model{
     CGFloat height = 11+20+7;

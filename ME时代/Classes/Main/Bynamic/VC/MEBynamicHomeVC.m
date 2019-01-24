@@ -12,8 +12,7 @@
 #import "MEBynamicHomeModel.h"
 
 @interface MEBynamicHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
-
-}
+    NSInteger _comentIndex;}
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) CLInputToolbar *inputToolbar;
@@ -54,17 +53,61 @@
     MEBynamicHomeModel *model = self.refresh.arrData[indexPath.row];
     MEBynamicMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBynamicMainCell class]) forIndexPath:indexPath];
     [cell setUIWithModel:model];
+    kMeWEAKSELF
+    cell.shareBlock = ^{
+        kMeSTRONGSELF
+        [strongSelf shareAction];
+    };
+    cell.LikeBlock = ^{
+        kMeSTRONGSELF
+        [strongSelf likeAction:indexPath.row];
+    };
+    cell.CommentBlock = ^{
+        kMeSTRONGSELF
+        [strongSelf commentAction:indexPath.row];
+    };
     return cell;
 }
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     MEBynamicHomeModel *model = self.refresh.arrData[indexPath.row];
     return [MEBynamicMainCell getCellHeightithModel:model];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)shareAction{
+    
+}
+
+- (void)commentAction:(NSInteger)index{
+    if(index>self.refresh.arrData.count){
+        return;
+    }
+    _comentIndex = index;
     [self.inputToolbar showToolbar];
+    
+}
+
+- (void)likeAction:(NSInteger)index{
+    if(index>self.refresh.arrData.count){
+        return;
+    }
+    MEBynamicHomeModel *model = self.refresh.arrData[index];
+    kMeWEAKSELF
+    [MEPublicNetWorkTool postdynamicPraiselWithdynamicId:kMeUnNilStr(model.idField) successBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        dispatch_async(dispatch_get_main_queue(), ^{
+            model.praise_over = YES;
+            NSMutableArray *arrPar = [NSMutableArray array];
+            MEBynamicHomepraiseModel *modelp = [[MEBynamicHomepraiseModel alloc]init];
+            modelp.nick_name = kMeUnNilStr(kCurrentUser.name);
+            [arrPar addObjectsFromArray:kMeUnArr(model.praise)];
+            [arrPar addObject:modelp];
+            model.praise = [NSArray arrayWithArray:arrPar];
+           [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        });
+    } failure:^(id object) {
+        
+    }];
 }
 
 -(void)setTextViewToolbar {
@@ -77,8 +120,25 @@
     [self.inputToolbar inputToolbarSendText:^(NSString *text) {
         kMeSTRONGSELF
         NSLog(@"%@",strongSelf.inputToolbar.inputText);
-        // 清空输入框文字
-        [strongSelf.inputToolbar clearText];
+        MEBynamicHomeModel *model = strongSelf.refresh.arrData[strongSelf->_comentIndex];
+        [MEPublicNetWorkTool postdynamicCommentdynamicId:kMeUnNilStr(model.idField) content:kMeUnNilStr(strongSelf.inputToolbar.inputText) successBlock:^(ZLRequestResponse *responseObject) {
+ 
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MEBynamicHomecommentModel *modelc = [MEBynamicHomecommentModel new];
+                modelc.nick_name = kMeUnNilStr(kCurrentUser.name);
+                modelc.content = kMeUnNilStr(strongSelf.inputToolbar.inputText);
+                NSMutableArray *arrPar = [NSMutableArray array];
+                [arrPar addObjectsFromArray:kMeUnArr(model.comment)];
+                [arrPar addObject:modelc];
+                model.comment = [NSArray arrayWithArray:arrPar];
+                [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:strongSelf->_comentIndex inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                [strongSelf.inputToolbar clearText];
+                [strongSelf.inputToolbar dissmissToolbar];
+            });
+
+        } failure:^(id object) {
+            
+        }];
     }];
 }
 

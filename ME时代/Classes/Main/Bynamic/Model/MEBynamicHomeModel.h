@@ -37,9 +37,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray * images;
 @property (nonatomic, strong) NSArray * praise;
 @property (nonatomic, assign) NSInteger status;
+@property (nonatomic, assign) BOOL praise_over;
 @property (nonatomic, strong) NSString * title;
 @property (nonatomic, strong) NSString * updatedAt;
-
+@property (nonatomic, strong) NSString * author;
+@property (nonatomic, strong) NSString * header_pic;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -24,6 +24,15 @@
 + (void)getUserGetTokenByFourWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 
 /*********************************************/
+#pragma makr - 动态
+//点赞
++ (void)postdynamicPraiselWithdynamicId:(NSString *)dynamic_id successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+//评论
++ (void)postdynamicCommentdynamicId:(NSString *)dynamic_id content:(NSString*)content successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+/*********************************************/
+
+
+/*********************************************/
 #pragma makr - pinduoduo
 //多多商品详情
 + (void)postPinDuoduoGoodsDetailWithGoodsId:(NSString *)goodsId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;

@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MEBynamicMainCell : UITableViewCell
 - (void)setUIWithModel:(MEBynamicHomeModel *)model;
 + (CGFloat)getCellHeightithModel:(MEBynamicHomeModel *)model;
+@property (nonatomic, copy) kMeBasicBlock shareBlock;
+@property (nonatomic, copy) kMeBasicBlock LikeBlock;
+@property (nonatomic, copy) kMeBasicBlock CommentBlock;
 @end
 
 NS_ASSUME_NONNULL_END

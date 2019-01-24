@@ -33,11 +33,14 @@
 
 - (void)setSubView{
     [self addSubview:self.tableView];
+    UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(20, 0, 10, 7)];
+    img.image = [UIImage imageNamed:@"arrowCommon"];
+    [self addSubview:img];
 }
 
 - (void)setUIWithArrLike:(NSArray *)arrLike Arrcomment:(NSArray*)arrcomment{
     CGFloat height = [MEBynamicCommentView getViewHeightWithArrLike:arrLike Arrcomment:arrcomment];
-    self.tableView.frame = CGRectMake(0, 0, kMEMEBynamicCommentViewW, height);
+    self.tableView.frame = CGRectMake(0, 7, kMEMEBynamicCommentViewW, height);
     _arrLike = arrLike;
     _arrComment = arrcomment;
     [self.tableView reloadData];
@@ -82,7 +85,7 @@
 
 - (UITableView *)tableView{
     if(!_tableView){
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kMEMEBynamicCommentViewW, self.height) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 7, kMEMEBynamicCommentViewW, self.height) style:UITableViewStylePlain];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEBynamicLikeCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEBynamicLikeCell class])];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEBynamicCommentCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEBynamicCommentCell class])];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -110,7 +113,7 @@
         height += [MEBynamicCommentCell getCellHeightWithhModel:model];
     }
     if(arrLike.count || arrcomment.count){
-        height+=8;
+        height+=8+7;
     }
     return height;
 }

@@ -72,6 +72,9 @@
                             <constraint firstAttribute="width" constant="32" id="Bmh-wK-OBg"/>
                         </constraints>
                         <state key="normal" image="dynamicShare"/>
+                        <connections>
+                            <action selector="shareAction:" destination="jf8-r8-qz8" eventType="touchUpInside" id="6om-Nc-0H5"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLA-1h-SFt">
                         <rect key="frame" x="238" y="193.5" width="32" height="22"/>
@@ -80,6 +83,9 @@
                         </constraints>
                         <state key="normal" image="dynamicLike"/>
                         <state key="selected" image="dynamicLikeS"/>
+                        <connections>
+                            <action selector="likeAction:" destination="jf8-r8-qz8" eventType="touchUpInside" id="PBv-qR-f4g"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yq6-HL-NRY">
                         <rect key="frame" x="198" y="193.5" width="32" height="22"/>
@@ -87,6 +93,9 @@
                             <constraint firstAttribute="width" constant="32" id="vCt-yl-x2S"/>
                         </constraints>
                         <state key="normal" image="dynamicComment"/>
+                        <connections>
+                            <action selector="commentAction:" destination="jf8-r8-qz8" eventType="touchUpInside" id="CD8-TU-ywt"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -115,6 +124,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnLike" destination="hLA-1h-SFt" id="g92-nd-ydJ"/>
                 <outlet property="consComentHeight" destination="ZGp-qc-jk9" id="sbM-lK-XXk"/>
                 <outlet property="consGridViewHeight" destination="bBb-jc-vDl" id="QIP-QG-T5e"/>
                 <outlet property="consTitleHeight" destination="tFY-lp-kd8" id="bsj-su-PFB"/>

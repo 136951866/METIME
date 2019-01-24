@@ -40,6 +40,10 @@
 #pragma makr - 动态
 //动态列表
 #define MEIPcommongetDynamicList @"common/dynamic/getDynamicList"
+//点赞
+#define MEIPcommongetDynamicpraise @"common/dynamic/praise"
+//评论
+#define MEIPcommongetDynamiccommentt @"common/dynamic/comment"
 
 /*********************************************/
 
