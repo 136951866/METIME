@@ -60,6 +60,16 @@
 
 /*********************************************/
 #pragma makr - pinduoduo
+//佣金祥情
++ (void)postGetPinduoduoBrokerageDetailBaseWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{@"token":kMeUnNilStr(kCurrentUser.token)};
+    NSString *url = kGetApiWithUrl(MEIPcommonduoduokeGetBrokerageDetailBase);
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        kMeCallBlock(failure,error);
+    }];
+}
 
 + (void)postPinDuoduoGoodsDetailWithGoodsId:(NSString *)goodsId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"goods_id_list":[NSString stringWithFormat:@"[%@]",kMeUnNilStr(goodsId)],

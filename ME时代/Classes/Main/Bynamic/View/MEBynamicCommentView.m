@@ -39,8 +39,9 @@
 }
 
 - (void)setUIWithArrLike:(NSArray *)arrLike Arrcomment:(NSArray*)arrcomment{
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     CGFloat height = [MEBynamicCommentView getViewHeightWithArrLike:arrLike Arrcomment:arrcomment];
-    self.tableView.frame = CGRectMake(0, 7, kMEMEBynamicCommentViewW, height);
+    self.tableView.frame = CGRectMake(0, 7, kMEMEBynamicCommentViewW, height-7);
     _arrLike = arrLike;
     _arrComment = arrcomment;
     [self.tableView reloadData];
@@ -97,6 +98,7 @@
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.width, 8)];
         view.backgroundColor = [UIColor colorWithHexString:@"f4f5f7"];
         _tableView.tableHeaderView = view;
+        _tableView.tableFooterView = [UIView new];
         _tableView.cornerRadius = 2;
         _tableView.clipsToBounds = YES;
     }

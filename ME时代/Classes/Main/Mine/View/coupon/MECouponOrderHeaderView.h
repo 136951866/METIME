@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 
 const static CGFloat kMECouponOrderHeaderViewHeight = 160;
-
+@class MECouponDetailModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MECouponOrderHeaderView : UIView
 
-- (void)setUIWithModel:(id)model block:(kMeBasicBlock)block;
+- (void)setUIWithModel:(MECouponDetailModel *)model block:(kMeBasicBlock)block;
 
 @end
 

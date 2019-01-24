@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 
 const static CGFloat kMECouponOrderCellHeight = 144;
-
+@class MECouponMoneyModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MECouponOrderCell : UITableViewCell
 
-- (void)setUIWithModel:(id)model;
+- (void)setUIWithModel:(MECouponMoneyModel *)model;
 
 @end
 

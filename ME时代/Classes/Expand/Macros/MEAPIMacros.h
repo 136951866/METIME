@@ -55,6 +55,10 @@
 #define MEIPcommonduoduokeGetgetGoodsInfo @"common/duoduoke/getGoodsInfo"
 //多多进宝推广链接生成
 #define MEIPcommonduoduokegoodsPromotionUrlGenerate @"common/duoduoke/goodsPromotionUrlGenerate"
+//佣金祥情--商品
+#define MEIPcommonduoduokeGetBrokerageDetailGoods @"common/duoduoke/getBrokerageDetailGoods"
+//佣金祥情
+#define MEIPcommonduoduokeGetBrokerageDetailBase @"common/duoduoke/getBrokerageDetailBase"
 /*********************************************/
 
 

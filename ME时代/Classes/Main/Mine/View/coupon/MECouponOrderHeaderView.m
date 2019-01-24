@@ -7,13 +7,14 @@
 //
 
 #import "MECouponOrderHeaderView.h"
+#import "MECouponDetailModel.h"
 
 @interface MECouponOrderHeaderView(){
     kMeBasicBlock _block;
 }
 //可提现
 @property (weak, nonatomic) IBOutlet UILabel *lblCanUserCommsion;
-//s已结算
+//已结算
 @property (weak, nonatomic) IBOutlet UILabel *lblUsedCommsion;
 //未结算
 @property (weak, nonatomic) IBOutlet UILabel *lblNotUseCommsion;
@@ -23,10 +24,10 @@
 
 @implementation MECouponOrderHeaderView
 
-- (void)setUIWithModel:(id)model block:(kMeBasicBlock)block{
-    _lblCanUserCommsion.text = kMeUnNilStr(@"");
-    _lblUsedCommsion.text = kMeUnNilStr(@"");
-    _lblNotUseCommsion.text = kMeUnNilStr(@"");
+- (void)setUIWithModel:(MECouponDetailModel *)model block:(kMeBasicBlock)block{
+    _lblCanUserCommsion.text = @"0";
+    _lblUsedCommsion.text = [MECommonTool changeformatterWithFen:@(model.finish_promotion_amount)];
+    _lblNotUseCommsion.text = [MECommonTool changeformatterWithFen:@(model.unfinish_promotion_amount)];
     _block = block;
 }
 

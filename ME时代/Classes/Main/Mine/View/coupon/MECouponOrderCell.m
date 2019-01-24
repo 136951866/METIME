@@ -7,6 +7,7 @@
 //
 
 #import "MECouponOrderCell.h"
+#import "MECouponMoneyModel.h"
 
 @interface MECouponOrderCell()
 @property (weak, nonatomic) IBOutlet UIImageView *imgPic;
@@ -25,12 +26,13 @@
     // Initialization code
 }
 
-- (void)setUIWithModel:(id)model{
-    kSDLoadImg(_imgPic, @"");
-    _lblTitle.text = kMeUnNilStr(@"");
-    _lblTime.text = [NSString stringWithFormat:@"下单时间:%@",kMeUnNilStr(@"")];
-    _lblPrice.text =  [NSString stringWithFormat:@"消费金额¥%@",@(kMeUnNilStr(@"11.00").floatValue)];
-    _lblCommission.text = [NSString stringWithFormat:@"佣金估计¥%@",@(kMeUnNilStr(@"11.00").floatValue)];
+- (void)setUIWithModel:(MECouponMoneyModel *)model{
+    kSDLoadImg(_imgPic, kMeUnNilStr(model.goods_thumbnail_url));
+    _lblTitle.text = kMeUnNilStr(model.goods_name);
+    _lblTime.text = [NSString stringWithFormat:@"下单时间:%@",kMeUnNilStr(model.created_at)];
+    
+    _lblPrice.text =  [NSString stringWithFormat:@"消费金额¥%@",[MECommonTool changeformatterWithFen:@(model.order_amount)]];
+    _lblCommission.text = [NSString stringWithFormat:@"佣金估计¥%@",[MECommonTool changeformatterWithFen:@(model.promotion_rate)]];
 }
 
 @end

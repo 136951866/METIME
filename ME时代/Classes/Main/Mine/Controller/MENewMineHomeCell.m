@@ -25,6 +25,7 @@
 #import "MEPosterListVC.h"
 #import "MEArticelVC.h"
 #import "MEVisiterHomeVC.h"
+#import "MECouponOrderVC.h"
 
 @interface MENewMineHomeCell()<UICollectionViewDelegate,UICollectionViewDataSource>{
     NSArray *_arrModel;
@@ -122,6 +123,11 @@
             break;
         case MeMyArticel:{
             MEArticelVC *mobile = [[MEArticelVC alloc]init];
+            [homeVc.navigationController pushViewController:mobile animated:YES];
+        }
+            break;
+        case MeCouponMoney:{
+            MECouponOrderVC *mobile = [[MECouponOrderVC alloc]init];
             [homeVc.navigationController pushViewController:mobile animated:YES];
         }
             break;

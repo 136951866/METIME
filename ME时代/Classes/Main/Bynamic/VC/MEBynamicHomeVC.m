@@ -150,11 +150,11 @@
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEBynamicMainCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEBynamicMainCell class])];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
-        _tableView.tableFooterView = [UIView new];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
         view.backgroundColor = kMEededed;
+        _tableView.tableFooterView = [UIView new];//view;
         _tableView.backgroundColor = [UIColor whiteColor];
     }
     return _tableView;

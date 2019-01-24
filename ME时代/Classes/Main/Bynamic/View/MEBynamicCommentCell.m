@@ -23,7 +23,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = 0;
-    self.separatorInset = UIEdgeInsetsMake(0, 0, 0, self.bounds.size.width);
+//    self.separatorInset = UIEdgeInsetsMake(0, 0, 0, self.bounds.size.width);
     // Initialization code
 }
 
@@ -31,7 +31,9 @@
     NSString *str = [NSString stringWithFormat:@"%@:%@",kMeUnNilStr(model.nick_name),kMeUnNilStr(model.content)];
     CGFloat titleHeight = [NSAttributedString heightForAtsWithStr:str font:[UIFont systemFontOfSize:14] width:SCREEN_WIDTH-kMEBynamicCommentCellMagin lineH:0 maxLine:0];
     _consTitleHeight.constant = titleHeight>17?titleHeight:17;
+//    [_lblTitle setAtsWithStr:str lineGap:0];
     _lblTitle.text = nil;
+    _lblTitle.lineBreakMode = UILineBreakModeCharacterWrap;
     _lblTitle.attributedText = [str attributeWithRangeOfString:[NSString stringWithFormat:@"%@:",kMeUnNilStr(model.nick_name)] color:kME466889];
     
 }

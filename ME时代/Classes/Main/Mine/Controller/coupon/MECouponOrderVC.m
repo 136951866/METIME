@@ -9,8 +9,12 @@
 #import "MECouponOrderVC.h"
 #import "MECouponOrderCell.h"
 #import "MECouponOrderHeaderView.h"
+#import "MECouponMoneyModel.h"
+#import "MECouponDetailModel.h"
 
-@interface MECouponOrderVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>
+@interface MECouponOrderVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
+    MECouponDetailModel *_modeldatil;
+}
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ZLRefreshTool         *refresh;
@@ -23,12 +27,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.title = @"淘优惠卷明细";
+    self.title = @"优惠卷明细";
     self.view.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
-    [self.headerView setUIWithModel:@"" block:^{
-        
-    }];
     self.tableView.tableHeaderView = self.headerView;
     [self.view addSubview:self.tableView];
     [self.refresh addRefreshView];
@@ -38,15 +38,32 @@
 #pragma mark - RefreshToolDelegate
 
 - (NSDictionary *)requestParameter{
-    [self.refresh.arrData addObjectsFromArray:@[@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@"",@""]];
-    return @{};
+    if(self.refresh.pageIndex == 1){
+        [self requestNet];
+    }
+    return @{@"token":kMeUnNilStr(kCurrentUser.token)};
+}
+
+- (void)requestNet{
+    kMeWEAKSELF
+    [MEPublicNetWorkTool postGetPinduoduoBrokerageDetailBaseWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        if([responseObject.data isKindOfClass:[NSDictionary class]]){
+            strongSelf->_modeldatil = [MECouponDetailModel mj_objectWithKeyValues:responseObject.data];
+            [strongSelf->_headerView setUIWithModel:strongSelf->_modeldatil block:^{
+                
+            }];
+        }
+    } failure:^(id object) {
+        
+    }];
 }
 
 - (void)handleResponse:(id)data{
     if(![data isKindOfClass:[NSArray class]]){
         return;
     }
-    [self.refresh.arrData addObjectsFromArray:[NSObject mj_objectArrayWithKeyValuesArray:data]];
+    [self.refresh.arrData addObjectsFromArray:[MECouponMoneyModel mj_objectArrayWithKeyValuesArray:data]];
 }
 
 
@@ -57,9 +74,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    id model = self.refresh.arrData[indexPath.row];
+    MECouponMoneyModel *model = self.refresh.arrData[indexPath.row];
     MECouponOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECouponOrderCell class]) forIndexPath:indexPath];
-    [cell setUIWithModel:@""];
+    [cell setUIWithModel:model];
     return cell;
 }
 
@@ -86,7 +103,7 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(@"")];
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonduoduokeGetBrokerageDetailGoods)];
         _refresh.delegate = self;
 //        _refresh.showFailView = NO;
         _refresh.isDataInside = YES;

@@ -31,15 +31,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSArray * comment;
 @property (nonatomic, strong) NSString * content;
-@property (nonatomic, strong) NSString * createdAt;
-@property (nonatomic, strong) NSString * deletedAt;
+@property (nonatomic, strong) NSString * created_at;
+@property (nonatomic, strong) NSString * deleted_at;
 @property (nonatomic, assign) NSString *idField;
 @property (nonatomic, strong) NSArray * images;
 @property (nonatomic, strong) NSArray * praise;
 @property (nonatomic, assign) NSInteger status;
 @property (nonatomic, assign) BOOL praise_over;
 @property (nonatomic, strong) NSString * title;
-@property (nonatomic, strong) NSString * updatedAt;
+@property (nonatomic, strong) NSString * updated_at;
 @property (nonatomic, strong) NSString * author;
 @property (nonatomic, strong) NSString * header_pic;
 @end

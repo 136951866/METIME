@@ -34,6 +34,8 @@
 
 /*********************************************/
 #pragma makr - pinduoduo
+//佣金祥情
++ (void)postGetPinduoduoBrokerageDetailBaseWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //多多商品详情
 + (void)postPinDuoduoGoodsDetailWithGoodsId:(NSString *)goodsId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //多多进宝推广链接生成

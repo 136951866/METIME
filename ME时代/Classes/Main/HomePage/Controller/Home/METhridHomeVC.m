@@ -15,7 +15,7 @@
 #import "MECoupleHomeMainGoodGoodsCell.h"
 #import "METhridHomeNavView.h"
 #import "MEShoppingMallVC.h"
-
+#import "MECoupleHomeVC.h"
 
 
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{

@@ -51,7 +51,11 @@
     
     NSMutableAttributedString *attributedString = [NSMutableAttributedString atsForStr:str lineHeight:lh forCompute:YES];
     [attributedString addAttribute:NSFontAttributeName value:ft range:NSMakeRange(0, str.length)];
-    
+#warning --add
+    NSMutableParagraphStyle* linebreak = [[NSMutableParagraphStyle alloc]init];
+    linebreak.lineBreakMode = NSLineBreakByCharWrapping;
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:linebreak range:NSMakeRange (0, attributedString.length)];
+
     CGFloat height = [attributedString heightWithFont:ft width:w lineH:lh];
     return ceilf(height);
 }

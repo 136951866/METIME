@@ -26,7 +26,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = 0;
-    self.separatorInset = UIEdgeInsetsMake(0, 0, 0, self.bounds.size.width);
+//    self.separatorInset = UIEdgeInsetsMake(0, 0, 0, self.bounds.size.width);
     // Initialization code
 }
 

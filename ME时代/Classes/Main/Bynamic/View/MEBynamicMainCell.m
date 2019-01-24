@@ -48,7 +48,7 @@
 //    _imgHeader.image = [UIImage imageNamed:@"icon-wgvilogo"];
     kSDLoadImg(_imgHeader, kMeUnNilStr(model.header_pic));
     _lblName.text = kMeUnNilStr(model.author);
-    _lblTime.text = kMeUnNilStr(model.createdAt);
+    _lblTime.text = kMeUnNilStr(model.created_at);
     NSString *str = kMeUnNilStr(model.content);
     CGFloat titleHeight = [NSAttributedString heightForAtsWithStr:str font:[UIFont systemFontOfSize:14] width:kmainCommentCellWdith lineH:0 maxLine:0];
     _consTitleHeight.constant = titleHeight>17?titleHeight:17;
