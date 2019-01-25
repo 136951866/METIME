@@ -55,9 +55,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getUnInfo) name:kUnNoticeMessage object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogout) name:kUserLogout object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogin) name:kUserLogin object:nil];
-//#warning
-//    MEShoppingMallVC *vc = [[MEShoppingMallVC alloc]init];
-//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)userLogout{

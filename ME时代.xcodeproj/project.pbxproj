@@ -523,6 +523,7 @@
 		36F3B88021F80E480001F2F6 /* MENineGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F3B87F21F80E480001F2F6 /* MENineGridView.m */; };
 		36F3B88421F8151F0001F2F6 /* MEProductDetailCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F3B88221F8151F0001F2F6 /* MEProductDetailCommentCell.m */; };
 		36F3B88521F8151F0001F2F6 /* MEProductDetailCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F3B88321F8151F0001F2F6 /* MEProductDetailCommentCell.xib */; };
+		36F3E59921FADAFE00CBADFF /* MEPinduoduoCouponSearchDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F3E59821FADAFE00CBADFF /* MEPinduoduoCouponSearchDataVC.m */; };
 		36F43DCC216C913E00FBA16E /* MEBankTransferAccountsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F43DCA216C913E00FBA16E /* MEBankTransferAccountsCell.m */; };
 		36F43DCD216C913E00FBA16E /* MEBankTransferAccountsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F43DCB216C913E00FBA16E /* MEBankTransferAccountsCell.xib */; };
 		36F43DD0216C942100FBA16E /* BankTransferAccountsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F43DCF216C942100FBA16E /* BankTransferAccountsVC.m */; };
@@ -1559,6 +1560,8 @@
 		36F3B88121F8151F0001F2F6 /* MEProductDetailCommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEProductDetailCommentCell.h; sourceTree = "<group>"; };
 		36F3B88221F8151F0001F2F6 /* MEProductDetailCommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEProductDetailCommentCell.m; sourceTree = "<group>"; };
 		36F3B88321F8151F0001F2F6 /* MEProductDetailCommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEProductDetailCommentCell.xib; sourceTree = "<group>"; };
+		36F3E59721FADAFE00CBADFF /* MEPinduoduoCouponSearchDataVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEPinduoduoCouponSearchDataVC.h; sourceTree = "<group>"; };
+		36F3E59821FADAFE00CBADFF /* MEPinduoduoCouponSearchDataVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEPinduoduoCouponSearchDataVC.m; sourceTree = "<group>"; };
 		36F43DC9216C913E00FBA16E /* MEBankTransferAccountsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBankTransferAccountsCell.h; sourceTree = "<group>"; };
 		36F43DCA216C913E00FBA16E /* MEBankTransferAccountsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBankTransferAccountsCell.m; sourceTree = "<group>"; };
 		36F43DCB216C913E00FBA16E /* MEBankTransferAccountsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEBankTransferAccountsCell.xib; sourceTree = "<group>"; };
@@ -2915,6 +2918,8 @@
 				36B77BCD21DE05CE00B4A207 /* MECoupleHomeMainGoodGoodsCell.h */,
 				36B77BCE21DE05CE00B4A207 /* MECoupleHomeMainGoodGoodsCell.m */,
 				36B77BCF21DE05CE00B4A207 /* MECoupleHomeMainGoodGoodsCell.xib */,
+				36F3E59721FADAFE00CBADFF /* MEPinduoduoCouponSearchDataVC.h */,
+				36F3E59821FADAFE00CBADFF /* MEPinduoduoCouponSearchDataVC.m */,
 			);
 			path = Couple;
 			sourceTree = "<group>";
@@ -4711,6 +4716,7 @@
 				36FEEBDC214CEFB400060209 /* MEDiscountCouponDottedLine.m in Sources */,
 				36A401D52143F6E300B0BD4F /* MEShoppingCartVC.m in Sources */,
 				36FDE3D4218A993800633C40 /* MEFilterVC.m in Sources */,
+				36F3E59921FADAFE00CBADFF /* MEPinduoduoCouponSearchDataVC.m in Sources */,
 				3602A192214243A6004A6E1F /* MEStarButton.m in Sources */,
 				3604EF1821BF91EE0000DBDE /* LMJScrollTextView2.m in Sources */,
 				36472B0221C8E15C00CC3E48 /* JXCategoryNumberCellModel.m in Sources */,

@@ -17,6 +17,7 @@
 #import "MECoupleMailVC.h"
 #import "MEAdModel.h"
 #import "MEPinduoduoCoupleModel.h"
+#import "MEPinduoduoCouponSearchDataVC.h"
 
 @interface MECoupleHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSArray *_todayBuy;
@@ -192,9 +193,17 @@
 }
 
 - (void)searchCoupon{
+    kMeWEAKSELF
     MECouponSearchVC *searchViewController = [MECouponSearchVC searchViewControllerWithHotSearches:@[] searchBarPlaceholder:@"搜索优惠卷" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
-        MECoupleMailVC *dataVC = [[MECoupleMailVC alloc]initWithQuery:searchText];
-        [searchViewController.navigationController pushViewController:dataVC animated:YES];
+        kMeSTRONGSELF
+        if(strongSelf->_isTBk){
+            MECoupleMailVC *dataVC = [[MECoupleMailVC alloc]initWithQuery:searchText];
+            [searchViewController.navigationController pushViewController:dataVC animated:YES];
+        }else{
+            MEPinduoduoCouponSearchDataVC *dataVC = [[MEPinduoduoCouponSearchDataVC alloc]initWithQuery:searchText];
+            [searchViewController.navigationController pushViewController:dataVC animated:YES];
+        }
+        
     }];
     [searchViewController setSearchHistoriesCachePath:kMECouponSearchVCSearchHistoriesCachePath];
     MENavigationVC *nav = [[MENavigationVC alloc] initWithRootViewController:searchViewController];

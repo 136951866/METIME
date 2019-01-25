@@ -36,6 +36,7 @@
     [self.viewForSearch addSubview:self.imageForSearch];
     [self addSubview:self.btnNotice];
     [self addSubview:self.viewForUnread];
+    self.viewForUnread.hidden = YES;
 }
 
 - (void)setRead:(BOOL)read{
