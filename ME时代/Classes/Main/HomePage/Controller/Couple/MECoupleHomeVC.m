@@ -110,8 +110,18 @@
 }
 
 - (NSDictionary *)requestParameter{
-    if(self.refresh.pageIndex == 1 && _isTBk){
-        [self requestNetWork];
+    if(self.refresh.pageIndex == 1){
+        if(_isTBk){
+           [self requestNetWork];
+        }else{
+            kMeWEAKSELF
+            [MEPublicNetWorkTool postAgetTbkBannerWithsuccessBlock:^(ZLRequestResponse *responseObject) {
+                kMeSTRONGSELF
+                strongSelf->_arrAdv =  [MEAdModel mj_objectArrayWithKeyValuesArray:responseObject.data];
+                [strongSelf->_headerView setUiWithModel:strongSelf->_arrAdv isTKb:strongSelf->_isTBk];
+            } failure:^(id object) {
+            }];
+        }
     }
     if(_isTBk){
         return @{@"type":@(MECouponSearchGoodGoodsType)};
