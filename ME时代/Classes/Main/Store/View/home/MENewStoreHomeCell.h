@@ -17,6 +17,7 @@ const static CGFloat kMENewStoreHomeCellHeight = 99;
 
 - (void)setUIWithModel:(MEStoreModel *)model;
 - (void)setUIWithModel:(MEStoreModel *)model WithKey:(NSString *)key;
++ (CGFloat)getCellHeightWithmodel:(MEStoreModel *)model;
 
 @end
 

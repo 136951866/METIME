@@ -90,7 +90,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     MEStoreModel *model = self.refresh.arrData[indexPath.row];
-    return kMENewStoreHomeCellHeight;//[MEStoreHomeCell getCellHeightWithModel:model];
+    return [MENewStoreHomeCell getCellHeightWithmodel:model];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

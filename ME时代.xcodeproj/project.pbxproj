@@ -528,6 +528,7 @@
 		36F3E59921FADAFE00CBADFF /* MEPinduoduoCouponSearchDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F3E59821FADAFE00CBADFF /* MEPinduoduoCouponSearchDataVC.m */; };
 		36F3E59C21FAE9FB00CBADFF /* METhridHomeRudeTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F3E59B21FAE9FA00CBADFF /* METhridHomeRudeTimeModel.m */; };
 		36F3E59F21FAEA4E00CBADFF /* METhridHomeRudeGoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F3E59E21FAEA4E00CBADFF /* METhridHomeRudeGoodModel.m */; };
+		36F4288221FB5CE50028C3C8 /* MEFlowLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F4288121FB5CE50028C3C8 /* MEFlowLabelView.m */; };
 		36F43DCC216C913E00FBA16E /* MEBankTransferAccountsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F43DCA216C913E00FBA16E /* MEBankTransferAccountsCell.m */; };
 		36F43DCD216C913E00FBA16E /* MEBankTransferAccountsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F43DCB216C913E00FBA16E /* MEBankTransferAccountsCell.xib */; };
 		36F43DD0216C942100FBA16E /* BankTransferAccountsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F43DCF216C942100FBA16E /* BankTransferAccountsVC.m */; };
@@ -1574,6 +1575,8 @@
 		36F3E59B21FAE9FA00CBADFF /* METhridHomeRudeTimeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = METhridHomeRudeTimeModel.m; sourceTree = "<group>"; };
 		36F3E59D21FAEA4E00CBADFF /* METhridHomeRudeGoodModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = METhridHomeRudeGoodModel.h; sourceTree = "<group>"; };
 		36F3E59E21FAEA4E00CBADFF /* METhridHomeRudeGoodModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = METhridHomeRudeGoodModel.m; sourceTree = "<group>"; };
+		36F4288021FB5CE50028C3C8 /* MEFlowLabelView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEFlowLabelView.h; sourceTree = "<group>"; };
+		36F4288121FB5CE50028C3C8 /* MEFlowLabelView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEFlowLabelView.m; sourceTree = "<group>"; };
 		36F43DC9216C913E00FBA16E /* MEBankTransferAccountsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBankTransferAccountsCell.h; sourceTree = "<group>"; };
 		36F43DCA216C913E00FBA16E /* MEBankTransferAccountsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBankTransferAccountsCell.m; sourceTree = "<group>"; };
 		36F43DCB216C913E00FBA16E /* MEBankTransferAccountsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEBankTransferAccountsCell.xib; sourceTree = "<group>"; };
@@ -3628,6 +3631,8 @@
 				36FFE964217DD89C00010AED /* MEEnlargeTouchButton.m */,
 				36F3B87E21F80E480001F2F6 /* MENineGridView.h */,
 				36F3B87F21F80E480001F2F6 /* MENineGridView.m */,
+				36F4288021FB5CE50028C3C8 /* MEFlowLabelView.h */,
+				36F4288121FB5CE50028C3C8 /* MEFlowLabelView.m */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -4550,6 +4555,7 @@
 				36021AE0214B8086001B8DAF /* MEServiceDetailTelAddressCell.m in Sources */,
 				36D9E0CC21F5C40000687580 /* METhridHomeNavView.m in Sources */,
 				3617C31821D0CDEA00004072 /* MECoupleFilterNavView.m in Sources */,
+				36F4288221FB5CE50028C3C8 /* MEFlowLabelView.m in Sources */,
 				367C84E52147962B00BEC7B1 /* MEDistrbutionCell.m in Sources */,
 				366D1CD721B522780004295E /* MESActivityModel.m in Sources */,
 				EB2E1AC32150FF6500A26BE3 /* MEOrderDetailContentCell.m in Sources */,
