@@ -21,10 +21,14 @@
 #import "METhridProductDetailsVC.h"
 #import "METhridHomeModel.h"
 #import "MEPinduoduoCoupleModel.h"
+#import "METhridHomeRudeTimeModel.h"
+#import "METhridHomeRudeGoodModel.h"
+#import "MECoupleMailDetalVC.h"
 
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSInteger _selectTimeIndex;
     NSArray *_arrRudeBuy;
+    NSArray *_arrRudeTime;
     NSArray *_arrCommonCoupon;
     METhridHomeModel *_homeModel;
 }
@@ -47,8 +51,9 @@
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.navView];
     _selectTimeIndex = 0;
-    _arrRudeBuy = @[@"",@"",@"",@"",@"",@""];
+    _arrRudeBuy = [NSArray array];
     _arrCommonCoupon = [NSArray array];
+    _arrRudeTime = [NSArray array];
     self.tableView.tableHeaderView = self.headerView;
     [self.refresh addRefreshView];
     [self getRushGood];
@@ -111,19 +116,48 @@
             dispatch_semaphore_signal(semaphore);
         }];
     });
-
+    dispatch_group_async(group, queue, ^{
+        [MEPublicNetWorkTool postThridHomeGetSeckillTimeSuccessBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            strongSelf->_arrRudeTime =[METhridHomeRudeTimeModel mj_objectArrayWithKeyValuesArray:responseObject.data];
+            for (NSInteger i =0; i<strongSelf->_arrRudeTime.count; i++) {
+                METhridHomeRudeTimeModel *model = strongSelf->_arrRudeTime[i];
+                if(model.status==1){
+                    strongSelf->_selectTimeIndex = i;
+                }
+            }
+            dispatch_semaphore_signal(semaphore);
+        } failure:^(id object) {
+            dispatch_semaphore_signal(semaphore);
+        }];
+    });
     dispatch_group_notify(group, queue, ^{
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_async(dispatch_get_main_queue(), ^{
             kMeSTRONGSELF
             [strongSelf->_headerView setUIWithModel:strongSelf->_homeModel];
+            [strongSelf getRushGoods];
             [strongSelf.tableView reloadData];
         });
     });
-
+}
+-(void)getRushGoods{
+    METhridHomeRudeTimeModel *model = _arrRudeTime[_selectTimeIndex];
+    kMeWEAKSELF
+    [MEPublicNetWorkTool postThridHomegetSeckillGoodsWithSeckillTime:kMeUnNilStr(model.time) SuccessBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        strongSelf->_arrRudeBuy =[METhridHomeRudeGoodModel mj_objectArrayWithKeyValuesArray:responseObject.data];
+        [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    } failure:^(id object) {
+        kMeSTRONGSELF
+        strongSelf->_arrRudeBuy = @[];
+        [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    }];
 }
 
+//弹窗
 - (void)getRushGood{
     kMeWEAKSELF
     [MEPublicNetWorkTool postRushGoodWithsuccessBlock:^(ZLRequestResponse *responseObject) {
@@ -194,6 +228,9 @@
         kMeWEAKSELF
         cell.selectBlock = ^{
             kMeSTRONGSELF
+            MEPinduoduoCoupleModel *model = strongSelf.refresh.arrData[indexPath.row];
+            MECoupleMailDetalVC *vc = [[MECoupleMailDetalVC alloc]initWithPinduoudoModel:model];
+            [strongSelf.navigationController pushViewController:vc animated:YES];
         };
         return cell;
     }
@@ -230,10 +267,10 @@
     if(!section){
         METhridHomeTimeSecionView *headview=[tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([METhridHomeTimeSecionView class])];
         kMeWEAKSELF
-        [headview setUIWithArr:@[@"",@"",@"",@"",@"",@"",@""] selectIndex:_selectTimeIndex selectBlock:^(NSInteger index) {
+        [headview setUIWithArr:_arrRudeTime selectIndex:_selectTimeIndex selectBlock:^(NSInteger index) {
             kMeSTRONGSELF
             strongSelf->_selectTimeIndex = index;
-            [strongSelf.tableView reloadData];
+            [strongSelf getRushGoods];
         }];
         return headview;
     }else{

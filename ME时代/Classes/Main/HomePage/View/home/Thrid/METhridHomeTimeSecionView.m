@@ -8,6 +8,7 @@
 
 #import "METhridHomeTimeSecionView.h"
 #import "METhridHomeTimeSecionContentCell.h"
+#import "METhridHomeRudeTimeModel.h"
 
 @interface METhridHomeTimeSecionView()<UICollectionViewDelegate,UICollectionViewDataSource>
 {
@@ -38,6 +39,8 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [_collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+    _selextIndex =indexPath.row;
+    [self.collectionView reloadData];
     kMeCallBlock(_selectBlocl,indexPath.row);
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -46,7 +49,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     METhridHomeTimeSecionContentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([METhridHomeTimeSecionContentCell class]) forIndexPath:indexPath];
-    id model = self.arrModel[indexPath.row];
+    METhridHomeRudeTimeModel *model = self.arrModel[indexPath.row];
     [cell setUIWIthModel:model isSelect:indexPath.row==_selextIndex];
     return cell;
 }
@@ -62,6 +65,7 @@
     _arrModel = arrModel;
     _selextIndex = selextIndex;
     _selectBlocl = selectBlock;
+    [_collectionView selectItemAtIndexPath:[NSIndexPath indexPathWithIndex:_selextIndex] animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
     [self.collectionView reloadData];
 }
 @end

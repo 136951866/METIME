@@ -8,6 +8,7 @@
 
 #import "MERushBuyCell.h"
 #import "MERushBuyContentCell.h"
+#import "METhridHomeRudeGoodModel.h"
 
 @interface MERushBuyCell ()<UITableViewDelegate,UITableViewDataSource>{
     NSArray *_arrModel;
@@ -28,6 +29,7 @@
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MERushBuyContentCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MERushBuyContentCell class])];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -36,7 +38,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MERushBuyContentCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MERushBuyContentCell class]) forIndexPath:indexPath];
-    id model = _arrModel[indexPath.row];
+    METhridHomeRudeGoodModel *model = _arrModel[indexPath.row];
     [cell setUIWithModel:model];
     return cell;
 }

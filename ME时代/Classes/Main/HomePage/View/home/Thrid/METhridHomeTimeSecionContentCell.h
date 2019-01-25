@@ -10,12 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class METhridHomeRudeTimeModel;
 const static CGFloat kMEThridHomeTimeSecionContentCellHeight = 55;
 const static CGFloat kMEThridHomeTimeSecionContentCellWdith = 60;
 
 @interface METhridHomeTimeSecionContentCell : UICollectionViewCell
 
-- (void)setUIWIthModel:(id)model isSelect:(BOOL)isSelect;
+- (void)setUIWIthModel:(METhridHomeRudeTimeModel *)model isSelect:(BOOL)isSelect;
 
 @end
 

@@ -162,6 +162,11 @@
 
 /*********************************************/
 #pragma makr - home
+//获取秒杀商品
+#define MEIPcommonGetgetSeckillGoods @"common/home/getSeckillGoods"
+//获取秒杀时间
+#define MEIPcommonGetgetSeckillTime @"common/home/getSeckillTime"
+
 //获取首面的背景和banner
 #define MEIPcommonGetActivity @"common/activity/getActivity"
 //获取首页样式

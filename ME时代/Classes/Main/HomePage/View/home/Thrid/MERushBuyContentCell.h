@@ -10,11 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class METhridHomeRudeGoodModel;
 const static CGFloat kMERushBuyContentCellHeight = 150;
 
 @interface MERushBuyContentCell : UITableViewCell
 
-- (void)setUIWithModel:(id)model;
+- (void)setUIWithModel:(METhridHomeRudeGoodModel *)model;
 
 @end
 

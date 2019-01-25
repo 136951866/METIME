@@ -108,7 +108,9 @@
 /***************************************/
 
 #pragma mark - HomePage
-
+//获取秒杀商品
++ (void)postThridHomegetSeckillGoodsWithSeckillTime:(NSString*)time SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
++ (void)postThridHomeGetSeckillTimeSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //获取2.0首页数据
 + (void)postThridHomeStyleWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 

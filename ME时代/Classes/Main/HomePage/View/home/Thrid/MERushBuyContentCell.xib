@@ -147,6 +147,7 @@
                 <outlet property="lblSubTitle" destination="W1T-n1-bgN" id="JI6-jG-GHp"/>
                 <outlet property="lblTitle" destination="ckc-Qo-Yni" id="Sth-tA-IFa"/>
                 <outlet property="lblUnderLinePrice" destination="Xv6-4r-OuB" id="aMB-ld-PR6"/>
+                <outlet property="viewForStock" destination="O9B-BV-lEP" id="ukM-B0-qYZ"/>
             </connections>
             <point key="canvasLocation" x="210.40000000000001" y="129.08545727136433"/>
         </tableViewCell>

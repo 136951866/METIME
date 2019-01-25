@@ -7,6 +7,7 @@
 //
 
 #import "MERushBuyContentCell.h"
+#import "METhridHomeRudeGoodModel.h"
 
 @interface MERushBuyContentCell ()
 
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblPrice;
 @property (weak, nonatomic) IBOutlet UILabel *lblUnderLinePrice;
 
+@property (weak, nonatomic) IBOutlet UIView *viewForStock;
 
 @end
 
@@ -30,16 +32,22 @@
     // Initialization code
 }
 
-- (void)setUIWithModel:(id)model{
-    kSDLoadImg(_imgPic, kMeUnNilStr(@""));
-    _lblTitle.text = kMeUnNilStr(@"test");
-    _lblSubTitle.text = kMeUnNilStr(@"test");
-    CGFloat rate = 0.355;
-    NSInteger rateNum = 100*rate;
-    _lblRate.text = [NSString stringWithFormat:@"%ld%%",(long)rateNum];
-    _consRateWdith.constant = rateNum;
-    _lblPrice.text = [NSString stringWithFormat:@"¥%@",kMeUnNilStr(@"10000")];
-    NSString *commStr = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(@"100").floatValue)];
+- (void)setUIWithModel:(METhridHomeRudeGoodModel *)model{
+    kSDLoadImg(_imgPic, MELoadQiniuImagesWithUrl(kMeUnNilStr(model.images)));
+    _lblTitle.text = kMeUnNilStr(model.title);
+    _lblSubTitle.text = kMeUnNilStr(model.desc);
+    if(model.stock ==0 && model.sell_num==0){
+        _viewForStock.hidden = YES;
+    }else{
+        _viewForStock.hidden = NO;
+        CGFloat rate = model.sell_num/(model.stock+model.sell_num);
+        NSInteger rateNum = 100*rate;
+        _lblRate.text = [NSString stringWithFormat:@"%ld%%",(long)rateNum];
+        _consRateWdith.constant = rateNum;
+    }
+
+    _lblPrice.text = [NSString stringWithFormat:@"¥%@",kMeUnNilStr(model.money)];
+    NSString *commStr = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.market_price).floatValue)];
     [_lblUnderLinePrice setLineStrWithStr:commStr];
     
 }

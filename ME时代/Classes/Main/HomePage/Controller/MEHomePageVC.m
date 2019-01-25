@@ -175,7 +175,6 @@
         return [UITableViewCell new];
     }else if(indexPath.row == 1){
         MEBaoQiangCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBaoQiangCell class]) forIndexPath:indexPath];
-        
         [cell setUIWithArr:self.arrMainTopModel];
         kMeWEAKSELF
         cell.indexBlock = ^(NSInteger index) {

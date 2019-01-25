@@ -7,6 +7,7 @@
 //
 
 #import "METhridHomeTimeSecionContentCell.h"
+#import "METhridHomeRudeTimeModel.h"
 
 @interface METhridHomeTimeSecionContentCell ()
 
@@ -23,9 +24,9 @@
     // Initialization code
 }
 
-- (void)setUIWIthModel:(id)model isSelect:(BOOL)isSelect{
-    _lblTime.text = kMeUnNilStr(@"10:00");
-    _lblStatus.text = kMeUnNilStr(@"抢购中");
+- (void)setUIWIthModel:(METhridHomeRudeTimeModel *)model isSelect:(BOOL)isSelect{
+    _lblTime.text = kMeUnNilStr(model.time);
+    _lblStatus.text = kMeUnNilStr(model.tip);
     if(isSelect){
         _lblStatus.textColor = kMEea3782;
         _viewForSelect.hidden = NO;

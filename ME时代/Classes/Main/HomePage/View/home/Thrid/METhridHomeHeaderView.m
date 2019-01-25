@@ -163,13 +163,13 @@ const static CGFloat kThridImageWidth = 200;
         METhridHomeserviceModel *smodel = model.service[i];
         if(i==0){
             _viewFrist.hidden = NO;
-            kSDLoadImg(_imgFristGood, kMeUnNilStr(smodel.images));
+            kSDLoadImg(_imgFristGood, MELoadQiniuImagesWithUrl(kMeUnNilStr(smodel.images)));
             _lblFristGoodTitle.text = kMeUnNilStr(smodel.title);
             _lblSGoodSubtitle.text = kMeUnNilStr(smodel.desc);
         }
         if(i==1){
             _sencodView.hidden = NO;
-            kSDLoadImg(_imgSecondGood, kMeUnNilStr(smodel.images));
+            kSDLoadImg(_imgSecondGood, MELoadQiniuImagesWithUrl(kMeUnNilStr(smodel.images)));
             _lblSGoodTitle.text = kMeUnNilStr(smodel.title);
             _lblSGoodSubtitle.text = kMeUnNilStr(smodel.desc);
         }
@@ -179,7 +179,7 @@ const static CGFloat kThridImageWidth = 200;
         METhridHomeBuyingGoodsModel *scare_buying_good = model.scare_buying_goods[0];
         kSDLoadImg(_imgQiao,MELoadQiniuImagesWithUrl(kMeUnNilStr(scare_buying_good.images)));
         _lblRudeTite.text = kMeUnNilStr(scare_buying_good.title);
-        _lblRudePrice.text = kMeUnNilStr(scare_buying_good.money);
+        _lblRudePrice.text = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(scare_buying_good.money).floatValue)];
     }else{
         kSDLoadImg(_imgQiao,@"");
         _lblRudeTite.text = @"";
