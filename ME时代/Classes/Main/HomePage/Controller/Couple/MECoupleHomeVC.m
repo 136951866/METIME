@@ -22,7 +22,7 @@
 @interface MECoupleHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSArray *_todayBuy;
     NSArray *_99BuyBuy;
-    
+    NSArray *_arrAdv;
 }
 
 @property (nonatomic, strong) MECoupleHomeHeaderView         *headerView;
@@ -47,6 +47,7 @@
     self.view.backgroundColor = kMEf5f4f4;
     _todayBuy = [NSArray array];
     _99BuyBuy = [NSArray array];
+    _arrAdv = [NSArray array];
     [self.view addSubview:self.navView];
     [self.view addSubview:self.tableView];
     _tableView.tableHeaderView = self.headerView;
@@ -57,6 +58,17 @@
         dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
         dispatch_group_t group = dispatch_group_create();
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+        dispatch_group_async(group, queue, ^{
+            kMeWEAKSELF
+            [MEPublicNetWorkTool postAgetTbkBannerWithsuccessBlock:^(ZLRequestResponse *responseObject) {
+                kMeSTRONGSELF
+                strongSelf->_arrAdv =  [MEAdModel mj_objectArrayWithKeyValuesArray:responseObject.data];
+                dispatch_semaphore_signal(semaphore);
+            } failure:^(id object) {
+                dispatch_semaphore_signal(semaphore);
+            }];
+        });
         dispatch_group_async(group, queue, ^{
             kMeWEAKSELF
             [MEPublicNetWorkTool postCoupledgMaterialOptionalWithType:MECouponSearchTopBuyType successBlock:^(ZLRequestResponse *responseObject) {
@@ -88,8 +100,10 @@
         dispatch_group_notify(group, queue, ^{
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
             dispatch_async(dispatch_get_main_queue(), ^{
                 kMeSTRONGSELF
+                [strongSelf->_headerView setUiWithModel:strongSelf->_arrAdv isTKb:strongSelf->_isTBk];
                 [strongSelf.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:0];
             });
         });

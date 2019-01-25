@@ -67,7 +67,7 @@
 //限时秒杀
 @property (nonatomic, strong) NSString *rudeTip;
 //通知
-@property (nonatomic, strong) NSString *notice;
+@property (nonatomic, strong) NSString *message;
 //提示
 @property (nonatomic, strong) NSString *tips;
 

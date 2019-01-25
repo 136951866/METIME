@@ -11,6 +11,7 @@
 #import "MEAboutWeVC.h"
 #import "MESelectAddressVC.h"
 #import "MEModifyPhoneVC.h"
+#import "MECompandNoticeVC.h"
 
 @interface MEMineSetVC ()<UITableViewDelegate,UITableViewDataSource>{
     NSArray *_arrtype;
@@ -27,7 +28,7 @@
     [super viewDidLoad];
     self.title = @"设置";
 //        _arrtype = @[@{@"title":@"地址",@"subTitle":@[@{@"title":@"收货地址",@"type":@(MESetAddressStyle)}]},@{@"title":@"账号与安全",@"subTitle":@[@{@"title":@"更换手机号码",@"type":@(MESetPhoneStyle)},@{@"title":@"清理缓存",@"type":@(MESetCLearChacheStyle)}]},@{@"title":@"关于",@"subTitle":@[@{@"title":@"关于我们",@"type":@(MESetAboutWeStyle)}]}];
-    _arrtype = @[@{@"title":@"地址",@"subTitle":@[@{@"title":@"收货地址",@"type":@(MESetAddressStyle)}]},@{@"title":@"账号与安全",@"subTitle":@[@{@"title":@"清理缓存",@"type":@(MESetCLearChacheStyle)}]},@{@"title":@"关于",@"subTitle":@[@{@"title":@"关于我们",@"type":@(MESetAboutWeStyle)}]}];
+    _arrtype = @[@{@"title":@"地址",@"subTitle":@[@{@"title":@"收货地址",@"type":@(MESetAddressStyle)}]},@{@"title":@"账号与安全",@"subTitle":@[@{@"title":@"清理缓存",@"type":@(MESetCLearChacheStyle)}]},@{@"title":@"关于",@"subTitle":@[@{@"title":@"关于我们",@"type":@(MESetAboutWeStyle)},@{@"title":@"ME隐私权注政策",@"type":@(MESetCompandNoticeStyle)}]}];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.btnExit];
 //    self.tableView.tableFooterView = self.btnExit;
@@ -70,11 +71,11 @@
             [self.navigationController pushViewController:address animated:YES];
         }
             break;
-//        case MESetPhoneStyle:{
-//            MEModifyPhoneVC *phoneVC = [[MEModifyPhoneVC alloc]init];
-//            [self.navigationController pushViewController:phoneVC animated:YES];
-//        }
-//            break;
+        case MESetCompandNoticeStyle:{
+            MECompandNoticeVC *notice = [[MECompandNoticeVC alloc]init];
+            [self.navigationController pushViewController:notice animated:YES];
+        }
+            break;
         case MESetCLearChacheStyle:{
             [MBProgressHUD showMessage:@"正在清除缓存"];
             dispatch_async(dispatch_get_global_queue(0, 0), ^{

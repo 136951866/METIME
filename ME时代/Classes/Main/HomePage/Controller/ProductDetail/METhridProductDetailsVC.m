@@ -265,10 +265,10 @@ kTDWebViewCellDidFinishLoadNotificationMethod
             }
                 break;
             case 2: {
-                if(kMeUnNilStr(_model.notice).length){
+                if(kMeUnNilStr(_model.message).length){
                     METhridProductDetailsTipCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([METhridProductDetailsTipCell class]) forIndexPath:indexPath];
                     cell.lblTip.text = @"通知";
-                    [cell setUiWithStr:_model.notice];
+                    [cell setUiWithStr:_model.message];
                     return cell;
                 }
             }
@@ -320,8 +320,8 @@ kTDWebViewCellDidFinishLoadNotificationMethod
             }
                 break;
             case 2: {
-                if(kMeUnNilStr(_model.notice).length){
-                     return [METhridProductDetailsTipCell getCellHeightWithStr:_model.notice];
+                if(kMeUnNilStr(_model.message).length){
+                     return [METhridProductDetailsTipCell getCellHeightWithStr:_model.message];
                 }
             }
                 break;

@@ -12,6 +12,7 @@
 #import "MECoupleFilterVC.h"
 #import "MEAdModel.h"
 #import "MECoupleMailVC.h"
+#import "MEPinduoduoCouponSearchDataVC.h"
 
 @interface MECoupleHomeHeaderView ()<SDCycleScrollViewDelegate>{
     NSArray *_Model;
@@ -116,8 +117,13 @@
     MECoupleHomeVC *homevc = [MECommonTool getVCWithClassWtihClassName:[MECoupleHomeVC class] targetResponderView:self];
     if(homevc){
         MEAdModel *model = _Model[index];
-        MECoupleMailVC *vc = [[MECoupleMailVC alloc]initWithQuery:kMeUnNilStr(model.keywork)];
-        [homevc.navigationController pushViewController:vc animated:YES];
+        if(_isTbk){
+            MECoupleMailVC *vc = [[MECoupleMailVC alloc]initWithQuery:kMeUnNilStr(model.keywork)];
+            [homevc.navigationController pushViewController:vc animated:YES];
+        }else{
+            MEPinduoduoCouponSearchDataVC *vc = [[MEPinduoduoCouponSearchDataVC alloc]initWithQuery:kMeUnNilStr(model.keywork)];
+            [homevc.navigationController pushViewController:vc animated:YES];
+        }
     }
 }
 

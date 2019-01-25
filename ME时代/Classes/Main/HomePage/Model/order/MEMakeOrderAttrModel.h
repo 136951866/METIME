@@ -17,7 +17,7 @@
 //用户地址id 默认 wu
 @property (nonatomic, strong) NSString * user_address;
 @property (nonatomic, strong) NSString * token;
-//1 普通下单 4 兑换下单
+//1 普通下单 4 兑换下单 9秒杀下单
 @property (nonatomic, strong) NSString * order_type;
 @property (nonatomic, strong) NSString * store_id;
 //分享者id 无人分享则填0

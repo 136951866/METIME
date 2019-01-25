@@ -75,7 +75,21 @@
 }
 
 - (void)shareAction{
+    MEShareTool *shareTool = [MEShareTool me_instanceForTarget:self];
+    shareTool.sharWebpageUrl = MEIPShare;
+    NSLog(@"%@",MEIPShare);
+    shareTool.shareTitle = @"睁着眼洗的洁面慕斯,你见过吗?";
+    shareTool.shareDescriptionBody = @"你敢买我就敢送,ME时代氨基酸洁面慕斯(邮费10元)";
+    shareTool.shareImage = kMeGetAssetImage(@"icon-wgvilogo");
     
+    [shareTool shareWebPageToPlatformType:UMSocialPlatformType_WechatSession success:^(id data) {
+        NSLog(@"分享成功%@",data);
+        [MEPublicNetWorkTool postAddShareWithSuccessBlock:nil failure:nil];
+        [MEShowViewTool showMessage:@"分享成功" view:kMeCurrentWindow];
+    } failure:^(NSError *error) {
+        NSLog(@"分享失败%@",error);
+        [MEShowViewTool showMessage:@"分享失败" view:kMeCurrentWindow];
+    }];
 }
 
 - (void)commentAction:(NSInteger)index{

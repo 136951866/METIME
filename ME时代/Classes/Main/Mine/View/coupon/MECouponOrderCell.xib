@@ -32,24 +32,8 @@
                             <constraint firstAttribute="height" constant="106" id="tFG-Xo-frv"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_tao" translatesAutoresizingMaskIntoConstraints="NO" id="ZJ1-ll-YK0">
-                        <rect key="frame" x="110" y="30.5" width="16" height="16"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="16" id="ZRl-cw-Fn9"/>
-                            <constraint firstAttribute="width" constant="16" id="qsU-UJ-ENc"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="淘宝宝宝宝宝淘宝宝宝宝宝宝宝宝宝宝宝宝宝宝宝宝宝" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azi-bT-tbZ">
-                        <rect key="frame" x="136" y="29.5" width="174" height="36"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="36" id="0MN-Sq-aKN"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下单时间:2018-09-09" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xak-4j-HLl">
-                        <rect key="frame" x="106" y="80.5" width="204" height="15"/>
+                        <rect key="frame" x="106" y="81.5" width="204" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="i84-DG-66I"/>
                         </constraints>
@@ -58,15 +42,24 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消费金额:¥1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnG-9q-ShT">
-                        <rect key="frame" x="106" y="109" width="89" height="15"/>
+                        <rect key="frame" x="106" y="110" width="89" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="佣金估计:¥1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0M-V8-y0R">
-                        <rect key="frame" x="221" y="109" width="89" height="14.5"/>
+                        <rect key="frame" x="221" y="110" width="89" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="1" green="0.52941176469999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="淘宝宝宝宝宝淘宝宝宝宝宝宝宝宝宝宝宝宝宝宝宝宝宝" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azi-bT-tbZ">
+                        <rect key="frame" x="106" y="30.5" width="204" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="0MN-Sq-aKN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -76,18 +69,16 @@
                     <constraint firstItem="xak-4j-HLl" firstAttribute="top" secondItem="azi-bT-tbZ" secondAttribute="bottom" constant="15" id="9to-0x-X1M"/>
                     <constraint firstItem="lYl-ts-ari" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Cuh-fM-qkh"/>
                     <constraint firstAttribute="trailing" secondItem="lYl-ts-ari" secondAttribute="trailing" id="G5k-bF-WRE"/>
-                    <constraint firstItem="azi-bT-tbZ" firstAttribute="top" secondItem="ZJ1-ll-YK0" secondAttribute="top" constant="-1" id="O14-wg-kpd"/>
-                    <constraint firstItem="ZJ1-ll-YK0" firstAttribute="top" secondItem="lYl-ts-ari" secondAttribute="bottom" constant="20" id="QIr-Ux-d3t"/>
                     <constraint firstItem="xak-4j-HLl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Qww-Fp-Q1z"/>
+                    <constraint firstItem="azi-bT-tbZ" firstAttribute="leading" secondItem="rbp-to-86j" secondAttribute="trailing" constant="10" id="X8P-21-QXE"/>
                     <constraint firstItem="rbp-to-86j" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="XUz-lL-ud7"/>
                     <constraint firstItem="rbp-to-86j" firstAttribute="top" secondItem="lYl-ts-ari" secondAttribute="bottom" constant="14" id="ezK-oY-YAX"/>
-                    <constraint firstItem="ZJ1-ll-YK0" firstAttribute="leading" secondItem="rbp-to-86j" secondAttribute="trailing" constant="14" id="iZC-Ui-SSA"/>
                     <constraint firstAttribute="trailing" secondItem="xak-4j-HLl" secondAttribute="trailing" constant="10" id="kKm-TI-weA"/>
+                    <constraint firstItem="azi-bT-tbZ" firstAttribute="top" secondItem="lYl-ts-ari" secondAttribute="bottom" constant="20" id="muk-CM-bcX"/>
                     <constraint firstItem="hnG-9q-ShT" firstAttribute="top" secondItem="xak-4j-HLl" secondAttribute="bottom" constant="13.5" id="n3D-BT-ryg"/>
                     <constraint firstItem="lYl-ts-ari" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rvg-8W-vpH"/>
                     <constraint firstAttribute="trailing" secondItem="h0M-V8-y0R" secondAttribute="trailing" constant="10" id="s6V-cE-Ns6"/>
                     <constraint firstItem="hnG-9q-ShT" firstAttribute="leading" secondItem="rbp-to-86j" secondAttribute="trailing" constant="10" id="t5m-86-Xa1"/>
-                    <constraint firstItem="azi-bT-tbZ" firstAttribute="leading" secondItem="ZJ1-ll-YK0" secondAttribute="trailing" constant="10" id="vFX-Qw-Sbc"/>
                     <constraint firstItem="xak-4j-HLl" firstAttribute="leading" secondItem="rbp-to-86j" secondAttribute="trailing" constant="10" id="yC0-27-l8C"/>
                 </constraints>
             </tableViewCellContentView>
@@ -100,7 +91,4 @@
             </connections>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="icon_tao" width="16" height="16"/>
-    </resources>
 </document>

@@ -433,6 +433,7 @@
 		3683F7C221CBBBC7008139B0 /* MEGiftMainNilCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3683F7C021CBBBC7008139B0 /* MEGiftMainNilCell.m */; };
 		3683F7C321CBBBC7008139B0 /* MEGiftMainNilCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3683F7C121CBBBC7008139B0 /* MEGiftMainNilCell.xib */; };
 		3683F7C621CBC7DD008139B0 /* MEProductGitfListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3683F7C521CBC7DD008139B0 /* MEProductGitfListVC.m */; };
+		368ABE0621FB199A005FC0C9 /* MECompandNoticeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 368ABE0521FB199A005FC0C9 /* MECompandNoticeVC.m */; };
 		368ACD8F21CA1D0E009B87E6 /* MEGiftHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 368ACD8E21CA1D0E009B87E6 /* MEGiftHeaderView.m */; };
 		368ACD9121CA1D1B009B87E6 /* MEGiftHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368ACD9021CA1D1B009B87E6 /* MEGiftHeaderView.xib */; };
 		368ACD9421CA1E02009B87E6 /* MEGiftFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 368ACD9321CA1E02009B87E6 /* MEGiftFooterView.m */; };
@@ -1413,6 +1414,8 @@
 		3683F7C121CBBBC7008139B0 /* MEGiftMainNilCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEGiftMainNilCell.xib; sourceTree = "<group>"; };
 		3683F7C421CBC7DD008139B0 /* MEProductGitfListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEProductGitfListVC.h; sourceTree = "<group>"; };
 		3683F7C521CBC7DD008139B0 /* MEProductGitfListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEProductGitfListVC.m; sourceTree = "<group>"; };
+		368ABE0421FB199A005FC0C9 /* MECompandNoticeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECompandNoticeVC.h; sourceTree = "<group>"; };
+		368ABE0521FB199A005FC0C9 /* MECompandNoticeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECompandNoticeVC.m; sourceTree = "<group>"; };
 		368ACD8D21CA1D0E009B87E6 /* MEGiftHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEGiftHeaderView.h; sourceTree = "<group>"; };
 		368ACD8E21CA1D0E009B87E6 /* MEGiftHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEGiftHeaderView.m; sourceTree = "<group>"; };
 		368ACD9021CA1D1B009B87E6 /* MEGiftHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEGiftHeaderView.xib; sourceTree = "<group>"; };
@@ -3391,6 +3394,8 @@
 				366019AC21E83ADD00F1BB37 /* MENewMineHomeVC.m */,
 				366019C021E878ED00F1BB37 /* MEMineMyActityDetailVC.h */,
 				366019C121E878ED00F1BB37 /* MEMineMyActityDetailVC.m */,
+				368ABE0421FB199A005FC0C9 /* MECompandNoticeVC.h */,
+				368ABE0521FB199A005FC0C9 /* MECompandNoticeVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4534,6 +4539,7 @@
 				365DB2572147601300001A04 /* MEMineHomeVC.m in Sources */,
 				365151BA214133440044C763 /* THTTPRequestOperationManager.m in Sources */,
 				366D1CD121B5140C0004295E /* MEArticelCategoryModel.m in Sources */,
+				368ABE0621FB199A005FC0C9 /* MECompandNoticeVC.m in Sources */,
 				360034BD21AE823700BAF337 /* AAPie.m in Sources */,
 				3628E7FB21C0F93B00D5405B /* MEGetCaseCell.m in Sources */,
 				36435C3C214F808C00F823B4 /* MEOrderDetailModel.m in Sources */,
