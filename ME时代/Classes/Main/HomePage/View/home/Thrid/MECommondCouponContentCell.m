@@ -7,6 +7,7 @@
 //
 
 #import "MECommondCouponContentCell.h"
+#import "MEPinduoduoCoupleModel.h"
 
 @interface MECommondCouponContentCell ()
 
@@ -25,13 +26,10 @@
     _lblJuan.adjustsFontSizeToFitWidth = YES;
 }
 
-- (void)setUIWithModel:(id)model{
-    kSDLoadImg(_imgPic, kMeUnNilStr(@""));
-    _lblPrice.text = [NSString stringWithFormat:@"¥%@",kMeUnNilStr(@"111")];
-    _lblJuan.text = [NSString stringWithFormat:@"%@元卷",kMeUnNilStr(@"111")];
-//    [NSString stringWithFormat:@"原价¥%@", [MECommonTool changeformatterWithFen:@(model.min_group_price)]];
-//         _lblJuan.text =[NSString stringWithFormat:@"%@元卷",[MECommonTool changeformatterWithFen:@(model.coupon_discount)]];
-    
+- (void)setUIWithModel:(MEPinduoduoCoupleModel *)model{
+     [_imgPic sd_setImageWithURL:[NSURL URLWithString:kMeUnNilStr(model.goods_thumbnail_url)] placeholderImage:kImgPlaceholder];
+    _lblPrice.text = [NSString stringWithFormat:@"¥%@", [MECommonTool changeformatterWithFen:@(model.min_group_price)]];
+    _lblJuan.text = [NSString stringWithFormat:@"%@元卷",[MECommonTool changeformatterWithFen:@(model.coupon_discount)]];
 }
 
 @end

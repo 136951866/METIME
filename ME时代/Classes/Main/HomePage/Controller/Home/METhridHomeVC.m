@@ -20,6 +20,7 @@
 #import "MERushBuyView.h"
 #import "METhridProductDetailsVC.h"
 #import "METhridHomeModel.h"
+#import "MEPinduoduoCoupleModel.h"
 
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSInteger _selectTimeIndex;
@@ -47,7 +48,7 @@
     [self.view addSubview:self.navView];
     _selectTimeIndex = 0;
     _arrRudeBuy = @[@"",@"",@"",@"",@"",@""];
-    _arrCommonCoupon = @[@"",@"",@"",@"",@"",@""];
+    _arrCommonCoupon = [NSArray array];
     self.tableView.tableHeaderView = self.headerView;
     [self.refresh addRefreshView];
     [self getRushGood];
@@ -101,12 +102,23 @@
             dispatch_semaphore_signal(semaphore);
         }];
     });
+    dispatch_group_async(group, queue, ^{
+        [MEPublicNetWorkTool postGetPinduoduoCommondPoductWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            strongSelf->_arrCommonCoupon =[MEPinduoduoCoupleModel mj_objectArrayWithKeyValuesArray:responseObject.data[@"goods_search_response"][@"goods_list"]];
+            dispatch_semaphore_signal(semaphore);
+        } failure:^(id object) {
+            dispatch_semaphore_signal(semaphore);
+        }];
+    });
+
     dispatch_group_notify(group, queue, ^{
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_async(dispatch_get_main_queue(), ^{
             kMeSTRONGSELF
             [strongSelf->_headerView setUIWithModel:strongSelf->_homeModel];
-            [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+            [strongSelf.tableView reloadData];
         });
     });
 

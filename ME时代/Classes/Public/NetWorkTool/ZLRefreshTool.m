@@ -129,6 +129,7 @@ NSUInteger const kSizeNum = 10;
                         if(strongSelf->_isPinduoduoCoupleMater){
                             NSInteger count = [responseObject.data[@"goods_search_response"][@"total_count"] integerValue];
                             count=count==0?1000:count;
+                            strongSelf.allRows = count ;
                             [strongSelf.delegate handleResponse:responseObject.data[@"goods_search_response"][@"goods_list"]];
                         }else{
                             MENetListModel *nlModel = [MENetListModel mj_objectWithKeyValues:responseObject.data];

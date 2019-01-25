@@ -8,6 +8,9 @@
 
 #import "MECommondCouponCell.h"
 #import "MECommondCouponContentCell.h"
+#import "MEPinduoduoCoupleModel.h"
+#import "MECoupleMailDetalVC.h"
+#import "METhridHomeVC.h"
 
 const static CGFloat kMargin = 10;
 @interface MECommondCouponCell ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -34,7 +37,12 @@ const static CGFloat kMargin = 10;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+    MEPinduoduoCoupleModel *model = self.arrModel[indexPath.row];
+    MECoupleMailDetalVC *vc = [[MECoupleMailDetalVC alloc]initWithPinduoudoModel:model];
+    METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
+    if(homeVC){
+        [homeVC.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -43,7 +51,7 @@ const static CGFloat kMargin = 10;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     MECommondCouponContentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MECommondCouponContentCell class]) forIndexPath:indexPath];
-    id model = self.arrModel[indexPath.row];
+    MEPinduoduoCoupleModel *model = self.arrModel[indexPath.row];
     [cell setUIWithModel:model];
     return cell;
 }

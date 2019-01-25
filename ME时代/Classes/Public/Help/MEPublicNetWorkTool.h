@@ -34,6 +34,8 @@
 
 /*********************************************/
 #pragma makr - pinduoduo
+//拼多多推荐
++ (void)postGetPinduoduoCommondPoductWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //佣金祥情
 + (void)postGetPinduoduoBrokerageDetailBaseWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //多多商品详情

@@ -18,12 +18,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="105" height="135"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pCD-Ws-Mxg">
-                        <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="105" id="bb1-Gb-Viz"/>
-                        </constraints>
-                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UbK-1x-55x">
+                        <rect key="frame" x="0.0" y="105" width="105" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezh-uJ-yoE">
                         <rect key="frame" x="4" y="105" width="67" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -43,9 +41,16 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pCD-Ws-Mxg">
+                        <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="105" id="bb1-Gb-Viz"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="UbK-1x-55x" secondAttribute="bottom" id="7ce-x0-5IT"/>
                 <constraint firstItem="ezh-uJ-yoE" firstAttribute="top" secondItem="pCD-Ws-Mxg" secondAttribute="bottom" id="9AG-so-OBl"/>
                 <constraint firstItem="pCD-Ws-Mxg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="DPp-Uc-ot1"/>
                 <constraint firstItem="7Bb-0e-45w" firstAttribute="leading" secondItem="ZJw-Fk-Re9" secondAttribute="leading" id="H66-cI-jN0"/>
@@ -56,15 +61,19 @@
                 <constraint firstItem="7Bb-0e-45w" firstAttribute="centerY" secondItem="ezh-uJ-yoE" secondAttribute="centerY" id="aZH-2l-g8a"/>
                 <constraint firstItem="pCD-Ws-Mxg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bh1-iO-EaU"/>
                 <constraint firstAttribute="trailing" secondItem="ZJw-Fk-Re9" secondAttribute="trailing" constant="4" id="bp3-9a-Sb3"/>
+                <constraint firstItem="UbK-1x-55x" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="f0I-Vx-IoC"/>
+                <constraint firstItem="UbK-1x-55x" firstAttribute="top" secondItem="pCD-Ws-Mxg" secondAttribute="bottom" id="gFG-eH-pJT"/>
                 <constraint firstItem="7Bb-0e-45w" firstAttribute="trailing" secondItem="ZJw-Fk-Re9" secondAttribute="trailing" id="gb5-ep-t8w"/>
                 <constraint firstAttribute="trailing" secondItem="pCD-Ws-Mxg" secondAttribute="trailing" id="gh5-hC-dgD"/>
                 <constraint firstItem="ezh-uJ-yoE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="h4O-kY-e2P"/>
+                <constraint firstAttribute="trailing" secondItem="UbK-1x-55x" secondAttribute="trailing" id="r54-SA-cF3"/>
             </constraints>
             <connections>
                 <outlet property="imgPic" destination="pCD-Ws-Mxg" id="WAi-MX-B0g"/>
                 <outlet property="lblJuan" destination="7Bb-0e-45w" id="HTO-p2-wFw"/>
                 <outlet property="lblPrice" destination="ezh-uJ-yoE" id="bci-CM-a1T"/>
             </connections>
+            <point key="canvasLocation" x="130.40000000000001" y="132.68365817091455"/>
         </collectionViewCell>
     </objects>
     <resources>

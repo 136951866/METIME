@@ -10,13 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MEPinduoduoCoupleModel;
 const static CGFloat kMECommondCouponContentCellWdith = 105;
 const static CGFloat kMECommondCouponContentCellHeight = 135;
 
 
 @interface MECommondCouponContentCell : UICollectionViewCell
 
-- (void)setUIWithModel:(id)model;
+- (void)setUIWithModel:(MEPinduoduoCoupleModel *)model;
 
 @end
 
