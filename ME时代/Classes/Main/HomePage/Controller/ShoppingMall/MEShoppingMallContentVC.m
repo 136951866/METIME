@@ -117,7 +117,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MEGoodModel *model = self.refresh.arrData[indexPath.row];
     METhridProductDetailsVC *dvc = [[METhridProductDetailsVC alloc]initWithId:model.product_id];
-    dvc.type = indexPath.row;
     [self.navigationController pushViewController:dvc animated:YES];
 }
 

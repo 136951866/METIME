@@ -66,7 +66,7 @@
     _consTitleHeight.constant = titleHeight>19?titleHeight:19;
     [_lblTitle setAtsWithStr:kMeUnNilStr(model.title) lineGap:0];
     _lblSubTitle.text = kMeUnNilStr(model.title);
-    _lblPrice.text = [NSString stringWithFormat:@"¥%@",kMeUnNilStr(model.interval_price)];
+    _lblPrice.text = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.money).floatValue)];
     NSString *commStr = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.market_price).floatValue)];
     [_lblPriceLine setLineStrWithStr:commStr];
     
@@ -82,10 +82,9 @@
 
 - (NSDate *)timeWithTimeIntervalString:(NSString *)timeString
 {
-    NSString *dateString=@"2019-01-23 11:00:00";
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *date=[dateFormatter dateFromString:dateString];
+    NSDate *date=[dateFormatter dateFromString:timeString];
     return date;
 }
 

@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MERushBuyCell : UITableViewCell
 
+@property (nonatomic, strong) NSString *time;
 + (CGFloat)getCellHeightWithArr:(NSArray *)arr;
 - (void)setUIWithArr:(NSArray *)arr;
 

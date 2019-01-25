@@ -10,9 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSUInteger, METhridProductDetailsVCType) {
-    METhridProductDetailsVCNormalType,
-    METhridProductDetailsVCNoticeType,
-    METhridProductDetailsVCRudeType,
+    METhridProductDetailsVCNormalType=0,
+    METhridProductDetailsVCRudeType=1,
+    METhridProductDetailsVCNoticeType=2,
+    
 };
 @interface METhridProductDetailsVC : MEBaseVC
 
@@ -20,7 +21,7 @@ typedef NS_ENUM(NSUInteger, METhridProductDetailsVCType) {
 //来自好友分享
 @property(nonatomic, copy) NSString *uid;
 @property (nonatomic, assign) BOOL isGift;
-@property (nonatomic, assign) METhridProductDetailsVCType type;
+@property (nonatomic, strong) NSString *time;
 
 @end
 

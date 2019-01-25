@@ -27,16 +27,12 @@ MEModelObjectClassInArrayWithDic(@{@"spec" : [MEGoodDetailSpecModel class]})
     return _arrSelect;
 }
 
-- (NSString *)rudeTip{
-    return @"等哈记得回家撒谎的";
-}
-
-- (NSString *)notice{
-    return @"等哈记得回家撒谎的";
-}
-
-- (NSString *)tip{
-    return @"等哈记得回记得记得记得记得记得记得记得记得记得记得记得记得记得记得记得记得记得记得记得记得家撒谎的";
+- (NSString*)rudeTip{
+    if(self.restrict_num!=0){
+        return [NSString stringWithFormat:@"限时秒杀(每人限购%ld件,超出的部分按原价购买)",self.restrict_num];
+    }else{
+        return @"";
+    }
 }
 
 @end

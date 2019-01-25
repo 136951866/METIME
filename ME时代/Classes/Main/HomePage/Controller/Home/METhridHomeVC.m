@@ -215,6 +215,8 @@
     if(indexPath.section==0){
         if(indexPath.row==0){
             MERushBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MERushBuyCell class]) forIndexPath:indexPath];
+            METhridHomeRudeTimeModel *model = _arrRudeTime[_selectTimeIndex];
+            cell.time = kMeUnNilStr(model.time);
             [cell setUIWithArr:_arrRudeBuy];
             return cell;
         }else if (indexPath.row==1){

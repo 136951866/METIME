@@ -13,6 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = 0;
+    _lblTitle.adjustsFontSizeToFitWidth = YES;
     // Initialization code
 }
 

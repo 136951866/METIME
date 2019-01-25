@@ -37,7 +37,7 @@ typedef NS_ENUM(NSUInteger, kpurchaseViewType) {
     NSArray *_arrTitle;
     kpurchaseViewType _selectType;
     NSString *_customId;
-    
+    METhridProductDetailsVCType _type;
 }
 
 @property (nonatomic, strong) UITableView           *tableView;
@@ -88,7 +88,7 @@ kTDWebViewCellDidFinishLoadNotificationMethod
 
 - (void)initWithSomeThing{
     kMeWEAKSELF
-    [MEPublicNetWorkTool postGoodsDetailWithGoodsId:_detailsId successBlock:^(ZLRequestResponse *responseObject) {
+    [MEPublicNetWorkTool postGoodsDetailWithGoodsId:_detailsId seckillTime:kMeUnNilStr(self.time) successBlock:^(ZLRequestResponse *responseObject) {
         kMeSTRONGSELF
         MEGoodDetailModel *model = [MEGoodDetailModel mj_objectWithKeyValues:responseObject.data];
         model.buynum = 1;
@@ -102,17 +102,19 @@ kTDWebViewCellDidFinishLoadNotificationMethod
 - (void)setUIWIthModel:(MEGoodDetailModel *)model{
     _model = model;
     _selectType = kpurchaseSelectSkuViewType;
+    _type = model.is_seckill;
     [self.view addSubview:self.tableView];
     switch (_type) {
         case METhridProductDetailsVCRudeType:{
             self.tableView.tableHeaderView = self.headerView;
             [self.headerView setUIWithModel:model];
-            [self.headerView downSecondHandle:@""];
+            [self.headerView downSecondHandle:model.seckill_end_time];
             }
             break;
         case METhridProductDetailsVCNoticeType:{
             self.tableView.tableHeaderView = self.normalheaderView;
             [self.normalheaderView setUINoticeWithModel:model];
+            [self.normalheaderView downSecondHandle:model.seckill_start_time];
         }
             break;
         case METhridProductDetailsVCNormalType:{
@@ -246,7 +248,7 @@ kTDWebViewCellDidFinishLoadNotificationMethod
     if(indexPath.section == 0){
         switch (indexPath.row) {
             case 0: {
-                if(kMeUnNilStr(_model.rudeTip).length && _type == METhridProductDetailsVCRudeType){
+                if(kMeUnNilStr(_model.rudeTip).length &&  _type != METhridProductDetailsVCNormalType){
                     METhridProductDetailsRushCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([METhridProductDetailsRushCell class]) forIndexPath:indexPath];
                     cell.lblTitle.text = kMeUnNilStr(_model.rudeTip);
                     return cell;
@@ -254,10 +256,10 @@ kTDWebViewCellDidFinishLoadNotificationMethod
             }
                 break;
             case 1: {
-                if(kMeUnNilStr(_model.tip).length){
+                if(kMeUnNilStr(_model.tips).length){
                     METhridProductDetailsTipCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([METhridProductDetailsTipCell class]) forIndexPath:indexPath];
                     cell.lblTip.text = @"提示";
-                    [cell setUiWithStr:_model.tip];
+                    [cell setUiWithStr:_model.tips];
                     return cell;
                 }
             }
@@ -306,14 +308,14 @@ kTDWebViewCellDidFinishLoadNotificationMethod
     if(indexPath.section==0){
         switch (indexPath.row) {
             case 0: {
-                if(kMeUnNilStr(_model.rudeTip).length && _type == METhridProductDetailsVCRudeType){
+                if(kMeUnNilStr(_model.rudeTip).length && _type != METhridProductDetailsVCNormalType){
                     return kMEThridProductDetailsRushCellHeight;
                 }
             }
                 break;
             case 1: {
-                if(kMeUnNilStr(_model.tip).length){
-                   return [METhridProductDetailsTipCell getCellHeightWithStr:_model.tip];
+                if(kMeUnNilStr(_model.tips).length){
+                   return [METhridProductDetailsTipCell getCellHeightWithStr:_model.tips];
                 }
             }
                 break;

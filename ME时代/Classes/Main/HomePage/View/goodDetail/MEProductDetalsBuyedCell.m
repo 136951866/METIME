@@ -9,7 +9,8 @@
 #import "MEProductDetalsBuyedCell.h"
 #import "MEProductDetalsBuyedContentCell.h"
 #import "MEGoodModel.h"
-#import "MEProductDetailsVC.h"
+//#import "MEProductDetailsVC.h"
+#import "METhridProductDetailsVC.h"
 #import "MEHomePageVC.h"
 #import "MEServiceDetailsVC.h"
 #import "MEMineExchangeDetailVC.h"
@@ -59,16 +60,16 @@ const static CGFloat kMargin = 15;
             }
         }
     }else{
-        MEProductDetailsVC *dVC = [MECommonTool getVCWithClassWtihClassName:[MEProductDetailsVC class] targetResponderView:self];
+        METhridProductDetailsVC *dVC = [MECommonTool getVCWithClassWtihClassName:[METhridProductDetailsVC class] targetResponderView:self];
         if(dVC){
             MEGoodModel *model = self.arrModel[indexPath.row];
-            MEProductDetailsVC *dvc = [[MEProductDetailsVC alloc]initWithId:model.product_id];
+            METhridProductDetailsVC *dvc = [[METhridProductDetailsVC alloc]initWithId:model.product_id];
             [dVC.navigationController pushViewController:dvc animated:YES];
         }else{
             MEMineExchangeDetailVC *mvc = [MECommonTool getVCWithClassWtihClassName:[MEMineExchangeDetailVC class] targetResponderView:self];
             if(mvc){
                 MEGoodModel *model = self.arrModel[indexPath.row];
-                MEProductDetailsVC *dvc = [[MEProductDetailsVC alloc]initWithId:model.product_id];
+                METhridProductDetailsVC *dvc = [[METhridProductDetailsVC alloc]initWithId:model.product_id];
                 [mvc.navigationController pushViewController:dvc animated:YES];
             }
         }

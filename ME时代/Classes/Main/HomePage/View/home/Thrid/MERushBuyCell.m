@@ -9,6 +9,9 @@
 #import "MERushBuyCell.h"
 #import "MERushBuyContentCell.h"
 #import "METhridHomeRudeGoodModel.h"
+#import "METhridHomeVC.h"
+#import "METhridProductDetailsVC.h"
+
 
 @interface MERushBuyCell ()<UITableViewDelegate,UITableViewDataSource>{
     NSArray *_arrModel;
@@ -49,7 +52,13 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    METhridHomeRudeGoodModel *model = _arrModel[indexPath.row];
+    METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
+    if(homeVC){
+        METhridProductDetailsVC *dvc = [[METhridProductDetailsVC alloc]initWithId:model.product_id];
+        dvc.time = self.time;
+        [homeVC.navigationController pushViewController:dvc animated:YES];
+    }
 }
 
 - (void)setUIWithArr:(NSArray *)arr{

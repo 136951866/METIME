@@ -38,15 +38,17 @@
     _lblSubTitle.text = kMeUnNilStr(model.desc);
     if(model.stock ==0 && model.sell_num==0){
         _viewForStock.hidden = YES;
+        _lblRate.hidden = YES;
     }else{
         _viewForStock.hidden = NO;
+        _lblRate.hidden = NO;
         CGFloat rate = model.sell_num/(model.stock+model.sell_num);
         NSInteger rateNum = 100*rate;
         _lblRate.text = [NSString stringWithFormat:@"%ld%%",(long)rateNum];
         _consRateWdith.constant = rateNum;
     }
-
-    _lblPrice.text = [NSString stringWithFormat:@"¥%@",kMeUnNilStr(model.money)];
+ 
+    _lblPrice.text = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.money).floatValue)];
     NSString *commStr = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.market_price).floatValue)];
     [_lblUnderLinePrice setLineStrWithStr:commStr];
     

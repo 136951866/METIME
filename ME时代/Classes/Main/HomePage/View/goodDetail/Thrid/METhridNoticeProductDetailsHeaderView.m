@@ -62,22 +62,22 @@
 }
 
 - (void)setUINoticeWithModel:(MEGoodDetailModel *)model{
+    _lblRealPriceLine.hidden = YES;
     self.sdView.imageURLStringsGroup = @[MELoadQiniuImagesWithUrl(kMeUnNilStr(model.images))];
     _lblTitle.text = kMeUnNilStr(model.title);
-    _lblStatrTime.text = [NSString stringWithFormat:@"%@开抢",kMeUnNilStr(@"")];
+    _lblStatrTime.text = [NSString stringWithFormat:@"%@开抢",kMeUnNilStr(model.seckill_start_time)];
     CGFloat titleHeight = [NSAttributedString heightForAtsWithStr:kMeUnNilStr(model.title) font:[UIFont systemFontOfSize:15] width:(SCREEN_WIDTH - 20) lineH:0 maxLine:0];
     _consTitleHeight.constant = titleHeight>19?titleHeight:19;
     [_lblTitle setAtsWithStr:kMeUnNilStr(model.title) lineGap:0];
     _lblSubTitle.text = kMeUnNilStr(model.title);
     //预告价
-    _lblPrice.text = [NSString stringWithFormat:@"¥%@",kMeUnNilStr(model.interval_price)];
+    _lblPrice.text =  [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.money).floatValue)];//[NSString stringWithFormat:@"¥%@",kMeUnNilStr(model.money)];
     
-    
-    NSString *commStr = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.market_price).floatValue)];
+//    NSString *commStr = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.market_price).floatValue)];
     //实价
-    [_lblRealPriceLine setLineStrWithStr:commStr];
+//    [_lblRealPriceLine setLineStrWithStr:commStr];
     //购买价
-    _lblRealPrice.text = kMeUnNilStr(@"111");
+    _lblRealPrice.text = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.market_price).floatValue)];
     
     CGFloat postage = [model.postage floatValue];
     if(postage<=0){
@@ -101,7 +101,7 @@
     //实价
     [_lblRealPriceLine setLineStrWithStr:commStr];
     //购买价
-    _lblRealPrice.text = kMeUnNilStr(@"111");
+    _lblRealPrice.text = [NSString stringWithFormat:@"¥%@",kMeUnNilStr(model.money)];
     
     CGFloat postage = [model.postage floatValue];
     if(postage<=0){
@@ -116,10 +116,9 @@
 
 - (NSDate *)timeWithTimeIntervalString:(NSString *)timeString
 {
-    NSString *dateString=@"2019-01-23 11:00:00";
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *date=[dateFormatter dateFromString:dateString];
+    NSDate *date=[dateFormatter dateFromString:timeString];
     return date;
 }
 

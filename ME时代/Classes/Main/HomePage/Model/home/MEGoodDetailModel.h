@@ -56,13 +56,20 @@
 
 //0 不能分享 1 可以
 @property (nonatomic, strong) NSString *is_clerk_share;
-
+//商品类型 0 普通 1秒杀 2预告
+@property (nonatomic,assign) NSInteger is_seckill;
+//秒杀开始
+@property (nonatomic, strong) NSString *seckill_start_time;
+//秒杀结束
+@property (nonatomic, strong) NSString *seckill_end_time;
+//限购数量
+@property (nonatomic,assign) NSInteger restrict_num;
 //限时秒杀
 @property (nonatomic, strong) NSString *rudeTip;
 //通知
 @property (nonatomic, strong) NSString *notice;
-//tishi
-@property (nonatomic, strong) NSString *tip;
+//提示
+@property (nonatomic, strong) NSString *tips;
 
 @end
 
