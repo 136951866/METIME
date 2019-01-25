@@ -205,14 +205,15 @@ const static CGFloat kThridImageWidth = 200;
                 break;
             case METhridHomeHeaderViewActiveTbcouponType:
             {
-                MECoupleHomeVC *vc= [[MECoupleHomeVC alloc]init];
+                MECoupleHomeVC *vc= [[MECoupleHomeVC alloc]initWithIsTbK:YES];
                 [homeVC.navigationController pushViewController:vc animated:YES];
                 
             }
                 break;
             case METhridHomeHeaderViewActivePinduoduoCouponType:
             {
-                
+                MECoupleHomeVC *vc= [[MECoupleHomeVC alloc]initWithIsTbK:NO];
+                [homeVC.navigationController pushViewController:vc animated:YES];
             }
                 break;
             case METhridHomeHeaderViewActiveServiceType:

@@ -15,14 +15,15 @@
 
 @interface MECoupleHomeHeaderView ()<SDCycleScrollViewDelegate>{
     NSArray *_Model;
+    BOOL _isTbk;
 }
 
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *sdView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consSdViewHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consImageH;
-@property (weak, nonatomic) IBOutlet UIButton *btnT;
-@property (weak, nonatomic) IBOutlet UIButton *btnP;
-@property (weak, nonatomic) IBOutlet UIView *viewForSel;
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *arrImag;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *arrBtn;
+
 
 @end
 
@@ -36,13 +37,20 @@
     CGFloat imageW = (SCREEN_WIDTH - 12)/2;
     CGFloat imageH = (imageW * 178)/364;
     _consImageH.constant = imageH;
-    _btnT.selected = YES;
-    _btnP.selected = NO;
     [self layoutIfNeeded];
 }
 
-- (void)setUiWithModel:(NSArray *)Model{
+- (void)setUiWithModel:(NSArray *)Model isTKb:(BOOL)isTbk{
     _Model = Model;
+    _isTbk = isTbk;
+    if(!_isTbk){
+        [_arrImag enumerateObjectsUsingBlock:^(UIImageView *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.hidden = YES;
+        }];
+        [_arrBtn enumerateObjectsUsingBlock:^(UIButton *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.hidden = YES;
+        }];
+    }
     __block NSMutableArray *arrImage =[NSMutableArray array];
     [_Model enumerateObjectsUsingBlock:^(MEAdModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         [arrImage addObject:kMeUnNilStr(model.ad_img)];
@@ -51,6 +59,7 @@
     _sdView.clipsToBounds = YES;
     _sdView.imageURLStringsGroup = arrImage;
 }
+
 
 - (void)initSD{
     _sdView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
@@ -97,27 +106,6 @@
     }
 }
 
-- (IBAction)tcouPonAction:(UIButton *)sender {
-    if(_btnT.selected){
-        return;
-    }
-    _viewForSel.centerX = sender.centerX;
-    _btnT.selected = YES;
-    _btnP.selected = NO;
-    kMeCallBlock(_isSelectTbkBlock,YES);
-}
-
-- (IBAction)pCouponAction:(UIButton *)sender {
-    if(_btnP.selected){
-        return;
-    }
-    _viewForSel.centerX = sender.centerX;
-    _btnT.selected = NO;
-    _btnP.selected = YES;
-     kMeCallBlock(_isSelectTbkBlock,NO);
-}
-
-
 
 #pragma mark - SDCycleScrollViewDelegate
 
@@ -133,14 +121,20 @@
     }
 }
 
-+ (CGFloat)getViewHeight{
-    CGFloat height = 0;
-    CGFloat sdHeight = 150 *kMeFrameScaleX();
-    CGFloat imageW = (SCREEN_WIDTH - 12)/2;
-    CGFloat imageH = (imageW * 178)/364;
-    height = sdHeight + (imageH*2) +8+51;
-    return height;
++ (CGFloat)getViewHeightWithisTKb:(BOOL)isTbk{
+    if(isTbk){
+        CGFloat height = 0;
+        CGFloat sdHeight = 150 *kMeFrameScaleX();
+        CGFloat imageW = (SCREEN_WIDTH - 12)/2;
+        CGFloat imageH = (imageW * 178)/364;
+        height = sdHeight + (imageH*2) +8;
+        return height;
+    }else{
+        return 150 *kMeFrameScaleX();;
+    }
+
 }
+
 
 
 

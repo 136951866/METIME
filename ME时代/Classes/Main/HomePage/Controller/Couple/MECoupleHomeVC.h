@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MECoupleHomeVC : MEBaseVC
 
+- (instancetype)initWithIsTbK:(BOOL)isTBk;
+
 @end
 
 NS_ASSUME_NONNULL_END

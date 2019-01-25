@@ -21,22 +21,28 @@
 @interface MECoupleHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSArray *_todayBuy;
     NSArray *_99BuyBuy;
-    BOOL _isTBk;
+    
 }
 
 @property (nonatomic, strong) MECoupleHomeHeaderView         *headerView;
 @property (nonatomic, strong) ZLRefreshTool         *refresh;
 @property (nonatomic, strong) MECoupleHomeNavView *navView;
 @property (nonatomic, strong) UITableView *tableView;
-
+@property (nonatomic, assign)BOOL isTBk;
 @end
 
 @implementation MECoupleHomeVC
 
+- (instancetype)initWithIsTbK:(BOOL)isTBk{
+    if(self = [super init]){
+        _isTBk = isTBk;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navBarHidden = YES;
-    _isTBk = YES;
     self.view.backgroundColor = kMEf5f4f4;
     _todayBuy = [NSArray array];
     _99BuyBuy = [NSArray array];
@@ -212,23 +218,8 @@
 - (MECoupleHomeHeaderView *)headerView{
     if(!_headerView){
         _headerView = [[[NSBundle mainBundle]loadNibNamed:@"MECoupleHomeHeaderView" owner:nil options:nil] lastObject];
-        _headerView.frame =CGRectMake(0, 0, SCREEN_WIDTH, [MECoupleHomeHeaderView getViewHeight]);
-        kMeWEAKSELF
-        _headerView.isSelectTbkBlock = ^(BOOL isT) {
-            kMeSTRONGSELF
-            strongSelf->_isTBk = isT;
-            if(isT){
-                strongSelf.refresh.isCoupleMater = YES;
-                strongSelf.refresh.isPinduoduoCoupleMater = NO;
-                strongSelf.refresh.url = kGetApiWithUrl(MEIPcommonTaobaokeGetDgMaterialOptional);
-            }else{
-                strongSelf.refresh.isCoupleMater = NO;
-                strongSelf.refresh.isPinduoduoCoupleMater = YES;
-                strongSelf.refresh.url = kGetApiWithUrl(MEIPcommonduoduokeGetgetGoodsList);
-            }
-            [strongSelf.refresh.arrData removeAllObjects];
-            [strongSelf.refresh reload];
-        };
+        _headerView.frame =CGRectMake(0, 0, SCREEN_WIDTH, [MECoupleHomeHeaderView getViewHeightWithisTKb:_isTBk]);
+        [_headerView setUiWithModel:@[] isTKb:_isTBk];
     }
     return _headerView;
 }
@@ -252,12 +243,16 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonTaobaokeGetDgMaterialOptional)];
+        if(_isTBk){
+            _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonTaobaokeGetDgMaterialOptional)];
+            _refresh.isCoupleMater = YES;
+        }else{
+            _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonduoduokeGetgetGoodsList)];
+            _refresh.isPinduoduoCoupleMater = YES;
+        }
         _refresh.delegate = self;
-        _refresh.isCoupleMater = YES;
         _refresh.isDataInside = YES;
         _refresh.showFailView = NO;
-        _refresh.showMaskView = YES;
     }
     return _refresh;
 }

@@ -12,9 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MECoupleHomeHeaderView : UIView
 
-- (void)setUiWithModel:(NSArray *)Model;
-+ (CGFloat)getViewHeight;
-@property (nonatomic, copy) kMeBOOLBlock isSelectTbkBlock;
+- (void)setUiWithModel:(NSArray *)Model isTKb:(BOOL)isTbk;
++ (CGFloat)getViewHeightWithisTKb:(BOOL)isTbk;
 
 
 @end
