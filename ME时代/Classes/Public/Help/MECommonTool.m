@@ -528,5 +528,11 @@
     return FALSE;
 }
 
++ (NSMutableAttributedString *)fristStrWithFont:(UIFont *)font content:(NSString *)content{
+    NSMutableAttributedString *aString = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@",content]];
+    [aString addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, 1)];
+    return aString;
+}
+
 
 @end

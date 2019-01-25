@@ -42,6 +42,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString * updated_at;
 @property (nonatomic, strong) NSString * author;
 @property (nonatomic, strong) NSString * header_pic;
+
+@property (nonatomic, assign) NSInteger pid;
+
 @end
 
 NS_ASSUME_NONNULL_END

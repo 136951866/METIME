@@ -228,9 +228,9 @@
         MECoupleHomeMainGoodGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainGoodGoodsCell class]) forIndexPath:indexPath];
         [cell setPinduoduoUIWithArr:self.refresh.arrData];
         kMeWEAKSELF
-        cell.selectBlock = ^{
+        cell.selectBlock = ^(NSInteger index) {
             kMeSTRONGSELF
-            MEPinduoduoCoupleModel *model = strongSelf.refresh.arrData[indexPath.row];
+            MEPinduoduoCoupleModel *model = strongSelf.refresh.arrData[index];
             MECoupleMailDetalVC *vc = [[MECoupleMailDetalVC alloc]initWithPinduoudoModel:model];
             [strongSelf.navigationController pushViewController:vc animated:YES];
         };

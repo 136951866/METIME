@@ -24,7 +24,6 @@
 - (MELocationCLLModel *)getLocationModel;
 - (void)getGeocoderSuccess:(kMeObjBlock)success failure:(kMeObjBlock)failure;
 
-
 //获取当前城市
 //+ (NSString *)setInfoWithLocation:(BMKAddressComponent *)location;
 @end

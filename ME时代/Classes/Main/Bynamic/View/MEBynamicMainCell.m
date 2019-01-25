@@ -14,6 +14,8 @@
 
 #define kmainCommentCellWdith (SCREEN_WIDTH - 10 -36-10-10)
 
+#define kmainCommentCellStoreWdith (SCREEN_WIDTH - 10 -36-10-10-5-42-20)
+
 @interface MEBynamicMainCell ()<YBImageBrowserDataSource>{
     NSInteger _currentIndex;
 }
@@ -27,8 +29,13 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consTitleHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consComentHeight;
 @property (strong, nonatomic) MEBynamicHomeModel *model;
-
 @property (weak, nonatomic) IBOutlet UIButton *btnLike;
+
+
+@property (weak, nonatomic) IBOutlet UIView *viewForStore;
+@property (weak, nonatomic) IBOutlet UIImageView *imgStoreHeader;
+@property (weak, nonatomic) IBOutlet UILabel *lblStoreTitle;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *consStoreTitleHeight;
 
 @end
 
@@ -68,6 +75,18 @@
 
     _consComentHeight.constant = [MEBynamicCommentView getViewHeightWithArrLike:kMeUnArr(model.praise) Arrcomment:kMeUnArr(model.comment)];
     [_viewCommentAndLike setUIWithArrLike:kMeUnArr(model.praise) Arrcomment:kMeUnArr(model.comment)];
+    if(model.pid){
+        _viewForStore.hidden = NO;
+        kSDLoadImg(_imgStoreHeader, kMeUnNilStr(@""));
+        NSString *str = kMeUnNilStr(@"撒谎的环境卡上的讲话深刻的哈萨克的还是卡今后的健康撒谎的空间撒谎打开哈萨克接电话手机卡的话就看撒谎大家看啥看的话手机卡和丹江口市肯德基和手机卡的哈萨克结婚登记卡是几点开会撒空间");
+        CGFloat titleHeight = [NSAttributedString heightForAtsWithStr:str font:[UIFont systemFontOfSize:12] width:kmainCommentCellStoreWdith lineH:0 maxLine:0]+16;
+        _consStoreTitleHeight.constant = titleHeight>57?titleHeight:57;
+        [_lblStoreTitle setAtsWithStr:str lineGap:0];
+    }else{
+        _viewForStore.hidden = YES;
+        _consStoreTitleHeight.constant = 0 ;
+    }
+    
     [self layoutIfNeeded];
 }
 
@@ -108,12 +127,20 @@
     NSArray *photo = kMeUnArr(model.images);
     if(photo.count){
         height+= [MENineGridView getDymmaincViewHeightWIth:photo];
-        height+=14;
+        height+=17;
     }else{
         height+=14;
     }
+    if(model.pid){
+        NSString *str = kMeUnNilStr(@"撒谎的环境卡上的讲话深刻的哈萨克的还是卡今后的健康撒谎的空间撒谎打开哈萨克接电话手机卡的话就看撒谎大家看啥看的话手机卡和丹江口市肯德基和手机卡的哈萨克结婚登记卡是几点开会撒空间");
+        CGFloat titleHeight = [NSAttributedString heightForAtsWithStr:str font:[UIFont systemFontOfSize:12] width:kmainCommentCellStoreWdith lineH:0 maxLine:0]+16;
+        height+=titleHeight>57?titleHeight:57;
+        height+=10;
+    }
+    
     height+=25;
     height+=[MEBynamicCommentView getViewHeightWithArrLike:kMeUnArr(model.praise) Arrcomment:kMeUnArr(model.comment)];
+    height+=10;
     return height;
     
 }

@@ -51,6 +51,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MEBynamicHomeModel *model = self.refresh.arrData[indexPath.row];
+    model.pid = indexPath.row;
     MEBynamicMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBynamicMainCell class]) forIndexPath:indexPath];
     [cell setUIWithModel:model];
     kMeWEAKSELF
@@ -71,7 +72,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     MEBynamicHomeModel *model = self.refresh.arrData[indexPath.row];
+    model.pid = indexPath.row;
     return [MEBynamicMainCell getCellHeightithModel:model];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    MEBynamicHomeModel *model = self.refresh.arrData[indexPath.row];
+    NSLog(@"%ld",model.pid);
 }
 
 - (void)shareAction{
@@ -98,7 +105,6 @@
     }
     _comentIndex = index;
     [self.inputToolbar showToolbar];
-    
 }
 
 - (void)likeAction:(NSInteger)index{

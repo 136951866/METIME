@@ -35,7 +35,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if(_selectBlock){
-        kMeCallBlock(_selectBlock);
+        kMeCallBlock(_selectBlock,indexPath.row);
         return;
     }
     if(_isTbK){

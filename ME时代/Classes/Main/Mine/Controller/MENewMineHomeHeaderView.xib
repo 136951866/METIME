@@ -22,7 +22,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXN-ef-9Wj">
-                    <rect key="frame" x="118" y="59" width="242" height="18"/>
+                    <rect key="frame" x="118" y="59" width="212" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -183,10 +183,10 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drv-dw-k8v">
-                    <rect key="frame" x="275" y="0.0" width="100" height="60"/>
+                    <rect key="frame" x="275" y="0.0" width="100" height="80"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="GCp-iy-vO6"/>
-                        <constraint firstAttribute="height" constant="60" id="JYE-Bj-8w5"/>
+                        <constraint firstAttribute="height" constant="80" id="JYE-Bj-8w5"/>
                     </constraints>
                     <connections>
                         <action selector="setAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="r4d-uU-GHs"/>
@@ -213,7 +213,7 @@
                 <constraint firstAttribute="bottom" secondItem="gfN-or-tQT" secondAttribute="bottom" id="hY9-gz-wWp"/>
                 <constraint firstAttribute="trailing" secondItem="07M-vF-6qS" secondAttribute="trailing" constant="15" id="wGZ-Ky-Kel"/>
                 <constraint firstItem="fXN-ef-9Wj" firstAttribute="top" secondItem="1hG-ou-a3L" secondAttribute="top" constant="15" id="yR4-04-FiB"/>
-                <constraint firstAttribute="trailing" secondItem="fXN-ef-9Wj" secondAttribute="trailing" constant="15" id="ypU-n5-Wsf"/>
+                <constraint firstAttribute="trailing" secondItem="fXN-ef-9Wj" secondAttribute="trailing" constant="45" id="ypU-n5-Wsf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
