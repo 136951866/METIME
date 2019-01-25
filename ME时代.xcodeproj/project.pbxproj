@@ -238,6 +238,7 @@
 		3630AC5721F70CA9006C3F8D /* METhridProductDetailsSelectSkuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3630AC5521F70CA9006C3F8D /* METhridProductDetailsSelectSkuCell.m */; };
 		3630AC5821F70CA9006C3F8D /* METhridProductDetailsSelectSkuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3630AC5621F70CA9006C3F8D /* METhridProductDetailsSelectSkuCell.xib */; };
 		3630AC5B21F713E0006C3F8D /* METhridProductDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3630AC5A21F713E0006C3F8D /* METhridProductDetailsVC.m */; };
+		3633516621F9BC4E0062D53D /* METhridHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3633516521F9BC4E0062D53D /* METhridHomeModel.m */; };
 		36356A6F2176C426004174E7 /* MESuperMemberHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36356A6E2176C426004174E7 /* MESuperMemberHomeModel.m */; };
 		36356A722176E3E9004174E7 /* MEStoreDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36356A712176E3E9004174E7 /* MEStoreDetailModel.m */; };
 		36356A7821770A4B004174E7 /* MELocationConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 36356A7721770A4B004174E7 /* MELocationConverter.m */; };
@@ -1053,6 +1054,8 @@
 		3630AC5621F70CA9006C3F8D /* METhridProductDetailsSelectSkuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = METhridProductDetailsSelectSkuCell.xib; sourceTree = "<group>"; };
 		3630AC5921F713E0006C3F8D /* METhridProductDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = METhridProductDetailsVC.h; sourceTree = "<group>"; };
 		3630AC5A21F713E0006C3F8D /* METhridProductDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = METhridProductDetailsVC.m; sourceTree = "<group>"; };
+		3633516421F9BC4E0062D53D /* METhridHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = METhridHomeModel.h; sourceTree = "<group>"; };
+		3633516521F9BC4E0062D53D /* METhridHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = METhridHomeModel.m; sourceTree = "<group>"; };
 		36356A6D2176C426004174E7 /* MESuperMemberHomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MESuperMemberHomeModel.h; sourceTree = "<group>"; };
 		36356A6E2176C426004174E7 /* MESuperMemberHomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MESuperMemberHomeModel.m; sourceTree = "<group>"; };
 		36356A702176E3E9004174E7 /* MEStoreDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEStoreDetailModel.h; sourceTree = "<group>"; };
@@ -2382,6 +2385,15 @@
 			path = ProductDetail;
 			sourceTree = "<group>";
 		};
+		3633516321F9BB420062D53D /* Thrid */ = {
+			isa = PBXGroup;
+			children = (
+				3633516421F9BC4E0062D53D /* METhridHomeModel.h */,
+				3633516521F9BC4E0062D53D /* METhridHomeModel.m */,
+			);
+			path = Thrid;
+			sourceTree = "<group>";
+		};
 		36371551218ACE7E0057E59F /* UIButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -2394,6 +2406,7 @@
 		36435C2B214F5C9B00F823B4 /* home */ = {
 			isa = PBXGroup;
 			children = (
+				3633516321F9BB420062D53D /* Thrid */,
 				36435C2C214F5CA800F823B4 /* MEAdModel.h */,
 				36435C2D214F5CA800F823B4 /* MEAdModel.m */,
 				36435C2F214F766800F823B4 /* MEGoodModel.h */,
@@ -4578,6 +4591,7 @@
 				36D66EB9213F7907000476FF /* main.m in Sources */,
 				36472B0321C8E15C00CC3E48 /* JXCategoryListVCContainerView.m in Sources */,
 				EB28101821539B65006A765A /* MEStoreModel.m in Sources */,
+				3633516621F9BC4E0062D53D /* METhridHomeModel.m in Sources */,
 				3628E7CA21C09EE800D5405B /* MEClerkManngerVC.m in Sources */,
 				36022DFF2190123700DC9A8B /* MENewHomeMainCell.m in Sources */,
 				360830D7219AAE4300C72B22 /* HDAlertView.m in Sources */,

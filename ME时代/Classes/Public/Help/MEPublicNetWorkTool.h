@@ -106,6 +106,10 @@
 /***************************************/
 
 #pragma mark - HomePage
+
+//获取2.0首页数据
++ (void)postThridHomeStyleWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+
 //获取首面的背景和banner
 + (void)postActivityWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 + (void)postAdWithPosition_id:(NSInteger)position_id successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
@@ -116,6 +120,8 @@
 + (void)postMystyleWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //获取通知消息
 + (void)postGetMessageWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+
+
 /***************************************/
 
 

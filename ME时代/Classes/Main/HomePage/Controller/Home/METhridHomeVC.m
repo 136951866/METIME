@@ -16,12 +16,16 @@
 #import "METhridHomeNavView.h"
 #import "MEShoppingMallVC.h"
 #import "MECoupleHomeVC.h"
-
+#import "MEAdModel.h"
+#import "MERushBuyView.h"
+#import "METhridProductDetailsVC.h"
+#import "METhridHomeModel.h"
 
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSInteger _selectTimeIndex;
     NSArray *_arrRudeBuy;
     NSArray *_arrCommonCoupon;
+    METhridHomeModel *_homeModel;
 }
 
 @property (nonatomic, strong) UITableView           *tableView;
@@ -41,14 +45,62 @@
     _arrRudeBuy = @[@"",@"",@"",@"",@"",@""];
     _arrCommonCoupon = @[@"",@"",@"",@"",@"",@""];
     self.tableView.tableHeaderView = self.headerView;
-    [self.headerView setUIWithModel:@[]];
     [self.refresh addRefreshView];
-#warning 
-    MEShoppingMallVC *vc = [[MEShoppingMallVC alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self getRushGood];
+//#warning
+//    MEShoppingMallVC *vc = [[MEShoppingMallVC alloc]init];
+//    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)getNetWork{
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    kMeWEAKSELF
+    dispatch_group_async(group, queue, ^{
+        [MEPublicNetWorkTool postThridHomeStyleWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            strongSelf->_homeModel = [METhridHomeModel mj_objectWithKeyValues:responseObject.data];
+            dispatch_semaphore_signal(semaphore);
+        } failure:^(id object) {
+            dispatch_semaphore_signal(semaphore);
+        }];
+    });
+    dispatch_group_notify(group, queue, ^{
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            kMeSTRONGSELF
+            [strongSelf->_headerView setUIWithModel:strongSelf->_homeModel];
+        });
+    });
+
+}
+
+- (void)getRushGood{
+    kMeWEAKSELF
+    [MEPublicNetWorkTool postRushGoodWithsuccessBlock:^(ZLRequestResponse *responseObject) {
+        if([responseObject.data isKindOfClass:[NSDictionary class]]){
+            MEAdModel *model = [MEAdModel mj_objectWithKeyValues:responseObject.data];
+            [MERushBuyView ShowWithModel:model tapBlock:^{
+                if(model.product_id!=0){
+                    kMeSTRONGSELF
+                    strongSelf.tabBarController.selectedIndex = 0;
+                    METhridProductDetailsVC *dvc = [[METhridProductDetailsVC alloc]initWithId:model.product_id];
+                    [strongSelf.navigationController pushViewController:dvc animated:YES];
+                }
+            } cancelBlock:^{
+                
+            } superView:weakSelf.view];
+        }
+    } failure:^(id object) {
+        
+    }];
 }
 
 - (NSDictionary *)requestParameter{
+    if(self.refresh.pageIndex == 1){
+        [self getNetWork];
+    }
     return @{@"sort_type":@"8"};
 }
 

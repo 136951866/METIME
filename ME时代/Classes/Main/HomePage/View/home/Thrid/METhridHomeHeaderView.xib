@@ -23,42 +23,57 @@
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thridBottomline" translatesAutoresizingMaskIntoConstraints="NO" id="Keb-yR-Udh">
-                    <rect key="frame" x="0.0" y="167" width="389" height="11"/>
+                    <rect key="frame" x="0.0" y="166" width="389" height="12"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZg-s4-Brm">
                     <rect key="frame" x="0.0" y="178" width="389" height="91"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oso-gh-tkZ" customClass="MEMidelMiddelImageButton">
+                        <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oso-gh-tkZ" customClass="MEMidelMiddelImageButton">
                             <rect key="frame" x="0.0" y="0.0" width="78" height="91"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="新人有礼" image="thirdHome99">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="activeAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Y3a-3n-dez"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8f-A8-xbr" customClass="MEMidelMiddelImageButton">
+                        <button opaque="NO" tag="1004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8f-A8-xbr" customClass="MEMidelMiddelImageButton">
                             <rect key="frame" x="311" y="0.0" width="78" height="91"/>
                             <state key="normal" title="服务" image="thirdHomeSer">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="activeAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="mPO-hV-cro"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8x-d1-P14" customClass="MEMidelMiddelImageButton">
+                        <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8x-d1-P14" customClass="MEMidelMiddelImageButton">
                             <rect key="frame" x="155.5" y="0.0" width="78" height="91"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="淘宝卷" image="thirdHomeTbC">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="activeAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="vho-Ju-1Sk"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDd-ER-kfR" customClass="MEMidelMiddelImageButton">
+                        <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDd-ER-kfR" customClass="MEMidelMiddelImageButton">
                             <rect key="frame" x="78" y="0.0" width="77.5" height="91"/>
                             <state key="normal" title="秒杀" image="thirdHomeMiao">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="activeAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="5u5-bb-qhD"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQr-Re-635" customClass="MEMidelMiddelImageButton">
+                        <button opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQr-Re-635" customClass="MEMidelMiddelImageButton">
                             <rect key="frame" x="233.5" y="0.0" width="77.5" height="91"/>
                             <state key="normal" title="拼多多卷" image="thirdHomePdd">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="activeAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Cjo-th-OMM"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -86,7 +101,7 @@
                         <constraint firstItem="sDd-ER-kfR" firstAttribute="top" secondItem="ZZg-s4-Brm" secondAttribute="top" id="zJC-Sb-rg3"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U2N-oL-aPy">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U2N-oL-aPy">
                     <rect key="frame" x="10" y="269" width="369" height="154"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="154" id="rRq-6L-cxx"/>
@@ -95,7 +110,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pGm-qw-XCo">
                     <rect key="frame" x="10" y="433" width="369" height="200"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rQD-Md-H9S">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rQD-Md-H9S">
                             <rect key="frame" x="0.0" y="0.0" width="177" height="200"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="177" id="rIN-EV-YDk"/>
@@ -116,8 +131,8 @@
                                         <constraint firstAttribute="width" secondItem="n9z-uv-7g1" secondAttribute="height" multiplier="1:1" id="QoF-5m-HCH"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXt-02-Yml">
-                                    <rect key="frame" x="5" y="39" width="97.5" height="14.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXt-02-Yml">
+                                    <rect key="frame" x="5" y="39" width="97.5" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -152,8 +167,8 @@
                                 <constraint firstAttribute="width" secondItem="jZf-27-520" secondAttribute="height" multiplier="1:1" id="pX9-Yn-mRh"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hI0-mp-fqQ">
-                            <rect key="frame" x="182" y="138.5" width="96.5" height="14.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hI0-mp-fqQ">
+                            <rect key="frame" x="182" y="138.5" width="96.5" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -188,7 +203,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZRo-q2-zFm">
                     <rect key="frame" x="10" y="643" width="369" height="85"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5DQ-lp-Aug">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5DQ-lp-Aug">
                             <rect key="frame" x="0.0" y="0.0" width="135" height="85"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="135" id="jfk-Xd-upM"/>
@@ -282,7 +297,16 @@
                 <outlet property="imgQiao" destination="5DQ-lp-Aug" id="VC1-UW-EHK"/>
                 <outlet property="imgSecond" destination="rQD-Md-H9S" id="Ubj-jL-TPh"/>
                 <outlet property="imgSecondGood" destination="jZf-27-520" id="EYZ-z2-0SI"/>
+                <outlet property="lblFristGoodSubtitle" destination="TXt-02-Yml" id="RC2-iu-IDW"/>
+                <outlet property="lblFristGoodTitle" destination="leE-Ww-AU0" id="NOX-sg-Y41"/>
+                <outlet property="lblRudePrice" destination="xyP-6w-evs" id="aLf-en-AFw"/>
+                <outlet property="lblRudeTite" destination="ErW-GA-l5m" id="8QC-2Z-n42"/>
+                <outlet property="lblSGoodSubtitle" destination="hI0-mp-fqQ" id="UQE-wq-G4V"/>
+                <outlet property="lblSGoodTitle" destination="40T-SB-VfK" id="S6q-v9-rkZ"/>
                 <outlet property="sdView" destination="jzx-cp-lET" id="xcN-eE-pkT"/>
+                <outlet property="sencodView" destination="LQS-sS-Ivp" id="cIu-AQ-5EB"/>
+                <outlet property="viewFrist" destination="e8s-Pp-zQo" id="5RO-Xb-Tpv"/>
+                <outlet property="viewforScard" destination="ZRo-q2-zFm" id="cbq-34-5zX"/>
             </connections>
             <point key="canvasLocation" x="63.200000000000003" y="139.880059970015"/>
         </view>
@@ -293,7 +317,7 @@
         <image name="thirdHomePdd" width="45.5" height="45"/>
         <image name="thirdHomeSer" width="45.5" height="45"/>
         <image name="thirdHomeTbC" width="45.5" height="45"/>
-        <image name="thridBottomline" width="375" height="11"/>
+        <image name="thridBottomline" width="375" height="12"/>
         <image name="thridQiao" width="75" height="30"/>
     </resources>
 </document>

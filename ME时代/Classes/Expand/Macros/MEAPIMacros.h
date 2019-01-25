@@ -168,6 +168,8 @@
 #define MEIPcommonGetMystyle @"common/mystyle/getMystyle"
 //获取通知消息
 #define MEIPcommonGetMessage @"common/message/getMessage"
+//获取2.0首页数据
+#define MEIPcommonGetThridHomeBase @"common/home/getHomeBase"
 /*********************************************/
 
 

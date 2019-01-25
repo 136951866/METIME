@@ -683,6 +683,25 @@
 
 #pragma mark - HomePage
 
+//获取2.0首页数据
++ (void)postThridHomeStyleWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{
+                          @"tool":@"1"
+                          };
+    NSString *url = kGetApiWithUrl(MEIPcommonGetThridHomeBase);
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool showMessage:kMeUnNilStr(res.message) view:kMeCurrentWindow];
+        }else{
+            [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
+
 //获取通知消息
 + (void)postGetMessageWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{
