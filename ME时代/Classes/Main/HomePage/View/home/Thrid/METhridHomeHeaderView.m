@@ -14,6 +14,7 @@
 #import "MEMidelButton.h"
 #import "MEProductListVC.h"
 #import "MECoupleHomeVC.h"
+#import "METhridRushSpikeVC.h"
 
 typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
     METhridHomeHeaderViewActiveNewType = 0,
@@ -200,7 +201,8 @@ const static CGFloat kThridImageWidth = 200;
                 break;
             case METhridHomeHeaderViewActiveRudeType:
             {
-                
+                METhridRushSpikeVC *vc= [[METhridRushSpikeVC alloc]init];
+                [homeVC.navigationController pushViewController:vc animated:YES];
             }
                 break;
             case METhridHomeHeaderViewActiveTbcouponType:

@@ -11,7 +11,7 @@
 #import "METhridHomeRudeGoodModel.h"
 #import "METhridHomeVC.h"
 #import "METhridProductDetailsVC.h"
-
+#import "METhridRushSpikeVC.h"
 
 @interface MERushBuyCell ()<UITableViewDelegate,UITableViewDataSource>{
     NSArray *_arrModel;
@@ -58,6 +58,13 @@
         METhridProductDetailsVC *dvc = [[METhridProductDetailsVC alloc]initWithId:model.product_id];
         dvc.time = self.time;
         [homeVC.navigationController pushViewController:dvc animated:YES];
+    }else{
+        METhridRushSpikeVC *rushVC = (METhridRushSpikeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridRushSpikeVC class] targetResponderView:self];
+        if(rushVC){
+            METhridProductDetailsVC *dvc = [[METhridProductDetailsVC alloc]initWithId:model.product_id];
+            dvc.time = self.time;
+            [rushVC.navigationController pushViewController:dvc animated:YES];
+        }
     }
 }
 

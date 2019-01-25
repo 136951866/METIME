@@ -65,7 +65,7 @@
     _arrModel = arrModel;
     _selextIndex = selextIndex;
     _selectBlocl = selectBlock;
-    [_collectionView selectItemAtIndexPath:[NSIndexPath indexPathWithIndex:_selextIndex] animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
     [self.collectionView reloadData];
+    [_collectionView selectItemAtIndexPath:[NSIndexPath indexPathWithIndex:_selextIndex] animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
 }
 @end

@@ -416,6 +416,7 @@
 		367C85032147C5CB00BEC7B1 /* MEMyOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 367C85022147C5CB00BEC7B1 /* MEMyOrderDetailVC.m */; };
 		367C85072147C61E00BEC7B1 /* MEMyOrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 367C85052147C61E00BEC7B1 /* MEMyOrderDetailCell.m */; };
 		367C85082147C61E00BEC7B1 /* MEMyOrderDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 367C85062147C61E00BEC7B1 /* MEMyOrderDetailCell.xib */; };
+		367EF27B21FB122B001766BD /* METhridRushSpikeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 367EF27A21FB122B001766BD /* METhridRushSpikeVC.m */; };
 		3683F79821CB40B2008139B0 /* MECoupleMailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3683F79621CB40B2008139B0 /* MECoupleMailCell.m */; };
 		3683F79921CB40B2008139B0 /* MECoupleMailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3683F79721CB40B2008139B0 /* MECoupleMailCell.xib */; };
 		3683F79D21CB4246008139B0 /* MECoupleMailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3683F79C21CB4246008139B0 /* MECoupleMailVC.m */; };
@@ -1383,6 +1384,8 @@
 		367C85042147C61E00BEC7B1 /* MEMyOrderDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEMyOrderDetailCell.h; sourceTree = "<group>"; };
 		367C85052147C61E00BEC7B1 /* MEMyOrderDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEMyOrderDetailCell.m; sourceTree = "<group>"; };
 		367C85062147C61E00BEC7B1 /* MEMyOrderDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEMyOrderDetailCell.xib; sourceTree = "<group>"; };
+		367EF27921FB122B001766BD /* METhridRushSpikeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = METhridRushSpikeVC.h; sourceTree = "<group>"; };
+		367EF27A21FB122B001766BD /* METhridRushSpikeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = METhridRushSpikeVC.m; sourceTree = "<group>"; };
 		3683F79521CB40B2008139B0 /* MECoupleMailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECoupleMailCell.h; sourceTree = "<group>"; };
 		3683F79621CB40B2008139B0 /* MECoupleMailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECoupleMailCell.m; sourceTree = "<group>"; };
 		3683F79721CB40B2008139B0 /* MECoupleMailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MECoupleMailCell.xib; sourceTree = "<group>"; };
@@ -2240,6 +2243,8 @@
 			children = (
 				360EE7E421F569720048490E /* METhridHomeVC.h */,
 				360EE7E521F569720048490E /* METhridHomeVC.m */,
+				367EF27921FB122B001766BD /* METhridRushSpikeVC.h */,
+				367EF27A21FB122B001766BD /* METhridRushSpikeVC.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -4768,6 +4773,7 @@
 				366019C621E8798400F1BB37 /* MEMineMyActityDetailCell.m in Sources */,
 				36472B0721C8E15C00CC3E48 /* UIColor+JXAdd.m in Sources */,
 				3683F7BE21CBAF22008139B0 /* MEGiftVC.m in Sources */,
+				367EF27B21FB122B001766BD /* METhridRushSpikeVC.m in Sources */,
 				36FFE965217DD89C00010AED /* MEEnlargeTouchButton.m in Sources */,
 				36021AF8214BA108001B8DAF /* MEAppointmentMakeOrderVC.m in Sources */,
 				36526008216F2F28003E3CB4 /* MEStoreDetailHeaderView.m in Sources */,
