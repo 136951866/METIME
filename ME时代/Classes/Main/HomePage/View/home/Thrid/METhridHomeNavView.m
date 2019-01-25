@@ -7,14 +7,17 @@
 //
 
 #import "METhridHomeNavView.h"
-
+#import "METhridHomeVC.h"
+#import "MEProductSearchVC.h"
+#import "MERCConversationListVC.h"
+#import "MENoticeTypeVC.h"
 @interface METhridHomeNavView ()
 
 @property (nonatomic, strong)UIView *viewForBack;
 @property (nonatomic, strong)UIButton *btnNotice;
 @property (nonatomic, strong)UIView *viewForSearch;
 @property (nonatomic, strong)UIImageView *imageForSearch;
-
+@property (nonatomic, strong)UIView *viewForUnread;
 @end
 
 @implementation METhridHomeNavView
@@ -27,10 +30,34 @@
 }
 
 - (void)addSubUIView{
+    self.userInteractionEnabled = YES;
     [self addSubview:self.viewForBack];
     [self addSubview:self.viewForSearch];
     [self.viewForSearch addSubview:self.imageForSearch];
     [self addSubview:self.btnNotice];
+    [self addSubview:self.viewForUnread];
+}
+
+- (void)setRead:(BOOL)read{
+    self.viewForUnread.hidden = read;
+}
+
+- (void)searchProduct{
+    METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
+    if(homeVC){
+        MEProductSearchVC *svc = [[MEProductSearchVC alloc]init];
+        [homeVC.navigationController pushViewController:svc animated:NO];
+    }
+}
+
+- (UIView *)viewForUnread{
+    if(!_viewForUnread){
+        _viewForUnread = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-20, self.btnNotice.top+5,6, 6)];
+        _viewForUnread.backgroundColor = [UIColor redColor];
+        _viewForUnread.cornerRadius = 3;
+        _viewForUnread.clipsToBounds = YES;
+    }
+    return _viewForUnread;
 }
 
 - (UIView *)viewForBack{
@@ -48,6 +75,9 @@
         _viewForSearch.backgroundColor = [UIColor whiteColor];
         _viewForSearch.cornerRadius = 35/2;
         _viewForSearch.clipsToBounds = YES;
+        UITapGestureRecognizer *search = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(searchProduct)];
+        _viewForSearch.userInteractionEnabled = YES;
+        [_viewForSearch addGestureRecognizer:search];
     }
     return _viewForSearch;
 }
@@ -55,8 +85,22 @@
 - (UIButton *)btnNotice{
     if(!_btnNotice){
         _btnNotice = [MEView btnWithFrame:CGRectMake(self.viewForSearch.right+10, self.viewForSearch.top, 35, 35) Img:[UIImage imageNamed:@"thirdHomeNotice"]];
+        [_btnNotice addTarget:self action:@selector(noticeAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnNotice;
+}
+
+- (void)noticeAction:(UIButton*)btn{
+    METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
+//    if([kCurrentUser.mobile isEqualToString:AppstorePhone]){
+//        MERCConversationListVC *svc = [[MERCConversationListVC alloc]init];
+//        [homeVC.navigationController pushViewController:svc animated:YES];
+//    }else{
+        if(homeVC){
+            MENoticeTypeVC *svc = [[MENoticeTypeVC alloc]init];
+            [homeVC.navigationController pushViewController:svc animated:YES];
+        }
+//    }
 }
 
 - (UIImageView *)imageForSearch{

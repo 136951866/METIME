@@ -9,7 +9,8 @@
 #import "MEProductSearchVC.h"
 #import "MEProductCell.h"
 #import "MEGoodModel.h"
-#import "MEProductDetailsVC.h"
+//#import "MEProductDetailsVC.h"
+#import "METhridProductDetailsVC.h"
 #import "MESearchHistoryView.h"
 #import "MESearchHistoryModel.h"
 
@@ -123,7 +124,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     MEGoodModel *model = self.refresh.arrData [indexPath.row];
-    MEProductDetailsVC *details = [[MEProductDetailsVC alloc]initWithId:model.product_id];
+    METhridProductDetailsVC *details = [[METhridProductDetailsVC alloc]initWithId:model.product_id];
     [self.navigationController pushViewController:details animated:YES];
 }
 

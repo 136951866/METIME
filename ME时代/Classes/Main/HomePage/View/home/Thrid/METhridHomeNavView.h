@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface METhridHomeNavView : UIView
 
 - (void)setBackAlpha:(CGFloat)alpha;
+- (void)setRead:(BOOL)read;
 
 @end
 

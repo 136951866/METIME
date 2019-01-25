@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString * created_at;
 @property (nonatomic, assign) CGFloat promotion_rate;
 @property (nonatomic, assign) CGFloat order_amount;
+@property (nonatomic, assign) CGFloat promotion_amount;
 
 
 @property (nonatomic, assign) NSInteger goodsId;
@@ -36,7 +37,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString * orderStatusDesc;
 @property (nonatomic, strong) NSString * orderVerifyTime;
 @property (nonatomic, strong) NSString * pId;
-@property (nonatomic, assign) NSInteger promotionAmount;
 
 @property (nonatomic, strong) NSString * updatedAt;
 

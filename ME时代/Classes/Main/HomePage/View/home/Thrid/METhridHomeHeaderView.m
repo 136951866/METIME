@@ -56,6 +56,7 @@ const static CGFloat kThridImageWidth = 200;
 
 - (void)awakeFromNib{
     [super awakeFromNib];
+    _sdView.delegate = self;
     _consSdHeight.constant = kSdHeight*kMeFrameScaleX();
     _consSecondImageHeight.constant = kSecondImageHeight*kMeFrameScaleX();
     _lblRudePrice.adjustsFontSizeToFitWidth = YES;

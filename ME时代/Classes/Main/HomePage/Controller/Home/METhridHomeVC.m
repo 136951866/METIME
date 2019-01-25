@@ -36,6 +36,10 @@
 
 @implementation METhridHomeVC
 
+- (void)dealloc{
+    kNSNotificationCenterDealloc
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navBarHidden = YES;
@@ -47,9 +51,43 @@
     self.tableView.tableHeaderView = self.headerView;
     [self.refresh addRefreshView];
     [self getRushGood];
+    [self getUnInfo];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getUnInfo) name:kUnNoticeMessage object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogout) name:kUserLogout object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogin) name:kUserLogin object:nil];
 //#warning
 //    MEShoppingMallVC *vc = [[MEShoppingMallVC alloc]init];
 //    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)userLogout{
+    [self.navView setRead:YES];
+}
+
+- (void)userLogin{
+    [self getUnInfo];
+}
+
+- (void)getUnInfo{
+    if([MEUserInfoModel isLogin]){
+        kMeWEAKSELF
+        [MEPublicNetWorkTool getUserHomeUnreadNoticeWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+            if([responseObject.data isKindOfClass:[NSDictionary class]]){
+                NSNumber *notice = responseObject.data[@"notice"];
+                NSNumber *order = responseObject.data[@"order"];
+                NSNumber *versions = responseObject.data[@"versions"];
+                NSInteger unread = [notice integerValue] + [order integerValue] +[versions integerValue];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    kMeSTRONGSELF
+                    if(strongSelf->_navView){
+                        [strongSelf.navView setRead:!unread];
+                    }
+                });
+            }
+        } failure:^(id object) {
+
+        }];
+    }
 }
 
 - (void)getNetWork{
@@ -71,6 +109,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             kMeSTRONGSELF
             [strongSelf->_headerView setUIWithModel:strongSelf->_homeModel];
+            [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
         });
     });
 
@@ -137,7 +176,7 @@
             return cell;
         }else if (indexPath.row==1){
             MECommondCouponCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECommondCouponCell class]) forIndexPath:indexPath];
-            [cell setUIWithArr:_arrCommonCoupon imgUrl:@""];
+            [cell setUIWithArr:_arrCommonCoupon imgUrl:kMeUnNilStr(_homeModel.coupon_background.img)];
             return cell;
         }
     }else if (indexPath.section==1){
