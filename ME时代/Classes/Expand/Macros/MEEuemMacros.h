@@ -185,10 +185,10 @@ typedef enum : NSUInteger {
 typedef enum : NSUInteger {
     MECouponSearch99BuyType = 1,
     MECouponSearchShiShangType = 2,
-    MECouponSearchTopBuyType = 3,
+    MECouponSearchGoodGoodsType = 3,
     MECouponSearchBigJuanType = 4,
     MECouponSearchTeHuiType = 5,
-    MECouponSearchGoodGoodsType = 6,
+    MECouponSearchTopBuyType = 6,
     MECouponSearchGoodJuanType = 7,
     MECouponSearchPinPaiType = 8,
 }  MECouponSearchType;
