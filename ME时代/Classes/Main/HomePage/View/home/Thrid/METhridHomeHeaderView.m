@@ -25,8 +25,8 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
 };
 const static CGFloat kSdHeight = 178;
 const static CGFloat kSecondImageHeight = 154;
-const static CGFloat kThridImageWidth = 200;
-
+const static CGFloat kThridImageWidth = 177;
+const static CGFloat kThridImageHeight = 200;
 @interface METhridHomeHeaderView ()<SDCycleScrollViewDelegate>{
     METhridHomeModel *_model;
 }
@@ -51,6 +51,8 @@ const static CGFloat kThridImageWidth = 200;
 @property (weak, nonatomic) IBOutlet UIView *sencodView;
 @property (weak, nonatomic) IBOutlet UIView *viewforScard;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *consServiceHeight;
+
 @end
 
 @implementation METhridHomeHeaderView
@@ -63,6 +65,7 @@ const static CGFloat kThridImageWidth = 200;
     _lblRudePrice.adjustsFontSizeToFitWidth = YES;
     if(kMeFrameScaleX()<1){
        _consThridImageWidth.constant = kThridImageWidth*kMeFrameScaleX();
+      _consServiceHeight.constant = kThridImageHeight*kMeFrameScaleX();
     }
     _viewFrist.hidden = YES;
     _sencodView.hidden = YES;
@@ -237,6 +240,10 @@ const static CGFloat kThridImageWidth = 200;
     CGFloat heigth = 785 - kSdHeight - kSecondImageHeight;
     heigth+=(kSdHeight*kMeFrameScaleX());
     heigth+=(kSecondImageHeight*kMeFrameScaleX());
+    if(kMeFrameScaleX()<1){
+        heigth-=kThridImageHeight;
+        heigth+=(kThridImageHeight * kMeFrameScaleX());
+    }
     return heigth;
 }
 

@@ -294,6 +294,7 @@
             <connections>
                 <outlet property="consSdHeight" destination="AfG-pt-X2Q" id="kkP-1m-o06"/>
                 <outlet property="consSecondImageHeight" destination="rRq-6L-cxx" id="qV0-Jb-8iZ"/>
+                <outlet property="consServiceHeight" destination="3Kj-7k-IdT" id="Jqd-5h-ylR"/>
                 <outlet property="consThridImageWidth" destination="rIN-EV-YDk" id="uSM-io-my8"/>
                 <outlet property="imgFrist" destination="U2N-oL-aPy" id="Sde-xf-InN"/>
                 <outlet property="imgFristGood" destination="n9z-uv-7g1" id="ONf-W2-ybX"/>
