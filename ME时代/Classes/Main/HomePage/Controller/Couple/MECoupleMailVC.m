@@ -72,7 +72,7 @@
             }
                 break;
             case MECouponSearchBigJuanType:{
-                str = @"大额卷专场";
+                str = @"大额券专场";
             }
                 break;
             case MECouponSearchTeHuiType:{
@@ -84,7 +84,7 @@
             }
                 break;
             case MECouponSearchGoodJuanType:{
-                str = @"好卷直播专场";
+                str = @"好券直播专场";
             }
                 break;
             case MECouponSearchPinPaiType:{
@@ -92,7 +92,7 @@
             }
                 break;
             default:
-                str = @"优惠卷";
+                str = @"优惠券";
                 break;
         }
         self.title = str;

@@ -29,7 +29,7 @@
 - (void)setUIWithModel:(MEPinduoduoCoupleModel *)model{
      [_imgPic sd_setImageWithURL:[NSURL URLWithString:kMeUnNilStr(model.goods_thumbnail_url)] placeholderImage:kImgPlaceholder];
     _lblPrice.text = [NSString stringWithFormat:@"¥%@", [MECommonTool changeformatterWithFen:@(model.min_group_price)]];
-    _lblJuan.text = [NSString stringWithFormat:@"%@元卷",[MECommonTool changeformatterWithFen:@(model.coupon_discount)]];
+    _lblJuan.text = [NSString stringWithFormat:@"%@元券",[MECommonTool changeformatterWithFen:@(model.coupon_discount)]];
 }
 
 @end

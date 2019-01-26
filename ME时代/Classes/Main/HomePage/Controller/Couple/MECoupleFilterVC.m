@@ -236,7 +236,7 @@ UICollectionViewDataSource>
 }
 
 - (void)searchCoupon{
-    MECouponSearchVC *searchViewController = [MECouponSearchVC searchViewControllerWithHotSearches:@[] searchBarPlaceholder:@"搜索优惠卷" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
+    MECouponSearchVC *searchViewController = [MECouponSearchVC searchViewControllerWithHotSearches:@[] searchBarPlaceholder:@"搜索优惠券" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
         MECoupleMailVC *dataVC = [[MECoupleMailVC alloc]initWithQuery:searchText];
         [searchViewController.navigationController pushViewController:dataVC animated:YES];
     }];

@@ -45,7 +45,7 @@
         _imgJuan.hidden = NO;
         _lblJuan.hidden = NO;
         _lblTitle.numberOfLines = 1;
-        _lblJuan.text =[NSString stringWithFormat:@"%@元卷",kMeUnNilStr(model.couponPrice)];
+        _lblJuan.text =[NSString stringWithFormat:@"%@元券",kMeUnNilStr(model.couponPrice)];
         _lblOrigalPrice.hidden = NO;
         _lblSale.hidden = NO;
         _lblMaterSale.hidden = YES;
@@ -72,7 +72,7 @@
     _lblTitle.text = kMeUnNilStr(model.goods_name);
     _lblSale.text = [NSString stringWithFormat:@"已售%@",kMeUnNilStr(model.sold_quantity)];
     _lblOrigalPrice.text = [NSString stringWithFormat:@"原价¥%@", [MECommonTool changeformatterWithFen:@(model.min_group_price)]];
-     _lblJuan.text =[NSString stringWithFormat:@"%@元卷",[MECommonTool changeformatterWithFen:@(model.coupon_discount)]];
+     _lblJuan.text =[NSString stringWithFormat:@"%@元券",[MECommonTool changeformatterWithFen:@(model.coupon_discount)]];
     _lblJuanPrice.text =[NSString stringWithFormat:@"¥%@", [MECommonTool changeformatterWithFen:@(model.min_group_price-model.coupon_discount)]];
    
 }

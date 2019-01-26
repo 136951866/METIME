@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"优惠卷明细";
+    self.title = @"优惠券明细";
     self.view.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
     self.tableView.tableHeaderView = self.headerView;
     [self.view addSubview:self.tableView];

@@ -284,7 +284,7 @@
     }else{
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 41)];
         view.backgroundColor = kMEf6f6f6;
-        UILabel *lbl = [MEView lblWithFram:CGRectMake(11, 0, SCREEN_WIDTH-22, 41) textColor:kMEblack str:@"拼多多优惠卷" font:kMeFont(16)];
+        UILabel *lbl = [MEView lblWithFram:CGRectMake(11, 0, SCREEN_WIDTH-22, 41) textColor:kMEblack str:@"拼多多优惠券" font:kMeFont(16)];
         [view addSubview:lbl];
         return view;
     }

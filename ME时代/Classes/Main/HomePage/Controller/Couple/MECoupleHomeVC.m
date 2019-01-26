@@ -218,7 +218,7 @@
 
 - (void)searchCoupon{
     kMeWEAKSELF
-    MECouponSearchVC *searchViewController = [MECouponSearchVC searchViewControllerWithHotSearches:@[] searchBarPlaceholder:@"搜索优惠卷" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
+    MECouponSearchVC *searchViewController = [MECouponSearchVC searchViewControllerWithHotSearches:@[] searchBarPlaceholder:@"搜索优惠券" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
         kMeSTRONGSELF
         if(strongSelf->_isTBk){
             MECoupleMailVC *dataVC = [[MECoupleMailVC alloc]initWithQuery:searchText];
