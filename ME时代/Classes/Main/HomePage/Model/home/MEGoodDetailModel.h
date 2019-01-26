@@ -96,8 +96,15 @@
 @property (nonatomic,assign) NSInteger sell_num;
 //库存
 @property (nonatomic,assign) NSInteger stock;
-//评论z总数
+//评论总数
 @property (nonatomic, strong) NSString * comment_count;
+//好评数
+@property (nonatomic, strong) NSString * good_comment_count;
+//嗮图数
+@property (nonatomic, strong) NSString * show_pic_comment_count;
+#warning --
+@property (nonatomic,assign) NSInteger value;
+
 @end
 
 

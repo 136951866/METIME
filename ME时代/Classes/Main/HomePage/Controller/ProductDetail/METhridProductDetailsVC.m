@@ -356,8 +356,8 @@ kTDWebViewCellDidFinishLoadNotificationMethod
     if(indexPath.section == 0 && indexPath.row==4){
         [self showBuyViewWithTypy:kpurchaseSelectSkuViewType];
     }
-    if(indexPath.section == 0 && indexPath.row==3){
-        MEProductDetailCommentVC *vc = [[MEProductDetailCommentVC alloc]init];
+    if(indexPath.section == 0 && indexPath.row==3 && _model){
+        MEProductDetailCommentVC *vc = [[MEProductDetailCommentVC alloc]initWithModel:_model];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

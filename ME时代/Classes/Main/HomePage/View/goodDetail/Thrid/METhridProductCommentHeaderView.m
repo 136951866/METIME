@@ -8,7 +8,7 @@
 
 #import "METhridProductCommentHeaderView.h"
 #import "MEStarControl.h"
-
+#import "MEGoodDetailModel.h"
 
 @interface METhridProductCommentHeaderView (){
     METhridProductCommentHeaderViewType _type;
@@ -30,13 +30,13 @@
     _starView.starSize = CGSizeMake(16, 16);
 }
 
-- (void)setUIWithModel:(id)model type:(METhridProductCommentHeaderViewType)type{
+- (void)setUIWithModel:(MEGoodDetailModel *)model type:(METhridProductCommentHeaderViewType)type{
     _type = type;
-    [_btnAll setTitle:[NSString stringWithFormat:@"全部(%@)",@"11"] forState:UIControlStateNormal];
-    [_btnGood setTitle:[NSString stringWithFormat:@"好评(%@)",@"1111"] forState:UIControlStateNormal];
-    [_btnPhoto setTitle:[NSString stringWithFormat:@"嗮图(%@)",@"11"] forState:UIControlStateNormal];
-    _starView.score = 2;
-    _lblGood.text = [NSString stringWithFormat:@"%@%%好评率",kMeUnNilStr(@"99")];
+    [_btnAll setTitle:[NSString stringWithFormat:@"全部(%@)",kMeUnNilStr(model.comment_count)] forState:UIControlStateNormal];
+    [_btnGood setTitle:[NSString stringWithFormat:@"好评(%@)",kMeUnNilStr(model.good_comment_count)] forState:UIControlStateNormal];
+    [_btnPhoto setTitle:[NSString stringWithFormat:@"嗮图(%@)",kMeUnNilStr(model.show_pic_comment_count)] forState:UIControlStateNormal];
+    _starView.score = model.value;
+    _lblGood.text = [NSString stringWithFormat:@"%@好评率",kMeUnNilStr(model.equities)];
     [self reloadBtnStatusWithSelectBtn:_type];
 }
 

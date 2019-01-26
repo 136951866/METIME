@@ -298,6 +298,8 @@
 #define MEIPGoodsRush @"common/ad/getPopUp"
 //获取推荐到首次购买活动商品
 #define MEIPRecommendProduct @"common/goods/getRecommendProduct"
+//获取商品评论
+#define MEIPRecommenGetGoodsComment @"common/goods/getGoodsComment"
 /*********************************************/
 
 

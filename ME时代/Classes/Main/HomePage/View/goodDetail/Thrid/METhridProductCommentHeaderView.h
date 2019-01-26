@@ -10,10 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MEGoodDetailModel;
 typedef enum : NSUInteger {
-    METhridProductCommentHeaderViewAllType,
-    METhridProductCommentHeaderViewGoodType,
-    METhridProductCommentHeaderViewPhotoType,
+    METhridProductCommentHeaderViewAllType = 0,
+    METhridProductCommentHeaderViewGoodType  = 1,
+    METhridProductCommentHeaderViewPhotoType = 2,
 } METhridProductCommentHeaderViewType;
 
 const static CGFloat kMEThridProductCommentHeaderViewHeight = 103;
@@ -21,7 +22,7 @@ const static CGFloat kMEThridProductCommentHeaderViewHeight = 103;
 @interface METhridProductCommentHeaderView : UIView
 
 @property (nonatomic, copy) kMeIndexBlock selectBlock;
-- (void)setUIWithModel:(id)model type:(METhridProductCommentHeaderViewType)type;
+- (void)setUIWithModel:(MEGoodDetailModel *)model type:(METhridProductCommentHeaderViewType)type;
 
 @end
 

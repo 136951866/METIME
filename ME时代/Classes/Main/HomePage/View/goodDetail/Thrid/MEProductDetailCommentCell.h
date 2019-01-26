@@ -10,10 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MEGoodsCommentModel;
+
 @interface MEProductDetailCommentCell : UITableViewCell
 
-+ (CGFloat)getCellHeightWithModel:(id)model;
-- (void)setUiWIthModel:(id)model;
+- (void)setUiWIthModel:(MEGoodsCommentModel *)model;
++ (CGFloat)getCellHeightWithModel:(MEGoodsCommentModel *)model;
+
 
 @end
 

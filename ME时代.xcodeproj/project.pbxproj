@@ -515,6 +515,7 @@
 		36E4EBA0213FD3A400BCB1AA /* MEShareTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E4EB9F213FD3A400BCB1AA /* MEShareTool.m */; };
 		36E4EBA3213FD7D900BCB1AA /* MEHomePageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E4EBA2213FD7D900BCB1AA /* MEHomePageVC.m */; };
 		36E4EBA6213FDA3F00BCB1AA /* MEShowViewTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E4EBA5213FDA3F00BCB1AA /* MEShowViewTool.m */; };
+		36EBA97721FC2B240065BC92 /* MEGoodsCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBA97621FC2B240065BC92 /* MEGoodsCommentModel.m */; };
 		36EEC2EC2181BA0200DEFCCB /* MEVActiveListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EEC2EB2181BA0200DEFCCB /* MEVActiveListVC.m */; };
 		36EEC2F02181BAB700DEFCCB /* MEActiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EEC2EE2181BAB700DEFCCB /* MEActiveCell.m */; };
 		36EEC2F12181BAB700DEFCCB /* MEActiveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EEC2EF2181BAB700DEFCCB /* MEActiveCell.xib */; };
@@ -1552,6 +1553,8 @@
 		36E4EBA2213FD7D900BCB1AA /* MEHomePageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEHomePageVC.m; sourceTree = "<group>"; };
 		36E4EBA4213FDA3F00BCB1AA /* MEShowViewTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEShowViewTool.h; sourceTree = "<group>"; };
 		36E4EBA5213FDA3F00BCB1AA /* MEShowViewTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEShowViewTool.m; sourceTree = "<group>"; };
+		36EBA97521FC2B240065BC92 /* MEGoodsCommentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEGoodsCommentModel.h; sourceTree = "<group>"; };
+		36EBA97621FC2B240065BC92 /* MEGoodsCommentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEGoodsCommentModel.m; sourceTree = "<group>"; };
 		36EEC2EA2181BA0200DEFCCB /* MEVActiveListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEVActiveListVC.h; sourceTree = "<group>"; };
 		36EEC2EB2181BA0200DEFCCB /* MEVActiveListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEVActiveListVC.m; sourceTree = "<group>"; };
 		36EEC2ED2181BAB700DEFCCB /* MEActiveCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEActiveCell.h; sourceTree = "<group>"; };
@@ -2414,6 +2417,8 @@
 				36F3E59B21FAE9FA00CBADFF /* METhridHomeRudeTimeModel.m */,
 				36F3E59D21FAEA4E00CBADFF /* METhridHomeRudeGoodModel.h */,
 				36F3E59E21FAEA4E00CBADFF /* METhridHomeRudeGoodModel.m */,
+				36EBA97521FC2B240065BC92 /* MEGoodsCommentModel.h */,
+				36EBA97621FC2B240065BC92 /* MEGoodsCommentModel.m */,
 			);
 			path = Thrid;
 			sourceTree = "<group>";
@@ -4683,6 +4688,7 @@
 				36FEEBD6214CEFB400060209 /* MEModelView.m in Sources */,
 				3602A18121422CD5004A6E1F /* MECommonTool.m in Sources */,
 				366019AD21E83ADD00F1BB37 /* MENewMineHomeVC.m in Sources */,
+				36EBA97721FC2B240065BC92 /* MEGoodsCommentModel.m in Sources */,
 				36472B0421C8E15C00CC3E48 /* JXCategoryFactory.m in Sources */,
 				366D5AF9214A09BB0021C1BB /* MEMakeOrderSelectAddressView.m in Sources */,
 				360057FF2189F2420010C21C /* MESearchHistoryModel.m in Sources */,

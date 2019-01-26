@@ -10,7 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MEGoodDetailModel;
 @interface MEProductDetailCommentVC : MEBaseVC
+
+- (instancetype)initWithModel:(MEGoodDetailModel *)model;
 
 @end
 
