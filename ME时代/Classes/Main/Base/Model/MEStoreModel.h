@@ -19,5 +19,6 @@
 @property (nonatomic, assign) NSInteger store_id;
 @property (nonatomic, strong) NSString * store_name;
 @property (nonatomic, strong) NSString * distance;
-@property (nonatomic, strong) NSArray * services;
+@property (nonatomic, strong) NSArray * label;
+
 @end

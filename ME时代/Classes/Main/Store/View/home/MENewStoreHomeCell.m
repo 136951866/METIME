@@ -40,10 +40,10 @@
     _starView.score = model.stars;
     _lblScore.text = [NSString stringWithFormat:@"%@分",@(model.stars).description];
     _lblDistance.text = [NSString stringWithFormat:@"%@",kMeUnNilStr(model.distance)];
-    if(kMeUnArr(model.services).count){
+    if(kMeUnArr(model.label).count){
         _flowLabelView.hidden = NO;
-        _consflowHeight.constant = [MEFlowLabelView getMEFlowLabelViewHeightWithArr:kMeUnArr(model.services)];
-        [_flowLabelView reloaWithArr:kMeUnArr(model.services)];
+        _consflowHeight.constant = [MEFlowLabelView getMEFlowLabelViewHeightWithArr:kMeUnArr(model.label)];
+        [_flowLabelView reloaWithArr:kMeUnArr(model.label)];
     }else{
         _flowLabelView.hidden = YES;
         _consflowHeight.constant = 0;
@@ -63,9 +63,9 @@
 }
 
 + (CGFloat)getCellHeightWithmodel:(MEStoreModel *)model{
-    if(kMeUnArr(model.services).count){
+    if(kMeUnArr(model.label).count){
         CGFloat height = kMENewStoreHomeCellHeight;
-        height +=[MEFlowLabelView getMEFlowLabelViewHeightWithArr:kMeUnArr(model.services)];
+        height +=[MEFlowLabelView getMEFlowLabelViewHeightWithArr:kMeUnArr(model.label)];
         return height;
     }else{
         return kMENewStoreHomeCellHeight;

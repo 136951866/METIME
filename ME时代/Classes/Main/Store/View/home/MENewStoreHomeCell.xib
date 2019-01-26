@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="322" height="160.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wbc-c2-22n">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wbc-c2-22n">
                         <rect key="frame" x="10" y="10" width="70" height="70"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="N0m-CF-4hr"/>
@@ -52,7 +52,7 @@
                             <constraint firstAttribute="height" constant="13" id="ot7-qI-Gau"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.34km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2R-Sg-aI7">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.34km" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2R-Sg-aI7">
                         <rect key="frame" x="272" y="67" width="40" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="aPQ-hR-OTl"/>

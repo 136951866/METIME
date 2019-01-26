@@ -286,6 +286,7 @@
                 <outlet property="lblMinite" destination="tT4-8h-9Wr" id="Ig7-mb-GTP"/>
                 <outlet property="lblPrice" destination="nAR-y0-u9Y" id="Mcs-Dv-XWp"/>
                 <outlet property="lblPriceLine" destination="9GA-8j-5XT" id="KlM-eO-KfO"/>
+                <outlet property="lblRate" destination="3YQ-KV-FFb" id="Fdh-5H-LHT"/>
                 <outlet property="lblSaled" destination="4e4-iW-Woi" id="MQQ-2b-FAp"/>
                 <outlet property="lblSecond" destination="Br8-MO-YmH" id="uam-JS-Rbk"/>
                 <outlet property="lblStock" destination="8w8-sk-5oD" id="2aS-kj-dUr"/>
