@@ -205,7 +205,6 @@ kTDWebViewCellDidFinishLoadNotificationMethod
             }
                 break;
             case METhridProductDetailsVCNoticeType:{
-                
                 [strongSelf.normalheaderView setUINoticeWithModel:strongSelf->_model];
             }
                 break;

@@ -34,7 +34,8 @@
     [super awakeFromNib];
     self.selectionStyle = 0;
     _priceLabel.adjustsFontSizeToFitWidth = YES;
-    _brandLabel.hidden = YES;
+//    _brandLabel.hidden = YES;
+    _brandLabel.adjustsFontSizeToFitWidth = YES;
     // Initialization code
 }
 
@@ -103,6 +104,7 @@
     self.countLabel.text = [NSString stringWithFormat:@"%ld", goodsModel.goods_num];
     self.goodsNameLabel.text = goodsModel.title;
     self.priceLabel.text = [NSString stringWithFormat:@"¥%@元", goodsModel.money];
+    _brandLabel.text = kMeUnNilStr(goodsModel.spec_name);
 //    self.brandLabel.text = [NSString stringWithFormat:@"%@", goodsModel.shopName];
 }
 

@@ -19,6 +19,7 @@
 @property (nonatomic, copy) NSString *token;
 @property (nonatomic, copy) NSString *cart_id;
 @property (nonatomic, copy) NSString *user_address;
+//1 普通下单 9 秒杀
 @property (nonatomic, copy) NSString *order_type;
 @property (nonatomic, copy) NSString *channel;
 @property (nonatomic, copy) NSString *remark;

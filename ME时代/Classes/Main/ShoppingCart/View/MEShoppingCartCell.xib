@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -116,15 +115,14 @@
                             <action selector="cut:" destination="SvU-qL-7Ig" eventType="touchUpInside" id="jJY-5n-x50"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="超级会员3.0折尊享" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BN0-y2-fsE">
-                        <rect key="frame" x="154" y="56" width="96" height="18"/>
-                        <color key="backgroundColor" red="1" green="0.53333333329999999" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="超级会员3.0折尊享" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BN0-y2-fsE">
+                        <rect key="frame" x="153.5" y="56" width="211.5" height="18"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="96" id="R6a-7C-FqO"/>
                             <constraint firstAttribute="height" constant="18" id="wV6-RW-ggd"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -151,6 +149,7 @@
                     <constraint firstAttribute="bottom" secondItem="kgU-Kd-o2i" secondAttribute="bottom" constant="10" id="Vps-DK-Ndu"/>
                     <constraint firstItem="kgU-Kd-o2i" firstAttribute="top" secondItem="rdA-TT-xW9" secondAttribute="top" constant="10" id="bbs-Zn-Dw1"/>
                     <constraint firstItem="llr-FX-Hyq" firstAttribute="top" secondItem="rdA-TT-xW9" secondAttribute="top" constant="10" id="eOJ-R2-v5W"/>
+                    <constraint firstAttribute="trailing" secondItem="BN0-y2-fsE" secondAttribute="trailing" constant="10" id="gmz-hJ-foj"/>
                     <constraint firstItem="pmX-JR-cB4" firstAttribute="height" secondItem="seA-HE-g8p" secondAttribute="height" id="j2q-zj-2f4"/>
                     <constraint firstItem="BN0-y2-fsE" firstAttribute="leading" secondItem="llr-FX-Hyq" secondAttribute="leading" id="jZK-Ra-Uei"/>
                     <constraint firstItem="pmX-JR-cB4" firstAttribute="top" secondItem="seA-HE-g8p" secondAttribute="top" id="mKV-RI-q3z"/>

@@ -29,6 +29,8 @@
     NSArray *_arrCartModel;
     NSString *_order_sn;
     BOOL _isPayError;//防止跳2次错误页面
+    //购物车有秒杀产品
+    BOOL _isHasRush;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) MEMakeOrderSelectAddressView *sAddressView;
@@ -48,6 +50,7 @@
         _isInteral = isInteral;
         _arrCartModel = arrCartModel;
         _isPayError= NO;
+        _isHasRush = NO;
     }
     return self;
 }
@@ -79,8 +82,13 @@
         _strMeaasge = self.giftMessage;
     }
     __block CGFloat p = 0;
+    kMeWEAKSELF
     [_arrCartModel enumerateObjectsUsingBlock:^(MEShoppingCartModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        kMeSTRONGSELF
        p += [obj.money floatValue] * obj.goods_num;
+        if(obj.product_type == 9){
+            strongSelf->_isHasRush = YES;
+        }
     }];
     _lblAllPrice.text = [NSString stringWithFormat:@"%.2f",p];
 //    CGFloat allPrice = [kMeUnNilStr(_goodModel.psmodel.goods_price) floatValue] * _goodModel.buynum;
@@ -259,6 +267,9 @@
     model.remark = kMeUnNilStr(_strMeaasge);
     model.user_address = [NSString stringWithFormat:@"%@",@(_addressModel.address_id)];
     model.cart_id = str;
+    if(_isHasRush){
+        model.order_type = @"9";
+    }
     [MEPublicNetWorkTool postCreateShopOrderWithAttrModel:model  successBlock:^(ZLRequestResponse *responseObject) {
         kMeSTRONGSELF
         strongSelf->_order_sn = responseObject.data[@"order_sn"];

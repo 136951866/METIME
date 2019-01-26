@@ -34,6 +34,8 @@
 @property (nonatomic, copy) NSString *money;
 @property (nonatomic, copy) NSString *images;
 @property (nonatomic, copy) NSString *spec_name;
+//9 秒杀 1 普通
+@property (nonatomic, assign) NSUInteger product_type;
 
 @property (nonatomic, assign) NSUInteger goods_num;
 @property (nonatomic, assign) NSUInteger stock;
