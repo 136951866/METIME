@@ -17,7 +17,9 @@
 #import "MEPayStatusVC.h"
 #import "MEMyOrderDetailVC.h"
 
-#import "MEProductDetailsVC.h"
+//#import "MEProductDetailsVC.h"
+#import "METhridProductDetailsVC.h"
+
 #import "MEMineExchangeDetailVC.h"
 
 @interface MEMakeOrderVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -190,7 +192,7 @@
                     [strongSelf.navigationController popToViewController:strongSelf animated:YES];
                 }
             }else{
-                MEProductDetailsVC *vc = (MEProductDetailsVC *)[MECommonTool getClassWtihClassName:[MEProductDetailsVC class] targetVC:strongSelf];
+                METhridProductDetailsVC *vc = (METhridProductDetailsVC *)[MECommonTool getClassWtihClassName:[METhridProductDetailsVC class] targetVC:strongSelf];
                 if(vc){
                     [strongSelf.navigationController popToViewController:vc animated:YES];
                 }else{
@@ -278,7 +280,7 @@
                             [strongSelf.navigationController popToViewController:strongSelf animated:YES];
                         }
                     }else{
-                        MEProductDetailsVC *vc = (MEProductDetailsVC *)[MECommonTool getClassWtihClassName:[MEProductDetailsVC class] targetVC:strongSelf];
+                        METhridProductDetailsVC *vc = (METhridProductDetailsVC *)[MECommonTool getClassWtihClassName:[METhridProductDetailsVC class] targetVC:strongSelf];
                         if(vc){
                             [strongSelf.navigationController popToViewController:vc animated:YES];
                         }else{

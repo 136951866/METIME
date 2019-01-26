@@ -8,14 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-/*
- [MERushBuyView ShowWithModel:model tapBlock:^{
- MEProductDetailsVC *dvc = [[MEProductDetailsVC alloc]initWithId:model.product_id];
- [strongSelf.navigationController pushViewController:dvc animated:YES];
- } cancelBlock:^{
- 
- }];
- */
 
 @class MEAdModel;
 @interface MERushBuyView : UIView

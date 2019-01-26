@@ -8,7 +8,8 @@
 
 #import "MEProductListVC.h"
 #import "MEProductCell.h"
-#import "MEProductDetailsVC.h"
+//#import "MEProductDetailsVC.h"
+#import "METhridProductDetailsVC.h"
 #import "MEGoodModel.h"
 #import "MEServiceDetailsVC.h"
 
@@ -76,7 +77,7 @@
         [self.navigationController pushViewController:details animated:YES];
     }else{
         MEGoodModel *model = self.refresh.arrData [indexPath.row];
-        MEProductDetailsVC *details = [[MEProductDetailsVC alloc]initWithId:model.product_id];
+        METhridProductDetailsVC *details = [[METhridProductDetailsVC alloc]initWithId:model.product_id];
         [self.navigationController pushViewController:details animated:YES];
     }
 }

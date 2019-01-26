@@ -9,7 +9,7 @@
 #import "MESkuBuyView.h"
 #import "MESkuBuyCell.h"
 #import "MEMakeOrderVC.h"
-#import "MEProductDetailsVC.h"
+//#import "MEProductDetailsVC.h"
 #import "MEGoodDetailModel.h"
 #import "MEGoodSpecModel.h"
 #import "MEPriceAndStockModel.h"

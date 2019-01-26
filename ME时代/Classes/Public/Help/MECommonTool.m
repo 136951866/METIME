@@ -13,7 +13,8 @@
 #import "ALAssetsLibrary+MECategory.h"
 #import "MEExitVC.h"
 #import "METabBarVC.h"
-#import "MEProductDetailsVC.h"
+//#import "MEProductDetailsVC.h"
+#import "METhridProductDetailsVC.h"
 
 
 @implementation MECommonTool
@@ -451,7 +452,7 @@
                         METabBarVC *tabBarController = ( METabBarVC*)kMeCurrentWindow.rootViewController;
                         MENavigationVC *nav = (MENavigationVC *)tabBarController.selectedViewController;
                         UIViewController * baseVC = (UIViewController *)nav.visibleViewController;
-                        MEProductDetailsVC *vc = [[MEProductDetailsVC alloc]initWithId:[product_id integerValue]];
+                        METhridProductDetailsVC *vc = [[METhridProductDetailsVC alloc]initWithId:[product_id integerValue]];
                         vc.uid = uid;
                         [baseVC.navigationController pushViewController:vc animated:YES];
                     }];

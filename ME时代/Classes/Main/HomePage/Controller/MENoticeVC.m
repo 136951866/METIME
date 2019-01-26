@@ -9,7 +9,8 @@
 #import "MENoticeVC.h"
 #import "MENoticeCell.h"
 #import "MENoticeModel.h"
-#import "MEProductDetailsVC.h"
+//#import "MEProductDetailsVC.h"
+#import "METhridProductDetailsVC.h"
 #import "MEMyOrderDetailVC.h"
 
 @interface MENoticeVC ()<RefreshToolDelegate,UITableViewDelegate,UITableViewDataSource>{
@@ -101,7 +102,7 @@
     }
     switch (_type) {
         case MEJpushNoticeType:{
-            MEProductDetailsVC *dvc = [[MEProductDetailsVC alloc]initWithId:[model.ids integerValue]];
+            METhridProductDetailsVC *dvc = [[METhridProductDetailsVC alloc]initWithId:[model.ids integerValue]];
             [self.navigationController pushViewController:dvc animated:YES];
         }
             break;

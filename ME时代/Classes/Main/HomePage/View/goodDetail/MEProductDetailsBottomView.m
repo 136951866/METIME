@@ -7,7 +7,8 @@
 //
 
 #import "MEProductDetailsBottomView.h"
-#import "MEProductDetailsVC.h"
+//#import "MEProductDetailsVC.h"
+#import "METhridProductDetailsVC.h"
 #import "MEHomePageVC.h"
 #import "MEStoreHomeVC.h"
 #import "MEMidelButton.h"
@@ -30,7 +31,7 @@
 }
 
 - (IBAction)homeAction:(UIButton *)sender {
-    MEProductDetailsVC *detailVC = (MEProductDetailsVC *)[MECommonTool getVCWithClassWtihClassName:[MEProductDetailsVC class] targetResponderView:self];
+    METhridProductDetailsVC *detailVC = (METhridProductDetailsVC *)[MECommonTool getVCWithClassWtihClassName:[METhridProductDetailsVC class] targetResponderView:self];
     if(detailVC){
         detailVC.tabBarController.selectedIndex = 0;
         [detailVC.navigationController popToRootViewControllerAnimated:YES];

@@ -22,7 +22,7 @@
 // 如果需要使用 idfa 功能所需要引入的头文件（可选）
 #import <AdSupport/AdSupport.h>
 #import "MENavigationVC.h"
-#import "MEProductDetailsVC.h"
+#import "METhridProductDetailsVC.h"
 #import "MEMyOrderDetailVC.h"
 
 #import "MEGuideVC.h"
@@ -508,7 +508,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 MENavigationVC *nav = (MENavigationVC *)tabBarController.selectedViewController;
                 UIViewController * baseVC = (UIViewController *)nav.visibleViewController;
                 if([type isEqualToString:@"1"]){
-                    MEProductDetailsVC *dvc = [[MEProductDetailsVC alloc]initWithId:[TypeId integerValue]];
+                    METhridProductDetailsVC *dvc = [[METhridProductDetailsVC alloc]initWithId:[TypeId integerValue]];
                     [baseVC.navigationController pushViewController:dvc animated:YES];
                 }else if ([type isEqualToString:@"2"]){
                     MEMyOrderDetailVC *dvc = [[MEMyOrderDetailVC alloc]initWithOrderGoodsSn:TypeId];
