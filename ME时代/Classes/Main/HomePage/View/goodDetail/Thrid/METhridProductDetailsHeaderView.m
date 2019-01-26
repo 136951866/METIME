@@ -26,8 +26,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblMinite;
 @property (weak, nonatomic) IBOutlet UILabel *lblHour;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consSockRate;
+@property (weak, nonatomic) IBOutlet UIView *viewForStock;
 @property (strong, nonatomic) NSTimer *timer;
-
+@property (weak, nonatomic) IBOutlet UILabel *lblRate;
 
 @end
 
@@ -70,6 +71,17 @@
     NSString *commStr = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.market_price).floatValue)];
     [_lblPriceLine setLineStrWithStr:commStr];
     
+    if(model.stock ==0 && model.sell_num==0){
+        _viewForStock.hidden = YES;
+        _lblRate.hidden = YES;
+    }else{
+        _viewForStock.hidden = NO;
+        CGFloat rate = model.sell_num/(model.stock+model.sell_num);
+        NSInteger rateNum = 100*rate;
+        _lblRate.text = [NSString stringWithFormat:@"%ld%%",(long)rateNum];
+        _consSockRate.constant = rateNum;
+    }
+    
     CGFloat postage = [model.postage floatValue];
     if(postage<=0){
         _lblExpress.text = @"快递:包邮";
@@ -78,6 +90,8 @@
     }
     _lblStock.text = [NSString stringWithFormat:@"参与数:%@",kMeUnNilStr(model.browse)];
     _lblSaled.text = [NSString stringWithFormat:@"销量:%@",kMeUnNilStr(model.sales)];
+    
+//    _model
 }
 
 - (NSDate *)timeWithTimeIntervalString:(NSString *)timeString

@@ -49,7 +49,7 @@ typedef NS_ENUM(NSUInteger, kpurchaseViewType) {
 @property (nonatomic, strong) MESkuBuyView *purchaseView;
 @property (nonatomic, strong) MEGoodDetailModel *model;
 @property (nonatomic, strong) NSArray *arrCommendModel;//推荐
-@property (nonatomic, strong) NSArray *arrCommentModel;//评论
+//@property (nonatomic, strong) NSArray *arrCommentModel;//评论
 @end
 
 
@@ -76,8 +76,6 @@ typedef NS_ENUM(NSUInteger, kpurchaseViewType) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"产品详情";
-#warning --
-    _arrCommentModel = @[@"",@"",@"",@"",@"",@""];
     _arrTitle = @[@"",@"商品详情",@"买了这件商品的人也买了"];
     [self initWithSomeThing];
     kTDWebViewCellDidFinishLoadNotification
@@ -274,9 +272,9 @@ kTDWebViewCellDidFinishLoadNotificationMethod
             }
                 break;
             case 3: {
-                if(kMeUnArr(_arrCommentModel).count){
+                if(kMeUnArr(_model.product_comment).count){
                     METhridProductDetailsCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([METhridProductDetailsCommentCell class]) forIndexPath:indexPath];
-                    [cell setUIWithArr:kMeUnArr(_arrCommentModel) commentNum:@"111" goodNUm:@"122"];
+                    [cell setUIWithArr:kMeUnArr(_model.product_comment) commentNum:kMeUnNilStr(_model.comment_count) goodNUm:kMeUnNilStr(_model.equities)];
                     return cell;
                 }
             }
@@ -326,7 +324,7 @@ kTDWebViewCellDidFinishLoadNotificationMethod
             }
                 break;
             case 3: {
-                if(kMeUnArr(_arrCommentModel).count){
+                if(kMeUnArr(_model.product_comment).count){
                     return kMEThridProductDetailsCommentCellHeight;
                 }
             }

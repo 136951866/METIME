@@ -438,6 +438,8 @@
 #define MEIPeditPhone @"app/user/editPhone"
 
 #define MEIPAddShare @"app/user/addShare"
+//获取权益
+#define MEIPcommonWebGetEquities @"common/web/getEquities"
 
 #define MEIPShare [NSString stringWithFormat:@"%@?code=%@",kGetApiWithUrl(MEIPWechatAuthShare),kMeUnNilStr(kCurrentUser.uid)]
 #define MEIPArticelShare [NSString stringWithFormat:@"%@?code=%@&pid=0&article_id=",kGetApiWithUrl(MEIPWechatAuthArticelShare),kMeUnNilStr(kCurrentUser.uid)]
@@ -448,6 +450,7 @@
 #define MEIPGetAPPVersion @"getAppVersion"
 //新的获取app更新版本
 #define MENewIPGetAPPVersion @"checkAppVersion"
+
 /*********************************************/
 
 #endif /* MEAPIMacros_h */

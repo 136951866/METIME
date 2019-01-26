@@ -10,12 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MEGoodDetailCommentModel;
+
 const static CGFloat kMEThridProductDetailsCommentContontCellHeight = 110;
 const static CGFloat kMEThridProductDetailsCommentContontCellWdith = 260;
 
 @interface METhridProductDetailsCommentContontCell : UICollectionViewCell
 
-- (void)setUIWithModel:(id)model;
+- (void)setUIWithModel:(MEGoodDetailCommentModel *)model;
 
 @end
 

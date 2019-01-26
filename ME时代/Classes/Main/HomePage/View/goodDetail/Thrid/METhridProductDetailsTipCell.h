@@ -13,8 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface METhridProductDetailsTipCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblTip;
 - (void)setUiWithStr:(NSString *)str;
+- (void)setNoticeUiWithStr:(NSString *)str;
 + (CGFloat)getCellHeightWithStr:(NSString *)str;
-
++ (CGFloat)getCellNoticeHeightWithStr:(NSString *)str;
 @end
 
 NS_ASSUME_NONNULL_END

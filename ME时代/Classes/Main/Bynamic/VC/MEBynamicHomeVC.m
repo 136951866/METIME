@@ -10,6 +10,7 @@
 #import "MEBynamicMainCell.h"
 #import "CLInputToolbar.h"
 #import "MEBynamicHomeModel.h"
+#import "METhridProductDetailsVC.h"
 
 @interface MEBynamicHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSInteger _comentIndex;}
@@ -51,7 +52,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MEBynamicHomeModel *model = self.refresh.arrData[indexPath.row];
-    model.pid = indexPath.row;
     MEBynamicMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBynamicMainCell class]) forIndexPath:indexPath];
     [cell setUIWithModel:model];
     kMeWEAKSELF
@@ -72,13 +72,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     MEBynamicHomeModel *model = self.refresh.arrData[indexPath.row];
-    model.pid = indexPath.row;
     return [MEBynamicMainCell getCellHeightithModel:model];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MEBynamicHomeModel *model = self.refresh.arrData[indexPath.row];
-    NSLog(@"%ld",model.pid);
+    if(model.product_id){
+        METhridProductDetailsVC *dvc = [[METhridProductDetailsVC alloc]initWithId:model.product_id];
+        [self.navigationController pushViewController:dvc animated:YES];
+    }
 }
 
 - (void)shareAction{

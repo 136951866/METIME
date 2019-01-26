@@ -102,6 +102,7 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="consPhotoWdith" destination="HSn-21-myO" id="ITb-kE-vDX"/>
                 <outlet property="imgHeaderProtail" destination="7Yf-h6-2ZH" id="WW9-wI-8VM"/>
                 <outlet property="imgPic" destination="DDQ-rH-8J5" id="Trp-me-UNu"/>
                 <outlet property="lblName" destination="7hj-M0-f58" id="kke-HJ-IoN"/>

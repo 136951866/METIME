@@ -156,6 +156,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnLike" destination="hLA-1h-SFt" id="g92-nd-ydJ"/>
+                <outlet property="btnShare" destination="VU1-pZ-mG8" id="QgW-ce-x2o"/>
                 <outlet property="consComentHeight" destination="ZGp-qc-jk9" id="sbM-lK-XXk"/>
                 <outlet property="consGridViewHeight" destination="bBb-jc-vDl" id="QIP-QG-T5e"/>
                 <outlet property="consStoreTitleHeight" destination="Bg7-Ks-VRq" id="1VX-FK-p0S"/>

@@ -36,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgStoreHeader;
 @property (weak, nonatomic) IBOutlet UILabel *lblStoreTitle;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consStoreTitleHeight;
+@property (weak, nonatomic) IBOutlet UIButton *btnShare;
 
 @end
 
@@ -45,6 +46,7 @@
     [super awakeFromNib];
     _currentIndex = 0;
     self.selectionStyle = 0;
+    _btnShare.hidden =  ![WXApi isWXAppInstalled];
     // Initialization code
 }
 
@@ -75,10 +77,10 @@
 
     _consComentHeight.constant = [MEBynamicCommentView getViewHeightWithArrLike:kMeUnArr(model.praise) Arrcomment:kMeUnArr(model.comment)];
     [_viewCommentAndLike setUIWithArrLike:kMeUnArr(model.praise) Arrcomment:kMeUnArr(model.comment)];
-    if(model.pid){
+    if(model.product_id){
         _viewForStore.hidden = NO;
-        kSDLoadImg(_imgStoreHeader, kMeUnNilStr(@""));
-        NSString *str = kMeUnNilStr(@"撒谎的环境卡上的讲话深刻的哈萨克的还是卡今后的健康撒谎的空间撒谎打开哈萨克接电话手机卡的话就看撒谎大家看啥看的话手机卡和丹江口市肯德基和手机卡的哈萨克结婚登记卡是几点开会撒空间");
+        kSDLoadImg(_imgStoreHeader, MELoadQiniuImagesWithUrl(kMeUnNilStr(model.goods_images)));
+        NSString *str = kMeUnNilStr(model.goods_title);
         CGFloat titleHeight = [NSAttributedString heightForAtsWithStr:str font:[UIFont systemFontOfSize:12] width:kmainCommentCellStoreWdith lineH:0 maxLine:0]+16;
         _consStoreTitleHeight.constant = titleHeight>57?titleHeight:57;
         [_lblStoreTitle setAtsWithStr:str lineGap:0];
@@ -131,8 +133,8 @@
     }else{
         height+=14;
     }
-    if(model.pid){
-        NSString *str = kMeUnNilStr(@"撒谎的环境卡上的讲话深刻的哈萨克的还是卡今后的健康撒谎的空间撒谎打开哈萨克接电话手机卡的话就看撒谎大家看啥看的话手机卡和丹江口市肯德基和手机卡的哈萨克结婚登记卡是几点开会撒空间");
+    if(model.product_id){
+        NSString *str = kMeUnNilStr(model.goods_title);
         CGFloat titleHeight = [NSAttributedString heightForAtsWithStr:str font:[UIFont systemFontOfSize:12] width:kmainCommentCellStoreWdith lineH:0 maxLine:0]+16;
         height+=titleHeight>57?titleHeight:57;
         height+=10;

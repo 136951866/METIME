@@ -7,6 +7,7 @@
 //
 
 #import "METhridProductDetailsCommentContontCell.h"
+#import "MEGoodDetailModel.h"
 
 @interface METhridProductDetailsCommentContontCell ()
 
@@ -16,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UIImageView *imgHeaderProtail;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *consPhotoWdith;
 
 @end
 
@@ -26,12 +28,21 @@
     // Initialization code
 }
 
-- (void)setUIWithModel:(id)model{
-    kSDLoadImg(_imgPic, kMeUnNilStr(@""));
-    _lblPhotoNum.text = [NSString stringWithFormat:@"%@张",kMeUnNilStr(@"2")];
-    _lblTitle.text = kMeUnNilStr(@"1111111");
-    _lblName.text = kMeUnNilStr(@"1111111");
-    kSDLoadImg(_imgHeaderProtail, kMeUnNilStr(@""));
+- (void)setUIWithModel:(MEGoodDetailCommentModel *)model{
+    _lblTitle.text = kMeUnNilStr(model.goodcomment);
+    _lblName.text = kMeUnNilStr(model.nick_name);
+    kSDLoadImg(_imgHeaderProtail, kMeUnNilStr(model.header_pic));
+    if(kMeUnArr(model.images).count){
+        _imgPic.hidden = NO;
+        _lblPhotoNum.hidden = NO;
+        kSDLoadImg(_imgPic, kMeUnNilStr(model.images[0]));
+        _lblPhotoNum.text = [NSString stringWithFormat:@"%@张",@(kMeUnArr(model.images).count).description];
+        _consPhotoWdith.constant = 110;
+    }else{
+        _imgPic.hidden = YES;
+        _lblPhotoNum.hidden = YES;
+        _consPhotoWdith.constant = 1;
+    }
 }
 
 @end

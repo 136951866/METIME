@@ -8,6 +8,14 @@
 
 #import "MEGoodDetailModel.h"
 
+@implementation MEGoodDetailCommentModel
++ (NSDictionary *)mj_replacedKeyFromPropertyName{
+    return @{
+             @"idField" : @"id",
+             @"goodcomment" : @"comment",
+             };
+}
+@end
 
 @implementation MEGoodDetailSpecModel
 
@@ -18,7 +26,8 @@ MEModelObjectClassInArrayWithDic(@{@"spec_value" : [MEGoodSpecModel class]})
 
 @implementation MEGoodDetailModel
 
-MEModelObjectClassInArrayWithDic(@{@"spec" : [MEGoodDetailSpecModel class]})
+MEModelObjectClassInArrayWithDic((@{@"spec" : [MEGoodDetailSpecModel class],@"product_comment" : [MEGoodDetailCommentModel class]}))
+
 
 - (NSMutableArray *)arrSelect{
     if(!_arrSelect){

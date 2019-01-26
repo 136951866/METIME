@@ -35,4 +35,25 @@ MEModelIdToIdField
 
 MEModelObjectClassInArrayWithDic((@{@"service" : [METhridHomeserviceModel class],@"top_banner" : [METhridHomeAdModel class],@"scare_buying_goods" : [METhridHomeBuyingGoodsModel class]}))
 
+- (NSArray*)scare_buying_goods{
+    if(!_scare_buying_goods){
+        _scare_buying_goods = [NSArray array];
+    }
+    return _scare_buying_goods;
+}
+
+- (NSArray*)service{
+    if(!_service){
+        _service = [NSArray array];
+    }
+    return _service;
+}
+
+- (NSArray*)top_banner{
+    if(!_top_banner){
+        _top_banner = [NSArray array];
+    }
+    return _top_banner;
+}
+
 @end

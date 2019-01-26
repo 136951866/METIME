@@ -8,6 +8,7 @@
 
 #import "METhridProductDetailsCommentCell.h"
 #import "METhridProductDetailsCommentContontCell.h"
+#import "MEGoodDetailModel.h"
 
 const static CGFloat kMargin = 10;
 @interface METhridProductDetailsCommentCell ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -28,6 +29,7 @@ const static CGFloat kMargin = 10;
 }
 
 - (void)initSomeThing{
+    _lblCommendNum.adjustsFontSizeToFitWidth = YES;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [_collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([METhridProductDetailsCommentContontCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([METhridProductDetailsCommentContontCell class])];
     _collectionView.delegate = self;
@@ -40,7 +42,7 @@ const static CGFloat kMargin = 10;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     METhridProductDetailsCommentContontCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([METhridProductDetailsCommentContontCell class]) forIndexPath:indexPath];
-    id model = self.arrModel[indexPath.row];
+    MEGoodDetailCommentModel *model = self.arrModel[indexPath.row];
     [cell setUIWithModel:model];
     return cell;
 }
@@ -56,7 +58,8 @@ const static CGFloat kMargin = 10;
 - (void)setUIWithArr:(NSArray *)arrModel commentNum:(NSString *)commentNum goodNUm:(NSString*)goodNUm{
     _lblCommendNum.text = [NSString stringWithFormat:@"商品评价(%@)",kMeUnNilStr(commentNum)];
     _lblGood.text = nil;
-    _lblGood.attributedText = [kMeUnNilStr(goodNUm) attributeWithRangeOfString:@"好评" color:kMEblack];
+    NSString *strGood = [NSString stringWithFormat:@"好评 %@",goodNUm];
+    _lblGood.attributedText = [strGood attributeWithRangeOfString:@"好评" color:kMEblack];
     _arrModel = arrModel;
     [self.collectionView reloadData];
 }

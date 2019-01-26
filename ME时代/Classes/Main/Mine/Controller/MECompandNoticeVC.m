@@ -9,8 +9,8 @@
 #import "MECompandNoticeVC.h"
 #import "TDWebViewCell.h"
 
-@interface MECompandNoticeVC (){
-    NSString *_content;
+@interface MECompandNoticeVC ()<UITableViewDelegate,UITableViewDataSource>{
+    NSString *_equities;
 }
 
 @property (nonatomic, strong) UITableView           *tableView;
@@ -24,22 +24,35 @@
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     kTDWebViewCellDidFinishLoadNotificationCancel
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"ME隐私权注政策";
-    _content = @"dhjdhjshdk";
     [self.view addSubview:self.tableView];
     kTDWebViewCellDidFinishLoadNotification
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(networkRequest)];
     [self.tableView.mj_header beginRefreshing];
 }
+
 kTDWebViewCellDidFinishLoadNotificationMethod
+
 - (void)networkRequest{
-    CGFloat width = [UIScreen mainScreen].bounds.size.width - 20;
-    NSString *header = [NSString stringWithFormat:@"<head><style>img{max-width:%fpx !important;}</style></head>",width];
-    [self.webCell.webView loadHTMLString:[NSString stringWithFormat:@"%@%@",header,kMeUnNilStr(_content)] baseURL:nil];
-    [self.tableView.mj_header endRefreshing];
-    [MBProgressHUD showMessage:@"" toView:self.view];
+    kMeWEAKSELF
+    [MEPublicNetWorkTool getUserGetEquitiesWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        strongSelf->_equities =  responseObject.data[@"equities"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            CGFloat width = [UIScreen mainScreen].bounds.size.width - 20;
+            NSString *header = [NSString stringWithFormat:@"<head><style>img{max-width:%fpx !important;}</style></head>",width];
+            [strongSelf.webCell.webView loadHTMLString:[NSString stringWithFormat:@"%@%@",header,kMeUnNilStr(strongSelf->_equities)] baseURL:nil];
+            [strongSelf.tableView reloadData];
+            [strongSelf.tableView.mj_header endRefreshing];
+            [MBProgressHUD showMessage:@"" toView:strongSelf.view];
+        });
+    } failure:^(id object) {
+        kMeSTRONGSELF
+        [strongSelf.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -62,7 +75,7 @@ kTDWebViewCellDidFinishLoadNotificationMethod
 
 - (UITableView *)tableView{
     if(!_tableView){
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kMeNavBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-45) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kMeNavBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight) style:UITableViewStylePlain];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TDWebViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([TDWebViewCell class])];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;

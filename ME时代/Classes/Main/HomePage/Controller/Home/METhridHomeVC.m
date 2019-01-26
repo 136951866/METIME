@@ -54,6 +54,7 @@
     _arrRudeBuy = [NSArray array];
     _arrCommonCoupon = [NSArray array];
     _arrRudeTime = [NSArray array];
+    _homeModel = [METhridHomeModel new];
     self.tableView.tableHeaderView = self.headerView;
     [self.refresh addRefreshView];
     [self getRushGood];
@@ -144,6 +145,9 @@
     });
 }
 -(void)getRushGoods{
+    if(!kMeUnArr(_arrRudeTime).count){
+        return;
+    }
     METhridHomeRudeTimeModel *model = _arrRudeTime[_selectTimeIndex];
     kMeWEAKSELF
     [MEPublicNetWorkTool postThridHomegetSeckillGoodsWithSeckillTime:kMeUnNilStr(model.time) SuccessBlock:^(ZLRequestResponse *responseObject) {
@@ -215,8 +219,10 @@
     if(indexPath.section==0){
         if(indexPath.row==0){
             MERushBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MERushBuyCell class]) forIndexPath:indexPath];
-            METhridHomeRudeTimeModel *model = _arrRudeTime[_selectTimeIndex];
-            cell.time = kMeUnNilStr(model.time);
+            if(kMeUnArr(_arrRudeTime).count){
+                METhridHomeRudeTimeModel *model = _arrRudeTime[_selectTimeIndex];
+                cell.time = kMeUnNilStr(model.time);
+            }
             [cell setUIWithArr:_arrRudeBuy];
             return cell;
         }else if (indexPath.row==1){

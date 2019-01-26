@@ -10,6 +10,24 @@
 #import "MEPriceAndStockModel.h"
 #import "MEGoodSpecModel.h"
 
+
+@interface MEGoodDetailCommentModel : MEBaseModel
+
+@property (nonatomic, strong) NSString * goodcomment;
+@property (nonatomic, strong) NSString * created_at;
+@property (nonatomic, strong) NSString * dateted_at;
+@property (nonatomic, strong) NSString * header_pic;
+@property (nonatomic, assign) NSInteger idField;
+@property (nonatomic, strong) NSArray * images;
+@property (nonatomic, assign) NSInteger member_id;
+@property (nonatomic, strong) NSString * nick_name;
+@property (nonatomic, assign) NSInteger product_id;
+@property (nonatomic, strong) NSString * updated_at;
+@property (nonatomic, assign) NSInteger value;
+
+@end
+
+
 @interface MEGoodDetailSpecModel : MEBaseModel
 
 @property (nonatomic, strong) NSString * spec_name;
@@ -70,7 +88,16 @@
 @property (nonatomic, strong) NSString *message;
 //提示
 @property (nonatomic, strong) NSString *tips;
-
+//评论
+@property (nonatomic, strong) NSArray *product_comment;
+//好评比
+@property (nonatomic, strong) NSString *equities;
+//销量
+@property (nonatomic,assign) NSInteger sell_num;
+//库存
+@property (nonatomic,assign) NSInteger stock;
+//评论z总数
+@property (nonatomic, strong) NSString * comment_count;
 @end
 
 
