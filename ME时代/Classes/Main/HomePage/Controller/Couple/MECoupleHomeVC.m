@@ -126,7 +126,7 @@
     if(_isTBk){
         return @{@"type":@(MECouponSearchGoodGoodsType)};
     }else{
-        return @{@"sort_type":@"8"};
+        return @{@"sort_type":@"12"};
     }
 }
 

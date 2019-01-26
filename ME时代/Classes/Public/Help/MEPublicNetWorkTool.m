@@ -62,7 +62,7 @@
 #pragma makr - pinduoduo
 
 + (void)postGetPinduoduoCommondPoductWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
-    NSDictionary *dic = @{@"sort_type":@"12",@"pageSize":@"10"};
+    NSDictionary *dic = @{@"sort_type":@"20",@"pageSize":@"10"};
     NSString *url = kGetApiWithUrl(MEIPcommonduoduokeGetgetGoodsList);
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
         kMeCallBlock(successBlock,responseObject);

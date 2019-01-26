@@ -187,7 +187,7 @@
     if(self.refresh.pageIndex == 1){
         [self getNetWork];
     }
-    return @{@"sort_type":@"8"};
+    return @{@"sort_type":@"12"};
 }
 
 - (void)handleResponse:(id)data{
