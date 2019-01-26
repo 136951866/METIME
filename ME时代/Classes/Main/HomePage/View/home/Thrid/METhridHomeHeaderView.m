@@ -101,12 +101,26 @@ const static CGFloat kThridImageHeight = 200;
 
 //新人专享
 - (void)memberExclusive{
-    NSLog(@"%@",@"新人专享");
+    if(!_model.member_exclusive){
+        return;
+    }
+    METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
+    if(homeVC){
+        METhridProductDetailsVC *details = [[METhridProductDetailsVC alloc]initWithId:_model.member_exclusive.product_id];
+        [homeVC.navigationController pushViewController:details animated:YES];
+    }
 }
 
 //抢购商品
 - (void)scareBuying{
-    NSLog(@"%@",@"抢购商品");
+    if(!_model.scare_buying_banner){
+        return;
+    }
+    METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
+    if(homeVC){
+        METhridProductDetailsVC *details = [[METhridProductDetailsVC alloc]initWithId:_model.scare_buying_banner.product_id];
+        [homeVC.navigationController pushViewController:details animated:YES];
+    }
 }
 
 //服务
@@ -136,7 +150,15 @@ const static CGFloat kThridImageHeight = 200;
 
 //暴抢
 - (void)scardGoodTap{
-    NSLog(@"%@",@"暴抢");
+    if(!kMeUnArr(_model.scare_buying_goods).count){
+        return ;
+    }
+    METhridHomeBuyingGoodsModel *scare_buying_good = _model.scare_buying_goods[0];
+    METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
+    if(homeVC){
+        METhridProductDetailsVC *details = [[METhridProductDetailsVC alloc]initWithId:scare_buying_good.product_id];
+        [homeVC.navigationController pushViewController:details animated:YES];
+    }
 }
 
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{

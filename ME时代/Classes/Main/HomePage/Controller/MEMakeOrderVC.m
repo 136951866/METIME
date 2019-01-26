@@ -89,7 +89,16 @@
         _lblAllPrice.text = [NSString stringWithFormat:@"%.2f美豆",allBean];
         _arrData = @[[NSString stringWithFormat:@"¥%@",kMeUnNilStr(_goodModel.postage)],[NSString stringWithFormat:@"%.2f美豆",allBean],@""];
     }else{
-        CGFloat allPrice = self.isProctComd?[kMeUnNilStr(_goodModel.money) floatValue]:[kMeUnNilStr(_goodModel.psmodel.goods_price) floatValue] * _goodModel.buynum;
+        CGFloat allPrice = 0;
+        if(self.isProctComd){
+            allPrice = [kMeUnNilStr(_goodModel.money) floatValue];
+        }else{
+            if(_goodModel.is_seckill==1){
+                allPrice = [kMeUnNilStr(_goodModel.psmodel.seckill_price) floatValue] * _goodModel.buynum;
+            }else{
+                allPrice = [kMeUnNilStr(_goodModel.psmodel.goods_price) floatValue] * _goodModel.buynum;
+            }
+        }
         _arrType = @[@(MEMakrOrderCellMessage)];
         _arrData = @[@""];
         _lblAllPrice.text = [NSString stringWithFormat:@"%.2f",allPrice];
@@ -298,7 +307,7 @@
         }];
     }else{
         kMeWEAKSELF
-        model.order_type = @"1";
+        model.order_type = _goodModel.is_seckill==1? @"9":@"1";
         model.uid = kMeUnNilStr(self.uid);
         [MEPublicNetWorkTool postCreateOrderWithAttrModel:model successBlock:^(ZLRequestResponse *responseObject) {
             kMeSTRONGSELF

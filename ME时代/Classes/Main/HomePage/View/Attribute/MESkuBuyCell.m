@@ -81,7 +81,11 @@ const static CGFloat kMinCellWidth = 50;
     if(_isInteral){
         _lblPrice.text = [NSString stringWithFormat:@"%@美豆",kMeUnNilStr(_goodModel.psmodel.integral_lines)];
     }else{
-        _lblPrice.text = [NSString stringWithFormat:@"¥%@",kMeUnNilStr(_goodModel.psmodel.goods_price)];
+        if(_goodModel.is_seckill==1){
+            _lblPrice.text = [NSString stringWithFormat:@"¥%@",kMeUnNilStr(_goodModel.psmodel.seckill_price)];
+        }else{
+            _lblPrice.text = [NSString stringWithFormat:@"¥%@",kMeUnNilStr(_goodModel.psmodel.goods_price)];
+        }
     }
     _lblStock.text =[NSString stringWithFormat:@"库存:%@",kMeUnNilStr(_goodModel.psmodel.stock)];
     _goodModel.skus = str;

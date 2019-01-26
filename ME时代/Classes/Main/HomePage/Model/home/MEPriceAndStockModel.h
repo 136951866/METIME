@@ -11,6 +11,7 @@
 @interface MEPriceAndStockModel : MEBaseModel
 
 @property (nonatomic, strong) NSString *goods_price;
+@property (nonatomic, strong) NSString *seckill_price;
 @property (nonatomic, strong) NSString *stock;
 
 //美豆相关

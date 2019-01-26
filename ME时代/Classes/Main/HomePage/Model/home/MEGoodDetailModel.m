@@ -44,6 +44,18 @@ MEModelObjectClassInArrayWithDic((@{@"spec" : [MEGoodDetailSpecModel class],@"pr
     }
 }
 
+- (NSInteger)value{
+    if(kMeUnNilStr(self.equities).length){
+        NSInteger num = ([self.equities integerValue])/20;
+        if(num>=0 && num<=5){
+           return num;
+        }
+        return 0;
+    }else{
+        return 0;
+    }
+}
+
 @end
 
 

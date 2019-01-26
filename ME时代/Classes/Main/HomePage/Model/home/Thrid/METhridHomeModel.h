@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface METhridHomeBuyingGoodsModel : MEBaseModel
 
-@property (nonatomic, strong) NSString * product_id;
+@property (nonatomic, assign) NSInteger product_id;
 @property (nonatomic, assign) NSInteger product_type;
 @property (nonatomic, strong) NSString * images;
 @property (nonatomic, strong) NSString * title;
