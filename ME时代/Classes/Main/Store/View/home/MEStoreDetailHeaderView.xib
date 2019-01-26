@@ -53,7 +53,7 @@
                         <constraint firstAttribute="height" constant="220" id="kJi-ia-JhZ"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4g-zs-dW2">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4g-zs-dW2">
                     <rect key="frame" x="15" y="322" width="345" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="S1H-gW-FHc"/>
@@ -103,6 +103,6 @@
         </view>
     </objects>
     <resources>
-        <image name="icon-qrptebjnyts" width="16" height="16"/>
+        <image name="icon-qrptebjnyts" width="14" height="18"/>
     </resources>
 </document>

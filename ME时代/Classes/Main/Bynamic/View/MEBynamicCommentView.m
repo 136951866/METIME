@@ -101,6 +101,7 @@
         _tableView.tableFooterView = [UIView new];
         _tableView.cornerRadius = 2;
         _tableView.clipsToBounds = YES;
+        _tableView.scrollEnabled = NO;
     }
     return _tableView;
 }
