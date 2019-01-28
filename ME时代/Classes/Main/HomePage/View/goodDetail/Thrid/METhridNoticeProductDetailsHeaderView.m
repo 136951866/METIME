@@ -69,7 +69,7 @@
     CGFloat titleHeight = [NSAttributedString heightForAtsWithStr:kMeUnNilStr(model.title) font:[UIFont systemFontOfSize:15] width:(SCREEN_WIDTH - 20) lineH:0 maxLine:0];
     _consTitleHeight.constant = titleHeight>19?titleHeight:19;
     [_lblTitle setAtsWithStr:kMeUnNilStr(model.title) lineGap:0];
-    _lblSubTitle.text = kMeUnNilStr(model.title);
+    _lblSubTitle.text = kMeUnNilStr(model.desc);
     //预告价
     _lblPrice.text =  [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.money).floatValue)];//[NSString stringWithFormat:@"¥%@",kMeUnNilStr(model.money)];
     
@@ -96,7 +96,7 @@
     CGFloat titleHeight = [NSAttributedString heightForAtsWithStr:kMeUnNilStr(model.title) font:[UIFont systemFontOfSize:15] width:(SCREEN_WIDTH - 20) lineH:0 maxLine:0];
     _consTitleHeight.constant = titleHeight>19?titleHeight:19;
     [_lblTitle setAtsWithStr:kMeUnNilStr(model.title) lineGap:0];
-    _lblSubTitle.text = kMeUnNilStr(model.title);
+    _lblSubTitle.text = kMeUnNilStr(model.desc);
     NSString *commStr = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.market_price).floatValue)];
     //实价
     [_lblRealPriceLine setLineStrWithStr:commStr];

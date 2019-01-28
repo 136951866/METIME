@@ -148,7 +148,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "570355242.80645"
+            timestampString = "570361701.521309"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "278"
@@ -164,7 +164,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "570355242.810486"
+            timestampString = "570361701.521463"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "347"
@@ -180,7 +180,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "570355242.8107671"
+            timestampString = "570361701.52154"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "340"
@@ -196,7 +196,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "570355242.811012"
+            timestampString = "570361701.521615"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "324"
@@ -212,7 +212,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "570355242.811265"
+            timestampString = "570361701.521698"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "314"
@@ -228,7 +228,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "570355242.8114409"
+            timestampString = "570361701.521783"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "303"
@@ -362,38 +362,6 @@
             startingLineNumber = "49"
             endingLineNumber = "49"
             landmarkName = "-setSelected:animated:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "View/home/MEMineHomeVC.m"
-            timestampString = "568980941.615298"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "-loadData"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "View/home/MEMineHomeVC.m"
-            timestampString = "568980941.617301"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "-loadData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

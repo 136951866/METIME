@@ -72,7 +72,8 @@
 
 - (UIView *)viewForSearch{
     if(!_viewForSearch){
-        _viewForSearch = [[UIView alloc]initWithFrame:CGRectMake(10, kMeStatusBarHeight+5, self.width-65, 35)];
+        CGFloat top = ((IS_iPhoneX==YES||IS_IPHONE_Xr==YES||IS_IPHONE_Xs==YES||IS_IPHONE_Xs_Max==YES) ? 36 : 25);
+        _viewForSearch = [[UIView alloc]initWithFrame:CGRectMake(10, top, self.width-65, 35)];
         _viewForSearch.backgroundColor = [UIColor whiteColor];
         _viewForSearch.cornerRadius = 35/2;
         _viewForSearch.clipsToBounds = YES;

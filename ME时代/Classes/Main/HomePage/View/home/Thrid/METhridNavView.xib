@@ -60,6 +60,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="consBottomMargin" destination="7if-Xa-NwN" id="P6d-Xu-f4U"/>
                 <outlet property="viewForBack" destination="Ykn-Qs-aaB" id="3qs-pB-OKp"/>
             </connections>
             <point key="canvasLocation" x="52" y="121.4392803598201"/>

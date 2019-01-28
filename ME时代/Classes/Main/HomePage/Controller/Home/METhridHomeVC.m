@@ -261,8 +261,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section){
-        
+    if(indexPath.section == 0 && indexPath.row == 1){
+        if(_homeModel && _homeModel.coupon_background && _homeModel.coupon_background.product_id){
+            METhridProductDetailsVC *details = [[METhridProductDetailsVC alloc]initWithId:_homeModel.coupon_background.product_id];
+            [self.navigationController pushViewController:details animated:YES];
+        }
     }
 }
 

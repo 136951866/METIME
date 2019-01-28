@@ -15,13 +15,15 @@
 #import "MEProductListVC.h"
 #import "MECoupleHomeVC.h"
 #import "METhridRushSpikeVC.h"
+#import "MEFilterVC.h"
 
 typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
     METhridHomeHeaderViewActiveNewType = 0,
     METhridHomeHeaderViewActiveRudeType =1,
     METhridHomeHeaderViewActiveTbcouponType = 2,
     METhridHomeHeaderViewActivePinduoduoCouponType = 3,
-    METhridHomeHeaderViewActiveServiceType =4
+    METhridHomeHeaderViewActiveServiceType =4,
+    METhridHomeHeaderViewActiveSortType =5
 };
 const static CGFloat kSdHeight = 178;
 const static CGFloat kSecondImageHeight = 154;
@@ -249,6 +251,12 @@ const static CGFloat kThridImageHeight = 200;
             case METhridHomeHeaderViewActiveServiceType:
             {
                 MEProductListVC *vc= [[MEProductListVC alloc]initWithType:MEGoodsTypeNetServiceStyle];
+                [homeVC.navigationController pushViewController:vc animated:YES];
+            }
+                break;
+            case METhridHomeHeaderViewActiveSortType:
+            {
+                MEFilterVC *vc= [[MEFilterVC alloc]init];
                 [homeVC.navigationController pushViewController:vc animated:YES];
             }
                 break;

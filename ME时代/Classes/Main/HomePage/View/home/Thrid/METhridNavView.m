@@ -9,6 +9,7 @@
 #import "METhridNavView.h"
 
 @interface METhridNavView ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *consBottomMargin;
 
 @end
 

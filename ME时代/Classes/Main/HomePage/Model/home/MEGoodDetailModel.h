@@ -41,6 +41,7 @@
 @property (nonatomic, assign) NSInteger product_id;
 @property (nonatomic, strong) NSString * images;
 @property (nonatomic, strong) NSString * title;
+@property (nonatomic, strong) NSString * desc;
 //市场价
 @property (nonatomic, strong) NSString * market_price;
 //原价

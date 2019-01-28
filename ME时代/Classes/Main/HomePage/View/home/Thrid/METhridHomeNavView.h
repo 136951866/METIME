@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define kMEThridHomeNavViewHeight ((kMeStatusBarHeight)+45)
+#define kMEThridHomeNavViewHeight (((IS_iPhoneX==YES||IS_IPHONE_Xr==YES||IS_IPHONE_Xs==YES||IS_IPHONE_Xs_Max==YES) ? 76 : 65))
 
 @interface METhridHomeNavView : UIView
 
