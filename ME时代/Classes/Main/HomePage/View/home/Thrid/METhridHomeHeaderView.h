@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class METhridHomeModel;
 @interface METhridHomeHeaderView : UIView
 
-+ (CGFloat)getViewHeight;
++ (CGFloat)getViewHeightWithModel:(METhridHomeModel *)model;
 - (void)setUIWithModel:(METhridHomeModel *)model;
 
 

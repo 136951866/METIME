@@ -62,8 +62,8 @@ const static CGFloat kThridImageHeight = 200;
 - (void)awakeFromNib{
     [super awakeFromNib];
     _sdView.delegate = self;
-    _lblFristGoodTitle.adjustsFontSizeToFitWidth = YES;
-    _lblSGoodTitle.adjustsFontSizeToFitWidth = YES;
+//    _lblFristGoodTitle.adjustsFontSizeToFitWidth = YES;
+//    _lblSGoodTitle.adjustsFontSizeToFitWidth = YES;
 
     _consSdHeight.constant = kSdHeight*kMeFrameScaleX();
     _consSecondImageHeight.constant = kSecondImageHeight*kMeFrameScaleX();
@@ -207,16 +207,23 @@ const static CGFloat kThridImageHeight = 200;
     }
     //暴抢
     if(kMeUnArr(model.scare_buying_goods).count){
+        _viewforScard.hidden = NO;
+        _imgQiao.hidden = NO;
+        _lblRudeTite.hidden = NO;
+        _lblRudePrice.hidden = NO;
         METhridHomeBuyingGoodsModel *scare_buying_good = model.scare_buying_goods[0];
-        kSDLoadImg(_imgQiao,MELoadQiniuImagesWithUrl(kMeUnNilStr(scare_buying_good.images)));
+    kSDLoadImg(_imgQiao,MELoadQiniuImagesWithUrl(kMeUnNilStr(scare_buying_good.images)));
         _lblRudeTite.text = kMeUnNilStr(scare_buying_good.title);
         _lblRudePrice.text = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(scare_buying_good.money).floatValue)];
     }else{
+        _viewforScard.hidden = YES;
+        _imgQiao.hidden = YES;
+        _lblRudeTite.hidden = YES;
+        _lblRudePrice.hidden = YES;
         kSDLoadImg(_imgQiao,@"");
         _lblRudeTite.text = @"";
         _lblRudePrice.text = @"";
     }
-    
 }
 
 - (IBAction)activeAction:(MEMidelMiddelImageButton *)sender {
@@ -269,13 +276,16 @@ const static CGFloat kThridImageHeight = 200;
 
 
 
-+ (CGFloat)getViewHeight{
++ (CGFloat)getViewHeightWithModel:(METhridHomeModel *)model{
     CGFloat heigth = 785 - kSdHeight - kSecondImageHeight;
     heigth+=(kSdHeight*kMeFrameScaleX());
     heigth+=(kSecondImageHeight*kMeFrameScaleX());
     if(kMeFrameScaleX()<1){
         heigth-=kThridImageHeight;
         heigth+=(kThridImageHeight * kMeFrameScaleX());
+    }
+    if(!kMeUnArr(model.scare_buying_goods).count){
+        heigth -=100;
     }
     return heigth;
 }
