@@ -224,7 +224,7 @@ const static CGFloat kThridImageHeight = 200;
         switch (index) {
             case METhridHomeHeaderViewActiveNewType:
             {
-                
+                [self memberExclusive];
             }
                 break;
             case METhridHomeHeaderViewActiveRudeType:
