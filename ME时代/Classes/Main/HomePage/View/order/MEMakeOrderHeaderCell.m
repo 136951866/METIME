@@ -48,7 +48,15 @@
         _imgVip.hidden = YES;
     }else{
         _lblCommonPrice.text = [NSString stringWithFormat:@"市场同品价¥%@",kMeUnNilStr(model.market_price)];
-        _lblPrice.text = isComb?kMeUnNilStr(model.money):kMeUnNilStr(model.psmodel.goods_price);
+        if(isComb){
+            _lblPrice.text = kMeUnNilStr(model.money);
+        }else{
+            if(model.is_seckill==1){
+                _lblPrice.text = kMeUnNilStr(model.psmodel.seckill_price);
+            }else{
+                _lblPrice.text = kMeUnNilStr(model.psmodel.goods_price);
+            }
+        }
         _lblPrice.hidden = NO;
     }
 

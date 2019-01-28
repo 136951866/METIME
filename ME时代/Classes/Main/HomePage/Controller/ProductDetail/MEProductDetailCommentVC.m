@@ -42,7 +42,7 @@
 }
 
 - (NSDictionary *)requestParameter{
-    return @{@"product_id":@(_model.product_id),@"type":@(_type)};
+    return @{@"product_id":@(_model.product_id),@"comment_type":@(_type)};
 }
 
 - (void)handleResponse:(id)data{

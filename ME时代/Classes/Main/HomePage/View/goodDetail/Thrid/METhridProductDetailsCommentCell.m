@@ -47,7 +47,12 @@ const static CGFloat kMargin = 10;
     return cell;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(kMEThridProductDetailsCommentContontCellWdith, kMEThridProductDetailsCommentContontCellHeight);
+     MEGoodDetailCommentModel *model = self.arrModel[indexPath.row];
+    if(kMeUnArr(model).images.count>0){
+        return CGSizeMake(kMEThridProductDetailsCommentContontCellWdith, kMEThridProductDetailsCommentContontCellHeight);
+    }else{
+        return CGSizeMake(kMEThridProductDetailsCommentContontCellWdith-kMEThridProductDetailsCommentContontCellHeight, kMEThridProductDetailsCommentContontCellHeight);
+    }
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{

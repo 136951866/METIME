@@ -102,7 +102,7 @@
 @property (nonatomic, strong) NSString * good_comment_count;
 //嗮图数
 @property (nonatomic, strong) NSString * show_pic_comment_count;
-#warning --
+
 @property (nonatomic,assign) NSInteger value;
 
 @end

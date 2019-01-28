@@ -46,7 +46,7 @@
 }
 -(void)initView {
     self.backgroundColor = [UIColor clearColor];
-    self.frame = CGRectMake(0,0, SCREEN_WIDTH, 50);
+    self.frame = CGRectMake(0,0, SCREEN_WIDTH, 100);
     //顶部线条
     [self addSubview:self.topLine];
     //底部线条

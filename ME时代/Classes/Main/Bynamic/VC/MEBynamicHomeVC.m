@@ -22,14 +22,37 @@
 
 @implementation MEBynamicHomeVC
 
+- (void)dealloc{
+    kNSNotificationCenterDealloc
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"动态";
-    [self.view addSubview:self.tableView];
-    [self.refresh addRefreshView];
+    if(![MEUserInfoModel isLogin]){
+        
+    }else{
+        [self.view addSubview:self.tableView];
+        [self.refresh addRefreshView];
+    }
     [self setTextViewToolbar];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogout) name:kUserLogout object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogin) name:kUserLogin object:nil];
+}
+- (void)userLogout{
+    [self.navigationController popToViewController:self animated:NO];
+    [self.refresh.arrData removeAllObjects];
+    self.refresh = nil;
+    [self.tableView removeFromSuperview];
+    self.tableView = nil;
+    [self.inputToolbar clearText];
+    [self.inputToolbar dissmissToolbar];
 }
 
+- (void)userLogin{
+    [self.view addSubview:self.tableView];
+    [self.refresh addRefreshView];
+}
 #pragma mark - RefreshToolDelegate
 
 - (NSDictionary *)requestParameter{
