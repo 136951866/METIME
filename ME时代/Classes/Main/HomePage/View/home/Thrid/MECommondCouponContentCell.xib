@@ -44,7 +44,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pCD-Ws-Mxg">
                         <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="105" id="bb1-Gb-Viz"/>
+                            <constraint firstAttribute="width" secondItem="pCD-Ws-Mxg" secondAttribute="height" multiplier="1:1" id="qhg-mN-8r5"/>
                         </constraints>
                     </imageView>
                 </subviews>
@@ -68,6 +68,11 @@
                 <constraint firstItem="ezh-uJ-yoE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="h4O-kY-e2P"/>
                 <constraint firstAttribute="trailing" secondItem="UbK-1x-55x" secondAttribute="trailing" id="r54-SA-cF3"/>
             </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="6"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="imgPic" destination="pCD-Ws-Mxg" id="WAi-MX-B0g"/>
                 <outlet property="lblJuan" destination="7Bb-0e-45w" id="HTO-p2-wFw"/>

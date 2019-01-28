@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"ME隐私权注政策";
+    self.title = @"ME隐私权政策";
     [self.view addSubview:self.tableView];
     kTDWebViewCellDidFinishLoadNotification
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(networkRequest)];

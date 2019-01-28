@@ -224,11 +224,11 @@
                             <color key="textColor" red="0.91764705882352937" green="0.21568627450980393" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thridQiao" translatesAutoresizingMaskIntoConstraints="NO" id="kUQ-Vc-582">
-                            <rect key="frame" x="282" y="43" width="75" height="30"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thridQiaos" translatesAutoresizingMaskIntoConstraints="NO" id="kUQ-Vc-582">
+                            <rect key="frame" x="282" y="45.5" width="75" height="25"/>
                             <constraints>
+                                <constraint firstAttribute="height" constant="25" id="1ol-kR-etD"/>
                                 <constraint firstAttribute="width" constant="75" id="OPg-em-zPr"/>
-                                <constraint firstAttribute="height" constant="30" id="yhg-W7-Suh"/>
                             </constraints>
                         </imageView>
                     </subviews>
@@ -317,11 +317,11 @@
     </objects>
     <resources>
         <image name="thirdHome99" width="45.5" height="45.5"/>
-        <image name="thirdHomeMiao" width="48" height="48"/>
+        <image name="thirdHomeMiao" width="45" height="45"/>
         <image name="thirdHomePdd" width="45.5" height="45"/>
         <image name="thirdHomeSer" width="45.5" height="45"/>
-        <image name="thirdHomeTbC" width="45.5" height="45"/>
+        <image name="thirdHomeTbC" width="45" height="45"/>
         <image name="thridBottomline" width="375" height="12"/>
-        <image name="thridQiao" width="75" height="30"/>
+        <image name="thridQiaos" width="75" height="25"/>
     </resources>
 </document>

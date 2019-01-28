@@ -12,8 +12,8 @@
 #import "MERushBuyCell.h"
 #import "METhridHomeTimeSecionView.h"
 
-@interface METhridRushSpikeVC ()<UITableViewDelegate, UITableViewDataSource>{
-    NSArray *_arrRudeBuy;
+@interface METhridRushSpikeVC ()<UITableViewDelegate, UITableViewDataSource,RefreshToolDelegate>{
+//    NSArray *_arrRudeBuy;
     NSArray *_arrRudeTime;
     NSInteger _selectTimeIndex;
 }
@@ -28,7 +28,7 @@
     [super viewDidLoad];
     self.title = @"秒杀产品";
     _selectTimeIndex = 0;
-    _arrRudeBuy = @[];
+//    _arrRudeBuy = @[];
     _arrRudeTime = @[];
     kMeWEAKSELF
     [MEPublicNetWorkTool postThridHomeGetSeckillTimeSuccessBlock:^(ZLRequestResponse *responseObject) {
@@ -42,6 +42,22 @@
     // Do any additional setup after loading the view.
 }
 
+- (NSDictionary *)requestParameter{
+    if(kMeUnArr(_arrRudeTime).count==0){
+        return @{};
+    }
+    METhridHomeRudeTimeModel *model = _arrRudeTime[_selectTimeIndex];
+    return @{@"product_position":@"3",@"seckill_time":kMeUnNilStr(kMeUnNilStr(model.time))};;
+}
+
+- (void)handleResponse:(id)data{
+    if(![data isKindOfClass:[NSArray class]]){
+        return;
+    }
+    [self.refresh.arrData addObjectsFromArray:[METhridHomeRudeGoodModel mj_objectArrayWithKeyValuesArray:data]];
+}
+
+
 - (void)initSomeThing{
     for (NSInteger i =0; i<_arrRudeTime.count; i++) {
         METhridHomeRudeTimeModel *model = _arrRudeTime[i];
@@ -50,25 +66,26 @@
         }
     }
     [self.view addSubview:self.tableView];
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getRushGoods)];
-    [self.tableView.mj_header beginRefreshing];
+    [self.refresh addRefreshView];
+//    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getRushGoods)];
+//    [self.tableView.mj_header beginRefreshing];
 }
 
--(void)getRushGoods{
-    METhridHomeRudeTimeModel *model = _arrRudeTime[_selectTimeIndex];
-    kMeWEAKSELF
-    [MEPublicNetWorkTool postThridHomegetSeckillGoodsWithSeckillTime:kMeUnNilStr(model.time) SuccessBlock:^(ZLRequestResponse *responseObject) {
-        kMeSTRONGSELF
-        strongSelf->_arrRudeBuy =[METhridHomeRudeGoodModel mj_objectArrayWithKeyValuesArray:responseObject.data];
-        [strongSelf.tableView.mj_header endRefreshing];
-        [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-    } failure:^(id object) {
-        kMeSTRONGSELF
-        strongSelf->_arrRudeBuy = @[];
-        [strongSelf.tableView.mj_header endRefreshing];
-        [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-    }];
-}
+//-(void)getRushGoods{
+//    METhridHomeRudeTimeModel *model = _arrRudeTime[_selectTimeIndex];
+//    kMeWEAKSELF
+//    [MEPublicNetWorkTool postThridHomegetSeckillGoodsWithSeckillTime:kMeUnNilStr(model.time) SuccessBlock:^(ZLRequestResponse *responseObject) {
+//        kMeSTRONGSELF
+//        strongSelf->_arrRudeBuy =[METhridHomeRudeGoodModel mj_objectArrayWithKeyValuesArray:responseObject.data];
+//        [strongSelf.tableView.mj_header endRefreshing];
+//        [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+//    } failure:^(id object) {
+//        kMeSTRONGSELF
+//        strongSelf->_arrRudeBuy = @[];
+//        [strongSelf.tableView.mj_header endRefreshing];
+//        [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+//    }];
+//}
 
 #pragma mark ------------------ <UITableViewDelegate, UITableViewDataSource> ----
 
@@ -84,12 +101,12 @@
     MERushBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MERushBuyCell class]) forIndexPath:indexPath];
     METhridHomeRudeTimeModel *model = _arrRudeTime[_selectTimeIndex];
     cell.time = kMeUnNilStr(model.time);
-    [cell setUIWithArr:_arrRudeBuy];
+    [cell setUIWithArr:self.refresh.arrData];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [MERushBuyCell getCellHeightWithArr:_arrRudeBuy];
+    return [MERushBuyCell getCellHeightWithArr:self.refresh.arrData];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -98,7 +115,8 @@
     [headview setUIWithArr:_arrRudeTime selectIndex:_selectTimeIndex selectBlock:^(NSInteger index) {
         kMeSTRONGSELF
         strongSelf->_selectTimeIndex = index;
-        [strongSelf getRushGoods];
+        [strongSelf.refresh reload];
+//        [strongSelf getRushGoods];
     }];
     return headview;
 }
@@ -121,6 +139,20 @@
         _tableView.dataSource = self;
     }
     return _tableView;
+}
+
+- (ZLRefreshTool *)refresh{
+    if(!_refresh){
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonGetgetSeckillGoods)];
+        _refresh.delegate = self;
+        _refresh.isDataInside = YES;
+        _refresh.showMaskView = YES;
+        _refresh.showFailView = NO;
+        [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
+            failView.backgroundColor = [UIColor whiteColor];
+        }];
+    }
+    return _refresh;
 }
 
 @end

@@ -27,14 +27,14 @@
     // Initialization code
 }
 
-- (void)setType:(MESetStyle)type status:(BOOL)status switchBlock:(kMeBOOLBlock)switchBlock{
-    _swotice.on = status;
-    _status = status;
-    _type = type;
-    _switchBlock = switchBlock;
-    _swotice.hidden = type !=MESetNoticeStyle;
-    _imgArrow.hidden = type==MESetNoticeStyle;
-}
+//- (void)setType:(MESetStyle)type status:(BOOL)status switchBlock:(kMeBOOLBlock)switchBlock{
+//    _swotice.on = status;
+//    _status = status;
+//    _type = type;
+//    _switchBlock = switchBlock;
+//    _swotice.hidden = type !=MESetNoticeStyle;
+//    _imgArrow.hidden = type==MESetNoticeStyle;
+//}
 
 - (IBAction)switchstatusAction:(UISwitch *)sender {
     kMeCallBlock(_switchBlock,sender.on);

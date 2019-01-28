@@ -24,6 +24,7 @@
 #import "METhridHomeRudeTimeModel.h"
 #import "METhridHomeRudeGoodModel.h"
 #import "MECoupleMailDetalVC.h"
+#import "MENetListModel.h"
 
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSInteger _selectTimeIndex;
@@ -151,8 +152,9 @@
     METhridHomeRudeTimeModel *model = _arrRudeTime[_selectTimeIndex];
     kMeWEAKSELF
     [MEPublicNetWorkTool postThridHomegetSeckillGoodsWithSeckillTime:kMeUnNilStr(model.time) SuccessBlock:^(ZLRequestResponse *responseObject) {
+        MENetListModel *nlModel = [MENetListModel mj_objectWithKeyValues:responseObject.data];
         kMeSTRONGSELF
-        strongSelf->_arrRudeBuy =[METhridHomeRudeGoodModel mj_objectArrayWithKeyValuesArray:responseObject.data];
+        strongSelf->_arrRudeBuy =[METhridHomeRudeGoodModel mj_objectArrayWithKeyValuesArray:nlModel.data];
         [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     } failure:^(id object) {
         kMeSTRONGSELF

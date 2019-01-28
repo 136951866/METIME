@@ -696,7 +696,7 @@
 
 //获取秒杀商品
 + (void)postThridHomegetSeckillGoodsWithSeckillTime:(NSString*)time SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
-    NSDictionary *dic = @{@"product_position":@"3",@"seckill_time":kMeUnNilStr(time)};
+    NSDictionary *dic = @{@"product_position":@"3",@"seckill_time":kMeUnNilStr(time),@"page":@"1",@"pageSize":@"6"};
     NSString *url = kGetApiWithUrl(MEIPcommonGetgetSeckillGoods);
     MBProgressHUD *HUD = [self commitWithHUD:@""];
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {

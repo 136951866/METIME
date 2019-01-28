@@ -385,7 +385,11 @@
         [_btnShare addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
         _btnShare.backgroundColor = [UIColor colorWithHexString:@"FC8F0C"];
         [_btnShare setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_btnShare setTitle:@"马上分享" forState:UIControlStateNormal];
+        if(_pinduoduomodel){
+            [_btnShare setTitle:@"分享购买得佣金" forState:UIControlStateNormal];
+        }else{
+            [_btnShare setTitle:@"马上分享" forState:UIControlStateNormal];
+        }
         _btnShare.titleLabel.font = kMeFont(15);
     }
     return _btnShare;

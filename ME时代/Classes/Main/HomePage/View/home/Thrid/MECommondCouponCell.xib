@@ -47,6 +47,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="collectionView" destination="rEN-ae-zCT" id="x8d-PS-VpB"/>
+                <outlet property="cosnCollectionHeight" destination="dDj-Aq-mPS" id="vLm-9y-heR"/>
                 <outlet property="imgPic" destination="t2d-Qh-KK0" id="Dae-wt-Lvs"/>
             </connections>
         </tableViewCell>

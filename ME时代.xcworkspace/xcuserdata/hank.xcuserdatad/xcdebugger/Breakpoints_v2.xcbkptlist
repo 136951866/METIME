@@ -148,7 +148,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "570350463.711244"
+            timestampString = "570355242.80645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "278"
@@ -164,7 +164,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "570350463.711503"
+            timestampString = "570355242.810486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "347"
@@ -180,7 +180,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "570350463.711585"
+            timestampString = "570355242.8107671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "340"
@@ -196,7 +196,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "570350463.7120219"
+            timestampString = "570355242.811012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "324"
@@ -212,7 +212,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "570350463.712123"
+            timestampString = "570355242.811265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "314"
@@ -228,7 +228,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "570350463.712217"
+            timestampString = "570355242.8114409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "303"
@@ -437,22 +437,6 @@
             continueAfterRunningActions = "No"
             scope = "0"
             stopOnStyle = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/Mine/Controller/MEMineSetVC.m"
-            timestampString = "570350463.712787"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

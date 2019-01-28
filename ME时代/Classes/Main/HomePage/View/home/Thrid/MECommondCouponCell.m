@@ -18,6 +18,7 @@ const static CGFloat kMargin = 10;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *arrModel;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPic;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cosnCollectionHeight;
 
 @end
 
@@ -31,6 +32,7 @@ const static CGFloat kMargin = 10;
 
 - (void)initSomeThing{
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    _cosnCollectionHeight.constant = 135 * kMeFrameScaleX();
     [_collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([MECommondCouponContentCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([MECommondCouponContentCell class])];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
@@ -56,7 +58,7 @@ const static CGFloat kMargin = 10;
     return cell;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(kMECommondCouponContentCellWdith, kMECommondCouponContentCellHeight);
+    return CGSizeMake(kMECommondCouponContentCellWdith* kMeFrameScaleX(), kMECommondCouponContentCellHeight* kMeFrameScaleX());
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
