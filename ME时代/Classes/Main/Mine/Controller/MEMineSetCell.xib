@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -32,15 +32,23 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ug-jh-jdj">
-                        <rect key="frame" x="15" y="49" width="290" height="1"/>
+                        <rect key="frame" x="15" y="48.5" width="290" height="1"/>
                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="VDs-Sa-z2z"/>
                         </constraints>
                     </view>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vtT-eg-F0d">
+                        <rect key="frame" x="256" y="9.5" width="51" height="31"/>
+                        <connections>
+                            <action selector="switchstatusAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="DmQ-YG-YDM"/>
+                        </connections>
+                    </switch>
                 </subviews>
                 <constraints>
                     <constraint firstItem="pVz-5E-5am" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="CCg-pb-SdG"/>
+                    <constraint firstAttribute="trailing" secondItem="vtT-eg-F0d" secondAttribute="trailing" constant="15" id="HOu-bm-Bor"/>
+                    <constraint firstItem="vtT-eg-F0d" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="J2H-EU-Z5a"/>
                     <constraint firstAttribute="trailing" secondItem="1Ug-jh-jdj" secondAttribute="trailing" constant="15" id="Jh4-cv-1ar"/>
                     <constraint firstAttribute="bottom" secondItem="1Ug-jh-jdj" secondAttribute="bottom" id="MhP-0t-cZx"/>
                     <constraint firstItem="1Ug-jh-jdj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="SXK-3R-tI0"/>
@@ -50,7 +58,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imgArrow" destination="orS-Ds-kf7" id="6zn-Bj-xYr"/>
                 <outlet property="lblTitle" destination="pVz-5E-5am" id="JMy-qK-q5X"/>
+                <outlet property="swotice" destination="vtT-eg-F0d" id="Tch-YQ-NrB"/>
             </connections>
         </tableViewCell>
     </objects>

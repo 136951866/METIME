@@ -149,6 +149,7 @@ typedef enum : NSUInteger {
     MESetCLearChacheStyle = 2,
     MESetAboutWeStyle = 3,
     MESetCompandNoticeStyle = 4,
+    MESetNoticeStyle = 5
 }  MESetStyle;
 
 typedef enum : NSUInteger {

@@ -15,6 +15,7 @@
 
 @interface MEMineSetVC ()<UITableViewDelegate,UITableViewDataSource>{
     NSArray *_arrtype;
+    BOOL _status;
 }
 
 @property (nonatomic, strong) UITableView           *tableView;
@@ -28,7 +29,13 @@
     [super viewDidLoad];
     self.title = @"设置";
 //        _arrtype = @[@{@"title":@"地址",@"subTitle":@[@{@"title":@"收货地址",@"type":@(MESetAddressStyle)}]},@{@"title":@"账号与安全",@"subTitle":@[@{@"title":@"更换手机号码",@"type":@(MESetPhoneStyle)},@{@"title":@"清理缓存",@"type":@(MESetCLearChacheStyle)}]},@{@"title":@"关于",@"subTitle":@[@{@"title":@"关于我们",@"type":@(MESetAboutWeStyle)}]}];
-    _arrtype = @[@{@"title":@"地址",@"subTitle":@[@{@"title":@"收货地址",@"type":@(MESetAddressStyle)}]},@{@"title":@"账号与安全",@"subTitle":@[@{@"title":@"清理缓存",@"type":@(MESetCLearChacheStyle)}]},@{@"title":@"关于",@"subTitle":@[@{@"title":@"关于我们",@"type":@(MESetAboutWeStyle)},@{@"title":@"APP隐私权政策",@"type":@(MESetCompandNoticeStyle)}]}];
+    if(kCurrentUser.user_type == 3){
+#warning --
+        _arrtype = @[@{@"title":@"地址",@"subTitle":@[@{@"title":@"收货地址",@"type":@(MESetAddressStyle)}]},@{@"title":@"账号与安全",@"subTitle":@[@{@"title":@"清理缓存",@"type":@(MESetCLearChacheStyle)},@{@"title":@"接收店铺访问通知",@"type":@(MESetNoticeStyle)}]},@{@"title":@"关于",@"subTitle":@[@{@"title":@"关于我们",@"type":@(MESetAboutWeStyle)},@{@"title":@"APP隐私权政策",@"type":@(MESetCompandNoticeStyle)}]}];
+    }else{
+       _arrtype = @[@{@"title":@"地址",@"subTitle":@[@{@"title":@"收货地址",@"type":@(MESetAddressStyle)}]},@{@"title":@"账号与安全",@"subTitle":@[@{@"title":@"清理缓存",@"type":@(MESetCLearChacheStyle)}]},@{@"title":@"关于",@"subTitle":@[@{@"title":@"关于我们",@"type":@(MESetAboutWeStyle)},@{@"title":@"APP隐私权政策",@"type":@(MESetCompandNoticeStyle)}]}];
+    }
+    
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.btnExit];
 //    self.tableView.tableFooterView = self.btnExit;
@@ -53,6 +60,13 @@
     NSArray *subTitle = dic[@"subTitle"];
     NSDictionary *subDic = subTitle[indexPath.row];
     cell.lblTitle.text = kMeUnNilStr(subDic[@"title"]);
+    MESetStyle type = [subDic[@"type"] integerValue];
+    kMeWEAKSELF
+    [cell setType:type status:_status switchBlock:^(BOOL status) {
+        kMeSTRONGSELF
+        strongSelf->_status = status;
+        [strongSelf.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }];
     return cell;
 }
 
