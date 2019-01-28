@@ -285,7 +285,7 @@ const static CGFloat kThridImageHeight = 200;
         heigth+=(kThridImageHeight * kMeFrameScaleX());
     }
     if(!kMeUnArr(model.scare_buying_goods).count){
-        heigth -=100;
+        heigth -=95;
     }
     return heigth;
 }
