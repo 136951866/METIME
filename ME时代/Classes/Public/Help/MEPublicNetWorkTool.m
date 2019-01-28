@@ -1196,6 +1196,7 @@
 
 + (void)postCreateShopOrderWithAttrModel:(MEShoppingCartMakeOrderAttrModel *)attrModel successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = [attrModel mj_keyValues];
+    NSLog(@"%@",dic);
     NSString *url = kGetApiWithUrl(MEIPcommonOrderCartOrder);
     MBProgressHUD *HUD = [self commitWithHUD:@"生成订单中..."];
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {

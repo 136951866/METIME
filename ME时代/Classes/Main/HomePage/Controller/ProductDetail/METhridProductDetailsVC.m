@@ -179,11 +179,12 @@ kTDWebViewCellDidFinishLoadNotificationMethod
                 attrModle.uid = kMeUnNilStr(strongSelf.uid);
                 [MEPublicNetWorkTool postAddGoodForShopWithAttrModel:attrModle successBlock:^(ZLRequestResponse *responseObject) {
                     kMeSTRONGSELF
+                    kNoticeReloadShopCart
                     if(strongSelf.isGift){
-                        kNoticeReloadShopCart
                         MEGiftVC *vc = (MEGiftVC *)[MECommonTool getClassWtihClassName:[MEGiftVC class] targetVC:strongSelf];
                         [strongSelf.navigationController popToViewController:vc animated:YES];
                     }
+                    
                 } failure:^(id object) {
                 }];
             }
