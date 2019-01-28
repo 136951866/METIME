@@ -214,6 +214,7 @@ typedef enum : NSUInteger {
     MEJpushNoticeType = 1,
     MEJpushOrderType = 2,
     MEJpushVersionUpdateType = 3,
+    MEJpushIntoStoreType = 4,
 } MEJpushType;
 
 #endif /* MEEuemMacros_h */

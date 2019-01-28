@@ -491,8 +491,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         NSString *TypeId = contentDic[@"id"];
         NSString *type = contentDic[@"type"];
         NSInteger msg_id = [contentDic[@"msg_id"] integerValue];
-        if(type.length){
-            //1跳商品  2跳订单详情 3更新
+        if(type.length && ![type isEqualToString:@"4"]){
+            //1跳商品  2跳订单详情 3更新 4店铺访问
             HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:messageStr];
             alertView.isSupportRotating = YES;
             [alertView addButtonWithTitle:@"取消" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {

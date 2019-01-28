@@ -177,6 +177,7 @@
                 [arrPar addObject:modelc];
                 model.comment = [NSArray arrayWithArray:arrPar];
                 [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:strongSelf->_comentIndex inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                [strongSelf.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:strongSelf->_comentIndex inSection:0] animated:YES scrollPosition:UITableViewScrollPositionBottom];
                 [strongSelf.inputToolbar clearText];
                 [strongSelf.inputToolbar dissmissToolbar];
             });

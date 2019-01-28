@@ -27,7 +27,6 @@
     self.view.backgroundColor = kMEfbfbfb;
     _arrDate = [NSMutableArray array];
     [self.view addSubview:self.tableView];
-
     // Do any additional setup after loading the view.
 }
 
@@ -45,6 +44,10 @@
             NSMutableArray *arrdate = [NSMutableArray array];
             NSArray *arrTitle = @[@"推荐消息",@"订单消息",@"版本消息"];
             NSArray *arrUnread = @[responseObject.data[@"notice"],responseObject.data[@"order"],responseObject.data[@"versions"]];
+            if(kCurrentUser.user_type == 3 && responseObject.data[@"ComeInStoreMessages"]){
+                arrTitle = @[@"推荐消息",@"订单消息",@"版本消息",@"店铺访问"];
+                arrUnread = @[responseObject.data[@"notice"],responseObject.data[@"order"],responseObject.data[@"versions"],responseObject.data[@"ComeInStoreMessages"]];
+            }
             strongSelf->_arrDate = [NSMutableArray array];
             for (NSInteger i =0; i<arrTitle.count; i++) {
                 NSString *str = arrTitle[i];
