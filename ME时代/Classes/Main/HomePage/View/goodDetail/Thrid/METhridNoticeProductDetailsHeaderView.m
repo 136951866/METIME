@@ -101,7 +101,7 @@
     //实价
     [_lblRealPriceLine setLineStrWithStr:commStr];
     //购买价
-    _lblRealPrice.text = [NSString stringWithFormat:@"¥%@",kMeUnNilStr(model.money)];
+    _lblRealPrice.text = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.money).floatValue)];
     
     CGFloat postage = [model.postage floatValue];
     if(postage<=0){

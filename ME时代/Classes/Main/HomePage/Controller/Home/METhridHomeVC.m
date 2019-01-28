@@ -49,6 +49,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navBarHidden = YES;
+    self.view.backgroundColor = kMEf5f4f4;
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.navView];
     _selectTimeIndex = 0;
@@ -325,7 +326,7 @@
         _tableView.tableFooterView = [UIView new];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.backgroundColor = kMEf6f6f6;
+        _tableView.backgroundColor = kMEf5f4f4;
     }
     return _tableView;
 }

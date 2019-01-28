@@ -36,6 +36,7 @@
                     <constraint firstAttribute="bottom" secondItem="VLP-MQ-4BF" secondAttribute="bottom" id="u1W-6G-U9r"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.96078431372549022" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="collectionView" destination="VLP-MQ-4BF" id="4UP-Yi-p83"/>
             </connections>
