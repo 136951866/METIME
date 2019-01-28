@@ -66,9 +66,10 @@
     if(kMeUnArr(model.label).count){
         CGFloat height = kMENewStoreHomeCellHeight;
         height +=[MEFlowLabelView getMEFlowLabelViewHeightWithArr:kMeUnArr(model.label)];
+        height+=13;
         return height;
     }else{
-        return kMENewStoreHomeCellHeight;
+        return kMENewStoreHomeCellHeight+13;
     }
 }
 

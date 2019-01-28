@@ -23,5 +23,4 @@ MEModelIdToIdField
 MEModelObjectClassInArrayWithDic((@{@"praise" : [MEBynamicHomepraiseModel class],@"comment" : [MEBynamicHomecommentModel class]}))
 
 
-
 @end
