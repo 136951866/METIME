@@ -405,7 +405,7 @@ kTDWebViewCellDidFinishLoadNotificationMethod
 - (MEProductDetailsBottomView *)bottomView{
     if(!_bottomView){
         _bottomView = [[[NSBundle mainBundle]loadNibNamed:@"MEProductDetailsBottomView" owner:nil options:nil] lastObject];
-        _bottomView.btnGift.hidden = !self.isGift;
+        _bottomView.btnGift.hidden = _type==METhridProductDetailsVCNormalType;//!self.isGift;
         kMeWEAKSELF
         _bottomView.buyBlock = ^{
             kMeSTRONGSELF

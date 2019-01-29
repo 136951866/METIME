@@ -216,7 +216,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jsr-aN-PMZ">
-                    <rect key="frame" x="61" y="500.5" width="22.5" height="16"/>
+                    <rect key="frame" x="61" y="502.5" width="22.5" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -240,7 +240,7 @@
                 <constraint firstAttribute="trailing" secondItem="aPb-sg-mBU" secondAttribute="trailing" constant="10" id="Zp7-DH-qRU"/>
                 <constraint firstItem="Ir1-ex-k4G" firstAttribute="centerY" secondItem="J0r-pK-x91" secondAttribute="centerY" id="e6J-jc-A0t"/>
                 <constraint firstItem="iUj-GH-Ayr" firstAttribute="top" secondItem="J0r-pK-x91" secondAttribute="bottom" constant="16" id="eC2-vQ-Un4"/>
-                <constraint firstItem="jsr-aN-PMZ" firstAttribute="centerY" secondItem="qX3-vw-Wdn" secondAttribute="centerY" id="eTZ-wC-ikr"/>
+                <constraint firstItem="jsr-aN-PMZ" firstAttribute="centerY" secondItem="qX3-vw-Wdn" secondAttribute="centerY" constant="2" id="eTZ-wC-ikr"/>
                 <constraint firstItem="Ir1-ex-k4G" firstAttribute="leading" secondItem="J0r-pK-x91" secondAttribute="trailing" id="hlb-YQ-pq5"/>
                 <constraint firstItem="J0r-pK-x91" firstAttribute="top" secondItem="Qtj-co-FfL" secondAttribute="bottom" constant="21" id="iHw-S8-GFC"/>
                 <constraint firstItem="Qtj-co-FfL" firstAttribute="top" secondItem="qX3-vw-Wdn" secondAttribute="bottom" constant="15" id="nFw-Vj-pOJ"/>

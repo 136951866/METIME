@@ -154,7 +154,7 @@
 }
 
 - (IBAction)giftAction:(UIButton *)sender {
-    kMeCallBlock(self.addShopcartBlock);
+    kMeCallBlock(self.buyBlock);
 }
 
 
