@@ -18,5 +18,5 @@
 @property (nonatomic, strong) NSString * member_id;
 @property (nonatomic, assign) NSInteger type;
 @property (nonatomic, strong) NSString * updated_at;
-@property (nonatomic, assign) NSInteger read;
+@property (nonatomic, assign) NSInteger is_read;//1未读 2已读
 @end

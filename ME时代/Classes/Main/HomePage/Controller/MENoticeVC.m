@@ -14,8 +14,8 @@
 #import "MEMyOrderDetailVC.h"
 
 @interface MENoticeVC ()<RefreshToolDelegate,UITableViewDelegate,UITableViewDataSource>{
-    MEJpushType _type;
-    NSString *_title;
+//    MEJpushType _type;
+//    NSString *_title;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -25,17 +25,17 @@
 
 @implementation MENoticeVC
 
-- (instancetype)initWithNoticeType:(MEJpushType)type title:(NSString *)title{
-    if(self = [super init]){
-        _title = title;
-        _type = type;
-    }
-    return self;
-}
+//- (instancetype)initWithNoticeType:(MEJpushType)type title:(NSString *)title{
+//    if(self = [super init]){
+//        _title = title;
+//        _type = type;
+//    }
+//    return self;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = _title;
+    self.title = @"通知";
     [self.view addSubview:self.tableView];
     [self.refresh addRefreshView];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.btnRight];
@@ -51,7 +51,7 @@
     kMeWEAKSELF
     [alertView addButtonWithTitle:@"确定" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
         kMeSTRONGSELF
-        [MEPublicNetWorkTool getUseAllReadedInfoWithType:strongSelf->_type SuccessBlock:^(ZLRequestResponse *responseObject) {
+        [MEPublicNetWorkTool getUseAllReadedInfoWithType:0 SuccessBlock:^(ZLRequestResponse *responseObject) {
             [strongSelf.refresh reload];
             kNoticeUnNoticeMessage
         } failure:nil];
@@ -60,7 +60,8 @@
 }
 
 - (NSDictionary *)requestParameter{
-    return @{@"token":kMeUnNilStr(kCurrentUser.token),@"type":@(_type)};
+//    @"type":@(_type)
+    return @{@"token":kMeUnNilStr(kCurrentUser.token)};
 }
 
 - (void)handleResponse:(id)data{
@@ -91,16 +92,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MENoticeModel *model = self.refresh.arrData[indexPath.row];
-    if(!model.read){
+    if(model.is_read==1){
         kMeWEAKSELF
         [MEPublicNetWorkTool getUserReadedNoticeWithNoticeId:model.idField SuccessBlock:^(ZLRequestResponse *responseObject) {
             kMeSTRONGSELF
-            model.read = 1;
+            model.is_read = 2;
             [strongSelf.tableView reloadData];
             kNoticeUnNoticeMessage
         } failure:nil];
     }
-    switch (_type) {
+    switch (model.type) {
         case MEJpushNoticeType:{
             METhridProductDetailsVC *dvc = [[METhridProductDetailsVC alloc]initWithId:[model.ids integerValue]];
             [self.navigationController pushViewController:dvc animated:YES];
@@ -138,7 +139,7 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonNotice)];
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonNotices)];
         _refresh.delegate = self;
         _refresh.isDataInside = YES;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {

@@ -1442,7 +1442,6 @@
 + (void)getUseAllReadedInfoWithType:(NSInteger)type SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{
                           @"token":kMeUnNilStr(kCurrentUser.token),
-                          @"type":@(type)
                           };
     
     NSString *url = kGetApiWithUrl(MEIPcommonAllreadedNotice);
@@ -1506,6 +1505,22 @@
         kMeCallBlock(failure,error);
     }];
 }
+
++ (void)getUserCountListWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{
+                          @"token":kMeUnNilStr(kCurrentUser.token),
+                          };
+    NSString *url = kGetApiWithUrl(MEIPcommonCountList);
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+        }else{
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
+
 
 + (void)getUserReadedNoticeWithNoticeId:(NSInteger)noticeId SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{

@@ -10,6 +10,6 @@
 
 @interface MENoticeVC : MEBaseVC
 
-- (instancetype)initWithNoticeType:(MEJpushType)type title:(NSString *)title;
+//- (instancetype)initWithNoticeType:(MEJpushType)type title:(NSString *)title;
 
 @end

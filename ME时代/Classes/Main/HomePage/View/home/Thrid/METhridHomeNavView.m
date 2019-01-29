@@ -10,7 +10,8 @@
 #import "METhridHomeVC.h"
 #import "MEProductSearchVC.h"
 #import "MERCConversationListVC.h"
-#import "MENoticeTypeVC.h"
+//#import "MENoticeTypeVC.h"
+#import "MENoticeVC.h"
 @interface METhridHomeNavView ()
 
 @property (nonatomic, strong)UIView *viewForBack;
@@ -106,15 +107,15 @@
 
 - (void)toNotice{
     METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
-        if([kCurrentUser.mobile isEqualToString:AppstorePhone]){
-            MERCConversationListVC *svc = [[MERCConversationListVC alloc]init];
+//        if([kCurrentUser.mobile isEqualToString:AppstorePhone]){
+//            MERCConversationListVC *svc = [[MERCConversationListVC alloc]init];
+//            [homeVC.navigationController pushViewController:svc animated:YES];
+//        }else{
+//        if(homeVC){
+            MENoticeVC *svc = [[MENoticeVC alloc]init];
             [homeVC.navigationController pushViewController:svc animated:YES];
-        }else{
-        if(homeVC){
-            MENoticeTypeVC *svc = [[MENoticeTypeVC alloc]init];
-            [homeVC.navigationController pushViewController:svc animated:YES];
-        }
-    }
+//        }
+//    }
 }
 
 - (UIImageView *)imageForSearch{

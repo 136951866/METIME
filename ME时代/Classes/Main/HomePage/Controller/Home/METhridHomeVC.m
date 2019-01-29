@@ -77,21 +77,15 @@
 - (void)getUnInfo{
     if([MEUserInfoModel isLogin]){
         kMeWEAKSELF
-        [MEPublicNetWorkTool getUserHomeUnreadNoticeWithSuccessBlock:^(ZLRequestResponse *responseObject) {
-            if([responseObject.data isKindOfClass:[NSDictionary class]]){
-                NSNumber *notice = responseObject.data[@"notice"];
-                NSNumber *order = responseObject.data[@"order"];
-                NSNumber *versions = responseObject.data[@"versions"];
-                NSInteger unread = [notice integerValue] + [order integerValue] +[versions integerValue];
+        [MEPublicNetWorkTool getUserCountListWithSuccessBlock:^(ZLRequestResponse *responseObject) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     kMeSTRONGSELF
                     if(strongSelf->_navView){
+                        NSInteger unread = [responseObject.data integerValue];
                         [strongSelf.navView setRead:!unread];
                     }
                 });
-            }
         } failure:^(id object) {
-
         }];
     }
 }

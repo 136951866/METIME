@@ -251,6 +251,8 @@
 
 /***************************************/
 #pragma mark - UserCentre
+//获取未读总数
++ (void)getUserCountListWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //获取用户信息
 + (void)getUserGetUserWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //一键已读

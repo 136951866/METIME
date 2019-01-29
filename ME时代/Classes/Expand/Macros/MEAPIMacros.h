@@ -11,8 +11,7 @@
 
 #warning -mustNotes 上线一定要注释/海报分享没有用BASEIP
 
-
-//#define TestVersion
+#define TestVersion
 
 //域名 develop
 #ifdef TestVersion
@@ -309,13 +308,17 @@
 /*********************************************/
 #pragma makr - UserCentre
 //一键已读
-#define MEIPcommonAllreadedNotice @"common/message/allRead"
+#define MEIPcommonAllreadedNotice @"common/message/listRead"
 //已读消息
-#define MEIPcommonreadedNotice @"common/message/readMsg"
+#define MEIPcommonreadedNotice @"common/message/findRead"
 //获取未读的推送信息
 #define MEIPcommonUnreadNotice @"common/message/getJpush"
 //获取通知列表
 #define MEIPcommonNotice @"common/message/getJpushList"
+//获取未读总数
+#define MEIPcommonCountList @"common/message/countList"
+//3.0.1获取通知列表
+#define MEIPcommonNotices @"common/message/getList"
 //获取个人中心的数据
 #define MEIPcommonUserUserCentre @"common/user/userCentre"
 //获取商家分销中心

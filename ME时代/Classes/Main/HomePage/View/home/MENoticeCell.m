@@ -30,7 +30,7 @@
 - (void)setUIWIthModel:(MENoticeModel *)model{
     _lblTitle.text = kMeUnNilStr(model.title);
     _lblTime.text = kMeUnNilStr(model.updated_at);
-    _viewForUnread.hidden = model.read;
+    _viewForUnread.hidden = model.is_read==2;
 }
 
 @end

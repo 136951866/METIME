@@ -43,18 +43,26 @@
         if([responseObject.data isKindOfClass:[NSDictionary class]]){
             NSMutableArray *arrdate = [NSMutableArray array];
             NSArray *arrTitle = @[@"推荐消息",@"订单消息",@"版本消息"];
+            NSArray *arrType = @[@(MEJpushNoticeType),@(MEJpushOrderType),@(MEJpushVersionUpdateType)];
             NSArray *arrUnread = @[responseObject.data[@"notice"],responseObject.data[@"order"],responseObject.data[@"versions"]];
             if(kCurrentUser.user_type == 3 && responseObject.data[@"ComeInStoreMessages"]){
                 arrTitle = @[@"推荐消息",@"订单消息",@"版本消息",@"店铺访问"];
                 arrUnread = @[responseObject.data[@"notice"],responseObject.data[@"order"],responseObject.data[@"versions"],responseObject.data[@"ComeInStoreMessages"]];
+                arrType = @[@(MEJpushNoticeType),@(MEJpushOrderType),@(MEJpushVersionUpdateType),@(MEJpushIntoStoreType)];
             }
+            if(kCurrentUser.user_type == 4 && responseObject.data[@"browseUser"]){
+                arrTitle = @[@"推荐消息",@"订单消息",@"版本消息",@"店铺访问"];
+                arrUnread = @[responseObject.data[@"notice"],responseObject.data[@"order"],responseObject.data[@"versions"],responseObject.data[@"browseUser"]];
+                arrType = @[@(MEJpushNoticeType),@(MEJpushOrderType),@(MEJpushVersionUpdateType),@(MEJpushUnreadMessageType)];
+            }
+            
             strongSelf->_arrDate = [NSMutableArray array];
             for (NSInteger i =0; i<arrTitle.count; i++) {
                 NSString *str = arrTitle[i];
                 MEFilterMainModel *model = [MEFilterMainModel new];
                 model.category_name = str;
-                model.idField = i+1;
                 model.unRead = [arrUnread[i] integerValue];
+                model.idField = [arrType[i] integerValue];
                 [arrdate addObject:model];
             }
             strongSelf->_arrDate = arrdate;
@@ -96,8 +104,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MEFilterMainModel *model =  _arrDate[indexPath.row];
-    MENoticeVC *vc = [[MENoticeVC alloc]initWithNoticeType:model.idField title:kMeUnNilStr(model.category_name)];
-    [self.navigationController pushViewController:vc animated:YES];
+//    MENoticeVC *vc = [[MENoticeVC alloc]initWithNoticeType:model.idField title:kMeUnNilStr(model.category_name)];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Setter And Getter
