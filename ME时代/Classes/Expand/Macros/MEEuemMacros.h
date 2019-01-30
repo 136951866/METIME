@@ -124,10 +124,11 @@ typedef enum : NSUInteger {
     MEMyDataDeal,
     MEMyCash,
     MEMyBelongStore,
-    MEMyMoneyDeal
+    MEMyMoneyDeal,
+    MEMyCouponMoney
 } MEDistrbutionCellStyle;
-#define MEDistrbutionCellStyleTitle @[@"我的美豆",@"我的订单",@"我的团队",@"推广二维码",@"订单金额",@"我的等级",@"我的上级",@"店员管理",@"预约管理",@"数据统计",@"提现明细",@"归属店",@"佣金统计"];
-#define MEDistrbutionCellStyleImage @[@"icon_fenxiaoyognjin",@"icon_fenxiaodigndan",@"icon_tuandui",@"icon_tuijian",@"icon_fenxiaoyognjin",@"icon_fenxiaodigndan",@"icon-qrhhxe",@"yhkmtpgj",@"cbxqtpgj",@"ovrntpgj",@"rjgmjexl",@"rnntuyyh",@"weqqxyyf"];
+#define MEDistrbutionCellStyleTitle @[@"我的美豆",@"我的订单",@"我的团队",@"推广二维码",@"订单金额",@"我的等级",@"我的上级",@"店员管理",@"预约管理",@"数据统计",@"提现明细",@"归属店",@"佣金统计",@"优惠卷佣金"];
+#define MEDistrbutionCellStyleImage @[@"icon_fenxiaoyognjin",@"icon_fenxiaodigndan",@"icon_tuandui",@"icon_tuijian",@"icon_fenxiaoyognjin",@"icon_fenxiaodigndan",@"icon-qrhhxe",@"yhkmtpgj",@"cbxqtpgj",@"ovrntpgj",@"rjgmjexl",@"rnntuyyh",@"weqqxyyf",@"iqpgweqq"];
 
 //支付状态
 typedef enum : NSUInteger {

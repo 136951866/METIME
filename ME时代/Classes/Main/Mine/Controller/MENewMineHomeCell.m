@@ -126,11 +126,11 @@
             [homeVc.navigationController pushViewController:mobile animated:YES];
         }
             break;
-        case MeCouponMoney:{
-            MECouponOrderVC *mobile = [[MECouponOrderVC alloc]init];
-            [homeVc.navigationController pushViewController:mobile animated:YES];
-        }
-            break;
+//        case MeCouponMoney:{
+//            MECouponOrderVC *mobile = [[MECouponOrderVC alloc]init];
+//            [homeVc.navigationController pushViewController:mobile animated:YES];
+//        }
+//            break;
         default:
             break;
     }
