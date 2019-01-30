@@ -29,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"动态";
+    
     if(![MEUserInfoModel isLogin]){
         
     }else{
