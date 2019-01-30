@@ -11,13 +11,14 @@
 #import "CLInputToolbar.h"
 #import "MEBynamicHomeModel.h"
 #import "METhridProductDetailsVC.h"
-
+#import "IQKeyboardManager.h"
 @interface MEBynamicHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSInteger _comentIndex;}
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) CLInputToolbar *inputToolbar;
 @property (nonatomic, strong) ZLRefreshTool         *refresh;
+@property (nonatomic, strong) UIView *maskView;
 @end
 
 @implementation MEBynamicHomeVC
@@ -29,30 +30,55 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"动态";
-    
     if(![MEUserInfoModel isLogin]){
         
     }else{
         [self.view addSubview:self.tableView];
         [self.refresh addRefreshView];
+        [self setTextViewToolbar];
     }
-    [self setTextViewToolbar];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogout) name:kUserLogout object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogin) name:kUserLogin object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(keyboardWillHide:)
+//                                                 name:UIKeyboardWillHideNotification
+//                                               object:nil];
 }
+//- (void)keyboardWillHide:(NSNotification *)notification{
+//    if(self.maskView && self.inputToolbar){
+//        [self.inputToolbar bounceToolbar];
+//        self.maskView.hidden = YES;
+//    }
+//}
+
 - (void)userLogout{
     [self.navigationController popToViewController:self animated:NO];
     [self.refresh.arrData removeAllObjects];
     self.refresh = nil;
     [self.tableView removeFromSuperview];
     self.tableView = nil;
-    [self.inputToolbar clearText];
-    [self.inputToolbar dissmissToolbar];
+    self.maskView.hidden = YES;
+    [self.inputToolbar bounceToolbar];
+    [self.inputToolbar removeFromSuperview];
+    self.inputToolbar = nil;
+    [self.maskView removeFromSuperview];
+    self.maskView = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [IQKeyboardManager sharedManager].enable = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [IQKeyboardManager sharedManager].enable = YES;
 }
 
 - (void)userLogin{
     [self.view addSubview:self.tableView];
     [self.refresh addRefreshView];
+    [self setTextViewToolbar];
 }
 #pragma mark - RefreshToolDelegate
 
@@ -130,7 +156,7 @@
         return;
     }
     _comentIndex = index;
-    [self.inputToolbar showToolbar];
+    [self didTouchBtn];
 }
 
 - (void)likeAction:(NSInteger)index{
@@ -149,44 +175,58 @@
             [arrPar addObjectsFromArray:kMeUnArr(model.praise)];
             [arrPar addObject:modelp];
             model.praise = [NSArray arrayWithArray:arrPar];
-           [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+            [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
         });
     } failure:^(id object) {
         
     }];
 }
 
+-(void)didTouchBtn {
+    self.maskView.hidden = NO;
+    [self.inputToolbar popToolbar];
+}
+-(void)tapActions:(UITapGestureRecognizer *)tap {
+    [self.inputToolbar bounceToolbar];
+    self.maskView.hidden = YES;
+}
+
 -(void)setTextViewToolbar {
+    self.maskView = [[UIView alloc] initWithFrame:self.view.bounds];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapActions:)];
+    [self.maskView addGestureRecognizer:tap];
+    [self.view addSubview:self.maskView];
+    self.maskView.hidden = YES;
     self.inputToolbar = [[CLInputToolbar alloc] init];
     self.inputToolbar.textViewMaxLine = 3;
     self.inputToolbar.fontSize = 15;
     self.inputToolbar.placeholder = @"请输入...";
-    self.inputToolbar.showMaskView = YES;
     kMeWEAKSELF
     [self.inputToolbar inputToolbarSendText:^(NSString *text) {
         kMeSTRONGSELF
-        NSLog(@"%@",strongSelf.inputToolbar.inputText);
+        NSLog(@"%@",text);
         MEBynamicHomeModel *model = strongSelf.refresh.arrData[strongSelf->_comentIndex];
-        [MEPublicNetWorkTool postdynamicCommentdynamicId:kMeUnNilStr(model.idField) content:kMeUnNilStr(strongSelf.inputToolbar.inputText) successBlock:^(ZLRequestResponse *responseObject) {
- 
+        [MEPublicNetWorkTool postdynamicCommentdynamicId:kMeUnNilStr(model.idField) content:kMeUnNilStr(text) successBlock:^(ZLRequestResponse *responseObject) {
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 MEBynamicHomecommentModel *modelc = [MEBynamicHomecommentModel new];
                 modelc.nick_name = kMeUnNilStr(kCurrentUser.name);
-                modelc.content = kMeUnNilStr(strongSelf.inputToolbar.inputText);
+                modelc.content = kMeUnNilStr(text);
                 NSMutableArray *arrPar = [NSMutableArray array];
                 [arrPar addObjectsFromArray:kMeUnArr(model.comment)];
                 [arrPar addObject:modelc];
                 model.comment = [NSArray arrayWithArray:arrPar];
                 [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:strongSelf->_comentIndex inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
                 [strongSelf.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:strongSelf->_comentIndex inSection:0] animated:YES scrollPosition:UITableViewScrollPositionBottom];
-                [strongSelf.inputToolbar clearText];
-                [strongSelf.inputToolbar dissmissToolbar];
+                [strongSelf.inputToolbar bounceToolbar];
+                strongSelf.maskView.hidden = YES;
             });
-
+            
         } failure:^(id object) {
             
         }];
     }];
+    [self.maskView addSubview:self.inputToolbar];
 }
 
 #pragma MARK - Setter

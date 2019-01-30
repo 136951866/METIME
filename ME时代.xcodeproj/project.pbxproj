@@ -488,6 +488,8 @@
 		36C01991214262230048734E /* MEProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C0198F214262230048734E /* MEProductCell.m */; };
 		36C01992214262230048734E /* MEProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36C01990214262230048734E /* MEProductCell.xib */; };
 		36C0850922016372008ADAC9 /* MEJupshContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C0850822016372008ADAC9 /* MEJupshContentModel.m */; };
+		36C0851422019CF6008ADAC9 /* CLInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C0851222019CF6008ADAC9 /* CLInputToolbar.m */; };
+		36C0851522019CF6008ADAC9 /* UIView+CLSetRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C0851322019CF6008ADAC9 /* UIView+CLSetRect.m */; };
 		36D66EB1213F7904000476FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36D66EAF213F7904000476FF /* Main.storyboard */; };
 		36D66EB6213F7906000476FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36D66EB4213F7906000476FF /* LaunchScreen.storyboard */; };
 		36D66EB9213F7907000476FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D66EB8213F7907000476FF /* main.m */; };
@@ -544,7 +546,6 @@
 		36F6AF4E21F8546800CF6684 /* MEBynamicCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F6AF4C21F8546800CF6684 /* MEBynamicCommentCell.xib */; };
 		36F6AF5221F8548A00CF6684 /* MEBynamicLikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F6AF5021F8548A00CF6684 /* MEBynamicLikeCell.m */; };
 		36F6AF5321F8548A00CF6684 /* MEBynamicLikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F6AF5121F8548A00CF6684 /* MEBynamicLikeCell.xib */; };
-		36F6AF5921F8780500CF6684 /* CLInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F6AF5521F8780400CF6684 /* CLInputToolbar.m */; };
 		36FB082E218058CE003601FD /* MEProductSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB082C218058CE003601FD /* MEProductSearchVC.m */; };
 		36FB082F218058CE003601FD /* MEProductSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FB082D218058CE003601FD /* MEProductSearchVC.xib */; };
 		36FB9E152199193B00B3DDD3 /* MENoticeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB9E142199193B00B3DDD3 /* MENoticeVC.m */; };
@@ -1507,6 +1508,10 @@
 		36C01990214262230048734E /* MEProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEProductCell.xib; sourceTree = "<group>"; };
 		36C0850722016372008ADAC9 /* MEJupshContentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEJupshContentModel.h; sourceTree = "<group>"; };
 		36C0850822016372008ADAC9 /* MEJupshContentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEJupshContentModel.m; sourceTree = "<group>"; };
+		36C0851022019CF5008ADAC9 /* UIView+CLSetRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CLSetRect.h"; sourceTree = "<group>"; };
+		36C0851122019CF5008ADAC9 /* CLInputToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLInputToolbar.h; sourceTree = "<group>"; };
+		36C0851222019CF6008ADAC9 /* CLInputToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLInputToolbar.m; sourceTree = "<group>"; };
+		36C0851322019CF6008ADAC9 /* UIView+CLSetRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CLSetRect.m"; sourceTree = "<group>"; };
 		36D66EA6213F7904000476FF /* ME时代.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ME时代.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36D66EB0213F7904000476FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		36D66EB5213F7906000476FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -1606,8 +1611,6 @@
 		36F6AF4F21F8548A00CF6684 /* MEBynamicLikeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBynamicLikeCell.h; sourceTree = "<group>"; };
 		36F6AF5021F8548A00CF6684 /* MEBynamicLikeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBynamicLikeCell.m; sourceTree = "<group>"; };
 		36F6AF5121F8548A00CF6684 /* MEBynamicLikeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEBynamicLikeCell.xib; sourceTree = "<group>"; };
-		36F6AF5521F8780400CF6684 /* CLInputToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLInputToolbar.m; sourceTree = "<group>"; };
-		36F6AF5821F8780500CF6684 /* CLInputToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLInputToolbar.h; sourceTree = "<group>"; };
 		36FB082B218058CE003601FD /* MEProductSearchVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEProductSearchVC.h; sourceTree = "<group>"; };
 		36FB082C218058CE003601FD /* MEProductSearchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEProductSearchVC.m; sourceTree = "<group>"; };
 		36FB082D218058CE003601FD /* MEProductSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEProductSearchVC.xib; sourceTree = "<group>"; };
@@ -3774,8 +3777,10 @@
 		36F6AF5421F877DB00CF6684 /* CLInputToolbar */ = {
 			isa = PBXGroup;
 			children = (
-				36F6AF5821F8780500CF6684 /* CLInputToolbar.h */,
-				36F6AF5521F8780400CF6684 /* CLInputToolbar.m */,
+				36C0851122019CF5008ADAC9 /* CLInputToolbar.h */,
+				36C0851222019CF6008ADAC9 /* CLInputToolbar.m */,
+				36C0851022019CF5008ADAC9 /* UIView+CLSetRect.h */,
+				36C0851322019CF6008ADAC9 /* UIView+CLSetRect.m */,
 			);
 			path = CLInputToolbar;
 			sourceTree = "<group>";
@@ -4841,6 +4846,7 @@
 				363007002148A9BC00C88264 /* MEDistributionOrderCell.m in Sources */,
 				36021B0E214BCBF2001B8DAF /* MELoginVC.m in Sources */,
 				3628E7DB21C0AEB200D5405B /* MEBDataDealView.m in Sources */,
+				36C0851422019CF6008ADAC9 /* CLInputToolbar.m in Sources */,
 				36FD63E6213FA6AC009743C5 /* MEBaseVC.m in Sources */,
 				3683F79821CB40B2008139B0 /* MECoupleMailCell.m in Sources */,
 				36FDEFEB21B0CB0C0022D374 /* MECreatePosterVC.m in Sources */,
@@ -4854,6 +4860,7 @@
 				366019B021E83B4B00F1BB37 /* MENewMineHomeHeaderView.m in Sources */,
 				36015284215F72D2003EEC8C /* MERCConversationListVC.m in Sources */,
 				360034AE21AE823700BAF337 /* AASubtitle.m in Sources */,
+				36C0851522019CF6008ADAC9 /* UIView+CLSetRect.m in Sources */,
 				3628E80721C101AF00D5405B /* MEGetCaseContentVC.m in Sources */,
 				EB2E1ABF2150ECEC00A26BE3 /* MEAddressModel.m in Sources */,
 				36FEEBD9214CEFB400060209 /* MEMidelButton.m in Sources */,
@@ -4872,7 +4879,6 @@
 				3602A18C21424091004A6E1F /* ZLWebVC.m in Sources */,
 				36017661215B1F490080EB00 /* MEMoneyDetailedVC.m in Sources */,
 				3612FB5B21DF3D770024083F /* MECouponInfo.m in Sources */,
-				36F6AF5921F8780500CF6684 /* CLInputToolbar.m in Sources */,
 				36008A7A21B68EA60007BB46 /* MEVistorUserPathModel.m in Sources */,
 				3650F3F021797BF4007EA97F /* MEAppointAttrModel.m in Sources */,
 				36FD63F5213FA9E7009743C5 /* UIColor+MeHexString.m in Sources */,

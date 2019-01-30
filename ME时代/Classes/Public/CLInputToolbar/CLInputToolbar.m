@@ -7,16 +7,11 @@
 //
 
 #import "CLInputToolbar.h"
-
+#import "UIView+CLSetRect.h"
 
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
 
 @interface CLInputToolbar ()<UITextViewDelegate>
-
-/*遮罩*/
-@property (nonatomic, strong) UIView *maskView;
-/*遮罩*/
-@property (nonatomic, strong) UIView *backgroundView;
 /**文本输入框*/
 @property (nonatomic, strong) UITextView *textView;
 /**边框*/
@@ -29,10 +24,10 @@
 @property (nonatomic, strong) UILabel *placeholderLabel;
 /**发送按钮*/
 @property (nonatomic, strong) UIButton *sendButton;
-/*keyWindow*/
-@property (nonatomic, strong) UIWindow *keyWindow;
+/**键盘高度*/
+@property (nonatomic, assign) CGFloat keyboardHeight;
 /**发送回调*/
-@property (nonatomic, copy) inputToolBarSendBlock sendBlock;
+@property (nonatomic, copy) inputTextBlock inputTextBlock;
 
 @end
 
@@ -40,39 +35,77 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
+        self.frame = CGRectMake(0,CLscreenHeight, CLscreenWidth, 50);
         [self initView];
+        [self addNotification];
     }
     return self;
 }
 -(void)initView {
-    self.backgroundColor = [UIColor clearColor];
-    self.frame = CGRectMake(0,0, SCREEN_WIDTH, 100);
+    self.backgroundColor = [UIColor whiteColor];
     //顶部线条
+    self.topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.CLwidth, 1)];
+    self.topLine.backgroundColor = RGBACOLOR(0, 0, 0, 0.2);
     [self addSubview:self.topLine];
     //底部线条
+    self.bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.CLheight - 1, self.CLwidth, 1)];
+    self.bottomLine.backgroundColor = RGBACOLOR(0, 0, 0, 0.2);
     [self addSubview:self.bottomLine];
     //边框
+    self.edgeLineView = [[UIView alloc]init];
+    self.edgeLineView.CLwidth = self.CLwidth - 50 - 30;
+    self.edgeLineView.CLleft = 10;
+    self.edgeLineView.layer.cornerRadius = 5;
+    self.edgeLineView.layer.borderColor = RGBACOLOR(0, 0, 0, 0.5).CGColor;
+    self.edgeLineView.layer.borderWidth = 1;
+    self.edgeLineView.layer.masksToBounds = YES;
     [self addSubview:self.edgeLineView];
     //输入框
+    self.textView = [[UITextView alloc] init];;
+    self.textView.CLwidth = self.CLwidth - 50 - 46;
+    self.textView.CLleft = 18;
+    self.textView.enablesReturnKeyAutomatically = YES;
+    self.textView.delegate = self;
+    self.textView.layoutManager.allowsNonContiguousLayout = NO;
+    self.textView.scrollsToTop = NO;
+    self.textView.textContainerInset = UIEdgeInsetsZero;
+    self.textView.textContainer.lineFragmentPadding = 0;
     [self addSubview:self.textView];
     //占位文字
+    self.placeholderLabel = [[UILabel alloc] init];
+    self.placeholderLabel.CLwidth = self.textView.CLwidth - 10;
+    self.placeholderLabel.textColor = RGBACOLOR(0, 0, 0, 0.5);
+    self.placeholderLabel.CLleft = 23;
     [self addSubview:self.placeholderLabel];
     //发送按钮
+    self.sendButton = [[UIButton alloc] initWithFrame:CGRectMake(self.CLwidth - 50 - 10, self.CLheight - 30 - 10, 50, 30)];
+    [self.sendButton.layer setBorderWidth:1.0];
+    [self.sendButton.layer setCornerRadius:5.0];
+    self.sendButton.layer.borderColor = RGBACOLOR(0, 0, 0, 0.5).CGColor;
+    self.sendButton.enabled = NO;
+    self.sendButton.titleLabel.font = [UIFont systemFontOfSize:16];
+    [self.sendButton setTitle:@"发送" forState:UIControlStateNormal];
+    [self.sendButton setTitleColor:RGBACOLOR(0, 0, 0, 0.2) forState:UIControlStateNormal];
+    [self.sendButton addTarget:self action:@selector(didClicksendButton) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.sendButton];
     self.fontSize = 20;
     self.textViewMaxLine = 3;
 }
-
+// 添加通知
+-(void)addNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
+}
 -(void)setFontSize:(CGFloat)fontSize{
     _fontSize = fontSize;
-    if (!fontSize || _fontSize < 18) {
-        _fontSize = 18;
+    if (!fontSize || _fontSize < 20) {
+        _fontSize = 20;
     }
     self.textView.font = [UIFont systemFontOfSize:_fontSize];
     self.placeholderLabel.font = self.textView.font;
     CGFloat lineH = self.textView.font.lineHeight;
-    self.height = ceil(lineH) + 10 + 10;
-    self.textView.height = lineH;
+    self.CLheight = ceil(lineH) + 10 + 10;
+    self.textView.CLheight = lineH;
 }
 - (void)setTextViewMaxLine:(NSInteger)textViewMaxLine {
     _textViewMaxLine = textViewMaxLine;
@@ -84,7 +117,21 @@
     _placeholder = placeholder;
     self.placeholderLabel.text = placeholder;
 }
-
+#pragma mark keyboardnotification
+- (void)keyboardWillShow:(NSNotification *)notification {
+    CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    _keyboardHeight = keyboardFrame.size.height;
+    CGFloat duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    [UIView animateWithDuration:duration animations:^{
+        self.CLy = keyboardFrame.origin.y - self.CLheight;
+    }];
+}
+- (void)keyboardWillHidden:(NSNotification *)notification {
+    CGFloat duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    [UIView animateWithDuration:duration animations:^{
+        self.CLy = CLscreenHeight;
+    }];
+}
 #pragma mark UITextViewDelegate
 - (void)textViewDidChange:(UITextView *)textView {
     self.placeholderLabel.hidden = textView.text.length;
@@ -99,195 +146,48 @@
     CGFloat lineH = textView.font.lineHeight;
     CGFloat maxTextViewHeight = ceil(lineH * self.textViewMaxLine + textView.textContainerInset.top + textView.textContainerInset.bottom);
     if (contentSizeH <= maxTextViewHeight) {
-        textView.height = contentSizeH;
+        textView.CLheight = contentSizeH;
     }else{
-        textView.height = maxTextViewHeight;
+        textView.CLheight = maxTextViewHeight;
     }
-    
-    CGFloat newHeight = ceil(textView.height) + 10 + 10;
-    CGFloat change = newHeight - self.height;
-    if (change != 0) {
-        self.height = newHeight;
-        self.top = self.top - change;
-    }
+    self.CLheight = ceil(textView.CLheight) + 10 + 10;
+    self.CLbottom = CLscreenHeight - _keyboardHeight;
     [textView scrollRangeToVisible:NSMakeRange(textView.selectedRange.location, 1)];
-}
-- (void)tapActions:(UITapGestureRecognizer *)tapGestureRecognizer {
-    [self dissmissToolbar];
-}
-- (NSString *)inputText {
-    return self.textView.text;
 }
 // 发送按钮
 -(void)didClicksendButton {
-    if (self.sendBlock) {
-        self.sendBlock(self.textView.text);
+    if (self.inputTextBlock) {
+        self.inputTextBlock(self.textView.text);
     }
 }
-- (void)inputToolbarSendText:(inputToolBarSendBlock)sendBlock{
-    self.sendBlock = sendBlock;
+- (void)inputToolbarSendText:(inputTextBlock)sendText{
+    self.inputTextBlock = sendText;
 }
-- (void)showToolbar{
-    if (_showMaskView) {
-        [self.keyWindow addSubview:self.maskView];
-    }
-    [self.keyWindow addSubview:self.backgroundView];
-    [self.backgroundView addSubview:self.textView];
+- (void)popToolbar{
+    self.fontSize = _fontSize;
     [self.textView becomeFirstResponder];
 }
--(void)dissmissToolbar {
+// 发送成功 清空文字 更新输入框大小
+-(void)bounceToolbar {
     self.textView.text = nil;
     [self.textView.delegate textViewDidChange:self.textView];
-    [self.textView resignFirstResponder];
-    [self.backgroundView removeFromSuperview];
-    if (_showMaskView) {
-        [self.maskView removeFromSuperview];
-    }
-}
-- (void)clearText {
-    self.textView.text = nil;
-    [self.textView.delegate textViewDidChange:self.textView];
+    [self endEditing:YES];
 }
 -(void)layoutSubviews{
     [super layoutSubviews];
-    self.maskView.size = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
-    self.width = SCREEN_WIDTH;
-    self.topLine.left = 0;
-    self.topLine.top = 0;
-    self.topLine.width = self.width;
-    self.topLine.height = 1;
-    
-    self.bottomLine.left = 0;
-    self.bottomLine.bottom = 0;
-    self.bottomLine.width = self.width;
-    self.bottomLine.height = 1;
-    
-    self.edgeLineView.height = self.textView.height + 10;
-    self.edgeLineView.width = self.width - 50 - 30;
-    self.edgeLineView.left = 10;
-    
-    self.textView.width = self.width - 50 - 46;
-    self.textView.left = 18;
-    
-    self.placeholderLabel.width = self.textView.width - 10;
-    self.placeholderLabel.left = 23;
-    self.placeholderLabel.height = self.textView.height;
-    
-    self.sendButton.right = self.width - 10;
-    self.sendButton.width = 50;
-    self.sendButton.height = 30;
-    
-    CGFloat contentSizeH = self.textView.contentSize.height;
-    CGFloat lineH = self.textView.font.lineHeight;
-    CGFloat maxTextViewHeight = ceil(lineH * self.textViewMaxLine + self.textView.textContainerInset.top + self.textView.textContainerInset.bottom);
-    if (contentSizeH <= maxTextViewHeight) {
-        self.textView.height = contentSizeH;
-    }else{
-        self.textView.height = maxTextViewHeight;
-    }
+    self.edgeLineView.CLheight = self.textView.CLheight + 10;
+    self.textView.CLcenterY = self.CLheight * 0.5;
+    self.placeholderLabel.CLheight = self.textView.CLheight;
+    self.placeholderLabel.CLcenterY = self.CLheight * 0.5;
+    self.sendButton.CLcenterY = self.CLheight * 0.5;
+    self.edgeLineView.CLcenterY = self.CLheight * 0.5;
+    self.bottomLine.CLy = self.CLheight - 1;
+}
 
-    CGFloat newHeight = ceil(self.textView.height) + 10 + 10;
-    CGFloat change = newHeight - self.height;
-    if (change != 0) {
-        self.height = newHeight;
-        self.top = self.top - change;
-    }
-    
-    self.edgeLineView.centerY = self.height * 0.5;
-    self.placeholderLabel.centerY = self.height * 0.5;
-    self.sendButton.centerY = self.height * 0.5;
-    self.backgroundView.frame = [self convertRect:self.bounds toView:self.keyWindow];
-    self.textView.centerY = self.backgroundView.height * 0.5;
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-//MARK:JmoVxia---懒加载
-- (UIView *) maskView{
-    if (_maskView == nil){
-        _maskView = [[UIView alloc] init];
-        _maskView.backgroundColor = [UIColor lightGrayColor];
-        _maskView.alpha = 0.5;
-        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapActions:)];
-        [_maskView addGestureRecognizer:tapGestureRecognizer];
-    }
-    return _maskView;
-}
-- (UIView *) backgroundView{
-    if (_backgroundView == nil){
-        _backgroundView = [[UIView alloc] init];
-        _backgroundView.backgroundColor = [UIColor whiteColor];
-    }
-    return _backgroundView;
-}
-- (UIView *) topLine{
-    if (_topLine == nil){
-        _topLine = [[UIView alloc] init];
-        _topLine.backgroundColor = RGBACOLOR(0, 0, 0, 0.2);
-    }
-    return _topLine;
-}
-- (UIView *) bottomLine{
-    if (_bottomLine == nil){
-        _bottomLine = [[UIView alloc] init];
-        _bottomLine.backgroundColor = RGBACOLOR(0, 0, 0, 0.2);
-    }
-    return _bottomLine;
-}
-- (UIView *) edgeLineView{
-    if (_edgeLineView == nil){
-        _edgeLineView = [[UIView alloc]init];
-        _edgeLineView.layer.cornerRadius = 5;
-        _edgeLineView.layer.borderColor = RGBACOLOR(0, 0, 0, 0.5).CGColor;
-        _edgeLineView.layer.borderWidth = 1;
-        _edgeLineView.layer.masksToBounds = YES;
-    }
-    return _edgeLineView;
-}
-- (UITextView *) textView{
-    if (_textView == nil){
-        _textView = [[UITextView alloc] init];;
-        _textView.enablesReturnKeyAutomatically = YES;
-        _textView.delegate = self;
-        _textView.layoutManager.allowsNonContiguousLayout = NO;
-        _textView.scrollsToTop = NO;
-        _textView.textContainerInset = UIEdgeInsetsZero;
-        _textView.textContainer.lineFragmentPadding = 0;
-        _textView.inputAccessoryView = self;
-    }
-    return _textView;
-}
-- (UILabel *)placeholderLabel{
-    if (_placeholderLabel == nil){
-        _placeholderLabel = [[UILabel alloc] init];
-        _placeholderLabel.textColor = RGBACOLOR(0, 0, 0, 0.5);
-    }
-    return _placeholderLabel;
-}
-- (UIButton *) sendButton{
-    if (_sendButton == nil){
-        _sendButton = [[UIButton alloc] init];
-        _sendButton.layer.borderWidth = 1.0;
-        _sendButton.layer.cornerRadius = 5.0;
-        _sendButton.layer.borderColor = RGBACOLOR(0, 0, 0, 0.5).CGColor;
-        _sendButton.enabled = NO;
-        _sendButton.titleLabel.font = [UIFont systemFontOfSize:16];
-        [_sendButton setTitle:@"发送" forState:UIControlStateNormal];
-        [_sendButton setTitleColor:RGBACOLOR(0, 0, 0, 0.2) forState:UIControlStateNormal];
-        [_sendButton addTarget:self action:@selector(didClicksendButton) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _sendButton;
-}
-- (UIWindow *) keyWindow{
-    if (_keyWindow == nil){
-        _keyWindow = [UIApplication sharedApplication].keyWindow;
-    }
-    return _keyWindow;
-}
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    UIView *hitView = [super hitTest:point withEvent:event];
-    if (CGRectContainsPoint(self.textView.frame, point)) {
-        return self.textView;
-    }
 
-    return hitView;
-}
+
 
 @end
