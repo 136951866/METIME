@@ -194,7 +194,17 @@
 -(void)setTextViewToolbar {
     self.maskView = [[UIView alloc] initWithFrame:self.view.bounds];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapActions:)];
+    
+    UISwipeGestureRecognizer *recognizeru =  [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(tapActions:)];
+    [recognizeru setDirection:(UISwipeGestureRecognizerDirectionUp)];
+    
+    UISwipeGestureRecognizer *recognizerd =  [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(tapActions:)];
+    [recognizerd setDirection:(UISwipeGestureRecognizerDirectionDown)];
+    
     [self.maskView addGestureRecognizer:tap];
+    [self.maskView addGestureRecognizer:recognizeru];
+    [self.maskView addGestureRecognizer:recognizerd];
+    
     [self.view addSubview:self.maskView];
     self.maskView.hidden = YES;
     self.inputToolbar = [[CLInputToolbar alloc] init];

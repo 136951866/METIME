@@ -107,15 +107,15 @@
 
 - (void)toNotice{
     METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
-        if([kCurrentUser.mobile isEqualToString:AppstorePhone]){
-            MERCConversationListVC *svc = [[MERCConversationListVC alloc]init];
-            [homeVC.navigationController pushViewController:svc animated:YES];
-        }else{
-        if(homeVC){
+//        if([kCurrentUser.mobile isEqualToString:AppstorePhone]){
+//            MERCConversationListVC *svc = [[MERCConversationListVC alloc]init];
+//            [homeVC.navigationController pushViewController:svc animated:YES];
+//        }else{
+//        if(homeVC){
             MENoticeVC *svc = [[MENoticeVC alloc]init];
             [homeVC.navigationController pushViewController:svc animated:YES];
-        }
-    }
+//        }
+//    }
 }
 
 - (UIImageView *)imageForSearch{
