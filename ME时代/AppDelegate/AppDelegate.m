@@ -12,6 +12,7 @@
 #import <UserNotifications/UserNotifications.h>
 #import "METabBarVC.h"
 #import "MELoginVC.h"
+#import "MEJupshContentModel.h"
 
 // 引入 JPush 功能所需头文件
 #import "JPUSHService.h"
@@ -490,10 +491,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if([dict count]){
         NSString *messageStr = dict[@"alert"];
         NSDictionary *contentDic =  kMeUnDic(userInfo)[@"content"];
-        NSString *TypeId = contentDic[@"id"];
-        NSString *type = contentDic[@"type"];
-        NSInteger msg_id = [contentDic[@"msg_id"] integerValue];
-        if(type.length && ![type isEqualToString:@"4"] &&![type isEqualToString:@"5"]){
+        MEJupshContentModel *model =  [MEJupshContentModel mj_objectWithKeyValues:contentDic];
+//        id TypeId = contentDic[@"id"];
+//        NSString *type = contentDic[@"type"];
+//        NSInteger msg_id = [contentDic[@"msg_id"] integerValue];
+        NSString *strType = kMeUnNilStr(model.type);
+        if(strType.length && ![strType isEqualToString:@"4"] &&![strType isEqualToString:@"5"]){
             //1跳商品  2跳订单详情 3更新 4B店铺访问 5C店铺访问
             HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:messageStr];
             alertView.isSupportRotating = YES;
@@ -501,7 +504,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             }];
             [alertView addButtonWithTitle:@"立即前往" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
                 if (![self.window.rootViewController isKindOfClass:[METabBarVC class]]) return;
-                [MEPublicNetWorkTool getUserReadedNoticeWithNoticeId:msg_id SuccessBlock:^(ZLRequestResponse *responseObject) {
+                [MEPublicNetWorkTool getUserReadedNoticeWithNoticeId:model.msg_id SuccessBlock:^(ZLRequestResponse *responseObject) {
                     kNoticeUnNoticeMessage
                 } failure:nil];
                 // 取到tabbarcontroller
@@ -509,17 +512,17 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 // 取到navigationcontroller
                 MENavigationVC *nav = (MENavigationVC *)tabBarController.selectedViewController;
                 UIViewController * baseVC = (UIViewController *)nav.visibleViewController;
-                if([type isEqualToString:@"1"]){
-                    METhridProductDetailsVC *dvc = [[METhridProductDetailsVC alloc]initWithId:[TypeId integerValue]];
+                if([strType isEqualToString:@"1"]){
+                    METhridProductDetailsVC *dvc = [[METhridProductDetailsVC alloc]initWithId:[kMeUnNilStr(model.idField) integerValue]];
                     [baseVC.navigationController pushViewController:dvc animated:YES];
-                }else if ([type isEqualToString:@"2"]){
-                    MEMyOrderDetailVC *dvc = [[MEMyOrderDetailVC alloc]initWithOrderGoodsSn:TypeId];
+                }else if ([strType isEqualToString:@"2"]){
+                    MEMyOrderDetailVC *dvc = [[MEMyOrderDetailVC alloc]initWithOrderGoodsSn:kMeUnNilStr(model.idField)];
                     [baseVC.navigationController pushViewController:dvc animated:YES];
-                }else if([type isEqualToString:@"3"]){
+                }else if([strType isEqualToString:@"3"]){
                     NSString *urlStr = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/cn/app/id%@?mt=8",kMEAppId];
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
-                }else if ([type isEqualToString:@"7"]){
-                    MEAppointmentDetailVC *dvc = [[MEAppointmentDetailVC alloc]initWithReserve_sn:kMeUnNilStr(TypeId) userType:MEClientBTypeStyle];
+                }else if ([strType isEqualToString:@"7"]){
+                    MEAppointmentDetailVC *dvc = [[MEAppointmentDetailVC alloc]initWithReserve_sn:kMeUnNilStr(model.idField) userType:MEClientBTypeStyle];
                     [baseVC.navigationController pushViewController:dvc animated:YES];
                 }else{
                     

@@ -28,6 +28,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = 0;
+    _lblTitle.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:16];
+    _lblPrice.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:17];
     _lblPrice.adjustsFontSizeToFitWidth = YES;
     // Initialization code
 }

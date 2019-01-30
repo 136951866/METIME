@@ -217,7 +217,6 @@ typedef enum : NSUInteger {
     MEJpushVersionUpdateType = 3,
     MEJpushIntoStoreType = 4,
     MEJpushUnreadMessageType = 5,
-    MEJpushAppointType = 6,
     MEJpushServiceAppointType = 7
 } MEJpushType;
 

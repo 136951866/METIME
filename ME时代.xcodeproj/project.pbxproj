@@ -487,6 +487,7 @@
 		36C0198D214260D20048734E /* MEProductListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C0198C214260D20048734E /* MEProductListVC.m */; };
 		36C01991214262230048734E /* MEProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C0198F214262230048734E /* MEProductCell.m */; };
 		36C01992214262230048734E /* MEProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36C01990214262230048734E /* MEProductCell.xib */; };
+		36C0850922016372008ADAC9 /* MEJupshContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C0850822016372008ADAC9 /* MEJupshContentModel.m */; };
 		36D66EB1213F7904000476FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36D66EAF213F7904000476FF /* Main.storyboard */; };
 		36D66EB6213F7906000476FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36D66EB4213F7906000476FF /* LaunchScreen.storyboard */; };
 		36D66EB9213F7907000476FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D66EB8213F7907000476FF /* main.m */; };
@@ -1504,6 +1505,8 @@
 		36C0198E214262230048734E /* MEProductCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEProductCell.h; sourceTree = "<group>"; };
 		36C0198F214262230048734E /* MEProductCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEProductCell.m; sourceTree = "<group>"; };
 		36C01990214262230048734E /* MEProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEProductCell.xib; sourceTree = "<group>"; };
+		36C0850722016372008ADAC9 /* MEJupshContentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEJupshContentModel.h; sourceTree = "<group>"; };
+		36C0850822016372008ADAC9 /* MEJupshContentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEJupshContentModel.m; sourceTree = "<group>"; };
 		36D66EA6213F7904000476FF /* ME时代.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ME时代.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36D66EB0213F7904000476FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		36D66EB5213F7906000476FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -3849,6 +3852,8 @@
 				36FD63EF213FA84C009743C5 /* MEBaseModel.m */,
 				EB28101321539424006A765A /* MELocationCLLModel.h */,
 				EB28101421539424006A765A /* MELocationCLLModel.m */,
+				36C0850722016372008ADAC9 /* MEJupshContentModel.h */,
+				36C0850822016372008ADAC9 /* MEJupshContentModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4898,6 +4903,7 @@
 				360034C021AE823700BAF337 /* AAChartModel.m in Sources */,
 				36356A6F2176C426004174E7 /* MESuperMemberHomeModel.m in Sources */,
 				36FFE95A217D763A00010AED /* MEAppointDetailModel.m in Sources */,
+				36C0850922016372008ADAC9 /* MEJupshContentModel.m in Sources */,
 				366D1CC821B4FEC00004295E /* MESNewHomeActiveVC.m in Sources */,
 				360034B021AE823700BAF337 /* AACrosshair.m in Sources */,
 				3600346321AE816900BAF337 /* MEVisterTodyCell.m in Sources */,
