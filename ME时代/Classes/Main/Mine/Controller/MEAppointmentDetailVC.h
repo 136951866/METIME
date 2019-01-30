@@ -11,6 +11,6 @@
 @interface MEAppointmentDetailVC : MEBaseVC
 
 - (instancetype)initWithOrderreserve_sn:(NSString *)reserve_sn;
-- (instancetype)initWithType:(MEAppointmenyStyle)type reserve_sn:(NSString *)reserve_sn userType:(MEClientTypeStyle)userType;
+- (instancetype)initWithReserve_sn:(NSString *)reserve_sn userType:(MEClientTypeStyle)userType;
 
 @end

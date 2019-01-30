@@ -43,9 +43,8 @@
     return self;
 }
 
-- (instancetype)initWithType:(MEAppointmenyStyle)type reserve_sn:(NSString *)reserve_sn userType:(MEClientTypeStyle)userType{
+- (instancetype)initWithReserve_sn:(NSString *)reserve_sn userType:(MEClientTypeStyle)userType{
     if(self = [super init]){
-        _appointType = type;
         _reserve_sn = reserve_sn;
         _userType = userType;
     }
@@ -61,6 +60,7 @@
         [MEPublicNetWorkTool postAppointDetailWithReserve_sn:_reserve_sn successBlock:^(ZLRequestResponse *responseObject) {
             kMeSTRONGSELF
             strongSelf->_detaliModel =  [MEAppointDetailModel mj_objectWithKeyValues:responseObject.data];
+            strongSelf->_appointType = strongSelf->_detaliModel.is_use;
             if( strongSelf->_detaliModel.is_first_buy){
                 strongSelf->_arrData = @[@(MEAppointmentSettlmentTime),@(MEAppointmentSettlmentFristBuy)];
                 strongSelf.arrDataStr = @[kMeUnNilStr(strongSelf->_detaliModel.arrive_time),@""];
@@ -82,6 +82,7 @@
         [MEPublicNetWorkTool postReserveDetailBlWithReserve_sn:_reserve_sn successBlock:^(ZLRequestResponse *responseObject) {
             kMeSTRONGSELF
             strongSelf->_detaliModel =  [MEAppointDetailModel mj_objectWithKeyValues:responseObject.data];
+            strongSelf->_appointType = strongSelf->_detaliModel.is_use;
             if( strongSelf->_detaliModel.is_first_buy){
                 strongSelf->_arrData = @[@(MEAppointmentSettlmentTime),@(MEAppointmentSettlmentFristBuy)];
                 strongSelf.arrDataStr = @[kMeUnNilStr(strongSelf->_detaliModel.arrive_time),@""];

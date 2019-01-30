@@ -26,6 +26,8 @@
 #import "MEMyOrderDetailVC.h"
 
 #import "MEGuideVC.h"
+#import "MEAppointmentDetailVC.h"
+
 @interface AppDelegate ()<WXApiDelegate,RCIMConnectionStatusDelegate,UNUserNotificationCenterDelegate,JPUSHRegisterDelegate>
     
 @end
@@ -516,6 +518,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 }else if([type isEqualToString:@"3"]){
                     NSString *urlStr = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/cn/app/id%@?mt=8",kMEAppId];
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                }else if ([type isEqualToString:@"7"]){
+                    MEAppointmentDetailVC *dvc = [[MEAppointmentDetailVC alloc]initWithReserve_sn:kMeUnNilStr(TypeId) userType:MEClientBTypeStyle];
+                    [baseVC.navigationController pushViewController:dvc animated:YES];
                 }else{
                     
                 }

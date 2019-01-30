@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSString * created_at;
 @property (nonatomic, strong) NSString * detail_address;
 @property (nonatomic, strong) NSString * images;
-@property (nonatomic, assign) NSInteger is_use;
+@property (nonatomic, assign) NSInteger is_use;//0已预约 1已使用 2未使用
 @property (nonatomic, strong) NSString * market_price;
 @property (nonatomic, strong) NSString * reserve_sn;
 @property (nonatomic, assign) NSInteger store_id;

@@ -12,6 +12,7 @@
 //#import "MEProductDetailsVC.h"
 #import "METhridProductDetailsVC.h"
 #import "MEMyOrderDetailVC.h"
+#import "MEAppointmentDetailVC.h"
 
 @interface MENoticeVC ()<RefreshToolDelegate,UITableViewDelegate,UITableViewDataSource>{
 //    MEJpushType _type;
@@ -115,6 +116,11 @@
         case MEJpushVersionUpdateType:{
             NSString *urlStr = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/cn/app/id%@?mt=8",kMEAppId];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+        }
+            break;
+        case MEJpushServiceAppointType:{
+            MEAppointmentDetailVC *dvc = [[MEAppointmentDetailVC alloc]initWithReserve_sn:kMeUnNilStr(model.ids) userType:MEClientBTypeStyle];
+            [self.navigationController pushViewController:dvc animated:YES];
         }
             break;
         default:
