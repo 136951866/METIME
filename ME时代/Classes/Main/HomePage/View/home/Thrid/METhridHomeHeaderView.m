@@ -196,7 +196,7 @@ const static CGFloat kThridImageHeight = 200;
             _viewFrist.hidden = NO;
             kSDLoadImg(_imgFristGood, MELoadQiniuImagesWithUrl(kMeUnNilStr(smodel.images)));
             _lblFristGoodTitle.text = kMeUnNilStr(smodel.title);
-            _lblSGoodSubtitle.text = kMeUnNilStr(smodel.desc);
+            _lblFristGoodSubtitle.text = kMeUnNilStr(smodel.desc);
         }
         if(i==1){
             _sencodView.hidden = NO;
