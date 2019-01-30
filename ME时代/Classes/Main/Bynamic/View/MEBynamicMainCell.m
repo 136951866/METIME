@@ -76,6 +76,9 @@
     };
 
     _consComentHeight.constant = [MEBynamicCommentView getViewHeightWithArrLike:kMeUnArr(model.praise) Arrcomment:kMeUnArr(model.comment)];
+    
+    _viewCommentAndLike.hidden = (kMeUnArr(model.praise).count==0 && kMeUnArr(model.comment).count==0);
+    
     [_viewCommentAndLike setUIWithArrLike:kMeUnArr(model.praise) Arrcomment:kMeUnArr(model.comment)];
     if(model.product_id){
         _viewForStore.hidden = NO;
