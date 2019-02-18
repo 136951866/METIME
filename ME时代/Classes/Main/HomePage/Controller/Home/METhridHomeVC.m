@@ -137,12 +137,15 @@
             [strongSelf->_headerView setUIWithModel:strongSelf->_homeModel];
             strongSelf->_headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [METhridHomeHeaderView getViewHeightWithModel:strongSelf->_homeModel]);
             [strongSelf getRushGoods];
+            strongSelf.tableView.tableHeaderView = strongSelf->_headerView;
             [strongSelf.tableView reloadData];
         });
     });
 }
 -(void)getRushGoods{
     if(!kMeUnArr(_arrRudeTime).count){
+        _arrRudeBuy = @[];
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
         return;
     }
     METhridHomeRudeTimeModel *model = _arrRudeTime[_selectTimeIndex];

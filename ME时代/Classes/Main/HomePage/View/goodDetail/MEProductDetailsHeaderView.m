@@ -76,6 +76,7 @@
 - (void)setIntergalUIWithModel:(MEGoodDetailModel *)model{
     _isInteral = YES;
     _lblIntervalPrice.hidden = YES;
+    _lblTitle.text = kMeUnNilStr(model.title);
     self.sdView.imageURLStringsGroup = @[MELoadQiniuImagesWithUrl(kMeUnNilStr(model.images))];
     _lblSave.hidden = YES;
     _imgIcon.hidden = YES;
