@@ -32,6 +32,11 @@
 /*********************************************/
 
 
+
+/*********************************************/
+#pragma makr - JD
++ (void)postJDPromotionUrlGenerateWithUid:(NSString *)uid materialUrl:(NSString*)materialUrl couponUrl:(NSString*)couponUrl successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+
 /*********************************************/
 #pragma makr - pinduoduo
 //拼多多推荐

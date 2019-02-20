@@ -8,6 +8,7 @@
 
 #import "MECoupleMailCell.h"
 #import "MECoupleModel.h"
+#import "MEJDCoupleModel.h"
 #import "MEPinduoduoCoupleModel.h"
 
 @interface MECoupleMailCell ()
@@ -78,7 +79,35 @@
 }
 
 - (void)setJDUIWithModel:(MEJDCoupleModel *)model{
+    _imgJuan.hidden = NO;
+    _lblJuan.hidden = NO;
+    _lblMaterSale.hidden = YES;
+    _lblOrigalPrice.hidden = NO;
+    _lblSale.hidden = NO;
+    _lblTitle.numberOfLines = 1;
+    NSString *str = @"";
+    if(kMeUnArr(model.imageInfo.imageList).count>0){
+        ImageContentInfo *imageInfo = model.imageInfo.imageList[0];
+        str = kMeUnNilStr(imageInfo.url);
+    }
+    [_imgPic sd_setImageWithURL:[NSURL URLWithString:str] placeholderImage:kImgPlaceholder];
+    _lblTitle.text = kMeUnNilStr(model.skuName);
+    _lblSale.text = [NSString stringWithFormat:@"已售%@",kMeUnNilStr(model.comments)];
+    _lblOrigalPrice.text = [NSString stringWithFormat:@"原价¥%@",kMeUnNilStr(model.priceInfo.price)];
+    CouponContentInfo *couponInfoModel = [CouponContentInfo new];
+    if(kMeUnArr(model.couponInfo.couponList).count>0){
+        couponInfoModel = model.couponInfo.couponList[0];
+    }
+    _lblJuan.text =[NSString stringWithFormat:@"%@元券",kMeUnNilStr(couponInfoModel.discount)];
     
+    CGFloat oPrice = [kMeUnNilStr(model.priceInfo.price) floatValue];
+    CGFloat dPrice = [kMeUnNilStr(couponInfoModel.discount) floatValue];
+    CGFloat price =  oPrice- dPrice;
+    if(price<0){
+        price = 0;
+    }
+    NSString *strPrice = [NSString stringWithFormat:@"%.2f",price];
+    _lblJuanPrice.text =[NSString stringWithFormat:@"¥%@", strPrice];
 }
 
 @end

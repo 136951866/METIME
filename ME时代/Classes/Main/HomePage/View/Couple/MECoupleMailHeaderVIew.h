@@ -10,6 +10,7 @@
 
 @class MECoupleModel;
 @class MEPinduoduoCoupleInfoModel;
+@class MEJDCoupleModel;
 #define MECoupleMailHeaderVIewHeight (SCREEN_WIDTH + 205)
 
 @interface MECoupleMailHeaderVIew : UIView
@@ -17,5 +18,7 @@
 - (void)setUIWithModel:(MECoupleModel *)model;
 - (void)setPinduoduoUIWithModel:(MEPinduoduoCoupleInfoModel *)model;
 @property (nonatomic ,copy)kMeBasicBlock getCoupleBlock;
+- (void)setJDUIWithModel:(MEJDCoupleModel *)model;
+
 
 @end

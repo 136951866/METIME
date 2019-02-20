@@ -55,6 +55,12 @@
 /*********************************************/
 
 /*********************************************/
+#pragma makr - JD
+#define MEIPcommondJDgoodsPromotionUrlGenerate @"common/jingdong/createdPromotedByUnionid"
+/*********************************************/
+
+
+/*********************************************/
 #pragma makr - pinduoduo
 //获取拼多多商品列表
 #define MEIPcommonduoduokeGetgetGoodsList @"common/duoduoke/getGoodsList"

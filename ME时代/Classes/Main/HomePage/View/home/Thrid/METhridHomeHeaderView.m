@@ -16,6 +16,7 @@
 #import "MECoupleHomeVC.h"
 #import "METhridRushSpikeVC.h"
 #import "MEFilterVC.h"
+#import "MEJDCoupleHomeVC.h"
 
 typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
     METhridHomeHeaderViewActiveNewType = 0,
@@ -251,7 +252,11 @@ const static CGFloat kThridImageHeight = 200;
                 break;
             case METhridHomeHeaderViewActivePinduoduoCouponType:
             {
-                MECoupleHomeVC *vc= [[MECoupleHomeVC alloc]initWithIsTbK:NO];
+#warning --
+              
+//                MECoupleHomeVC *vc= [[MECoupleHomeVC alloc]initWithIsTbK:NO];
+//                [homeVC.navigationController pushViewController:vc animated:YES];
+                MEJDCoupleHomeVC *vc = [[MEJDCoupleHomeVC alloc]init];
                 [homeVC.navigationController pushViewController:vc animated:YES];
             }
                 break;

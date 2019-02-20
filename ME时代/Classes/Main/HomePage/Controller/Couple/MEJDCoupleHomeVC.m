@@ -10,19 +10,20 @@
 #import "MECoupleHomeNavView.h"
 #import "MEJDCoupleHomeMainGoodGoodsCell.h"
 #import "MEAdModel.h"
-
-NSUInteger const kJDSizeNum = 20;
+#import "MEJDCoupleModel.h"
+#import "MEJDCoupleMailDetalVC.h"
+//NSUInteger const kJDSizeNum = 20;
 
 @interface MEJDCoupleHomeVC ()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>{
     NSArray *_arrSdImage;
     NSMutableArray *_arrData;
     NSInteger _pageIndex;//当前页
-    NSInteger _allRows;//总数据
+//    NSInteger _allRows;//总数据
     
 }
 
-@property(nonatomic,strong) SDCycleScrollView *cycleScrollView;
-@property (nonatomic, strong) MECoupleHomeNavView *navView;
+//@property(nonatomic,strong) SDCycleScrollView *cycleScrollView;
+//@property (nonatomic, strong) MECoupleHomeNavView *navView;
 @property (nonatomic, strong) UITableView *tableView;
 
 
@@ -32,30 +33,32 @@ NSUInteger const kJDSizeNum = 20;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navBarHidden = YES;
+    self.title = @"京东优惠卷";
+//    self.navBarHidden = YES;
     _arrSdImage = @[];
     _arrData = [NSMutableArray array];
-    [self.view addSubview:self.navView];
+//    [self.view addSubview:self.navView];
     [self.view addSubview:self.tableView];
-    self.tableView.tableHeaderView = self.cycleScrollView;
+//    self.tableView.tableHeaderView = self.cycleScrollView;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headrefresh)];
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerfresh)];
     self.tableView.mj_footer.hidden = YES;
+    [self.tableView.mj_header beginRefreshing];
     // Do any additional setup after loading the view.
 }
 
 - (void)headrefresh{
     _pageIndex = 1;
-//    [self requestNetWorkIsHead:YES];
+    [self requestNetWorkIsHead:YES];
 }
 
 - (void)footerfresh{
-    NSInteger size = kJDSizeNum;
-    if(_pageIndex > _allRows/size){
-        [self.tableView.mj_footer endRefreshing];
-        [self.tableView.mj_footer endRefreshingWithNoMoreData];
-        return;
-    }
+//    NSInteger size = kJDSizeNum;
+//    if(_pageIndex > _allRows/size){
+//        [self.tableView.mj_footer endRefreshing];
+//        [self.tableView.mj_footer endRefreshingWithNoMoreData];
+//        return;
+//    }
     ++ _pageIndex;
     [self requestNetWorkIsHead:NO];
 }
@@ -82,40 +85,71 @@ NSUInteger const kJDSizeNum = 20;
     kMeWEAKSELF
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
         kMeSTRONGSELF
-//        if (strongSelf->_pageIndex == 1) {
-//            [strongSelf->_arrData removeAllObjects];
-//        }
-//        NSDictionary *dic = 
-        
+        if([responseObject.data isKindOfClass:[NSArray class]]){
+            if (strongSelf->_pageIndex == 1) {
+                [strongSelf->_arrData removeAllObjects];
+            }
+            NSArray *dicArr = responseObject.data ;
+            [strongSelf->_arrData addObjectsFromArray:[MEJDCoupleModel mj_objectArrayWithKeyValuesArray:responseObject.data]];
+            [strongSelf.tableView reloadData];
+            [strongSelf endRefreshIsHead:isHead count:dicArr.count];
+            [strongSelf showFailLoadViewWithResponse:responseObject];
+            if (strongSelf->_arrData.count > 0) strongSelf.tableView.mj_footer.hidden = NO;
+        }
     } failure:^(id error) {
-       
+        kMeSTRONGSELF
+        [strongSelf endRefreshIsHead:isHead count:1];
+        [strongSelf.tableView reloadData];
+        [strongSelf showFailLoadViewWithResponse:error];
+        strongSelf.tableView.mj_footer.hidden = !(strongSelf->_arrData.count > 0);
     }];
 }
 
-
-
-
-- (void)setSdImageModel:(NSArray *)arrModel{
-    _arrSdImage = arrModel;
-    __block NSMutableArray *arrImage = [NSMutableArray array];
-    [arrModel enumerateObjectsUsingBlock:^(MEAdModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-        [arrImage addObject:kMeUnNilStr(model.ad_img)];
+- (void)showFailLoadViewWithResponse:(id)response{
+    kMeWEAKSELF
+    [ZLFailLoadView showInView:self.tableView response:response allData:_arrData refreshBlock:^{
+        kMeSTRONGSELF
+        [strongSelf reload];
+    } editHandle:^(ZLFailLoadView *failView) {
+        failView.backgroundColor = [UIColor clearColor];
+        failView.lblOfNodata.text = @"未搜索到您需要的产品";
     }];
-    self.cycleScrollView.contentMode = UIViewContentModeScaleAspectFill;
-    self.cycleScrollView.clipsToBounds = YES;
-    self.cycleScrollView.imageURLStringsGroup = arrImage;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    CGFloat imageh = (SCREEN_WIDTH*80)/750;
-    UIImageView *img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"goodgoods"]];
-    img.frame = CGRectMake(0, 0, SCREEN_WIDTH, imageh);
-    return img;
+- (void)endRefreshIsHead:(BOOL)isHead count:(NSInteger)count{
+    if (isHead) {
+        [self.tableView.mj_header endRefreshing];
+    }else{
+        [self.tableView.mj_footer endRefreshing];
+    }
+    if (count==0) {
+        [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    } else {
+        [self.tableView.mj_footer resetNoMoreData];
+    }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return (SCREEN_WIDTH*80)/750;
-}
+//- (void)setSdImageModel:(NSArray *)arrModel{
+//    _arrSdImage = arrModel;
+//    __block NSMutableArray *arrImage = [NSMutableArray array];
+//    [arrModel enumerateObjectsUsingBlock:^(MEAdModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+//        [arrImage addObject:kMeUnNilStr(model.ad_img)];
+//    }];
+//    self.cycleScrollView.contentMode = UIViewContentModeScaleAspectFill;
+//    self.cycleScrollView.clipsToBounds = YES;
+//    self.cycleScrollView.imageURLStringsGroup = arrImage;
+//}
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    CGFloat imageh = (SCREEN_WIDTH*80)/750;
+//    UIImageView *img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"goodgoods"]];
+//    img.frame = CGRectMake(0, 0, SCREEN_WIDTH, imageh);
+//    return img;
+//}
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    return (SCREEN_WIDTH*80)/750;
+//}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -131,7 +165,9 @@ NSUInteger const kJDSizeNum = 20;
     kMeWEAKSELF
     cell.selectBlock = ^(NSInteger index) {
         kMeSTRONGSELF
-        
+        MEJDCoupleModel *model = strongSelf->_arrData[index];
+        MEJDCoupleMailDetalVC *vc = [[MEJDCoupleMailDetalVC alloc]initWithModel:model];
+        [self.navigationController pushViewController:vc animated:YES];
     };
     return cell;
 }
@@ -147,21 +183,21 @@ NSUInteger const kJDSizeNum = 20;
     
 }
 
-- (SDCycleScrollView *)cycleScrollView{
-    if(!_cycleScrollView){
-        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 150 *kMeFrameScaleX()) imageURLStringsGroup:nil];
-        _cycleScrollView.contentMode = UIViewContentModeScaleAspectFill;
-        _cycleScrollView.clipsToBounds = YES;
-        _cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
-        _cycleScrollView.pageControlStyle =SDCycleScrollViewPageContolStyleClassic;
-        _cycleScrollView.autoScrollTimeInterval = 4;
-        _cycleScrollView.delegate =self;
-        _cycleScrollView.backgroundColor = [UIColor clearColor];
-        _cycleScrollView.placeholderImage = kImgBannerPlaceholder;
-        _cycleScrollView.currentPageDotColor = kMEPink;
-    }
-    return _cycleScrollView;
-}
+//- (SDCycleScrollView *)cycleScrollView{
+//    if(!_cycleScrollView){
+//        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 150 *kMeFrameScaleX()) imageURLStringsGroup:nil];
+//        _cycleScrollView.contentMode = UIViewContentModeScaleAspectFill;
+//        _cycleScrollView.clipsToBounds = YES;
+//        _cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
+//        _cycleScrollView.pageControlStyle =SDCycleScrollViewPageContolStyleClassic;
+//        _cycleScrollView.autoScrollTimeInterval = 4;
+//        _cycleScrollView.delegate =self;
+//        _cycleScrollView.backgroundColor = [UIColor clearColor];
+//        _cycleScrollView.placeholderImage = kImgBannerPlaceholder;
+//        _cycleScrollView.currentPageDotColor = kMEPink;
+//    }
+//    return _cycleScrollView;
+//}
 
 - (UITableView *)tableView{
     if(!_tableView){
@@ -176,20 +212,20 @@ NSUInteger const kJDSizeNum = 20;
     return _tableView;
 }
 
-- (MECoupleHomeNavView *)navView{
-    if(!_navView){
-        _navView = [[[NSBundle mainBundle]loadNibNamed:@"MECoupleHomeNavView" owner:nil options:nil] lastObject];
-        _navView.frame =CGRectMake(0, 0, SCREEN_WIDTH, kMeNavBarHeight);
-        kMeWEAKSELF
-        _navView.backBlock = ^{
-            kMeSTRONGSELF
-            [strongSelf.navigationController popViewControllerAnimated:YES];
-        };
-        _navView.searchBlock = ^{
-            
-        };
-    }
-    return _navView;
-}
+//- (MECoupleHomeNavView *)navView{
+//    if(!_navView){
+//        _navView = [[[NSBundle mainBundle]loadNibNamed:@"MECoupleHomeNavView" owner:nil options:nil] lastObject];
+//        _navView.frame =CGRectMake(0, 0, SCREEN_WIDTH, kMeNavBarHeight);
+//        kMeWEAKSELF
+//        _navView.backBlock = ^{
+//            kMeSTRONGSELF
+//            [strongSelf.navigationController popViewControllerAnimated:YES];
+//        };
+//        _navView.searchBlock = ^{
+//
+//        };
+//    }
+//    return _navView;
+//}
 
 @end

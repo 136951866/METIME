@@ -140,6 +140,16 @@
     [rootVc dismissViewControllerAnimated:flag completion:completion];
 }
 
++ (NSString *)changeTimeStrWithtime:(NSString*)timeStampString{
+    NSTimeInterval interval    =[timeStampString doubleValue]/1000;
+    NSDate *date               = [NSDate dateWithTimeIntervalSince1970:interval];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+     [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateString       = [formatter stringFromDate: date];
+    return dateString;
+}
 
 + (BOOL)compareOneDay:(NSString *)oneDayStr withAnotherDay:(NSString *)anotherDayStr{
     NSDateFormatter *df = [[NSDateFormatter alloc]init];

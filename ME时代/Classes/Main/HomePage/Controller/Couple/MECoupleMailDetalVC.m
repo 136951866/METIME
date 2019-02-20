@@ -242,40 +242,48 @@
 
 - (void)shareAction:(UIButton *)btn{
     if(_pinduoduomodel){
-        if(_sharegoods_promotion_url){
-            MEShareTool *shareTool = [MEShareTool me_instanceForTarget:self];
-            shareTool.sharWebpageUrl = _sharegoods_promotion_url[@"we_app_web_view_short_url"];
-            shareTool.shareTitle = kMeUnNilStr(_pinduoduomodel.goods_name);
-            shareTool.shareDescriptionBody = kMeUnNilStr(_pinduoduomodel.goods_name);;
-            shareTool.shareImage = _headerView.imgPic.image;
-            [shareTool showShareView:kShareWebPageContentType success:^(id data) {
-                NSLog(@"分享成功%@",data);
-            } failure:^(NSError *error) {
-                
-            }];
-        }else{
-            NSString *goodId = [NSString stringWithFormat:@"[%@]",kMeUnNilStr(_pinduoduomodel.goods_id)];
-            kMeWEAKSELF
-            [MEPublicNetWorkTool postPromotionUrlGenerateWithUid:kMeUnNilStr(kCurrentUser.uid) goods_id_list:goodId SuccessBlock:^(ZLRequestResponse *responseObject) {
-                kMeSTRONGSELF
-                NSArray *arr = responseObject.data[@"goods_promotion_url_generate_response"][@"goods_promotion_url_list"];
-                if(arr && arr.count){
-                    strongSelf->_sharegoods_promotion_url = arr[0];
-                }
-                MEShareTool *shareTool = [MEShareTool me_instanceForTarget:strongSelf];
-                shareTool.sharWebpageUrl = strongSelf->_sharegoods_promotion_url[@"we_app_web_view_short_url"];
-                shareTool.shareTitle = kMeUnNilStr(strongSelf->_pinduoduomodel.goods_name);
-                shareTool.shareDescriptionBody = kMeUnNilStr(strongSelf->_pinduoduomodel.goods_name);;
-                shareTool.shareImage = strongSelf->_headerView.imgPic.image;
+        if([MEUserInfoModel isLogin]){
+            if(_sharegoods_promotion_url){
+                MEShareTool *shareTool = [MEShareTool me_instanceForTarget:self];
+                shareTool.sharWebpageUrl = _sharegoods_promotion_url[@"we_app_web_view_short_url"];
+                shareTool.shareTitle = kMeUnNilStr(_pinduoduomodel.goods_name);
+                shareTool.shareDescriptionBody = kMeUnNilStr(_pinduoduomodel.goods_name);;
+                shareTool.shareImage = _headerView.imgPic.image;
                 [shareTool showShareView:kShareWebPageContentType success:^(id data) {
                     NSLog(@"分享成功%@",data);
                 } failure:^(NSError *error) {
                     
                 }];
-                
-            } failure:^(id object) {
-                
-            }];
+            }else{
+                NSString *goodId = [NSString stringWithFormat:@"[%@]",kMeUnNilStr(_pinduoduomodel.goods_id)];
+                kMeWEAKSELF
+                [MEPublicNetWorkTool postPromotionUrlGenerateWithUid:kMeUnNilStr(kCurrentUser.uid) goods_id_list:goodId SuccessBlock:^(ZLRequestResponse *responseObject) {
+                    kMeSTRONGSELF
+                    NSArray *arr = responseObject.data[@"goods_promotion_url_generate_response"][@"goods_promotion_url_list"];
+                    if(arr && arr.count){
+                        strongSelf->_sharegoods_promotion_url = arr[0];
+                    }
+                    MEShareTool *shareTool = [MEShareTool me_instanceForTarget:strongSelf];
+                    shareTool.sharWebpageUrl = strongSelf->_sharegoods_promotion_url[@"we_app_web_view_short_url"];
+                    shareTool.shareTitle = kMeUnNilStr(strongSelf->_pinduoduomodel.goods_name);
+                    shareTool.shareDescriptionBody = kMeUnNilStr(strongSelf->_pinduoduomodel.goods_name);;
+                    shareTool.shareImage = strongSelf->_headerView.imgPic.image;
+                    [shareTool showShareView:kShareWebPageContentType success:^(id data) {
+                        NSLog(@"分享成功%@",data);
+                    } failure:^(NSError *error) {
+                        
+                    }];
+                    
+                } failure:^(id object) {
+                    
+                }];
+            }
+        }else{
+            kMeWEAKSELF
+            [MELoginVC presentLoginVCWithSuccessHandler:^(id object) {
+                kMeSTRONGSELF
+                [strongSelf shareAction:nil];
+            } failHandler:nil];
         }
     }else{
         if(kMeUnNilStr(_Tpwd).length){

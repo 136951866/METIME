@@ -50,6 +50,7 @@
 + (NSString *)changeformatterWithFen:(id)money;
 + (BOOL)openWXMiniProgram:(NSString *)path username:(NSString *)username;
 +(BOOL) openWeChat:(NSString *)url;
-
+//时时间戳转换
++ (NSString *)changeTimeStrWithtime:(NSString*)timeStampString;
 + (NSMutableAttributedString *)fristStrWithFont:(UIFont *)font content:(NSString *)content;
 @end

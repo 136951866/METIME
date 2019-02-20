@@ -8,6 +8,32 @@
 
 #import "MEJDCoupleModel.h"
 
+@implementation CouponContentInfo : MEBaseModel
+
+
+@end
+
+@implementation ImageContentInfo : MEBaseModel
+
+@end
+
+@implementation CouponInfo : MEBaseModel
+MEModelObjectClassInArrayWithDic(@{@"couponList":[CouponContentInfo class]})
+@end
+
+@implementation ImageInfo : MEBaseModel
+
+MEModelObjectClassInArrayWithDic(@{@"imageList":[ImageContentInfo class]})
+
+
+@end
+
+@implementation PriceInfo : MEBaseModel
+
+
+
+@end
+
 @implementation MEJDCoupleModel
 
 @end

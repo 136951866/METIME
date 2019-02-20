@@ -59,6 +59,29 @@
 }
 
 /*********************************************/
+#pragma makr - JD
++ (void)postJDPromotionUrlGenerateWithUid:(NSString *)uid materialUrl:(NSString*)materialUrl couponUrl:(NSString*)couponUrl successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{@"materialUrl":kMeUnNilStr(materialUrl),@"link":kMeUnNilStr(couponUrl)};
+    if(kMeUnNilStr(uid).length){
+        dic = @{@"materialUrl":kMeUnNilStr(materialUrl),@"link":kMeUnNilStr(couponUrl),@"member_id":kMeUnNilStr(uid)};
+    }
+    MBProgressHUD *HUD = [self commitWithHUD:@"生成推广链接中"];
+    NSString *url = kGetApiWithUrl(MEIPcommondJDgoodsPromotionUrlGenerate);
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
+
+/*********************************************/
 #pragma makr - pinduoduo
 
 + (void)postGetPinduoduoCommondPoductWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{

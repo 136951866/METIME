@@ -529,6 +529,7 @@
 		36E3D1E62171F26B0033B192 /* MELogisticsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E3D1E42171F26B0033B192 /* MELogisticsCell.xib */; };
 		36E3EEC5221CFCDC006C79F6 /* MESearchNearAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3EEC3221CFCDC006C79F6 /* MESearchNearAddressVC.m */; };
 		36E3EEC6221CFCDC006C79F6 /* MESearchNearAddressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E3EEC4221CFCDC006C79F6 /* MESearchNearAddressVC.xib */; };
+		36E3EEC9221D519F006C79F6 /* MEJDCoupleMailDetalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3EEC8221D519F006C79F6 /* MEJDCoupleMailDetalVC.m */; };
 		36E409C5219127F90090F7E1 /* MELocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E409C4219127F90090F7E1 /* MELocationHelper.m */; };
 		36E409C8219161AC0090F7E1 /* MERushBuyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E409C7219161AC0090F7E1 /* MERushBuyView.m */; };
 		36E409CC21917D0C0090F7E1 /* MEMyMobileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E409CA21917D0B0090F7E1 /* MEMyMobileVC.m */; };
@@ -1596,6 +1597,8 @@
 		36E3EEC2221CFCDC006C79F6 /* MESearchNearAddressVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MESearchNearAddressVC.h; sourceTree = "<group>"; };
 		36E3EEC3221CFCDC006C79F6 /* MESearchNearAddressVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MESearchNearAddressVC.m; sourceTree = "<group>"; };
 		36E3EEC4221CFCDC006C79F6 /* MESearchNearAddressVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MESearchNearAddressVC.xib; sourceTree = "<group>"; };
+		36E3EEC7221D519F006C79F6 /* MEJDCoupleMailDetalVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEJDCoupleMailDetalVC.h; sourceTree = "<group>"; };
+		36E3EEC8221D519F006C79F6 /* MEJDCoupleMailDetalVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEJDCoupleMailDetalVC.m; sourceTree = "<group>"; };
 		36E409C3219127F90090F7E1 /* MELocationHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MELocationHelper.h; sourceTree = "<group>"; };
 		36E409C4219127F90090F7E1 /* MELocationHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MELocationHelper.m; sourceTree = "<group>"; };
 		36E409C6219161AC0090F7E1 /* MERushBuyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MERushBuyView.h; sourceTree = "<group>"; };
@@ -3054,6 +3057,8 @@
 				36F3E59821FADAFE00CBADFF /* MEPinduoduoCouponSearchDataVC.m */,
 				368E066A221A9D5300B125DE /* MEJDCoupleHomeVC.h */,
 				368E066B221A9D5300B125DE /* MEJDCoupleHomeVC.m */,
+				36E3EEC7221D519F006C79F6 /* MEJDCoupleMailDetalVC.h */,
+				36E3EEC8221D519F006C79F6 /* MEJDCoupleMailDetalVC.m */,
 			);
 			path = Couple;
 			sourceTree = "<group>";
@@ -4623,6 +4628,7 @@
 				36472AFE21C8E15C00CC3E48 /* JXCategoryImageCell.m in Sources */,
 				368CD6BC214112E9001926FF /* MEMemberHomeVC.m in Sources */,
 				36FFD8532143CC1F0094D781 /* MEProductDetailsSectionView.m in Sources */,
+				36E3EEC9221D519F006C79F6 /* MEJDCoupleMailDetalVC.m in Sources */,
 				36D9E0C221F5BA5000687580 /* METhridNavView.m in Sources */,
 				36472AF121C8E15C00CC3E48 /* JXCategoryIndicatorCellModel.m in Sources */,
 				367721E42147681000C1463A /* MEMineHomeCell.m in Sources */,
