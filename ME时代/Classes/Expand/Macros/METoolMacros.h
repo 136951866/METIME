@@ -70,7 +70,8 @@ NS_INLINE CGFloat device_version(){
 #define kIsIOS7 (device_version() >=7.0)
 //是否ios8以上系统
 #define kIsIOS8 (device_version() >=8.0)
-
+//是否ios9以上系统
+#define kIsIOS9 (device_version() >=9.0)
 #define IS_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 
 #define isPad ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)

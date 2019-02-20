@@ -277,6 +277,12 @@
 		36445B4721C235A900CDBCBA /* MEGetCaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36445B4621C235A900CDBCBA /* MEGetCaseModel.m */; };
 		36445B4A21C23B8A00CDBCBA /* MEGetCaseMainSVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36445B4921C23B8A00CDBCBA /* MEGetCaseMainSVC.m */; };
 		36445B4D21C24FFF00CDBCBA /* MEBDataDealModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36445B4C21C24FFF00CDBCBA /* MEBDataDealModel.m */; };
+		3645BBCB221BDC2F0042748C /* MEBStoreMannagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3645BBCA221BDC2F0042748C /* MEBStoreMannagerVC.m */; };
+		3645BBCE221BDEB80042748C /* MEBStoreMannagerInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3645BBCD221BDEB80042748C /* MEBStoreMannagerInfoModel.m */; };
+		3645BBD2221BE2410042748C /* MEBStoreMannagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3645BBD0221BE2410042748C /* MEBStoreMannagerCell.m */; };
+		3645BBD3221BE2410042748C /* MEBStoreMannagerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3645BBD1221BE2410042748C /* MEBStoreMannagerCell.xib */; };
+		3645BBD7221BF2CC0042748C /* MEBStoreMannagerEditInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3645BBD5221BF2CC0042748C /* MEBStoreMannagerEditInfoVC.m */; };
+		3645BBD8221BF2CC0042748C /* MEBStoreMannagerEditInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3645BBD6221BF2CC0042748C /* MEBStoreMannagerEditInfoVC.xib */; };
 		36472A9021C898B100CC3E48 /* MEShoppingMallVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36472A8E21C898B100CC3E48 /* MEShoppingMallVC.m */; };
 		36472A9121C898B100CC3E48 /* MEShoppingMallVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36472A8F21C898B100CC3E48 /* MEShoppingMallVC.xib */; };
 		36472A9421C8C26500CC3E48 /* MEShoppingMallContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36472A9321C8C26500CC3E48 /* MEShoppingMallContentVC.m */; };
@@ -393,6 +399,12 @@
 		366D5B32214A6C200021C1BB /* MEAppointmentDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 366D5B30214A6C200021C1BB /* MEAppointmentDateCell.xib */; };
 		366D5B36214A6E630021C1BB /* MEAppointmentDateMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D5B34214A6E630021C1BB /* MEAppointmentDateMainCell.m */; };
 		366D5B37214A6E630021C1BB /* MEAppointmentDateMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 366D5B35214A6E630021C1BB /* MEAppointmentDateMainCell.xib */; };
+		36707289221C04AD0070BA90 /* ZHPlaceInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36707287221C04AC0070BA90 /* ZHPlaceInfoModel.m */; };
+		3670728F221C04BB0070BA90 /* ZHPlaceInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3670728A221C04BA0070BA90 /* ZHPlaceInfoTableViewCell.m */; };
+		36707290221C04BB0070BA90 /* ZHMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3670728B221C04BA0070BA90 /* ZHMapView.m */; };
+		36707291221C04BB0070BA90 /* ZHPlaceInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3670728D221C04BA0070BA90 /* ZHPlaceInfoTableViewCell.xib */; };
+		36707295221C04C90070BA90 /* ZHMapAroundInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36707292221C04C90070BA90 /* ZHMapAroundInfoViewController.m */; };
+		36707296221C04C90070BA90 /* ZHMapAroundInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36707294221C04C90070BA90 /* ZHMapAroundInfoViewController.xib */; };
 		3671F86121B7B9AD00590046 /* MEGuideVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3671F86021B7B9AD00590046 /* MEGuideVC.m */; };
 		367721E42147681000C1463A /* MEMineHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 367721E22147681000C1463A /* MEMineHomeCell.m */; };
 		367721E52147681000C1463A /* MEMineHomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 367721E32147681000C1463A /* MEMineHomeCell.xib */; };
@@ -440,6 +452,10 @@
 		368ACD9621CA1E19009B87E6 /* MEGiftFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368ACD9521CA1E19009B87E6 /* MEGiftFooterView.xib */; };
 		368CD6B9214112C9001926FF /* MEStoreHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 368CD6B8214112C9001926FF /* MEStoreHomeVC.m */; };
 		368CD6BC214112E9001926FF /* MEMemberHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 368CD6BB214112E9001926FF /* MEMemberHomeVC.m */; };
+		368E066C221A9D5300B125DE /* MEJDCoupleHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 368E066B221A9D5300B125DE /* MEJDCoupleHomeVC.m */; };
+		368E0675221A9EFB00B125DE /* MEJDCoupleHomeMainGoodGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 368E0673221A9EFA00B125DE /* MEJDCoupleHomeMainGoodGoodsCell.m */; };
+		368E0676221A9EFB00B125DE /* MEJDCoupleHomeMainGoodGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368E0674221A9EFB00B125DE /* MEJDCoupleHomeMainGoodGoodsCell.xib */; };
+		368E0679221A9FB400B125DE /* MEJDCoupleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 368E0678221A9FB400B125DE /* MEJDCoupleModel.m */; };
 		368E70BA21E5CD0F003009CA /* loading@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 368E70B921E5CD0F003009CA /* loading@2x.gif */; };
 		368E70BD21E5EE22003009CA /* MENewProductDetailsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 368E70BC21E5EE22003009CA /* MENewProductDetailsHeaderView.m */; };
 		368E70BF21E5EE2D003009CA /* MENewProductDetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368E70BE21E5EE2D003009CA /* MENewProductDetailsHeaderView.xib */; };
@@ -511,6 +527,8 @@
 		36E3D1E12171DF170033B192 /* MELogisticsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E3D1E02171DF170033B192 /* MELogisticsHeaderView.xib */; };
 		36E3D1E52171F26B0033B192 /* MELogisticsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3D1E32171F26B0033B192 /* MELogisticsCell.m */; };
 		36E3D1E62171F26B0033B192 /* MELogisticsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E3D1E42171F26B0033B192 /* MELogisticsCell.xib */; };
+		36E3EEC5221CFCDC006C79F6 /* MESearchNearAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3EEC3221CFCDC006C79F6 /* MESearchNearAddressVC.m */; };
+		36E3EEC6221CFCDC006C79F6 /* MESearchNearAddressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E3EEC4221CFCDC006C79F6 /* MESearchNearAddressVC.xib */; };
 		36E409C5219127F90090F7E1 /* MELocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E409C4219127F90090F7E1 /* MELocationHelper.m */; };
 		36E409C8219161AC0090F7E1 /* MERushBuyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E409C7219161AC0090F7E1 /* MERushBuyView.m */; };
 		36E409CC21917D0C0090F7E1 /* MEMyMobileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E409CA21917D0B0090F7E1 /* MEMyMobileVC.m */; };
@@ -1135,6 +1153,16 @@
 		36445B4921C23B8A00CDBCBA /* MEGetCaseMainSVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEGetCaseMainSVC.m; sourceTree = "<group>"; };
 		36445B4B21C24FFE00CDBCBA /* MEBDataDealModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBDataDealModel.h; sourceTree = "<group>"; };
 		36445B4C21C24FFF00CDBCBA /* MEBDataDealModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBDataDealModel.m; sourceTree = "<group>"; };
+		3645BBC9221BDC2F0042748C /* MEBStoreMannagerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBStoreMannagerVC.h; sourceTree = "<group>"; };
+		3645BBCA221BDC2F0042748C /* MEBStoreMannagerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBStoreMannagerVC.m; sourceTree = "<group>"; };
+		3645BBCC221BDEB80042748C /* MEBStoreMannagerInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBStoreMannagerInfoModel.h; sourceTree = "<group>"; };
+		3645BBCD221BDEB80042748C /* MEBStoreMannagerInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBStoreMannagerInfoModel.m; sourceTree = "<group>"; };
+		3645BBCF221BE2410042748C /* MEBStoreMannagerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MEBStoreMannagerCell.h; path = "ME时代/Classes/Main/Mine/Model/home/MEBStoreMannagerCell.h"; sourceTree = SOURCE_ROOT; };
+		3645BBD0221BE2410042748C /* MEBStoreMannagerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MEBStoreMannagerCell.m; path = "ME时代/Classes/Main/Mine/Model/home/MEBStoreMannagerCell.m"; sourceTree = SOURCE_ROOT; };
+		3645BBD1221BE2410042748C /* MEBStoreMannagerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MEBStoreMannagerCell.xib; path = "ME时代/Classes/Main/Mine/Model/home/MEBStoreMannagerCell.xib"; sourceTree = SOURCE_ROOT; };
+		3645BBD4221BF2CC0042748C /* MEBStoreMannagerEditInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBStoreMannagerEditInfoVC.h; sourceTree = "<group>"; };
+		3645BBD5221BF2CC0042748C /* MEBStoreMannagerEditInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBStoreMannagerEditInfoVC.m; sourceTree = "<group>"; };
+		3645BBD6221BF2CC0042748C /* MEBStoreMannagerEditInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEBStoreMannagerEditInfoVC.xib; sourceTree = "<group>"; };
 		36472A8D21C898B100CC3E48 /* MEShoppingMallVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEShoppingMallVC.h; sourceTree = "<group>"; };
 		36472A8E21C898B100CC3E48 /* MEShoppingMallVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEShoppingMallVC.m; sourceTree = "<group>"; };
 		36472A8F21C898B100CC3E48 /* MEShoppingMallVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEShoppingMallVC.xib; sourceTree = "<group>"; };
@@ -1350,6 +1378,16 @@
 		366D5B33214A6E630021C1BB /* MEAppointmentDateMainCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEAppointmentDateMainCell.h; sourceTree = "<group>"; };
 		366D5B34214A6E630021C1BB /* MEAppointmentDateMainCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEAppointmentDateMainCell.m; sourceTree = "<group>"; };
 		366D5B35214A6E630021C1BB /* MEAppointmentDateMainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEAppointmentDateMainCell.xib; sourceTree = "<group>"; };
+		36707287221C04AC0070BA90 /* ZHPlaceInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPlaceInfoModel.m; sourceTree = "<group>"; };
+		36707288221C04AD0070BA90 /* ZHPlaceInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPlaceInfoModel.h; sourceTree = "<group>"; };
+		3670728A221C04BA0070BA90 /* ZHPlaceInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPlaceInfoTableViewCell.m; sourceTree = "<group>"; };
+		3670728B221C04BA0070BA90 /* ZHMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHMapView.m; sourceTree = "<group>"; };
+		3670728C221C04BA0070BA90 /* ZHPlaceInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPlaceInfoTableViewCell.h; sourceTree = "<group>"; };
+		3670728D221C04BA0070BA90 /* ZHPlaceInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHPlaceInfoTableViewCell.xib; sourceTree = "<group>"; };
+		3670728E221C04BB0070BA90 /* ZHMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHMapView.h; sourceTree = "<group>"; };
+		36707292221C04C90070BA90 /* ZHMapAroundInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHMapAroundInfoViewController.m; sourceTree = "<group>"; };
+		36707293221C04C90070BA90 /* ZHMapAroundInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHMapAroundInfoViewController.h; sourceTree = "<group>"; };
+		36707294221C04C90070BA90 /* ZHMapAroundInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHMapAroundInfoViewController.xib; sourceTree = "<group>"; };
 		3671F85F21B7B9AD00590046 /* MEGuideVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEGuideVC.h; sourceTree = "<group>"; };
 		3671F86021B7B9AD00590046 /* MEGuideVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEGuideVC.m; sourceTree = "<group>"; };
 		367721E12147681000C1463A /* MEMineHomeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MEMineHomeCell.h; path = View/home/MEMineHomeCell.h; sourceTree = SOURCE_ROOT; };
@@ -1430,6 +1468,13 @@
 		368CD6B8214112C9001926FF /* MEStoreHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEStoreHomeVC.m; sourceTree = "<group>"; };
 		368CD6BA214112E9001926FF /* MEMemberHomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEMemberHomeVC.h; sourceTree = "<group>"; };
 		368CD6BB214112E9001926FF /* MEMemberHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEMemberHomeVC.m; sourceTree = "<group>"; };
+		368E066A221A9D5300B125DE /* MEJDCoupleHomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEJDCoupleHomeVC.h; sourceTree = "<group>"; };
+		368E066B221A9D5300B125DE /* MEJDCoupleHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEJDCoupleHomeVC.m; sourceTree = "<group>"; };
+		368E0672221A9EFA00B125DE /* MEJDCoupleHomeMainGoodGoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEJDCoupleHomeMainGoodGoodsCell.h; sourceTree = "<group>"; };
+		368E0673221A9EFA00B125DE /* MEJDCoupleHomeMainGoodGoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEJDCoupleHomeMainGoodGoodsCell.m; sourceTree = "<group>"; };
+		368E0674221A9EFB00B125DE /* MEJDCoupleHomeMainGoodGoodsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEJDCoupleHomeMainGoodGoodsCell.xib; sourceTree = "<group>"; };
+		368E0677221A9FB400B125DE /* MEJDCoupleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEJDCoupleModel.h; sourceTree = "<group>"; };
+		368E0678221A9FB400B125DE /* MEJDCoupleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEJDCoupleModel.m; sourceTree = "<group>"; };
 		368E70B921E5CD0F003009CA /* loading@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "loading@2x.gif"; sourceTree = "<group>"; };
 		368E70BB21E5EE22003009CA /* MENewProductDetailsHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MENewProductDetailsHeaderView.h; sourceTree = "<group>"; };
 		368E70BC21E5EE22003009CA /* MENewProductDetailsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MENewProductDetailsHeaderView.m; sourceTree = "<group>"; };
@@ -1548,6 +1593,9 @@
 		36E3D1E22171F26B0033B192 /* MELogisticsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MELogisticsCell.h; sourceTree = "<group>"; };
 		36E3D1E32171F26B0033B192 /* MELogisticsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MELogisticsCell.m; sourceTree = "<group>"; };
 		36E3D1E42171F26B0033B192 /* MELogisticsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MELogisticsCell.xib; sourceTree = "<group>"; };
+		36E3EEC2221CFCDC006C79F6 /* MESearchNearAddressVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MESearchNearAddressVC.h; sourceTree = "<group>"; };
+		36E3EEC3221CFCDC006C79F6 /* MESearchNearAddressVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MESearchNearAddressVC.m; sourceTree = "<group>"; };
+		36E3EEC4221CFCDC006C79F6 /* MESearchNearAddressVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MESearchNearAddressVC.xib; sourceTree = "<group>"; };
 		36E409C3219127F90090F7E1 /* MELocationHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MELocationHelper.h; sourceTree = "<group>"; };
 		36E409C4219127F90090F7E1 /* MELocationHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MELocationHelper.m; sourceTree = "<group>"; };
 		36E409C6219161AC0090F7E1 /* MERushBuyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MERushBuyView.h; sourceTree = "<group>"; };
@@ -2501,6 +2549,8 @@
 				36445B3321C1ED5B00CDBCBA /* MEWithdrawalParamModel.m */,
 				366019BD21E8746700F1BB37 /* MEMineActiveModel.h */,
 				366019BE21E8746700F1BB37 /* MEMineActiveModel.m */,
+				3645BBCC221BDEB80042748C /* MEBStoreMannagerInfoModel.h */,
+				3645BBCD221BDEB80042748C /* MEBStoreMannagerInfoModel.m */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -2770,6 +2820,9 @@
 				366019C321E8798400F1BB37 /* MEMineMyActityDetailCell.h */,
 				366019C421E8798400F1BB37 /* MEMineMyActityDetailCell.m */,
 				366019C521E8798400F1BB37 /* MEMineMyActityDetailCell.xib */,
+				3645BBCF221BE2410042748C /* MEBStoreMannagerCell.h */,
+				3645BBD0221BE2410042748C /* MEBStoreMannagerCell.m */,
+				3645BBD1221BE2410042748C /* MEBStoreMannagerCell.xib */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -2817,6 +2870,50 @@
 				366D5B20214A4F290021C1BB /* UITextView+MEXibConfiguartion.m */,
 			);
 			path = UITextView;
+			sourceTree = "<group>";
+		};
+		36707283221C046B0070BA90 /* AroundInfoMation */ = {
+			isa = PBXGroup;
+			children = (
+				36707286221C049B0070BA90 /* VC */,
+				36707285221C04960070BA90 /* View */,
+				36707284221C048E0070BA90 /* Model */,
+			);
+			path = AroundInfoMation;
+			sourceTree = "<group>";
+		};
+		36707284221C048E0070BA90 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				36707288221C04AD0070BA90 /* ZHPlaceInfoModel.h */,
+				36707287221C04AC0070BA90 /* ZHPlaceInfoModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		36707285221C04960070BA90 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3670728E221C04BB0070BA90 /* ZHMapView.h */,
+				3670728B221C04BA0070BA90 /* ZHMapView.m */,
+				3670728C221C04BA0070BA90 /* ZHPlaceInfoTableViewCell.h */,
+				3670728A221C04BA0070BA90 /* ZHPlaceInfoTableViewCell.m */,
+				3670728D221C04BA0070BA90 /* ZHPlaceInfoTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		36707286221C049B0070BA90 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				36707293221C04C90070BA90 /* ZHMapAroundInfoViewController.h */,
+				36707292221C04C90070BA90 /* ZHMapAroundInfoViewController.m */,
+				36707294221C04C90070BA90 /* ZHMapAroundInfoViewController.xib */,
+				36E3EEC2221CFCDC006C79F6 /* MESearchNearAddressVC.h */,
+				36E3EEC3221CFCDC006C79F6 /* MESearchNearAddressVC.m */,
+				36E3EEC4221CFCDC006C79F6 /* MESearchNearAddressVC.xib */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 		3671F85B21B7B91600590046 /* Guide */ = {
@@ -2930,6 +3027,9 @@
 				36B77BC321DDFC1C00B4A207 /* MECoupleHomeMainContentCell.h */,
 				36B77BC421DDFC1C00B4A207 /* MECoupleHomeMainContentCell.m */,
 				36B77BC521DDFC1C00B4A207 /* MECoupleHomeMainContentCell.xib */,
+				368E0672221A9EFA00B125DE /* MEJDCoupleHomeMainGoodGoodsCell.h */,
+				368E0673221A9EFA00B125DE /* MEJDCoupleHomeMainGoodGoodsCell.m */,
+				368E0674221A9EFB00B125DE /* MEJDCoupleHomeMainGoodGoodsCell.xib */,
 			);
 			path = Couple;
 			sourceTree = "<group>";
@@ -2952,6 +3052,8 @@
 				36B77BCF21DE05CE00B4A207 /* MECoupleHomeMainGoodGoodsCell.xib */,
 				36F3E59721FADAFE00CBADFF /* MEPinduoduoCouponSearchDataVC.h */,
 				36F3E59821FADAFE00CBADFF /* MEPinduoduoCouponSearchDataVC.m */,
+				368E066A221A9D5300B125DE /* MEJDCoupleHomeVC.h */,
+				368E066B221A9D5300B125DE /* MEJDCoupleHomeVC.m */,
 			);
 			path = Couple;
 			sourceTree = "<group>";
@@ -2975,6 +3077,8 @@
 				36BE2A7A21EF04F600AAC33E /* MEPinduoduoCoupleModel.m */,
 				361B3D2521F01BBA00AB0778 /* MEPinduoduoCoupleInfoModel.h */,
 				361B3D2621F01BBA00AB0778 /* MEPinduoduoCoupleInfoModel.m */,
+				368E0677221A9FB400B125DE /* MEJDCoupleModel.h */,
+				368E0678221A9FB400B125DE /* MEJDCoupleModel.m */,
 			);
 			path = Couple;
 			sourceTree = "<group>";
@@ -3128,6 +3232,7 @@
 		36D66ED1213F80DD000476FF /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				36707283221C046B0070BA90 /* AroundInfoMation */,
 				36F6AF5421F877DB00CF6684 /* CLInputToolbar */,
 				36E409C2219127600090F7E1 /* MELocation */,
 				EB6D02A02151DEA70053B19E /* MEAddressPickerView */,
@@ -3410,6 +3515,11 @@
 				366019C121E878ED00F1BB37 /* MEMineMyActityDetailVC.m */,
 				368ABE0421FB199A005FC0C9 /* MECompandNoticeVC.h */,
 				368ABE0521FB199A005FC0C9 /* MECompandNoticeVC.m */,
+				3645BBC9221BDC2F0042748C /* MEBStoreMannagerVC.h */,
+				3645BBCA221BDC2F0042748C /* MEBStoreMannagerVC.m */,
+				3645BBD4221BF2CC0042748C /* MEBStoreMannagerEditInfoVC.h */,
+				3645BBD5221BF2CC0042748C /* MEBStoreMannagerEditInfoVC.m */,
+				3645BBD6221BF2CC0042748C /* MEBStoreMannagerEditInfoVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4234,6 +4344,8 @@
 				3683F7C321CBBBC7008139B0 /* MEGiftMainNilCell.xib in Resources */,
 				36FFEB742175BE080007697D /* MEMemberHomeImageCell.xib in Resources */,
 				367C05CC218FE3C60088C087 /* MENewBaoQiangCell.xib in Resources */,
+				36707291221C04BB0070BA90 /* ZHPlaceInfoTableViewCell.xib in Resources */,
+				36707296221C04C90070BA90 /* ZHMapAroundInfoViewController.xib in Resources */,
 				36D66EB6213F7906000476FF /* LaunchScreen.storyboard in Resources */,
 				36A401C12143EED400B0BD4F /* MEShopppingCartBottomView.xib in Resources */,
 				36FFEB792175C0750007697D /* MEMemberHomeProductCell.xib in Resources */,
@@ -4284,6 +4396,7 @@
 				36022E052190220C00DC9A8B /* MENewHomePageHeaderView.xib in Resources */,
 				36FEC23C21AD175400BB64A5 /* MEPosterContentListCell.xib in Resources */,
 				36008A7021B631F40007BB46 /* MEWebTitleCell.xib in Resources */,
+				36E3EEC6221CFCDC006C79F6 /* MESearchNearAddressVC.xib in Resources */,
 				365151CB21413D340044C763 /* MEHomeHeaderMenuView.xib in Resources */,
 				367721E52147681000C1463A /* MEMineHomeCell.xib in Resources */,
 				362C9E6121BE63010001AABD /* MEMineNewShareView.xib in Resources */,
@@ -4312,6 +4425,7 @@
 				36A1B2C4218C3E560027E2EF /* MEExitVC.xib in Resources */,
 				3630071D2148DF7E00C88264 /* MEMineExchangeCell.xib in Resources */,
 				3601765E215B1B240080EB00 /* MEMoneyDetailedCell.xib in Resources */,
+				3645BBD8221BF2CC0042748C /* MEBStoreMannagerEditInfoVC.xib in Resources */,
 				3602A18E21424091004A6E1F /* ZLWKJSPOST.html in Resources */,
 				3628E80121C0FBC100D5405B /* MEGetCaseContentCell.xib in Resources */,
 				36FB082F218058CE003601FD /* MEProductSearchVC.xib in Resources */,
@@ -4342,6 +4456,7 @@
 				3617C31B21D0CF7F00004072 /* MECoupleFilterNavView.xib in Resources */,
 				36FEEBC0214CE74C00060209 /* MEPayStatusVC.xib in Resources */,
 				36F6AF5321F8548A00CF6684 /* MEBynamicLikeCell.xib in Resources */,
+				368E0676221A9EFB00B125DE /* MEJDCoupleHomeMainGoodGoodsCell.xib in Resources */,
 				36FF6C53216C3D2B0056046F /* MEMineCustomerPhone.xib in Resources */,
 				36022DFB2190105400DC9A8B /* MENewActiveCell.xib in Resources */,
 				36526014216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.xib in Resources */,
@@ -4361,6 +4476,7 @@
 				366D5B0B214A13DE0021C1BB /* MEMakeOrderVC.xib in Resources */,
 				368ACD9621CA1E19009B87E6 /* MEGiftFooterView.xib in Resources */,
 				36C01992214262230048734E /* MEProductCell.xib in Resources */,
+				3645BBD3221BE2410042748C /* MEBStoreMannagerCell.xib in Resources */,
 				36F3B88521F8151F0001F2F6 /* MEProductDetailCommentCell.xib in Resources */,
 				366019BC21E8666000F1BB37 /* MENewMineHomeContentCell.xib in Resources */,
 				360034CC21AE9A7100BAF337 /* MEVistorVisterCell.xib in Resources */,
@@ -4473,6 +4589,7 @@
 				36E1BF2121492F4D00E28301 /* MEAppointmentInfoVC.m in Sources */,
 				360034BB21AE823700BAF337 /* AASpline.m in Sources */,
 				360EE7FA21F599980048490E /* MERushBuyContentCell.m in Sources */,
+				368E0675221A9EFB00B125DE /* MEJDCoupleHomeMainGoodGoodsCell.m in Sources */,
 				36F528B421E6F2F500BB7388 /* MEClerksSortModel.m in Sources */,
 				36017668215B870B0080EB00 /* MEMineShareVC.m in Sources */,
 				365DB25A2147628200001A04 /* UIView+MECommon.m in Sources */,
@@ -4510,6 +4627,7 @@
 				36472AF121C8E15C00CC3E48 /* JXCategoryIndicatorCellModel.m in Sources */,
 				367721E42147681000C1463A /* MEMineHomeCell.m in Sources */,
 				36F6AF4D21F8546800CF6684 /* MEBynamicCommentCell.m in Sources */,
+				3645BBCE221BDEB80042748C /* MEBStoreMannagerInfoModel.m in Sources */,
 				360034B621AE823700BAF337 /* AATitle.m in Sources */,
 				36445B3B21C2054600CDBCBA /* MEClerkModel.m in Sources */,
 				36BF3E5321F9A58600C8F856 /* METhridNoticeProductDetailsHeaderView.m in Sources */,
@@ -4548,6 +4666,7 @@
 				365151CF214147EA0044C763 /* MEHomeMiaoDongCell.m in Sources */,
 				36E3D1D72171C94A0033B192 /* MEExpireTipView.m in Sources */,
 				36FEC25C21AD3BA900BB64A5 /* MEArticelSearchDataVC.m in Sources */,
+				3670728F221C04BB0070BA90 /* ZHPlaceInfoTableViewCell.m in Sources */,
 				360830D6219AAE4300C72B22 /* NSString+HDExtension.m in Sources */,
 				3628E7D121C0A65C00D5405B /* MEClerkSearchDataVC.m in Sources */,
 				36472B0521C8E15C00CC3E48 /* JXCategoryCollectionView.m in Sources */,
@@ -4583,6 +4702,7 @@
 				367C84ED21479DDC00BEC7B1 /* MEMyDistributionReusableView.m in Sources */,
 				360034A921AE823700BAF337 /* AAXAxis.m in Sources */,
 				36FDEFEF21B114760022D374 /* MEArticelVC.m in Sources */,
+				36707289221C04AD0070BA90 /* ZHPlaceInfoModel.m in Sources */,
 				3600345521AE732000BAF337 /* MEVisitHomeHeaderView.m in Sources */,
 				36FEC23321AD12CA00BB64A5 /* MEPosterContentListVC.m in Sources */,
 				36B00BA721F5ADCF00EF8898 /* MECommondCouponContentCell.m in Sources */,
@@ -4599,6 +4719,7 @@
 				3683F7AC21CB7E15008139B0 /* MECoupleDetailModle.m in Sources */,
 				36445B3421C1ED5B00CDBCBA /* MEWithdrawalParamModel.m in Sources */,
 				36FB9E2D21997A9100B3DDD3 /* MENoticeTypeVC.m in Sources */,
+				36E3EEC5221CFCDC006C79F6 /* MESearchNearAddressVC.m in Sources */,
 				36FF4EBA21AFB6160099DDB8 /* MESNewHomePageView.m in Sources */,
 				36B77BD021DE05CE00B4A207 /* MECoupleHomeMainGoodGoodsCell.m in Sources */,
 				3628E80A21C10E9800D5405B /* MEClerkStatisticsVC.m in Sources */,
@@ -4682,6 +4803,7 @@
 				36356A7821770A4B004174E7 /* MELocationConverter.m in Sources */,
 				36BF3E4D21F9921000C8F856 /* MECouponMoneyModel.m in Sources */,
 				363006F52148A0D800C88264 /* MEMyAppointmentCell.m in Sources */,
+				368E066C221A9D5300B125DE /* MEJDCoupleHomeVC.m in Sources */,
 				36E1BF0C2148F96900E28301 /* MEMineExchangeDetailVC.m in Sources */,
 				3600B856217EF10700049F49 /* YBPopupMenuPath.m in Sources */,
 				366D5B36214A6E630021C1BB /* MEAppointmentDateMainCell.m in Sources */,
@@ -4700,6 +4822,7 @@
 				366019AD21E83ADD00F1BB37 /* MENewMineHomeVC.m in Sources */,
 				36EBA97721FC2B240065BC92 /* MEGoodsCommentModel.m in Sources */,
 				36472B0421C8E15C00CC3E48 /* JXCategoryFactory.m in Sources */,
+				3645BBCB221BDC2F0042748C /* MEBStoreMannagerVC.m in Sources */,
 				366D5AF9214A09BB0021C1BB /* MEMakeOrderSelectAddressView.m in Sources */,
 				360057FF2189F2420010C21C /* MESearchHistoryModel.m in Sources */,
 				3683F7BA21CBA656008139B0 /* MEGiftMainCell.m in Sources */,
@@ -4719,6 +4842,7 @@
 				3600A744215A224500195484 /* MEModifyPhoneVC.m in Sources */,
 				36435C3F214F8DD500F823B4 /* MEHomePageSaveModel.m in Sources */,
 				36B77BB321DDE6E100B4A207 /* MECoupleHomeVC.m in Sources */,
+				36707290221C04BB0070BA90 /* ZHMapView.m in Sources */,
 				360034AF21AE823700BAF337 /* AAYAxis.m in Sources */,
 				36435C2E214F5CA800F823B4 /* MEAdModel.m in Sources */,
 				36F3B87B21F8066E0001F2F6 /* METhridProductCommentHeaderView.m in Sources */,
@@ -4729,6 +4853,7 @@
 				36F48BC921DEFF8800A6A7B0 /* MECouponMaterModel.m in Sources */,
 				360034CB21AE9A7100BAF337 /* MEVistorVisterCell.m in Sources */,
 				36FB9E192199195D00B3DDD3 /* MENoticeCell.m in Sources */,
+				36707295221C04C90070BA90 /* ZHMapAroundInfoViewController.m in Sources */,
 				36FD63ED213FA798009743C5 /* METabBarVC.m in Sources */,
 				36021ACE214B6201001B8DAF /* MEAppointmentSelectStoreVC.m in Sources */,
 				36A1B2C3218C3E560027E2EF /* MEExitVC.m in Sources */,
@@ -4736,6 +4861,7 @@
 				368CD6B9214112C9001926FF /* MEStoreHomeVC.m in Sources */,
 				360EE7E621F569720048490E /* METhridHomeVC.m in Sources */,
 				36E4EBA3213FD7D900BCB1AA /* MEHomePageVC.m in Sources */,
+				368E0679221A9FB400B125DE /* MEJDCoupleModel.m in Sources */,
 				36A401BF2143EEC700B0BD4F /* MEShopppingCartBottomView.m in Sources */,
 				367C84F72147AA1200BEC7B1 /* MEMyOrderVC.m in Sources */,
 				EB623E7D21549C6B007C949B /* MEMyChildOrderContentCell.m in Sources */,
@@ -4781,6 +4907,7 @@
 				360034C221AE823700BAF337 /* AASeriesElement.m in Sources */,
 				36EEC2EC2181BA0200DEFCCB /* MEVActiveListVC.m in Sources */,
 				36F3E59F21FAEA4E00CBADFF /* METhridHomeRudeGoodModel.m in Sources */,
+				3645BBD7221BF2CC0042748C /* MEBStoreMannagerEditInfoVC.m in Sources */,
 				3630AC4D21F70449006C3F8D /* METhridProductDetailsCommentCell.m in Sources */,
 				36472B0021C8E15C00CC3E48 /* JXCategoryNumberView.m in Sources */,
 				3683F7A921CB7ACC008139B0 /* MECoupleMailDetalVC.m in Sources */,
@@ -4850,6 +4977,7 @@
 				36FD63E6213FA6AC009743C5 /* MEBaseVC.m in Sources */,
 				3683F79821CB40B2008139B0 /* MECoupleMailCell.m in Sources */,
 				36FDEFEB21B0CB0C0022D374 /* MECreatePosterVC.m in Sources */,
+				3645BBD2221BE2410042748C /* MEBStoreMannagerCell.m in Sources */,
 				366D5B21214A4F290021C1BB /* UITextView+MEXibConfiguartion.m in Sources */,
 				3602A18D21424091004A6E1F /* ZLWebViewVC.m in Sources */,
 				3683F7C221CBBBC7008139B0 /* MEGiftMainNilCell.m in Sources */,

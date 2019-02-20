@@ -77,4 +77,8 @@
    
 }
 
+- (void)setJDUIWithModel:(MEJDCoupleModel *)model{
+    
+}
+
 @end

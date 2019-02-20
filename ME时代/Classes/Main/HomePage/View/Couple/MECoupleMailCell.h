@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 @class MECoupleModel;
 @class MEPinduoduoCoupleModel;
+@class MEJDCoupleModel;
+
 #define kMECoupleMailCellHeight (kMECoupleMailCellWdith +93)
 #define kMECoupleMailCellWdith ((SCREEN_WIDTH - 30)/2)
 #define kMEMargin (5)
 
 @interface MECoupleMailCell : UICollectionViewCell
 
+- (void)setJDUIWithModel:(MEJDCoupleModel *)model;
 - (void)setUIWithModel:(MECoupleModel *)model;
 - (void)setpinduoduoUIWithModel:(MEPinduoduoCoupleModel *)model;
 
