@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MECouponOrderSectionView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjg-vA-UDb">
+                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="48"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="拼多多">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" red="1" green="0.53333333329999999" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="pinduoduoAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="khm-0P-Fc9"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcK-fw-Js5">
+                    <rect key="frame" x="188" y="0.0" width="187" height="48"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="京东">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" red="1" green="0.53333333329999999" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="jdAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="yV4-gI-W4A"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTp-qn-xJn">
+                    <rect key="frame" x="187.5" y="9" width="0.5" height="31"/>
+                    <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="0.5" id="IRk-Go-GAJ"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PbV-Mp-wJQ">
+                    <rect key="frame" x="59" y="48" width="69" height="1"/>
+                    <color key="backgroundColor" red="1" green="0.53333333329999999" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="69" id="BUQ-rN-Azs"/>
+                        <constraint firstAttribute="height" constant="1" id="EO5-S4-Zfq"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OWs-aZ-4zr">
+                    <rect key="frame" x="247" y="48" width="69" height="1"/>
+                    <color key="backgroundColor" red="1" green="0.53333333329999999" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="69" id="TGw-HB-wX6"/>
+                        <constraint firstAttribute="height" constant="1" id="yfJ-DJ-t2N"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="yjg-vA-UDb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0vU-bb-rp1"/>
+                <constraint firstAttribute="bottom" secondItem="yjg-vA-UDb" secondAttribute="bottom" constant="1" id="0xr-i6-bd9"/>
+                <constraint firstAttribute="bottom" secondItem="bcK-fw-Js5" secondAttribute="bottom" constant="1" id="584-a1-Dr7"/>
+                <constraint firstItem="bcK-fw-Js5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="76O-wq-99b"/>
+                <constraint firstAttribute="bottom" secondItem="PbV-Mp-wJQ" secondAttribute="bottom" id="BOa-k6-kPE"/>
+                <constraint firstAttribute="bottom" secondItem="ZTp-qn-xJn" secondAttribute="bottom" constant="9" id="Dcn-7n-rD8"/>
+                <constraint firstItem="yjg-vA-UDb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="JBH-wa-rbU"/>
+                <constraint firstItem="OWs-aZ-4zr" firstAttribute="bottom" secondItem="PbV-Mp-wJQ" secondAttribute="bottom" id="Soo-4v-Ums"/>
+                <constraint firstItem="ZTp-qn-xJn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="9" id="TsJ-Sx-0rZ"/>
+                <constraint firstItem="bcK-fw-Js5" firstAttribute="centerX" secondItem="OWs-aZ-4zr" secondAttribute="centerX" id="W9H-WL-DM1"/>
+                <constraint firstAttribute="trailing" secondItem="bcK-fw-Js5" secondAttribute="trailing" id="d9Q-1P-q2T"/>
+                <constraint firstItem="ZTp-qn-xJn" firstAttribute="leading" secondItem="yjg-vA-UDb" secondAttribute="trailing" id="fHJ-6W-rbQ"/>
+                <constraint firstItem="ZTp-qn-xJn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lyU-IA-NYV"/>
+                <constraint firstItem="PbV-Mp-wJQ" firstAttribute="centerX" secondItem="yjg-vA-UDb" secondAttribute="centerX" id="p51-ha-wn2"/>
+                <constraint firstItem="OWs-aZ-4zr" firstAttribute="top" secondItem="PbV-Mp-wJQ" secondAttribute="top" id="sLZ-wZ-ldA"/>
+                <constraint firstItem="bcK-fw-Js5" firstAttribute="leading" secondItem="ZTp-qn-xJn" secondAttribute="trailing" id="uro-un-6rc"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnJd" destination="bcK-fw-Js5" id="1Rs-zb-Jyt"/>
+                <outlet property="btnPinduoduo" destination="yjg-vA-UDb" id="8wg-UK-6H9"/>
+                <outlet property="viewForJdLine" destination="OWs-aZ-4zr" id="ZTp-0p-QeJ"/>
+                <outlet property="viewForLine" destination="PbV-Mp-wJQ" id="sZ4-wx-utr"/>
+            </connections>
+            <point key="canvasLocation" x="130.40000000000001" y="111.99400299850076"/>
+        </view>
+    </objects>
+</document>

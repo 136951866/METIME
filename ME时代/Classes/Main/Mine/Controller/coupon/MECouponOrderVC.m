@@ -11,9 +11,11 @@
 #import "MECouponOrderHeaderView.h"
 #import "MECouponMoneyModel.h"
 #import "MECouponDetailModel.h"
+#import "MECouponOrderSectionView.h"
 
 @interface MECouponOrderVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     MECouponDetailModel *_modeldatil;
+    MECouponOrderSectionViewType _type;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -28,6 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"优惠券明细";
+    _type = MECouponOrderSectionViewPinduoduoType;
     self.view.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
     self.tableView.tableHeaderView = self.headerView;
     [self.view addSubview:self.tableView];
@@ -66,7 +69,6 @@
     [self.refresh.arrData addObjectsFromArray:[MECouponMoneyModel mj_objectArrayWithKeyValuesArray:data]];
 }
 
-
 #pragma mark - tableView deleagte and sourcedata
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -84,6 +86,21 @@
     return kMECouponOrderCellHeight;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    MECouponOrderSectionView *headview=[tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([MECouponOrderSectionView class])];
+    kMeWEAKSELF
+    headview.type = _type;
+    headview.selectBlock = ^(NSInteger index) {
+        kMeSTRONGSELF
+        strongSelf->_type = index;
+        [strongSelf.refresh reload];
+    };
+    return headview;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return kMECouponOrderSectionViewHeight;
+}
 
 #pragma MARK - Setter
 
@@ -91,12 +108,14 @@
     if(!_tableView){
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kMeNavBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight) style:UITableViewStylePlain];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MECouponOrderCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MECouponOrderCell class])];
+        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MECouponOrderSectionView class]) bundle:nil] forHeaderFooterViewReuseIdentifier:NSStringFromClass([MECouponOrderSectionView class])];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.tableFooterView = [UIView new];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [UIView new];
+        _tableView.backgroundColor = kMEededed;
     }
     return _tableView;
 }
@@ -106,9 +125,11 @@
         _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonduoduokeGetBrokerageDetailGoods)];
         _refresh.delegate = self;
 //        _refresh.showFailView = NO;
+        _refresh.showMaskView = YES;
         _refresh.isDataInside = YES;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
-            failView.backgroundColor = [UIColor whiteColor];
+            failView.top = failView.top+kMECouponOrderSectionViewHeight;
+            failView.backgroundColor = [UIColor clearColor];
             failView.lblOfNodata.text = @"没有订单";
         }];
     }

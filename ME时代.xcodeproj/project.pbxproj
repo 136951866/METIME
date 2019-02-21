@@ -557,6 +557,8 @@
 		36F43DD0216C942100FBA16E /* BankTransferAccountsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F43DCF216C942100FBA16E /* BankTransferAccountsVC.m */; };
 		36F48BC921DEFF8800A6A7B0 /* MECouponMaterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F48BC821DEFF8800A6A7B0 /* MECouponMaterModel.m */; };
 		36F528B421E6F2F500BB7388 /* MEClerksSortModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F528B321E6F2F500BB7388 /* MEClerksSortModel.m */; };
+		36F65405221E789F00502864 /* MECouponOrderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F65404221E789F00502864 /* MECouponOrderSectionView.m */; };
+		36F65407221E78AD00502864 /* MECouponOrderSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F65406221E78AD00502864 /* MECouponOrderSectionView.xib */; };
 		36F6AF3A21F8519800CF6684 /* MEBynamicMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F6AF3821F8519800CF6684 /* MEBynamicMainCell.m */; };
 		36F6AF3B21F8519800CF6684 /* MEBynamicMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F6AF3921F8519800CF6684 /* MEBynamicMainCell.xib */; };
 		36F6AF3E21F851FF00CF6684 /* MEBynamicCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F6AF3D21F851FF00CF6684 /* MEBynamicCommentView.m */; };
@@ -1649,6 +1651,9 @@
 		36F48BC821DEFF8800A6A7B0 /* MECouponMaterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECouponMaterModel.m; sourceTree = "<group>"; };
 		36F528B221E6F2F500BB7388 /* MEClerksSortModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEClerksSortModel.h; sourceTree = "<group>"; };
 		36F528B321E6F2F500BB7388 /* MEClerksSortModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEClerksSortModel.m; sourceTree = "<group>"; };
+		36F65403221E789F00502864 /* MECouponOrderSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECouponOrderSectionView.h; sourceTree = "<group>"; };
+		36F65404221E789F00502864 /* MECouponOrderSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECouponOrderSectionView.m; sourceTree = "<group>"; };
+		36F65406221E78AD00502864 /* MECouponOrderSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MECouponOrderSectionView.xib; sourceTree = "<group>"; };
 		36F6AF3721F8519800CF6684 /* MEBynamicMainCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBynamicMainCell.h; sourceTree = "<group>"; };
 		36F6AF3821F8519800CF6684 /* MEBynamicMainCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBynamicMainCell.m; sourceTree = "<group>"; };
 		36F6AF3921F8519800CF6684 /* MEBynamicMainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEBynamicMainCell.xib; sourceTree = "<group>"; };
@@ -3141,6 +3146,9 @@
 				3695C3A921D4C3D700EDBCDF /* MECouponOrderHeaderView.h */,
 				3695C3AA21D4C3D700EDBCDF /* MECouponOrderHeaderView.m */,
 				3695C3AC21D4C3E200EDBCDF /* MECouponOrderHeaderView.xib */,
+				36F65403221E789F00502864 /* MECouponOrderSectionView.h */,
+				36F65404221E789F00502864 /* MECouponOrderSectionView.m */,
+				36F65406221E78AD00502864 /* MECouponOrderSectionView.xib */,
 			);
 			path = coupon;
 			sourceTree = "<group>";
@@ -4423,6 +4431,7 @@
 				36021AC1214B4C5F001B8DAF /* MEAppointmentTimeCell.xib in Resources */,
 				36017669215B870B0080EB00 /* MEMineShareVC.xib in Resources */,
 				36D9E0C421F5BA5C00687580 /* METhridNavView.xib in Resources */,
+				36F65407221E78AD00502864 /* MECouponOrderSectionView.xib in Resources */,
 				360EE7EC21F5746E0048490E /* METhridHomeTimeSecionView.xib in Resources */,
 				3628E81921C1121D00D5405B /* MEClerkStatisticHeaderView.xib in Resources */,
 				36E3D1D92171C9590033B192 /* MEExpireTipView.xib in Resources */,
@@ -4964,6 +4973,7 @@
 				36F3259C21E1D016008FFC10 /* MEFilterClerkView.m in Sources */,
 				36356A722176E3E9004174E7 /* MEStoreDetailModel.m in Sources */,
 				EB28101521539424006A765A /* MELocationCLLModel.m in Sources */,
+				36F65405221E789F00502864 /* MECouponOrderSectionView.m in Sources */,
 				3683F7B521CBA15B008139B0 /* MEGiftMainContentCell.m in Sources */,
 				36FF4EB621AFB5EE0099DDB8 /* MESNewHomePageVC.m in Sources */,
 				3628E7CE21C0A32000D5405B /* MEClerkSearchVC.m in Sources */,
