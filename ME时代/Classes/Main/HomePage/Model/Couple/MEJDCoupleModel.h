@@ -65,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PriceInfo * priceInfo;
 //@property (nonatomic, strong) ResourceInfo * resourceInfo;
 //@property (nonatomic, strong) ShopInfo * shopInfo;
-@property (nonatomic, assign) NSInteger skuId;
+@property (nonatomic, strong) NSString * skuId;
 @property (nonatomic, strong) NSString * skuName;
 @property (nonatomic, assign) NSInteger spuid;
 

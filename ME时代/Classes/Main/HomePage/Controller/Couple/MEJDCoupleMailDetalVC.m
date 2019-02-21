@@ -90,9 +90,13 @@
         }
         kMeWEAKSELF
         [MEPublicNetWorkTool postJDPromotionUrlGenerateWithUid:@"" materialUrl:kMeUnNilStr(_detailModel.materialUrl) couponUrl:kMeUnNilStr(couponInfoModel.link) successBlock:^(ZLRequestResponse *responseObject) {
-            kMeSTRONGSELF
-            strongSelf->_Tpwd = responseObject.data[@"shortURL"];
-            [strongSelf openTb];
+            if(responseObject.data[@"msg"]){
+                [MEShowViewTool showMessage:kMeUnNilStr(responseObject.data[@"msg"]) view:kMeCurrentWindow];
+            }else{
+                kMeSTRONGSELF
+                strongSelf->_Tpwd = responseObject.data[@"shortURL"];
+                [strongSelf openTb];
+            }
         } failure:^(id object) {
             
         }];
@@ -145,7 +149,15 @@
 }
 
  - (void)openTb{
-     
+//     NSString *url = [[NSString stringWithFormat:@"openapp.jdmobile://virtual?params={\"category\":\"jump\",\"des\":\"productDetail\",\"skuId\":\"%@\",\"sourceType\":\"JSHOP_SOURCE_TYPE\",\"sourceValue\":\"JSHOP_SOURCE_VALUE\"}",kMeUnNilStr(_detailModel.skuId)] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+     NSString *url = [[NSString stringWithFormat:@"openapp.jdmobile://virtual?params={\"category\":\"jump\",\"des\":\"m\",\"url\":\"%@\"}",kMeUnNilStr(_Tpwd)] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+     NSURL * requestURL = [NSURL URLWithString:url];
+     if ([[UIApplication sharedApplication] canOpenURL:requestURL]) {
+         [[UIApplication sharedApplication] openURL:requestURL];
+     } else {
+         NSURL *newurl = [NSURL URLWithString:kMeUnNilStr(_Tpwd)];
+         [[UIApplication sharedApplication] openURL:newurl];
+     }
  }
 
 #pragma MARK - Setter

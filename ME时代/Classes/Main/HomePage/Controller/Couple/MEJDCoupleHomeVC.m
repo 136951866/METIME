@@ -75,8 +75,8 @@
 }
 
 - (void)requestNetWorkIsHead:(BOOL)isHead{
-     [ZLFailLoadView removeFromView:self.tableView];
-    NSDictionary *dic = @{@"eliteId":@"1",
+    [ZLFailLoadView removeFromView:self.tableView];
+    NSDictionary *dic = @{@"eliteId":@"16",
                           @"pageSize":@"20",
                           @"page":@(_pageIndex)
                           };

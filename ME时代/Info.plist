@@ -46,6 +46,8 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>iosamap</string>
+		<string>jd</string>
+		<string>openapp.jdmobile</string>
 		<string>pinduoduo</string>
 		<string>taobao</string>
 		<string>qqmap</string>
