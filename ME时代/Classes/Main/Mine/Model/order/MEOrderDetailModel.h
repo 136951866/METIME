@@ -9,6 +9,20 @@
 #import "MEBaseModel.h"
 #import "MELogistModel.h"
 
+@interface MEStoreGetModel : MEBaseModel
+
+@property (nonatomic, strong) NSString * created_at;
+@property (nonatomic, strong) NSString * deleted_at;
+//1 未提取 2已提取
+@property (nonatomic, assign) NSInteger get_status;
+@property (nonatomic, assign) NSInteger idField;
+@property (nonatomic, assign) NSInteger member_id;
+@property (nonatomic, strong) NSString * order_sn;
+@property (nonatomic, assign) NSInteger store_id;
+@property (nonatomic, strong) NSString * updated_at;
+
+@end
+
 @interface MEOrderDetailExpressModel : MEBaseModel
 
 @property (nonatomic, strong) NSString * express_company;
@@ -57,5 +71,5 @@
 @property (nonatomic, strong) MEOrderDetailAddressModel * address;
 @property (nonatomic, strong) MEOrderDetailExpressModel * express;
 @property (nonatomic, strong) MELogistModel *logistics;
-
+@property (nonatomic, strong) MEStoreGetModel *store_get;
 @end

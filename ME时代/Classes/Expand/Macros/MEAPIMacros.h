@@ -339,8 +339,12 @@
 #define MEIPcommonAdminDistribution @"common/user/adminDistribution"
 //获取用户全部订单
 #define MEIPcommonUserGetOrderList @"common/user/getOrderList"
+//自提订单
+#define MEIPcommongetStoreGetOrderList @"common/user/getStoreGetOrder"
 //获取订单详情
 #define MEIPcommonUserGetOrderDetail @"common/user/getOrderSnDetail"
+//设置到店领取订单(已提取)
+#define MEIPcommoncheckStoreGetOrderStatus @"common/user/checkStoreGetOrderStatus"
 //分销中心数据
 #define MEIPcommonUserDistribution @"common/user/distribution"
 //获取分销订单信息

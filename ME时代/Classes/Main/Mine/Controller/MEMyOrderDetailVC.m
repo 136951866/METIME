@@ -20,6 +20,7 @@
     NSString *_orderGoodsSn;
     MEOrderDetailModel *_detaliModel;
     BOOL _isPayError;//防止跳2次错误页面
+    BOOL _isSelf;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -27,6 +28,7 @@
 @property (nonatomic, strong) NSArray *arrDataStr;
 @property (nonatomic, strong) MEOrderDetailView *headerView;
 @property (nonatomic, strong) UIView *bottomView;
+@property (nonatomic, strong) UIView *bottomSelfExtractView;
 
 @end
 
@@ -38,6 +40,7 @@
 
 - (instancetype)initWithOrderGoodsSn:(NSString *)orderGoodsSn{
     if(self = [super init]){
+        _isSelf = NO;
         _orderGoodsSn = orderGoodsSn;
     }
     return self;
@@ -45,6 +48,16 @@
 
 - (instancetype)initWithType:(MEOrderStyle)type orderGoodsSn:(NSString *)orderGoodsSn{
     if(self = [super init]){
+        _isSelf = NO;
+        _orderType = type;
+        _orderGoodsSn = orderGoodsSn;
+    }
+    return self;
+}
+
+- (instancetype)initSelfWithType:(MEOrderStyle)type orderGoodsSn:(NSString *)orderGoodsSn{
+    if(self = [super init]){
+        _isSelf = YES;
         _orderType = type;
         _orderGoodsSn = orderGoodsSn;
     }
@@ -62,8 +75,14 @@
         strongSelf.arrData =  @[@(MESettlmemtFreight),@(MESettlmemtRealPay),@(MESettlmemtExpressCompany),@(MESettlmemtExpressNum)];
         strongSelf.arrDataStr = @[[NSString stringWithFormat:@"¥%@",kMeUnNilStr(strongSelf->_detaliModel.all_freight)],[NSString stringWithFormat:@"¥%@",kMeUnNilStr(strongSelf->_detaliModel.order_amount)],kMeUnNilStr(strongSelf->_detaliModel.express.express_company),kMeUnNilStr(strongSelf->_detaliModel.express.express_num)];
         strongSelf.tableView.tableHeaderView = strongSelf.headerView;
-        if(strongSelf->_orderType == MEAllNeedPayOrder){
+        if(strongSelf->_orderType == MEAllNeedPayOrder && strongSelf->_isSelf==NO){
             strongSelf.tableView.tableFooterView = strongSelf.bottomView;
+        }
+        if(strongSelf->_isSelf==YES &&
+           strongSelf->_detaliModel.store_get &&
+           strongSelf->_detaliModel.store_get.get_status==MEOSelfNotExtractionrderStyle)
+        {
+            strongSelf.tableView.tableFooterView = strongSelf.bottomSelfExtractView;
         }
         [strongSelf.view addSubview:strongSelf.tableView];
         [strongSelf.tableView reloadData];
@@ -180,6 +199,22 @@
     }
 }
 
+- (void)toExtract:(UIButton *)btn{
+    MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"" message:@"确定提取?"];
+    [aler addButtonWithTitle:@"取消"];
+    kMeWEAKSELF
+    [aler addButtonWithTitle:@"确定" block:^{
+        kMeSTRONGSELF
+        [MEPublicNetWorkTool postcheckStoreGetOrderStatusWithGoodSn:kMeUnNilStr(strongSelf->_detaliModel.order_sn) successBlock:^(ZLRequestResponse *responseObject) {
+            kNoticeReloadSelfExtractOrder
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+        } failure:^(id object) {
+            
+        }];
+    }];
+    [aler show];
+}
+
 - (void)toPay:(UIButton *)btn{
     kMeWEAKSELF
     [MEPublicNetWorkTool postPayOrderWithOrder_sn:kMeUnNilStr(self->_orderGoodsSn) successBlock:^(ZLRequestResponse *responseObject) {
@@ -238,5 +273,23 @@
     }
     return _bottomView;
 }
+
+- (UIView *)bottomSelfExtractView{
+    if(!_bottomSelfExtractView){
+        _bottomSelfExtractView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 75)];
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(15, 15, SCREEN_WIDTH - 30, 45);
+        [btn addTarget:self action:@selector(toExtract:) forControlEvents:UIControlEventTouchUpInside];
+        btn.backgroundColor = kMEPink;
+        [btn setTitle:@"立即提取" forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        btn.cornerRadius = 5;
+        btn.clipsToBounds = YES;
+        btn.titleLabel.font = [UIFont systemFontOfSize:18];
+        [_bottomSelfExtractView addSubview:btn];
+    }
+    return _bottomSelfExtractView;
+}
+
 
 @end

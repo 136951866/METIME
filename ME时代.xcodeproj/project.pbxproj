@@ -511,6 +511,10 @@
 		36D66EB9213F7907000476FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D66EB8213F7907000476FF /* main.m */; };
 		36D66EC2213F7DD2000476FF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D66EC0213F7DD2000476FF /* AppDelegate.m */; };
 		36D66ECE213F80A5000476FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D66ECD213F80A5000476FF /* Assets.xcassets */; };
+		36D750E0221E927F00FE434B /* MEMySelfExtractionOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D750DF221E927F00FE434B /* MEMySelfExtractionOrderVC.m */; };
+		36D750E3221E93B000FE434B /* MEMySelfExtractionContentOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D750E2221E93B000FE434B /* MEMySelfExtractionContentOrderVC.m */; };
+		36D750E6221EACFD00FE434B /* MESearchSelfExtraceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D750E5221EACFD00FE434B /* MESearchSelfExtraceVC.m */; };
+		36D750E9221EAE5200FE434B /* MESearchSelfExtraceDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D750E8221EAE5200FE434B /* MESearchSelfExtraceDataVC.m */; };
 		36D9E0C221F5BA5000687580 /* METhridNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D9E0C121F5BA5000687580 /* METhridNavView.m */; };
 		36D9E0C421F5BA5C00687580 /* METhridNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36D9E0C321F5BA5C00687580 /* METhridNavView.xib */; };
 		36D9E0CC21F5C40000687580 /* METhridHomeNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D9E0CB21F5C40000687580 /* METhridHomeNavView.m */; };
@@ -1570,6 +1574,14 @@
 		36D66ECD213F80A5000476FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36D66F10213F8B61000476FF /* MEPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEPrefixHeader.pch; sourceTree = "<group>"; };
 		36D66F16213F8C0B000476FF /* MEOtherMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEOtherMacros.h; sourceTree = "<group>"; };
+		36D750DE221E927F00FE434B /* MEMySelfExtractionOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEMySelfExtractionOrderVC.h; sourceTree = "<group>"; };
+		36D750DF221E927F00FE434B /* MEMySelfExtractionOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEMySelfExtractionOrderVC.m; sourceTree = "<group>"; };
+		36D750E1221E93B000FE434B /* MEMySelfExtractionContentOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEMySelfExtractionContentOrderVC.h; sourceTree = "<group>"; };
+		36D750E2221E93B000FE434B /* MEMySelfExtractionContentOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEMySelfExtractionContentOrderVC.m; sourceTree = "<group>"; };
+		36D750E4221EACFD00FE434B /* MESearchSelfExtraceVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MESearchSelfExtraceVC.h; sourceTree = "<group>"; };
+		36D750E5221EACFD00FE434B /* MESearchSelfExtraceVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MESearchSelfExtraceVC.m; sourceTree = "<group>"; };
+		36D750E7221EAE5200FE434B /* MESearchSelfExtraceDataVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MESearchSelfExtraceDataVC.h; sourceTree = "<group>"; };
+		36D750E8221EAE5200FE434B /* MESearchSelfExtraceDataVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MESearchSelfExtraceDataVC.m; sourceTree = "<group>"; };
 		36D9E0C021F5BA5000687580 /* METhridNavView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = METhridNavView.h; sourceTree = "<group>"; };
 		36D9E0C121F5BA5000687580 /* METhridNavView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = METhridNavView.m; sourceTree = "<group>"; };
 		36D9E0C321F5BA5C00687580 /* METhridNavView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = METhridNavView.xib; sourceTree = "<group>"; };
@@ -3533,6 +3545,14 @@
 				3645BBD4221BF2CC0042748C /* MEBStoreMannagerEditInfoVC.h */,
 				3645BBD5221BF2CC0042748C /* MEBStoreMannagerEditInfoVC.m */,
 				3645BBD6221BF2CC0042748C /* MEBStoreMannagerEditInfoVC.xib */,
+				36D750DE221E927F00FE434B /* MEMySelfExtractionOrderVC.h */,
+				36D750DF221E927F00FE434B /* MEMySelfExtractionOrderVC.m */,
+				36D750E1221E93B000FE434B /* MEMySelfExtractionContentOrderVC.h */,
+				36D750E2221E93B000FE434B /* MEMySelfExtractionContentOrderVC.m */,
+				36D750E4221EACFD00FE434B /* MESearchSelfExtraceVC.h */,
+				36D750E5221EACFD00FE434B /* MESearchSelfExtraceVC.m */,
+				36D750E7221EAE5200FE434B /* MESearchSelfExtraceDataVC.h */,
+				36D750E8221EAE5200FE434B /* MESearchSelfExtraceDataVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4609,6 +4629,7 @@
 				365DB25A2147628200001A04 /* UIView+MECommon.m in Sources */,
 				36FD6406213FABE2009743C5 /* UIBarButtonItem+MEExtension.m in Sources */,
 				360034A621AE823700BAF337 /* AAAreaspline.m in Sources */,
+				36D750E6221EACFD00FE434B /* MESearchSelfExtraceVC.m in Sources */,
 				363A6BFE21E19AB2008B303B /* MeMyActityMineCell.m in Sources */,
 				3628E7E421C0BC0C00D5405B /* MEAddClerkCell.m in Sources */,
 				36021AC0214B4C5F001B8DAF /* MEAppointmentTimeCell.m in Sources */,
@@ -4662,6 +4683,7 @@
 				362C9E5C21BE62560001AABD /* MEMineNewShareVC.m in Sources */,
 				3604EF1B21BF9BCA0000DBDE /* MEAdvModel.m in Sources */,
 				3601765D215B1B240080EB00 /* MEMoneyDetailedCell.m in Sources */,
+				36D750E3221E93B000FE434B /* MEMySelfExtractionContentOrderVC.m in Sources */,
 				36FEC23021AD12A400BB64A5 /* MEPosterListVC.m in Sources */,
 				3630AC5221F707C9006C3F8D /* METhridProductDetailsCommentContontCell.m in Sources */,
 				36FEC24C21AD2DCD00BB64A5 /* MEPosterMoreListContentVC.m in Sources */,
@@ -4899,6 +4921,7 @@
 				3600B857217EF10700049F49 /* YBPopupMenu.m in Sources */,
 				36FEEBDC214CEFB400060209 /* MEDiscountCouponDottedLine.m in Sources */,
 				36A401D52143F6E300B0BD4F /* MEShoppingCartVC.m in Sources */,
+				36D750E0221E927F00FE434B /* MEMySelfExtractionOrderVC.m in Sources */,
 				36FDE3D4218A993800633C40 /* MEFilterVC.m in Sources */,
 				36F3E59921FADAFE00CBADFF /* MEPinduoduoCouponSearchDataVC.m in Sources */,
 				3602A192214243A6004A6E1F /* MEStarButton.m in Sources */,
@@ -4922,6 +4945,7 @@
 				360034C221AE823700BAF337 /* AASeriesElement.m in Sources */,
 				36EEC2EC2181BA0200DEFCCB /* MEVActiveListVC.m in Sources */,
 				36F3E59F21FAEA4E00CBADFF /* METhridHomeRudeGoodModel.m in Sources */,
+				36D750E9221EAE5200FE434B /* MESearchSelfExtraceDataVC.m in Sources */,
 				3645BBD7221BF2CC0042748C /* MEBStoreMannagerEditInfoVC.m in Sources */,
 				3630AC4D21F70449006C3F8D /* METhridProductDetailsCommentCell.m in Sources */,
 				36472B0021C8E15C00CC3E48 /* JXCategoryNumberView.m in Sources */,

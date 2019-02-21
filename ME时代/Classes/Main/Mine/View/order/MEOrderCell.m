@@ -12,11 +12,14 @@
 #import "MEMyOrderVC.h"
 #import "MEMyOrderDetailVC.h"
 #import "MELogisticsVC.h"
+#import "MEMySelfExtractionOrderVC.h"
 
 @interface MEOrderCell ()<UITableViewDelegate,UITableViewDataSource>{
     NSArray *_arrType;
     MEOrderModel *_model;
     MEOrderStyle _type;
+    //yes 未自提
+    BOOL _isSelf;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *lblOrderNum;
@@ -48,6 +51,7 @@
 }
 
 - (void)setUIWithModel:(MEOrderModel *)model Type:(MEOrderStyle)type{
+    _isSelf = NO;
     _type = type;
     _consTableViewHeight.constant =  (kMEMyChildOrderContentCellHeight * kMeUnArr(model.children).count);
     _model = model;
@@ -68,6 +72,16 @@
     [self.tableView reloadData];
 }
 
+- (void)setSelfUIWithModel:(MEOrderModel *)model{
+    _isSelf = YES;
+    _consTableViewHeight.constant =  (kMEMyChildOrderContentCellHeight * kMeUnArr(model.children).count);
+    _model = model;
+    _btnCancelOrder.hidden = YES;
+    _btnPay.hidden = YES;
+    _lblOrderNum.text = kMeUnNilStr(model.order_sn);
+    [self.tableView reloadData];
+}
+
 #pragma mark - tableView deleagte and sourcedata
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -77,16 +91,30 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MEMyChildOrderContentCell *cell=[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEMyChildOrderContentCell class]) forIndexPath:indexPath];
     MEOrderGoodModel *model = kMeUnArr(_model.children)[indexPath.row];
-    [cell setUIWithModel:model];
+    if(_isSelf){
+        [cell setSelfUIWithModel:model extractStatus:_model.get_status];
+    }else{
+        [cell setUIWithModel:model];
+    }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    MEMyOrderVC *orderVC = (MEMyOrderVC *)[MECommonTool getVCWithClassWtihClassName:[MEMyOrderVC class] targetResponderView:self];
-//    MEOrderGoodModel *model = kMeUnArr(_model.children)[indexPath.row];
-    MEMyOrderDetailVC *vc = [[MEMyOrderDetailVC alloc]initWithType:[_model.order_status integerValue] orderGoodsSn:kMeUnNilStr(_model.order_sn)];
-    [orderVC.navigationController pushViewController:vc animated:YES];
+    if(_isSelf){
+        if(_touchBlock){
+            kMeCallBlock(_touchBlock);
+            return;
+        }
+        MEMySelfExtractionOrderVC *orderVC = (MEMySelfExtractionOrderVC *)[MECommonTool getVCWithClassWtihClassName:[MEMySelfExtractionOrderVC class] targetResponderView:self];
+        MEMyOrderDetailVC *vc = [[MEMyOrderDetailVC alloc]initSelfWithType:[_model.order_status integerValue] orderGoodsSn:kMeUnNilStr(_model.order_sn)];
+        [orderVC.navigationController pushViewController:vc animated:YES];
+    }else{
+        MEMyOrderVC *orderVC = (MEMyOrderVC *)[MECommonTool getVCWithClassWtihClassName:[MEMyOrderVC class] targetResponderView:self];
+        MEMyOrderDetailVC *vc = [[MEMyOrderDetailVC alloc]initWithType:[_model.order_status integerValue] orderGoodsSn:kMeUnNilStr(_model.order_sn)];
+        [orderVC.navigationController pushViewController:vc animated:YES];
+    }
+
 }
 
 - (IBAction)payAction:(UIButton *)sender {
@@ -130,6 +158,12 @@
     }else{
          height = (kMEMyChildOrderContentCellHeight * kMeUnArr(model.children).count) +kMEOrderCellNoPayedBtnHeight;
     }
+    return height;
+}
+
++ (CGFloat)getCellSelfHeightWithModel:(MEOrderModel *)model{
+    CGFloat height;
+    height = (kMEMyChildOrderContentCellHeight * kMeUnArr(model.children).count) +kMEOrderCellNoPayedBtnHeight;
     return height;
 }
 

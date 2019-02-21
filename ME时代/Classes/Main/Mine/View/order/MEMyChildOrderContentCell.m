@@ -38,5 +38,13 @@
     _lblSkuAndNum.text = [NSString stringWithFormat:@"规格:%@ 数量:%@",kMeUnNilStr(model.order_spec_name),@(model.product_number)];
 }
 
+- (void)setSelfUIWithModel:(MEOrderGoodModel *)model extractStatus:(NSString *)status{
+    kSDLoadImg(_imgPic, MELoadQiniuImagesWithUrl(kMeUnNilStr(model.product_image)));
+    _lblStatus.text = kMeUnNilStr(status);
+    _lblPrice.text = [NSString stringWithFormat:@"¥%@",kMeUnNilStr(model.product_amount)];
+    _lblTitle.text = kMeUnNilStr(model.product_name);
+    _lblSkuAndNum.text = [NSString stringWithFormat:@"规格:%@ 数量:%@",kMeUnNilStr(model.order_spec_name),@(model.product_number)];
+}
+
 
 @end

@@ -48,5 +48,6 @@
 @property (nonatomic, strong) NSString *order_status;
 @property (nonatomic, strong) NSArray *children;
 @property (nonatomic, strong) NSString *order_status_name;
-
+//自提订单"get_status": "未提取",
+@property (nonatomic, strong) NSString *get_status;
 @end

@@ -241,9 +241,15 @@ NS_INLINE NSString *kMeFilePathAtDocumentWithName(NSString *fileNAme){
 
 
 //通知用户刷新订单
-#define kOrder @"kShopCart"
+#define kOrder @"kOrder"
 #define kNoticeReloadOrder [[NSNotificationCenter defaultCenter] postNotificationName:kOrder object:nil];
-#define kOrderReload   [[NSNotificationCenter defaultCenter]addObserver:self.refresh selector:@selector(reload) name:kShopCart object:nil];
+#define kOrderReload   [[NSNotificationCenter defaultCenter]addObserver:self.refresh selector:@selector(reload) name:kOrder object:nil];
+
+//通知刷新自提订单
+#define kSelfExtractOrder @"kSelfExtractOrder"
+#define kNoticeReloadSelfExtractOrder [[NSNotificationCenter defaultCenter] postNotificationName:kSelfExtractOrder object:nil];
+#define kSelfExtractOrderReload   [[NSNotificationCenter defaultCenter]addObserver:self.refresh selector:@selector(reload) name:kSelfExtractOrder object:nil];
+
 
 //通知用户刷新融云信息
 #define kUnMessage @"kUnMessage"
@@ -255,6 +261,9 @@ NS_INLINE NSString *kMeFilePathAtDocumentWithName(NSString *fileNAme){
 
 //判断是否完成首单Key
 #define kcheckFirstBuy  @"checkFirstBuy"
+
+//自提订单搜索历史记录
+#define kMESelfExtraceSearchVCSearchHistoriesCachePath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"kMESelfExtraceSearchVC.plist"]
 
 //优惠卷搜索历史记录
 #define kMECouponSearchVCSearchHistoriesCachePath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"MECouponSearchVC.plist"]

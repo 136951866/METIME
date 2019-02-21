@@ -9,6 +9,11 @@
 #import "MEOrderDetailModel.h"
 #import "MEOrderModel.h"
 
+
+@implementation MEStoreGetModel
+MEModelIdToIdField
+@end
+
 @implementation MEOrderDetailExpressModel
 
 @end

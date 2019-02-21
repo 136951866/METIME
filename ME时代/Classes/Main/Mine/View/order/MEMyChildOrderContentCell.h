@@ -14,5 +14,6 @@ static const CGFloat kMEMyChildOrderContentCellHeight = 120;
 @interface MEMyChildOrderContentCell : UITableViewCell
 
 - (void)setUIWithModel:(MEOrderGoodModel *)model;
+- (void)setSelfUIWithModel:(MEOrderGoodModel *)model extractStatus:(NSString *)status;
 
 @end

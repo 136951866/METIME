@@ -12,5 +12,6 @@
 
 - (instancetype)initWithType:(MEOrderStyle)type orderGoodsSn:(NSString *)orderGoodsSn;
 - (instancetype)initWithOrderGoodsSn:(NSString *)orderGoodsSn;
-
+//自提
+- (instancetype)initSelfWithType:(MEOrderStyle)type orderGoodsSn:(NSString *)orderGoodsSn;
 @end

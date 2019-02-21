@@ -17,6 +17,10 @@ const static CGFloat kMEOrderCellNoPayedBtnHeight = 52;
 - (void)setUIWithModel:(MEOrderModel *)model Type:(MEOrderStyle)type;
 + (CGFloat)getCellHeightWithModel:(MEOrderModel *)model Type:(MEOrderStyle)type;
 
+//自提
+- (void)setSelfUIWithModel:(MEOrderModel *)model;
++ (CGFloat)getCellSelfHeightWithModel:(MEOrderModel *)model;
+@property (nonatomic, copy) kMeBasicBlock touchBlock;
 @property (nonatomic, copy) kMeBasicBlock cancelOrderBlock;
 
 @end
