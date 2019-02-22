@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MEStoreModel;
 const static CGFloat kImgStoreMargin = 7;
 const static CGFloat kImgStore = 44;
 #define kMEThridHomeNavViewHeight (((IS_iPhoneX==YES||IS_IPHONE_Xr==YES||IS_IPHONE_Xs==YES||IS_IPHONE_Xs_Max==YES) ? 76 : 65)+kImgStore+kImgStoreMargin)
@@ -19,7 +20,7 @@ const static CGFloat kImgStore = 44;
 - (void)setStroeBackAlpha:(CGFloat)alpha;
 - (void)setBackAlpha:(CGFloat)alpha;
 - (void)setRead:(BOOL)read;
-- (void)setStoreInfoWithModel:(id)model;
+- (void)setStoreInfoWithModel:(MEStoreModel *)model;
 
 @end
 

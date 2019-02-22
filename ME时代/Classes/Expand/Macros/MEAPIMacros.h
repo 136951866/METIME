@@ -189,6 +189,8 @@
 #define MEIPcommonGetMessage @"common/message/getMessage"
 //获取2.0首页数据
 #define MEIPcommonGetThridHomeBase @"common/home/getHomeBase"
+//app获取店铺信息
+#define MEIPcommonappHomePageData @"common/store/appHomePageData"
 /*********************************************/
 
 

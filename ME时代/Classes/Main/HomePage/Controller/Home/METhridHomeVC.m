@@ -25,7 +25,7 @@
 #import "METhridHomeRudeGoodModel.h"
 #import "MECoupleMailDetalVC.h"
 #import "MENetListModel.h"
-
+#import "MEStoreModel.h"
 
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSInteger _selectTimeIndex;
@@ -35,6 +35,7 @@
     METhridHomeModel *_homeModel;
     CGFloat _sectionHeaderHeight;
     CGFloat _alphaNum;
+    MEStoreModel *_stroeModel;
 }
 
 @property (nonatomic, strong) UITableView           *tableView;
@@ -73,10 +74,13 @@
 
 - (void)userLogout{
     [self.navView setRead:YES];
+    _stroeModel = nil;
+    [_headerView setUIWithModel:_homeModel stroeModel:_stroeModel];
 }
 
 - (void)userLogin{
     [self getUnInfo];
+    [self.refresh reload];
 }
 
 - (void)getUnInfo{
@@ -99,7 +103,20 @@
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     dispatch_group_t group = dispatch_group_create();
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+
     kMeWEAKSELF
+    dispatch_group_async(group, queue, ^{
+        [MEPublicNetWorkTool postGetappHomePageDataWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            strongSelf->_stroeModel = [MEStoreModel mj_objectWithKeyValues:responseObject.data];
+            dispatch_semaphore_signal(semaphore);
+        } failure:^(id object) {
+            kMeSTRONGSELF
+            strongSelf->_stroeModel = nil;
+            dispatch_semaphore_signal(semaphore);
+        }];
+    });
     dispatch_group_async(group, queue, ^{
         [MEPublicNetWorkTool postThridHomeStyleWithSuccessBlock:^(ZLRequestResponse *responseObject) {
             kMeSTRONGSELF
@@ -137,11 +154,11 @@
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_async(dispatch_get_main_queue(), ^{
             kMeSTRONGSELF
-            [strongSelf->_headerView setUIWithModel:strongSelf->_homeModel];
-#warning ----
-            [strongSelf->_navView setStoreInfoWithModel:@""];
+            [strongSelf->_headerView setUIWithModel:strongSelf->_homeModel stroeModel:strongSelf->_stroeModel];
+            [strongSelf->_navView setStoreInfoWithModel:strongSelf->_stroeModel];
             strongSelf->_headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [METhridHomeHeaderView getViewHeightWithModel:strongSelf->_homeModel]);
             [strongSelf getRushGoods];
             strongSelf.tableView.tableHeaderView = strongSelf->_headerView;

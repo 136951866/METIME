@@ -17,6 +17,7 @@
 #import "METhridRushSpikeVC.h"
 #import "MEFilterVC.h"
 #import "MEJDCoupleHomeVC.h"
+#import "MEStoreModel.h"
 
 typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
     METhridHomeHeaderViewActiveNewType = 0,
@@ -196,7 +197,7 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
     }
 }
 
-- (void)setUIWithModel:(METhridHomeModel *)model{
+- (void)setUIWithModel:(METhridHomeModel *)model stroeModel:(MEStoreModel *)storemodel{
     _model = model;
     __block NSMutableArray *arrImage = [NSMutableArray array];
     [kMeUnArr(model.top_banner) enumerateObjectsUsingBlock:^(METhridHomeAdModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -249,9 +250,16 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
     }
     
     //店铺
-    kSDLoadImg(_imgStore,kMeUnNilStr(@""));
-    _lblStoreName.text = kMeUnNilStr(@"Hank的小店");
-    _lblStoreDesc.text = kMeUnNilStr(@"Hank的小店Hank的小店Hank的小店Hank的小店");
+    if(storemodel){
+        kSDLoadImg(_imgStore,kMeUnNilStr(storemodel.mask_img));
+        _lblStoreName.text = kMeUnNilStr(storemodel.store_name);
+        _lblStoreDesc.text = kMeUnNilStr(storemodel.intro);
+    }else{
+        _imgStore.image = [UIImage imageNamed:@"icon-wgvilogo"];
+        _lblStoreName.text = @"ME时代旗舰店";
+        _lblStoreDesc.text = @"ME时代旗舰店";
+    }
+    
 }
 
 - (IBAction)activeAction:(MEMidelMiddelImageButton *)sender {

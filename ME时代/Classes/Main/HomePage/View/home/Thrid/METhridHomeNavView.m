@@ -13,6 +13,7 @@
 //#import "MENoticeTypeVC.h"
 #import "MENoticeVC.h"
 #import "MEFilterVC.h"
+#import "MEStoreModel.h"
 
 @interface METhridHomeNavView (){
     CGFloat _top;
@@ -103,15 +104,24 @@
     return _viewForStore;
 }
 
-- (void)setStoreInfoWithModel:(id)model{
-//    kSDLoadImg(_imgStore, @"");
-    _imgStore.image = [UIImage imageNamed:@"icon-wgvilogo"];
-    NSShadow *shaow = [[NSShadow alloc]init];
-    shaow.shadowBlurRadius = 1.0;
-    shaow.shadowOffset = CGSizeZero;
-    shaow.shadowColor = [UIColor blackColor];
-    NSAttributedString *att = [[NSAttributedString alloc]initWithString:@"hank的小店" attributes:@{NSShadowAttributeName:shaow}];
-    _lblStoreName.attributedText = att;
+- (void)setStoreInfoWithModel:(MEStoreModel *)model{
+    if(model){
+        kSDLoadImg(_imgStore, kMeUnNilStr(model.mask_img));
+        NSShadow *shaow = [[NSShadow alloc]init];
+        shaow.shadowBlurRadius = 1.0;
+        shaow.shadowOffset = CGSizeZero;
+        shaow.shadowColor = [UIColor blackColor];
+        NSAttributedString *att = [[NSAttributedString alloc]initWithString:kMeUnNilStr(model.store_name) attributes:@{NSShadowAttributeName:shaow}];
+        _lblStoreName.attributedText = att;
+    }else{
+        _imgStore.image = [UIImage imageNamed:@"icon-wgvilogo"];
+        NSShadow *shaow = [[NSShadow alloc]init];
+        shaow.shadowBlurRadius = 1.0;
+        shaow.shadowOffset = CGSizeZero;
+        shaow.shadowColor = [UIColor blackColor];
+        NSAttributedString *att = [[NSAttributedString alloc]initWithString:@"ME时代旗舰店" attributes:@{NSShadowAttributeName:shaow}];
+        _lblStoreName.attributedText = att;
+    }
 }
 
 

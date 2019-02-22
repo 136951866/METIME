@@ -328,12 +328,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/Classes/Public/Help/MEPublicNetWorkTool.m"
-            timestampString = "572495604.492204"
+            timestampString = "572527898.810059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2133"
-            endingLineNumber = "2133"
-            landmarkName = "+postAppointDetailWithReserve_sn:successBlock:failure:"
+            startingLineNumber = "2144"
+            endingLineNumber = "2144"
+            landmarkName = "+postServiceDetailWithServiceId:successBlock:failure:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -354,11 +354,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/Classes/Public/Help/MEPublicNetWorkTool.m"
-            timestampString = "572495604.492275"
+            timestampString = "572527898.811237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2051"
-            endingLineNumber = "2051"
+            startingLineNumber = "2062"
+            endingLineNumber = "2062"
             landmarkName = "+postStroeFindStoreInfoWithEditModel:successBlock:failure:"
             landmarkType = "7">
          </BreakpointContent>
