@@ -73,8 +73,9 @@ typedef enum : NSUInteger {
     MESettlmemtRealPay = 2,
     MESettlmemtExpressCompany = 3,
     MESettlmemtExpressNum = 4,
+    MESettlmemtRemark = 5
 } MEOrderSettlmentStyle;
-#define MEOrderSettlmentStyleTitle @[@"商品金额",@"运费",@"实付金额",@"配送方式",@"快递编号"];
+#define MEOrderSettlmentStyleTitle @[@"商品金额",@"运费",@"实付金额",@"配送方式",@"快递编号",@"备注"];
 
 //预约
 typedef enum : NSUInteger {

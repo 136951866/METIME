@@ -16,6 +16,7 @@
 #import "MEWxAuthModel.h"
 #import "MEAppointAttrModel.h"
 #import "MEWithdrawalParamModel.h"
+#import "MEBStoreMannagerEditModel.h"
 
 @implementation MEPublicNetWorkTool
 
@@ -2035,6 +2036,54 @@
 
 /***************************************/
 #pragma mark - Store
+//app 更新店铺商家信息
++ (void)postStroeFindStoreInfoWithEditModel:(MEBStoreMannagerEditModel*)model successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    if(!kMeUnNilStr(model.mobile).length){
+        [MEShowViewTool showMessage:@"手机号不能为空" view:kMeCurrentWindow];
+        return;
+    }
+    if(![MECommonTool isValidPhoneNum:kMeUnNilStr(model.mobile)]){
+        [MEShowViewTool showMessage:@"请填写正确的手机号码" view:kMeCurrentWindow];
+        return;
+    }
+    
+    NSDictionary *dic = [model mj_keyValues];
+    NSString *url = kGetApiWithUrl(MEIPcommonUpdateStoreInfo);
+    MBProgressHUD *HUD = [self commitWithHUD:@"更新店铺信息"];
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+         [MEShowViewTool SHOWHUDWITHHUD:HUD test:@"更新成功"];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
+
+//app获取店铺商家信息
++ (void)postStroeFindStoreInfoWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{@"token":kMeUnNilStr(kCurrentUser.token),
+                          };
+    NSString *url = kGetApiWithUrl(MEIPcommonFindStoreInfo);
+    MBProgressHUD *HUD = [self commitWithHUD:@"获取店铺信息"];
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
+
 //获取门店祥情
 + (void)postStroeDetailWithGoodsId:(NSInteger)storeId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"store_id":@(storeId),

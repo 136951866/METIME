@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithContent:(MEBStoreMannagercontentInfoModel*)model;
 
-@property (nonatomic, copy) kMeBasicBlock contenBlock;
+@property (nonatomic, copy) kMeTextBlock contenBlock;
 
 @end
 

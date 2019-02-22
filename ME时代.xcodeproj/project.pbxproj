@@ -506,6 +506,8 @@
 		36C0850922016372008ADAC9 /* MEJupshContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C0850822016372008ADAC9 /* MEJupshContentModel.m */; };
 		36C0851422019CF6008ADAC9 /* CLInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C0851222019CF6008ADAC9 /* CLInputToolbar.m */; };
 		36C0851522019CF6008ADAC9 /* UIView+CLSetRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C0851322019CF6008ADAC9 /* UIView+CLSetRect.m */; };
+		36CF685F221F881500A5F227 /* MEBStoreMannagerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36CF685E221F881500A5F227 /* MEBStoreMannagerModel.m */; };
+		36CF6862221F8CF700A5F227 /* MEBStoreMannagerEditModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36CF6861221F8CF700A5F227 /* MEBStoreMannagerEditModel.m */; };
 		36D66EB1213F7904000476FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36D66EAF213F7904000476FF /* Main.storyboard */; };
 		36D66EB6213F7906000476FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36D66EB4213F7906000476FF /* LaunchScreen.storyboard */; };
 		36D66EB9213F7907000476FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D66EB8213F7907000476FF /* main.m */; };
@@ -1564,6 +1566,10 @@
 		36C0851122019CF5008ADAC9 /* CLInputToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLInputToolbar.h; sourceTree = "<group>"; };
 		36C0851222019CF6008ADAC9 /* CLInputToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLInputToolbar.m; sourceTree = "<group>"; };
 		36C0851322019CF6008ADAC9 /* UIView+CLSetRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CLSetRect.m"; sourceTree = "<group>"; };
+		36CF685D221F881500A5F227 /* MEBStoreMannagerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBStoreMannagerModel.h; sourceTree = "<group>"; };
+		36CF685E221F881500A5F227 /* MEBStoreMannagerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBStoreMannagerModel.m; sourceTree = "<group>"; };
+		36CF6860221F8CF700A5F227 /* MEBStoreMannagerEditModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBStoreMannagerEditModel.h; sourceTree = "<group>"; };
+		36CF6861221F8CF700A5F227 /* MEBStoreMannagerEditModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBStoreMannagerEditModel.m; sourceTree = "<group>"; };
 		36D66EA6213F7904000476FF /* ME时代.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ME时代.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36D66EB0213F7904000476FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		36D66EB5213F7906000476FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -4241,6 +4247,10 @@
 				36017663215B83050080EB00 /* MEDistributionTeamModel.m */,
 				360351CA215C69D7004BDD62 /* MEMoneyDetailedModel.h */,
 				360351CB215C69D7004BDD62 /* MEMoneyDetailedModel.m */,
+				36CF685D221F881500A5F227 /* MEBStoreMannagerModel.h */,
+				36CF685E221F881500A5F227 /* MEBStoreMannagerModel.m */,
+				36CF6860221F8CF700A5F227 /* MEBStoreMannagerEditModel.h */,
+				36CF6861221F8CF700A5F227 /* MEBStoreMannagerEditModel.m */,
 			);
 			path = distribution;
 			sourceTree = "<group>";
@@ -4639,6 +4649,7 @@
 				366D5B1C214A4C840021C1BB /* MENewAddressVC.m in Sources */,
 				360EE7E021F55B190048490E /* METhridHomeHeaderView.m in Sources */,
 				36008A7721B67DD90007BB46 /* MEVistorUserModel.m in Sources */,
+				36CF685F221F881500A5F227 /* MEBStoreMannagerModel.m in Sources */,
 				36472AEB21C8E15C00CC3E48 /* JXCategoryIndicatorTriangleView.m in Sources */,
 				36472AF821C8E15C00CC3E48 /* JXCategoryTitleImageCell.m in Sources */,
 				36022E032190220100DC9A8B /* MENewHomePageHeaderView.m in Sources */,
@@ -4694,6 +4705,7 @@
 				36E3D1E52171F26B0033B192 /* MELogisticsCell.m in Sources */,
 				363007202148E30E00C88264 /* MEInteralExchangVC.m in Sources */,
 				366D5AF52149FD8B0021C1BB /* MEProductShoppingCartVC.m in Sources */,
+				36CF6862221F8CF700A5F227 /* MEBStoreMannagerEditModel.m in Sources */,
 				3617C30A21D0AD7E00004072 /* MECoupleFilterFlowLayout.m in Sources */,
 				360034AA21AE823700BAF337 /* AAPlotOptions.m in Sources */,
 				36A1A9A121D32B8600A38DEC /* MECoupleMailDetalImageCell.m in Sources */,

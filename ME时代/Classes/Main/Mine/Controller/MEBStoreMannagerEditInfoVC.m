@@ -36,8 +36,18 @@
 }
 
 - (void)saveInfo:(UIButton *)btn{
+    if(self.model.type == MEBStoreMannagerInfoStoreTelType){
+        if(!kMeUnNilStr(_tfContent.text).length){
+            [MEShowViewTool showMessage:@"手机号不能为空" view:kMeCurrentWindow];
+            return;
+        }
+        if(![MECommonTool isValidPhoneNum:kMeUnNilStr(_tfContent.text)]){
+            [MEShowViewTool showMessage:@"请填写正确的手机号码" view:kMeCurrentWindow];
+            return;
+        }
+    }
     self.model.subTitle = kMeUnNilStr(_tfContent.text);
-    kMeCallBlock(_contenBlock);
+    kMeCallBlock(_contenBlock,kMeUnNilStr(_tfContent.text));
     [self.navigationController popViewControllerAnimated:YES];
 }
 

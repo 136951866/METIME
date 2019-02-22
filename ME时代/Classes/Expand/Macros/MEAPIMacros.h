@@ -257,7 +257,10 @@
 
 /*********************************************/
 #pragma makr - Stroe
-
+//app更新店铺商家信息
+#define MEIPcommonUpdateStoreInfo @"common/store/updateStoreInfo"
+//app获取店铺商家信息
+#define MEIPcommonFindStoreInfo @"common/store/findStoreInfo"
 //门店列表
 #define MEIPcommonStoreStoreList @"common/store/getStoreList"
 //门店祥情

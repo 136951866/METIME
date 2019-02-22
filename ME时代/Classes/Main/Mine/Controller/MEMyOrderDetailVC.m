@@ -72,8 +72,13 @@
         kMeSTRONGSELF
         strongSelf->_detaliModel = [MEOrderDetailModel mj_objectWithKeyValues:responseObject.data];
         strongSelf->_orderType = [strongSelf->_detaliModel.order_status integerValue];
-        strongSelf.arrData =  @[@(MESettlmemtFreight),@(MESettlmemtRealPay),@(MESettlmemtExpressCompany),@(MESettlmemtExpressNum)];
-        strongSelf.arrDataStr = @[[NSString stringWithFormat:@"¥%@",kMeUnNilStr(strongSelf->_detaliModel.all_freight)],[NSString stringWithFormat:@"¥%@",kMeUnNilStr(strongSelf->_detaliModel.order_amount)],kMeUnNilStr(strongSelf->_detaliModel.express.express_company),kMeUnNilStr(strongSelf->_detaliModel.express.express_num)];
+        if(kMeUnNilStr(strongSelf->_detaliModel.remark).length){
+            strongSelf.arrData =  @[@(MESettlmemtFreight),@(MESettlmemtRealPay),@(MESettlmemtExpressCompany),@(MESettlmemtExpressNum),@(MESettlmemtRemark)];
+            strongSelf.arrDataStr = @[[NSString stringWithFormat:@"¥%@",kMeUnNilStr(strongSelf->_detaliModel.all_freight)],[NSString stringWithFormat:@"¥%@",kMeUnNilStr(strongSelf->_detaliModel.order_amount)],kMeUnNilStr(strongSelf->_detaliModel.express.express_company),kMeUnNilStr(strongSelf->_detaliModel.express.express_num),kMeUnNilStr(strongSelf->_detaliModel.remark)];
+        }else{
+            strongSelf.arrData =  @[@(MESettlmemtFreight),@(MESettlmemtRealPay),@(MESettlmemtExpressCompany),@(MESettlmemtExpressNum)];
+            strongSelf.arrDataStr = @[[NSString stringWithFormat:@"¥%@",kMeUnNilStr(strongSelf->_detaliModel.all_freight)],[NSString stringWithFormat:@"¥%@",kMeUnNilStr(strongSelf->_detaliModel.order_amount)],kMeUnNilStr(strongSelf->_detaliModel.express.express_company),kMeUnNilStr(strongSelf->_detaliModel.express.express_num)];
+        }
         strongSelf.tableView.tableHeaderView = strongSelf.headerView;
         if(strongSelf->_orderType == MEAllNeedPayOrder && strongSelf->_isSelf==NO){
             strongSelf.tableView.tableFooterView = strongSelf.bottomView;

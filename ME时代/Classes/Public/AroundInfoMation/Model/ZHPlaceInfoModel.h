@@ -20,4 +20,8 @@
 @property (nonatomic, strong) NSString *subThoroughfare;
 @property (nonatomic, strong) NSString *city;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
+
+
+@property (nonatomic, strong) NSString *province;
+@property (nonatomic, strong) NSString *district;
 @end

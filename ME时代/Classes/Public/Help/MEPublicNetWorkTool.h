@@ -18,6 +18,7 @@
 @class MEWxAuthModel;
 @class MEAppointAttrModel;
 @class MEWithdrawalParamModel;
+@class MEBStoreMannagerEditModel;
 
 @interface MEPublicNetWorkTool : NSObject
 
@@ -336,6 +337,10 @@
 
 /***************************************/
 #pragma mark - Store
+//app 更新店铺商家信息
++ (void)postStroeFindStoreInfoWithEditModel:(MEBStoreMannagerEditModel*)model successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+//app获取店铺商家信息
++ (void)postStroeFindStoreInfoWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //获取门店祥情
 + (void)postStroeDetailWithGoodsId:(NSInteger)storeId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //获取服务祥情

@@ -236,8 +236,10 @@
         model.city = placemark.locality;
         model.coordinate = placemark.location.coordinate;
         
-        model.address = [NSString stringWithFormat:@"%@%@%@",placemark.administrativeArea,placemark.locality,placemark.subLocality];
+        model.address = [NSString stringWithFormat:@"%@ %@ %@",placemark.administrativeArea,placemark.locality,placemark.subLocality];
         model.detailsAddress = [NSString stringWithFormat:@"%@%@",placemark.thoroughfare,placemark.name];
+        model.province = placemark.administrativeArea;
+        model.district = placemark.subLocality;
         [_infoArray insertObject:model atIndex:0];
     }
 }
@@ -251,7 +253,9 @@
         model.subThoroughfare = placemark.subThoroughfare;
         model.city = placemark.locality;
         model.coordinate = placemark.location.coordinate;
-        model.address = [NSString stringWithFormat:@"%@%@%@",placemark.administrativeArea,placemark.locality,placemark.subLocality];
+        model.address = [NSString stringWithFormat:@"%@ %@ %@",placemark.administrativeArea,placemark.locality,placemark.subLocality];
+        model.province = placemark.administrativeArea;
+        model.district = placemark.subLocality;
         model.detailsAddress = [NSString stringWithFormat:@"%@%@",placemark.thoroughfare,placemark.name];
         [_infoArray addObject:model];
     }

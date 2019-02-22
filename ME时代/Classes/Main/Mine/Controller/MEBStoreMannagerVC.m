@@ -12,14 +12,20 @@
 #import "MEBStoreMannagerEditInfoVC.h"
 #import "ZHMapAroundInfoViewController.h"
 #import "ZHPlaceInfoModel.h"
+#import "MEBStoreMannagerModel.h"
+#import "MEBStoreMannagerEditModel.h"
 
-@interface MEBStoreMannagerVC ()<UITableViewDataSource,UITableViewDelegate>
+@interface MEBStoreMannagerVC ()<UITableViewDataSource,UITableViewDelegate>{
+    MEBStoreMannagerModel *_model;
+    MEBStoreMannagerEditModel *_editModel;
+}
 
 @property (nonatomic, strong) NSMutableArray *arrModel;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) MEBStoreMannagercontentInfoModel *addrssModel;
 @property (nonatomic, strong) MEBStoreMannagercontentInfoModel *dAddrssModel;
 @property (nonatomic, strong) UIButton *btnRight;
+
 
 @end
 
@@ -28,44 +34,62 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"信息管理";
-    
-    
     _arrModel = [NSMutableArray array];
+    [self.view addSubview:self.tableView];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.btnRight];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    [self.tableView.mj_header beginRefreshing];
+}
+
+- (void)loadData{
+    kMeWEAKSELF
+    [MEPublicNetWorkTool postStroeFindStoreInfoWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        strongSelf->_model = [MEBStoreMannagerModel mj_objectWithKeyValues:responseObject.data];
+        [strongSelf initSomething];
+    } failure:^(id object) {
+       kMeSTRONGSELF
+        [strongSelf.navigationController popViewControllerAnimated:YES];
+    }];
+}
+
+- (void)initSomething{
+    [_arrModel removeAllObjects];
     MEBStoreMannagerInfoModel *basicModel =  [MEBStoreMannagerInfoModel new];
     basicModel.title = @"基本信息";
-    [basicModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoNameType title:@"真实姓名:" subTitle:@"阿*"]];
-    [basicModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoTelType title:@"手机号:" subTitle:@"18823365313"]];
+    [basicModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoNameType title:@"真实姓名:" subTitle:kMeUnNilStr(_model.true_name)]];
+    [basicModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoTelType title:@"手机号:" subTitle:kMeUnNilStr(_model.cellphone)]];
     
     
     MEBStoreMannagerInfoModel *idModel =  [MEBStoreMannagerInfoModel new];
     idModel.title = @"身份信息";
-    [idModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfolevelType title:@"当前级别:" subTitle:@"体验中心"]];
-    [idModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoLoginNameType title:@"登录名:" subTitle:@"18823365313"]];
-    [idModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoTopNameType title:@"顶级名称:" subTitle:@"售后中心"]];
-    [idModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoSupoirNameType title:@"上级名称:" subTitle:@"18823365313"]];
-
+    [idModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfolevelType title:@"当前级别:" subTitle:kMeUnNilStr(_model.current)]];
+    [idModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoLoginNameType title:@"登录名:" subTitle:kMeUnNilStr(_model.login_name)]];
+    [idModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoTopNameType title:@"顶级名称:" subTitle:kMeUnNilStr(_model.top_name)]];
+    [idModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoSupoirNameType title:@"上级名称:" subTitle:kMeUnNilStr(_model.on_name)]];
+    
     
     MEBStoreMannagerInfoModel *storeModel =  [MEBStoreMannagerInfoModel new];
     storeModel.title = @"店铺信息";
-    [storeModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoStoreNameType title:@"店铺名称:" subTitle:@"18823365313"]];
-    [storeModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoStoreTelType title:@"店铺电话:" subTitle:@"18823365313"]];
-    [storeModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfocodeIdType title:@"身份证号:" subTitle:@"18823365313"]];
-    [storeModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerStoreIntoduceType title:@"店铺简介:" subTitle:@"1882336店铺店铺店铺店铺店铺店铺店铺店铺店铺店铺店铺店铺店铺5313"]];
+    [storeModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoStoreNameType title:@"店铺名称:" subTitle:kMeUnNilStr(_model.store_name)]];
+    [storeModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoStoreTelType title:@"店铺电话:" subTitle:kMeUnNilStr(_model.mobile)]];
+    [storeModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfocodeIdType title:@"身份证号:" subTitle:kMeUnNilStr(_model.id_number)]];
+    [storeModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerStoreIntoduceType title:@"店铺简介:" subTitle:kMeUnNilStr(_model.intro)]];
     
-    self.addrssModel = [MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoAddressType title:@"地址:" subTitle:@"广东省 深圳市 南山区"];
-    self.dAddrssModel = [MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfodetailAddressType title:@"详细地址:" subTitle:@"铺店铺店铺店铺店铺店铺店铺店铺店"];
+    self.addrssModel = [MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoAddressType title:@"地址:" subTitle:[NSString stringWithFormat:@"%@ %@ %@",kMeUnNilStr(_model.province),kMeUnNilStr(_model.city),kMeUnNilStr(_model.district)]];
+    self.dAddrssModel = [MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfodetailAddressType title:@"详细地址:" subTitle:kMeUnNilStr(_model.address)];
     [storeModel.arrModel addObject:self.addrssModel];
     [storeModel.arrModel addObject:self.dAddrssModel];
     
-    [storeModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoTimeType title:@"认证通过时间:" subTitle:@"2018-09-09"]];
+    [storeModel.arrModel addObject:[MEBStoreMannagercontentInfoModel initWithType:MEBStoreMannagerInfoTimeType title:@"认证通过时间:" subTitle:kMeUnNilStr(_model.auth_at)]];
     
     [_arrModel addObject:basicModel];
     [_arrModel addObject:idModel];
     [_arrModel addObject:storeModel];
     
-    [self.view addSubview:self.tableView];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.btnRight];
-
+    _editModel = [MEBStoreMannagerEditModel editModelWIthModel:_model];
+    [self.tableView reloadData];
+    [self.tableView.mj_header endRefreshing];
 }
 
 #pragma mark - tableView deleagte and sourcedata
@@ -121,13 +145,41 @@
                 kMeSTRONGSELF
                 strongSelf.addrssModel.subTitle = kMeUnNilStr(model.address);
                 strongSelf.dAddrssModel.subTitle = kMeUnNilStr(model.detailsAddress);
+                strongSelf->_editModel.province = kMeUnNilStr(model.province);
+                strongSelf->_editModel.city = kMeUnNilStr(model.city);
+                strongSelf->_editModel.district = kMeUnNilStr(model.district);
+                strongSelf->_editModel.address = kMeUnNilStr(model.detailsAddress);
                 [strongSelf.tableView reloadData];
             };
             [self.navigationController pushViewController:mapVC animated:YES];
         }else{
             MEBStoreMannagerEditInfoVC *infoVC = [[MEBStoreMannagerEditInfoVC alloc]initWithContent:subModel];
-            infoVC.contenBlock = ^{
+            infoVC.contenBlock = ^(NSString *text){
                 kMeSTRONGSELF
+                switch (subModel.type) {
+                    case MEBStoreMannagerInfoStoreNameType:{
+                        strongSelf->_editModel.store_name = text;
+                    }
+                    break;
+                    case MEBStoreMannagerInfoStoreTelType:{
+                        strongSelf->_editModel.mobile = text;
+                    }
+                        break;
+                    case MEBStoreMannagerInfocodeIdType:{
+                        strongSelf->_editModel.id_number = text;
+                    }
+                        break;
+                    case MEBStoreMannagerStoreIntoduceType:{
+                        strongSelf->_editModel.intro = text;
+                    }
+                        break;
+                    case MEBStoreMannagerInfodetailAddressType:{
+                        strongSelf->_editModel.address = text;
+                    }
+                        break;
+                    default:
+                        break;
+                }
                 [strongSelf.tableView reloadData];
             };
             [self.navigationController pushViewController:infoVC animated:YES];
@@ -136,7 +188,11 @@
 }
 
 - (void)saveInfo:(UIButton *)btn{
-    
+    [MEPublicNetWorkTool postStroeFindStoreInfoWithEditModel:_editModel successBlock:^(ZLRequestResponse *responseObject) {
+        
+    } failure:^(id object) {
+        
+    }];
 }
 
 #pragma MARK - Setter
@@ -157,7 +213,7 @@
 - (UIButton *)btnRight{
     if(!_btnRight){
         _btnRight= [UIButton buttonWithType:UIButtonTypeCustom];
-        [_btnRight setTitle:@"确定" forState:UIControlStateNormal];
+        [_btnRight setTitle:@"保存" forState:UIControlStateNormal];
         [_btnRight setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _btnRight.backgroundColor = kMEPink;
         _btnRight.cornerRadius = 2;
