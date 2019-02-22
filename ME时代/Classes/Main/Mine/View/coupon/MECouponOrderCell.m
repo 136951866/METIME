@@ -8,6 +8,7 @@
 
 #import "MECouponOrderCell.h"
 #import "MECouponMoneyModel.h"
+#import "MEJDCouponMoneyModel.h"
 
 @interface MECouponOrderCell()
 @property (weak, nonatomic) IBOutlet UIImageView *imgPic;
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTime;
 @property (weak, nonatomic) IBOutlet UILabel *lblPrice;
 @property (weak, nonatomic) IBOutlet UILabel *lblCommission;
+@property (weak, nonatomic) IBOutlet UILabel *lblStatus;
 
 @end
 
@@ -33,6 +35,16 @@
     
     _lblPrice.text =  [NSString stringWithFormat:@"消费金额¥%@",[MECommonTool changeformatterWithFen:@(model.order_amount)]];
     _lblCommission.text = [NSString stringWithFormat:@"佣金估计¥%@",[MECommonTool changeformatterWithFen:@(model.promotion_amount)]];
+}
+
+- (void)setJDUIWithModel:(MEJDCouponMoneyModel *)model{
+    kSDLoadImg(_imgPic, kMeUnNilStr(model.imgUrl));
+    _lblTitle.text = kMeUnNilStr(model.skuName);
+    _lblTime.text = [NSString stringWithFormat:@"下单时间:%@",kMeUnNilStr(model.orderTime)];
+    
+    _lblPrice.text =  [NSString stringWithFormat:@"消费金额¥%@",kMeUnNilStr(model.price)];
+    _lblCommission.text = [NSString stringWithFormat:@"佣金估计¥%@",kMeUnNilStr(model.actualFee)];
+    _lblStatus.text = kMeUnNilStr(model.statusStr);
 }
 
 @end

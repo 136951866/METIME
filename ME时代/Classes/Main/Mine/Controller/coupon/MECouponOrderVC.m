@@ -12,6 +12,7 @@
 #import "MECouponMoneyModel.h"
 #import "MECouponDetailModel.h"
 #import "MECouponOrderSectionView.h"
+#import "MEJDCouponMoneyModel.h"
 
 @interface MECouponOrderVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     MECouponDetailModel *_modeldatil;
@@ -66,7 +67,11 @@
     if(![data isKindOfClass:[NSArray class]]){
         return;
     }
-    [self.refresh.arrData addObjectsFromArray:[MECouponMoneyModel mj_objectArrayWithKeyValuesArray:data]];
+    if(_type == MECouponOrderSectionViewPinduoduoType){
+        [self.refresh.arrData addObjectsFromArray:[MECouponMoneyModel mj_objectArrayWithKeyValuesArray:data]];
+    }else{
+        [self.refresh.arrData addObjectsFromArray:[MEJDCouponMoneyModel mj_objectArrayWithKeyValuesArray:data]];
+    }
 }
 
 #pragma mark - tableView deleagte and sourcedata
@@ -76,9 +81,14 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    MECouponMoneyModel *model = self.refresh.arrData[indexPath.row];
     MECouponOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECouponOrderCell class]) forIndexPath:indexPath];
-    [cell setUIWithModel:model];
+    if(_type == MECouponOrderSectionViewPinduoduoType){
+         MECouponMoneyModel *model = self.refresh.arrData[indexPath.row];
+        [cell setUIWithModel:model];
+    }else{
+        MEJDCouponMoneyModel *model = self.refresh.arrData[indexPath.row];
+        [cell setJDUIWithModel:model];
+    }
     return cell;
 }
 
@@ -92,6 +102,11 @@
     headview.type = _type;
     headview.selectBlock = ^(NSInteger index) {
         kMeSTRONGSELF
+        if(index == MECouponOrderSectionViewPinduoduoType){
+            strongSelf->_refresh.url = kGetApiWithUrl(MEIPcommonduoduokeGetBrokerageDetailGoods);
+        }else{
+            strongSelf->_refresh.url = kGetApiWithUrl(MEIPcommongetCommissionGoodsDetail);
+        }
         strongSelf->_type = index;
         [strongSelf.refresh reload];
     };
@@ -124,12 +139,11 @@
     if(!_refresh){
         _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonduoduokeGetBrokerageDetailGoods)];
         _refresh.delegate = self;
-//        _refresh.showFailView = NO;
         _refresh.showMaskView = YES;
         _refresh.isDataInside = YES;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
             failView.top = failView.top+kMECouponOrderSectionViewHeight;
-            failView.backgroundColor = [UIColor clearColor];
+            failView.backgroundColor = kMEededed;
             failView.lblOfNodata.text = @"没有订单";
         }];
     }

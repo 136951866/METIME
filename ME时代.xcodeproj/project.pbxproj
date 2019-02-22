@@ -366,6 +366,7 @@
 		366019C621E8798400F1BB37 /* MEMineMyActityDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 366019C421E8798400F1BB37 /* MEMineMyActityDetailCell.m */; };
 		366019C721E8798400F1BB37 /* MEMineMyActityDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 366019C521E8798400F1BB37 /* MEMineMyActityDetailCell.xib */; };
 		366A9907214F4378008EE888 /* MEPublicNetWorkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A9906214F4378008EE888 /* MEPublicNetWorkTool.m */; };
+		366BC966221F9D300078F6AD /* MEJDCouponMoneyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 366BC965221F9D300078F6AD /* MEJDCouponMoneyModel.m */; };
 		366C771221F81BA90095EBE2 /* MEProductDetailCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 366C771121F81BA90095EBE2 /* MEProductDetailCommentVC.m */; };
 		366D1CC821B4FEC00004295E /* MESNewHomeActiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D1CC721B4FEC00004295E /* MESNewHomeActiveVC.m */; };
 		366D1CCC21B503460004295E /* MESNewHomeActiveCommondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D1CCA21B503460004295E /* MESNewHomeActiveCommondCell.m */; };
@@ -1330,6 +1331,8 @@
 		366A9906214F4378008EE888 /* MEPublicNetWorkTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEPublicNetWorkTool.m; sourceTree = "<group>"; };
 		366A9908214F4753008EE888 /* MEAllToolHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEAllToolHeader.h; sourceTree = "<group>"; };
 		366A9909214F4866008EE888 /* MEAllMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEAllMacros.h; sourceTree = "<group>"; };
+		366BC964221F9D300078F6AD /* MEJDCouponMoneyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEJDCouponMoneyModel.h; sourceTree = "<group>"; };
+		366BC965221F9D300078F6AD /* MEJDCouponMoneyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEJDCouponMoneyModel.m; sourceTree = "<group>"; };
 		366C771021F81BA90095EBE2 /* MEProductDetailCommentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEProductDetailCommentVC.h; sourceTree = "<group>"; };
 		366C771121F81BA90095EBE2 /* MEProductDetailCommentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEProductDetailCommentVC.m; sourceTree = "<group>"; };
 		366D1CC621B4FEC00004295E /* MESNewHomeActiveVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MESNewHomeActiveVC.h; sourceTree = "<group>"; };
@@ -3151,6 +3154,8 @@
 				36BF3E4C21F9921000C8F856 /* MECouponMoneyModel.m */,
 				36BF3E4E21F9974900C8F856 /* MECouponDetailModel.h */,
 				36BF3E4F21F9974900C8F856 /* MECouponDetailModel.m */,
+				366BC964221F9D300078F6AD /* MEJDCouponMoneyModel.h */,
+				366BC965221F9D300078F6AD /* MEJDCouponMoneyModel.m */,
 			);
 			path = coupon;
 			sourceTree = "<group>";
@@ -4774,6 +4779,7 @@
 				3628E80A21C10E9800D5405B /* MEClerkStatisticsVC.m in Sources */,
 				360034AD21AE823700BAF337 /* AATooltip.m in Sources */,
 				36308E9221509F3200B8E7D9 /* MEBaseButton.m in Sources */,
+				366BC966221F9D300078F6AD /* MEJDCouponMoneyModel.m in Sources */,
 				36472AF321C8E15C00CC3E48 /* JXCategoryIndicatorView.m in Sources */,
 				367C05CB218FE3C60088C087 /* MENewBaoQiangCell.m in Sources */,
 				363D8E842146891D00D746DF /* MESkuBuyContentCell.m in Sources */,

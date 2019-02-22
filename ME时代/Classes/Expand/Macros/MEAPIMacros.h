@@ -51,7 +51,8 @@
 #pragma makr - JD
 //京粉精选商品查询接口
 #define MEIPcommonjingdonggoodsJingFen @"common/jingdong/goodsJingFen"
-
+//京东获取佣金商品详情
+#define MEIPcommongetCommissionGoodsDetail @"common/jingdong/getCommissionGoodsDetail"
 /*********************************************/
 
 /*********************************************/

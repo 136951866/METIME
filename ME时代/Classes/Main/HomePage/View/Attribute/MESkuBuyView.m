@@ -59,6 +59,8 @@
                     [arrSpcName addObject:kMeUnNilStr(model.spec_value)];
                 }];
                 strongSelf->_goodModel.skus = [arrSpcName componentsJoinedByString:@","];;
+                
+//                strongSelf->_goodModel.skusImage = kMeUnNilStr(psmodel.spec_img);
                 [strongSelf setSubView];
                 kMeCallBlock(strongSelf.sucessGetStoreBlock);
             }

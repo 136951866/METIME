@@ -62,7 +62,11 @@ const static CGFloat kMinCellWidth = 50;
     _goodModel = goodModel;
     _selectBlock = slectBlock;
     _lblGoodName.text = kMeUnNilStr(goodModel.title);
-    kSDLoadImg(_imgPic, MELoadQiniuImagesWithUrl(kMeUnNilStr(goodModel.images)));
+    if(kMeUnNilStr(goodModel.psmodel.spec_img).length){
+        kSDLoadImg(_imgPic, kMeUnNilStr(goodModel.psmodel.spec_img));
+    }else{
+        kSDLoadImg(_imgPic, MELoadQiniuImagesWithUrl(kMeUnNilStr(goodModel.images)));
+    }
 //    _arrData = kMeUnArr(_goodModel.spec);
     [self setSkuStrWith:_goodModel.arrSelect];
     [_collectionView reloadData];
@@ -151,6 +155,7 @@ const static CGFloat kMinCellWidth = 50;
                                             
 
         strongSelf->_goodModel.arrSelect = arrSelectSPc;
+//        strongSelf->_goodModel.skusImage = kMeUnNilStr(oldspcmodel.spec_img);
         [strongSelf setSelectWithdidSelectItemAtIndexPath:indexPath];
     } failure:^(id object) {
         

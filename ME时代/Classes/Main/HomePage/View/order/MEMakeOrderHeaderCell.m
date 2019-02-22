@@ -37,7 +37,13 @@
 }
 
 - (void)setUIWithModle:(MEGoodDetailModel *)model isComb:(BOOL)isComb isInteral:(BOOL)isInteral{
-    kSDLoadImg(_imgPic, MELoadQiniuImagesWithUrl(kMeUnNilStr(model.images)));
+//    kSDLoadImg(_imgPic, MELoadQiniuImagesWithUrl(kMeUnNilStr(model.images)));
+    if(kMeUnNilStr(model.psmodel.spec_img).length){
+        kSDLoadImg(_imgPic, kMeUnNilStr(model.psmodel.spec_img));
+    }else{
+        kSDLoadImg(_imgPic, MELoadQiniuImagesWithUrl(kMeUnNilStr(model.images)));
+    }
+    
     _lblTitle.text = kMeUnNilStr(model.title);
     _lblSku.text = kMeUnNilStr(model.skus);
     _lblNum.text = [NSString stringWithFormat:@"数量:%@",@(model.buynum).description];

@@ -33,7 +33,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下单时间:2018-09-09" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xak-4j-HLl">
-                        <rect key="frame" x="106" y="81.5" width="204" height="15"/>
+                        <rect key="frame" x="106" y="81.5" width="122.5" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="i84-DG-66I"/>
                         </constraints>
@@ -62,18 +62,25 @@
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8h-h8-1xj">
+                        <rect key="frame" x="279" y="81.5" width="31" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="h0M-V8-y0R" firstAttribute="centerY" secondItem="hnG-9q-ShT" secondAttribute="centerY" id="7ay-9b-Hfz"/>
+                    <constraint firstItem="n8h-h8-1xj" firstAttribute="centerY" secondItem="xak-4j-HLl" secondAttribute="centerY" id="7r6-pF-4st"/>
                     <constraint firstAttribute="trailing" secondItem="azi-bT-tbZ" secondAttribute="trailing" constant="10" id="9YV-4i-0kM"/>
                     <constraint firstItem="xak-4j-HLl" firstAttribute="top" secondItem="azi-bT-tbZ" secondAttribute="bottom" constant="15" id="9to-0x-X1M"/>
+                    <constraint firstItem="n8h-h8-1xj" firstAttribute="trailing" secondItem="h0M-V8-y0R" secondAttribute="trailing" id="C0f-pS-Jy5"/>
                     <constraint firstItem="lYl-ts-ari" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Cuh-fM-qkh"/>
                     <constraint firstAttribute="trailing" secondItem="lYl-ts-ari" secondAttribute="trailing" id="G5k-bF-WRE"/>
                     <constraint firstItem="xak-4j-HLl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Qww-Fp-Q1z"/>
                     <constraint firstItem="azi-bT-tbZ" firstAttribute="leading" secondItem="rbp-to-86j" secondAttribute="trailing" constant="10" id="X8P-21-QXE"/>
                     <constraint firstItem="rbp-to-86j" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="XUz-lL-ud7"/>
                     <constraint firstItem="rbp-to-86j" firstAttribute="top" secondItem="lYl-ts-ari" secondAttribute="bottom" constant="14" id="ezK-oY-YAX"/>
-                    <constraint firstAttribute="trailing" secondItem="xak-4j-HLl" secondAttribute="trailing" constant="10" id="kKm-TI-weA"/>
                     <constraint firstItem="azi-bT-tbZ" firstAttribute="top" secondItem="lYl-ts-ari" secondAttribute="bottom" constant="20" id="muk-CM-bcX"/>
                     <constraint firstItem="hnG-9q-ShT" firstAttribute="top" secondItem="xak-4j-HLl" secondAttribute="bottom" constant="13.5" id="n3D-BT-ryg"/>
                     <constraint firstItem="lYl-ts-ari" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rvg-8W-vpH"/>
@@ -86,6 +93,7 @@
                 <outlet property="imgPic" destination="rbp-to-86j" id="54f-6a-ZNW"/>
                 <outlet property="lblCommission" destination="h0M-V8-y0R" id="eUo-lJ-ptm"/>
                 <outlet property="lblPrice" destination="hnG-9q-ShT" id="Ik5-JI-bzq"/>
+                <outlet property="lblStatus" destination="n8h-h8-1xj" id="sWk-E1-pqe"/>
                 <outlet property="lblTime" destination="xak-4j-HLl" id="FYX-tj-WFC"/>
                 <outlet property="lblTitle" destination="azi-bT-tbZ" id="7Yv-CJ-P7s"/>
             </connections>
