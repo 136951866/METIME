@@ -8,6 +8,7 @@
 
 #import "MEBaseModel.h"
 
+@class MEStoreModel;
 @interface MEStoreDetailModel : MEBaseModel
 
 @property (nonatomic, strong) NSString * address;
@@ -42,4 +43,5 @@
 @property (nonatomic, strong) NSString * true_name;
 @property (nonatomic, strong) NSString * updated_at;
 
++ (MEStoreDetailModel *)modelWithStoreModel:(MEStoreModel *)model;
 @end

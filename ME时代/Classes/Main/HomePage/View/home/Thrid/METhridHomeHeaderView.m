@@ -18,6 +18,7 @@
 #import "MEFilterVC.h"
 #import "MEJDCoupleHomeVC.h"
 #import "MEStoreModel.h"
+#import "MEStoreDetailModel.h"
 
 typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
     METhridHomeHeaderViewActiveNewType = 0,
@@ -31,6 +32,7 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
 
 @interface METhridHomeHeaderView ()<SDCycleScrollViewDelegate>{
     METhridHomeModel *_model;
+    MEStoreModel *_storeModel;
 }
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consSdHeight;
@@ -156,8 +158,14 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
     METhridHomeserviceModel *smodel = _model.service[0];
     METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
     if(homeVC){
-        MEServiceDetailsVC *details = [[MEServiceDetailsVC alloc]initWithId:smodel.product_id];
-        [homeVC.navigationController pushViewController:details animated:YES];
+        if(_storeModel){
+            MEStoreDetailModel *modle = [MEStoreDetailModel modelWithStoreModel:_storeModel];
+            MEServiceDetailsVC *details = [[MEServiceDetailsVC alloc]initWithId:smodel.product_id storeDetailModel:modle];
+            [homeVC.navigationController pushViewController:details animated:YES];
+        }else{
+            MEServiceDetailsVC *details = [[MEServiceDetailsVC alloc]initWithId:smodel.product_id];
+            [homeVC.navigationController pushViewController:details animated:YES];
+        }
     }
 }
 
@@ -168,8 +176,14 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
     METhridHomeserviceModel *smodel = _model.service[1];
     METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
     if(homeVC){
-         MEServiceDetailsVC *details = [[MEServiceDetailsVC alloc]initWithId:smodel.product_id];
-        [homeVC.navigationController pushViewController:details animated:YES];
+        if(_storeModel){
+            MEStoreDetailModel *modle = [MEStoreDetailModel modelWithStoreModel:_storeModel];
+            MEServiceDetailsVC *details = [[MEServiceDetailsVC alloc]initWithId:smodel.product_id storeDetailModel:modle];
+            [homeVC.navigationController pushViewController:details animated:YES];
+        }else{
+            MEServiceDetailsVC *details = [[MEServiceDetailsVC alloc]initWithId:smodel.product_id];
+            [homeVC.navigationController pushViewController:details animated:YES];
+        }
     }
 }
 
@@ -199,6 +213,7 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
 
 - (void)setUIWithModel:(METhridHomeModel *)model stroeModel:(MEStoreModel *)storemodel{
     _model = model;
+    _storeModel = storemodel;
     __block NSMutableArray *arrImage = [NSMutableArray array];
     [kMeUnArr(model.top_banner) enumerateObjectsUsingBlock:^(METhridHomeAdModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         [arrImage addObject:kMeUnNilStr(model.ad_img)];

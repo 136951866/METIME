@@ -76,6 +76,7 @@
     [self.navView setRead:YES];
     _stroeModel = nil;
     [_headerView setUIWithModel:_homeModel stroeModel:_stroeModel];
+    [_navView setStoreInfoWithModel:_stroeModel];
 }
 
 - (void)userLogin{
