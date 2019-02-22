@@ -25,7 +25,7 @@
 @implementation MECouponOrderHeaderView
 
 - (void)setUIWithModel:(MECouponDetailModel *)model block:(kMeBasicBlock)block{
-    _lblCanUserCommsion.text = @"0";
+    _lblCanUserCommsion.text = [MECommonTool changeformatterWithFen:@(model.commission_amount)];
     _lblUsedCommsion.text = [MECommonTool changeformatterWithFen:@(model.finish_promotion_amount)];
     _lblNotUseCommsion.text = [MECommonTool changeformatterWithFen:@(model.unfinish_promotion_amount)];
     _block = block;

@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) CGFloat unfinish_promotion_amount;
 @property (nonatomic, assign) CGFloat finish_promotion_amount;
-
+@property (nonatomic, assign) CGFloat commission_amount;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -23,13 +23,11 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
     METhridHomeHeaderViewActiveRudeType =1,
     METhridHomeHeaderViewActiveTbcouponType = 2,
     METhridHomeHeaderViewActivePinduoduoCouponType = 3,
-    METhridHomeHeaderViewActiveServiceType =4,
-    METhridHomeHeaderViewActiveSortType =5
+    METhridHomeHeaderViewActiveJDType =4,
+    METhridHomeHeaderViewActiveServiceType =5
+    
 };
-const static CGFloat kSdHeight = 178;
-const static CGFloat kSecondImageHeight = 154;
-const static CGFloat kThridImageWidth = 177;
-const static CGFloat kThridImageHeight = 200;
+
 @interface METhridHomeHeaderView ()<SDCycleScrollViewDelegate>{
     METhridHomeModel *_model;
 }
@@ -55,6 +53,10 @@ const static CGFloat kThridImageHeight = 200;
 @property (weak, nonatomic) IBOutlet UIView *viewforScard;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consServiceHeight;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgStore;
+@property (weak, nonatomic) IBOutlet UILabel *lblStoreName;
+@property (weak, nonatomic) IBOutlet UILabel *lblStoreDesc;
 
 @end
 
@@ -101,6 +103,25 @@ const static CGFloat kThridImageHeight = 200;
     _viewforScard.userInteractionEnabled = YES;
     [_viewforScard addGestureRecognizer:scardGoodTap];
 }
+
+- (IBAction)shareAction:(UIButton *)sender {
+    MEShareTool *shareTool = [MEShareTool me_instanceForTarget:self];
+    shareTool.sharWebpageUrl = MEIPShare;
+    NSLog(@"%@",MEIPShare);
+    shareTool.shareTitle = @"睁着眼洗的洁面慕斯,你见过吗?";
+    shareTool.shareDescriptionBody = @"你敢买我就敢送,ME时代氨基酸洁面慕斯(邮费10元)";
+    shareTool.shareImage = kMeGetAssetImage(@"icon-wgvilogo");
+    
+    [shareTool shareWebPageToPlatformType:UMSocialPlatformType_WechatSession success:^(id data) {
+        NSLog(@"分享成功%@",data);
+        [MEPublicNetWorkTool postAddShareWithSuccessBlock:nil failure:nil];
+        [MEShowViewTool showMessage:@"分享成功" view:kMeCurrentWindow];
+    } failure:^(NSError *error) {
+        NSLog(@"分享失败%@",error);
+        [MEShowViewTool showMessage:@"分享失败" view:kMeCurrentWindow];
+    }];
+}
+
 
 //新人专享
 - (void)memberExclusive{
@@ -164,6 +185,8 @@ const static CGFloat kThridImageHeight = 200;
     }
 }
 
+
+
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     METhridHomeAdModel *model = kMeUnArr(_model.top_banner)[index];
     METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
@@ -175,7 +198,6 @@ const static CGFloat kThridImageHeight = 200;
 
 - (void)setUIWithModel:(METhridHomeModel *)model{
     _model = model;
-    //sd
     __block NSMutableArray *arrImage = [NSMutableArray array];
     [kMeUnArr(model.top_banner) enumerateObjectsUsingBlock:^(METhridHomeAdModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         [arrImage addObject:kMeUnNilStr(model.ad_img)];
@@ -225,6 +247,11 @@ const static CGFloat kThridImageHeight = 200;
         _lblRudeTite.text = @"";
         _lblRudePrice.text = @"";
     }
+    
+    //店铺
+    kSDLoadImg(_imgStore,kMeUnNilStr(@""));
+    _lblStoreName.text = kMeUnNilStr(@"Hank的小店");
+    _lblStoreDesc.text = kMeUnNilStr(@"Hank的小店Hank的小店Hank的小店Hank的小店");
 }
 
 - (IBAction)activeAction:(MEMidelMiddelImageButton *)sender {
@@ -252,12 +279,9 @@ const static CGFloat kThridImageHeight = 200;
                 break;
             case METhridHomeHeaderViewActivePinduoduoCouponType:
             {
-#warning --
-              
-//                MECoupleHomeVC *vc= [[MECoupleHomeVC alloc]initWithIsTbK:NO];
-//                [homeVC.navigationController pushViewController:vc animated:YES];
-                MEJDCoupleHomeVC *vc = [[MEJDCoupleHomeVC alloc]init];
+                MECoupleHomeVC *vc= [[MECoupleHomeVC alloc]initWithIsTbK:NO];
                 [homeVC.navigationController pushViewController:vc animated:YES];
+
             }
                 break;
             case METhridHomeHeaderViewActiveServiceType:
@@ -266,9 +290,11 @@ const static CGFloat kThridImageHeight = 200;
                 [homeVC.navigationController pushViewController:vc animated:YES];
             }
                 break;
-            case METhridHomeHeaderViewActiveSortType:
+            case METhridHomeHeaderViewActiveJDType:
             {
-                MEFilterVC *vc= [[MEFilterVC alloc]init];
+//                MEFilterVC *vc= [[MEFilterVC alloc]init];
+//                [homeVC.navigationController pushViewController:vc animated:YES];
+                MEJDCoupleHomeVC *vc = [[MEJDCoupleHomeVC alloc]init];
                 [homeVC.navigationController pushViewController:vc animated:YES];
             }
                 break;
@@ -282,7 +308,7 @@ const static CGFloat kThridImageHeight = 200;
 
 
 + (CGFloat)getViewHeightWithModel:(METhridHomeModel *)model{
-    CGFloat heigth = 785 - kSdHeight - kSecondImageHeight;
+    CGFloat heigth = 873 - kSdHeight - kSecondImageHeight;
     heigth+=(kSdHeight*kMeFrameScaleX());
     heigth+=(kSecondImageHeight*kMeFrameScaleX());
     if(kMeFrameScaleX()<1){

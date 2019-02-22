@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MECouponMoneyModel : MEBaseModel
-
+@property (nonatomic, strong) NSString * status;
 @property (nonatomic, strong) NSString * goods_thumbnail_url;
 @property (nonatomic, strong) NSString * goods_name;
 @property (nonatomic, strong) NSString * created_at;

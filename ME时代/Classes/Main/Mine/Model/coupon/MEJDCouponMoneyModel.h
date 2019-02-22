@@ -19,9 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString * price;
 @property (nonatomic, strong) NSString * skuId;
 @property (nonatomic, strong) NSString * skuName;
-//0未结算佣金 1可提现佣金 2已结算佣金
-@property (nonatomic, assign) NSInteger status;
-@property (nonatomic, strong) NSString * statusStr;
+
+@property (nonatomic, strong) NSString * status;
+
 @end
 
 NS_ASSUME_NONNULL_END

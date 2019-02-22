@@ -35,6 +35,7 @@
     
     _lblPrice.text =  [NSString stringWithFormat:@"消费金额¥%@",[MECommonTool changeformatterWithFen:@(model.order_amount)]];
     _lblCommission.text = [NSString stringWithFormat:@"佣金估计¥%@",[MECommonTool changeformatterWithFen:@(model.promotion_amount)]];
+    _lblStatus.text = kMeUnNilStr(model.status);
 }
 
 - (void)setJDUIWithModel:(MEJDCouponMoneyModel *)model{
@@ -44,7 +45,7 @@
     
     _lblPrice.text =  [NSString stringWithFormat:@"消费金额¥%@",kMeUnNilStr(model.price)];
     _lblCommission.text = [NSString stringWithFormat:@"佣金估计¥%@",kMeUnNilStr(model.actualFee)];
-    _lblStatus.text = kMeUnNilStr(model.statusStr);
+    _lblStatus.text = kMeUnNilStr(model.status);
 }
 
 @end

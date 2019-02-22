@@ -33,6 +33,8 @@
     NSArray *_arrRudeTime;
     NSArray *_arrCommonCoupon;
     METhridHomeModel *_homeModel;
+    CGFloat _sectionHeaderHeight;
+    CGFloat _alphaNum;
 }
 
 @property (nonatomic, strong) UITableView           *tableView;
@@ -51,6 +53,8 @@
     [super viewDidLoad];
     self.navBarHidden = YES;
     self.view.backgroundColor = kMEf5f4f4;
+    _sectionHeaderHeight = kMEThridHomeNavViewHeight;
+    _alphaNum = (kSdHeight*kMeFrameScaleX())+80;
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.navView];
     _selectTimeIndex = 0;
@@ -136,6 +140,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             kMeSTRONGSELF
             [strongSelf->_headerView setUIWithModel:strongSelf->_homeModel];
+#warning ----
+            [strongSelf->_navView setStoreInfoWithModel:@""];
             strongSelf->_headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [METhridHomeHeaderView getViewHeightWithModel:strongSelf->_homeModel]);
             [strongSelf getRushGoods];
             strongSelf.tableView.tableHeaderView = strongSelf->_headerView;
@@ -297,7 +303,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat sectionHeaderHeight = kMEThridHomeNavViewHeight;
+    CGFloat sectionHeaderHeight = _sectionHeaderHeight;
     
     if (scrollView.contentOffset.y<=sectionHeaderHeight&&scrollView.contentOffset.y>=0) {
         _navView.hidden = NO;
@@ -306,10 +312,29 @@
         scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
     } else if (scrollView.contentOffset.y<0) {
         _navView.hidden = YES;
+        scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     }else if (scrollView.contentOffset.y>=sectionHeaderHeight) {
         [_navView setBackAlpha:1];
         _navView.hidden = NO;
         scrollView.contentInset = UIEdgeInsetsMake(sectionHeaderHeight, 0, 0, 0);
+    }
+    
+    
+    if(scrollView.contentOffset.y>=_alphaNum){
+        if (scrollView.contentOffset.y<=(_alphaNum + kMEThridHomeNavViewHeight)&&scrollView.contentOffset.y>=0) {
+            _navView.hidden = NO;
+            CGFloat alpha = scrollView.contentOffset.y/(kMEThridHomeNavViewHeight+_alphaNum);
+            [_navView setStroeBackAlpha:alpha];
+            
+        } else if (scrollView.contentOffset.y>=(_alphaNum+kMEThridHomeNavViewHeight)) {
+            [_navView setStroeBackAlpha:1];
+            _navView.hidden = NO;
+        }
+    }else if (scrollView.contentOffset.y<0){
+        _navView.hidden = YES;
+    }else{
+        _navView.hidden = NO;
+        [_navView setStroeBackAlpha:0];
     }
 }
 
@@ -326,6 +351,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = kMEf5f4f4;
+        _tableView.scrollsToTop = NO;
     }
     return _tableView;
 }

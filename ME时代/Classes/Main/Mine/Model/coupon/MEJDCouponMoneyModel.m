@@ -10,18 +10,18 @@
 
 @implementation MEJDCouponMoneyModel
 
-- (NSString *)statusStr{
-    switch (self.status) {
-        case 0:
-            return @"未结算";
-        case 1:
-            return @"可提现";
-        case 2:
-            return @"已结算";
-        default:
-            return @"";
-            break;
-    }
-}
+//- (NSString *)statusStr{
+//    switch (self.status) {
+//        case 0:
+//            return @"未结算";
+//        case 1:
+//            return @"可提现";
+//        case 2:
+//            return @"已结算";
+//        default:
+//            return @"";
+//            break;
+//    }
+//}
 
 @end
