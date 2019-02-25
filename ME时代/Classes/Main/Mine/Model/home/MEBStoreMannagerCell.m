@@ -33,10 +33,11 @@
     }else{
         _imageTail.hidden = YES;
     }
+    _lblTitle.lineBreakMode = UILineBreakModeCharacterWrap;
     NSString *str = [NSString stringWithFormat:@"%@%@",kMeUnNilStr(model.title),kMeUnNilStr(model.subTitle)];
     CGFloat titleHeight = [NSAttributedString heightForAtsWithStr:str font:[UIFont systemFontOfSize:13] width:(SCREEN_WIDTH - 75) lineH:0 maxLine:0];
     _consTitleHeight.constant = titleHeight>16?titleHeight:16;
-    [_lblTitle setAtsWithStr:str lineGap:0];
+    _lblTitle.text = str;
 }
 
 + (CGFloat)getCellHeightWithModel:(MEBStoreMannagercontentInfoModel*)model{

@@ -11,9 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class MEStoreModel;
-const static CGFloat kImgStoreMargin = 7;
+
+//const static CGFloat kImgStoreMargin = 5;
 const static CGFloat kImgStore = 44;
-#define kMEThridHomeNavViewHeight (((IS_iPhoneX==YES||IS_IPHONE_Xr==YES||IS_IPHONE_Xs==YES||IS_IPHONE_Xs_Max==YES) ? 76 : 65)+kImgStore+kImgStoreMargin)
+#define kMEThridHomeNavViewHeight (((IS_iPhoneX==YES||IS_IPHONE_Xr==YES||IS_IPHONE_Xs==YES||IS_IPHONE_Xs_Max==YES) ? 76 : 65)+kImgStore+(k5Margin*4))
 
 @interface METhridHomeNavView : UIView
 

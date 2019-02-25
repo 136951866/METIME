@@ -79,7 +79,7 @@
 
 - (UIView *)viewForBack{
     if(!_viewForBack){
-        _viewForBack = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kMEThridHomeNavViewHeight-kImgStoreMargin-kImgStore)];
+        _viewForBack = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kMEThridHomeNavViewHeight-(k5Margin*4)-kImgStore)];
         _viewForBack.backgroundColor = kMEea3782;
         _viewForBack.alpha = 0;
     }
@@ -89,14 +89,21 @@
 - (UIView *)viewForStore{
     if(!_viewForStore){
         _viewForStore.userInteractionEnabled = YES;
-        _viewForStore = [[UIView alloc]initWithFrame:CGRectMake(0, self.viewForBack.bottom, SCREEN_WIDTH, kImgStore)];
+        _viewForStore = [[UIView alloc]initWithFrame:CGRectMake(0, self.viewForBack.bottom, SCREEN_WIDTH, kImgStore+(k5Margin *4))];
         _viewForStore.backgroundColor = [UIColor clearColor];
         _viewForStore.alpha = 0;
         
-        _imgStore = [[UIImageView alloc]initWithFrame:CGRectMake(10, 5, kImgStore, kImgStore)];
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(10, k5Margin, SCREEN_WIDTH-20, kImgStore+(k5Margin*2))];
+        view.cornerRadius = (kImgStore+(k5Margin*2))/2;
+        view.clipsToBounds = YES;
+        view.backgroundColor = [UIColor blackColor];
+        view.alpha = 0.7;
+        [_viewForStore addSubview:view];
+        
+        _imgStore = [[UIImageView alloc]initWithFrame:CGRectMake(10+((kImgStore+(k5Margin*2))/2), k5Margin*2, kImgStore, kImgStore)];
         [_viewForStore addSubview:_imgStore];
         
-        _lblStoreName = [[UILabel alloc]initWithFrame:CGRectMake(_imgStore.right+10, 5, self.width-kImgStore-(kImgStore *3), kImgStore)];
+        _lblStoreName = [[UILabel alloc]initWithFrame:CGRectMake(_imgStore.right+10, k5Margin*2, self.width-kImgStore-(10+((kImgStore+(k5Margin*2))/2))-20, kImgStore)];
         _lblStoreName.textColor = [UIColor whiteColor];
         _lblStoreName.font = kMeFont(15);
         [_viewForStore addSubview:_lblStoreName];

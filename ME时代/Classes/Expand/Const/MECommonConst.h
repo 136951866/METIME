@@ -16,7 +16,7 @@ const static CGFloat kValidTime = 60.0f;
 //view相关
 const static CGFloat k15Margin = 15;
 const static CGFloat k10Margin = 10;
-
+const static CGFloat k5Margin = 5;
 
 const static CGFloat k50WH = 50;
 
