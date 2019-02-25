@@ -22,24 +22,24 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2jy-Pw-3n3">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="368"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="2jy-Pw-3n3" secondAttribute="height" multiplier="1:1" id="3wf-85-tcG"/>
+                    </constraints>
                     <connections>
                         <outlet property="delegate" destination="-1" id="tLG-hU-OJR"/>
                     </connections>
                 </mapView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oJT-ky-N5g">
-                    <rect key="frame" x="0.0" y="368" width="375" height="299"/>
+                    <rect key="frame" x="0.0" y="375" width="375" height="292"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="299" id="9qb-ib-6bc"/>
-                    </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="rHN-nT-a1c"/>
                         <outlet property="delegate" destination="-1" id="o8B-vY-kay"/>
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1l-e7-afu">
-                    <rect key="frame" x="315" y="293" width="45" height="45"/>
+                    <rect key="frame" x="315" y="300" width="45" height="45"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="45" id="gv4-sA-slO"/>
@@ -56,13 +56,13 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="2jy-Pw-3n3" firstAttribute="trailing" secondItem="oJT-ky-N5g" secondAttribute="trailing" id="1Bp-kB-1W6"/>
+                <constraint firstItem="C1l-e7-afu" firstAttribute="bottom" secondItem="2jy-Pw-3n3" secondAttribute="bottom" constant="-30" id="1eg-ot-MeS"/>
                 <constraint firstAttribute="trailing" secondItem="2jy-Pw-3n3" secondAttribute="trailing" id="3fw-Bp-UY8"/>
                 <constraint firstItem="oJT-ky-N5g" firstAttribute="top" secondItem="2jy-Pw-3n3" secondAttribute="bottom" id="J72-mP-ZHT"/>
                 <constraint firstItem="2jy-Pw-3n3" firstAttribute="leading" secondItem="oJT-ky-N5g" secondAttribute="leading" id="RMW-0f-gGU"/>
                 <constraint firstAttribute="trailing" secondItem="C1l-e7-afu" secondAttribute="trailing" constant="15" id="Yie-FG-Y0J"/>
                 <constraint firstItem="2jy-Pw-3n3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gBu-oc-SWt"/>
                 <constraint firstItem="2jy-Pw-3n3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kfh-nA-45x"/>
-                <constraint firstItem="oJT-ky-N5g" firstAttribute="top" secondItem="C1l-e7-afu" secondAttribute="bottom" constant="30" id="qoI-x2-Uzq"/>
                 <constraint firstAttribute="bottom" secondItem="oJT-ky-N5g" secondAttribute="bottom" id="sXu-Pi-Ugi"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>

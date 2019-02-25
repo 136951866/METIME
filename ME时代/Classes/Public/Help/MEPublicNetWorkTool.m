@@ -2049,14 +2049,28 @@
 #pragma mark - Store
 //app 更新店铺商家信息
 + (void)postStroeFindStoreInfoWithEditModel:(MEBStoreMannagerEditModel*)model successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    if(!kMeUnNilStr(model.store_name).length){
+        [MEShowViewTool showMessage:@"店铺名称不能为空" view:kMeCurrentWindow];
+        return;
+    }
+    
     if(!kMeUnNilStr(model.mobile).length){
-        [MEShowViewTool showMessage:@"手机号不能为空" view:kMeCurrentWindow];
+        [MEShowViewTool showMessage:@"店铺电话不能为空" view:kMeCurrentWindow];
         return;
     }
     if(![MECommonTool isValidPhoneNum:kMeUnNilStr(model.mobile)]){
-        [MEShowViewTool showMessage:@"请填写正确的手机号码" view:kMeCurrentWindow];
+        [MEShowViewTool showMessage:@"请填写正确的店铺电话" view:kMeCurrentWindow];
         return;
     }
+    if(!kMeUnNilStr(model.id_number).length){
+        [MEShowViewTool showMessage:@"身份证不能为空" view:kMeCurrentWindow];
+        return;
+    }
+    if(!kMeUnNilStr(model.intro).length){
+        [MEShowViewTool showMessage:@"店铺简介不能为空" view:kMeCurrentWindow];
+        return;
+    }
+
     
     NSDictionary *dic = [model mj_keyValues];
     NSString *url = kGetApiWithUrl(MEIPcommonUpdateStoreInfo);

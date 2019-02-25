@@ -110,7 +110,11 @@
     dispatch_group_async(group, queue, ^{
         [MEPublicNetWorkTool postGetappHomePageDataWithSuccessBlock:^(ZLRequestResponse *responseObject) {
             kMeSTRONGSELF
-            strongSelf->_stroeModel = [MEStoreModel mj_objectWithKeyValues:responseObject.data];
+            if ([responseObject.data isKindOfClass:[NSDictionary class]]) {
+                strongSelf->_stroeModel = [MEStoreModel mj_objectWithKeyValues:responseObject.data];
+            }else{
+                strongSelf->_stroeModel = nil;
+            }
             dispatch_semaphore_signal(semaphore);
         } failure:^(id object) {
             kMeSTRONGSELF
@@ -337,13 +341,11 @@
         scrollView.contentInset = UIEdgeInsetsMake(sectionHeaderHeight, 0, 0, 0);
     }
     
-    
     if(scrollView.contentOffset.y>=_alphaNum){
         if (scrollView.contentOffset.y<=(_alphaNum + kMEThridHomeNavViewHeight)&&scrollView.contentOffset.y>=0) {
             _navView.hidden = NO;
             CGFloat alpha = scrollView.contentOffset.y/(kMEThridHomeNavViewHeight+_alphaNum);
             [_navView setStroeBackAlpha:alpha];
-            
         } else if (scrollView.contentOffset.y>=(_alphaNum+kMEThridHomeNavViewHeight)) {
             [_navView setStroeBackAlpha:1];
             _navView.hidden = NO;
