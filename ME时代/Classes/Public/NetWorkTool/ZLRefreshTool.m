@@ -86,7 +86,7 @@ NSUInteger const kSizeNum = 10;
     [ZLFailLoadView removeFromView:self.contentView];
     if(_showMaskView&&_pageIndex==1){
 //        [MEShowViewTool showMessage:@"" view:self.contentView];
-        [MBProgressHUD showMessage:@"" toView:self.contentView];
+        [MBProgressHUD showMessage:@"" toView:kMeCurrentWindow];
     }
     if (self.delegate && [self.delegate respondsToSelector:@selector(requestParameter)] && [self.delegate respondsToSelector:@selector(handleResponse:)]) {
         
@@ -94,7 +94,7 @@ NSUInteger const kSizeNum = 10;
         NSLog(@"MERefresh\n%@",parameter);
         if (!self.url) {
             if(_showMaskView&&_pageIndex==1){
-                [MBProgressHUD hideHUDForView:self.contentView];
+                [MBProgressHUD hideHUDForView:kMeCurrentWindow];
             }
             return;
         }
@@ -107,7 +107,7 @@ NSUInteger const kSizeNum = 10;
                 return;
             }
             if(strongSelf->_showMaskView&&strongSelf->_pageIndex==1){
-                [MBProgressHUD hideHUDForView:strongSelf.contentView];
+                [MBProgressHUD hideHUDForView:kMeCurrentWindow];
             }
             
             if (strongSelf.pageIndex == 1) {
@@ -162,7 +162,7 @@ NSUInteger const kSizeNum = 10;
                 return;
             }
             if(strongSelf->_showMaskView&&strongSelf->_pageIndex==1){
-                [MBProgressHUD hideHUDForView:strongSelf.contentView];
+                [MBProgressHUD hideHUDForView:kMeCurrentWindow];
             }
             [strongSelf endRefreshIsHead:isHead];
             if ([strongSelf.contentView respondsToSelector:@selector(reloadData)]) {
@@ -205,7 +205,7 @@ NSUInteger const kSizeNum = 10;
         }
     }else{
         if(_showMaskView&&_pageIndex==1){
-            [MBProgressHUD hideHUDForView:self.contentView];
+            [MBProgressHUD hideHUDForView:kMeCurrentWindow];
         }
     }
 }
