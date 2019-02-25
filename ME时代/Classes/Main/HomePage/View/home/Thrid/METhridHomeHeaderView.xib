@@ -66,10 +66,17 @@
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PnZ-ln-rTi">
+                            <rect key="frame" x="0.0" y="0.0" width="304" height="70"/>
+                            <connections>
+                                <action selector="toStoreAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="skT-qU-Y5A"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="gLz-tW-Wr6" secondAttribute="trailing" constant="10" id="2IY-H2-aQ5"/>
+                        <constraint firstItem="PnZ-ln-rTi" firstAttribute="leading" secondItem="QiX-5y-TyF" secondAttribute="leading" id="Beh-qS-vFF"/>
                         <constraint firstItem="EOn-20-vdd" firstAttribute="top" secondItem="QiX-5y-TyF" secondAttribute="top" constant="15" id="CzH-tF-1vR"/>
                         <constraint firstItem="gLz-tW-Wr6" firstAttribute="leading" secondItem="EOn-20-vdd" secondAttribute="trailing" constant="10" id="D9V-Jd-ueg"/>
                         <constraint firstItem="bBw-5m-kGN" firstAttribute="top" secondItem="EOn-20-vdd" secondAttribute="bottom" constant="9" id="Hp6-eN-mwe"/>
@@ -80,7 +87,10 @@
                         <constraint firstItem="qcK-SS-e62" firstAttribute="leading" secondItem="QiX-5y-TyF" secondAttribute="leading" constant="10" id="mWh-Nl-OLQ"/>
                         <constraint firstItem="gLz-tW-Wr6" firstAttribute="leading" secondItem="bBw-5m-kGN" secondAttribute="trailing" constant="10" id="oMm-Q5-blB"/>
                         <constraint firstItem="qcK-SS-e62" firstAttribute="centerY" secondItem="QiX-5y-TyF" secondAttribute="centerY" id="p5l-Zs-rVe"/>
+                        <constraint firstItem="gLz-tW-Wr6" firstAttribute="leading" secondItem="PnZ-ln-rTi" secondAttribute="trailing" id="pVf-gz-nKi"/>
+                        <constraint firstAttribute="bottom" secondItem="PnZ-ln-rTi" secondAttribute="bottom" id="qXF-av-taj"/>
                         <constraint firstItem="gLz-tW-Wr6" firstAttribute="top" secondItem="QiX-5y-TyF" secondAttribute="top" id="sJZ-Oj-Ql5"/>
+                        <constraint firstItem="PnZ-ln-rTi" firstAttribute="top" secondItem="QiX-5y-TyF" secondAttribute="top" id="up2-Rc-Fqz"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

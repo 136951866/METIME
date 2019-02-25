@@ -19,6 +19,7 @@
 #import "MEJDCoupleHomeVC.h"
 #import "MEStoreModel.h"
 #import "MEStoreDetailModel.h"
+#import "MENewStoreDetailsVC.h"
 
 typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
     METhridHomeHeaderViewActiveNewType = 0,
@@ -124,6 +125,15 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
         [MEShowViewTool showMessage:@"分享失败" view:kMeCurrentWindow];
     }];
 }
+
+- (IBAction)toStoreAction:(UIButton *)sender {
+    METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
+    if(_storeModel&&homeVC){
+        MENewStoreDetailsVC *details = [[MENewStoreDetailsVC alloc]initWithId:_storeModel.store_id];
+        [homeVC.navigationController pushViewController:details animated:YES];
+    }
+}
+
 
 
 //新人专享

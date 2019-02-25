@@ -23,6 +23,8 @@ const static CGFloat kImgStore = 44;
 - (void)setRead:(BOOL)read;
 - (void)setStoreInfoWithModel:(MEStoreModel *)model;
 
+@property (nonatomic ,copy) kMeBasicBlock toStoreBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END
