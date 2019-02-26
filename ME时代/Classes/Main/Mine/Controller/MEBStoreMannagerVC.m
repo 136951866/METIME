@@ -149,6 +149,9 @@
                 strongSelf->_editModel.city = kMeUnNilStr(model.city);
                 strongSelf->_editModel.district = kMeUnNilStr(model.district);
                 strongSelf->_editModel.address = kMeUnNilStr(model.detailsAddress);
+                
+                strongSelf->_editModel.latitude = @(model.coordinate.latitude).description;
+                strongSelf->_editModel.longitude = @(model.coordinate.longitude).description;
                 [strongSelf.tableView reloadData];
             };
             [self.navigationController pushViewController:mapVC animated:YES];

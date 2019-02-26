@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 //最小单买价格（单位为分）
 //@property (nonatomic, assign) CGFloat min_normal_price;
 @property (nonatomic, assign) CGFloat min_group_price;
+@property (nonatomic, assign) CGFloat min_ratio;
 @end
 
 NS_ASSUME_NONNULL_END

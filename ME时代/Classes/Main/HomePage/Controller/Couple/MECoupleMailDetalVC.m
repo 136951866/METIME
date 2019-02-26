@@ -394,7 +394,8 @@
         _btnShare.backgroundColor = [UIColor colorWithHexString:@"FC8F0C"];
         [_btnShare setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         if(_pinduoduomodel){
-            [_btnShare setTitle:@"分享购买得佣金" forState:UIControlStateNormal];
+            NSString *str = [NSString stringWithFormat:@"分享购买最低%@佣金",[MECommonTool changeformatterWithFen:@(_pinduoduomodel.min_ratio)]];
+            [_btnShare setTitle:str forState:UIControlStateNormal];
         }else{
             [_btnShare setTitle:@"马上分享" forState:UIControlStateNormal];
         }

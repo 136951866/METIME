@@ -32,6 +32,8 @@
 
 @implementation MEOrderDetailView
 
+#warning logist-------
+
 - (void)awakeFromNib{
     [super awakeFromNib];
    _arrType = MEOrderStyleTitle;

@@ -21,5 +21,8 @@
 @property (nonatomic, strong) NSString * intro;
 @property (nonatomic, strong) NSString * distance;
 @property (nonatomic, strong) NSArray * label;
+@property (nonatomic, strong) NSString *cellphone;
 
+@property (nonatomic, strong) NSString *latitude;
+@property (nonatomic, strong) NSString *longitude;
 @end

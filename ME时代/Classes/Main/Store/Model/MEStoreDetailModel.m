@@ -22,6 +22,9 @@
     detailModel.mask_img = model.mask_img;
     detailModel.stars = model.stars;
     detailModel.intro = model.intro;
+    detailModel.mobile = model.cellphone;
+    detailModel.latitude = model.latitude;
+    detailModel.longitude = model.longitude;
     return detailModel;
 }
 @end

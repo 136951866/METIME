@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString * city;
 @property (nonatomic, copy) NSString * district;
 
+@property (nonatomic, strong) NSString * latitude;
+@property (nonatomic, strong) NSString * longitude;
 + (MEBStoreMannagerEditModel *)editModelWIthModel:(MEBStoreMannagerModel *)model;
 
 @end

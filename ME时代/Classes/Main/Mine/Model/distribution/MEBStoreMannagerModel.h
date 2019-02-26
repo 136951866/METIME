@@ -32,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString * province;
 @property (nonatomic, strong) NSString * city;
 @property (nonatomic, strong) NSString * district;
+
 @end
 
 NS_ASSUME_NONNULL_END

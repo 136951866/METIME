@@ -22,6 +22,8 @@
     editmodel.province = kMeUnNilStr(model.province);
     editmodel.city = kMeUnNilStr(model.city);
     editmodel.district = kMeUnNilStr(model.district);
+    editmodel.latitude = kMeUnNilStr(model.latitude);
+    editmodel.longitude = kMeUnNilStr(model.longitude);
     return editmodel;
 }
 @end

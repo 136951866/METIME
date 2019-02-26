@@ -30,9 +30,12 @@ MEModelObjectClassInArrayWithDic(@{@"imageList":[ImageContentInfo class]})
 
 @implementation PriceInfo : MEBaseModel
 
+@end
 
+@implementation CommissionInfo : MEBaseModel
 
 @end
+
 
 @implementation MEJDCoupleModel
 
