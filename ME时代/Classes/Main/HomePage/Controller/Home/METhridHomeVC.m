@@ -26,7 +26,7 @@
 #import "MECoupleMailDetalVC.h"
 #import "MENetListModel.h"
 #import "MEStoreModel.h"
-
+const static CGFloat kImgStore = 44;
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSInteger _selectTimeIndex;
     NSArray *_arrRudeBuy;
@@ -42,6 +42,7 @@
 @property (nonatomic, strong) METhridHomeHeaderView *headerView;
 @property (nonatomic, strong) METhridHomeNavView *navView;
 @property (nonatomic, strong) ZLRefreshTool         *refresh;
+@property (nonatomic, strong) UIImageView *imgStore;
 @end
 
 @implementation METhridHomeVC
@@ -58,6 +59,7 @@
     _alphaNum = (kSdHeight*kMeFrameScaleX())+80;
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.navView];
+    [self.view addSubview:self.imgStore];
     _selectTimeIndex = 0;
     _arrRudeBuy = [NSArray array];
     _arrCommonCoupon = [NSArray array];
@@ -76,7 +78,8 @@
     [self.navView setRead:YES];
     _stroeModel = nil;
     [_headerView setUIWithModel:_homeModel stroeModel:_stroeModel];
-    [_navView setStoreInfoWithModel:_stroeModel];
+    _imgStore.image = [UIImage imageNamed:@"icon-wgvilogo"];
+//    [_navView setStoreInfoWithModel:_stroeModel];
 }
 
 - (void)userLogin{
@@ -163,7 +166,13 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             kMeSTRONGSELF
             [strongSelf->_headerView setUIWithModel:strongSelf->_homeModel stroeModel:strongSelf->_stroeModel];
-            [strongSelf->_navView setStoreInfoWithModel:strongSelf->_stroeModel];
+            if(strongSelf->_stroeModel){
+                 kSDLoadImg(strongSelf->_imgStore, kMeUnNilStr(strongSelf->_stroeModel.mask_img));
+            }else{
+                strongSelf->_imgStore.image = [UIImage imageNamed:@"icon-wgvilogo"];
+            }
+            strongSelf->_imgStore.hidden = YES;
+//            [strongSelf->_navView setStoreInfoWithModel:strongSelf->_stroeModel];
             strongSelf->_headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [METhridHomeHeaderView getViewHeightWithModel:strongSelf->_homeModel]);
             [strongSelf getRushGoods];
             strongSelf.tableView.tableHeaderView = strongSelf->_headerView;
@@ -342,19 +351,22 @@
     }
     
     if(scrollView.contentOffset.y>=_alphaNum){
-        if (scrollView.contentOffset.y<=(_alphaNum + kMEThridHomeNavViewHeight)&&scrollView.contentOffset.y>=0) {
-            _navView.hidden = NO;
-            CGFloat alpha = scrollView.contentOffset.y/(kMEThridHomeNavViewHeight+_alphaNum);
-            [_navView setStroeBackAlpha:alpha];
-        } else if (scrollView.contentOffset.y>=(_alphaNum+kMEThridHomeNavViewHeight)) {
-            [_navView setStroeBackAlpha:1];
-            _navView.hidden = NO;
-        }
+        _imgStore.hidden = NO;
+//        if (scrollView.contentOffset.y<=(_alphaNum + kMEThridHomeNavViewHeight)&&scrollView.contentOffset.y>=0) {
+//            _navView.hidden = NO;
+//            CGFloat alpha = scrollView.contentOffset.y/(kMEThridHomeNavViewHeight+_alphaNum);
+//            [_navView setStroeBackAlpha:alpha];
+//        } else if (scrollView.contentOffset.y>=(_alphaNum+kMEThridHomeNavViewHeight)) {
+//            [_navView setStroeBackAlpha:1];
+//            _navView.hidden = NO;
+//        }
     }else if (scrollView.contentOffset.y<0){
-        _navView.hidden = YES;
+//        _navView.hidden = YES;
+        _imgStore.hidden = YES;
     }else{
-        _navView.hidden = NO;
-        [_navView setStroeBackAlpha:0];
+         _imgStore.hidden = YES;
+//        _navView.hidden = NO;
+//        [_navView setStroeBackAlpha:0];
     }
 }
 
@@ -374,6 +386,16 @@
         _tableView.scrollsToTop = NO;
     }
     return _tableView;
+}
+
+- (UIImageView *)imgStore{
+    if(!_imgStore){
+        _imgStore = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-k15Margin-kImgStore, SCREEN_HEIGHT-kMeTabBarHeight-k15Margin-kImgStore, kImgStore, kImgStore)];
+        _imgStore.cornerRadius = kImgStore/2;
+        _imgStore.clipsToBounds = YES;
+        _imgStore.hidden = YES;
+    }
+    return _imgStore;
 }
 
 - (METhridHomeHeaderView *)headerView{
