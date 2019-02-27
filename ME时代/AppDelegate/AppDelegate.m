@@ -40,12 +40,12 @@
     [MECommonTool initAppSomeThing];
 
 #pragma mark - init ronyun sdk
-    [[RCIM sharedRCIM] initWithAppKey:RONGYUNAppKey];
-    [[RCIM sharedRCIM] setConnectionStatusDelegate:self];
-    [RCIM sharedRCIM].enableTypingStatus = YES;
-    [RCIM sharedRCIM].enabledReadReceiptConversationTypeList = @[@"ConversationType_PRIVATE"];
-    [RCIM sharedRCIM].showUnkownMessage = YES;
-    [RCIM sharedRCIM].showUnkownMessageNotificaiton = YES;
+//    [[RCIM sharedRCIM] initWithAppKey:RONGYUNAppKey];
+//    [[RCIM sharedRCIM] setConnectionStatusDelegate:self];
+//    [RCIM sharedRCIM].enableTypingStatus = YES;
+//    [RCIM sharedRCIM].enabledReadReceiptConversationTypeList = @[@"ConversationType_PRIVATE"];
+//    [RCIM sharedRCIM].showUnkownMessage = YES;
+//    [RCIM sharedRCIM].showUnkownMessageNotificaiton = YES;
 #pragma mark 融云推送
     if (@available(iOS 11.0, *)) {
         [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -86,37 +86,37 @@
     }
     
     
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(didReceiveMessageNotification:)
-     name:RCKitDispatchMessageNotification
-     object:nil];
-    if([MEUserInfoModel isLogin]){
-        NSLog(@"token//  %@  /n //   %@ //",kCurrentUser.token,kCurrentUser.uid);
-        NSString *nameStr = (kCurrentUser.name.length > 0 && ![kCurrentUser.name isKindOfClass:[NSNull class]]) ? kCurrentUser.name : kCurrentUser.uid;
-        if( ![kCurrentUser.rongcloud_token isKindOfClass:[NSNull class]] && kCurrentUser.rongcloud_token.length > 0){
-            [[RCIM sharedRCIM] connectWithToken:kCurrentUser.rongcloud_token success:^(NSString *userId) {
-                self.unMessageCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[
-                                                                                @(ConversationType_PRIVATE),
-                                                                                      ]];
-                kNoticeReloadkUnMessage
-                RCUserInfo *user = [[RCUserInfo alloc] initWithUserId:kCurrentUser.uid name:nameStr portrait:kMeUnNilStr(kCurrentUser.header_pic)];
-//                [[RCIM sharedRCIM]  setCurrentUserInfo:user];
-//                [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:userId];
-                [RCIM sharedRCIM].currentUserInfo = user;
-                [RCIM sharedRCIM].enableMessageAttachUserInfo = YES;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [[RCIM sharedRCIM] setUserInfoDataSource:self];
-                });
-                NSLog(@"成功");
-            }error:^(RCConnectErrorCode status) {
-                NSLog(@"失败");
-            }tokenIncorrect:^() {
-                // Token 失效的
-                NSLog(@"Token 失效");
-            }];
-        }
-    }
+//    [[NSNotificationCenter defaultCenter]
+//     addObserver:self
+//     selector:@selector(didReceiveMessageNotification:)
+//     name:RCKitDispatchMessageNotification
+//     object:nil];
+//    if([MEUserInfoModel isLogin]){
+//        NSLog(@"token//  %@  /n //   %@ //",kCurrentUser.token,kCurrentUser.uid);
+//        NSString *nameStr = (kCurrentUser.name.length > 0 && ![kCurrentUser.name isKindOfClass:[NSNull class]]) ? kCurrentUser.name : kCurrentUser.uid;
+//        if( ![kCurrentUser.rongcloud_token isKindOfClass:[NSNull class]] && kCurrentUser.rongcloud_token.length > 0){
+//            [[RCIM sharedRCIM] connectWithToken:kCurrentUser.rongcloud_token success:^(NSString *userId) {
+//                self.unMessageCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[
+//                                                                                @(ConversationType_PRIVATE),
+//                                                                                      ]];
+//                kNoticeReloadkUnMessage
+//                RCUserInfo *user = [[RCUserInfo alloc] initWithUserId:kCurrentUser.uid name:nameStr portrait:kMeUnNilStr(kCurrentUser.header_pic)];
+////                [[RCIM sharedRCIM]  setCurrentUserInfo:user];
+////                [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:userId];
+//                [RCIM sharedRCIM].currentUserInfo = user;
+//                [RCIM sharedRCIM].enableMessageAttachUserInfo = YES;
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    [[RCIM sharedRCIM] setUserInfoDataSource:self];
+//                });
+//                NSLog(@"成功");
+//            }error:^(RCConnectErrorCode status) {
+//                NSLog(@"失败");
+//            }tokenIncorrect:^() {
+//                // Token 失效的
+//                NSLog(@"Token 失效");
+//            }];
+//        }
+//    }
 #pragma mark - 极光tuis
     JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
     entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
@@ -226,18 +226,18 @@
  *  @param status 网络状态。
  */
 
-- (void)onRCIMConnectionStatusChanged:(RCConnectionStatus)status {
-    if (status == ConnectionStatus_KICKED_OFFLINE_BY_OTHER_CLIENT) {
-
-        HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:@"您的帐号在别的设备上登录，您被迫下线！请退出重新登录!"];
-        alertView.isSupportRotating = YES;
-        [alertView addButtonWithTitle:@"确定" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
-            [MEUserInfoModel logout];
-            [MEWxLoginVC presentLoginVCWithIsShowCancel:NO SuccessHandler:nil failHandler:nil];
-        }];
-        [alertView show];
-    }
-}
+//- (void)onRCIMConnectionStatusChanged:(RCConnectionStatus)status {
+//    if (status == ConnectionStatus_KICKED_OFFLINE_BY_OTHER_CLIENT) {
+//
+//        HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:@"您的帐号在别的设备上登录，您被迫下线！请退出重新登录!"];
+//        alertView.isSupportRotating = YES;
+//        [alertView addButtonWithTitle:@"确定" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
+//            [MEUserInfoModel logout];
+//            [MEWxLoginVC presentLoginVCWithIsShowCancel:NO SuccessHandler:nil failHandler:nil];
+//        }];
+//        [alertView show];
+//    }
+//}
 
 - (void)application:(UIApplication *)application
 didRegisterUserNotificationSettings:
@@ -260,7 +260,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
      withString:@""];
     NSLog(@"deviceToken%@",token);
 #pragma mark 融云推送接收消息
-    [[RCIMClient sharedRCIMClient] setDeviceToken:token];
+//    [[RCIMClient sharedRCIMClient] setDeviceToken:token];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -350,117 +350,117 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 #pragma mark 本地 融云消息未读数
-
-- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *userInfo))completion{
-    RCUserInfo *otherUser = [[RCUserInfo alloc]init];
-    if(kMeUnNilStr(userId).length==0){
-        otherUser.userId = userId;
-        otherUser.portraitUri = @"";
-        otherUser.name = userId;
-        completion(otherUser);
-        return;
-    }
-    //先获取用户
-    [MEPublicNetWorkTool postGetUserGetUserInfoWithUid:userId SuccessBlock:^(ZLRequestResponse *responseObject) {
-        if([responseObject.data isKindOfClass:[NSDictionary class]]){
-            if([responseObject.data isKindOfClass:[NSDictionary class]]){
-                NSDictionary *dic = responseObject.data;
-                if([kMeUnDic(dic) count]){
-                    NSString *name = kMeUnDic(dic)[@"name"];
-                    NSString *header_pic = kMeUnDic(dic)[@"header_pic"];
-                    otherUser.userId = userId;
-                    otherUser.portraitUri = kMeUnNilStr(header_pic);
-                    otherUser.name = kMeUnNilStr(name);
-                    completion(otherUser);
-                }else{
-                    otherUser.userId = userId;
-                    otherUser.portraitUri = @"";
-                    otherUser.name = userId;
-                    completion(otherUser);
-                }
-            }else{
-                otherUser.userId = userId;
-                otherUser.portraitUri = @"";
-                otherUser.name = userId;
-                completion(otherUser);
-            }
-        }else{
-            [MEPublicNetWorkTool postGetCustomerGetUserInfoWithUid:userId SuccessBlock:^(ZLRequestResponse *responseObject) {
-                if([responseObject.data isKindOfClass:[NSDictionary class]]){
-                    NSDictionary *dic = responseObject.data;
-                    if([kMeUnDic(dic) count]){
-                        NSString *name = kMeUnDic(dic)[@"name"];
-                        NSString *header_pic = kMeUnDic(dic)[@"header_pic"];
-                        otherUser.userId = userId;
-                        otherUser.portraitUri = kMeUnNilStr(header_pic);
-                        otherUser.name = kMeUnNilStr(name);
-                        completion(otherUser);
-                    }else{
-                        otherUser.userId = userId;
-                        otherUser.portraitUri = @"";
-                        otherUser.name = userId;
-                        completion(otherUser);
-                    }
-                }else{
-                    otherUser.userId = userId;
-                    otherUser.portraitUri = @"";
-                    otherUser.name = userId;
-                    completion(otherUser);
-                }
-            } failure:^(id object) {
-                otherUser.userId = userId;
-                otherUser.portraitUri = @"";
-                otherUser.name = userId;
-                completion(otherUser);
-            }];
-        }
-    } failure:^(id object) {
-        otherUser.userId = userId;
-        otherUser.portraitUri = @"";
-        otherUser.name = userId;
-        completion(otherUser);
-    }];
-}
-
-- (void)didReceiveMessageNotification:(NSNotification *)notification {
-    if([MEUserInfoModel isLogin]){
-        RCMessage *message = notification.object;
-        if (message.messageDirection == MessageDirection_RECEIVE && [[message.content class] persistentFlag] & MessagePersistent_ISCOUNTED) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [UIApplication sharedApplication].applicationIconBadgeNumber +=1;
-            });
-        }
-        self.unMessageCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[
-                                                                              @(ConversationType_PRIVATE),
-                                                                              ]];
-        
-        NSLog(@"%@",@(self.unMessageCount));
-        kNoticeReloadkUnMessage
-    }
-}
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-    RCConnectionStatus status = [[RCIMClient sharedRCIMClient] getConnectionStatus];
-    if([MEUserInfoModel isLogin] && status != ConnectionStatus_SignUp){
-        self.unMessageCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[
-                                                                              @(ConversationType_PRIVATE),
-                                                                              ]];
+//
+//- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *userInfo))completion{
+//    RCUserInfo *otherUser = [[RCUserInfo alloc]init];
+//    if(kMeUnNilStr(userId).length==0){
+//        otherUser.userId = userId;
+//        otherUser.portraitUri = @"";
+//        otherUser.name = userId;
+//        completion(otherUser);
+//        return;
+//    }
+//    //先获取用户
+//    [MEPublicNetWorkTool postGetUserGetUserInfoWithUid:userId SuccessBlock:^(ZLRequestResponse *responseObject) {
+//        if([responseObject.data isKindOfClass:[NSDictionary class]]){
+//            if([responseObject.data isKindOfClass:[NSDictionary class]]){
+//                NSDictionary *dic = responseObject.data;
+//                if([kMeUnDic(dic) count]){
+//                    NSString *name = kMeUnDic(dic)[@"name"];
+//                    NSString *header_pic = kMeUnDic(dic)[@"header_pic"];
+//                    otherUser.userId = userId;
+//                    otherUser.portraitUri = kMeUnNilStr(header_pic);
+//                    otherUser.name = kMeUnNilStr(name);
+//                    completion(otherUser);
+//                }else{
+//                    otherUser.userId = userId;
+//                    otherUser.portraitUri = @"";
+//                    otherUser.name = userId;
+//                    completion(otherUser);
+//                }
+//            }else{
+//                otherUser.userId = userId;
+//                otherUser.portraitUri = @"";
+//                otherUser.name = userId;
+//                completion(otherUser);
+//            }
+//        }else{
+//            [MEPublicNetWorkTool postGetCustomerGetUserInfoWithUid:userId SuccessBlock:^(ZLRequestResponse *responseObject) {
+//                if([responseObject.data isKindOfClass:[NSDictionary class]]){
+//                    NSDictionary *dic = responseObject.data;
+//                    if([kMeUnDic(dic) count]){
+//                        NSString *name = kMeUnDic(dic)[@"name"];
+//                        NSString *header_pic = kMeUnDic(dic)[@"header_pic"];
+//                        otherUser.userId = userId;
+//                        otherUser.portraitUri = kMeUnNilStr(header_pic);
+//                        otherUser.name = kMeUnNilStr(name);
+//                        completion(otherUser);
+//                    }else{
+//                        otherUser.userId = userId;
+//                        otherUser.portraitUri = @"";
+//                        otherUser.name = userId;
+//                        completion(otherUser);
+//                    }
+//                }else{
+//                    otherUser.userId = userId;
+//                    otherUser.portraitUri = @"";
+//                    otherUser.name = userId;
+//                    completion(otherUser);
+//                }
+//            } failure:^(id object) {
+//                otherUser.userId = userId;
+//                otherUser.portraitUri = @"";
+//                otherUser.name = userId;
+//                completion(otherUser);
+//            }];
+//        }
+//    } failure:^(id object) {
+//        otherUser.userId = userId;
+//        otherUser.portraitUri = @"";
+//        otherUser.name = userId;
+//        completion(otherUser);
+//    }];
+//}
+//
+//- (void)didReceiveMessageNotification:(NSNotification *)notification {
+//    if([MEUserInfoModel isLogin]){
+//        RCMessage *message = notification.object;
+//        if (message.messageDirection == MessageDirection_RECEIVE && [[message.content class] persistentFlag] & MessagePersistent_ISCOUNTED) {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [UIApplication sharedApplication].applicationIconBadgeNumber +=1;
+//            });
+//        }
+//        self.unMessageCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[
+//                                                                              @(ConversationType_PRIVATE),
+//                                                                              ]];
+//
+//        NSLog(@"%@",@(self.unMessageCount));
+//        kNoticeReloadkUnMessage
+//    }
+//}
+//
+//- (void)applicationWillResignActive:(UIApplication *)application {
+//    RCConnectionStatus status = [[RCIMClient sharedRCIMClient] getConnectionStatus];
+//    if([MEUserInfoModel isLogin] && status != ConnectionStatus_SignUp){
+//        self.unMessageCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[
+//                                                                              @(ConversationType_PRIVATE),
+//                                                                              ]];
+////        application.applicationIconBadgeNumber =   self.unMessageCount;
+//    }else{
+//        application.applicationIconBadgeNumber =   0;
+//    }
+//}
+//
+//- (void)applicationDidEnterBackground:(UIApplication *)application {
+//    if([MEUserInfoModel isLogin]){
+//        self.unMessageCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[
+//                                                                              @(ConversationType_PRIVATE),
+//                                                                              ]];
 //        application.applicationIconBadgeNumber =   self.unMessageCount;
-    }else{
-        application.applicationIconBadgeNumber =   0;
-    }
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    if([MEUserInfoModel isLogin]){
-        self.unMessageCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[
-                                                                              @(ConversationType_PRIVATE),
-                                                                              ]];
-        application.applicationIconBadgeNumber =   self.unMessageCount;
-    }else{
-        application.applicationIconBadgeNumber =   0;
-    }
-}
+//    }else{
+//        application.applicationIconBadgeNumber =   0;
+//    }
+//}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application{
     kNoticeUnNoticeMessage
@@ -523,34 +523,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 }
             }];
             [alertView show];
-            
-            /*
-            MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"标题" message:messageStr];
-            [aler addButtonWithTitle:@"立即前往" block:^{
-                if (![self.window.rootViewController isKindOfClass:[METabBarVC class]]) return;
-                [MEPublicNetWorkTool getUserReadedNoticeWithNoticeId:msg_id SuccessBlock:^(ZLRequestResponse *responseObject) {
-                    kNoticeUnNoticeMessage
-                } failure:nil];
-                // 取到tabbarcontroller
-                METabBarVC *tabBarController = ( METabBarVC*)self.window.rootViewController;
-                // 取到navigationcontroller
-                MENavigationVC *nav = (MENavigationVC *)tabBarController.selectedViewController;
-                UIViewController * baseVC = (UIViewController *)nav.visibleViewController;
-                if([type isEqualToString:@"1"]){
-                    MEProductDetailsVC *dvc = [[MEProductDetailsVC alloc]initWithId:[TypeId integerValue]];
-                    [baseVC.navigationController pushViewController:dvc animated:YES];
-                }else if ([type isEqualToString:@"2"]){
-                    MEMyOrderDetailVC *dvc = [[MEMyOrderDetailVC alloc]initWithOrderGoodsSn:TypeId];
-                    [baseVC.navigationController pushViewController:dvc animated:YES];
-                }else if([type isEqualToString:@"3"]){
-                    NSString *urlStr = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/cn/app/id%@?mt=8",kMEAppId];
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
-                }else{
-                    
-                }
-            }];
-            [aler addButtonWithTitle:@"取消" block:nil];
-            [aler show];*/
         }
     }
 }
