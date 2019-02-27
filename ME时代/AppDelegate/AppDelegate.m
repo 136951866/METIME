@@ -228,7 +228,7 @@
 
 - (void)onRCIMConnectionStatusChanged:(RCConnectionStatus)status {
     if (status == ConnectionStatus_KICKED_OFFLINE_BY_OTHER_CLIENT) {
-        
+
         HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:@"您的帐号在别的设备上登录，您被迫下线！请退出重新登录!"];
         alertView.isSupportRotating = YES;
         [alertView addButtonWithTitle:@"确定" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
@@ -236,12 +236,6 @@
             [MEWxLoginVC presentLoginVCWithIsShowCancel:NO SuccessHandler:nil failHandler:nil];
         }];
         [alertView show];
-        
-//        MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"提示" message:@"您的帐号在别的设备上登录，您被迫下线！请退出重新登录!"];
-//        [aler addButtonWithTitle:@"确定" block:^{
-//
-//        }];
-//        [aler show];
     }
 }
 

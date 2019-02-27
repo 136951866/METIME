@@ -53,7 +53,7 @@
     _lblName.text = kMeUnNilStr(kCurrentUser.name);
 //    _lblCommandName.text = [NSString stringWithFormat:@"推荐人:%@",kMeUnNilStr(model.superior)];
     //可使用佣金
-    _lblBeautDean.text = [NSString stringWithFormat:@"%.2f",model.use_money];
+    _lblBeautDean.text = [NSString stringWithFormat:@"%.2f",model.commission_money];
     //已结算佣金
     _lblUsedBean.text = [NSString stringWithFormat:@"%.2f",model.use_money];
     //未结算佣金

@@ -116,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "572856170.869015"
+            timestampString = "572942996.02599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "AppDelegate"
             landmarkType = "3">
          </BreakpointContent>
@@ -132,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "572856170.871599"
+            timestampString = "572942996.032914"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "343"
-            endingLineNumber = "343"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "AppDelegate"
             landmarkType = "3">
          </BreakpointContent>
@@ -335,6 +335,16 @@
             endingLineNumber = "2158"
             landmarkName = "+postAppointDetailWithReserve_sn:successBlock:failure:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

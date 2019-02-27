@@ -1,37 +1,41 @@
 //
-//  MEBDataDealVC.m
+//  MEBDataDealStoreAchievementVC.m
 //  ME时代
 //
-//  Created by hank on 2018/12/12.
-//  Copyright © 2018年 hank. All rights reserved.
+//  Created by hank on 2019/2/26.
+//  Copyright © 2019 hank. All rights reserved.
 //
 
-#import "MEBDataDealVC.h"
-//#import "MEBDataDealView.h"
-#import "MEBDataDealModel.h"
-#import "MEBNewDataDealView.h"
 #import "MEBDataDealStoreAchievementVC.h"
-#import "MEDataDealStoreCustomerVC.h"
+#import "MEBDataDealModel.h"
+#import "MEBDataDealStoreAchievementView.h"
 
-@interface MEBDataDealVC ()<UIScrollViewDelegate>{
+@interface MEBDataDealStoreAchievementVC ()<UIScrollViewDelegate>{
     MEBDataDealModel *_model;
 }
 
-@property (nonatomic, strong) MEBNewDataDealView *cview;
+@property (nonatomic, strong) MEBDataDealStoreAchievementView *cview;
 @property (nonatomic, strong) UIScrollView *scrollerView;
 
 @end
 
-@implementation MEBDataDealVC
+@implementation MEBDataDealStoreAchievementVC
+
+- (instancetype)initWithModel:(MEBDataDealModel*)model{
+    if(self = [super init]){
+        _model = model;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"数据统计";
-    self.view.backgroundColor = [UIColor whiteColor];//[UIColor colorWithHexString:@"fbfbfb"];
+    self.title = @"门店业绩结构分析";
+    self.view.backgroundColor = [UIColor colorWithHexString:@"fbfbfb"];
     [self.view addSubview:self.scrollerView];
     [self.scrollerView addSubview:self.cview];
+    [self.cview setUIWithModel:_model];
     self.scrollerView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestNetWork)];
-    [self.scrollerView.mj_header beginRefreshing];
     // Do any additional setup after loading the view.
 }
 
@@ -56,8 +60,8 @@
 - (UIScrollView *)scrollerView{
     if(!_scrollerView){
         _scrollerView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, kMeNavBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight)];
-        _scrollerView.backgroundColor = [UIColor whiteColor];//[UIColor colorWithHexString:@"fbfbfb"];
-        _scrollerView.contentSize = CGSizeMake(SCREEN_WIDTH, kMEBNewDataDealViewHeight);
+        _scrollerView.backgroundColor = [UIColor colorWithHexString:@"fbfbfb"];
+        _scrollerView.contentSize = CGSizeMake(SCREEN_WIDTH, [MEBDataDealStoreAchievementView getViewHeightWithModel:_model]);
         _scrollerView.bounces = YES;
         _scrollerView.showsVerticalScrollIndicator =NO;
         _scrollerView.delegate = self;
@@ -65,25 +69,13 @@
     return _scrollerView;
 }
 
-- (MEBNewDataDealView *)cview{
+- (MEBDataDealStoreAchievementView *)cview{
     if(!_cview){
-        _cview = [[[NSBundle mainBundle]loadNibNamed:@"MEBNewDataDealView" owner:nil options:nil] lastObject];
-        _cview.frame = CGRectMake(0, 0, SCREEN_WIDTH, kMEBNewDataDealViewHeight);
-        kMeWEAKSELF
-        _cview.StructBlock = ^{
-            kMeSTRONGSELF
-            if(strongSelf->_model){
-                MEBDataDealStoreAchievementVC *vc = [[MEBDataDealStoreAchievementVC alloc]initWithModel:strongSelf->_model];
-                [strongSelf.navigationController pushViewController:vc animated:YES];
-            }
-        };
-        _cview.storeCustomer = ^{
-            kMeSTRONGSELF
-            MEDataDealStoreCustomerVC *vc = [[MEDataDealStoreCustomerVC alloc]initWithModel:strongSelf->_model];
-            [strongSelf.navigationController pushViewController:vc animated:YES];
-        };
+        _cview = [[[NSBundle mainBundle]loadNibNamed:@"MEBDataDealStoreAchievementView" owner:nil options:nil] lastObject];
+        _cview.frame = CGRectMake(0, 0, SCREEN_WIDTH, [MEBDataDealStoreAchievementView getViewHeightWithModel:_model]);
     }
     return _cview;
 }
+
 
 @end

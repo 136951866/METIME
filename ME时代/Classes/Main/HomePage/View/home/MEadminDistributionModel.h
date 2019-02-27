@@ -17,4 +17,5 @@
 @property (nonatomic, strong) NSString * superior;
 @property (nonatomic, assign) CGFloat use_money;
 
+@property (nonatomic, assign) CGFloat commission_money;
 @end
