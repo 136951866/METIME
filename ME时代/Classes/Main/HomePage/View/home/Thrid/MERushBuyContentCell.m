@@ -44,10 +44,9 @@
     }else{
         _viewForStock.hidden = NO;
         _lblRate.hidden = NO;
-        CGFloat rate = model.sell_num/(model.stock+model.sell_num);
-        NSInteger rateNum = 100*rate;
-        _lblRate.text = [NSString stringWithFormat:@"%ld%%",(long)rateNum];
-        _consRateWdith.constant = rateNum;
+        NSInteger rate = (model.sell_num *100)/(model.stock+model.sell_num);
+        _lblRate.text = [NSString stringWithFormat:@"%ld%%",(long)rate];
+        _consRateWdith.constant = rate;
     }
  
     _lblPrice.text = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.money).floatValue)];

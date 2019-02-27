@@ -26,6 +26,8 @@
 #import "MECoupleMailDetalVC.h"
 #import "MENetListModel.h"
 #import "MEStoreModel.h"
+#import "MENewStoreDetailsVC.h"
+
 const static CGFloat kImgStore = 44;
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSInteger _selectTimeIndex;
@@ -246,6 +248,13 @@ const static CGFloat kImgStore = 44;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
+- (void)toStore{
+    if(_stroeModel){
+        MENewStoreDetailsVC *details = [[MENewStoreDetailsVC alloc]initWithId:_stroeModel.store_id];
+        [self.navigationController pushViewController:details animated:YES];
+    }
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
 }
@@ -394,6 +403,9 @@ const static CGFloat kImgStore = 44;
         _imgStore.cornerRadius = kImgStore/2;
         _imgStore.clipsToBounds = YES;
         _imgStore.hidden = YES;
+        _imgStore.userInteractionEnabled = YES;
+        UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toStore)];
+        [_imgStore addGestureRecognizer:ges];
     }
     return _imgStore;
 }

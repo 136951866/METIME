@@ -81,10 +81,12 @@
     }else{
         _viewForStock.hidden = NO;
         _lblRate.hidden = NO;
-        CGFloat rate = model.sell_num/(model.stock+model.sell_num);
-        NSInteger rateNum = 100*rate;
-        _lblRate.text = [NSString stringWithFormat:@"%ld%%",(long)rateNum];
-        _consSockRate.constant = rateNum;
+//        CGFloat rate = model.sell_num/(model.stock+model.sell_num);
+        NSInteger rate = (model.sell_num *100)/(model.stock+model.sell_num);
+
+//        NSInteger rateNum = 100*rate;
+        _lblRate.text = [NSString stringWithFormat:@"%ld%%",(long)rate];
+        _consSockRate.constant = rate;
     }
     
     CGFloat postage = [model.postage floatValue];
