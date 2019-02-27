@@ -15,5 +15,5 @@
 @property (nonatomic, copy) NSString *account;
 @property (nonatomic, copy) NSString *branch;
 @property (nonatomic, copy) NSString *token;
-
+@property (nonatomic, copy) NSString *order_type;
 @end

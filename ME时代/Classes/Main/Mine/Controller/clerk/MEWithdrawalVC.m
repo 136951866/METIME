@@ -10,7 +10,9 @@
 #import "MEWithdrawalView.h"
 #import "MEWithdrawalParamModel.h"
 
-@interface MEWithdrawalVC ()<UIScrollViewDelegate>
+@interface MEWithdrawalVC ()<UIScrollViewDelegate>{
+    BOOL _isCouponMoney;
+}
 
 @property (nonatomic, strong) MEWithdrawalView *cview;
 @property (nonatomic, strong) UIScrollView *scrollerView;
@@ -18,6 +20,13 @@
 @end
 
 @implementation MEWithdrawalVC
+
+- (instancetype)initWithCouponMoney{
+    if(self = [super init]){
+        _isCouponMoney = YES;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,6 +60,7 @@
     if(!_cview){
         _cview = [[[NSBundle mainBundle]loadNibNamed:@"MEWithdrawalView" owner:nil options:nil] lastObject];
         _cview.frame = CGRectMake(0, 0, SCREEN_WIDTH, [MEWithdrawalView getViewHeight]);
+        _cview.isCouponMoney = _isCouponMoney;
     }
     return _cview;
 }

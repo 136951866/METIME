@@ -76,8 +76,8 @@
     _lblSpendTimes.text = kMeUnNilStr(model.storeCustomer.spendTimes);
     _lblSpendMax.text = kMeUnNilStr(model.storeCustomer.spendMax);
     _lblSpendAmount.text = kMeUnNilStr(model.storeCustomer.spendAmount);
-    _lblNewsDealTimes.text = kMeUnNilStr(model.storeCustomer.spendTimes);
-    _lblNewsDealAmount.text = kMeUnNilStr(model.storeCustomer.spendTimes);
+    _lblNewsDealTimes.text = kMeUnNilStr(model.storeCustomer.newsDealTimes);
+    _lblNewsDealAmount.text = kMeUnNilStr(model.storeCustomer.newsDealAmount);
     
     _lblAccessTimesByMouthWeb.text = kMeUnNilStr(model.storeCustomer.AccessTimesByMouth.small_software);
      _lblAccessTimesByMouthApp.text = kMeUnNilStr(model.storeCustomer.AccessTimesByMouth.app);
@@ -99,14 +99,14 @@
     
     
     _lblageageAverageCostOne.text = kMeUnNilStr(model.storeCustomer.ageAverageCost.one);
-    _lblageageAverageCostTwo.text = kMeUnNilStr(model.storeCustomer.ageAverageCost.one);
-    _lblageageAverageCostThree.text = kMeUnNilStr(model.storeCustomer.ageAverageCost.one);
-    _lblageageAverageCostFive.text = kMeUnNilStr(model.storeCustomer.ageAverageCost.one);
+    _lblageageAverageCostTwo.text = kMeUnNilStr(model.storeCustomer.ageAverageCost.two);
+    _lblageageAverageCostThree.text = kMeUnNilStr(model.storeCustomer.ageAverageCost.three);
+    _lblageageAverageCostFive.text = kMeUnNilStr(model.storeCustomer.ageAverageCost.five);
     
     _lblnewsAgeOne.text = kMeUnNilStr(model.storeCustomer.newsAge.one);
-    _lblnewsAgeTwo.text = kMeUnNilStr(model.storeCustomer.newsAge.one);
-    _lblnewsAgeThree.text = kMeUnNilStr(model.storeCustomer.newsAge.one);
-    _lblnewsAgeFive.text = kMeUnNilStr(model.storeCustomer.newsAge.one);
+    _lblnewsAgeTwo.text = kMeUnNilStr(model.storeCustomer.newsAge.two);
+    _lblnewsAgeThree.text = kMeUnNilStr(model.storeCustomer.newsAge.three);
+    _lblnewsAgeFive.text = kMeUnNilStr(model.storeCustomer.newsAge.five);
     
     
     _lblageAccessAgeOne.text =kMeUnNilStr(model.storeCustomer.ageAccess.small_software.one);

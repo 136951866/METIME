@@ -15,7 +15,7 @@
 @end
 
 @implementation MEBDataDealAge:MEBaseModel
-+(NSDictionary *)mj_replacedKeyFromPropertyName{return @{@"one" : @"1-18",@"two" : @"18-25",@"three" : @"25-40",@"five" : @"40-50"};}
++(NSDictionary *)mj_replacedKeyFromPropertyName{return @{@"one" : @"1-18",@"two" : @"19-25",@"three" : @"26-40",@"five" : @"41-50"};}
 @end
 
 @implementation MEBDataDealGoodsNum:MEBaseModel

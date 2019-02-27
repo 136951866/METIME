@@ -13,6 +13,7 @@
 #import "MECouponDetailModel.h"
 #import "MECouponOrderSectionView.h"
 #import "MEJDCouponMoneyModel.h"
+#import "MEWithdrawalVC.h"
 
 @interface MECouponOrderVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     MECouponDetailModel *_modeldatil;
@@ -55,7 +56,13 @@
         if([responseObject.data isKindOfClass:[NSDictionary class]]){
             strongSelf->_modeldatil = [MECouponDetailModel mj_objectWithKeyValues:responseObject.data];
             [strongSelf->_headerView setUIWithModel:strongSelf->_modeldatil block:^{
-                
+                kMeSTRONGSELF
+                 MEWithdrawalVC *vc = [[MEWithdrawalVC alloc]initWithCouponMoney];
+                 vc.applySucessBlock = ^{
+                     kMeSTRONGSELF
+                     [strongSelf.refresh reload];
+                 };
+                 [strongSelf.navigationController pushViewController:vc animated:YES];
             }];
         }
     } failure:^(id object) {

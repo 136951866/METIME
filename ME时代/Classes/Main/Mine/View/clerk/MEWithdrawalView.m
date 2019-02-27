@@ -65,6 +65,11 @@
         return;
     }
     [self endEditing:YES];
+    if(_isCouponMoney){
+        self.parModel.order_type = @"1";
+    }else{
+        self.parModel.order_type = @"";
+    }
     kMeWEAKSELF
     [MEPublicNetWorkTool postDestoonFinanceCashWithAttrModel:self.parModel successBlock:^(ZLRequestResponse *responseObject) {
         kMeSTRONGSELF

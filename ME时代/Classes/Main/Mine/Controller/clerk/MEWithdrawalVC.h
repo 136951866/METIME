@@ -11,5 +11,6 @@
 @interface MEWithdrawalVC : MEBaseVC
 
 @property (nonatomic, copy) kMeBasicBlock applySucessBlock;
-
+//优惠卷佣金提现入口
+- (instancetype)initWithCouponMoney;
 @end
