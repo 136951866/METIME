@@ -60,11 +60,11 @@
 }
 
 - (void)setUIWithModel:(MEBDataDealModel *)Model{
-    _lblGengerRate.text = [NSString stringWithFormat:@"%@/%@/%@",kMeUnNilStr(Model.member.man),kMeUnNilStr(Model.member.women),kMeUnNilStr(Model.member.privary)];
+    _lblGengerRate.text = [NSString stringWithFormat:@"%@:%@:%@",kMeUnNilStr(Model.member.man),kMeUnNilStr(Model.member.women),kMeUnNilStr(Model.member.privary)];
     _lblAllUserCount.text = kMeUnNilStr(Model.member.total);
     _lblTodayUserCount.text = kMeUnNilStr(Model.member.today_new_member);
     _lblAllCost.text = kMeUnNilStr(Model.goods.total_sales);
-    _lblGenerCostRate.text = [NSString stringWithFormat:@"%@/%@/%@",kMeUnNilStr(Model.goods.man_sales),kMeUnNilStr(Model.goods.women_sales),kMeUnNilStr(Model.goods.privary_sales)];
+    _lblGenerCostRate.text = [NSString stringWithFormat:@"%@:%@:%@",kMeUnNilStr(Model.goods.man_sales),kMeUnNilStr(Model.goods.women_sales),kMeUnNilStr(Model.goods.privary_sales)];
     _lblAllOrder.text = kMeUnNilStr(Model.order.total_order_count);
     _lblTodayOrder.text = kMeUnNilStr(Model.order.today_order_count);
     _lblCanUserMoney.text = kMeUnNilStr(Model.brokerage.can_use_brokerage);

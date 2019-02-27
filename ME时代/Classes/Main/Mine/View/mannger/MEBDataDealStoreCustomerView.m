@@ -11,6 +11,8 @@
 #import "MEBDataDealModel.h"
 
 @interface MEBDataDealStoreCustomerView ()
+@property (weak, nonatomic) IBOutlet UILabel *lblSpendMaxTitle;
+
 @property (weak, nonatomic) IBOutlet UILabel *lblSpendTimes;
 @property (weak, nonatomic) IBOutlet UILabel *lblSpendMax;
 @property (weak, nonatomic) IBOutlet UILabel *lblSpendAmount;
@@ -68,6 +70,7 @@
 
 - (void)awakeFromNib{
     [super awakeFromNib];
+    _lblSpendMaxTitle.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void)setUIWithModel:(MEBDataDealModel *)model{

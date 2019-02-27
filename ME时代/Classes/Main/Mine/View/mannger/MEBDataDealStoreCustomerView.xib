@@ -28,13 +28,13 @@
                         <constraint firstAttribute="height" constant="1" id="k1l-IB-xZx"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="顾客频次" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12K-NX-0DL">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="门店新客成交数" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12K-NX-0DL">
                     <rect key="frame" x="15" y="63" width="150" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="顾客单次最高消费额" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4R-Yq-zfa">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="门店新客消费额" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4R-Yq-zfa">
                     <rect key="frame" x="165" y="63" width="150" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -290,19 +290,19 @@
                         <constraint firstAttribute="height" constant="10" id="Xgc-4p-V9X"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="顾客消费" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="reE-Yk-zPD">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="顾客频次" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="reE-Yk-zPD">
                     <rect key="frame" x="15" y="133.5" width="100" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="门店新客成交数" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueB-ee-qAh">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="顾客单次最高消费额" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueB-ee-qAh">
                     <rect key="frame" x="115" y="133.5" width="100" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="门店新客消费额" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ak-Wa-Lxr">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="顾客消费" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ak-Wa-Lxr">
                     <rect key="frame" x="215" y="133.5" width="100" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1157,11 +1157,12 @@
                 <outlet property="lblAgeFrameworkOne" destination="SNb-kE-utp" id="R0z-ku-Oxr"/>
                 <outlet property="lblAgeFrameworkThree" destination="PIj-WS-gWA" id="GYc-Od-vUb"/>
                 <outlet property="lblAgeFrameworkTwo" destination="gG3-qE-56p" id="Gn1-tt-Fa3"/>
-                <outlet property="lblNewsDealAmount" destination="aKk-xW-Fzd" id="9fG-CO-dXA"/>
-                <outlet property="lblNewsDealTimes" destination="QRW-Gz-j0v" id="XtA-tF-Ybc"/>
-                <outlet property="lblSpendAmount" destination="gmV-3p-NOo" id="XMY-4T-Vam"/>
-                <outlet property="lblSpendMax" destination="UIp-Ue-wjE" id="biL-Ol-5Z7"/>
-                <outlet property="lblSpendTimes" destination="OXQ-QY-U4l" id="WR2-YD-saj"/>
+                <outlet property="lblNewsDealAmount" destination="UIp-Ue-wjE" id="UdU-1B-kgN"/>
+                <outlet property="lblNewsDealTimes" destination="OXQ-QY-U4l" id="4zR-Dp-CXu"/>
+                <outlet property="lblSpendAmount" destination="aKk-xW-Fzd" id="EV5-K6-qdG"/>
+                <outlet property="lblSpendMax" destination="QRW-Gz-j0v" id="dT1-Jn-9nP"/>
+                <outlet property="lblSpendMaxTitle" destination="ueB-ee-qAh" id="PWm-ts-9ba"/>
+                <outlet property="lblSpendTimes" destination="gmV-3p-NOo" id="ZM3-Of-feP"/>
                 <outlet property="lblageAccessAgeFive" destination="CaD-YB-M5L" id="aU6-sz-LfE"/>
                 <outlet property="lblageAccessAgeFiveApp" destination="QQw-yy-lC0" id="5AR-nx-Bxv"/>
                 <outlet property="lblageAccessAgeOne" destination="Vhg-0h-O6z" id="NE0-OT-kki"/>
