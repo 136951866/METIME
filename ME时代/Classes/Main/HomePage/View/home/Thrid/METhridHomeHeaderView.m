@@ -131,6 +131,8 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
     if(_storeModel&&homeVC){
         MENewStoreDetailsVC *details = [[MENewStoreDetailsVC alloc]initWithId:_storeModel.store_id];
         [homeVC.navigationController pushViewController:details animated:YES];
+    }else{
+        homeVC.tabBarController.selectedIndex = 1;
     }
 }
 

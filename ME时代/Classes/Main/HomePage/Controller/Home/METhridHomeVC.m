@@ -252,6 +252,8 @@ const static CGFloat kImgStore = 44;
     if(_stroeModel){
         MENewStoreDetailsVC *details = [[MENewStoreDetailsVC alloc]initWithId:_stroeModel.store_id];
         [self.navigationController pushViewController:details animated:YES];
+    }else{
+        self.tabBarController.selectedIndex = 1;
     }
 }
 
