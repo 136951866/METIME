@@ -28,7 +28,7 @@
 #import "MEStoreModel.h"
 #import "MENewStoreDetailsVC.h"
 
-const static CGFloat kImgStore = 44;
+const static CGFloat kImgStore = 50;
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSInteger _selectTimeIndex;
     NSArray *_arrRudeBuy;
