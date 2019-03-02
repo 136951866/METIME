@@ -33,15 +33,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    [self.view addSubview:self.header];
-    _lllModel = [[MELocationHelper sharedHander] getLocationModel];
-    if(!_lllModel){
+//    _lllModel = [[MELocationHelper sharedHander] getLocationModel];
+//    if(!_lllModel){
         _lllModel = [MELocationCLLModel new];
         _lllModel.lat = 0;
         _lllModel.lng = 0;
         _lllModel.city = @"全部";
-    }
+//    }
 
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightView];
+    
+    [[MELocationHelper sharedHander] getCurrentLocation:^(CLLocation *location, CLPlacemark *placeMark, NSString *error) {
+    } failure:^{
+    }];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.btnRight];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.btnLeft];
     [self.view addSubview:self.tableView];
