@@ -38,9 +38,9 @@
     [WXApi registerApp:UMWXAppId];
     
 //    [[MELocationTool sharedHander] startLocation];
-//    [[MELocationHelper sharedHander] getCurrentLocation:^(CLLocation *location, CLPlacemark *placeMark, NSString *error) {
-//    } failure:^{
-//    }];
+    [[MELocationHelper sharedHander] getCurrentLocation:^(CLLocation *location, CLPlacemark *placeMark, NSString *error) {
+    } failure:^{
+    }];
     if([MEUserInfoModel isLogin]){
         [MEPublicNetWorkTool getUserCheckFirstBuyWithSuccessBlock:nil failure:nil];
     }
