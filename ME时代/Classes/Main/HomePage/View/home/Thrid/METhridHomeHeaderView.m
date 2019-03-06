@@ -61,6 +61,7 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
 @property (weak, nonatomic) IBOutlet UIImageView *imgStore;
 @property (weak, nonatomic) IBOutlet UILabel *lblStoreName;
 @property (weak, nonatomic) IBOutlet UILabel *lblStoreDesc;
+@property (weak, nonatomic) IBOutlet UIButton *btnShare;
 
 @end
 
@@ -68,6 +69,7 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
 
 - (void)awakeFromNib{
     [super awakeFromNib];
+    _btnShare.hidden = ![WXApi isWXAppInstalled];
     _sdView.delegate = self;
 //    _lblFristGoodTitle.adjustsFontSizeToFitWidth = YES;
 //    _lblSGoodTitle.adjustsFontSizeToFitWidth = YES;

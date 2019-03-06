@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.chatSessionInputBarControl.pluginBoardView removeItemAtIndex:2];
+//    [self.chatSessionInputBarControl.pluginBoardView removeItemAtIndex:2];
     // Do any additional setup after loading the view.
 }
 
@@ -29,7 +29,7 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 //    [super leftBarButtonItemPressed:nil];
-    kNoticeReloadkUnMessage
+//    kNoticeReloadkUnMessage
     [IQKeyboardManager sharedManager].enable = YES;
 }
 

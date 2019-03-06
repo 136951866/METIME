@@ -55,15 +55,7 @@
         kMeSTRONGSELF
         if([responseObject.data isKindOfClass:[NSDictionary class]]){
             strongSelf->_modeldatil = [MECouponDetailModel mj_objectWithKeyValues:responseObject.data];
-            [strongSelf->_headerView setUIWithModel:strongSelf->_modeldatil block:^{
-                kMeSTRONGSELF
-                 MEWithdrawalVC *vc = [[MEWithdrawalVC alloc]initWithCouponMoney];
-                 vc.applySucessBlock = ^{
-                     kMeSTRONGSELF
-                     [strongSelf.refresh reload];
-                 };
-                 [strongSelf.navigationController pushViewController:vc animated:YES];
-            }];
+            [strongSelf->_headerView setUIWithModel:strongSelf->_modeldatil];
         }
     } failure:^(id object) {
         
@@ -161,6 +153,16 @@
     if(!_headerView){
         _headerView = [[[NSBundle mainBundle]loadNibNamed:@"MECouponOrderHeaderView" owner:nil options:nil] lastObject];
         _headerView.frame =CGRectMake(0, 0, SCREEN_WIDTH, kMECouponOrderHeaderViewHeight);
+        kMeWEAKSELF
+        _headerView.block = ^{
+            kMeSTRONGSELF
+            MEWithdrawalVC *vc = [[MEWithdrawalVC alloc]initWithCouponMoney];
+            vc.applySucessBlock = ^{
+                kMeSTRONGSELF
+                [strongSelf.refresh reload];
+            };
+            [strongSelf.navigationController pushViewController:vc animated:YES];
+        };
     }
     return _headerView;
 }

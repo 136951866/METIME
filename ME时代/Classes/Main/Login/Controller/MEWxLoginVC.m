@@ -158,22 +158,22 @@
 //登录融云
 - (void)loginRongYun{
     //    [MEPublicNetWorkTool postRongyunTokenWithSuccessBlock:^(ZLRequestResponse *responseObject) {
-    NSString *nameStr = kMeUnNilStr(kCurrentUser.name).length > 0  ? kCurrentUser.name : kMeUnNilStr(kCurrentUser.uid);
-    [[RCIM sharedRCIM] connectWithToken:kCurrentUser.rongcloud_token success:^(NSString *userId) {
-        RCUserInfo *user = [[RCUserInfo alloc] initWithUserId:kMeUnNilStr(kCurrentUser.uid) name:nameStr portrait:kMeUnNilStr(kCurrentUser.header_pic)];
-        //            [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:userId];
-        [RCIM sharedRCIM].currentUserInfo = user;
-        [RCIM sharedRCIM].enableMessageAttachUserInfo = YES;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            AppDelegate *delegate = (AppDelegate *)kMeAppDelegateInstance;
-            [[RCIM sharedRCIM] setUserInfoDataSource:delegate];
-        });
-        kNoticeReloadkUnMessage
-    }error:^(RCConnectErrorCode status) {
-        NSLog(@"失败");
-    }tokenIncorrect:^() {
-        NSLog(@"失效");
-    }];
+//    NSString *nameStr = kMeUnNilStr(kCurrentUser.name).length > 0  ? kCurrentUser.name : kMeUnNilStr(kCurrentUser.uid);
+//    [[RCIM sharedRCIM] connectWithToken:kCurrentUser.rongcloud_token success:^(NSString *userId) {
+//        RCUserInfo *user = [[RCUserInfo alloc] initWithUserId:kMeUnNilStr(kCurrentUser.uid) name:nameStr portrait:kMeUnNilStr(kCurrentUser.header_pic)];
+//        //            [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:userId];
+//        [RCIM sharedRCIM].currentUserInfo = user;
+//        [RCIM sharedRCIM].enableMessageAttachUserInfo = YES;
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            AppDelegate *delegate = (AppDelegate *)kMeAppDelegateInstance;
+//            [[RCIM sharedRCIM] setUserInfoDataSource:delegate];
+//        });
+//        kNoticeReloadkUnMessage
+//    }error:^(RCConnectErrorCode status) {
+//        NSLog(@"失败");
+//    }tokenIncorrect:^() {
+//        NSLog(@"失效");
+//    }];
     //    } failure:^(id object) {
     //
     //    }];

@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MECouponOrderHeaderView : UIView
 
-- (void)setUIWithModel:(MECouponDetailModel *)model block:(kMeBasicBlock)block;
+@property (nonatomic,strong) kMeBasicBlock block;
+- (void)setUIWithModel:(MECouponDetailModel *)model;
 
 @end
 

@@ -10,7 +10,7 @@
 #import "MECouponDetailModel.h"
 
 @interface MECouponOrderHeaderView(){
-    kMeBasicBlock _block;
+    
 }
 //可提现
 @property (weak, nonatomic) IBOutlet UILabel *lblCanUserCommsion;
@@ -24,13 +24,11 @@
 
 @implementation MECouponOrderHeaderView
 
-- (void)setUIWithModel:(MECouponDetailModel *)model block:(kMeBasicBlock)block{
+- (void)setUIWithModel:(MECouponDetailModel *)model{
     _lblCanUserCommsion.text = [MECommonTool changeformatterWithFen:@(model.commission_amount)];
     _lblUsedCommsion.text = [MECommonTool changeformatterWithFen:@(model.finish_promotion_amount)];
     _lblNotUseCommsion.text = [MECommonTool changeformatterWithFen:@(model.unfinish_promotion_amount)];
     _lblGetingCommsion.text= [MECommonTool changeformatterWithFen:@(model.withdrawal)];
-    
-    _block = block;
 }
 
 - (IBAction)touchAction:(UIButton *)sender {

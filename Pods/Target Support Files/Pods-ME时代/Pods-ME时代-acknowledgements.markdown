@@ -231,10 +231,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-## RongCloudIM
-
-Copyright 2014 Rong Cloud
-
 ## SDCycleScrollView
 
 The MIT License (MIT)

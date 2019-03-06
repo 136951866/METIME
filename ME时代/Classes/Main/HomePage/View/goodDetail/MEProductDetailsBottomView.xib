@@ -72,7 +72,7 @@
                                 <action selector="homeAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Q2U-KQ-2PQ"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fzz-PT-81M" customClass="MEMidelButton">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fzz-PT-81M" customClass="MEMidelButton">
                             <rect key="frame" x="92.5" y="0.0" width="46.5" height="50"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="客服" image="icon-pteb">

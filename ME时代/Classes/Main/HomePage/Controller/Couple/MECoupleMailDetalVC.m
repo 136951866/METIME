@@ -367,6 +367,7 @@
 - (UIView *)bottomView{
     if(!_bottomView){
         _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-MECoupleMailDetalVCbottomViewHeight, SCREEN_WIDTH, MECoupleMailDetalVCbottomViewHeight)];
+        _bottomView.backgroundColor =[UIColor colorWithHexString:@"F70054"];
         [_bottomView addSubview:self.btnShare];
         [_bottomView addSubview:self.btnBuy];
     }
@@ -393,6 +394,7 @@
         [_btnShare addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
         _btnShare.backgroundColor = [UIColor colorWithHexString:@"FC8F0C"];
         [_btnShare setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _btnShare.hidden = ![WXApi isWXAppInstalled];
         if(_pinduoduomodel){
             NSString *str = [NSString stringWithFormat:@"分享购买最低%@佣金",[MECommonTool changeformatterWithFen:@(_pinduoduomodel.min_ratio)]];
             [_btnShare setTitle:str forState:UIControlStateNormal];

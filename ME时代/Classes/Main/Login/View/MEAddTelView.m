@@ -114,8 +114,6 @@
     }];
 }
 
-
-
 - (void)tapAction:(UITapGestureRecognizer *)tap{
     [self endEditing:YES];
 }

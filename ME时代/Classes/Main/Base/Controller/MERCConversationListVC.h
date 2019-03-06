@@ -6,8 +6,7 @@
 //  Copyright © 2018年 hank. All rights reserved.
 //
 
-#import <RongIMKit/RongIMKit.h>
 
-@interface MERCConversationListVC : RCConversationListViewController
+@interface MERCConversationListVC : MEBaseVC
 
 @end

@@ -371,6 +371,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="btnShare" destination="gLz-tW-Wr6" id="bW0-UU-hJw"/>
                 <outlet property="consSdHeight" destination="AfG-pt-X2Q" id="kkP-1m-o06"/>
                 <outlet property="consSecondImageHeight" destination="rRq-6L-cxx" id="qV0-Jb-8iZ"/>
                 <outlet property="consServiceHeight" destination="3Kj-7k-IdT" id="Jqd-5h-ylR"/>

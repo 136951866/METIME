@@ -27,7 +27,6 @@
 #import <UMShare/UMShare.h>
 #import <UShareUI/UShareUI.h>
 #import "JXCategoryView.h"
-#import <RongIMKit/RongIMKit.h>
 
 //local header
 #import "MECommonConst.h"//const的所有头文件

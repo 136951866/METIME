@@ -29,7 +29,7 @@
 #import "MEGuideVC.h"
 #import "MEAppointmentDetailVC.h"
 
-@interface AppDelegate ()<WXApiDelegate,RCIMConnectionStatusDelegate,UNUserNotificationCenterDelegate,JPUSHRegisterDelegate>
+@interface AppDelegate ()<WXApiDelegate,UNUserNotificationCenterDelegate,JPUSHRegisterDelegate>
     
 @end
 
@@ -46,7 +46,7 @@
 //    [RCIM sharedRCIM].enabledReadReceiptConversationTypeList = @[@"ConversationType_PRIVATE"];
 //    [RCIM sharedRCIM].showUnkownMessage = YES;
 //    [RCIM sharedRCIM].showUnkownMessageNotificaiton = YES;
-#pragma mark 融云推送
+//#pragma mark 融云推送
     if (@available(iOS 11.0, *)) {
         [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }

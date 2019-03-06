@@ -26,8 +26,8 @@ pod 'UMCAnalytics'
 # baiduMap
 #pod 'BaiduMapKit'
 # rongyun
-pod 'RongCloudIM/IMLib', '~> 2.8.3'
-pod 'RongCloudIM/IMKit', '~> 2.8.3'
+#pod 'RongCloudIM/IMLib', '~> 2.8.3'
+#pod 'RongCloudIM/IMKit', '~> 2.8.3'
 pod 'JPush', '3.1.0'
 pod 'PYSearch', '0.9.0'
 end

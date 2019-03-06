@@ -73,16 +73,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    MEDistributionTeamModel *model = self.refresh.arrData[indexPath.row];
-    MERCConversationVC *conversationVC = [[MERCConversationVC alloc]init];
-    conversationVC.conversationType = ConversationType_PRIVATE;
-    conversationVC.targetId = @(model.member_id).description ;//RONGYUNCUSTOMID;
-    conversationVC.title = kMeUnNilStr(model.nick_name);
-    if([@(model.member_id).description isEqualToString:kCurrentUser.uid]){
-        [MEShowViewTool showMessage:@"暂不支持和自己聊天" view:self.view];
-    }else{
-        [self.navigationController pushViewController:conversationVC animated:YES];
-    }
+//    MEDistributionTeamModel *model = self.refresh.arrData[indexPath.row];
+//    MERCConversationVC *conversationVC = [[MERCConversationVC alloc]init];
+//    conversationVC.conversationType = ConversationType_PRIVATE;
+//    conversationVC.targetId = @(model.member_id).description ;//RONGYUNCUSTOMID;
+//    conversationVC.title = kMeUnNilStr(model.nick_name);
+//    if([@(model.member_id).description isEqualToString:kCurrentUser.uid]){
+//        [MEShowViewTool showMessage:@"暂不支持和自己聊天" view:self.view];
+//    }else{
+//        [self.navigationController pushViewController:conversationVC animated:YES];
+//    }
 }
 
 

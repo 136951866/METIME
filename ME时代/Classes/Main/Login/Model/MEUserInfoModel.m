@@ -45,7 +45,7 @@ static MEUserInfoModel *shareUser;
     [[NSUserDefaults standardUserDefaults]setObject:nil forKey:kTokenKey];
     [[NSUserDefaults standardUserDefaults]synchronize];
     //融云退出登录
-    [[RCIM sharedRCIM]disconnect];
+//    [[RCIM sharedRCIM]disconnect];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [JPUSHService deleteAlias:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
             

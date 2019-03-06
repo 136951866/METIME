@@ -223,35 +223,35 @@ kTDWebViewCellDidFinishLoadNotificationMethod
 }
 
 - (void)toCustom{
-    if(kMeUnNilStr(_customId).length){
-        MERCConversationVC *conversationVC = [[MERCConversationVC alloc]init];
-        conversationVC.conversationType = ConversationType_PRIVATE;
-        conversationVC.targetId =  kMeUnNilStr(_customId);//RONGYUNCUSTOMID;
-        conversationVC.title = @"客服";
-        if([kMeUnNilStr(_customId) isEqualToString:kCurrentUser.uid]){
-            [MEShowViewTool showMessage:@"暂不支持和自己聊天" view:self.view];
-        }else{
-            [self.navigationController pushViewController:conversationVC animated:YES];
-        }
-    }else{
-        kMeWEAKSELF
-        [MEPublicNetWorkTool postGetCustomIdWithsuccessBlock:^(ZLRequestResponse *responseObject) {
-            kMeSTRONGSELF
-            NSNumber *custom =kMeUnNilNumber(responseObject.data);
-            strongSelf->_customId = kMeUnNilStr(custom.description);
-            MERCConversationVC *conversationVC = [[MERCConversationVC alloc]init];
-            conversationVC.conversationType = ConversationType_PRIVATE;
-            conversationVC.targetId = strongSelf->_customId ;//RONGYUNCUSTOMID;
-            conversationVC.title = @"客服";
-            if([kMeUnNilStr(strongSelf->_customId) isEqualToString:kCurrentUser.uid]){
-                [MEShowViewTool showMessage:@"暂不支持和自己聊天" view:self.view];
-            }else{
-                [self.navigationController pushViewController:conversationVC animated:YES];
-            }
-        } failure:^(id object) {
-            
-        }];
-    }
+//    if(kMeUnNilStr(_customId).length){
+//        MERCConversationVC *conversationVC = [[MERCConversationVC alloc]init];
+//        conversationVC.conversationType = ConversationType_PRIVATE;
+//        conversationVC.targetId =  kMeUnNilStr(_customId);//RONGYUNCUSTOMID;
+//        conversationVC.title = @"客服";
+//        if([kMeUnNilStr(_customId) isEqualToString:kCurrentUser.uid]){
+//            [MEShowViewTool showMessage:@"暂不支持和自己聊天" view:self.view];
+//        }else{
+//            [self.navigationController pushViewController:conversationVC animated:YES];
+//        }
+//    }else{
+//        kMeWEAKSELF
+//        [MEPublicNetWorkTool postGetCustomIdWithsuccessBlock:^(ZLRequestResponse *responseObject) {
+//            kMeSTRONGSELF
+//            NSNumber *custom =kMeUnNilNumber(responseObject.data);
+//            strongSelf->_customId = kMeUnNilStr(custom.description);
+//            MERCConversationVC *conversationVC = [[MERCConversationVC alloc]init];
+//            conversationVC.conversationType = ConversationType_PRIVATE;
+//            conversationVC.targetId = strongSelf->_customId ;//RONGYUNCUSTOMID;
+//            conversationVC.title = @"客服";
+//            if([kMeUnNilStr(strongSelf->_customId) isEqualToString:kCurrentUser.uid]){
+//                [MEShowViewTool showMessage:@"暂不支持和自己聊天" view:self.view];
+//            }else{
+//                [self.navigationController pushViewController:conversationVC animated:YES];
+//            }
+//        } failure:^(id object) {
+//            
+//        }];
+//    }
 }
 
 - (MEServiceDetailsHeaderView *)headerView{

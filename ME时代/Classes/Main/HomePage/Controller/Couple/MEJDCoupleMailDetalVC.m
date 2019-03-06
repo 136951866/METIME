@@ -193,6 +193,7 @@
 - (UIView *)bottomView{
     if(!_bottomView){
         _bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-MEJDCoupleMailDetalVCbottomViewHeight, SCREEN_WIDTH, MEJDCoupleMailDetalVCbottomViewHeight)];
+        _bottomView.backgroundColor =[UIColor colorWithHexString:@"F70054"];
         [_bottomView addSubview:self.btnShare];
         [_bottomView addSubview:self.btnBuy];
     }
@@ -222,6 +223,7 @@
         NSString *str = [NSString stringWithFormat:@"分享购买最低%.2f佣金",_detailModel.commissionInfo.commission* _detailModel.percent];
         [_btnShare setTitle:str forState:UIControlStateNormal];
         _btnShare.titleLabel.font = kMeFont(15);
+        _btnShare.hidden = ![WXApi isWXAppInstalled];
     }
     return _btnShare;
 }

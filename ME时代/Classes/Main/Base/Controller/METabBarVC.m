@@ -87,22 +87,22 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getUnMeaasge) name:kUnMessage object:nil];
 }
 - (void)getUnMeaasge{
-    if([MEUserInfoModel isLogin]){
-        dispatch_async(dispatch_get_main_queue(), ^{
-            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            NSInteger unmessgae =  [[RCIMClient sharedRCIMClient] getUnreadCount:@[
-                                                                                   @(ConversationType_PRIVATE),
-                                                                                   ]];
-            appDelegate.unMessageCount = unmessgae;
-
-            NSString *str = @(unmessgae).description;
-            if(appDelegate.unMessageCount>99){
-                str = @"99+";
-            }
-
-            self.mine.tabBarItem.badgeValue = unmessgae==0?nil:str;
-        });
-    }
+//    if([MEUserInfoModel isLogin]){
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//            NSInteger unmessgae =  [[RCIMClient sharedRCIMClient] getUnreadCount:@[
+//                                                                                   @(ConversationType_PRIVATE),
+//                                                                                   ]];
+//            appDelegate.unMessageCount = unmessgae;
+//
+//            NSString *str = @(unmessgae).description;
+//            if(appDelegate.unMessageCount>99){
+//                str = @"99+";
+//            }
+//
+//            self.mine.tabBarItem.badgeValue = unmessgae==0?nil:str;
+//        });
+//    }
 }
 
 #pragma mark - Private Method
