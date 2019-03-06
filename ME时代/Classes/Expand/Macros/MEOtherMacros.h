@@ -13,6 +13,10 @@
 
 #define  AppstorePhone @"18823365313"
 
+//腾讯云IM
+#define sdkAppid          1400180178
+#define sdkAccountType    @"36862"
+
 //友盟统计
 #define  MobAppkey @"5b8f50fb8f4a9d76a70000b3"
 

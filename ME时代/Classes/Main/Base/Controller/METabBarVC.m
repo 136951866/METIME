@@ -45,19 +45,19 @@
     [self addChildVc:home title:@"首页" image:@"home" selectedImage:@"home_s"];
     
     MEStoreHomeVC *store = [[MEStoreHomeVC alloc] init];
-//    MEIMageVC *store = [[MEIMageVC alloc]initWithType:MEMainStoreStyle];
+    //    MEIMageVC *store = [[MEIMageVC alloc]initWithType:MEMainStoreStyle];
     [self addChildVc:store title:@"门店" image:@"store" selectedImage:@"store_s"];
     
     
     MEBynamicHomeVC *dynamic = [[MEBynamicHomeVC alloc] init];
     //    MEIMageVC *store = [[MEIMageVC alloc]initWithType:MEMainStoreStyle];
     [self addChildVc:dynamic title:@"动态" image:@"dynamic" selectedImage:@"dynamic_s"];
-//    MEMemberHomeVC *member = [[MEMemberHomeVC alloc]init];
-////    MEIMageVC *member = [[MEIMageVC alloc]initWithType:MEMainMemberStyle];
-////    member.isNeedH5Title = NO;
-//    //[self.navigationController pushViewController:webVC animated:YES];
-//    //MEMemberHomeVC *member = [[MEMemberHomeVC alloc] init];
-//    [self addChildVc:member title:@"超级会员" image:@"hat" selectedImage:@"hat"];
+    //    MEMemberHomeVC *member = [[MEMemberHomeVC alloc]init];
+    ////    MEIMageVC *member = [[MEIMageVC alloc]initWithType:MEMainMemberStyle];
+    ////    member.isNeedH5Title = NO;
+    //    //[self.navigationController pushViewController:webVC animated:YES];
+    //    //MEMemberHomeVC *member = [[MEMemberHomeVC alloc] init];
+    //    [self addChildVc:member title:@"超级会员" image:@"hat" selectedImage:@"hat"];
     
     MEProductShoppingCartVC *shopcart = [[MEProductShoppingCartVC alloc] init];
     [self addChildVc:shopcart title:@"购物车" image:@"shopcart" selectedImage:@"shopcart_s"];
@@ -87,22 +87,17 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getUnMeaasge) name:kUnMessage object:nil];
 }
 - (void)getUnMeaasge{
-//    if([MEUserInfoModel isLogin]){
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//            NSInteger unmessgae =  [[RCIMClient sharedRCIMClient] getUnreadCount:@[
-//                                                                                   @(ConversationType_PRIVATE),
-//                                                                                   ]];
-//            appDelegate.unMessageCount = unmessgae;
-//
-//            NSString *str = @(unmessgae).description;
-//            if(appDelegate.unMessageCount>99){
-//                str = @"99+";
-//            }
-//
-//            self.mine.tabBarItem.badgeValue = unmessgae==0?nil:str;
-//        });
-//    }
+    if([MEUserInfoModel isLogin]){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            NSInteger unmessgae = appDelegate.unMessageCount;
+            NSString *str = @(unmessgae).description;
+            if(appDelegate.unMessageCount>99){
+                str = @"99+";
+            }
+            self.mine.tabBarItem.badgeValue = unmessgae==0?nil:str;
+        });
+    }
 }
 
 #pragma mark - Private Method
@@ -115,8 +110,8 @@
     childVc.title=title;
     MENavigationVC *nav = [[MENavigationVC alloc] initWithRootViewController:childVc];
     if([title isEqualToString:@"首页"]){
-         childVc.title =@"ME时代会员优选";
-         childVc.tabBarItem.title=@"首页";
+        childVc.title =@"ME时代会员优选";
+        childVc.tabBarItem.title=@"首页";
     }
     if([title isEqualToString:@"门店"]){
         childVc.title =@"全部门店";
@@ -135,7 +130,7 @@
         [MEWxLoginVC presentLoginVCWithSuccessHandler:^(id object) {
             
         } failHandler:^(id object) {
-           
+            
         }];
         return NO;
         

@@ -31,5 +31,6 @@
 @property (nonatomic, assign) NSInteger  member_id;
 @property (nonatomic, assign) NSInteger  pid;
 @property (nonatomic, assign) NSInteger  type;
-
+//云IM
+@property (nonatomic, strong) NSString * tls_id;
 @end

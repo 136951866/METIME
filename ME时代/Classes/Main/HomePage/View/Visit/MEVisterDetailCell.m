@@ -49,18 +49,30 @@
 }
 
 - (IBAction)toChatAction:(UIButton *)sender {
-//    MEVisterDetailVC *homeVC = [MECommonTool getVCWithClassWtihClassName:[MEVisterDetailVC class] targetResponderView:self];
-//    if(homeVC){
-//        MERCConversationVC *conversationVC = [[MERCConversationVC alloc]init];
-//        conversationVC.conversationType = ConversationType_PRIVATE;
-//        conversationVC.targetId = @(_model.member_id).description ;//RONGYUNCUSTOMID;
-//        conversationVC.title = kMeUnNilStr(_model.user.nick_name);
-//        if([@((_model.member_id)).description isEqualToString:kCurrentUser.uid]){
-//            [MEShowViewTool showMessage:@"暂不支持和自己聊天" view:self];
-//        }else{
-//            [homeVC.navigationController pushViewController:conversationVC animated:YES];
-//        }
-//    }
+    MEVisterDetailVC *homeVC = [MECommonTool getVCWithClassWtihClassName:[MEVisterDetailVC class] targetResponderView:self];
+    if(homeVC){
+        if([kMeUnNilStr(_model.tls_id) isEqualToString:kCurrentUser.tls_data.tls_id]){
+            [MEShowViewTool showMessage:@"暂不支持和自己聊天" view:self];
+        }else{
+            TConversationCellData *data = [[TConversationCellData alloc] init];
+            data.convId = kMeUnNilStr(_model.tls_id);
+            data.convType = TConv_Type_C2C;
+            data.title = kMeUnNilStr(_model.user.nick_name);;
+            MERCConversationVC *chat = [[MERCConversationVC alloc] initWIthconversationData:data];
+            //            chat.conversation = data;
+            [homeVC.navigationController pushViewController:chat animated:YES];
+        }
+    }
+    //        MERCConversationVC *conversationVC = [[MERCConversationVC alloc]init];
+    //        conversationVC.conversationType = ConversationType_PRIVATE;
+    //        conversationVC.targetId = @(_model.member_id).description ;//RONGYUNCUSTOMID;
+    //        conversationVC.title = kMeUnNilStr(_model.user.nick_name);
+    //        if([@((_model.member_id)).description isEqualToString:kCurrentUser.uid]){
+    //            [MEShowViewTool showMessage:@"暂不支持和自己聊天" view:self];
+    //        }else{
+    //            [homeVC.navigationController pushViewController:conversationVC animated:YES];
+    //        }
+    
 }
 
 

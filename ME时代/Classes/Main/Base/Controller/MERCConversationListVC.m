@@ -7,9 +7,13 @@
 //
 
 #import "MERCConversationListVC.h"
+#import "TConversationController.h"
 #import "AppDelegate.h"
-
-@interface MERCConversationListVC (){
+#import "MERCConversationVC.h"
+#import "TChatController.h"
+#import "MENavigationVC.h"
+//
+@interface MERCConversationListVC ()<TConversationControllerDelegagte>{
     NSString *_customId;
 }
 
@@ -21,23 +25,55 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"ME聊";
-//    self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.navBarHidden = NO;
+    TConversationController *conv = [[TConversationController alloc] init];
+    conv.delegate = self;
+    [self addChildViewController:conv];
+    [self.view addSubview:conv.view];
+    self.view.backgroundColor = [UIColor whiteColor];
 //    self.edgesForExtendedLayout = UIRectEdgeNone;
-//    self.conversationListTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    [self setDisplayConversationTypes:@[@(ConversationType_PRIVATE)]];
-////    [[RCIM sharedRCIM] setUserInfoDataSource:self];
-//    self.isShowNetworkIndicatorView = NO;
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.btnRight];
+    
     // Do any additional setup after loading the view.
 }
 
+
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    MENavigationVC *nav = (MENavigationVC *)self.navigationController;
+    nav.canDragBack = NO;
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    MENavigationVC *nav = (MENavigationVC *)self.navigationController;
+    nav.canDragBack = YES;;
+}
+
+- (void)conversationController:(TConversationController *)conversationController didSelectConversation:(TConversationCellData *)conversation
+{
+    MERCConversationVC *chat = [[MERCConversationVC alloc] initWIthconversationData:conversation];
+    //    chat.conversation = conversation;
+    [self.navigationController pushViewController:chat animated:YES];
+}
 - (void)toCustom{
+    TConversationCellData *data = [[TConversationCellData alloc] init];
+    data.convId = @"msd_store_test_58800";
+    data.convType = TConv_Type_C2C;
+    data.title = kMeUnNilStr(data.title);
+    MERCConversationVC *chat = [[MERCConversationVC alloc] initWIthconversationData:data];
+    //    chat.conversation = data;
+    
+    [self.navigationController pushViewController:chat animated:YES];
+}
+//- (void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear:animated];
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
+//}
+//
+//- (void)toCustom{
 //    if(kMeUnNilStr(_customId).length){
 //        MERCConversationVC *conversationVC = [[MERCConversationVC alloc]init];
 //        conversationVC.conversationType = ConversationType_PRIVATE;
@@ -67,25 +103,9 @@
 //
 //        }];
 //    }
-    
-}
-
-//- (void)onSelectedTableRow:(RCConversationModelType)conversationModelType conversationModel:(RCConversationModel *)model atIndexPath:(NSIndexPath *)indexPath
-//{
-//    if([model.targetId isEqualToString:kCurrentUser.uid]){
-//        [MEShowViewTool showMessage:@"暂不支持和自己聊天" view:self.view];
-//    }else{
-////        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-////        appDelegate.unMessageCount = appDelegate.unMessageCount - model.unreadMessageCount;
-//        MERCConversationVC *conversationVC = [[MERCConversationVC alloc]init];
-//        conversationVC.conversationType = ConversationType_PRIVATE;
-//        conversationVC.conversationType = model.conversationType;
-//        conversationVC.targetId = model.targetId;
-//        conversationVC.title = model.conversationTitle;
-//        [self.navigationController pushViewController:conversationVC animated:YES];
-//        kNoticeReloadkUnMessage
-//    }
+//
 //}
+
 
 - (UIButton *)btnRight{
     if(!_btnRight){

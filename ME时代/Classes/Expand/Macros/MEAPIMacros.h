@@ -34,6 +34,10 @@
 #define kNetError @"503"
 #define kNetInvateCode @"502"
 
+/*********************************************/
+#pragma makr - IM
+//获取tls用户信息
+#define MEIPcommongUserInfoByTls @"common/user/getUserInfoByTls"
 
 /*********************************************/
 #pragma makr - 动态

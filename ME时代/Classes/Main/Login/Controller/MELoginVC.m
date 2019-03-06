@@ -92,7 +92,7 @@
     _consImgBottomMargin.constant = 44 * kMeFrameScaleY();
     _consBtnTopMargin.constant =42 * kMeFrameScaleY();
     if(kMeFrameScaleY()<1){
-    _consImgTopMargin.constant = 64;
+        _consImgTopMargin.constant = 64;
     }
     [self.view layoutIfNeeded];
 }
@@ -103,7 +103,7 @@
 }
 
 -(void)loginSuccess{
-    [self loginRongYun];
+    [self loginIm];
     [MEPublicNetWorkTool getUserCheckFirstBuyWithSuccessBlock:nil failure:nil];
     //设置alias
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -168,8 +168,8 @@
         kMeSTRONGSELF
         [strongSelf dealWithUserInfoWithrespon:responseObject];
     } failure:^(id object) {
-//        kMeSTRONGSELF
-//        [strongSelf loginFail];
+        //        kMeSTRONGSELF
+        //        [strongSelf loginFail];
     }];
 }
 
@@ -263,27 +263,34 @@
 }
 
 //登录融云
-- (void)loginRongYun{
-////    [MEPublicNetWorkTool postRongyunTokenWithSuccessBlock:^(ZLRequestResponse *responseObject) {
-//        NSString *nameStr = kMeUnNilStr(kCurrentUser.name).length > 0  ? kCurrentUser.name : kMeUnNilStr(kCurrentUser.uid);
-//        [[RCIM sharedRCIM] connectWithToken:kCurrentUser.rongcloud_token success:^(NSString *userId) {
-//            RCUserInfo *user = [[RCUserInfo alloc] initWithUserId:kMeUnNilStr(kCurrentUser.uid) name:nameStr portrait:kMeUnNilStr(kCurrentUser.header_pic)];
-////            [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:userId];
-//            [RCIM sharedRCIM].currentUserInfo = user;
-//            [RCIM sharedRCIM].enableMessageAttachUserInfo = YES;
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                AppDelegate *delegate = (AppDelegate *)kMeAppDelegateInstance;
-//                [[RCIM sharedRCIM] setUserInfoDataSource:delegate];
-//            });
-//            kNoticeReloadkUnMessage
-//        }error:^(RCConnectErrorCode status) {
-//            NSLog(@"失败");
-//        }tokenIncorrect:^() {
-//            NSLog(@"失效");
-//        }];
-////    } failure:^(id object) {
-////
-////    }];
+- (void)loginIm{
+    [[TUIKit sharedInstance] loginKit:kMeUnNilStr(kCurrentUser.tls_data.tls_id) userSig:kMeUnNilStr(kCurrentUser.tls_data.user_tls_key) succ:^{
+        NSLog(@"sucess");
+    } fail:^(int code, NSString *msg) {
+        NSLog(@"fial");
+    }];
+    //
+    [kMeApplication registerForRemoteNotifications];
+    //    [MEPublicNetWorkTool postRongyunTokenWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+    //        NSString *nameStr = kMeUnNilStr(kCurrentUser.name).length > 0  ? kCurrentUser.name : kMeUnNilStr(kCurrentUser.uid);
+    //        [[RCIM sharedRCIM] connectWithToken:kCurrentUser.rongcloud_token success:^(NSString *userId) {
+    //            RCUserInfo *user = [[RCUserInfo alloc] initWithUserId:kMeUnNilStr(kCurrentUser.uid) name:nameStr portrait:kMeUnNilStr(kCurrentUser.header_pic)];
+    ////            [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:userId];
+    //            [RCIM sharedRCIM].currentUserInfo = user;
+    //            [RCIM sharedRCIM].enableMessageAttachUserInfo = YES;
+    //            dispatch_async(dispatch_get_main_queue(), ^{
+    //                AppDelegate *delegate = (AppDelegate *)kMeAppDelegateInstance;
+    //                [[RCIM sharedRCIM] setUserInfoDataSource:delegate];
+    //            });
+    //            kNoticeReloadkUnMessage
+    //        }error:^(RCConnectErrorCode status) {
+    //            NSLog(@"失败");
+    //        }tokenIncorrect:^() {
+    //            NSLog(@"失效");
+    //        }];
+    //    } failure:^(id object) {
+    //
+    //    }];
 }
 
 -(void)timerTick{

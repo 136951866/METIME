@@ -46,5 +46,6 @@
 //2.0.2新增
 //1 文章 2海报
 @property (nonatomic, assign) NSInteger type;
-
+//云IM
+@property (nonatomic, strong) NSString * tls_id;
 @end

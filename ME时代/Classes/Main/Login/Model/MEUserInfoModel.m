@@ -13,6 +13,10 @@
 static NSString *kUserInfoKey = @"kUserInfo";
 static MEUserInfoModel *shareUser;
 
+@implementation MEUserInfoModelTLSData
+
+@end
+
 @implementation MEUserInfoModel
 
 //- (void)setUnionid:(NSString *)unionid{
@@ -38,14 +42,20 @@ static MEUserInfoModel *shareUser;
 }
 
 + (void)logout{
+    //IM退出登录
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[TIMManager sharedInstance] logout:^{
+            NSLog(@"su");
+        } fail:^(int code, NSString *msg) {
+            NSLog(@"fa");
+        }];
+    });
     [MEUserInfoModel removeCodingForKey:kUserInfoKey];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kcheckFirstBuy];
     [[NSUserDefaults standardUserDefaults] synchronize];
     shareUser = nil;
     [[NSUserDefaults standardUserDefaults]setObject:nil forKey:kTokenKey];
     [[NSUserDefaults standardUserDefaults]synchronize];
-    //融云退出登录
-//    [[RCIM sharedRCIM]disconnect];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [JPUSHService deleteAlias:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
             
@@ -93,7 +103,7 @@ static MEUserInfoModel *shareUser;
     if(self.user_type == 4){
         return MEClientCTypeStyle;
     }else if (self.user_type == 3){
-         return MEClientBTypeStyle;
+        return MEClientBTypeStyle;
     }else if (self.user_type == 5){
         return MEClientTypeClerkStyle;
     }else if (self.user_type == 1){

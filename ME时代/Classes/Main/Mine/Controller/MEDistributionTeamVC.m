@@ -58,7 +58,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-     return self.refresh.arrData.count;
+    return self.refresh.arrData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -73,16 +73,25 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    MEDistributionTeamModel *model = self.refresh.arrData[indexPath.row];
-//    MERCConversationVC *conversationVC = [[MERCConversationVC alloc]init];
-//    conversationVC.conversationType = ConversationType_PRIVATE;
-//    conversationVC.targetId = @(model.member_id).description ;//RONGYUNCUSTOMID;
-//    conversationVC.title = kMeUnNilStr(model.nick_name);
-//    if([@(model.member_id).description isEqualToString:kCurrentUser.uid]){
-//        [MEShowViewTool showMessage:@"暂不支持和自己聊天" view:self.view];
-//    }else{
-//        [self.navigationController pushViewController:conversationVC animated:YES];
-//    }
+    MEDistributionTeamModel *model = self.refresh.arrData[indexPath.row];
+    TConversationCellData *data = [[TConversationCellData alloc] init];
+    data.convId = kMeUnNilStr(model.tls_id);
+    data.convType = TConv_Type_C2C;
+    data.title = kMeUnNilStr(model.nick_name);;
+    MERCConversationVC *chat = [[MERCConversationVC alloc] initWIthconversationData:data];
+    //    chat.conversation = data;
+    [self.navigationController pushViewController:chat animated:YES];
+    
+    
+    //    MERCConversationVC *conversationVC = [[MERCConversationVC alloc]init];
+    //    conversationVC.conversationType = ConversationType_PRIVATE;
+    //    conversationVC.targetId = @(model.member_id).description ;//RONGYUNCUSTOMID;
+    //    conversationVC.title = kMeUnNilStr(model.nick_name);
+    //    if([@(model.member_id).description isEqualToString:kCurrentUser.uid]){
+    //        [MEShowViewTool showMessage:@"暂不支持和自己聊天" view:self.view];
+    //    }else{
+    //        [self.navigationController pushViewController:conversationVC animated:YES];
+    //    }
 }
 
 

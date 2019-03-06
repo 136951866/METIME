@@ -20,6 +20,14 @@
 #define kCurrentUser [MEUserInfoModel shareUser]
 static NSString *kTokenKey = @"kTokenKey";
 
+@interface MEUserInfoModelTLSData :MEBaseModel
+
+@property (nonatomic, copy) NSString *tls_id;//testmsd_user,msd_user_uid
+@property (nonatomic, copy) NSString *user_tls_key;
+@property (nonatomic, copy) NSString *admin_tls_key;
+
+@end
+
 @interface MEUserInfoModel : MEBaseModel
 
 + (MEUserInfoModel *)shareUser;
@@ -54,7 +62,7 @@ static NSString *kTokenKey = @"kTokenKey";
 @property (nonatomic, assign) NSInteger user_type;
 @property (nonatomic, assign) MEClientTypeStyle client_type;
 
- /**
+/**
  * admin_id : 舒
  * admin_team : 1
  * ratio_money : 0
@@ -66,16 +74,16 @@ static NSString *kTokenKey = @"kTokenKey";
  * wait_order : 0
  * pay_order : 2
  * task_order : 0
-  path =         {
-  "created_at" = "2018-11-09 11:01:15";
-  group = member;
-  icon = "icon_fenxiaozhognxin.png";
-  id = 1;
-  name = "\U6211\U7684\U4e2d\U5fc3";
-  path = "/pages/distribution/distribution";
-  sort = 0;
-  "updated_at" = "2018-11-09 11:01:17";
-  };
+ path =         {
+ "created_at" = "2018-11-09 11:01:15";
+ group = member;
+ icon = "icon_fenxiaozhognxin.png";
+ id = 1;
+ name = "\U6211\U7684\U4e2d\U5fc3";
+ path = "/pages/distribution/distribution";
+ sort = 0;
+ "updated_at" = "2018-11-09 11:01:17";
+ };
  */
 
 //个人中心的数据
@@ -86,6 +94,9 @@ static NSString *kTokenKey = @"kTokenKey";
 @property (nonatomic, assign) NSInteger pay_order;
 @property (nonatomic, assign) NSInteger task_order;
 @property (nonatomic, copy) MEUserPathModel *path;
+
+@property (nonatomic, strong) MEUserInfoModelTLSData *tls_data;
+
 //个人中心C端
 //@property (nonatomic, assign) NSInteger admin_team;
 //@property (nonatomic, assign) CGFloat ratio_money;

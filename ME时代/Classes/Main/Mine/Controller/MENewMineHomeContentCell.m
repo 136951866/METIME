@@ -40,17 +40,24 @@
 }
 
 - (void)setUnMeaasge{
-//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    NSInteger unmessgae =  [[RCIMClient sharedRCIMClient] getUnreadCount:@[
-//                                                                           @(ConversationType_PRIVATE),
-//                                                                           ]];
-//    appDelegate.unMessageCount = unmessgae;
-//    NSString *str = @(unmessgae).description;
-//    if(appDelegate.unMessageCount>99){
-//        str = @"99+";
-//    }
-//    _lblUnMessage.hidden = appDelegate.unMessageCount == 0;
-//    _lblUnMessage.text = [NSString stringWithFormat:@"%@",str];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSString *str = @(appDelegate.unMessageCount).description;
+    if(appDelegate.unMessageCount>99){
+        str = @"99+";
+    }
+    _lblUnMessage.hidden = appDelegate.unMessageCount == 0;
+    _lblUnMessage.text = [NSString stringWithFormat:@"%@",str];
+    //    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //    NSInteger unmessgae =  [[RCIMClient sharedRCIMClient] getUnreadCount:@[
+    //                                                                           @(ConversationType_PRIVATE),
+    //                                                                           ]];
+    //    appDelegate.unMessageCount = unmessgae;
+    //    NSString *str = @(unmessgae).description;
+    //    if(appDelegate.unMessageCount>99){
+    //        str = @"99+";
+    //    }
+    //    _lblUnMessage.hidden = appDelegate.unMessageCount == 0;
+    //    _lblUnMessage.text = [NSString stringWithFormat:@"%@",str];
 }
 
 @end

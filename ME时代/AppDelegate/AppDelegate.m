@@ -30,7 +30,7 @@
 #import "MEAppointmentDetailVC.h"
 
 @interface AppDelegate ()<WXApiDelegate,UNUserNotificationCenterDelegate,JPUSHRegisterDelegate>
-    
+
 @end
 
 @implementation AppDelegate
@@ -38,15 +38,24 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [MECommonTool initAppSomeThing];
-
-#pragma mark - init ronyun sdk
-//    [[RCIM sharedRCIM] initWithAppKey:RONGYUNAppKey];
-//    [[RCIM sharedRCIM] setConnectionStatusDelegate:self];
-//    [RCIM sharedRCIM].enableTypingStatus = YES;
-//    [RCIM sharedRCIM].enabledReadReceiptConversationTypeList = @[@"ConversationType_PRIVATE"];
-//    [RCIM sharedRCIM].showUnkownMessage = YES;
-//    [RCIM sharedRCIM].showUnkownMessageNotificaiton = YES;
-//#pragma mark 融云推送
+    
+#pragma mark - init IM sdk
+    [[TUIKit sharedInstance] initKit:sdkAppid accountType:sdkAccountType withConfig:[TUIKitConfig defaultConfig]];
+    if([MEUserInfoModel isLogin]){
+        NSLog(@"%@    %@",kMeUnNilStr(kCurrentUser.tls_data.tls_id),kMeUnNilStr(kCurrentUser.tls_data.user_tls_key));
+        [[TUIKit sharedInstance] loginKit:kMeUnNilStr(kCurrentUser.tls_data.tls_id) userSig:kMeUnNilStr(kCurrentUser.tls_data.user_tls_key) succ:^{
+            NSLog(@"sucess");
+        } fail:^(int code, NSString *msg) {
+            NSLog(@"fial");
+        }];
+    }
+    
+    //    [[TIMFriendshipManager sharedInstance] GetSelfProfile:^(TIMUserProfile * profile) {
+    //        NSLog(@"GetSelfProfile identifier=%@ nickname=%@ allowType=%d", profile.identifier, profile.nickname, profile.allowType);
+    //    } fail:^(int code, NSString * err) {
+    //        NSLog(@"GetSelfProfile fail: code=%d err=%@", code, err);
+    //    }];
+    
     if (@available(iOS 11.0, *)) {
         [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
@@ -86,37 +95,7 @@
     }
     
     
-//    [[NSNotificationCenter defaultCenter]
-//     addObserver:self
-//     selector:@selector(didReceiveMessageNotification:)
-//     name:RCKitDispatchMessageNotification
-//     object:nil];
-//    if([MEUserInfoModel isLogin]){
-//        NSLog(@"token//  %@  /n //   %@ //",kCurrentUser.token,kCurrentUser.uid);
-//        NSString *nameStr = (kCurrentUser.name.length > 0 && ![kCurrentUser.name isKindOfClass:[NSNull class]]) ? kCurrentUser.name : kCurrentUser.uid;
-//        if( ![kCurrentUser.rongcloud_token isKindOfClass:[NSNull class]] && kCurrentUser.rongcloud_token.length > 0){
-//            [[RCIM sharedRCIM] connectWithToken:kCurrentUser.rongcloud_token success:^(NSString *userId) {
-//                self.unMessageCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[
-//                                                                                @(ConversationType_PRIVATE),
-//                                                                                      ]];
-//                kNoticeReloadkUnMessage
-//                RCUserInfo *user = [[RCUserInfo alloc] initWithUserId:kCurrentUser.uid name:nameStr portrait:kMeUnNilStr(kCurrentUser.header_pic)];
-////                [[RCIM sharedRCIM]  setCurrentUserInfo:user];
-////                [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:userId];
-//                [RCIM sharedRCIM].currentUserInfo = user;
-//                [RCIM sharedRCIM].enableMessageAttachUserInfo = YES;
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    [[RCIM sharedRCIM] setUserInfoDataSource:self];
-//                });
-//                NSLog(@"成功");
-//            }error:^(RCConnectErrorCode status) {
-//                NSLog(@"失败");
-//            }tokenIncorrect:^() {
-//                // Token 失效的
-//                NSLog(@"Token 失效");
-//            }];
-//        }
-//    }
+    
 #pragma mark - 极光tuis
     JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
     entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
@@ -159,12 +138,14 @@
     }
     [self.window makeKeyAndVisible];
     [MECommonTool newCheckVersion];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getImUnread) name:TUIKitNotification_TIMRefreshListener object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onForceOffline:) name:TUIKitNotification_TIMUserStatusListener object:nil];
+    //
     return YES;
 }
 
 #pragma mark - 友盟分享的回调
 #pragma mark 这里判断是否发起的请求为微信支付
-
 
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
@@ -187,7 +168,7 @@
 #pragma mark 支付宝的回调之后的方法
     if ([url.host isEqualToString:@"safepay"]) {
         //跳转支付宝钱包进行支付，处理支付结果
-
+        
     }
     //这里判断是否发起的请求为微信支付，如果是的话，用WXApi的方法调起微信客户端的支付页面（://pay 之前的那串字符串就是你的APPID，）
 #pragma mark 微信的回调之后的方法
@@ -203,7 +184,7 @@
     //这里判断回调信息是否为 支付
     if([resp isKindOfClass:[PayResp class]]){
         switch (resp.errCode) {
-                case WXSuccess:
+            case WXSuccess:
                 //如果支付成功的话，全局发送一个通知，支付成功
                 [[NSNotificationCenter defaultCenter] postNotificationName:WX_PAY_RESULT object:WXPAY_SUCCESSED];
                 break;
@@ -212,32 +193,29 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:WX_PAY_RESULT object:WXPAY_FAILED];
                 NSString *strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
                 NSLog(@"%@",strMsg);
-//                kMeAlter(@"提示", strMsg);
+                //                kMeAlter(@"提示", strMsg);
                 break;
         }
     }
 }
 
 
-#pragma mark - 融云
-/**
- *  网络状态变化。
- *
- *  @param status 网络状态。
- */
+#pragma mark - IM
 
-//- (void)onRCIMConnectionStatusChanged:(RCConnectionStatus)status {
-//    if (status == ConnectionStatus_KICKED_OFFLINE_BY_OTHER_CLIENT) {
-//
-//        HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:@"您的帐号在别的设备上登录，您被迫下线！请退出重新登录!"];
-//        alertView.isSupportRotating = YES;
-//        [alertView addButtonWithTitle:@"确定" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
-//            [MEUserInfoModel logout];
-//            [MEWxLoginVC presentLoginVCWithIsShowCancel:NO SuccessHandler:nil failHandler:nil];
-//        }];
-//        [alertView show];
-//    }
-//}
+- (void)onForceOffline:(NSNotification *)notification
+{
+    if ([MEUserInfoModel isLogin]){
+        [MEUserInfoModel logout];
+        HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:@"您的帐号在别的设备上登录，您被迫下线！请退出重新登录!"];
+        alertView.isSupportRotating = YES;
+        [alertView addButtonWithTitle:@"确定" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
+            [MEWxLoginVC presentLoginVCWithIsShowCancel:NO SuccessHandler:nil failHandler:nil];
+        }];
+        [alertView show];
+    }
+}
+
+
 
 - (void)application:(UIApplication *)application
 didRegisterUserNotificationSettings:
@@ -259,8 +237,27 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
      stringByReplacingOccurrencesOfString:@" "
      withString:@""];
     NSLog(@"deviceToken%@",token);
-#pragma mark 融云推送接收消息
-//    [[RCIMClient sharedRCIMClient] setDeviceToken:token];
+    [self configOnAppRegistAPNSWithDeviceToken:deviceToken];
+    
+}
+
+- (void)configOnAppRegistAPNSWithDeviceToken:(NSData *)deviceToken
+{
+    NSString *token = [NSString stringWithFormat:@"%@", deviceToken];
+    //    [[TIMManager sharedInstance] log:TIM_LOG_INFO tag:@"SetToken" msg:[NSString stringWithFormat:@"My Token is :%@", token]];
+    TIMTokenParam *param = [[TIMTokenParam alloc] init];
+#ifdef TestVersion
+    param.busiId = 12831;
+#else
+    param.busiId = 12832;
+#endif
+    [param setToken:deviceToken];
+    //    [[TIMManager sharedInstance] setToken:param];
+    [[TIMManager sharedInstance] setToken:param succ:^{
+        NSLog(@"-----> 上传 token 成功 ");
+    } fail:^(int code, NSString *msg) {
+        NSLog(@"-----> 上传 token 失败 ");
+    }];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -335,7 +332,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler API_AVAILABLE(ios(10.0)){
     NSDictionary * userInfo = notification.request.content.userInfo;
     NSLog(@"willPresentNotification %@",userInfo);
-//    [UIApplication sharedApplication].applicationIconBadgeNumber +=1;
+    [UIApplication sharedApplication].applicationIconBadgeNumber +=1;
 }
 
 //iOS10新增：处理后台点击通知的代理方法
@@ -349,122 +346,72 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     tabBarController.selectedIndex = 4;
 }
 
-#pragma mark 本地 融云消息未读数
-//
-//- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *userInfo))completion{
-//    RCUserInfo *otherUser = [[RCUserInfo alloc]init];
-//    if(kMeUnNilStr(userId).length==0){
-//        otherUser.userId = userId;
-//        otherUser.portraitUri = @"";
-//        otherUser.name = userId;
-//        completion(otherUser);
-//        return;
-//    }
-//    //先获取用户
-//    [MEPublicNetWorkTool postGetUserGetUserInfoWithUid:userId SuccessBlock:^(ZLRequestResponse *responseObject) {
-//        if([responseObject.data isKindOfClass:[NSDictionary class]]){
-//            if([responseObject.data isKindOfClass:[NSDictionary class]]){
-//                NSDictionary *dic = responseObject.data;
-//                if([kMeUnDic(dic) count]){
-//                    NSString *name = kMeUnDic(dic)[@"name"];
-//                    NSString *header_pic = kMeUnDic(dic)[@"header_pic"];
-//                    otherUser.userId = userId;
-//                    otherUser.portraitUri = kMeUnNilStr(header_pic);
-//                    otherUser.name = kMeUnNilStr(name);
-//                    completion(otherUser);
-//                }else{
-//                    otherUser.userId = userId;
-//                    otherUser.portraitUri = @"";
-//                    otherUser.name = userId;
-//                    completion(otherUser);
-//                }
-//            }else{
-//                otherUser.userId = userId;
-//                otherUser.portraitUri = @"";
-//                otherUser.name = userId;
-//                completion(otherUser);
-//            }
-//        }else{
-//            [MEPublicNetWorkTool postGetCustomerGetUserInfoWithUid:userId SuccessBlock:^(ZLRequestResponse *responseObject) {
-//                if([responseObject.data isKindOfClass:[NSDictionary class]]){
-//                    NSDictionary *dic = responseObject.data;
-//                    if([kMeUnDic(dic) count]){
-//                        NSString *name = kMeUnDic(dic)[@"name"];
-//                        NSString *header_pic = kMeUnDic(dic)[@"header_pic"];
-//                        otherUser.userId = userId;
-//                        otherUser.portraitUri = kMeUnNilStr(header_pic);
-//                        otherUser.name = kMeUnNilStr(name);
-//                        completion(otherUser);
-//                    }else{
-//                        otherUser.userId = userId;
-//                        otherUser.portraitUri = @"";
-//                        otherUser.name = userId;
-//                        completion(otherUser);
-//                    }
-//                }else{
-//                    otherUser.userId = userId;
-//                    otherUser.portraitUri = @"";
-//                    otherUser.name = userId;
-//                    completion(otherUser);
-//                }
-//            } failure:^(id object) {
-//                otherUser.userId = userId;
-//                otherUser.portraitUri = @"";
-//                otherUser.name = userId;
-//                completion(otherUser);
-//            }];
-//        }
-//    } failure:^(id object) {
-//        otherUser.userId = userId;
-//        otherUser.portraitUri = @"";
-//        otherUser.name = userId;
-//        completion(otherUser);
-//    }];
-//}
-//
-//- (void)didReceiveMessageNotification:(NSNotification *)notification {
-//    if([MEUserInfoModel isLogin]){
-//        RCMessage *message = notification.object;
-//        if (message.messageDirection == MessageDirection_RECEIVE && [[message.content class] persistentFlag] & MessagePersistent_ISCOUNTED) {
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [UIApplication sharedApplication].applicationIconBadgeNumber +=1;
-//            });
-//        }
-//        self.unMessageCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[
-//                                                                              @(ConversationType_PRIVATE),
-//                                                                              ]];
-//
-//        NSLog(@"%@",@(self.unMessageCount));
-//        kNoticeReloadkUnMessage
-//    }
-//}
-//
-//- (void)applicationWillResignActive:(UIApplication *)application {
-//    RCConnectionStatus status = [[RCIMClient sharedRCIMClient] getConnectionStatus];
-//    if([MEUserInfoModel isLogin] && status != ConnectionStatus_SignUp){
-//        self.unMessageCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[
-//                                                                              @(ConversationType_PRIVATE),
-//                                                                              ]];
-////        application.applicationIconBadgeNumber =   self.unMessageCount;
-//    }else{
-//        application.applicationIconBadgeNumber =   0;
-//    }
-//}
-//
-//- (void)applicationDidEnterBackground:(UIApplication *)application {
-//    if([MEUserInfoModel isLogin]){
-//        self.unMessageCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[
-//                                                                              @(ConversationType_PRIVATE),
-//                                                                              ]];
-//        application.applicationIconBadgeNumber =   self.unMessageCount;
-//    }else{
-//        application.applicationIconBadgeNumber =   0;
-//    }
-//}
+#pragma mark 本地 IM未读数
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+    if([MEUserInfoModel isLogin] ){
+        [self getImUnread];
+        application.applicationIconBadgeNumber =   self.unMessageCount;
+    }else{
+        application.applicationIconBadgeNumber =   0;
+    }
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    if([MEUserInfoModel isLogin]){
+        [self getImUnread];
+        application.applicationIconBadgeNumber =   self.unMessageCount;
+        __block UIBackgroundTaskIdentifier bgTaskID;
+        bgTaskID = [application beginBackgroundTaskWithExpirationHandler:^ {
+            //不管有没有完成，结束 background_task 任务
+            [application endBackgroundTask: bgTaskID];
+            bgTaskID = UIBackgroundTaskInvalid;
+        }];
+        [self configOnAppEnterBackground];
+    }else{
+        application.applicationIconBadgeNumber =   0;
+    }
+}
+
+- (void)configOnAppEnterBackground
+{
+    NSUInteger unReadCount = self.unMessageCount;
+    [UIApplication sharedApplication].applicationIconBadgeNumber = unReadCount;
+    TIMBackgroundParam  *param = [[TIMBackgroundParam alloc] init];
+    [param setC2cUnread:(int)unReadCount];
+    [[TIMManager sharedInstance] doBackground:param succ:^() {
+        
+    } fail:^(int code, NSString * err) {
+        
+    }];
+}
+
+- (void)getImUnread{
+    if([MEUserInfoModel isLogin]){
+        NSInteger unread = 0;
+        TIMManager *manager = [TIMManager sharedInstance];
+        NSArray *convs = [manager getConversationList];
+        for (TIMConversation *conv in convs) {
+            if([conv getType] == TIM_SYSTEM){
+                continue;
+            }
+            unread +=[conv getUnReadMessageNum];
+        }
+        self.unMessageCount = unread;
+        kNoticeReloadkUnMessage
+    }
+}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application{
     kNoticeUnNoticeMessage
     [MECommonTool getUIPasteboardContent];
+    if ([MEUserInfoModel isLogin]) {
+        [[TIMManager sharedInstance] doForeground:^() {
+            
+        } fail:^(int code, NSString * err) {
+            
+        }];
+    }
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application{
@@ -486,9 +433,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         NSString *messageStr = dict[@"alert"];
         NSDictionary *contentDic =  kMeUnDic(userInfo)[@"content"];
         MEJupshContentModel *model =  [MEJupshContentModel mj_objectWithKeyValues:contentDic];
-//        id TypeId = contentDic[@"id"];
-//        NSString *type = contentDic[@"type"];
-//        NSInteger msg_id = [contentDic[@"msg_id"] integerValue];
+        //        id TypeId = contentDic[@"id"];
+        //        NSString *type = contentDic[@"type"];
+        //        NSInteger msg_id = [contentDic[@"msg_id"] integerValue];
         NSString *strType = kMeUnNilStr(model.type);
         if(strType.length && ![strType isEqualToString:@"4"] &&![strType isEqualToString:@"5"]){
             //1跳商品  2跳订单详情 3更新 4B店铺访问 5C店铺访问

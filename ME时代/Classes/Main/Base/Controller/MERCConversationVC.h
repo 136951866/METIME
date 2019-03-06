@@ -7,6 +7,11 @@
 //
 
 
-@interface MERCConversationVC : MEBaseVC
 
+//#import <RongIMKit/RongIMKit.h>
+#import "TChatController.h"
+
+@interface MERCConversationVC : MEBaseVC
+- (instancetype)initWIthconversationData:(TConversationCellData *)data;
 @end
+

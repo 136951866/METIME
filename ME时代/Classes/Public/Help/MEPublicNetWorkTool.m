@@ -19,6 +19,19 @@
 #import "MEBStoreMannagerEditModel.h"
 
 @implementation MEPublicNetWorkTool
+/*********************************************/
+#pragma makr - IM
++ (void)postUserInfoByTlsWithTls_id:(NSString *)tls_id successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{@"tls_id":kMeUnNilStr(tls_id),@"token":kMeUnNilStr(kCurrentUser.token)};
+    NSString *url = kGetApiWithUrl(MEIPcommongUserInfoByTls);
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        
+    }];
+}
+
+/*********************************************/
 
 /*********************************************/
 #pragma makr - 动态
@@ -133,7 +146,7 @@
                 @"goods_id_list":kMeUnNilStr(goods_id_list)
                 };
     }
-     MBProgressHUD *HUD = [self commitWithHUD:@"生成推广链接中"];
+    MBProgressHUD *HUD = [self commitWithHUD:@"生成推广链接中"];
     NSString *url = kGetApiWithUrl(MEIPcommonduoduokegoodsPromotionUrlGenerate);
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
         [HUD hideAnimated:YES];
@@ -314,11 +327,11 @@
         kMeCallBlock(successBlock,responseObject);
     } failure:^(id error) {
         if([error isKindOfClass:[ZLRequestResponse class]]){
-//            ZLRequestResponse *res = (ZLRequestResponse*)error;
-//            [MEShowViewTool showMessage:kMeUnNilStr(res.message) view:kMeCurrentWindow];
+            //            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            //            [MEShowViewTool showMessage:kMeUnNilStr(res.message) view:kMeCurrentWindow];
             //            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
         }else{
-//            [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
+            //            [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
             //            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
         }
         kMeCallBlock(failure,error);
@@ -573,18 +586,18 @@
 + (void)postShareArticelWithId:(NSString *)aid SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"article_id":aid,@"token":kMeUnNilStr(kCurrentUser.token)};
     NSString *url = kGetApiWithUrl(MEIPcommonShareAricel);
-//    MBProgressHUD *HUD = [self commitWithHUD:@""];
+    //    MBProgressHUD *HUD = [self commitWithHUD:@""];
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
-//        [HUD hideAnimated:YES];
+        //        [HUD hideAnimated:YES];
         kMeCallBlock(successBlock,responseObject);
     } failure:^(id error) {
         if([error isKindOfClass:[ZLRequestResponse class]]){
             ZLRequestResponse *res = (ZLRequestResponse*)error;
             [MEShowViewTool showMessage:kMeUnNilStr(res.message) view:kMeCurrentWindow];
-//            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+            //            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
         }else{
             [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
-//            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+            //            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
         }
         kMeCallBlock(failure,error);
     }];
@@ -593,17 +606,17 @@
 + (void)postCountArticleWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"token":kMeUnNilStr(kCurrentUser.token)};
     NSString *url = kGetApiWithUrl(MEIPcommonCountArticlel);
-//    MBProgressHUD *HUD = [self commitWithHUD:@""];
+    //    MBProgressHUD *HUD = [self commitWithHUD:@""];
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
-//        [HUD hideAnimated:YES];
+        //        [HUD hideAnimated:YES];
         kMeCallBlock(successBlock,responseObject);
     } failure:^(id error) {
         if([error isKindOfClass:[ZLRequestResponse class]]){
             ZLRequestResponse *res = (ZLRequestResponse*)error;
-//            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+            //            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
             [MEShowViewTool showMessage:kMeUnNilStr(res.message) view:kMeCurrentWindow];
         }else{
-//            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+            //            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
             [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
         }
         kMeCallBlock(failure,error);
@@ -638,17 +651,17 @@
 + (void)postSharePosterWithId:(NSString *)posters_id SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"posters_id":posters_id,@"token":kMeUnNilStr(kCurrentUser.token)};
     NSString *url = kGetApiWithUrl(MEIPcommonSharePoster);
-//    MBProgressHUD *HUD = [self commitWithHUD:@""];
+    //    MBProgressHUD *HUD = [self commitWithHUD:@""];
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
-//        [HUD hideAnimated:YES];
+        //        [HUD hideAnimated:YES];
         kMeCallBlock(successBlock,responseObject);
     } failure:^(id error) {
         if([error isKindOfClass:[ZLRequestResponse class]]){
             ZLRequestResponse *res = (ZLRequestResponse*)error;
-//            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
-           [MEShowViewTool showMessage:kMeUnNilStr(res.message) view:kMeCurrentWindow];
+            //            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+            [MEShowViewTool showMessage:kMeUnNilStr(res.message) view:kMeCurrentWindow];
         }else{
-//            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+            //            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
             [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
         }
         kMeCallBlock(failure,error);
@@ -850,7 +863,7 @@
             ZLRequestResponse *res = (ZLRequestResponse*)error;
             [MEShowViewTool showMessage:kMeUnNilStr(res.message) view:kMeCurrentWindow];
         }else{
-             [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
+            [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
         }
         kMeCallBlock(failure,error);
     }];
@@ -1096,7 +1109,7 @@
             ZLRequestResponse *res = (ZLRequestResponse*)error;
             [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
         }else{
-             [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
         }
         kMeCallBlock(failure,error);
     }];
@@ -1171,7 +1184,7 @@
     NSDictionary *dic = @{
                           @"token":kMeUnNilStr(kCurrentUser.token),
                           @"product_cart_id":kMeUnNilStr(productcartid),
-//                          @"member_id":@(memberId)
+                          //                          @"member_id":@(memberId)
                           };
     NSString *url = kGetApiWithUrl(MEIPcommonCartDeleteCart);
     MBProgressHUD *HUD = [self commitWithHUD:@"删除中..."];
@@ -1193,7 +1206,7 @@
     NSDictionary *dic = @{
                           @"token":kMeUnNilStr(kCurrentUser.token),
                           @"num":@(num).description,
-                         @"id":@(shopCartId).description
+                          @"id":@(shopCartId).description
                           };
     NSString *url = kGetApiWithUrl(MEIPcommonCartEditCartNum);
     MBProgressHUD *HUD = [self commitWithHUD:@""];
@@ -1216,7 +1229,7 @@
     NSString *url = kGetApiWithUrl(MEIPcommonCartAddCart);
     MBProgressHUD *HUD = [self commitWithHUD:@"加入中..."];
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
-         [MEShowViewTool SHOWHUDWITHHUD:HUD test:@"加入成功"];
+        [MEShowViewTool SHOWHUDWITHHUD:HUD test:@"加入成功"];
         kMeCallBlock(successBlock,responseObject);
     } failure:^(id error) {
         if([error isKindOfClass:[ZLRequestResponse class]]){
@@ -1241,7 +1254,7 @@
     } failure:^(id error) {
         if([error isKindOfClass:[ZLRequestResponse class]]){
             ZLRequestResponse *res = (ZLRequestResponse*)error;
-             [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
         }else{
             [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
         }
@@ -1445,7 +1458,7 @@
     } failure:^(id error) {
         if([error isKindOfClass:[ZLRequestResponse class]]){
             ZLRequestResponse *res = (ZLRequestResponse*)error;
-           [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
         }else{
             [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
         }
@@ -1530,11 +1543,11 @@
         if([error isKindOfClass:[ZLRequestResponse class]]){
             ZLRequestResponse *res = (ZLRequestResponse*)error;
             [MEShowViewTool showMessage:kMeUnNilStr(res.message) view:kMeCurrentWindow];
-
+            
             //            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
         }else{
             [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
-
+            
             //            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
         }
         kMeCallBlock(failure,error);
@@ -1729,7 +1742,7 @@
     MBProgressHUD *HUD = [self commitWithHUD:@"生成订单中..."];
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
         [HUD hideAnimated:YES];
-//        [MEShowViewTool SHOWHUDWITHHUD:HUD test:@"兑换成功"];
+        //        [MEShowViewTool SHOWHUDWITHHUD:HUD test:@"兑换成功"];
         kMeCallBlock(successBlock,responseObject);
     } failure:^(id error) {
         if([error isKindOfClass:[ZLRequestResponse class]]){
@@ -1836,7 +1849,7 @@
             return;
         }
     }
-
+    
     NSDictionary *dic = @{@"phone":kMeUnNilStr(phone),@"type":kMeUnNilStr(type)};
     NSString *url = kGetApiWithUrl(MEIPAppGetCodel);
     MBProgressHUD *HUD = [self commitWithHUD:@"获取验证码中..."];
@@ -1994,7 +2007,7 @@
 }
 
 + (void)postExpMiniprogramAtWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
-        NSDictionary *dic = @{@"member_id":kMeUnNilStr(kCurrentUser.uid),@"token":kMeUnNilStr(kCurrentUser.token)};
+    NSDictionary *dic = @{@"member_id":kMeUnNilStr(kCurrentUser.uid),@"token":kMeUnNilStr(kCurrentUser.token)};
     NSString *url = kGetApiWithUrl(MEIPExpMiniprogramAt);
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
         kMeCallBlock(successBlock,responseObject);
@@ -2017,7 +2030,7 @@
             ZLRequestResponse *res = (ZLRequestResponse*)error;
             [MEShowViewTool showMessage:kMeUnNilStr(res.message) view:kMeCurrentWindow];
         }else{
-             [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
+            [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
         }
         kMeCallBlock(failure,error);
     }];
@@ -2070,13 +2083,13 @@
         [MEShowViewTool showMessage:@"店铺简介不能为空" view:kMeCurrentWindow];
         return;
     }
-
+    
     
     NSDictionary *dic = [model mj_keyValues];
     NSString *url = kGetApiWithUrl(MEIPcommonUpdateStoreInfo);
     MBProgressHUD *HUD = [self commitWithHUD:@"更新店铺信息"];
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
-         [MEShowViewTool SHOWHUDWITHHUD:HUD test:@"更新成功"];
+        [MEShowViewTool SHOWHUDWITHHUD:HUD test:@"更新成功"];
         kMeCallBlock(successBlock,responseObject);
     } failure:^(id error) {
         if([error isKindOfClass:[ZLRequestResponse class]]){
@@ -2200,16 +2213,16 @@
 
 + (MBProgressHUD *)commitWithHUD:(NSString *)str{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:kMeCurrentWindow animated:YES];
-//    UIImage *image = [UIImage sd_animatedGIFNamed:@"loading"];
-//    UIImageView *cusImageV = [[UIImageView alloc] initWithImage:image];
-//    hud.mode = MBProgressHUDModeCustomView;
-//    hud.removeFromSuperViewOnHide = YES;
-//    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
-//    hud.bezelView.backgroundColor = [UIColor clearColor];
-//    hud.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
-//    hud.customView = cusImageV;
+    //    UIImage *image = [UIImage sd_animatedGIFNamed:@"loading"];
+    //    UIImageView *cusImageV = [[UIImageView alloc] initWithImage:image];
+    //    hud.mode = MBProgressHUDModeCustomView;
+    //    hud.removeFromSuperViewOnHide = YES;
+    //    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
+    //    hud.bezelView.backgroundColor = [UIColor clearColor];
+    //    hud.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+    //    hud.customView = cusImageV;
     hud.label.text = str;
-//    hud.label.textColor = kMEPink;
+    //    hud.label.textColor = kMEPink;
     hud.userInteractionEnabled = YES;
     return hud;
 }

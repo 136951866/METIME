@@ -22,6 +22,11 @@
 
 @interface MEPublicNetWorkTool : NSObject
 
+
+/*********************************************/
+#pragma makr - IM
++ (void)postUserInfoByTlsWithTls_id:(NSString *)tls_id successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+
 + (void)getUserGetTokenByFourWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 
 /*********************************************/

@@ -45,4 +45,8 @@
 #import "MEWxLoginVC.h"
 #import "MELoginVC.h"
 #import "AAGlobalMacro.h"
+
+#import "TUIKit.h"
+#import "IMMessageExt.h"
+#import "THeader.h"
 #endif /* MEPrefixHeader_pch */
