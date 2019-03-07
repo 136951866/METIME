@@ -32,6 +32,7 @@ PODS:
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
+  - TZImagePickerController (2.2.5)
   - UMCAnalytics (5.5.0):
     - UMCCommon
   - UMCCommon (1.5.2)
@@ -62,6 +63,7 @@ DEPENDENCIES:
   - MJRefresh (= 3.1.15.3)
   - PYSearch (= 0.9.0)
   - SDCycleScrollView (= 1.75)
+  - TZImagePickerController
   - UMCAnalytics
   - UMCCommon
   - UMCShare/Social/WeChat
@@ -83,6 +85,7 @@ SPEC REPOS:
     - PYSearch
     - SDCycleScrollView
     - SDWebImage
+    - TZImagePickerController
     - UMCAnalytics
     - UMCCommon
     - UMCShare
@@ -102,11 +105,12 @@ SPEC CHECKSUMS:
   PYSearch: 55175e6046e2e1b5236a90c780351988e914a015
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  TZImagePickerController: cf5c9f0ae343e2eb1912b26e4d9fa811b3159319
   UMCAnalytics: 4667788559a72f2fa5077117d1b8802a3b6eb6bb
   UMCCommon: 4392868ac47ff1b101663106bb114ba616fabbad
   UMCShare: aa233aecad67979930fe43f3a2f676023b669439
   YBImageBrowser: 3e61edabcb1927ddc095a96465f47fc551b8f9bf
 
-PODFILE CHECKSUM: 57c8ec0bd4aed295bcc15ae8af61c1370df8db66
+PODFILE CHECKSUM: 3160c2e944e16b54448d4e9b9fb2769255a60f0b
 
 COCOAPODS: 1.5.3

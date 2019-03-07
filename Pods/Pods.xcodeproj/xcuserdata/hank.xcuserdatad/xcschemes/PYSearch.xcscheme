@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1814DEE6A9D3D0F4EDA69D12735E7EE5"
+               BlueprintIdentifier = "61891C3821978892FE4BE3B2A3DC4D15"
                BlueprintName = "PYSearch"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libPYSearch.a">

@@ -12,6 +12,8 @@
 #import "MEBynamicHomeModel.h"
 #import "METhridProductDetailsVC.h"
 #import "IQKeyboardManager.h"
+#import "MEBynamicPublishVC.h"
+
 @interface MEBynamicHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSInteger _comentIndex;}
 
@@ -19,6 +21,8 @@
 @property (nonatomic, strong) CLInputToolbar *inputToolbar;
 @property (nonatomic, strong) ZLRefreshTool         *refresh;
 @property (nonatomic, strong) UIView *maskView;
+@property (nonatomic, strong) UIButton *btnRight;
+
 @end
 
 @implementation MEBynamicHomeVC
@@ -37,6 +41,7 @@
         [self.refresh addRefreshView];
         [self setTextViewToolbar];
     }
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.btnRight];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogout) name:kUserLogout object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogin) name:kUserLogin object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self
@@ -159,6 +164,11 @@
     [self didTouchBtn];
 }
 
+- (void)pushlishAction:(UIButton *)btn{
+    MEBynamicPublishVC *vc = [[MEBynamicPublishVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (void)likeAction:(NSInteger)index{
     if(index>self.refresh.arrData.count){
         return;
@@ -268,6 +278,21 @@
         }];
     }
     return _refresh;
+}
+
+- (UIButton *)btnRight{
+    if(!_btnRight){
+        _btnRight= [UIButton buttonWithType:UIButtonTypeCustom];
+        [_btnRight setTitle:@"发表" forState:UIControlStateNormal];
+        [_btnRight setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _btnRight.backgroundColor = kMEPink;
+        _btnRight.cornerRadius = 2;
+        _btnRight.clipsToBounds = YES;
+        _btnRight.frame = CGRectMake(0, 0, 63, 30);
+        _btnRight.titleLabel.font = kMeFont(15);
+        [_btnRight addTarget:self action:@selector(pushlishAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btnRight;
 }
 
 @end

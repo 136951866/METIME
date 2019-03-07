@@ -30,4 +30,5 @@ pod 'UMCAnalytics'
 #pod 'RongCloudIM/IMKit', '~> 2.8.3'
 pod 'JPush', '3.1.0'
 pod 'PYSearch', '0.9.0'
+pod 'TZImagePickerController'
 end

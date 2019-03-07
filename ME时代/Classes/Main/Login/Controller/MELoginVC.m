@@ -264,11 +264,14 @@
 
 //登录融云
 - (void)loginIm{
-    [[TUIKit sharedInstance] loginKit:kMeUnNilStr(kCurrentUser.tls_data.tls_id) userSig:kMeUnNilStr(kCurrentUser.tls_data.user_tls_key) succ:^{
-        NSLog(@"sucess");
-    } fail:^(int code, NSString *msg) {
-        NSLog(@"fial");
-    }];
+    if([MEUserInfoModel isLogin] && kMeUnNilStr(kCurrentUser.tls_data.tls_id).length && kMeUnNilStr(kCurrentUser.tls_data.user_tls_key).length){
+        [[TUIKit sharedInstance] loginKit:kMeUnNilStr(kCurrentUser.tls_data.tls_id) userSig:kMeUnNilStr(kCurrentUser.tls_data.user_tls_key) succ:^{
+            NSLog(@"sucess");
+        } fail:^(int code, NSString *msg) {
+            NSLog(@"fial");
+        }];
+    }
+
     //
     [kMeApplication registerForRemoteNotifications];
     //    [MEPublicNetWorkTool postRongyunTokenWithSuccessBlock:^(ZLRequestResponse *responseObject) {
