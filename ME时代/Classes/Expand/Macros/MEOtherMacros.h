@@ -27,17 +27,17 @@
 //百度
 #define BAIDUAK @"jCMREiwKtZatsn4f19dSgKlndCFv2aDx"
 
-//融云
-#ifdef TestVersion
-    #define RONGYUNAppKey @"m7ua80gbmjsam"
-    #define RONGYUNAppSecret @"BvxNWAGdqX"
-////客服id
-//#define RONGYUNCUSTOMID @"KEFU153828643047594"
-#else
-    #define RONGYUNAppKey @"k51hidwqkc3hb"
-    #define RONGYUNAppSecret @"u2ofE9LnYNd"
-//#define RONGYUNCUSTOMID @""
-#endif
+////融云
+//#ifdef TestVersion
+//    #define RONGYUNAppKey @"m7ua80gbmjsam"
+//    #define RONGYUNAppSecret @"BvxNWAGdqX"
+//////客服id
+////#define RONGYUNCUSTOMID @"KEFU153828643047594"
+//#else
+//    #define RONGYUNAppKey @"k51hidwqkc3hb"
+//    #define RONGYUNAppSecret @"u2ofE9LnYNd"
+////#define RONGYUNCUSTOMID @""
+//#endif
 
 
 // 0（默认值）表示采用的是开发证书，1 表示采用生产证书发布应用
