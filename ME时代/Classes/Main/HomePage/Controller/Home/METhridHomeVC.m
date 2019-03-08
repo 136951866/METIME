@@ -28,6 +28,8 @@
 #import "MEStoreModel.h"
 #import "MENewStoreDetailsVC.h"
 
+#import "MEBrandManngerVC.h"
+
 const static CGFloat kImgStore = 50;
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSInteger _selectTimeIndex;
@@ -74,6 +76,10 @@ const static CGFloat kImgStore = 50;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getUnInfo) name:kUnNoticeMessage object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogout) name:kUserLogout object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogin) name:kUserLogin object:nil];
+    
+#warning --
+    MEBrandManngerVC *vc = [[MEBrandManngerVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)userLogout{

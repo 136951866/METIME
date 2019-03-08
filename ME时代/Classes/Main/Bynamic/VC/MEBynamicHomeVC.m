@@ -126,7 +126,7 @@
         MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"" message:@"确定删除动态吗?"];
         [aler addButtonWithTitle:@"确定" block:^{
             kMeSTRONGSELF
-                 [strongSelf delDyWithModel:model index:indexPath.row];
+            [strongSelf delDyWithModel:model index:indexPath.row];
         }];
         [aler addButtonWithTitle:@"取消"];
         [aler show];
@@ -135,7 +135,6 @@
 }
 
 - (void)delDyWithModel:(MEBynamicHomeModel *)model index:(NSInteger)index{
-
     kMeWEAKSELF
     [MEPublicNetWorkTool postdynamicDelDynamicWithdynamicId:kMeUnNilStr(model.idField) successBlock:^(ZLRequestResponse *responseObject) {
         kMeSTRONGSELF

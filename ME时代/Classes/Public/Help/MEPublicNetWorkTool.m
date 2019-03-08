@@ -7,7 +7,7 @@
 //
 
 #import "MEPublicNetWorkTool.h"
-
+#import <Qiniu/QiniuSDK.h>
 //相关参数model
 #import "MEShoppingCartAttrModel.h"
 #import "MEAddAddressAttrModel.h"
@@ -19,6 +19,57 @@
 #import "MEBStoreMannagerEditModel.h"
 
 @implementation MEPublicNetWorkTool
+
+/*********************************************/
+#pragma makr - 公共
+//获取七牛云TOKEN
++ (void)postgetQiuNiuTokkenWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSString *url = kGetApiWithUrl(MEIPgetQiniuToken);
+    MBProgressHUD *HUD = [self commitWithHUD:@""];
+    [THTTPManager postWithParameter:@{} strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(failure,error);
+    }];
+}
+
+//上传图片
++ (void)postQiNiuUpFileWithToken:(NSString *)token filePath:(NSString *)filePath successBlock:(kMeObjBlock)successBlock failure:(kMeObjBlock)failure{
+    QNUploadManager *upManager = [[QNUploadManager alloc] init];
+//    NSData *imageData = UIImagePNGRepresentation(image);
+    QNUploadOption *uploadOption = [[QNUploadOption alloc] initWithMime:nil progressHandler:^(NSString *key, float percent) {
+        NSLog(@"percent == %.2f", percent);
+    }
+                                                                 params:nil
+                                                               checkCrc:NO
+                                                     cancellationSignal:nil];
+    [upManager putFile:filePath key:nil token:token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+        if(info.ok){
+            kMeCallBlock(successBlock,resp);
+        }
+        else{
+            kMeCallBlock(failure,resp);
+        }
+        NSLog(@"info ===== %@", info);
+        NSLog(@"resp ===== %@", resp);
+    }
+                option:uploadOption];
+//    [upManager putData:imageData key:nil token:token
+//              complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+//        if(info.ok){
+//            kMeCallBlock(successBlock,resp);
+//        }
+//        else{
+//            kMeCallBlock(failure,resp);
+//        }
+//        NSLog(@"info ===== %@", info);
+//        NSLog(@"resp ===== %@", resp);
+//    } option:uploadOption];
+}
+
+
 /*********************************************/
 #pragma makr - IM
 + (void)postUserInfoByTlsWithTls_id:(NSString *)tls_id successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{

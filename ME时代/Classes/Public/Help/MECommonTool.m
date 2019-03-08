@@ -386,6 +386,29 @@
 
 }
 
++ (NSString *)getImagePath:(UIImage *)Image filename:(NSString*)filaname{
+    NSString *filePath = nil;
+    NSData *data = nil;
+    if (UIImagePNGRepresentation(Image) == nil) {
+        data = UIImageJPEGRepresentation(Image, 0.5);
+    } else {
+        data = UIImagePNGRepresentation(Image);
+    }
+
+    NSString *DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+
+    //文件管理器
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    //把刚刚图片转换的data对象拷贝至沙盒中
+    [fileManager createDirectoryAtPath:DocumentsPath withIntermediateDirectories:YES attributes:nil error:nil];
+    NSString *ImagePath = [[NSString alloc] initWithFormat:@"/%@",filaname];
+    [fileManager createFileAtPath:[DocumentsPath stringByAppendingString:ImagePath] contents:data attributes:nil];
+    //得到选择后沙盒中图片的完整路径
+    filePath = [[NSString alloc] initWithFormat:@"%@%@", DocumentsPath, ImagePath];
+    return filePath;
+}
+
 //+ (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
 //    [MBProgressHUD hideHUDForView:kMeCurrentWindow animated:YES];
 //    if (error != NULL){

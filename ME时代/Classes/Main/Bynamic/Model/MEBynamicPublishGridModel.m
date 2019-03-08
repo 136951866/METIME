@@ -14,6 +14,7 @@
     MEBynamicPublishGridModel *model = [MEBynamicPublishGridModel new];
     model.image = image;
     model.isAdd = isAdd;
+    model.status = MEBynamicPublishGridModelIdelStatus;
     return model;
 }
 

@@ -19,6 +19,8 @@ const static CGFloat MEBynamicPublishVCTextHeight = 135;
 @interface MEBynamicPublishVC ()<TZImagePickerControllerDelegate,YBImageBrowserDataSource>{
     NSInteger _currentIndex;
     NSMutableArray *_arrImage;
+    NSString *_token;
+    BOOL _isError;
 }
 //@property (weak, nonatomic) IBOutlet MEBynamicPublishGridView *gridView;
 //@property (weak, nonatomic) IBOutlet NSLayoutConstraint *consGridViewHeight;
@@ -35,6 +37,18 @@ const static CGFloat MEBynamicPublishVCTextHeight = 135;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"发表";
+    kMeWEAKSELF
+    _isError = NO;
+    MBProgressHUD *HUD = [MEPublicNetWorkTool commitWithHUD:@""];
+    [MEPublicNetWorkTool postgetQiuNiuTokkenWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeSTRONGSELF
+        strongSelf->_token = responseObject.data[@"token"];
+    } failure:^(id object) {
+        [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        kMeSTRONGSELF
+        [strongSelf.navigationController popViewControllerAnimated:YES];
+    }];
     _currentIndex = 0;
     _arrImage = [NSMutableArray array];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.btnRight];
@@ -45,7 +59,6 @@ const static CGFloat MEBynamicPublishVCTextHeight = 135;
     _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, sheight);
     [_scrollView addSubview:self.textView];
     [_scrollView addSubview:self.gridView];
-    
     [self reloadGridView];
     // Do any additional setup after loading the view from its nib.
 }
@@ -56,6 +69,7 @@ const static CGFloat MEBynamicPublishVCTextHeight = 135;
 
 - (void)pushlishAction:(UIButton *)btn{
     [self.view endEditing:YES];
+    _isError = NO;
     [_arrImage removeAllObjects];
     NSString *content = kMeUnNilStr(_textView.textView.text);
     kMeWEAKSELF
@@ -67,16 +81,30 @@ const static CGFloat MEBynamicPublishVCTextHeight = 135;
         dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
         for (MEBynamicPublishGridModel *model in self.arrModel) {
             if(!model.isAdd){
-                [MEPublicNetWorkTool posUploadImagesWithFile:model.image successBlock:^(ZLRequestResponse *responseObject) {
-                    [strongSelf->_arrImage addObject:kMeUnNilStr(responseObject.data[@"images_url"])];
-                    NSLog(@"---------%@",responseObject.data);
-                    NSLog(@"%@",kMeUnNilStr(responseObject.data[@"images_url"]));
+                [MEPublicNetWorkTool postQiNiuUpFileWithToken:strongSelf->_token filePath:model.filePath successBlock:^(id object) {
+                    NSLog(@"%@",object);
+                    if([object isKindOfClass:[NSDictionary class]]){
+                        [strongSelf->_arrImage addObject:kMeUnNilStr(object[@"key"])];
+                    }else{
+                       strongSelf->_isError = YES;
+                    }
                     dispatch_semaphore_signal(semaphore);
                 } failure:^(id object) {
+                    strongSelf->_isError = YES;
                     [strongSelf->_arrImage addObject:@""];
                     dispatch_semaphore_signal(semaphore);
                 }];
                 dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+//                [MEPublicNetWorkTool posUploadImagesWithFile:model.image successBlock:^(ZLRequestResponse *responseObject) {
+//                    [strongSelf->_arrImage addObject:kMeUnNilStr(responseObject.data[@"images_url"])];
+//                    NSLog(@"---------%@",responseObject.data);
+//                    NSLog(@"%@",kMeUnNilStr(responseObject.data[@"images_url"]));
+//                    dispatch_semaphore_signal(semaphore);
+//                } failure:^(id object) {
+//                    [strongSelf->_arrImage addObject:@""];
+//                    dispatch_semaphore_signal(semaphore);
+//                }];
+//                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
             }
         }
     });
@@ -85,20 +113,24 @@ const static CGFloat MEBynamicPublishVCTextHeight = 135;
     dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         kMeSTRONGSELF
         dispatch_async(dispatch_get_main_queue(), ^{
-            [hub hideAnimated:YES];
-            NSError *error = nil;
-            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:strongSelf->_arrImage
-                                                               options:kNilOptions
-                                                                 error:&error];
-            NSString *jsonString = [[NSString alloc] initWithData:jsonData
-                                                         encoding:NSUTF8StringEncoding];
-            [MEPublicNetWorkTool postdynamicVotingCommentWithConten:content images:jsonString successBlock:^(ZLRequestResponse *responseObject) {
-                kMeSTRONGSELF
-                kMeCallBlock(strongSelf.publishSucessBlock);
-                [strongSelf.navigationController popViewControllerAnimated:YES];
-            } failure:^(id object) {
-                
-            }];
+            if(!strongSelf->_isError){
+                [hub hideAnimated:YES];
+                NSError *error = nil;
+                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:strongSelf->_arrImage
+                                                                   options:kNilOptions
+                                                                     error:&error];
+                NSString *jsonString = [[NSString alloc] initWithData:jsonData
+                                                             encoding:NSUTF8StringEncoding];
+                [MEPublicNetWorkTool postdynamicVotingCommentWithConten:content images:jsonString successBlock:^(ZLRequestResponse *responseObject) {
+                    kMeSTRONGSELF
+                    kMeCallBlock(strongSelf.publishSucessBlock);
+                    [strongSelf.navigationController popViewControllerAnimated:YES];
+                } failure:^(id object) {
+                    
+                }];
+            }else{
+                [MEShowViewTool SHOWHUDWITHHUD:hub test:@"图片上传失败"];
+            }
         });
     });
 }
@@ -160,16 +192,23 @@ const static CGFloat MEBynamicPublishVCTextHeight = 135;
                 TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:maxIndex columnNumber:3 delegate:strongSelf pushPhotoPickerVc:YES];
                 imagePicker.allowPickingOriginalPhoto = NO;
                 imagePicker.allowPickingVideo = NO;
-                [imagePicker setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+                [imagePicker setDidFinishPickingPhotosWithInfosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto, NSArray<NSDictionary *> *infos) {
                     kMeSTRONGSELF
+                    [strongSelf.arrModel removeLastObject];
                     for (int i = 0; i < assets.count; i ++) {
                         PHAsset *phAsset = assets[i];
                         if (phAsset.mediaType == PHAssetMediaTypeImage) {
                             UIImage *image = photos[i];
+                            NSDictionary *info = infos[i];
                             MEBynamicPublishGridModel *model = [MEBynamicPublishGridModel modelWithImage:image isAdd:NO];
-                            [strongSelf.arrModel insertObject:model atIndex:0];
+                            NSString *filename = [phAsset valueForKey:@"filename"];
+//                            NSURL *url = [info valueForKey:@"PHImageFileURLKey"];
+                            model.filePath = [MECommonTool getImagePath:image filename:filename];
+                            [strongSelf.arrModel addObject:model];
                         }
                     }
+                    MEBynamicPublishGridModel *lastmodel = [MEBynamicPublishGridModel modelWithImage:[UIImage imageNamed:@"icon_bynamicAdd"] isAdd:YES];
+                    [strongSelf.arrModel addObject:lastmodel];
                     [strongSelf reloadGridView];
                 }];
                 [strongSelf presentViewController:imagePicker animated:YES completion:nil];

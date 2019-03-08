@@ -53,4 +53,6 @@
 //时时间戳转换
 + (NSString *)changeTimeStrWithtime:(NSString*)timeStampString;
 + (NSMutableAttributedString *)fristStrWithFont:(UIFont *)font content:(NSString *)content;
+
++ (NSString *)getImagePath:(UIImage *)Image filename:(NSString*)filaname;
 @end

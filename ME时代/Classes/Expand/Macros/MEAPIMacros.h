@@ -23,6 +23,9 @@
 
 #define kGetApiWithUrl(url) [BASEIP stringByAppendingString:url]
 
+
+#define MEIPgetQiniuToken @"getQiniuToken"
+
 #pragma makr - TEST
 #define MEIPgetTokenByFour @"common/user/getTokenByFour"
 

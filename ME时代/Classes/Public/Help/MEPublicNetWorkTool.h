@@ -22,6 +22,14 @@
 
 @interface MEPublicNetWorkTool : NSObject
 
+/*********************************************/
+#pragma makr - 公共
+//获取七牛云TOKEN
++ (void)postgetQiuNiuTokkenWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+
+//上传图片
++ (void)postQiNiuUpFileWithToken:(NSString *)token filePath:(NSString *)filePath successBlock:(kMeObjBlock)successBlock failure:(kMeObjBlock)failure;
+
 
 /*********************************************/
 #pragma makr - IM

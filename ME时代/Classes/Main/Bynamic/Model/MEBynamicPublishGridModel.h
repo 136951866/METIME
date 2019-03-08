@@ -10,6 +10,12 @@
 #import "MEBynamicPublishGridModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
+typedef enum : NSUInteger {
+    MEBynamicPublishGridModelIdelStatus,
+    MEBynamicPublishGridModelUploadingStatus,
+    MEBynamicPublishGridModelSucStatus,
+    MEBynamicPublishGridModelFailStatus,
+} MEBynamicPublishGridModelStatus;
 
 @interface MEBynamicPublishGridModel : MEBaseModel
 
@@ -17,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger selectIndex;
 @property (nonatomic, assign) BOOL isAdd;
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) NSString *filePath;
+@property (nonatomic, assign) MEBynamicPublishGridModelStatus status;
 
 //选中的时候用的
 
