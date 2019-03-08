@@ -22,5 +22,12 @@ MEModelIdToIdField
 
 MEModelObjectClassInArrayWithDic((@{@"praise" : [MEBynamicHomepraiseModel class],@"comment" : [MEBynamicHomecommentModel class]}))
 
+- (NSString *)content{
+    if(!_content || kMeUnNilStr(_content).length == 0){
+        return @" ";
+    }else{
+        return _content;
+    }
+}
 
 @end

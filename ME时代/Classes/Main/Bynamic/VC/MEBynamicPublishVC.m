@@ -18,6 +18,7 @@ const static CGFloat MEBynamicPublishVCTextHeight = 135;
 
 @interface MEBynamicPublishVC ()<TZImagePickerControllerDelegate,YBImageBrowserDataSource>{
     NSInteger _currentIndex;
+    NSMutableArray *_arrImage;
 }
 //@property (weak, nonatomic) IBOutlet MEBynamicPublishGridView *gridView;
 //@property (weak, nonatomic) IBOutlet NSLayoutConstraint *consGridViewHeight;
@@ -35,6 +36,7 @@ const static CGFloat MEBynamicPublishVCTextHeight = 135;
     [super viewDidLoad];
     self.title = @"发表";
     _currentIndex = 0;
+    _arrImage = [NSMutableArray array];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.btnRight];
     _consTopMargin.constant = kMeNavBarHeight;
     _scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
@@ -53,7 +55,52 @@ const static CGFloat MEBynamicPublishVCTextHeight = 135;
 }
 
 - (void)pushlishAction:(UIButton *)btn{
+    [self.view endEditing:YES];
+    [_arrImage removeAllObjects];
+    NSString *content = kMeUnNilStr(_textView.textView.text);
+    kMeWEAKSELF
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
+    MBProgressHUD *hub =  [MEPublicNetWorkTool commitWithHUD:@"发表中"];
+    dispatch_group_async(group, queue, ^{
+        kMeSTRONGSELF
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        for (MEBynamicPublishGridModel *model in self.arrModel) {
+            if(!model.isAdd){
+                [MEPublicNetWorkTool posUploadImagesWithFile:model.image successBlock:^(ZLRequestResponse *responseObject) {
+                    [strongSelf->_arrImage addObject:kMeUnNilStr(responseObject.data[@"images_url"])];
+                    NSLog(@"---------%@",responseObject.data);
+                    NSLog(@"%@",kMeUnNilStr(responseObject.data[@"images_url"]));
+                    dispatch_semaphore_signal(semaphore);
+                } failure:^(id object) {
+                    [strongSelf->_arrImage addObject:@""];
+                    dispatch_semaphore_signal(semaphore);
+                }];
+                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            }
+        }
+    });
     
+    
+    dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        kMeSTRONGSELF
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hub hideAnimated:YES];
+            NSError *error = nil;
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:strongSelf->_arrImage
+                                                               options:kNilOptions
+                                                                 error:&error];
+            NSString *jsonString = [[NSString alloc] initWithData:jsonData
+                                                         encoding:NSUTF8StringEncoding];
+            [MEPublicNetWorkTool postdynamicVotingCommentWithConten:content images:jsonString successBlock:^(ZLRequestResponse *responseObject) {
+                kMeSTRONGSELF
+                kMeCallBlock(strongSelf.publishSucessBlock);
+                [strongSelf.navigationController popViewControllerAnimated:YES];
+            } failure:^(id object) {
+                
+            }];
+        });
+    });
 }
 
 - (void)showPhotoWithModel:(MEBynamicPublishGridModel*)model{

@@ -47,7 +47,12 @@
 #define MEIPcommongetDynamicpraise @"common/dynamic/praise"
 //评论
 #define MEIPcommongetDynamiccommentt @"common/dynamic/comment"
-
+//删除
+#define MEIPcommongetDynamiDelDynamic @"common/dynamic/delDynamic"
+//发表
+#define MEIPcommongetGetVotingComment @"common/dynamic/addDynamic"
+//上传图片
+#define MEIPcommonUploadImages @"common/common/uploadImages"
 /*********************************************/
 
 

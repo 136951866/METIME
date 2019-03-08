@@ -37,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblStoreTitle;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consStoreTitleHeight;
 @property (weak, nonatomic) IBOutlet UIButton *btnShare;
+@property (weak, nonatomic) IBOutlet UIButton *btnDel;
 
 @end
 
@@ -52,6 +53,15 @@
 
 - (void)setUIWithModel:(MEBynamicHomeModel *)model{
     _model = model;
+    if(kMeUnNilStr(model.member_id).length == 0){
+        _btnDel.hidden = YES;
+    }else{
+        if([kMeUnNilStr(model.member_id) isEqualToString:kCurrentUser.uid]){
+             _btnDel.hidden = NO;
+        }else{
+            _btnDel.hidden = YES;
+        }
+    }
     _currentIndex = 0;
     _btnLike.selected =  model.praise_over;
 //    _imgHeader.image = [UIImage imageNamed:@"icon-wgvilogo"];
@@ -122,6 +132,9 @@
     kMeCallBlock(_CommentBlock);
 }
 
+- (IBAction)delAction:(UIButton *)sender {
+    kMeCallBlock(_delBlock);
+}
 
 + (CGFloat)getCellHeightithModel:(MEBynamicHomeModel *)model{
     CGFloat height = 11+20+7;

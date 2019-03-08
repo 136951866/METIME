@@ -31,6 +31,13 @@
 
 /*********************************************/
 #pragma makr - 动态
+//上传图片
++ (void)posUploadImagesWithFile:(UIImage *)image successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+
+//B Clerk s发表评论
++ (void)postdynamicVotingCommentWithConten:(NSString *)content images:(NSString*)images successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+//删除
++ (void)postdynamicDelDynamicWithdynamicId:(NSString *)dynamic_id successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //点赞
 + (void)postdynamicPraiselWithdynamicId:(NSString *)dynamic_id successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //评论
@@ -367,5 +374,6 @@
 + (void)postCancelReserveWithReserveSn:(NSString *)reserve_sn successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 /***************************************/
 
++ (MBProgressHUD *)commitWithHUD:(NSString *)str;
 
 @end

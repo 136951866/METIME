@@ -25,8 +25,8 @@
                             <constraint firstAttribute="height" constant="36" id="y6q-Ya-QTL"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghp-wp-DWp">
-                        <rect key="frame" x="56" y="11" width="264" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1111111111" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghp-wp-DWp">
+                        <rect key="frame" x="56" y="11" width="219" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="gjl-W2-6ec"/>
                         </constraints>
@@ -132,11 +132,22 @@
                             <constraint firstAttribute="height" constant="0.5" id="KiB-tq-TSq"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mue-hT-CW1">
+                        <rect key="frame" x="290" y="10" width="40" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="Fw3-h9-HwR"/>
+                        </constraints>
+                        <state key="normal" image="icon_dyDel">
+                            <color key="titleColor" red="1" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="delAction:" destination="jf8-r8-qz8" eventType="touchUpInside" id="bCD-vB-s27"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="VU1-pZ-mG8" secondAttribute="trailing" constant="10" id="05f-Mi-aGZ"/>
                     <constraint firstItem="hLA-1h-SFt" firstAttribute="leading" secondItem="yq6-HL-NRY" secondAttribute="trailing" constant="8" id="1aO-6b-XVa"/>
-                    <constraint firstAttribute="trailing" secondItem="Ghp-wp-DWp" secondAttribute="trailing" constant="10" id="2XM-Qw-6Vx"/>
                     <constraint firstItem="oID-Dg-RwW" firstAttribute="top" secondItem="T5Y-jk-bf7" secondAttribute="bottom" constant="7" id="4Ts-Vy-bY7"/>
                     <constraint firstItem="M8g-5J-xkP" firstAttribute="leading" secondItem="T5Y-jk-bf7" secondAttribute="leading" id="5Ty-zt-SVj"/>
                     <constraint firstItem="Ghp-wp-DWp" firstAttribute="leading" secondItem="fFS-wD-Rng" secondAttribute="trailing" constant="10" id="5Yk-vE-Ega"/>
@@ -153,6 +164,7 @@
                     <constraint firstAttribute="trailing" secondItem="T5Y-jk-bf7" secondAttribute="trailing" constant="10" id="aNO-He-IRJ"/>
                     <constraint firstItem="Hnp-jR-rGS" firstAttribute="leading" secondItem="T5Y-jk-bf7" secondAttribute="leading" id="cKG-f4-xsm"/>
                     <constraint firstAttribute="trailing" secondItem="voh-0R-DgM" secondAttribute="trailing" id="dBO-Jz-NI1"/>
+                    <constraint firstItem="Mue-hT-CW1" firstAttribute="centerY" secondItem="Ghp-wp-DWp" secondAttribute="centerY" id="ddf-dw-m18"/>
                     <constraint firstItem="T5Y-jk-bf7" firstAttribute="top" secondItem="Ghp-wp-DWp" secondAttribute="bottom" constant="7" id="djR-qq-uWf"/>
                     <constraint firstAttribute="bottom" secondItem="voh-0R-DgM" secondAttribute="bottom" id="fOY-Wb-mog"/>
                     <constraint firstItem="T5Y-jk-bf7" firstAttribute="leading" secondItem="oID-Dg-RwW" secondAttribute="leading" constant="3" id="g9k-aW-NnC"/>
@@ -160,11 +172,14 @@
                     <constraint firstItem="VU1-pZ-mG8" firstAttribute="centerY" secondItem="yq6-HL-NRY" secondAttribute="centerY" id="gvl-DI-yJe"/>
                     <constraint firstItem="VU1-pZ-mG8" firstAttribute="top" secondItem="53d-zV-9dU" secondAttribute="bottom" constant="7" id="iOZ-7u-o6Q"/>
                     <constraint firstItem="hLA-1h-SFt" firstAttribute="centerY" secondItem="yq6-HL-NRY" secondAttribute="centerY" id="rsm-VW-2fX"/>
+                    <constraint firstItem="Mue-hT-CW1" firstAttribute="leading" secondItem="Ghp-wp-DWp" secondAttribute="trailing" constant="15" id="saF-kF-Qdl"/>
+                    <constraint firstAttribute="trailing" secondItem="Mue-hT-CW1" secondAttribute="trailing" id="sty-ZS-LyZ"/>
                     <constraint firstAttribute="trailing" secondItem="oID-Dg-RwW" secondAttribute="trailing" constant="7" id="tfX-na-IVu"/>
                     <constraint firstAttribute="bottom" secondItem="M8g-5J-xkP" secondAttribute="bottom" constant="10" id="xvE-to-V9t"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnDel" destination="Mue-hT-CW1" id="mQH-WT-uNf"/>
                 <outlet property="btnLike" destination="hLA-1h-SFt" id="g92-nd-ydJ"/>
                 <outlet property="btnShare" destination="VU1-pZ-mG8" id="QgW-ce-x2o"/>
                 <outlet property="consComentHeight" destination="ZGp-qc-jk9" id="sbM-lK-XXk"/>
@@ -189,5 +204,6 @@
         <image name="dynamicLike" width="17" height="15"/>
         <image name="dynamicLikeS" width="18.5" height="16"/>
         <image name="dynamicShare" width="16" height="15.5"/>
+        <image name="icon_dyDel" width="16" height="16"/>
     </resources>
 </document>

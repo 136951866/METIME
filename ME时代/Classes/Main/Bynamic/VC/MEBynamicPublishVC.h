@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MEBynamicPublishVC : MEBaseVC
 
+@property (nonatomic, copy) kMeBasicBlock publishSucessBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

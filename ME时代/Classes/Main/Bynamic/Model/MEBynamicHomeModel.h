@@ -46,6 +46,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSInteger product_id;
 @property (nonatomic, strong) NSString *goods_title;
+@property (nonatomic, copy) NSString *member_id;
+
 @end
 
 NS_ASSUME_NONNULL_END

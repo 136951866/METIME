@@ -122,7 +122,26 @@
         kMeSTRONGSELF
         [strongSelf commentAction:indexPath.row];
     };
+    cell.delBlock = ^{
+        MEAlertView *aler = [[MEAlertView alloc] initWithTitle:@"" message:@"确定删除动态吗?"];
+        [aler addButtonWithTitle:@"确定" block:^{
+            kMeSTRONGSELF
+                 [strongSelf delDyWithModel:model index:indexPath.row];
+        }];
+        [aler addButtonWithTitle:@"取消"];
+        [aler show];
+    };
     return cell;
+}
+
+- (void)delDyWithModel:(MEBynamicHomeModel *)model index:(NSInteger)index{
+
+    kMeWEAKSELF
+    [MEPublicNetWorkTool postdynamicDelDynamicWithdynamicId:kMeUnNilStr(model.idField) successBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        [strongSelf.refresh.arrData removeObjectAtIndex:index];
+        [strongSelf.tableView reloadData];
+    } failure:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -166,6 +185,11 @@
 
 - (void)pushlishAction:(UIButton *)btn{
     MEBynamicPublishVC *vc = [[MEBynamicPublishVC alloc]init];
+    kMeWEAKSELF
+    vc.publishSucessBlock = ^{
+        kMeSTRONGSELF
+        [strongSelf.refresh reload];
+    };
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -85,8 +85,10 @@ NSString *const kServerError = @"服务器无法连接";
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.requestSerializer.timeoutInterval = 8;
+    [self customProcessingForManager:manager];
+//    [self customProcessingForManager:manager];//设置相应内容类型
     [manager POST:urlStr parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        [formData appendPartWithFileData:data name:@"file" fileName:@"headPicFile" mimeType:@"image/png"];
+        [formData appendPartWithFileData:data name:@"file" fileName:@"dyFile" mimeType:@"image/png"];
     }progress:^(NSProgress *uploadProgress){
         NSLog(@"进度= %f",uploadProgress.fractionCompleted);
 //        progress.progress = uploadProgress.fractionCompleted;
@@ -219,7 +221,7 @@ NSString *const kServerError = @"服务器无法连接";
 
 //对请求进行自定义处理
 - (void)customProcessingForManager:(AFHTTPSessionManager *)manager{
-    NSMutableSet *types = [NSMutableSet setWithObjects:@"text/html",@"text/plain", nil];
+    NSMutableSet *types = [NSMutableSet setWithObjects:@"text/html",@"text/plain",@"application/json", @"text/json",@"text/javascript", nil];
     [types unionSet:manager.responseSerializer.acceptableContentTypes];
     manager.responseSerializer.acceptableContentTypes = types;
     [manager.requestSerializer setValue:@"IOS" forHTTPHeaderField:@"clientsystem"];

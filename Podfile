@@ -31,4 +31,5 @@ pod 'UMCAnalytics'
 pod 'JPush', '3.1.0'
 pod 'PYSearch', '0.9.0'
 pod 'TZImagePickerController'
+pod 'Qiniu', '7.1'
 end
