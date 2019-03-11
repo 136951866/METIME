@@ -23,7 +23,7 @@
  * And if you want to contribute for this project, please contact me as well
  * GitHub        : https://github.com/AAChartModel
  * StackOverflow : https://stackoverflow.com/users/7842508/codeforu
- * JianShu       : http://www.jianshu.com/u/f1e6753d4254
+ * JianShu       : https://www.jianshu.com/u/f1e6753d4254
  * SegmentFault  : https://segmentfault.com/u/huanghunbieguan
  *
  * -------------------------------------------------------------------------------
@@ -41,11 +41,13 @@ static AAYAxisGridLineInterpolation const AAYAxisGridLineInterpolationPolygon = 
 @interface AAYAxis : NSObject
 
 //AAPropStatementAndPropSetFuncStatement(assign, AAYAxis, BOOL,       min) 
-AAPropStatementAndPropSetFuncStatement(strong, AAYAxis, AATitle  *, title) 
-AAPropStatementAndPropSetFuncStatement(strong, AAYAxis, NSArray  *, plotLines) 
-AAPropStatementAndPropSetFuncStatement(assign, AAYAxis, BOOL,       reversed) 
+AAPropStatementAndPropSetFuncStatement(strong, AAYAxis, AATitle  *, title)
+AAPropStatementAndPropSetFuncStatement(strong, AAYAxis, NSArray  *, plotBands)
+AAPropStatementAndPropSetFuncStatement(strong, AAYAxis, NSArray  *, plotLines)
+AAPropStatementAndPropSetFuncStatement(assign, AAYAxis, BOOL,       reversed)
 AAPropStatementAndPropSetFuncStatement(strong, AAYAxis, NSNumber *, gridLineWidth) // y 轴网格线宽度
 AAPropStatementAndPropSetFuncStatement(copy,   AAYAxis, NSString *, gridLineColor) // y 轴网格线颜色
+AAPropStatementAndPropSetFuncStatement(copy,   AAYAxis, NSString *, gridLineDashStyle) //网格线线条样式，所有可用的线条样式参考：Highcharts线条样式
 AAPropStatementAndPropSetFuncStatement(copy,   AAYAxis, NSString *, alternateGridColor) //backcolor of every other grid line area
 AAPropStatementAndPropSetFuncStatement(copy,   AAYAxis, AAYAxisGridLineInterpolation, gridLineInterpolation) //Polar charts only. Whether the grid lines should draw as a polygon with straight lines between categories, or as circles. Can be either circle or polygon. 默认是：null.
 AAPropStatementAndPropSetFuncStatement(strong, AAYAxis, AALabels *, labels) //用于设置 y 轴是否显示

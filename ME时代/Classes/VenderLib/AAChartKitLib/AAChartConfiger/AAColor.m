@@ -1,9 +1,9 @@
 //
-//  AAOptions3d.m
-//  AAChartKit
+//  AAColor.m
+//  AAChartKitDemo
 //
-//  Created by An An on 17/1/17.
-//  Copyright © 2017年 An An. All rights reserved.
+//  Created by AnAn on 2018/11/19.
+//  Copyright © 2018 Danny boy. All rights reserved.
 //*************** ...... SOURCE CODE ...... ***************
 //***...................................................***
 //*** https://github.com/AAChartModel/AAChartKit        ***
@@ -23,19 +23,75 @@
  * And if you want to contribute for this project, please contact me as well
  * GitHub        : https://github.com/AAChartModel
  * StackOverflow : https://stackoverflow.com/users/7842508/codeforu
- * JianShu       : http://www.jianshu.com/u/f1e6753d4254
+ * JianShu       : https://www.jianshu.com/u/f1e6753d4254
  * SegmentFault  : https://segmentfault.com/u/huanghunbieguan
  *
  * -------------------------------------------------------------------------------
  
  */
 
-#import "AAOptions3d.h"
+#import "AAColor.h"
 
-@implementation AAOptions3d
+@implementation AAColor
 
-AAPropSetFuncImplementation(AAOptions3d, BOOL,       enabled) 
-AAPropSetFuncImplementation(AAOptions3d, NSNumber *, alpha) 
-AAPropSetFuncImplementation(AAOptions3d, NSNumber *, beta) 
++ (NSString *)blackColor {
+    return @"black";
+};
+
++ (NSString *)darkGrayColor {
+    return @"darkGray";
+};
+
++ (NSString *)lightGrayColor {
+    return @"lightGray";
+};
+
++ (NSString *)whiteColor {
+    return @"white";
+};
+
++ (NSString *)grayColor {
+    return @"gray";
+};
+
++ (NSString *)redColor {
+    return @"red";
+};
+
++ (NSString *)greenColor {
+    return @"green";
+};
+
++ (NSString *)blueColor {
+    return @"blue";
+};
+
++ (NSString *)cyanColor {
+    return @"cyan";
+};
+
++ (NSString *)yellowColor {
+    return @"yellow";
+};
+
++ (NSString *)magentaColor {
+    return @"magenta";
+};
+
++ (NSString *)orangeColor {
+    return @"orange";
+};
+
++ (NSString *)purpleColor {
+    return @"purple";
+};
+
++ (NSString *)brownColor {
+    return @"brown";
+};
+
++ (NSString *)clearColor {
+    return @"#00000000";
+};
 
 @end

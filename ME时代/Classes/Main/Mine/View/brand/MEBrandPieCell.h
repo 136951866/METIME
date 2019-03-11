@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-const static CGFloat kMEBrandPieCellHeight = 265;
+const static CGFloat kMEBrandPieCellHeight = 273;
 
 @interface MEBrandPieCell : UITableViewCell
 

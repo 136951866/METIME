@@ -35,7 +35,7 @@
     self.aaChartModel.title = kMeUnNilStr(title);
     self.aaChartModel.series =@[
                             AASeriesElement.new
-                            .nameSet(@"")
+                            .nameSet(@"活跃度")
                             .dataSet(@[@0.45, @1, @1.5, @2, @2.7, @0.62, @1])
                            
                             ];
@@ -52,7 +52,6 @@
 //        .yAxisLineWidthSet(@0)//Y轴轴线线宽为0即是隐藏Y轴轴线
         .colorsThemeSet(@[@"#F9553C"])//设置主体颜色数组
         .yAxisTitleSet(@"")//设置 Y 轴标题
-        .tooltipValueSuffixSet(@"℃")//设置浮动提示框单位后缀
         .backgroundColorSet(@"#ffffff")
         .xAxisGridLineWidthSet(@1)
         .yAxisGridLineWidthSet(@1);//y轴横向分割线宽度为0(即是隐藏分割线)
@@ -61,8 +60,9 @@
 //        _aaChartModel.xAxisCrosshairWidth = @0.9;//Zero width to disable crosshair by default
         _aaChartModel.xAxisCrosshairColor = @"#ffffff";//(浓汤)乳脂,番茄色准星线
         _aaChartModel.xAxisCrosshairDashStyleType = AALineDashSyleTypeLongDashDot;
-        _aaChartModel.legendEnabled = NO;
-        _aaChartModel.tooltipEnabled = NO;
+        _aaChartModel.easyGradientColors = true;//启用渐变色
+//        _aaChartModel.legendEnabled = NO;
+//        _aaChartModel.tooltipEnabled = NO;
         _aaChartModel.shouldGroupAccessibilityChildren= YES;
         self.aaChartModel.markerRadius = @0;
         

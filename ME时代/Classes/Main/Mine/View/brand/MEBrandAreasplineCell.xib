@@ -26,7 +26,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yav-im-xdW" customClass="AAChartView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="259.5"/>
+                        <rect key="frame" x="0.0" y="8" width="320" height="251.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
@@ -35,7 +35,7 @@
                     <constraint firstAttribute="bottom" secondItem="wpH-NR-jtx" secondAttribute="bottom" id="8Bg-Au-tdP"/>
                     <constraint firstItem="wpH-NR-jtx" firstAttribute="top" secondItem="Yav-im-xdW" secondAttribute="bottom" id="OEd-xm-szD"/>
                     <constraint firstItem="Yav-im-xdW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="WRf-9C-Ppo"/>
-                    <constraint firstItem="Yav-im-xdW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="cu9-7T-M3s"/>
+                    <constraint firstItem="Yav-im-xdW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="cu9-7T-M3s"/>
                     <constraint firstItem="wpH-NR-jtx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gaM-oI-dXI"/>
                     <constraint firstAttribute="trailing" secondItem="wpH-NR-jtx" secondAttribute="trailing" id="nm9-FP-RDn"/>
                 </constraints>

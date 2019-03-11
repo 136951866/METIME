@@ -23,7 +23,7 @@
  * And if you want to contribute for this project, please contact me as well
  * GitHub        : https://github.com/AAChartModel
  * StackOverflow : https://stackoverflow.com/users/7842508/codeforu
- * JianShu       : http://www.jianshu.com/u/f1e6753d4254
+ * JianShu       : https://www.jianshu.com/u/f1e6753d4254
  * SegmentFault  : https://segmentfault.com/u/huanghunbieguan
  *
  * -------------------------------------------------------------------------------
@@ -45,8 +45,6 @@
 #else // Release status, turn off the LOG function
 #define AADetailLog(...)
 #endif
-
-#define kDevice_Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 
 @interface AAChartView()<WKUIDelegate, WKNavigationDelegate, UIWebViewDelegate> {
     UIWebView *_uiWebView;
@@ -148,9 +146,6 @@
 - (NSString *)configTheJavaScriptString {
     CGFloat chartViewContentWidth = self.contentWidth;
     CGFloat contentHeight = self.frame.size.height;
-    if (kDevice_Is_iPhoneX == YES) {
-        contentHeight = contentHeight - 20;
-    }
     CGFloat chartViewContentHeight = self.contentHeight == 0 ? contentHeight : self.contentHeight;
     NSString *javaScriptStr = [NSString stringWithFormat:@"loadTheHighChartView('%@','%@','%@')",
                                _optionJson,
@@ -209,12 +204,18 @@
 //=======================CONFIGURE THE CHART VIEW CONTENT WITH `AAOPTIONS`=======================//
 
 - (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"FBI WARNING" message:message preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:([UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"FBI WARNING"
+                                                                             message:message
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:([UIAlertAction actionWithTitle:@"Okay"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * _Nonnull action) {
         completionHandler();
     }])];
     UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-    [rootVC presentViewController:alertController animated:YES completion:nil];
+    [rootVC presentViewController:alertController
+                         animated:YES
+                       completion:nil];
 }
     
 - (void)drawChart {
@@ -248,7 +249,11 @@
     if (AASYSTEM_VERSION >= 9.0) {
         [_wkWebView  evaluateJavaScript:functionNameStr completionHandler:^(id item, NSError * _Nullable error) {
             if (error) {
-                AADetailLog(@"☠️☠️💀☠️☠️WARNING!!!!! THERE ARE SOME ERROR INFOMATION_______%@",error);
+                NSMutableDictionary *errorDic = [NSMutableDictionary dictionary];
+                [errorDic setValue:error.domain forKey:@"domain"];
+                [errorDic setValue:@(error.code) forKey:@"code"];
+                [errorDic setValue:error.userInfo forKey:@"userInfo"];
+                AADetailLog(@"☠️☠️💀☠️☠️!!!!!WARNING!!!!! THERE ARE SOME ERROR INFOMATION_______%@",errorDic);
             }
         }];
     } else {
@@ -395,9 +400,9 @@
 }
 
 + (NSString*)wipeOffTheLineBreakAndBlankCharacter:(NSString *)originalString {
-    NSString *str =[originalString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-    return str;
+    originalString = [originalString stringByReplacingOccurrencesOfString:@"\0" withString:@""];
+    originalString = [originalString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    return originalString;
 }
 
 + (NSString *)getPureOptionsString:(id)optionsObject {

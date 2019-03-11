@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-const static CGFloat kMEBrandAreasplineCellHeight = 265;
+const static CGFloat kMEBrandAreasplineCellHeight = 273;
 
 @interface MEBrandAreasplineCell : UITableViewCell
 - (void)setUiWithModel:(id)model  title:(NSString *)title;

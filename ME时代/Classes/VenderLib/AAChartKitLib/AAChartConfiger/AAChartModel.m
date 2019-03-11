@@ -24,7 +24,7 @@
  * And if you want to contribute for this project, please contact me as well
  * GitHub        : https://github.com/AAChartModel
  * StackOverflow : https://stackoverflow.com/users/7842508/codeforu
- * JianShu       : http://www.jianshu.com/u/f1e6753d4254
+ * JianShu       : https://www.jianshu.com/u/f1e6753d4254
  * SegmentFault  : https://segmentfault.com/u/huanghunbieguan
  *
  * -------------------------------------------------------------------------------
@@ -156,14 +156,14 @@ AAPropSetFuncImplementation(AAChartModel, NSArray  *, series) //图表的数据�
 AAPropSetFuncImplementation(AAChartModel, AAChartSubtitleAlignType, subtitleAlign) //图表副标题文本水平对齐方式。可选的值有 “left”，”center“和“right”。 默认是：center.
 AAPropSetFuncImplementation(AAChartModel, AAChartType,              chartType) //图表类型
 AAPropSetFuncImplementation(AAChartModel, AAChartStackingType,      stacking) //堆积样式
-AAPropSetFuncImplementation(AAChartModel, AAChartSymbolType,        symbol) //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-AAPropSetFuncImplementation(AAChartModel, AAChartSymbolStyleType,   symbolStyle) 
+AAPropSetFuncImplementation(AAChartModel, AAChartSymbolType,        markerSymbol) //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+AAPropSetFuncImplementation(AAChartModel, AAChartSymbolStyleType,   markerSymbolStyle)
 AAPropSetFuncImplementation(AAChartModel, AAChartZoomType,          zoomType) //缩放类型 AAChartZoomTypeX 表示可沿着 x 轴进行手势缩放
 AAPropSetFuncImplementation(AAChartModel, AAChartAnimation,         animationType) //设置图表的渲染动画类型
 AAPropSetFuncImplementation(AAChartModel, NSNumber *, animationDuration) //设置图表的渲染动画时长(动画单位为毫秒)
 
 AAPropSetFuncImplementation(AAChartModel, BOOL,       inverted) //x 轴是否垂直,默认为否
-AAPropSetFuncImplementation(AAChartModel, BOOL,       gradientColorsThemeEnabled) //是否将常规主题颜色数组 colorsTheme 自动转换为半透明渐变效果的颜色数组(设置后就不用自己再手动去写渐变色字典,相当于是设置渐变色的一个快捷方式,当然了,如果需要细致地自定义渐变色效果,还是需要自己手动配置渐变颜色字典内容,具体方法参见图表示例中的`颜色渐变条形图`示例代码),默认为否
+AAPropSetFuncImplementation(AAChartModel, BOOL,       easyGradientColors) //是否方便快捷地将常规主题颜色数组 colorsTheme 自动转换为半透明渐变效果的颜色数组(设置后就不用自己再手动去写渐变色字典,相当于是设置渐变色的一个快捷方式,当然了,如果需要细致地自定义渐变色效果,还是需要自己手动配置渐变颜色字典内容,具体方法参见图表示例中的`颜色渐变条形图`示例代码),默认为否
 AAPropSetFuncImplementation(AAChartModel, BOOL,       polar) //是否极化图形(变为雷达图),默认为否
 
 AAPropSetFuncImplementation(AAChartModel, BOOL,       dataLabelEnabled) //是否显示数据,默认为否

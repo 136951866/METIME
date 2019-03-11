@@ -16,36 +16,6 @@
 		3600345F21AE7FA200BAF337 /* MEVisterTodySectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3600345E21AE7FA200BAF337 /* MEVisterTodySectionView.xib */; };
 		3600346321AE816900BAF337 /* MEVisterTodyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600346121AE816900BAF337 /* MEVisterTodyCell.m */; };
 		3600346421AE816900BAF337 /* MEVisterTodyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3600346221AE816900BAF337 /* MEVisterTodyCell.xib */; };
-		360034A521AE823700BAF337 /* AAJSFiles.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3600346621AE823700BAF337 /* AAJSFiles.bundle */; };
-		360034A621AE823700BAF337 /* AAAreaspline.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600346921AE823700BAF337 /* AAAreaspline.m */; };
-		360034A721AE823700BAF337 /* AALabels.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600346B21AE823700BAF337 /* AALabels.m */; };
-		360034A821AE823700BAF337 /* AASeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600346E21AE823700BAF337 /* AASeries.m */; };
-		360034A921AE823700BAF337 /* AAXAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600346F21AE823700BAF337 /* AAXAxis.m */; };
-		360034AA21AE823700BAF337 /* AAPlotOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600347121AE823700BAF337 /* AAPlotOptions.m */; };
-		360034AB21AE823700BAF337 /* AADataLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600347221AE823700BAF337 /* AADataLabels.m */; };
-		360034AC21AE823700BAF337 /* AALine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600347321AE823700BAF337 /* AALine.m */; };
-		360034AD21AE823700BAF337 /* AATooltip.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600347621AE823700BAF337 /* AATooltip.m */; };
-		360034AE21AE823700BAF337 /* AASubtitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600347821AE823700BAF337 /* AASubtitle.m */; };
-		360034AF21AE823700BAF337 /* AAYAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600347921AE823700BAF337 /* AAYAxis.m */; };
-		360034B021AE823700BAF337 /* AACrosshair.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600347A21AE823700BAF337 /* AACrosshair.m */; };
-		360034B121AE823700BAF337 /* AAColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600347F21AE823700BAF337 /* AAColumn.m */; };
-		360034B221AE823700BAF337 /* AAPlotLinesElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600348021AE823700BAF337 /* AAPlotLinesElement.m */; };
-		360034B321AE823700BAF337 /* AAOptions3d.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600348221AE823700BAF337 /* AAOptions3d.m */; };
-		360034B421AE823700BAF337 /* AAStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600348421AE823700BAF337 /* AAStyle.m */; };
-		360034B521AE823700BAF337 /* AABar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600348521AE823700BAF337 /* AABar.m */; };
-		360034B621AE823700BAF337 /* AATitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600348621AE823700BAF337 /* AATitle.m */; };
-		360034B721AE823700BAF337 /* AAArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600348921AE823700BAF337 /* AAArea.m */; };
-		360034B821AE823700BAF337 /* AAAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600348A21AE823700BAF337 /* AAAnimation.m */; };
-		360034B921AE823700BAF337 /* AALegend.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600348B21AE823700BAF337 /* AALegend.m */; };
-		360034BA21AE823700BAF337 /* AAMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600348D21AE823700BAF337 /* AAMarker.m */; };
-		360034BB21AE823700BAF337 /* AASpline.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600349121AE823700BAF337 /* AASpline.m */; };
-		360034BC21AE823700BAF337 /* AAItemStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600349221AE823700BAF337 /* AAItemStyle.m */; };
-		360034BD21AE823700BAF337 /* AAPie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600349321AE823700BAF337 /* AAPie.m */; };
-		360034BE21AE823700BAF337 /* AAChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600349921AE823700BAF337 /* AAChart.m */; };
-		360034BF21AE823700BAF337 /* AAChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600349C21AE823700BAF337 /* AAChartView.m */; };
-		360034C021AE823700BAF337 /* AAChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3600349F21AE823700BAF337 /* AAChartModel.m */; };
-		360034C121AE823700BAF337 /* AAOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 360034A121AE823700BAF337 /* AAOptions.m */; };
-		360034C221AE823700BAF337 /* AASeriesElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 360034A221AE823700BAF337 /* AASeriesElement.m */; };
 		360034C521AE8A4F00BAF337 /* MEVisterSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 360034C421AE8A4F00BAF337 /* MEVisterSectionView.m */; };
 		360034C721AE8A6600BAF337 /* MEVisterSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360034C621AE8A6600BAF337 /* MEVisterSectionView.xib */; };
 		360034CB21AE9A7100BAF337 /* MEVistorVisterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 360034C921AE9A7100BAF337 /* MEVistorVisterCell.m */; };
@@ -466,6 +436,44 @@
 		368E70BF21E5EE2D003009CA /* MENewProductDetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368E70BE21E5EE2D003009CA /* MENewProductDetailsHeaderView.xib */; };
 		368E70C221E5FE54003009CA /* MENewProductDetailsSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 368E70C121E5FE54003009CA /* MENewProductDetailsSectionView.m */; };
 		368E70C421E5FE5F003009CA /* MENewProductDetailsSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368E70C321E5FE5F003009CA /* MENewProductDetailsSectionView.xib */; };
+		3691308222363B6E008B1836 /* AAChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691303F22363B6D008B1836 /* AAChartView.m */; };
+		3691308322363B6E008B1836 /* AAChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691304422363B6D008B1836 /* AAChartModel.m */; };
+		3691308422363B6E008B1836 /* AAOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691304622363B6D008B1836 /* AAOptions.m */; };
+		3691308522363B6E008B1836 /* AASeriesElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691304722363B6D008B1836 /* AASeriesElement.m */; };
+		3691308622363B6E008B1836 /* AAColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691304922363B6D008B1836 /* AAColor.m */; };
+		3691308722363B6E008B1836 /* AAGradientColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691304A22363B6D008B1836 /* AAGradientColor.m */; };
+		3691308822363B6E008B1836 /* AAJSFiles.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3691304C22363B6D008B1836 /* AAJSFiles.bundle */; };
+		3691308922363B6E008B1836 /* AAAreaspline.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691304F22363B6E008B1836 /* AAAreaspline.m */; };
+		3691308A22363B6E008B1836 /* AALabels.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691305122363B6E008B1836 /* AALabels.m */; };
+		3691308B22363B6E008B1836 /* AASeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691305422363B6E008B1836 /* AASeries.m */; };
+		3691308C22363B6E008B1836 /* AAXAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691305522363B6E008B1836 /* AAXAxis.m */; };
+		3691308D22363B6E008B1836 /* AAPlotOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691305622363B6E008B1836 /* AAPlotOptions.m */; };
+		3691308E22363B6E008B1836 /* AADataLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691305722363B6E008B1836 /* AADataLabels.m */; };
+		3691308F22363B6E008B1836 /* AAPlotBandsElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691305822363B6E008B1836 /* AAPlotBandsElement.m */; };
+		3691309022363B6E008B1836 /* AALine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691305922363B6E008B1836 /* AALine.m */; };
+		3691309122363B6E008B1836 /* AATooltip.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691305C22363B6E008B1836 /* AATooltip.m */; };
+		3691309222363B6E008B1836 /* AASubtitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691305F22363B6E008B1836 /* AASubtitle.m */; };
+		3691309322363B6E008B1836 /* AAYAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691306022363B6E008B1836 /* AAYAxis.m */; };
+		3691309422363B6E008B1836 /* AACrosshair.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691306122363B6E008B1836 /* AACrosshair.m */; };
+		3691309522363B6E008B1836 /* AAColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691306622363B6E008B1836 /* AAColumn.m */; };
+		3691309622363B6E008B1836 /* AAPlotLinesElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691306722363B6E008B1836 /* AAPlotLinesElement.m */; };
+		3691309722363B6E008B1836 /* AAStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691306A22363B6E008B1836 /* AAStyle.m */; };
+		3691309822363B6E008B1836 /* AABar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691306B22363B6E008B1836 /* AABar.m */; };
+		3691309922363B6E008B1836 /* AATitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691306C22363B6E008B1836 /* AATitle.m */; };
+		3691309A22363B6E008B1836 /* AAArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691306F22363B6E008B1836 /* AAArea.m */; };
+		3691309B22363B6E008B1836 /* AAAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691307022363B6E008B1836 /* AAAnimation.m */; };
+		3691309C22363B6E008B1836 /* AALabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691307122363B6E008B1836 /* AALabel.m */; };
+		3691309D22363B6E008B1836 /* AALegend.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691307222363B6E008B1836 /* AALegend.m */; };
+		3691309E22363B6E008B1836 /* AAMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691307422363B6E008B1836 /* AAMarker.m */; };
+		3691309F22363B6E008B1836 /* AASpline.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691307922363B6E008B1836 /* AASpline.m */; };
+		369130A022363B6E008B1836 /* AAItemStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691307A22363B6E008B1836 /* AAItemStyle.m */; };
+		369130A122363B6E008B1836 /* AAPie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691307B22363B6E008B1836 /* AAPie.m */; };
+		369130A222363B6E008B1836 /* AAChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3691308122363B6E008B1836 /* AAChart.m */; };
+		369130A622364137008B1836 /* MEPolarChartMixedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 369130A422364137008B1836 /* MEPolarChartMixedCell.m */; };
+		369130A722364137008B1836 /* MEPolarChartMixedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 369130A522364137008B1836 /* MEPolarChartMixedCell.xib */; };
+		369130AB223659DA008B1836 /* MEBrandAiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 369130A9223659DA008B1836 /* MEBrandAiCell.m */; };
+		369130AC223659DA008B1836 /* MEBrandAiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 369130AA223659DA008B1836 /* MEBrandAiCell.xib */; };
+		369130AF22365CBE008B1836 /* MEBrandAISortVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 369130AE22365CBE008B1836 /* MEBrandAISortVC.m */; };
 		3695C3A721D4BDD500EDBCDF /* MECouponOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3695C3A521D4BDD500EDBCDF /* MECouponOrderCell.m */; };
 		3695C3A821D4BDD500EDBCDF /* MECouponOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3695C3A621D4BDD500EDBCDF /* MECouponOrderCell.xib */; };
 		3695C3AB21D4C3D700EDBCDF /* MECouponOrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3695C3AA21D4C3D700EDBCDF /* MECouponOrderHeaderView.m */; };
@@ -820,67 +828,6 @@
 		3600346021AE816900BAF337 /* MEVisterTodyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEVisterTodyCell.h; sourceTree = "<group>"; };
 		3600346121AE816900BAF337 /* MEVisterTodyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEVisterTodyCell.m; sourceTree = "<group>"; };
 		3600346221AE816900BAF337 /* MEVisterTodyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEVisterTodyCell.xib; sourceTree = "<group>"; };
-		3600346621AE823700BAF337 /* AAJSFiles.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AAJSFiles.bundle; sourceTree = "<group>"; };
-		3600346821AE823700BAF337 /* AAArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAArea.h; sourceTree = "<group>"; };
-		3600346921AE823700BAF337 /* AAAreaspline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAAreaspline.m; sourceTree = "<group>"; };
-		3600346A21AE823700BAF337 /* AATitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AATitle.h; sourceTree = "<group>"; };
-		3600346B21AE823700BAF337 /* AALabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AALabels.m; sourceTree = "<group>"; };
-		3600346C21AE823700BAF337 /* AAStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAStyle.h; sourceTree = "<group>"; };
-		3600346D21AE823700BAF337 /* AABar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AABar.h; sourceTree = "<group>"; };
-		3600346E21AE823700BAF337 /* AASeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AASeries.m; sourceTree = "<group>"; };
-		3600346F21AE823700BAF337 /* AAXAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAXAxis.m; sourceTree = "<group>"; };
-		3600347021AE823700BAF337 /* AAOptions3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAOptions3d.h; sourceTree = "<group>"; };
-		3600347121AE823700BAF337 /* AAPlotOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPlotOptions.m; sourceTree = "<group>"; };
-		3600347221AE823700BAF337 /* AADataLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AADataLabels.m; sourceTree = "<group>"; };
-		3600347321AE823700BAF337 /* AALine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AALine.m; sourceTree = "<group>"; };
-		3600347421AE823700BAF337 /* AAMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAMarker.h; sourceTree = "<group>"; };
-		3600347521AE823700BAF337 /* AALegend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AALegend.h; sourceTree = "<group>"; };
-		3600347621AE823700BAF337 /* AATooltip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AATooltip.m; sourceTree = "<group>"; };
-		3600347721AE823700BAF337 /* AAAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAAnimation.h; sourceTree = "<group>"; };
-		3600347821AE823700BAF337 /* AASubtitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AASubtitle.m; sourceTree = "<group>"; };
-		3600347921AE823700BAF337 /* AAYAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAYAxis.m; sourceTree = "<group>"; };
-		3600347A21AE823700BAF337 /* AACrosshair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACrosshair.m; sourceTree = "<group>"; };
-		3600347B21AE823700BAF337 /* AAPie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPie.h; sourceTree = "<group>"; };
-		3600347C21AE823700BAF337 /* AAItemStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAItemStyle.h; sourceTree = "<group>"; };
-		3600347D21AE823700BAF337 /* AASpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AASpline.h; sourceTree = "<group>"; };
-		3600347E21AE823700BAF337 /* AAChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAChart.h; sourceTree = "<group>"; };
-		3600347F21AE823700BAF337 /* AAColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAColumn.m; sourceTree = "<group>"; };
-		3600348021AE823700BAF337 /* AAPlotLinesElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPlotLinesElement.m; sourceTree = "<group>"; };
-		3600348121AE823700BAF337 /* AAXAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAXAxis.h; sourceTree = "<group>"; };
-		3600348221AE823700BAF337 /* AAOptions3d.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAOptions3d.m; sourceTree = "<group>"; };
-		3600348321AE823700BAF337 /* AASeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AASeries.h; sourceTree = "<group>"; };
-		3600348421AE823700BAF337 /* AAStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAStyle.m; sourceTree = "<group>"; };
-		3600348521AE823700BAF337 /* AABar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AABar.m; sourceTree = "<group>"; };
-		3600348621AE823700BAF337 /* AATitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AATitle.m; sourceTree = "<group>"; };
-		3600348721AE823700BAF337 /* AALabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AALabels.h; sourceTree = "<group>"; };
-		3600348821AE823700BAF337 /* AAAreaspline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAAreaspline.h; sourceTree = "<group>"; };
-		3600348921AE823700BAF337 /* AAArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAArea.m; sourceTree = "<group>"; };
-		3600348A21AE823700BAF337 /* AAAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAAnimation.m; sourceTree = "<group>"; };
-		3600348B21AE823700BAF337 /* AALegend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AALegend.m; sourceTree = "<group>"; };
-		3600348C21AE823700BAF337 /* AATooltip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AATooltip.h; sourceTree = "<group>"; };
-		3600348D21AE823700BAF337 /* AAMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAMarker.m; sourceTree = "<group>"; };
-		3600348E21AE823700BAF337 /* AALine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AALine.h; sourceTree = "<group>"; };
-		3600348F21AE823700BAF337 /* AADataLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AADataLabels.h; sourceTree = "<group>"; };
-		3600349021AE823700BAF337 /* AAPlotOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPlotOptions.h; sourceTree = "<group>"; };
-		3600349121AE823700BAF337 /* AASpline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AASpline.m; sourceTree = "<group>"; };
-		3600349221AE823700BAF337 /* AAItemStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAItemStyle.m; sourceTree = "<group>"; };
-		3600349321AE823700BAF337 /* AAPie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPie.m; sourceTree = "<group>"; };
-		3600349421AE823700BAF337 /* AACrosshair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACrosshair.h; sourceTree = "<group>"; };
-		3600349521AE823700BAF337 /* AAYAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAYAxis.h; sourceTree = "<group>"; };
-		3600349621AE823700BAF337 /* AASubtitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AASubtitle.h; sourceTree = "<group>"; };
-		3600349721AE823700BAF337 /* AAPlotLinesElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPlotLinesElement.h; sourceTree = "<group>"; };
-		3600349821AE823700BAF337 /* AAColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAColumn.h; sourceTree = "<group>"; };
-		3600349921AE823700BAF337 /* AAChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAChart.m; sourceTree = "<group>"; };
-		3600349B21AE823700BAF337 /* AAOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAOptions.h; sourceTree = "<group>"; };
-		3600349C21AE823700BAF337 /* AAChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAChartView.m; sourceTree = "<group>"; };
-		3600349D21AE823700BAF337 /* AAGlobalMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAGlobalMacro.h; sourceTree = "<group>"; };
-		3600349E21AE823700BAF337 /* AASeriesElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AASeriesElement.h; sourceTree = "<group>"; };
-		3600349F21AE823700BAF337 /* AAChartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAChartModel.m; sourceTree = "<group>"; };
-		360034A021AE823700BAF337 /* AAChartKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAChartKit.h; sourceTree = "<group>"; };
-		360034A121AE823700BAF337 /* AAOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAOptions.m; sourceTree = "<group>"; };
-		360034A221AE823700BAF337 /* AASeriesElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AASeriesElement.m; sourceTree = "<group>"; };
-		360034A321AE823700BAF337 /* AAChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAChartView.h; sourceTree = "<group>"; };
-		360034A421AE823700BAF337 /* AAChartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAChartModel.h; sourceTree = "<group>"; };
 		360034C321AE8A4F00BAF337 /* MEVisterSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEVisterSectionView.h; sourceTree = "<group>"; };
 		360034C421AE8A4F00BAF337 /* MEVisterSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEVisterSectionView.m; sourceTree = "<group>"; };
 		360034C621AE8A6600BAF337 /* MEVisterSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEVisterSectionView.xib; sourceTree = "<group>"; };
@@ -1618,6 +1565,81 @@
 		368E70C021E5FE54003009CA /* MENewProductDetailsSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MENewProductDetailsSectionView.h; sourceTree = "<group>"; };
 		368E70C121E5FE54003009CA /* MENewProductDetailsSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MENewProductDetailsSectionView.m; sourceTree = "<group>"; };
 		368E70C321E5FE5F003009CA /* MENewProductDetailsSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MENewProductDetailsSectionView.xib; sourceTree = "<group>"; };
+		3691303E22363B6D008B1836 /* AAOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAOptions.h; sourceTree = "<group>"; };
+		3691303F22363B6D008B1836 /* AAChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAChartView.m; sourceTree = "<group>"; };
+		3691304022363B6D008B1836 /* AAGlobalMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAGlobalMacro.h; sourceTree = "<group>"; };
+		3691304122363B6D008B1836 /* AASeriesElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AASeriesElement.h; sourceTree = "<group>"; };
+		3691304222363B6D008B1836 /* AAGradientColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAGradientColor.h; sourceTree = "<group>"; };
+		3691304322363B6D008B1836 /* AAColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAColor.h; sourceTree = "<group>"; };
+		3691304422363B6D008B1836 /* AAChartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAChartModel.m; sourceTree = "<group>"; };
+		3691304522363B6D008B1836 /* AAChartKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAChartKit.h; sourceTree = "<group>"; };
+		3691304622363B6D008B1836 /* AAOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAOptions.m; sourceTree = "<group>"; };
+		3691304722363B6D008B1836 /* AASeriesElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AASeriesElement.m; sourceTree = "<group>"; };
+		3691304822363B6D008B1836 /* AAChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAChartView.h; sourceTree = "<group>"; };
+		3691304922363B6D008B1836 /* AAColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAColor.m; sourceTree = "<group>"; };
+		3691304A22363B6D008B1836 /* AAGradientColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAGradientColor.m; sourceTree = "<group>"; };
+		3691304B22363B6D008B1836 /* AAChartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAChartModel.h; sourceTree = "<group>"; };
+		3691304C22363B6D008B1836 /* AAJSFiles.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AAJSFiles.bundle; sourceTree = "<group>"; };
+		3691304E22363B6E008B1836 /* AAArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAArea.h; sourceTree = "<group>"; };
+		3691304F22363B6E008B1836 /* AAAreaspline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAAreaspline.m; sourceTree = "<group>"; };
+		3691305022363B6E008B1836 /* AATitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AATitle.h; sourceTree = "<group>"; };
+		3691305122363B6E008B1836 /* AALabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AALabels.m; sourceTree = "<group>"; };
+		3691305222363B6E008B1836 /* AAStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAStyle.h; sourceTree = "<group>"; };
+		3691305322363B6E008B1836 /* AABar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AABar.h; sourceTree = "<group>"; };
+		3691305422363B6E008B1836 /* AASeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AASeries.m; sourceTree = "<group>"; };
+		3691305522363B6E008B1836 /* AAXAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAXAxis.m; sourceTree = "<group>"; };
+		3691305622363B6E008B1836 /* AAPlotOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPlotOptions.m; sourceTree = "<group>"; };
+		3691305722363B6E008B1836 /* AADataLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AADataLabels.m; sourceTree = "<group>"; };
+		3691305822363B6E008B1836 /* AAPlotBandsElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPlotBandsElement.m; sourceTree = "<group>"; };
+		3691305922363B6E008B1836 /* AALine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AALine.m; sourceTree = "<group>"; };
+		3691305A22363B6E008B1836 /* AAMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAMarker.h; sourceTree = "<group>"; };
+		3691305B22363B6E008B1836 /* AALegend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AALegend.h; sourceTree = "<group>"; };
+		3691305C22363B6E008B1836 /* AATooltip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AATooltip.m; sourceTree = "<group>"; };
+		3691305D22363B6E008B1836 /* AALabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AALabel.h; sourceTree = "<group>"; };
+		3691305E22363B6E008B1836 /* AAAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAAnimation.h; sourceTree = "<group>"; };
+		3691305F22363B6E008B1836 /* AASubtitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AASubtitle.m; sourceTree = "<group>"; };
+		3691306022363B6E008B1836 /* AAYAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAYAxis.m; sourceTree = "<group>"; };
+		3691306122363B6E008B1836 /* AACrosshair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACrosshair.m; sourceTree = "<group>"; };
+		3691306222363B6E008B1836 /* AAPie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPie.h; sourceTree = "<group>"; };
+		3691306322363B6E008B1836 /* AAItemStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAItemStyle.h; sourceTree = "<group>"; };
+		3691306422363B6E008B1836 /* AASpline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AASpline.h; sourceTree = "<group>"; };
+		3691306522363B6E008B1836 /* AAChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAChart.h; sourceTree = "<group>"; };
+		3691306622363B6E008B1836 /* AAColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAColumn.m; sourceTree = "<group>"; };
+		3691306722363B6E008B1836 /* AAPlotLinesElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPlotLinesElement.m; sourceTree = "<group>"; };
+		3691306822363B6E008B1836 /* AAXAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAXAxis.h; sourceTree = "<group>"; };
+		3691306922363B6E008B1836 /* AASeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AASeries.h; sourceTree = "<group>"; };
+		3691306A22363B6E008B1836 /* AAStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAStyle.m; sourceTree = "<group>"; };
+		3691306B22363B6E008B1836 /* AABar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AABar.m; sourceTree = "<group>"; };
+		3691306C22363B6E008B1836 /* AATitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AATitle.m; sourceTree = "<group>"; };
+		3691306D22363B6E008B1836 /* AALabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AALabels.h; sourceTree = "<group>"; };
+		3691306E22363B6E008B1836 /* AAAreaspline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAAreaspline.h; sourceTree = "<group>"; };
+		3691306F22363B6E008B1836 /* AAArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAArea.m; sourceTree = "<group>"; };
+		3691307022363B6E008B1836 /* AAAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAAnimation.m; sourceTree = "<group>"; };
+		3691307122363B6E008B1836 /* AALabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AALabel.m; sourceTree = "<group>"; };
+		3691307222363B6E008B1836 /* AALegend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AALegend.m; sourceTree = "<group>"; };
+		3691307322363B6E008B1836 /* AATooltip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AATooltip.h; sourceTree = "<group>"; };
+		3691307422363B6E008B1836 /* AAMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAMarker.m; sourceTree = "<group>"; };
+		3691307522363B6E008B1836 /* AALine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AALine.h; sourceTree = "<group>"; };
+		3691307622363B6E008B1836 /* AAPlotBandsElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPlotBandsElement.h; sourceTree = "<group>"; };
+		3691307722363B6E008B1836 /* AADataLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AADataLabels.h; sourceTree = "<group>"; };
+		3691307822363B6E008B1836 /* AAPlotOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPlotOptions.h; sourceTree = "<group>"; };
+		3691307922363B6E008B1836 /* AASpline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AASpline.m; sourceTree = "<group>"; };
+		3691307A22363B6E008B1836 /* AAItemStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAItemStyle.m; sourceTree = "<group>"; };
+		3691307B22363B6E008B1836 /* AAPie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPie.m; sourceTree = "<group>"; };
+		3691307C22363B6E008B1836 /* AACrosshair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACrosshair.h; sourceTree = "<group>"; };
+		3691307D22363B6E008B1836 /* AAYAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAYAxis.h; sourceTree = "<group>"; };
+		3691307E22363B6E008B1836 /* AASubtitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AASubtitle.h; sourceTree = "<group>"; };
+		3691307F22363B6E008B1836 /* AAPlotLinesElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPlotLinesElement.h; sourceTree = "<group>"; };
+		3691308022363B6E008B1836 /* AAColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAColumn.h; sourceTree = "<group>"; };
+		3691308122363B6E008B1836 /* AAChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAChart.m; sourceTree = "<group>"; };
+		369130A322364137008B1836 /* MEPolarChartMixedCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEPolarChartMixedCell.h; sourceTree = "<group>"; };
+		369130A422364137008B1836 /* MEPolarChartMixedCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEPolarChartMixedCell.m; sourceTree = "<group>"; };
+		369130A522364137008B1836 /* MEPolarChartMixedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEPolarChartMixedCell.xib; sourceTree = "<group>"; };
+		369130A8223659DA008B1836 /* MEBrandAiCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBrandAiCell.h; sourceTree = "<group>"; };
+		369130A9223659DA008B1836 /* MEBrandAiCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBrandAiCell.m; sourceTree = "<group>"; };
+		369130AA223659DA008B1836 /* MEBrandAiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEBrandAiCell.xib; sourceTree = "<group>"; };
+		369130AD22365CBE008B1836 /* MEBrandAISortVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBrandAISortVC.h; sourceTree = "<group>"; };
+		369130AE22365CBE008B1836 /* MEBrandAISortVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBrandAISortVC.m; sourceTree = "<group>"; };
 		3695C3A421D4BDD500EDBCDF /* MECouponOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECouponOrderCell.h; sourceTree = "<group>"; };
 		3695C3A521D4BDD500EDBCDF /* MECouponOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECouponOrderCell.m; sourceTree = "<group>"; };
 		3695C3A621D4BDD500EDBCDF /* MECouponOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MECouponOrderCell.xib; sourceTree = "<group>"; };
@@ -2265,85 +2287,11 @@
 		3600346521AE823700BAF337 /* AAChartKitLib */ = {
 			isa = PBXGroup;
 			children = (
-				3600346621AE823700BAF337 /* AAJSFiles.bundle */,
-				3600346721AE823700BAF337 /* AAOptionsModel */,
-				3600349A21AE823700BAF337 /* AAChartConfiger */,
+				3691303D22363B6D008B1836 /* AAChartConfiger */,
+				3691304C22363B6D008B1836 /* AAJSFiles.bundle */,
+				3691304D22363B6E008B1836 /* AAOptionsModel */,
 			);
 			path = AAChartKitLib;
-			sourceTree = "<group>";
-		};
-		3600346721AE823700BAF337 /* AAOptionsModel */ = {
-			isa = PBXGroup;
-			children = (
-				3600346821AE823700BAF337 /* AAArea.h */,
-				3600346921AE823700BAF337 /* AAAreaspline.m */,
-				3600346A21AE823700BAF337 /* AATitle.h */,
-				3600346B21AE823700BAF337 /* AALabels.m */,
-				3600346C21AE823700BAF337 /* AAStyle.h */,
-				3600346D21AE823700BAF337 /* AABar.h */,
-				3600346E21AE823700BAF337 /* AASeries.m */,
-				3600346F21AE823700BAF337 /* AAXAxis.m */,
-				3600347021AE823700BAF337 /* AAOptions3d.h */,
-				3600347121AE823700BAF337 /* AAPlotOptions.m */,
-				3600347221AE823700BAF337 /* AADataLabels.m */,
-				3600347321AE823700BAF337 /* AALine.m */,
-				3600347421AE823700BAF337 /* AAMarker.h */,
-				3600347521AE823700BAF337 /* AALegend.h */,
-				3600347621AE823700BAF337 /* AATooltip.m */,
-				3600347721AE823700BAF337 /* AAAnimation.h */,
-				3600347821AE823700BAF337 /* AASubtitle.m */,
-				3600347921AE823700BAF337 /* AAYAxis.m */,
-				3600347A21AE823700BAF337 /* AACrosshair.m */,
-				3600347B21AE823700BAF337 /* AAPie.h */,
-				3600347C21AE823700BAF337 /* AAItemStyle.h */,
-				3600347D21AE823700BAF337 /* AASpline.h */,
-				3600347E21AE823700BAF337 /* AAChart.h */,
-				3600347F21AE823700BAF337 /* AAColumn.m */,
-				3600348021AE823700BAF337 /* AAPlotLinesElement.m */,
-				3600348121AE823700BAF337 /* AAXAxis.h */,
-				3600348221AE823700BAF337 /* AAOptions3d.m */,
-				3600348321AE823700BAF337 /* AASeries.h */,
-				3600348421AE823700BAF337 /* AAStyle.m */,
-				3600348521AE823700BAF337 /* AABar.m */,
-				3600348621AE823700BAF337 /* AATitle.m */,
-				3600348721AE823700BAF337 /* AALabels.h */,
-				3600348821AE823700BAF337 /* AAAreaspline.h */,
-				3600348921AE823700BAF337 /* AAArea.m */,
-				3600348A21AE823700BAF337 /* AAAnimation.m */,
-				3600348B21AE823700BAF337 /* AALegend.m */,
-				3600348C21AE823700BAF337 /* AATooltip.h */,
-				3600348D21AE823700BAF337 /* AAMarker.m */,
-				3600348E21AE823700BAF337 /* AALine.h */,
-				3600348F21AE823700BAF337 /* AADataLabels.h */,
-				3600349021AE823700BAF337 /* AAPlotOptions.h */,
-				3600349121AE823700BAF337 /* AASpline.m */,
-				3600349221AE823700BAF337 /* AAItemStyle.m */,
-				3600349321AE823700BAF337 /* AAPie.m */,
-				3600349421AE823700BAF337 /* AACrosshair.h */,
-				3600349521AE823700BAF337 /* AAYAxis.h */,
-				3600349621AE823700BAF337 /* AASubtitle.h */,
-				3600349721AE823700BAF337 /* AAPlotLinesElement.h */,
-				3600349821AE823700BAF337 /* AAColumn.h */,
-				3600349921AE823700BAF337 /* AAChart.m */,
-			);
-			path = AAOptionsModel;
-			sourceTree = "<group>";
-		};
-		3600349A21AE823700BAF337 /* AAChartConfiger */ = {
-			isa = PBXGroup;
-			children = (
-				3600349B21AE823700BAF337 /* AAOptions.h */,
-				3600349C21AE823700BAF337 /* AAChartView.m */,
-				3600349D21AE823700BAF337 /* AAGlobalMacro.h */,
-				3600349E21AE823700BAF337 /* AASeriesElement.h */,
-				3600349F21AE823700BAF337 /* AAChartModel.m */,
-				360034A021AE823700BAF337 /* AAChartKit.h */,
-				360034A121AE823700BAF337 /* AAOptions.m */,
-				360034A221AE823700BAF337 /* AASeriesElement.m */,
-				360034A321AE823700BAF337 /* AAChartView.h */,
-				360034A421AE823700BAF337 /* AAChartModel.h */,
-			);
-			path = AAChartConfiger;
 			sourceTree = "<group>";
 		};
 		36008A7121B662410007BB46 /* Visit */ = {
@@ -3460,6 +3408,86 @@
 			path = Gift;
 			sourceTree = "<group>";
 		};
+		3691303D22363B6D008B1836 /* AAChartConfiger */ = {
+			isa = PBXGroup;
+			children = (
+				3691303E22363B6D008B1836 /* AAOptions.h */,
+				3691303F22363B6D008B1836 /* AAChartView.m */,
+				3691304022363B6D008B1836 /* AAGlobalMacro.h */,
+				3691304122363B6D008B1836 /* AASeriesElement.h */,
+				3691304222363B6D008B1836 /* AAGradientColor.h */,
+				3691304322363B6D008B1836 /* AAColor.h */,
+				3691304422363B6D008B1836 /* AAChartModel.m */,
+				3691304522363B6D008B1836 /* AAChartKit.h */,
+				3691304622363B6D008B1836 /* AAOptions.m */,
+				3691304722363B6D008B1836 /* AASeriesElement.m */,
+				3691304822363B6D008B1836 /* AAChartView.h */,
+				3691304922363B6D008B1836 /* AAColor.m */,
+				3691304A22363B6D008B1836 /* AAGradientColor.m */,
+				3691304B22363B6D008B1836 /* AAChartModel.h */,
+			);
+			path = AAChartConfiger;
+			sourceTree = "<group>";
+		};
+		3691304D22363B6E008B1836 /* AAOptionsModel */ = {
+			isa = PBXGroup;
+			children = (
+				3691304E22363B6E008B1836 /* AAArea.h */,
+				3691304F22363B6E008B1836 /* AAAreaspline.m */,
+				3691305022363B6E008B1836 /* AATitle.h */,
+				3691305122363B6E008B1836 /* AALabels.m */,
+				3691305222363B6E008B1836 /* AAStyle.h */,
+				3691305322363B6E008B1836 /* AABar.h */,
+				3691305422363B6E008B1836 /* AASeries.m */,
+				3691305522363B6E008B1836 /* AAXAxis.m */,
+				3691305622363B6E008B1836 /* AAPlotOptions.m */,
+				3691305722363B6E008B1836 /* AADataLabels.m */,
+				3691305822363B6E008B1836 /* AAPlotBandsElement.m */,
+				3691305922363B6E008B1836 /* AALine.m */,
+				3691305A22363B6E008B1836 /* AAMarker.h */,
+				3691305B22363B6E008B1836 /* AALegend.h */,
+				3691305C22363B6E008B1836 /* AATooltip.m */,
+				3691305D22363B6E008B1836 /* AALabel.h */,
+				3691305E22363B6E008B1836 /* AAAnimation.h */,
+				3691305F22363B6E008B1836 /* AASubtitle.m */,
+				3691306022363B6E008B1836 /* AAYAxis.m */,
+				3691306122363B6E008B1836 /* AACrosshair.m */,
+				3691306222363B6E008B1836 /* AAPie.h */,
+				3691306322363B6E008B1836 /* AAItemStyle.h */,
+				3691306422363B6E008B1836 /* AASpline.h */,
+				3691306522363B6E008B1836 /* AAChart.h */,
+				3691306622363B6E008B1836 /* AAColumn.m */,
+				3691306722363B6E008B1836 /* AAPlotLinesElement.m */,
+				3691306822363B6E008B1836 /* AAXAxis.h */,
+				3691306922363B6E008B1836 /* AASeries.h */,
+				3691306A22363B6E008B1836 /* AAStyle.m */,
+				3691306B22363B6E008B1836 /* AABar.m */,
+				3691306C22363B6E008B1836 /* AATitle.m */,
+				3691306D22363B6E008B1836 /* AALabels.h */,
+				3691306E22363B6E008B1836 /* AAAreaspline.h */,
+				3691306F22363B6E008B1836 /* AAArea.m */,
+				3691307022363B6E008B1836 /* AAAnimation.m */,
+				3691307122363B6E008B1836 /* AALabel.m */,
+				3691307222363B6E008B1836 /* AALegend.m */,
+				3691307322363B6E008B1836 /* AATooltip.h */,
+				3691307422363B6E008B1836 /* AAMarker.m */,
+				3691307522363B6E008B1836 /* AALine.h */,
+				3691307622363B6E008B1836 /* AAPlotBandsElement.h */,
+				3691307722363B6E008B1836 /* AADataLabels.h */,
+				3691307822363B6E008B1836 /* AAPlotOptions.h */,
+				3691307922363B6E008B1836 /* AASpline.m */,
+				3691307A22363B6E008B1836 /* AAItemStyle.m */,
+				3691307B22363B6E008B1836 /* AAPie.m */,
+				3691307C22363B6E008B1836 /* AACrosshair.h */,
+				3691307D22363B6E008B1836 /* AAYAxis.h */,
+				3691307E22363B6E008B1836 /* AASubtitle.h */,
+				3691307F22363B6E008B1836 /* AAPlotLinesElement.h */,
+				3691308022363B6E008B1836 /* AAColumn.h */,
+				3691308122363B6E008B1836 /* AAChart.m */,
+			);
+			path = AAOptionsModel;
+			sourceTree = "<group>";
+		};
 		3695C3A121D4BCBF00EDBCDF /* coupon */ = {
 			isa = PBXGroup;
 			children = (
@@ -3542,6 +3570,12 @@
 				36D9FAE522362CCE001EC4D9 /* MEBrandPieCell.h */,
 				36D9FAE622362CCE001EC4D9 /* MEBrandPieCell.m */,
 				36D9FAE722362CCE001EC4D9 /* MEBrandPieCell.xib */,
+				369130A322364137008B1836 /* MEPolarChartMixedCell.h */,
+				369130A422364137008B1836 /* MEPolarChartMixedCell.m */,
+				369130A522364137008B1836 /* MEPolarChartMixedCell.xib */,
+				369130A8223659DA008B1836 /* MEBrandAiCell.h */,
+				369130A9223659DA008B1836 /* MEBrandAiCell.m */,
+				369130AA223659DA008B1836 /* MEBrandAiCell.xib */,
 			);
 			path = brand;
 			sourceTree = "<group>";
@@ -4599,6 +4633,8 @@
 				36F744A622323C170061A799 /* MEBrandManngerVC.xib */,
 				36C39325223244C400F5796E /* MEBrandManngerAllContentVC.h */,
 				36C39326223244C400F5796E /* MEBrandManngerAllContentVC.m */,
+				369130AD22365CBE008B1836 /* MEBrandAISortVC.h */,
+				369130AE22365CBE008B1836 /* MEBrandAISortVC.m */,
 			);
 			path = brand;
 			sourceTree = "<group>";
@@ -5047,6 +5083,7 @@
 				36472A9121C898B100CC3E48 /* MEShoppingMallVC.xib in Resources */,
 				3604CA8B217040ED00F7471B /* MEMemberHomeDeanCell.xib in Resources */,
 				3600A73B215A0FBD00195484 /* MEMineSetCell.xib in Resources */,
+				369130A722364137008B1836 /* MEPolarChartMixedCell.xib in Resources */,
 				36FDE3D1218A980900633C40 /* MEFilterMainCell.xib in Resources */,
 				363D8E80214688B300D746DF /* MESkuByReusableView.xib in Resources */,
 				366D5B1D214A4C840021C1BB /* MENewAddressVC.xib in Resources */,
@@ -5083,7 +5120,6 @@
 				36E3D1E62171F26B0033B192 /* MELogisticsCell.xib in Resources */,
 				EB623E7E21549C6B007C949B /* MEMyChildOrderContentCell.xib in Resources */,
 				366D1CCD21B503460004295E /* MESNewHomeActiveCommondCell.xib in Resources */,
-				360034A521AE823700BAF337 /* AAJSFiles.bundle in Resources */,
 				3628E7ED21C0E17400D5405B /* MEAppointmentDetailBootomView.xib in Resources */,
 				36021AFE214BA5E9001B8DAF /* MEOrderSelectStoreCell.xib in Resources */,
 				36A1A9A221D32B8600A38DEC /* MECoupleMailDetalImageCell.xib in Resources */,
@@ -5119,6 +5155,7 @@
 				36FEC23C21AD175400BB64A5 /* MEPosterContentListCell.xib in Resources */,
 				36B31DCF22253667004BA07B /* MEBDataDealStoreAchievementView.xib in Resources */,
 				36008A7021B631F40007BB46 /* MEWebTitleCell.xib in Resources */,
+				3691308822363B6E008B1836 /* AAJSFiles.bundle in Resources */,
 				36E3EEC6221CFCDC006C79F6 /* MESearchNearAddressVC.xib in Resources */,
 				365151CB21413D340044C763 /* MEHomeHeaderMenuView.xib in Resources */,
 				367721E52147681000C1463A /* MEMineHomeCell.xib in Resources */,
@@ -5188,6 +5225,7 @@
 				36022DFB2190105400DC9A8B /* MENewActiveCell.xib in Resources */,
 				36526014216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.xib in Resources */,
 				363007012148A9BC00C88264 /* MEDistributionOrderCell.xib in Resources */,
+				369130AC223659DA008B1836 /* MEBrandAiCell.xib in Resources */,
 				36F320C722261BAF0020F7C2 /* MEBDataDealStoreCustomerView.xib in Resources */,
 				3628E7CB21C09EE800D5405B /* MEClerkManngerVC.xib in Resources */,
 				36D66ECE213F80A5000476FF /* Assets.xcassets in Resources */,
@@ -5299,21 +5337,21 @@
 				367C85032147C5CB00BEC7B1 /* MEMyOrderDetailVC.m in Sources */,
 				36445B2E21C1E92900CDBCBA /* MEWithdrawalView.m in Sources */,
 				3628E7F721C0F31000D5405B /* MEGetCaseMainVC.m in Sources */,
-				360034B921AE823700BAF337 /* AALegend.m in Sources */,
 				365DB25221475C2A00001A04 /* MEMineHomeHeaderView.m in Sources */,
 				367C05BD218FD14E0088C087 /* MENewHomePage.m in Sources */,
 				36F5E846222F68F1000B0241 /* TNaviBarIndicatorView.m in Sources */,
 				36472AFA21C8E15C00CC3E48 /* JXCategoryTitleCellModel.m in Sources */,
 				36021ACA214B5F4C001B8DAF /* MEAppointmentStoreCell.m in Sources */,
+				3691309922363B6E008B1836 /* AATitle.m in Sources */,
 				EB2810202153A107006A765A /* MENetListModel.m in Sources */,
 				36B31DD52225403A004BA07B /* MEBDataDealStructContentView.m in Sources */,
+				3691309222363B6E008B1836 /* AASubtitle.m in Sources */,
 				360EE7F521F599580048490E /* MERushBuyCell.m in Sources */,
 				367C85072147C61E00BEC7B1 /* MEMyOrderDetailCell.m in Sources */,
 				366D5B27214A53820021C1BB /* MEBlockTextView.m in Sources */,
 				367C84F32147A50600BEC7B1 /* MEOrderCell.m in Sources */,
 				3600A73A215A0FBD00195484 /* MEMineSetCell.m in Sources */,
 				36E1BF2121492F4D00E28301 /* MEAppointmentInfoVC.m in Sources */,
-				360034BB21AE823700BAF337 /* AASpline.m in Sources */,
 				360EE7FA21F599980048490E /* MERushBuyContentCell.m in Sources */,
 				368E0675221A9EFB00B125DE /* MEJDCoupleHomeMainGoodGoodsCell.m in Sources */,
 				36F528B421E6F2F500BB7388 /* MEClerksSortModel.m in Sources */,
@@ -5321,19 +5359,21 @@
 				36017668215B870B0080EB00 /* MEMineShareVC.m in Sources */,
 				365DB25A2147628200001A04 /* UIView+MECommon.m in Sources */,
 				36FD6406213FABE2009743C5 /* UIBarButtonItem+MEExtension.m in Sources */,
-				360034A621AE823700BAF337 /* AAAreaspline.m in Sources */,
 				36D750E6221EACFD00FE434B /* MESearchSelfExtraceVC.m in Sources */,
+				3691308F22363B6E008B1836 /* AAPlotBandsElement.m in Sources */,
 				363A6BFE21E19AB2008B303B /* MeMyActityMineCell.m in Sources */,
 				3628E7E421C0BC0C00D5405B /* MEAddClerkCell.m in Sources */,
+				3691309C22363B6E008B1836 /* AALabel.m in Sources */,
 				36F5E84F222F68F1000B0241 /* EMVoiceConverter.mm in Sources */,
 				36021AC0214B4C5F001B8DAF /* MEAppointmentTimeCell.m in Sources */,
-				360034A721AE823700BAF337 /* AALabels.m in Sources */,
+				3691308522363B6E008B1836 /* AASeriesElement.m in Sources */,
 				36472AEF21C8E15C00CC3E48 /* JXCategoryIndicatorComponentView.m in Sources */,
 				36FD6410213FAC85009743C5 /* UIImage+MEScale.m in Sources */,
 				366D5B1C214A4C840021C1BB /* MENewAddressVC.m in Sources */,
 				360EE7E021F55B190048490E /* METhridHomeHeaderView.m in Sources */,
 				36008A7721B67DD90007BB46 /* MEVistorUserModel.m in Sources */,
 				36CF685F221F881500A5F227 /* MEBStoreMannagerModel.m in Sources */,
+				3691309022363B6E008B1836 /* AALine.m in Sources */,
 				36472AEB21C8E15C00CC3E48 /* JXCategoryIndicatorTriangleView.m in Sources */,
 				36472AF821C8E15C00CC3E48 /* JXCategoryTitleImageCell.m in Sources */,
 				36F5E813222F68F1000B0241 /* TNavigationController.m in Sources */,
@@ -5363,21 +5403,19 @@
 				367721E42147681000C1463A /* MEMineHomeCell.m in Sources */,
 				36F6AF4D21F8546800CF6684 /* MEBynamicCommentCell.m in Sources */,
 				3645BBCE221BDEB80042748C /* MEBStoreMannagerInfoModel.m in Sources */,
-				360034B621AE823700BAF337 /* AATitle.m in Sources */,
 				36445B3B21C2054600CDBCBA /* MEClerkModel.m in Sources */,
 				36BF3E5321F9A58600C8F856 /* METhridNoticeProductDetailsHeaderView.m in Sources */,
 				3630070F2148B93300C88264 /* MEDistributionMoneyVC.m in Sources */,
 				36F5E826222F68F1000B0241 /* TMessageView.m in Sources */,
-				360034BA21AE823700BAF337 /* AAMarker.m in Sources */,
 				366019C221E878ED00F1BB37 /* MEMineMyActityDetailVC.m in Sources */,
 				36526017216F3DD3003E3CB4 /* MENewStoreDetailsVC.m in Sources */,
 				36472B0121C8E15C00CC3E48 /* JXCategoryNumberCell.m in Sources */,
 				365151D421414C1B0044C763 /* MEBaoQiangCell.m in Sources */,
-				360034B421AE823700BAF337 /* AAStyle.m in Sources */,
 				3600A72F2159C54C00195484 /* MEImageCell.m in Sources */,
 				360A98E1214662AD009775F4 /* MEGoodsAttributeVC.m in Sources */,
 				3600345A21AE79DE00BAF337 /* MEVisiterHomeVC.m in Sources */,
 				36FEEBD8214CEFB400060209 /* MECustomActionSheet.m in Sources */,
+				369130A122363B6E008B1836 /* AAPie.m in Sources */,
 				3683F79D21CB4246008139B0 /* MECoupleMailVC.m in Sources */,
 				36FDEFF321B11A810022D374 /* MEPosterModel.m in Sources */,
 				362C9E5C21BE62560001AABD /* MEMineNewShareVC.m in Sources */,
@@ -5397,10 +5435,10 @@
 				366D5AF52149FD8B0021C1BB /* MEProductShoppingCartVC.m in Sources */,
 				36CF6862221F8CF700A5F227 /* MEBStoreMannagerEditModel.m in Sources */,
 				3617C30A21D0AD7E00004072 /* MECoupleFilterFlowLayout.m in Sources */,
-				360034AA21AE823700BAF337 /* AAPlotOptions.m in Sources */,
 				36A1A9A121D32B8600A38DEC /* MECoupleMailDetalImageCell.m in Sources */,
 				366D5B0A214A13DE0021C1BB /* MEMakeOrderVC.m in Sources */,
 				360EE7EA21F574630048490E /* METhridHomeTimeSecionView.m in Sources */,
+				3691308622363B6E008B1836 /* AAColor.m in Sources */,
 				3628476C2140FD79008FE7F9 /* DataMD5.m in Sources */,
 				365151CF214147EA0044C763 /* MEHomeMiaoDongCell.m in Sources */,
 				36E3D1D72171C94A0033B192 /* MEExpireTipView.m in Sources */,
@@ -5413,20 +5451,20 @@
 				36FEEBD7214CEFB400060209 /* MEAlertView.m in Sources */,
 				3628E7C421C09CC100D5405B /* MEClerkCell.m in Sources */,
 				360830D5219AAE4300C72B22 /* UIView+HDExtension.m in Sources */,
+				3691308922363B6E008B1836 /* AAAreaspline.m in Sources */,
 				36F320C522261BA20020F7C2 /* MEBDataDealStoreCustomerView.m in Sources */,
-				360034C121AE823700BAF337 /* AAOptions.m in Sources */,
 				365DB2572147601300001A04 /* MEMineHomeVC.m in Sources */,
 				365151BA214133440044C763 /* THTTPRequestOperationManager.m in Sources */,
 				36B31DD82225482B004BA07B /* MEBDataDealStoreAchievementVC.m in Sources */,
 				366D1CD121B5140C0004295E /* MEArticelCategoryModel.m in Sources */,
 				368ABE0621FB199A005FC0C9 /* MECompandNoticeVC.m in Sources */,
-				360034BD21AE823700BAF337 /* AAPie.m in Sources */,
 				36F5E80E222F68F1000B0241 /* TSwitchCell.m in Sources */,
 				3628E7FB21C0F93B00D5405B /* MEGetCaseCell.m in Sources */,
 				36435C3C214F808C00F823B4 /* MEOrderDetailModel.m in Sources */,
 				36F5E83E222F68F1000B0241 /* TDeleteMemberController.m in Sources */,
 				366D5B2D214A62FA0021C1BB /* METimeTool.m in Sources */,
 				3630AC3D21F6F296006C3F8D /* METhridProductDetailsHeaderView.m in Sources */,
+				3691308322363B6E008B1836 /* AAChartModel.m in Sources */,
 				3628E7E021C0B53300D5405B /* MEBDataDealVC.m in Sources */,
 				36FDE3D0218A980900633C40 /* MEFilterMainCell.m in Sources */,
 				36021AE0214B8086001B8DAF /* MEServiceDetailTelAddressCell.m in Sources */,
@@ -5442,9 +5480,8 @@
 				365151C921413D260044C763 /* MEHomeHeaderMenuView.m in Sources */,
 				3695C3B021D4C5DF00EDBCDF /* MECouponOrderVC.m in Sources */,
 				360EE7FF21F5AA800048490E /* MECommondCouponCell.m in Sources */,
-				360034BC21AE823700BAF337 /* AAItemStyle.m in Sources */,
+				3691308222363B6E008B1836 /* AAChartView.m in Sources */,
 				367C84ED21479DDC00BEC7B1 /* MEMyDistributionReusableView.m in Sources */,
-				360034A921AE823700BAF337 /* AAXAxis.m in Sources */,
 				36F5E821222F68F1000B0241 /* TPopView.m in Sources */,
 				36FDEFEF21B114760022D374 /* MEArticelVC.m in Sources */,
 				36707289221C04AD0070BA90 /* ZHPlaceInfoModel.m in Sources */,
@@ -5453,27 +5490,29 @@
 				36FEC23321AD12CA00BB64A5 /* MEPosterContentListVC.m in Sources */,
 				36B00BA721F5ADCF00EF8898 /* MECommondCouponContentCell.m in Sources */,
 				366D5B2A214A53960021C1BB /* MEBlockTextField.m in Sources */,
+				369130A022363B6E008B1836 /* AAItemStyle.m in Sources */,
 				36445B4721C235A900CDBCBA /* MEGetCaseModel.m in Sources */,
 				36008A7421B662610007BB46 /* MEVistorCountModel.m in Sources */,
+				369130AF22365CBE008B1836 /* MEBrandAISortVC.m in Sources */,
 				365151BB214133440044C763 /* ZLFailLoadView.m in Sources */,
 				36FEEBB3214CC4E300060209 /* METickTimerTool.m in Sources */,
 				36472AF221C8E15C00CC3E48 /* JXCategoryIndicatorCell.m in Sources */,
 				36A401BB2143E10000B0BD4F /* MEProductDetalsBuyedContentCell.m in Sources */,
 				365151BC214133440044C763 /* ZLRefreshTool.m in Sources */,
 				3600A73F215A15C700195484 /* MEAboutWeVC.m in Sources */,
-				360034AC21AE823700BAF337 /* AALine.m in Sources */,
 				36F5E847222F68F1000B0241 /* TConversationController.m in Sources */,
 				3683F7AC21CB7E15008139B0 /* MECoupleDetailModle.m in Sources */,
+				3691309422363B6E008B1836 /* AACrosshair.m in Sources */,
 				36F5E83C222F68F1000B0241 /* TGroupMembersView.m in Sources */,
 				36445B3421C1ED5B00CDBCBA /* MEWithdrawalParamModel.m in Sources */,
 				36F5E851222F68F1000B0241 /* FileViewController.m in Sources */,
 				36FB9E2D21997A9100B3DDD3 /* MENoticeTypeVC.m in Sources */,
+				3691308C22363B6E008B1836 /* AAXAxis.m in Sources */,
 				36E3EEC5221CFCDC006C79F6 /* MESearchNearAddressVC.m in Sources */,
 				36FF4EBA21AFB6160099DDB8 /* MESNewHomePageView.m in Sources */,
 				36B77BD021DE05CE00B4A207 /* MECoupleHomeMainGoodGoodsCell.m in Sources */,
 				3628E80A21C10E9800D5405B /* MEClerkStatisticsVC.m in Sources */,
 				36F5E829222F68F1000B0241 /* TAddGroupController.m in Sources */,
-				360034AD21AE823700BAF337 /* AATooltip.m in Sources */,
 				36F5E814222F68F1000B0241 /* TTabBarController.m in Sources */,
 				36308E9221509F3200B8E7D9 /* MEBaseButton.m in Sources */,
 				36C3932C2232470100F5796E /* MEBrandAllDataCell.m in Sources */,
@@ -5482,7 +5521,6 @@
 				367C05CB218FE3C60088C087 /* MENewBaoQiangCell.m in Sources */,
 				363D8E842146891D00D746DF /* MESkuBuyContentCell.m in Sources */,
 				36F5E825222F68F1000B0241 /* TInputController.m in Sources */,
-				360034B221AE823700BAF337 /* AAPlotLinesElement.m in Sources */,
 				36FEE8D2215DD9B700D4FD5A /* MEWxAuthModel.m in Sources */,
 				36E1BF102149010C00E28301 /* MEMineExchangeRudeCell.m in Sources */,
 				3602A19E214247CD004A6E1F /* MEStoreHomeCell.m in Sources */,
@@ -5513,9 +5551,11 @@
 				363007072148AEDA00C88264 /* MEDistributionOrderContentVC.m in Sources */,
 				36D66EB9213F7907000476FF /* main.m in Sources */,
 				36F5E817222F68F1000B0241 /* THelper.m in Sources */,
+				3691308D22363B6E008B1836 /* AAPlotOptions.m in Sources */,
 				36472B0321C8E15C00CC3E48 /* JXCategoryListVCContainerView.m in Sources */,
 				36F5E840222F68F1000B0241 /* TGroupInfoController.m in Sources */,
 				EB28101821539B65006A765A /* MEStoreModel.m in Sources */,
+				3691309B22363B6E008B1836 /* AAAnimation.m in Sources */,
 				3633516621F9BC4E0062D53D /* METhridHomeModel.m in Sources */,
 				3628E7CA21C09EE800D5405B /* MEClerkManngerVC.m in Sources */,
 				36022DFF2190123700DC9A8B /* MENewHomeMainCell.m in Sources */,
@@ -5534,7 +5574,6 @@
 				36FEC25521AD345B00BB64A5 /* MEArticleCell.m in Sources */,
 				366D1CDA21B522910004295E /* MESActivityContentModel.m in Sources */,
 				36F6970A2230BDD1001E53BA /* MEBynamicPublishGridView.m in Sources */,
-				360034BE21AE823700BAF337 /* AAChart.m in Sources */,
 				36FEC22621ACD78C00BB64A5 /* MESecondHomePageVC.m in Sources */,
 				36FD641E213FADB3009743C5 /* UILabel+MECategory.m in Sources */,
 				3630AC4321F6F827006C3F8D /* METhridProductDetailsRushCell.m in Sources */,
@@ -5547,6 +5586,7 @@
 				366D5B06214A10350021C1BB /* MEMessageTextField.m in Sources */,
 				360AF11B21AFE7A10039AB79 /* MEVistorPathMainCell.m in Sources */,
 				EB6D02AB215259290053B19E /* MEPriceAndStockModel.m in Sources */,
+				3691309522363B6E008B1836 /* AAColumn.m in Sources */,
 				36E1BF14214906CB00E28301 /* MEMineExchangeRudeSectionView.m in Sources */,
 				36FEC23621AD12DE00BB64A5 /* MEMyPosterContentListVC.m in Sources */,
 				36472AEC21C8E15C00CC3E48 /* JXCategoryIndicatorRainbowLineView.m in Sources */,
@@ -5554,6 +5594,7 @@
 				36E4EBA0213FD3A400BCB1AA /* MEShareTool.m in Sources */,
 				36FEC23B21AD175400BB64A5 /* MEPosterContentListCell.m in Sources */,
 				36021AC5214B4E8F001B8DAF /* MEAppointmentTimeMainCell.m in Sources */,
+				3691309622363B6E008B1836 /* AAPlotLinesElement.m in Sources */,
 				36022DFA2190105400DC9A8B /* MENewActiveCell.m in Sources */,
 				360830D8219AAE4300C72B22 /* UIImage+HDExtension.m in Sources */,
 				3628476B2140FD78008FE7F9 /* XMLDictionary.m in Sources */,
@@ -5562,6 +5603,7 @@
 				36F5E82D222F68F1000B0241 /* TFaceView.m in Sources */,
 				363BB68C2230F8BA003C8D34 /* METextView.m in Sources */,
 				3617C30421D0AC1600004072 /* MECoupleFilterModel.m in Sources */,
+				3691308A22363B6E008B1836 /* AALabels.m in Sources */,
 				36FD63E9213FA722009743C5 /* MENavigationVC.m in Sources */,
 				36356A7821770A4B004174E7 /* MELocationConverter.m in Sources */,
 				36BF3E4D21F9921000C8F856 /* MECouponMoneyModel.m in Sources */,
@@ -5570,7 +5612,9 @@
 				36F5E820222F68F1000B0241 /* TAddIndicatorView.m in Sources */,
 				368E066C221A9D5300B125DE /* MEJDCoupleHomeVC.m in Sources */,
 				36E1BF0C2148F96900E28301 /* MEMineExchangeDetailVC.m in Sources */,
+				3691309322363B6E008B1836 /* AAYAxis.m in Sources */,
 				36F5E81E222F68F1000B0241 /* TKeyValueCell.m in Sources */,
+				3691309A22363B6E008B1836 /* AAArea.m in Sources */,
 				3600B856217EF10700049F49 /* YBPopupMenuPath.m in Sources */,
 				36F5E810222F68F1000B0241 /* TAlertView.m in Sources */,
 				366D5B36214A6E630021C1BB /* MEAppointmentDateMainCell.m in Sources */,
@@ -5582,6 +5626,7 @@
 				3671F86121B7B9AD00590046 /* MEGuideVC.m in Sources */,
 				36008A7D21B6C8290007BB46 /* MESpreadUserModel.m in Sources */,
 				3630AC5B21F713E0006C3F8D /* METhridProductDetailsVC.m in Sources */,
+				3691309722363B6E008B1836 /* AAStyle.m in Sources */,
 				366D1CE021B5481A0004295E /* MECountArticleModel.m in Sources */,
 				36356A7B21772C94004174E7 /* MEServiceDetailsModel.m in Sources */,
 				36FEEBD6214CEFB400060209 /* MEModelView.m in Sources */,
@@ -5593,19 +5638,19 @@
 				36EBA97721FC2B240065BC92 /* MEGoodsCommentModel.m in Sources */,
 				36472B0421C8E15C00CC3E48 /* JXCategoryFactory.m in Sources */,
 				3645BBCB221BDC2F0042748C /* MEBStoreMannagerVC.m in Sources */,
+				3691308422363B6E008B1836 /* AAOptions.m in Sources */,
 				366D5AF9214A09BB0021C1BB /* MEMakeOrderSelectAddressView.m in Sources */,
 				360057FF2189F2420010C21C /* MESearchHistoryModel.m in Sources */,
 				3683F7BA21CBA656008139B0 /* MEGiftMainCell.m in Sources */,
 				36F5E81A222F68F1000B0241 /* TResponderTextView.m in Sources */,
 				36BF3E5021F9974900C8F856 /* MECouponDetailModel.m in Sources */,
 				3600344F21AE708100BAF337 /* MEArticleDetailVC.m in Sources */,
-				360034A821AE823700BAF337 /* AASeries.m in Sources */,
 				365151BD214133440044C763 /* ZLRequestResponse.m in Sources */,
 				36472A9021C898B100CC3E48 /* MEShoppingMallVC.m in Sources */,
+				3691309F22363B6E008B1836 /* AASpline.m in Sources */,
 				366D5B0F214A2F840021C1BB /* MEMakeOrderHeaderCell.m in Sources */,
 				36F5E823222F68F1000B0241 /* TMessageResource.m in Sources */,
 				360EE7F021F575980048490E /* METhridHomeTimeSecionContentCell.m in Sources */,
-				360034B821AE823700BAF337 /* AAAnimation.m in Sources */,
 				360AF11321AFD7220039AB79 /* MEVisterDetailCell.m in Sources */,
 				366019BB21E8666000F1BB37 /* MENewMineHomeContentCell.m in Sources */,
 				3652600E216F335A003E3CB4 /* MEStoreDetailCell.m in Sources */,
@@ -5615,7 +5660,6 @@
 				36435C3F214F8DD500F823B4 /* MEHomePageSaveModel.m in Sources */,
 				36B77BB321DDE6E100B4A207 /* MECoupleHomeVC.m in Sources */,
 				36707290221C04BB0070BA90 /* ZHMapView.m in Sources */,
-				360034AF21AE823700BAF337 /* AAYAxis.m in Sources */,
 				36435C2E214F5CA800F823B4 /* MEAdModel.m in Sources */,
 				36F3B87B21F8066E0001F2F6 /* METhridProductCommentHeaderView.m in Sources */,
 				36F43DCC216C913E00FBA16E /* MEBankTransferAccountsCell.m in Sources */,
@@ -5652,7 +5696,6 @@
 				36435C27214F4F3000F823B4 /* MEDistributionOrderMainVC.m in Sources */,
 				3602A18B21424091004A6E1F /* UIWebView+FLUIWebView.m in Sources */,
 				36472B0A21C8E15C00CC3E48 /* JXCategoryBaseCellModel.m in Sources */,
-				360034B521AE823700BAF337 /* AABar.m in Sources */,
 				366C771221F81BA90095EBE2 /* MEProductDetailCommentVC.m in Sources */,
 				368ACD9421CA1E02009B87E6 /* MEGiftFooterView.m in Sources */,
 				3630070A2148B49D00C88264 /* MEDistributionMoneyView.m in Sources */,
@@ -5681,7 +5724,7 @@
 				36445B3F21C20C2C00CDBCBA /* MEAddClerksVC.m in Sources */,
 				36F5E816222F68F1000B0241 /* TUnReadView.m in Sources */,
 				36A401C52143F0FE00B0BD4F /* MEShoppingCartCell.m in Sources */,
-				360034B321AE823700BAF337 /* AAOptions3d.m in Sources */,
+				3691309E22363B6E008B1836 /* AAMarker.m in Sources */,
 				3600A736215A079F00195484 /* MEMineSetVC.m in Sources */,
 				3650F3F42179BE1E007EA97F /* MEAppointmentModel.m in Sources */,
 				360AF12021AFEB1E0039AB79 /* MEVistorPathCell.m in Sources */,
@@ -5690,8 +5733,8 @@
 				36371554218ACE9E0057E59F /* UIButton+ImageTitleStyle.m in Sources */,
 				3600B855217EF10700049F49 /* YBRectConst.m in Sources */,
 				3659508B21F6ADE200DDA2E5 /* MENewStoreHomeCell.m in Sources */,
+				3691308B22363B6E008B1836 /* AASeries.m in Sources */,
 				36308E952150A0BD00B8E7D9 /* MEView.m in Sources */,
-				360034C221AE823700BAF337 /* AASeriesElement.m in Sources */,
 				36EEC2EC2181BA0200DEFCCB /* MEVActiveListVC.m in Sources */,
 				36F5E822222F68F1000B0241 /* TMoreView.m in Sources */,
 				36F3E59F21FAEA4E00CBADFF /* METhridHomeRudeGoodModel.m in Sources */,
@@ -5700,7 +5743,6 @@
 				3630AC4D21F70449006C3F8D /* METhridProductDetailsCommentCell.m in Sources */,
 				36472B0021C8E15C00CC3E48 /* JXCategoryNumberView.m in Sources */,
 				3683F7A921CB7ACC008139B0 /* MECoupleMailDetalVC.m in Sources */,
-				360034B121AE823700BAF337 /* AAColumn.m in Sources */,
 				36472AF721C8E15C00CC3E48 /* JXCategoryTitleImageView.m in Sources */,
 				36472A9421C8C26500CC3E48 /* MEShoppingMallContentVC.m in Sources */,
 				36F6AF3E21F851FF00CF6684 /* MEBynamicCommentView.m in Sources */,
@@ -5717,6 +5759,7 @@
 				366019C621E8798400F1BB37 /* MEMineMyActityDetailCell.m in Sources */,
 				36F5E838222F68F1000B0241 /* TChatController.m in Sources */,
 				36F320CA22265E370020F7C2 /* MEDataDealStoreCustomerVC.m in Sources */,
+				3691309822363B6E008B1836 /* AABar.m in Sources */,
 				36472B0721C8E15C00CC3E48 /* UIColor+JXAdd.m in Sources */,
 				3683F7BE21CBAF22008139B0 /* MEGiftVC.m in Sources */,
 				367EF27B21FB122B001766BD /* METhridRushSpikeVC.m in Sources */,
@@ -5731,7 +5774,6 @@
 				36FB9E302199825600B3DDD3 /* MENoticeModel.m in Sources */,
 				36021AFD214BA5E9001B8DAF /* MEOrderSelectStoreCell.m in Sources */,
 				36FD640D213FAC54009743C5 /* UIImage+MEExtension.m in Sources */,
-				360034AB21AE823700BAF337 /* AADataLabels.m in Sources */,
 				36F744A722323C170061A799 /* MEBrandManngerVC.m in Sources */,
 				360AF11721AFE2680039AB79 /* MEVistorPathVC.m in Sources */,
 				3630AC5721F70CA9006C3F8D /* METhridProductDetailsSelectSkuCell.m in Sources */,
@@ -5739,10 +5781,12 @@
 				EB6D029C2151D9380053B19E /* NSArray+MEErrorHandle.m in Sources */,
 				367C84E9214799B800BEC7B1 /* MEMyDistrbutionVC.m in Sources */,
 				3683F7C621CBC7DD008139B0 /* MEProductGitfListVC.m in Sources */,
+				369130A622364137008B1836 /* MEPolarChartMixedCell.m in Sources */,
 				36F5E850222F68F1000B0241 /* TUIKitConfig.m in Sources */,
 				3628E7EB21C0E15F00D5405B /* MEAppointmentDetailBootomView.m in Sources */,
 				36A1A99D21D3236100A38DEC /* MECouponSearchVC.m in Sources */,
 				36F5E815222F68F1000B0241 /* TModifyView.m in Sources */,
+				3691308E22363B6E008B1836 /* AADataLabels.m in Sources */,
 				36F0FE7A215E2F0F006D30BB /* MEPayModel.m in Sources */,
 				EB2E1ABC2150E22D00A26BE3 /* MEAddAddressAttrModel.m in Sources */,
 				3695C3AB21D4C3D700EDBCDF /* MECouponOrderHeaderView.m in Sources */,
@@ -5758,10 +5802,10 @@
 				36FF4EB621AFB5EE0099DDB8 /* MESNewHomePageVC.m in Sources */,
 				3628E7CE21C0A32000D5405B /* MEClerkSearchVC.m in Sources */,
 				367C84FA2147AB8700BEC7B1 /* MEMyOrderContentVC.m in Sources */,
-				360034B721AE823700BAF337 /* AAArea.m in Sources */,
 				3630AC4821F6F9BE006C3F8D /* METhridProductDetailsTipCell.m in Sources */,
+				3691308722363B6E008B1836 /* AAGradientColor.m in Sources */,
+				3691309D22363B6E008B1836 /* AALegend.m in Sources */,
 				366D5B18214A46130021C1BB /* MESelectAddressVC.m in Sources */,
-				360034BF21AE823700BAF337 /* AAChartView.m in Sources */,
 				36445B3721C1F10B00CDBCBA /* MEWithdrawalVC.m in Sources */,
 				36F5E841222F68F1000B0241 /* TGroupMemberCell.m in Sources */,
 				36FEC24921AD2D8B00BB64A5 /* MEPosterMoreListVC.m in Sources */,
@@ -5781,13 +5825,13 @@
 				3683F7C221CBBBC7008139B0 /* MEGiftMainNilCell.m in Sources */,
 				36F5E83F222F68F1000B0241 /* TGroupCommonCell.m in Sources */,
 				36472AF021C8E15C00CC3E48 /* JXCategoryIndicatorBackgroundView.m in Sources */,
+				369130AB223659DA008B1836 /* MEBrandAiCell.m in Sources */,
 				361B3D2721F01BBA00AB0778 /* MEPinduoduoCoupleInfoModel.m in Sources */,
 				36FD6418213FAD20009743C5 /* UIView+MESubview.m in Sources */,
 				36E409CC21917D0C0090F7E1 /* MEMyMobileVC.m in Sources */,
 				36F5E80F222F68F1000B0241 /* TAddIndexView.m in Sources */,
 				366019B021E83B4B00F1BB37 /* MENewMineHomeHeaderView.m in Sources */,
 				36015284215F72D2003EEC8C /* MERCConversationListVC.m in Sources */,
-				360034AE21AE823700BAF337 /* AASubtitle.m in Sources */,
 				36C0851522019CF6008ADAC9 /* UIView+CLSetRect.m in Sources */,
 				3628E80721C101AF00D5405B /* MEGetCaseContentVC.m in Sources */,
 				EB2E1ABF2150ECEC00A26BE3 /* MEAddressModel.m in Sources */,
@@ -5802,6 +5846,7 @@
 				366A9907214F4378008EE888 /* MEPublicNetWorkTool.m in Sources */,
 				36F3B88021F80E480001F2F6 /* MENineGridView.m in Sources */,
 				3656829922360859006827A6 /* MEBrandAreasplineCell.m in Sources */,
+				369130A222363B6E008B1836 /* AAChart.m in Sources */,
 				3617C30D21D0ADCB00004072 /* MeCoupleFilterLeftCell.m in Sources */,
 				36EEC2F02181BAB700DEFCCB /* MEActiveCell.m in Sources */,
 				3630071C2148DF7E00C88264 /* MEMineExchangeCell.m in Sources */,
@@ -5833,6 +5878,7 @@
 				36F5E81F222F68F1000B0241 /* TAddCollectionCell.m in Sources */,
 				36FEC25021AD343500BB64A5 /* MEArticleListVC.m in Sources */,
 				36F5E848222F68F1000B0241 /* TConversationView.m in Sources */,
+				3691309122363B6E008B1836 /* AATooltip.m in Sources */,
 				36472B0821C8E15C00CC3E48 /* JXCategoryBaseView.m in Sources */,
 				3617C30121D0ABE500004072 /* MECoupleFileCell.m in Sources */,
 				36472AF921C8E15C00CC3E48 /* JXCategoryTitleImageCellModel.m in Sources */,
@@ -5844,7 +5890,6 @@
 				367C05CF218FF7050088C087 /* MENewHomeViewModel.m in Sources */,
 				36B77BB621DDE75E00B4A207 /* MECoupleHomeHeaderView.m in Sources */,
 				36472AEA21C8E15C00CC3E48 /* JXCategoryIndicatorLineView.m in Sources */,
-				360034C021AE823700BAF337 /* AAChartModel.m in Sources */,
 				36F5E835222F68F1000B0241 /* TVideoMessageCell.m in Sources */,
 				36356A6F2176C426004174E7 /* MESuperMemberHomeModel.m in Sources */,
 				36FFE95A217D763A00010AED /* MEAppointDetailModel.m in Sources */,
@@ -5852,7 +5897,6 @@
 				36F5E82E222F68F1000B0241 /* TAddC2CController.m in Sources */,
 				366D1CC821B4FEC00004295E /* MESNewHomeActiveVC.m in Sources */,
 				36F5E84A222F68F1000B0241 /* TUIKit.m in Sources */,
-				360034B021AE823700BAF337 /* AACrosshair.m in Sources */,
 				3600346321AE816900BAF337 /* MEVisterTodyCell.m in Sources */,
 				36F6970D2230C6E8001E53BA /* MEBynamicPublishGridModel.m in Sources */,
 				36F5E837222F68F1000B0241 /* TFaceMessageCell.m in Sources */,

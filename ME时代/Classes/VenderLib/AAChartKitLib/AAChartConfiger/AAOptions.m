@@ -23,7 +23,7 @@
  * And if you want to contribute for this project, please contact me as well
  * GitHub        : https://github.com/AAChartModel
  * StackOverflow : https://stackoverflow.com/users/7842508/codeforu
- * JianShu       : http://www.jianshu.com/u/f1e6753d4254
+ * JianShu       : https://www.jianshu.com/u/f1e6753d4254
  * SegmentFault  : https://segmentfault.com/u/huanghunbieguan
  *
  * -------------------------------------------------------------------------------
@@ -114,7 +114,7 @@ AAPropSetFuncImplementation(AAOptions, NSString      *, zoomResetButtonText)  //
     .legendSet(aaLegend)
     .seriesSet(aaChartModel.series)
     .colorsSet(aaChartModel.colorsTheme)//设置颜色主题
-    .gradientColorEnabledSet(aaChartModel.gradientColorsThemeEnabled)//设置主题颜色是否为渐变色
+    .gradientColorEnabledSet(aaChartModel.easyGradientColors)//设置主题颜色是否为渐变色
     .zoomResetButtonTextSet(aaChartModel.zoomResetButtonText);//设置重置缩放按钮的默认标题
     
     if (   aaChartModel.chartType != AAChartTypePie
@@ -186,7 +186,7 @@ AAPropSetFuncImplementation(AAOptions, NSString      *, zoomResetButtonText)  //
 }
 
 + (void)configureTheStyleOfConnectNodeWithChartModel:(AAChartModel *)aaChartModel plotOptions:(AAPlotOptions *)aaPlotOptions {
-    //数据点标记相关配置，只有线性图(折线图、曲线图、折线区域填充图、曲线区域填充图)才有数据点标记
+    //数据点标记相关配置，只有折线图、曲线图、折线区域填充图、曲线区域填充图、散点图才有数据点标记
     if (   aaChartModel.chartType == AAChartTypeArea
         || aaChartModel.chartType == AAChartTypeAreaspline
         || aaChartModel.chartType == AAChartTypeLine
@@ -194,12 +194,12 @@ AAPropSetFuncImplementation(AAOptions, NSString      *, zoomResetButtonText)  //
         || aaChartModel.chartType == AAChartTypeScatter) {
         AAMarker *aaMarker = AAMarker.new
         .radiusSet(aaChartModel.markerRadius)//曲线连接点半径，默认是4
-        .symbolSet(aaChartModel.symbol);//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-        if (aaChartModel.symbolStyle == AAChartSymbolStyleTypeInnerBlank) {
+        .symbolSet(aaChartModel.markerSymbol);//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+        if (aaChartModel.markerSymbolStyle == AAChartSymbolStyleTypeInnerBlank) {
             aaMarker.fillColorSet(@"#ffffff")//点的填充色(用来设置折线连接点的填充色)
             .lineWidthSet(@2)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
             .lineColorSet(@"");//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
-        } else if (aaChartModel.symbolStyle == AAChartSymbolStyleTypeBorderBlank) {
+        } else if (aaChartModel.markerSymbolStyle == AAChartSymbolStyleTypeBorderBlank) {
             aaMarker.lineWidthSet(@2)
             .lineColorSet(aaChartModel.backgroundColor);
         }
@@ -220,7 +220,6 @@ AAPropSetFuncImplementation(AAOptions, NSString      *, zoomResetButtonText)  //
                         .styleSet(AAStyle.new
                                   .colorSet(aaChartModel.dataLabelFontColor)
                                   .fontSizeSet(AAFontSizeFormat(aaChartModel.dataLabelFontSize))
-                                  .textOutlineSet(@"0")
                                   .fontWeightSet(aaChartModel.dataLabelFontWeight)
                                   )
                         );

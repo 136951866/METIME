@@ -26,14 +26,14 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77R-XL-Heh" customClass="AAChartView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="259.5"/>
+                        <rect key="frame" x="0.0" y="8" width="320" height="251.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="v2X-TM-wGW" firstAttribute="top" secondItem="77R-XL-Heh" secondAttribute="bottom" id="6cQ-FS-qY1"/>
                     <constraint firstItem="77R-XL-Heh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="6vP-rq-hFJ"/>
-                    <constraint firstItem="77R-XL-Heh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Ch2-dU-XSb"/>
+                    <constraint firstItem="77R-XL-Heh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Ch2-dU-XSb"/>
                     <constraint firstAttribute="bottom" secondItem="v2X-TM-wGW" secondAttribute="bottom" id="FeO-yH-QnV"/>
                     <constraint firstItem="v2X-TM-wGW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="fEa-GM-Il6"/>
                     <constraint firstAttribute="trailing" secondItem="v2X-TM-wGW" secondAttribute="trailing" id="sOx-go-bMb"/>

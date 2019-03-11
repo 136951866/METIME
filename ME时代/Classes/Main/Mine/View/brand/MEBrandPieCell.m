@@ -35,7 +35,7 @@
               @[
                 AASeriesElement.new
                 .nameSet(@"顾客数")
-                .innerSizeSet(@"1%")//内部圆环半径大小占比
+                .innerSizeSet(@"0%")//内部圆环半径大小占比
                 .statesSet(@{@"hover": @{@"enabled": @(false)}})
                 .sizeSet(@124)//尺寸大小
                 .borderWidthSet(@0)//描边的宽度

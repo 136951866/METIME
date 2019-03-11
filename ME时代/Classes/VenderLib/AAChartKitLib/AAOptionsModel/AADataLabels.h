@@ -23,7 +23,7 @@
  * And if you want to contribute for this project, please contact me as well
  * GitHub        : https://github.com/AAChartModel
  * StackOverflow : https://stackoverflow.com/users/7842508/codeforu
- * JianShu       : http://www.jianshu.com/u/f1e6753d4254
+ * JianShu       : https://www.jianshu.com/u/f1e6753d4254
  * SegmentFault  : https://segmentfault.com/u/huanghunbieguan
  *
  * -------------------------------------------------------------------------------
@@ -103,7 +103,11 @@ AAPropStatementAndPropSetFuncStatement(strong, AADataLabels, NSNumber *, distanc
 AAPropStatementAndPropSetFuncStatement(copy,   AADataLabels, NSString *, verticalAlign)
 AAPropStatementAndPropSetFuncStatement(strong, AADataLabels, NSNumber *, x) 
 AAPropStatementAndPropSetFuncStatement(strong, AADataLabels, NSNumber *, y)
+AAPropStatementAndPropSetFuncStatement(copy,   AADataLabels, NSString *, color)
 AAPropStatementAndPropSetFuncStatement(copy,   AADataLabels, NSString *, backgroundColor)
+AAPropStatementAndPropSetFuncStatement(copy,   AADataLabels, NSString *, borderColor)
+AAPropStatementAndPropSetFuncStatement(copy,   AADataLabels, NSNumber *, borderRadius)
+AAPropStatementAndPropSetFuncStatement(copy,   AADataLabels, NSNumber *, borderWidth)
 AAPropStatementAndPropSetFuncStatement(copy,   AADataLabels, NSString *, shape)
 
 
