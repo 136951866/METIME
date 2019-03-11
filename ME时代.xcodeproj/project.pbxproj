@@ -349,6 +349,8 @@
 		36526013216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36526011216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.m */; };
 		36526014216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36526012216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.xib */; };
 		36526017216F3DD3003E3CB4 /* MENewStoreDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36526016216F3DD3003E3CB4 /* MENewStoreDetailsVC.m */; };
+		3656829922360859006827A6 /* MEBrandAreasplineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3656829722360859006827A6 /* MEBrandAreasplineCell.m */; };
+		3656829A22360859006827A6 /* MEBrandAreasplineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3656829822360859006827A6 /* MEBrandAreasplineCell.xib */; };
 		3659508B21F6ADE200DDA2E5 /* MENewStoreHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3659508921F6ADE200DDA2E5 /* MENewStoreHomeCell.m */; };
 		3659508C21F6ADE200DDA2E5 /* MENewStoreHomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3659508A21F6ADE200DDA2E5 /* MENewStoreHomeCell.xib */; };
 		365DB25221475C2A00001A04 /* MEMineHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 365DB25121475C2A00001A04 /* MEMineHomeHeaderView.m */; };
@@ -535,6 +537,8 @@
 		36D9E0C221F5BA5000687580 /* METhridNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D9E0C121F5BA5000687580 /* METhridNavView.m */; };
 		36D9E0C421F5BA5C00687580 /* METhridNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36D9E0C321F5BA5C00687580 /* METhridNavView.xib */; };
 		36D9E0CC21F5C40000687580 /* METhridHomeNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D9E0CB21F5C40000687580 /* METhridHomeNavView.m */; };
+		36D9FAE822362CCE001EC4D9 /* MEBrandPieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D9FAE622362CCE001EC4D9 /* MEBrandPieCell.m */; };
+		36D9FAE922362CCE001EC4D9 /* MEBrandPieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36D9FAE722362CCE001EC4D9 /* MEBrandPieCell.xib */; };
 		36E1BF0C2148F96900E28301 /* MEMineExchangeDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E1BF0B2148F96900E28301 /* MEMineExchangeDetailVC.m */; };
 		36E1BF102149010C00E28301 /* MEMineExchangeRudeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E1BF0E2149010C00E28301 /* MEMineExchangeRudeCell.m */; };
 		36E1BF112149010C00E28301 /* MEMineExchangeRudeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E1BF0F2149010C00E28301 /* MEMineExchangeRudeCell.xib */; };
@@ -1414,6 +1418,9 @@
 		36526012216F35C1003E3CB4 /* MEStoreHomeIntroduceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEStoreHomeIntroduceCell.xib; sourceTree = "<group>"; };
 		36526015216F3DD3003E3CB4 /* MENewStoreDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MENewStoreDetailsVC.h; sourceTree = "<group>"; };
 		36526016216F3DD3003E3CB4 /* MENewStoreDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MENewStoreDetailsVC.m; sourceTree = "<group>"; };
+		3656829622360859006827A6 /* MEBrandAreasplineCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBrandAreasplineCell.h; sourceTree = "<group>"; };
+		3656829722360859006827A6 /* MEBrandAreasplineCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBrandAreasplineCell.m; sourceTree = "<group>"; };
+		3656829822360859006827A6 /* MEBrandAreasplineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEBrandAreasplineCell.xib; sourceTree = "<group>"; };
 		3659508821F6ADE200DDA2E5 /* MENewStoreHomeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MENewStoreHomeCell.h; sourceTree = "<group>"; };
 		3659508921F6ADE200DDA2E5 /* MENewStoreHomeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MENewStoreHomeCell.m; sourceTree = "<group>"; };
 		3659508A21F6ADE200DDA2E5 /* MENewStoreHomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MENewStoreHomeCell.xib; sourceTree = "<group>"; };
@@ -1733,6 +1740,9 @@
 		36D9E0C321F5BA5C00687580 /* METhridNavView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = METhridNavView.xib; sourceTree = "<group>"; };
 		36D9E0CA21F5C40000687580 /* METhridHomeNavView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = METhridHomeNavView.h; sourceTree = "<group>"; };
 		36D9E0CB21F5C40000687580 /* METhridHomeNavView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = METhridHomeNavView.m; sourceTree = "<group>"; };
+		36D9FAE522362CCE001EC4D9 /* MEBrandPieCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBrandPieCell.h; sourceTree = "<group>"; };
+		36D9FAE622362CCE001EC4D9 /* MEBrandPieCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBrandPieCell.m; sourceTree = "<group>"; };
+		36D9FAE722362CCE001EC4D9 /* MEBrandPieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEBrandPieCell.xib; sourceTree = "<group>"; };
 		36E1BF0A2148F96900E28301 /* MEMineExchangeDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEMineExchangeDetailVC.h; sourceTree = "<group>"; };
 		36E1BF0B2148F96900E28301 /* MEMineExchangeDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEMineExchangeDetailVC.m; sourceTree = "<group>"; };
 		36E1BF0D2149010C00E28301 /* MEMineExchangeRudeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEMineExchangeRudeCell.h; sourceTree = "<group>"; };
@@ -3526,6 +3536,12 @@
 				36C3932E22324D4900F5796E /* MEBrandTriangleCell.h */,
 				36C3932F22324D4900F5796E /* MEBrandTriangleCell.m */,
 				36C3933022324D4900F5796E /* MEBrandTriangleCell.xib */,
+				3656829622360859006827A6 /* MEBrandAreasplineCell.h */,
+				3656829722360859006827A6 /* MEBrandAreasplineCell.m */,
+				3656829822360859006827A6 /* MEBrandAreasplineCell.xib */,
+				36D9FAE522362CCE001EC4D9 /* MEBrandPieCell.h */,
+				36D9FAE622362CCE001EC4D9 /* MEBrandPieCell.m */,
+				36D9FAE722362CCE001EC4D9 /* MEBrandPieCell.xib */,
 			);
 			path = brand;
 			sourceTree = "<group>";
@@ -5097,6 +5113,7 @@
 				36FB9E1A2199195D00B3DDD3 /* MENoticeCell.xib in Resources */,
 				367C05C2218FD1700088C087 /* MENewHomeCell.xib in Resources */,
 				3600A740215A15C700195484 /* MEAboutWeVC.xib in Resources */,
+				3656829A22360859006827A6 /* MEBrandAreasplineCell.xib in Resources */,
 				36C3932D2232470100F5796E /* MEBrandAllDataCell.xib in Resources */,
 				36022E052190220C00DC9A8B /* MENewHomePageHeaderView.xib in Resources */,
 				36FEC23C21AD175400BB64A5 /* MEPosterContentListCell.xib in Resources */,
@@ -5153,6 +5170,7 @@
 				36FEEBBA214CD20000060209 /* MEAddTelView.xib in Resources */,
 				36F6AF4E21F8546800CF6684 /* MEBynamicCommentCell.xib in Resources */,
 				367C84F42147A50600BEC7B1 /* MEOrderCell.xib in Resources */,
+				36D9FAE922362CCE001EC4D9 /* MEBrandPieCell.xib in Resources */,
 				36445B4021C20C2C00CDBCBA /* MEAddClerksVC.xib in Resources */,
 				36FEC24121AD1AED00BB64A5 /* MEPosterContentListContentCell.xib in Resources */,
 				36FFD8552143CC360094D781 /* MEProductDetailsSectionView.xib in Resources */,
@@ -5605,6 +5623,7 @@
 				36472AFD21C8E15C00CC3E48 /* JXCategoryImageView.m in Sources */,
 				36F5E828222F68F1000B0241 /* TFaceCell.m in Sources */,
 				36A401D82144082F00B0BD4F /* MEShoppingCartGoodsVC.m in Sources */,
+				36D9FAE822362CCE001EC4D9 /* MEBrandPieCell.m in Sources */,
 				36F48BC921DEFF8800A6A7B0 /* MECouponMaterModel.m in Sources */,
 				360034CB21AE9A7100BAF337 /* MEVistorVisterCell.m in Sources */,
 				36FB9E192199195D00B3DDD3 /* MENoticeCell.m in Sources */,
@@ -5782,6 +5801,7 @@
 				36472AF621C8E15C00CC3E48 /* JXCategoryDotCellModel.m in Sources */,
 				366A9907214F4378008EE888 /* MEPublicNetWorkTool.m in Sources */,
 				36F3B88021F80E480001F2F6 /* MENineGridView.m in Sources */,
+				3656829922360859006827A6 /* MEBrandAreasplineCell.m in Sources */,
 				3617C30D21D0ADCB00004072 /* MeCoupleFilterLeftCell.m in Sources */,
 				36EEC2F02181BAB700DEFCCB /* MEActiveCell.m in Sources */,
 				3630071C2148DF7E00C88264 /* MEMineExchangeCell.m in Sources */,

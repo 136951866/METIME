@@ -10,6 +10,8 @@
 #import "MEBrandManngerVC.h"
 #import "MEBrandAllDataCell.h"
 #import "MEBrandTriangleCell.h"
+#import "MEBrandAreasplineCell.h"
+#import "MEBrandPieCell.h"
 
 @interface MEBrandManngerAllContentVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -27,7 +29,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 14;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -36,6 +38,18 @@
          return cell;
     }else if (indexPath.row == 1){
         MEBrandTriangleCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandTriangleCell class]) forIndexPath:indexPath];
+        return cell;
+    }else if(indexPath.row == 2){
+        MEBrandAreasplineCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandAreasplineCell class]) forIndexPath:indexPath];
+        [cell setUiWithModel:@"" title:@"近7日客户活跃度"];
+        return cell;
+    }else if(indexPath.row == 3){
+        MEBrandPieCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandPieCell class]) forIndexPath:indexPath];
+        [cell setUiWithModel:@""];
+        return cell;
+    }else if(indexPath.row == 4){
+        MEBrandAreasplineCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandAreasplineCell class]) forIndexPath:indexPath];
+        [cell setUiWithModel:@"" title:@"近7日新增客户数"];
         return cell;
     }else{
         MEBrandAllDataCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandAllDataCell class]) forIndexPath:indexPath];
@@ -48,9 +62,17 @@
         return kMEBrandAllDataCellHeight;
     }else if (indexPath.row == 1){
         return kMEBrandTriangleCellHeight;
+    }else  if(indexPath.row == 2){
+        return kMEBrandAreasplineCellHeight;
+    }else  if(indexPath.row == 3){
+        return kMEBrandPieCellHeight;
+    }else  if(indexPath.row == 4){
+        return kMEBrandAreasplineCellHeight;
     }else{
         return kMEBrandAllDataCellHeight;
     }
+    
+
 }
 
 - (UITableView *)tableView{
@@ -58,7 +80,9 @@
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kMEBrandManngerVCHeaderHeight) style:UITableViewStylePlain];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEBrandAllDataCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEBrandAllDataCell class])];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEBrandTriangleCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEBrandTriangleCell class])];
-//
+        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEBrandAreasplineCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEBrandAreasplineCell class])];
+        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEBrandPieCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEBrandPieCell class])];
+
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.tableFooterView = [UIView new];

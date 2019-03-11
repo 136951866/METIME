@@ -24,6 +24,7 @@
     self.title = @"品牌管理";
     _consTopMargin.constant = kMeNavBarHeight;
     _scrollview.contentSize = CGSizeMake(SCREEN_WIDTH*3, SCREEN_HEIGHT-kMeNavBarHeight-kMEBrandManngerVCHeaderHeight);
+    _scrollview.pagingEnabled = YES;
     [_scrollview addSubview:self.allVC.view];
     // Do any additional setup after loading the view from its nib.
 }
