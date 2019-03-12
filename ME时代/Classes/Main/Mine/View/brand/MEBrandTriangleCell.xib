@@ -208,13 +208,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TriangleTwoFive" translatesAutoresizingMaskIntoConstraints="NO" id="KHl-A4-tmz">
-                        <rect key="frame" x="0.0" y="204" width="320" height="41"/>
+                        <rect key="frame" x="0.0" y="204" width="320" height="35"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="41" id="F6j-bQ-O1d"/>
+                            <constraint firstAttribute="height" constant="35" id="F6j-bQ-O1d"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3i-k7-oOZ">
-                        <rect key="frame" x="156" y="217" width="8" height="15"/>
+                        <rect key="frame" x="156" y="214" width="8" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>

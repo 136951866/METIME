@@ -19,17 +19,18 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aTQ-cf-s0e" customClass="AAChartView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="280.5"/>
+                        <rect key="frame" x="0.0" y="15" width="320" height="250.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="aTQ-cf-s0e" secondAttribute="trailing" id="Edh-ni-NJI"/>
-                    <constraint firstAttribute="bottom" secondItem="aTQ-cf-s0e" secondAttribute="bottom" id="LMh-9K-bI3"/>
+                    <constraint firstAttribute="bottom" secondItem="aTQ-cf-s0e" secondAttribute="bottom" constant="15" id="LMh-9K-bI3"/>
                     <constraint firstItem="aTQ-cf-s0e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="q0F-tD-0j0"/>
-                    <constraint firstItem="aTQ-cf-s0e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="rJf-V0-UUu"/>
+                    <constraint firstItem="aTQ-cf-s0e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="rJf-V0-UUu"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="aaChartView" destination="aTQ-cf-s0e" id="5JW-lB-Ef6"/>
             </connections>

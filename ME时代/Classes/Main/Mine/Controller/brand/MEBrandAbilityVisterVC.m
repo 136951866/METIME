@@ -1,27 +1,27 @@
 //
-//  MEBrandAISortVC.m
+//  MEBrandAbilityVisterVC.m
 //  ME时代
 //
-//  Created by hank on 2019/3/11.
+//  Created by hank on 2019/3/12.
 //  Copyright © 2019 hank. All rights reserved.
 //
 
-#import "MEBrandAISortVC.h"
-#import "MEBrandAiCell.h"
-#import "MEBrandManngerVC.h"
+#import "MEBrandAbilityVisterVC.h"
+#import "MEBrandAbilityVisterCell.h"
 #import "MEBrandAbilityManngerVC.h"
 
-@interface MEBrandAISortVC ()<UITableViewDelegate, UITableViewDataSource,RefreshToolDelegate>
+@interface MEBrandAbilityVisterVC ()<UITableViewDelegate, UITableViewDataSource,RefreshToolDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ZLRefreshTool         *refresh;
 
 @end
 
-@implementation MEBrandAISortVC
+@implementation MEBrandAbilityVisterVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"f4f4f4"];
     [self.view addSubview:self.tableView];
     [self.refresh addRefreshView];
 }
@@ -38,7 +38,7 @@
     if(![data isKindOfClass:[NSArray class]]){
         return;
     }
-//    [self.refresh.arrData addObjectsFromArray:[MEDistributionTeamModel mj_objectArrayWithKeyValuesArray:data]];
+    //    [self.refresh.arrData addObjectsFromArray:[MEDistributionTeamModel mj_objectArrayWithKeyValuesArray:data]];
 }
 
 
@@ -53,33 +53,26 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MEBrandAiCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandAiCell class]) forIndexPath:indexPath];
-    [cell setUIWithModel:@"" sortNum:indexPath.row];
+    MEBrandAbilityVisterCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandAbilityVisterCell class]) forIndexPath:indexPath];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return kMEBrandAiCellHeight;
+    return kMEBrandAbilityVisterCellHeight;
 }
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    MEBrandAbilityManngerVC *vc = [[MEBrandAbilityManngerVC alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 
 #pragma mark - Set And Get
 
 - (UITableView *)tableView{
     if(!_tableView){
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kMEBrandManngerVCHeaderHeight) style:UITableViewStylePlain];
-        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEBrandAiCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEBrandAiCell class])];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kMEBrandAbilityManngerVCHeight) style:UITableViewStylePlain];
+        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEBrandAbilityVisterCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEBrandAbilityVisterCell class])];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.tableFooterView = [UIView new];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.backgroundColor = [UIColor whiteColor];
+        _tableView.backgroundColor = [UIColor colorWithHexString:@"f4f4f4"];
     }
     return _tableView;
 }

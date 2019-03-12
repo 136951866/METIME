@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-const static CGFloat kMEPolarChartMixedCellHeight = 281;
+const static CGFloat kMEPolarChartMixedCellHeight = 311;
 
 @interface MEPolarChartMixedCell : UITableViewCell
 

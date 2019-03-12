@@ -35,20 +35,17 @@
     _lblName.text = kMeUnNilStr(@"ME时代");
     _lblAINum.text = kMeUnNilStr(@"111");
     switch (sortNum) {
-        case 0:
-        {
+        case 0:{
             _imgSort.hidden = NO;
             _imgSort.image = [UIImage imageNamed:@"icon_brandAi_one"];
         }
             break;
-        case 1:
-        {
+        case 1:{
             _imgSort.hidden = NO;
             _imgSort.image = [UIImage imageNamed:@"icon_brandAi_two"];
         }
             break;
-        case 2:
-        {
+        case 2:{
             _imgSort.hidden = NO;
             _imgSort.image = [UIImage imageNamed:@"icon_brandAi_three"];
         }
