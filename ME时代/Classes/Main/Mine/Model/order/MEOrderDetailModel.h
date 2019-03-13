@@ -9,6 +9,15 @@
 #import "MEBaseModel.h"
 #import "MELogistModel.h"
 
+@interface MEexpressDetailModel : MEBaseModel
+
+@property (nonatomic, strong) NSArray * data;
+@property (nonatomic, strong) NSString * express_name;
+@property (nonatomic, strong) NSString * express_num;
+@property (nonatomic, strong) NSString * express_url;
+
+@end
+
 @interface MEStoreGetModel : MEBaseModel
 
 @property (nonatomic, strong) NSString * created_at;
@@ -70,6 +79,8 @@
 @property (nonatomic, strong) NSArray * children;
 @property (nonatomic, strong) MEOrderDetailAddressModel * address;
 @property (nonatomic, strong) MEOrderDetailExpressModel * express;
-@property (nonatomic, strong) MELogistModel *logistics;
+//@property (nonatomic, strong) MELogistModel *logistics;
 @property (nonatomic, strong) MEStoreGetModel *store_get;
+
+@property (nonatomic, strong) NSArray *express_detail;
 @end

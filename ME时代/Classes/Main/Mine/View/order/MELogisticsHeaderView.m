@@ -31,7 +31,7 @@
 //    _lblStatus.text = kMeUnNilStr(@"");
     _lblStatus.hidden = YES;
     _lblCompand.text = @"百世汇通";
-    _lblNum.text = kMeUnNilStr(model.logistics.nu);
+//    _lblNum.text = kMeUnNilStr(model.logistics.nu);
     
 }
 

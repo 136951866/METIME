@@ -16,6 +16,6 @@ const static CGFloat kMEOrderDetailViewLogistHeight = 87;
 
 - (void)setUIWithModel:(MEOrderDetailModel *)model orderType:(MEOrderStyle)type;
 - (void)setAppointUIWithModel:(MEAppointDetailModel *)model orderType:(MEAppointmenyStyle)type;
-+ (CGFloat)getViewHeightWithType:(MEOrderStyle)type;
++ (CGFloat)getViewHeightWithType:(MEOrderStyle)type Model:(MEOrderDetailModel *)model;
 
 @end

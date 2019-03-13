@@ -26,7 +26,7 @@
 - (instancetype)initWithmodel:(MEOrderDetailModel *)model{
     if(self = [super init]){
         _model = model;
-        self.logistArr = kMeUnArr(_model.logistics.data);
+//        self.logistArr = kMeUnArr(_model.logistics.data);
     }
     return self;
 }

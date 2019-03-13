@@ -9,6 +9,9 @@
 #import "MEOrderDetailModel.h"
 #import "MEOrderModel.h"
 
+@implementation MEexpressDetailModel
+
+@end
 
 @implementation MEStoreGetModel
 MEModelIdToIdField
@@ -25,6 +28,6 @@ MEModelIdToIdField
 
 @implementation MEOrderDetailModel
 MEModelIdToIdField
-MEModelObjectClassInArrayWithDic(@{@"children" : [MEOrderGoodModel class]})
 
+MEModelObjectClassInArrayWithDic((@{@"children" : [MEOrderGoodModel class],@"express_detail" : [MEexpressDetailModel class]}))
 @end

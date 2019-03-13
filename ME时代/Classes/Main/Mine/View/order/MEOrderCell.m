@@ -11,7 +11,7 @@
 #import "MEMyChildOrderContentCell.h"
 #import "MEMyOrderVC.h"
 #import "MEMyOrderDetailVC.h"
-#import "MELogisticsVC.h"
+//#import "MELogisticsVC.h"
 #import "MEMySelfExtractionOrderVC.h"
 
 @interface MEOrderCell ()<UITableViewDelegate,UITableViewDataSource>{

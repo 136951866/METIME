@@ -256,7 +256,7 @@
 - (MEOrderDetailView *)headerView{
     if(!_headerView){
         _headerView = [[[NSBundle mainBundle]loadNibNamed:@"MEOrderDetailView" owner:nil options:nil] lastObject];
-        _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [MEOrderDetailView getViewHeightWithType:_orderType]);
+        _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [MEOrderDetailView getViewHeightWithType:_orderType Model:_detaliModel]);
         [_headerView setUIWithModel:_detaliModel orderType:_orderType];
     }
     return _headerView;

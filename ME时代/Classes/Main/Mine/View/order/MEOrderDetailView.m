@@ -8,9 +8,12 @@
 
 #import "MEOrderDetailView.h"
 #import "MEOrderDetailModel.h"
-#import "MELogisticsVC.h"
+//#import "MELogisticsVC.h"
 #import "MEMyOrderDetailVC.h"
 #import "MEAppointDetailModel.h"
+//#import "MEOrderExpressDetailVC.h"
+#import "MEOrderExpressDetailVC.h"
+#import "ZLWebVC.h"
 
 @interface MEOrderDetailView(){
     NSArray *_arrType;
@@ -32,8 +35,6 @@
 
 @implementation MEOrderDetailView
 
-#warning logist-------
-
 - (void)awakeFromNib{
     [super awakeFromNib];
    _arrType = MEOrderStyleTitle;
@@ -47,27 +48,44 @@
 - (void)logistAction:(UITapGestureRecognizer *)ges{
     MEMyOrderDetailVC *orderVC = (MEMyOrderDetailVC *)[MECommonTool getVCWithClassWtihClassName:[MEMyOrderDetailVC class] targetResponderView:self];
     if(orderVC){
-        MELogisticsVC *logistVC = [[MELogisticsVC alloc]initWithmodel:_modle];
-        [orderVC.navigationController pushViewController:logistVC animated:YES];
+        NSArray *arr = kMeUnArr(_modle.express_detail);
+        if(arr.count==1){
+            MEexpressDetailModel *detailmodel = [arr firstObject];
+            NSString *encodedString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                                                                            (CFStringRef)kMeUnNilStr(detailmodel.express_url),(CFStringRef)@"!$&'()*+,-./:;=?@_~%#[]",NULL,kCFStringEncodingUTF8));
+            ZLWebVC *vc = [[ZLWebVC alloc]initWithUrl:encodedString];
+            vc.title = @"物流信息";
+            [orderVC.navigationController pushViewController:vc animated:YES];
+        }else if(arr.count>1){
+            MEOrderExpressDetailVC *logistVC = [[MEOrderExpressDetailVC alloc]initWithModel:_modle];
+            [orderVC.navigationController pushViewController:logistVC animated:YES];
+        }else{
+            
+        }
     }
 }
 
 - (void)setUIWithModel:(MEOrderDetailModel *)model orderType:(MEOrderStyle)type{
     _modle = model;
-    if(type == MEAllNeedReceivedOrder || type == MEAllFinishOrder){
+//    if(type == MEAllNeedReceivedOrder || type == MEAllFinishOrder){
         _viewForLogist.hidden = NO;
         _viewForLogist.userInteractionEnabled = YES;
-        MELogistModel *lmodel = model.logistics;
-        if(kMeUnArr(lmodel.data).count>0){
-            MELogistDataModel *ldModel = [lmodel.data firstObject];
-            _lblLogist.text = kMeUnNilStr(ldModel.context);
+//        MELogistModel *lmodel = model.logistics;
+        NSArray *arr = kMeUnArr(model.express_detail);
+        if(arr.count>0){
+            _viewForLogist.hidden = NO;
+            _viewForLogist.userInteractionEnabled = YES;
+//            MELogistDataModel *ldModel = [lmodel.data firstObject];
+            _lblLogist.text = @"查看物流";
         }else{
-            _lblLogist.text = @"暂无快递信息";
+//            _lblLogist.text = @"暂无快递信息";
+            _viewForLogist.hidden = YES;
+            _viewForLogist.userInteractionEnabled = NO;
         }
-    }else{
-        _viewForLogist.hidden = YES;
-        _viewForLogist.userInteractionEnabled = NO;
-    }
+//    }else{
+//        _viewForLogist.hidden = YES;
+//        _viewForLogist.userInteractionEnabled = NO;
+//    }
 //    _lblOrderStatus.text = [NSString stringWithFormat:@"订单%@",_arrType[type]];
     _lblOrderStatus.text = [NSString stringWithFormat:@"订单%@",kMeUnNilStr(model.order_status_name)];
 
@@ -93,8 +111,9 @@
     _lblAddress.text  = address;
 }
 
-+ (CGFloat)getViewHeightWithType:(MEOrderStyle)type{
-    if(type == MEAllNeedReceivedOrder || type == MEAllFinishOrder){
++ (CGFloat)getViewHeightWithType:(MEOrderStyle)type Model:(MEOrderDetailModel *)model{
+    NSArray *arr = kMeUnArr(model.express_detail);
+    if(arr.count>0){
         return kMEOrderDetailViewHeight + kMEOrderDetailViewLogistHeight;
     }else{
         return kMEOrderDetailViewHeight;
