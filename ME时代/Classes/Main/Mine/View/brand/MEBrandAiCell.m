@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UILabel *lblAINum;
 @property (weak, nonatomic) IBOutlet UIImageView *imgSort;
+@property (weak, nonatomic) IBOutlet UILabel *lblSale;
 
 
 @end
@@ -57,5 +58,9 @@
     }
 }
 
+- (void)setSortUIWithModel:(id)model sortNum:(NSInteger)sortNum{
+    [self setUIWithModel:model sortNum:sortNum];
+    _lblSale.hidden = YES;
+}
 
 @end

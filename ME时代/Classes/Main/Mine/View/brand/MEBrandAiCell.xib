@@ -92,6 +92,7 @@
                 <outlet property="imgSort" destination="vqQ-Er-HmY" id="oMr-1b-8dg"/>
                 <outlet property="lblAINum" destination="fto-v3-Ig5" id="2Xl-D7-uXQ"/>
                 <outlet property="lblName" destination="E8T-7i-KHf" id="Bep-cA-AqZ"/>
+                <outlet property="lblSale" destination="ZaA-XV-BCp" id="f5p-y3-uh3"/>
                 <outlet property="lblSortNum" destination="FDD-ow-j13" id="X8E-gO-UTx"/>
             </connections>
             <point key="canvasLocation" x="49.600000000000001" y="83.208395802098963"/>

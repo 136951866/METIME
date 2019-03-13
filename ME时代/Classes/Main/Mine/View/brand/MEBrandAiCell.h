@@ -15,6 +15,7 @@ const static CGFloat kMEBrandAiCellHeight = 65;
 @interface MEBrandAiCell : UITableViewCell
 
 - (void)setUIWithModel:(id)model sortNum:(NSInteger)sortNum;
+- (void)setSortUIWithModel:(id)model sortNum:(NSInteger)sortNum;
 
 @end
 

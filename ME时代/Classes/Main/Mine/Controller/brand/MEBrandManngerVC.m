@@ -9,6 +9,7 @@
 #import "MEBrandManngerVC.h"
 #import "MEBrandManngerAllContentVC.h"
 #import "MEBrandAISortVC.h"
+#import "MEBrandMangerSortVC.h"
 
 @interface MEBrandManngerVC ()<UIScrollViewDelegate>{
     // 0 all 1 sort 2ai
@@ -18,7 +19,9 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
 @property (strong , nonatomic) MEBrandManngerAllContentVC *allVC;
+@property (strong , nonatomic) MEBrandMangerSortVC *sortVC;
 @property (strong , nonatomic) MEBrandAISortVC *aiSortVC;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consTopMargin;
 @property (weak, nonatomic) IBOutlet UIButton *btnAll;
 @property (weak, nonatomic) IBOutlet UIButton *btnSort;
@@ -38,6 +41,7 @@
     _scrollview.contentSize = CGSizeMake(SCREEN_WIDTH*3, SCREEN_HEIGHT-kMeNavBarHeight-kMEBrandManngerVCHeaderHeight);
     _scrollview.pagingEnabled = YES;
     [_scrollview addSubview:self.allVC.view];
+    [_scrollview addSubview:self.sortVC.view];
     [_scrollview addSubview:self.aiSortVC.view];
     
     
@@ -81,6 +85,16 @@
         [self addChildViewController:_allVC];
     }
     return _allVC;
+}
+
+- (MEBrandMangerSortVC *)sortVC{
+    if(!_sortVC){
+        _sortVC = [[MEBrandMangerSortVC alloc]init];
+        _sortVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        _sortVC.view.frame = CGRectMake(SCREEN_WIDTH,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kMEBrandManngerVCHeaderHeight);
+        [self addChildViewController:_sortVC];
+    }
+    return _sortVC;
 }
 
 - (MEBrandAISortVC *)aiSortVC{

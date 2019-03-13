@@ -680,6 +680,7 @@
 		36F5E853222F68F1000B0241 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F5E80B222F68F0000B0241 /* VideoViewController.m */; };
 		36F5E854222F6A04000B0241 /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36F5E76D222F6894000B0241 /* ImSDK.framework */; };
 		36F5E855222F6A04000B0241 /* ImSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 36F5E76D222F6894000B0241 /* ImSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		36F5FDF7223907F00051FA5A /* MEBrandMangerSortVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F5FDF6223907F00051FA5A /* MEBrandMangerSortVC.m */; };
 		36F65405221E789F00502864 /* MECouponOrderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F65404221E789F00502864 /* MECouponOrderSectionView.m */; };
 		36F65407221E78AD00502864 /* MECouponOrderSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F65406221E78AD00502864 /* MECouponOrderSectionView.xib */; };
 		36F696FB2230B47D001E53BA /* MEImagePickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F696FA2230B47D001E53BA /* MEImagePickerVC.m */; };
@@ -2025,6 +2026,8 @@
 		36F5E80B222F68F0000B0241 /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
 		36F5E80C222F68F0000B0241 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		36F5E80D222F68F0000B0241 /* FileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileViewController.h; sourceTree = "<group>"; };
+		36F5FDF5223907F00051FA5A /* MEBrandMangerSortVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBrandMangerSortVC.h; sourceTree = "<group>"; };
+		36F5FDF6223907F00051FA5A /* MEBrandMangerSortVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBrandMangerSortVC.m; sourceTree = "<group>"; };
 		36F65403221E789F00502864 /* MECouponOrderSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECouponOrderSectionView.h; sourceTree = "<group>"; };
 		36F65404221E789F00502864 /* MECouponOrderSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECouponOrderSectionView.m; sourceTree = "<group>"; };
 		36F65406221E78AD00502864 /* MECouponOrderSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MECouponOrderSectionView.xib; sourceTree = "<group>"; };
@@ -4700,6 +4703,8 @@
 				36E284DC2237520B009F1563 /* MEBrandAbilityVisterVC.m */,
 				36E284E322375701009F1563 /* MEBrandAbilityAnalysisVC.h */,
 				36E284E422375701009F1563 /* MEBrandAbilityAnalysisVC.m */,
+				36F5FDF5223907F00051FA5A /* MEBrandMangerSortVC.h */,
+				36F5FDF6223907F00051FA5A /* MEBrandMangerSortVC.m */,
 			);
 			path = brand;
 			sourceTree = "<group>";
@@ -5690,6 +5695,7 @@
 				3691309A22363B6E008B1836 /* AAArea.m in Sources */,
 				36E284DD2237520B009F1563 /* MEBrandAbilityVisterVC.m in Sources */,
 				3600B856217EF10700049F49 /* YBPopupMenuPath.m in Sources */,
+				36F5FDF7223907F00051FA5A /* MEBrandMangerSortVC.m in Sources */,
 				36F5E810222F68F1000B0241 /* TAlertView.m in Sources */,
 				366D5B36214A6E630021C1BB /* MEAppointmentDateMainCell.m in Sources */,
 				3628E80021C0FBC100D5405B /* MEGetCaseContentCell.m in Sources */,
