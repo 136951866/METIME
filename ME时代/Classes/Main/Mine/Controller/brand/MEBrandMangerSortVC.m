@@ -123,6 +123,7 @@ const static CGFloat kselectViewHeight = 57;
         _btnSort.frame = CGRectMake(SCREEN_WIDTH/2, 0, SCREEN_WIDTH/2, kselectViewHeight);
         [_btnSort setTitle:@"昨日新增客户" forState:UIControlStateNormal];
         [_btnSort setImage:[UIImage imageNamed:@"icon_more"] forState:UIControlStateNormal];
+        [_btnSort setButtonImageTitleStyle:ButtonImageTitleStyleRight padding:-(20 *kMeFrameScaleX())];
         [_btnSort setTitleColor:kMEblack forState:UIControlStateNormal];
         [_btnSort addTarget:self action:@selector(selectAction:) forControlEvents:UIControlEventTouchUpInside];
         _btnSort.titleLabel.font = kMeFont(13);
@@ -156,7 +157,7 @@ const static CGFloat kselectViewHeight = 57;
 }
 
 - (void)ybPopupMenu:(YBPopupMenu *)ybPopupMenu didSelectedAtIndex:(NSInteger)index{
-    NSString *title =  ybPopupMenu.titles[index];
+    NSString *title = ybPopupMenu.titles[index];
     [_btnSort setTitle:title forState:UIControlStateNormal];
 }
 
