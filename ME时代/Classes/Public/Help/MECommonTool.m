@@ -37,6 +37,11 @@
     
     [WXApi registerApp:UMWXAppId];
     
+    NSString *frist = [[NSUserDefaults standardUserDefaults] objectForKey:kMEAppVersion];
+    if(!kMeUnNilStr(frist).length && [MEUserInfoModel isLogin]){
+        [MEUserInfoModel logout];
+    }
+    
 //    [[MELocationTool sharedHander] startLocation];
 //    [[MELocationHelper sharedHander] getCurrentLocation:^(CLLocation *location, CLPlacemark *placeMark, NSString *error) {
 //    } failure:^{
