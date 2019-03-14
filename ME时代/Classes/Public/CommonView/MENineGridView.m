@@ -30,6 +30,7 @@ const static CGFloat kMENineGridViewpadding = 3;
     _arrImageView = [NSMutableArray array];
     for (NSInteger i=0; i<9; i++) {
         UIImageView *img = [[UIImageView alloc]init];
+        img.contentMode = UIViewContentModeScaleAspectFit;
         img.userInteractionEnabled = YES;
         img.tag = i;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];

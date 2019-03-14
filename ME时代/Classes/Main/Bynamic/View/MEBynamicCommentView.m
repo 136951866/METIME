@@ -14,7 +14,7 @@
 #define kMEMEBynamicCommentViewW (SCREEN_WIDTH-(10+36+10+10))
 
 @interface MEBynamicCommentView ()<UITableViewDelegate,UITableViewDataSource>{
-   
+
 }
 
 @property (nonatomic, strong) UITableView *tableView;
