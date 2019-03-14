@@ -44,6 +44,11 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.btnRight];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogout) name:kUserLogout object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogin) name:kUserLogin object:nil];
+    if(kCurrentUser.user_type == 3 || kCurrentUser.user_type == 5){
+        self.btnRight.hidden = NO;
+    }else{
+        self.btnRight.hidden = YES;
+    }
 //    [[NSNotificationCenter defaultCenter] addObserver:self
 //                                             selector:@selector(keyboardWillHide:)
 //                                                 name:UIKeyboardWillHideNotification
@@ -68,6 +73,7 @@
     self.inputToolbar = nil;
     [self.maskView removeFromSuperview];
     self.maskView = nil;
+    self.btnRight.hidden = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -81,6 +87,11 @@
 }
 
 - (void)userLogin{
+    if(kCurrentUser.user_type == 3 || kCurrentUser.user_type == 5){
+        self.btnRight.hidden = NO;
+    }else{
+        self.btnRight.hidden = YES;
+    }
     [self.view addSubview:self.tableView];
     [self.refresh addRefreshView];
     [self setTextViewToolbar];
@@ -306,9 +317,9 @@
 - (UIButton *)btnRight{
     if(!_btnRight){
         _btnRight= [UIButton buttonWithType:UIButtonTypeCustom];
-        [_btnRight setTitle:@"发表" forState:UIControlStateNormal];
+//        [_btnRight setTitle:@"发表" forState:UIControlStateNormal];
+        [_btnRight setImage:[UIImage imageNamed:@"icon_push"] forState:UIControlStateNormal];
         [_btnRight setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _btnRight.backgroundColor = kMEPink;
         _btnRight.cornerRadius = 2;
         _btnRight.clipsToBounds = YES;
         _btnRight.frame = CGRectMake(0, 0, 63, 30);
