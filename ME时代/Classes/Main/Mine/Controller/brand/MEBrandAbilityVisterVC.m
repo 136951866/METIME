@@ -9,15 +9,27 @@
 #import "MEBrandAbilityVisterVC.h"
 #import "MEBrandAbilityVisterCell.h"
 #import "MEBrandAbilityManngerVC.h"
+#import "MEBrandAbilityVisterModel.h"
+#import "MEBrandAISortModel.h"
+
 
 @interface MEBrandAbilityVisterVC ()<UITableViewDelegate, UITableViewDataSource,RefreshToolDelegate>
-
+{
+    MEBrandAISortModel *_sortModel;
+}
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ZLRefreshTool         *refresh;
 
 @end
 
 @implementation MEBrandAbilityVisterVC
+
+- (instancetype)initWithModel:(MEBrandAISortModel *)model{
+    if(self = [super init]){
+        _sortModel = model;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,8 +41,8 @@
 #pragma mark - RefreshToolDelegate
 
 - (NSDictionary *)requestParameter{
-    [self.refresh.arrData addObjectsFromArray:@[@"",@"",@""]];
     return @{@"token":kMeUnNilStr(kCurrentUser.token),
+             @"store_id":kMeUnNilStr(_sortModel.store_id)
              };
 }
 
@@ -38,7 +50,7 @@
     if(![data isKindOfClass:[NSArray class]]){
         return;
     }
-    //    [self.refresh.arrData addObjectsFromArray:[MEDistributionTeamModel mj_objectArrayWithKeyValuesArray:data]];
+    [self.refresh.arrData addObjectsFromArray:[MEBrandAbilityVisterModel mj_objectArrayWithKeyValuesArray:data]];
 }
 
 
@@ -54,6 +66,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MEBrandAbilityVisterCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandAbilityVisterCell class]) forIndexPath:indexPath];
+    MEBrandAbilityVisterModel *model = self.refresh.arrData[indexPath.row];
+    [cell setUiWithModel:model];
     return cell;
 }
 
@@ -79,7 +93,7 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:@""];
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommongStoreAccessCount)];
         _refresh.isDataInside = YES;
         _refresh.delegate = self;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {

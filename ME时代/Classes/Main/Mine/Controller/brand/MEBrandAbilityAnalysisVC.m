@@ -11,9 +11,14 @@
 #import "MEPolarChartMixedCell.h"
 #import "MEBrandAbilityAnalysisDataModel.h"
 #import "MEBrandAbilityAnalysisCell.h"
+#import "MEBrandAbilityAnalysisModel.h"
+#import "MEBrandAISortModel.h"
+
 
 @interface MEBrandAbilityAnalysisVC ()<UITableViewDelegate, UITableViewDataSource>{
+    MEBrandAbilityAnalysisModel *_model;
     NSMutableArray *_arrData;
+    MEBrandAISortModel *_sortModel;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -22,26 +27,48 @@
 
 @implementation MEBrandAbilityAnalysisVC
 
+- (instancetype)initWithModel:(MEBrandAISortModel *)model{
+    if(self = [super init]){
+        _sortModel = model;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHexString:@"f4f4f4"];
     _arrData = [NSMutableArray array];
-    [_arrData addObject:[MEBrandAbilityAnalysisDataModel modelWithTitle:@"销售力综合排名" subtitle:@"0"]];
-    [_arrData addObject:[MEBrandAbilityAnalysisDataModel modelWithTitle:@"获客能力排名" subtitle:@"0"]];
-    [_arrData addObject:[MEBrandAbilityAnalysisDataModel modelWithTitle:@"销售能力排行" subtitle:@"0"]];
-    [_arrData addObject:[MEBrandAbilityAnalysisDataModel modelWithTitle:@"客户互动力排名" subtitle:@"0"]];
-    [_arrData addObject:[MEBrandAbilityAnalysisDataModel modelWithTitle:@"产品推动力排名" subtitle:@"0"]];
-    [_arrData addObject:[MEBrandAbilityAnalysisDataModel modelWithTitle:@"客户跟进力排行" subtitle:@"0"]];
-    [_arrData addObject:[MEBrandAbilityAnalysisDataModel modelWithTitle:@"活动推动力排行" subtitle:@"0"]];
     [self.view addSubview:self.tableView];
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headrefresh)];
     [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)headrefresh{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.tableView.mj_header endRefreshing];
-    });
+    kMeWEAKSELF
+    [MEPublicNetWorkTool postgetAbilityRankWithStoreId:_sortModel.store_id  SuccessBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        strongSelf->_model = [MEBrandAbilityAnalysisModel mj_objectWithKeyValues:responseObject.data];
+        [strongSelf delaArrWithModel:strongSelf->_model];
+        [strongSelf.tableView reloadData];
+        [strongSelf.tableView.mj_header endRefreshing];
+    } failure:^(id object) {
+        kMeSTRONGSELF
+        strongSelf->_model = [MEBrandAbilityAnalysisModel new];
+        [strongSelf->_arrData removeAllObjects];
+        [strongSelf.tableView reloadData];
+        [strongSelf.tableView.mj_header endRefreshing];
+    }];
+}
+
+- (void)delaArrWithModel:(MEBrandAbilityAnalysisModel *)mode;{
+    [_arrData removeAllObjects];
+    [_arrData addObject:[MEBrandAbilityAnalysisDataModel modelWithTitle:@"销售力综合排名" subtitle:@(mode.sale_comprehensive).description]];
+    [_arrData addObject:[MEBrandAbilityAnalysisDataModel modelWithTitle:@"获客能力排名" subtitle:@(mode.access_rank).description]];
+    [_arrData addObject:[MEBrandAbilityAnalysisDataModel modelWithTitle:@"销售能力排行" subtitle:@(mode.sale_rank).description]];
+    [_arrData addObject:[MEBrandAbilityAnalysisDataModel modelWithTitle:@"客户互动力排名" subtitle:@(mode.communicate_rank).description]];
+    [_arrData addObject:[MEBrandAbilityAnalysisDataModel modelWithTitle:@"产品推动力排名" subtitle:@(mode.product_rank).description]];
+    [_arrData addObject:[MEBrandAbilityAnalysisDataModel modelWithTitle:@"客户跟进力排行" subtitle:@(mode.sale_num_rank).description]];
+    [_arrData addObject:[MEBrandAbilityAnalysisDataModel modelWithTitle:@"活动推动力排行" subtitle:@(mode.activity_rank).description]];
 }
 
 #pragma mark ------------------ <UITableViewDelegate, UITableViewDataSource> ----
@@ -61,7 +88,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section == 0){
         MEPolarChartMixedCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEPolarChartMixedCell class]) forIndexPath:indexPath];
-        [cell setUiWithModel:nil];
+        [cell setUiWithModel:_model];
         return cell;
     }else{
         MEBrandAbilityAnalysisDataModel *model =_arrData[indexPath.row];

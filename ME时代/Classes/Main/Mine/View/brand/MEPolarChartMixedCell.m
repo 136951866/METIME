@@ -9,6 +9,7 @@
 #import "MEPolarChartMixedCell.h"
 #import "AAChartKit.h"
 #import "AAChartModel.h"
+#import "MEBrandAbilityAnalysisModel.h"
 
 @interface MEPolarChartMixedCell ()<AAChartViewDidFinishLoadDelegate>
 
@@ -30,14 +31,34 @@
     // Initialization code
 }
 
-- (void)setUiWithModel:(id)model{
-    self.aaChartModel.categories = @[@"销售能力", @"客户互动力", @"产品推广力", @"活动推广力", @"客户跟进力", @"获客能力"];//设置 X 轴坐标文字内容
+- (void)setUiWithModel:(MEBrandAbilityAnalysisModel *)model{
+    NSInteger allCount = model.member_info.store_count;
+    NSMutableArray *arrdata = [NSMutableArray array];
+    if(allCount){
+        CGFloat sale_rank =(CGFloat) model.sale_rank/allCount;
+        [arrdata addObject:@(sale_rank)];
+        CGFloat communicate_rank = (CGFloat)model.communicate_rank/allCount;
+        [arrdata addObject:@(communicate_rank)];
+        CGFloat product_rank = (CGFloat)model.product_rank/allCount;
+        [arrdata addObject:@(product_rank)];
+        CGFloat activity_rank =(CGFloat) model.activity_rank/allCount;
+        [arrdata addObject:@(activity_rank)];
+        CGFloat sale_num_rank = (CGFloat)model.sale_num_rank/allCount;
+        [arrdata addObject:@(sale_num_rank)];
+        CGFloat access_rank =(CGFloat) model.access_rank/allCount;
+        [arrdata addObject:@(access_rank)];
+    }else{
+        for (NSInteger i =0 ; i<6; i++) {
+            [arrdata addObject:@(0)];
+        }
+    }
+    self.aaChartModel.categories = @[@"销售能力", @"客户互动力", @"产品推广力", @"活动推广力", @"客户跟进力", @"获客能力"];
     self.aaChartModel.series =
     @[
       AASeriesElement.new
       .nameSet(@"能力")
       .typeSet(AAChartTypeArea)
-      .dataSet(@[@1, @8, @2, @7, @3, @6, ])
+      .dataSet(arrdata)
       ];
     [self.aaChartView aa_refreshChartWithChartModel:self.aaChartModel];
 }

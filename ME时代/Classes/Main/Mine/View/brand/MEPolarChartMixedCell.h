@@ -10,11 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MEBrandAbilityAnalysisModel;
 const static CGFloat kMEPolarChartMixedCellHeight = 311;
 
 @interface MEPolarChartMixedCell : UITableViewCell
 
-- (void)setUiWithModel:(id)model;
+- (void)setUiWithModel:(MEBrandAbilityAnalysisModel *)model;
 
 @end
 

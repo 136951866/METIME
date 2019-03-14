@@ -34,7 +34,13 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1O-UQ-K8J">
-                                <rect key="frame" x="65" y="23" width="215" height="16"/>
+                                <rect key="frame" x="65" y="13" width="215" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sil-js-Sae">
+                                <rect key="frame" x="65" y="33" width="215" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -42,10 +48,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="O1O-UQ-K8J" firstAttribute="centerY" secondItem="EjE-LF-xRc" secondAttribute="centerY" id="3zt-62-YPR"/>
                             <constraint firstItem="EjE-LF-xRc" firstAttribute="centerY" secondItem="5Ot-qf-Fpd" secondAttribute="centerY" id="Ca3-z1-vyc"/>
+                            <constraint firstItem="sil-js-Sae" firstAttribute="bottom" secondItem="EjE-LF-xRc" secondAttribute="bottom" constant="-2" id="EgS-6l-TAy"/>
+                            <constraint firstItem="O1O-UQ-K8J" firstAttribute="top" secondItem="EjE-LF-xRc" secondAttribute="top" constant="2" id="HOw-kt-yL1"/>
+                            <constraint firstItem="sil-js-Sae" firstAttribute="leading" secondItem="O1O-UQ-K8J" secondAttribute="leading" id="Lhf-Q8-5ia"/>
                             <constraint firstItem="O1O-UQ-K8J" firstAttribute="leading" secondItem="EjE-LF-xRc" secondAttribute="trailing" constant="10" id="Rj7-ka-15g"/>
                             <constraint firstAttribute="trailing" secondItem="O1O-UQ-K8J" secondAttribute="trailing" constant="10" id="m5P-rS-y5X"/>
+                            <constraint firstItem="sil-js-Sae" firstAttribute="trailing" secondItem="O1O-UQ-K8J" secondAttribute="trailing" id="plg-FP-461"/>
                             <constraint firstItem="EjE-LF-xRc" firstAttribute="leading" secondItem="5Ot-qf-Fpd" secondAttribute="leading" constant="15" id="uxL-Xc-eWu"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -63,6 +72,11 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="imgPic" destination="EjE-LF-xRc" id="KpE-It-U9T"/>
+                <outlet property="lblName" destination="O1O-UQ-K8J" id="FMu-bd-FWt"/>
+                <outlet property="lblTime" destination="sil-js-Sae" id="kKT-Eo-4dY"/>
+            </connections>
             <point key="canvasLocation" x="129.59999999999999" y="128.63568215892056"/>
         </tableViewCell>
     </objects>

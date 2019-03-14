@@ -9,7 +9,7 @@
 #import "MEBrandPieCell.h"
 #import "AAChartKit.h"
 #import "AAChartModel.h"
-
+#import "MEBrandManngerAllModel.h"
 @interface MEBrandPieCell ()<AAChartViewDidFinishLoadDelegate>
 
 @property (nonatomic, strong) AAChartModel *aaChartModel;
@@ -30,7 +30,11 @@
     // Initialization code
 }
 
-- (void)setUiWithModel:(id)model{
+- (void)setUiWithModel:(NSArray *)model{
+    NSMutableArray *arr = [NSMutableArray array];
+    [model enumerateObjectsUsingBlock:^(MEBrandPercentModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [arr addObject:@[kMeUnNilStr(obj.name),@(obj.percent *100)]];
+    }];
     self.aaChartModel.series =
               @[
                 AASeriesElement.new
@@ -40,14 +44,7 @@
                 .sizeSet(@124)//尺寸大小
                 .borderWidthSet(@0)//描边的宽度
                 .allowPointSelectSet(false)//是否允许在点击数据点标记(扇形图点击选中的块发生位移)
-                .dataSet(
-                         @[
-                           @[@"个人",   @1],
-                           @[@"商品",    @1],
-                           @[@"拼团",    @1],
-                           @[@"砍价",        @1],
-                           ]
-                         ),
+                .dataSet(arr),
                 ];
     [self.aaChartView aa_refreshChartWithChartModel:self.aaChartModel];
 }

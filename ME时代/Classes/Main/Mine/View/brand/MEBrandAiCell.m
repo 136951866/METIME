@@ -7,6 +7,7 @@
 //
 
 #import "MEBrandAiCell.h"
+#import "MEBrandAISortModel.h"
 
 @interface MEBrandAiCell ()
 
@@ -30,11 +31,11 @@
     // Initialization code
 }
 
-- (void)setUIWithModel:(id)model sortNum:(NSInteger)sortNum{
+- (void)setUIWithModel:(MEBrandAISortModel *)model sortNum:(NSInteger)sortNum{
     _lblSortNum.text = @(sortNum+1).description;
-    kSDLoadImg(_imgPic, @"");
-    _lblName.text = kMeUnNilStr(@"ME时代");
-    _lblAINum.text = kMeUnNilStr(@"111");
+    kSDLoadImg(_imgPic, kMeUnNilStr(model.header_pic));
+    _lblName.text = kMeUnNilStr(model.store_name);
+    _lblAINum.text = kMeUnNilStr(model.count);
     switch (sortNum) {
         case 0:{
             _imgSort.hidden = NO;
@@ -58,7 +59,7 @@
     }
 }
 
-- (void)setSortUIWithModel:(id)model sortNum:(NSInteger)sortNum{
+- (void)setSortUIWithModel:(MEBrandAISortModel *)model sortNum:(NSInteger)sortNum{
     [self setUIWithModel:model sortNum:sortNum];
     _lblSale.hidden = YES;
 }

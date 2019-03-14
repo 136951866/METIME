@@ -32,7 +32,7 @@
 @property (nonatomic,strong) NSMutableArray *arrData;
 //是否显示错误视图
 @property (nonatomic,assign) BOOL showFailView;
-//是否显示错误视图
+//是否显示膜层视图
 @property (nonatomic,assign) BOOL showMaskView;
 //设置yes 用objec NO 为objects
 //@property (nonatomic,assign) BOOL isNeedObject;

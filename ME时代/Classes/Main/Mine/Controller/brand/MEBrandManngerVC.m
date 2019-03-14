@@ -10,6 +10,7 @@
 #import "MEBrandManngerAllContentVC.h"
 #import "MEBrandAISortVC.h"
 #import "MEBrandMangerSortVC.h"
+#import "MEBrandManngerAllModel.h"
 
 @interface MEBrandManngerVC ()<UIScrollViewDelegate>{
     // 0 all 1 sort 2ai
@@ -21,12 +22,15 @@
 @property (strong , nonatomic) MEBrandManngerAllContentVC *allVC;
 @property (strong , nonatomic) MEBrandMangerSortVC *sortVC;
 @property (strong , nonatomic) MEBrandAISortVC *aiSortVC;
+@property (weak, nonatomic) IBOutlet UILabel *lblName;
+@property (weak, nonatomic) IBOutlet UILabel *lblStoreCount;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consTopMargin;
 @property (weak, nonatomic) IBOutlet UIButton *btnAll;
 @property (weak, nonatomic) IBOutlet UIButton *btnSort;
 @property (weak, nonatomic) IBOutlet UIButton *btnAi;
 @property (weak, nonatomic) IBOutlet UIView *viewForBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *imgPic;
 
 @end
 
@@ -35,6 +39,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"品牌管理";
+    _lblStoreCount.text =@"0";
+    _lblName.text = kMeUnNilStr(kCurrentUser.name);
+    kSDLoadImg(_imgPic, kMeUnNilStr(kCurrentUser.header_pic));
     _selectBtn = _btnAll;
     _selectIndex = 0;
     _consTopMargin.constant = kMeNavBarHeight;
@@ -82,6 +89,13 @@
         _allVC = [[MEBrandManngerAllContentVC alloc]init];
         _allVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _allVC.view.frame = CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kMEBrandManngerVCHeaderHeight);
+        kMeWEAKSELF
+        _allVC.modelBlock = ^(MEBrandMemberInfo *model) {
+            kMeSTRONGSELF
+            strongSelf.lblStoreCount.text = kMeUnNilStr(model.store_count);
+            strongSelf.lblName.text = kMeUnNilStr(model.store_name);
+            kSDLoadImg(strongSelf.imgPic, kMeUnNilStr(model.header_pic));
+        };
         [self addChildViewController:_allVC];
     }
     return _allVC;

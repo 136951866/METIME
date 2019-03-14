@@ -10,8 +10,11 @@
 #import "MEBrandAiCell.h"
 #import "MEBrandManngerVC.h"
 #import "MEBrandAbilityManngerVC.h"
+#import "MEBrandAISortModel.h"
 
-@interface MEBrandAISortVC ()<UITableViewDelegate, UITableViewDataSource,RefreshToolDelegate>
+@interface MEBrandAISortVC ()<UITableViewDelegate, UITableViewDataSource,RefreshToolDelegate>{
+
+}
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ZLRefreshTool         *refresh;
@@ -29,16 +32,15 @@
 #pragma mark - RefreshToolDelegate
 
 - (NSDictionary *)requestParameter{
-    [self.refresh.arrData addObjectsFromArray:@[@"",@"",@""]];
-    return @{@"token":kMeUnNilStr(kCurrentUser.token),
-             };
+    NSDictionary *dic = @{@"token":kMeUnNilStr(kCurrentUser.token)};
+    return dic;
 }
 
 - (void)handleResponse:(id)data{
     if(![data isKindOfClass:[NSArray class]]){
         return;
     }
-//    [self.refresh.arrData addObjectsFromArray:[MEDistributionTeamModel mj_objectArrayWithKeyValuesArray:data]];
+    [self.refresh.arrData addObjectsFromArray:[MEBrandAISortModel mj_objectArrayWithKeyValuesArray:data]];
 }
 
 
@@ -54,7 +56,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MEBrandAiCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandAiCell class]) forIndexPath:indexPath];
-    [cell setUIWithModel:@"" sortNum:indexPath.row];
+    MEBrandAISortModel *model = self.refresh.arrData[indexPath.row];
+    [cell setUIWithModel:model sortNum:indexPath.row];
     return cell;
 }
 
@@ -63,7 +66,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    MEBrandAbilityManngerVC *vc = [[MEBrandAbilityManngerVC alloc]init];
+    MEBrandAISortModel *model = self.refresh.arrData[indexPath.row];
+    MEBrandAbilityManngerVC *vc = [[MEBrandAbilityManngerVC alloc]initWithModel:model];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -86,7 +90,7 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:@""];
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommongAiRank)];
         _refresh.isDataInside = YES;
         _refresh.delegate = self;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {

@@ -9,9 +9,9 @@
 #import "MEBaseVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+@class MEBrandAISortModel;
 @interface MEBrandAbilityAnalysisVC : MEBaseVC
-
+- (instancetype)initWithModel:(MEBrandAISortModel *)model;
 @end
 
 NS_ASSUME_NONNULL_END

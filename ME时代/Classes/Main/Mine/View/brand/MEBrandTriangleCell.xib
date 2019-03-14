@@ -270,6 +270,12 @@
                     <constraint firstItem="m85-9R-XKE" firstAttribute="centerY" secondItem="LYT-4h-Lh8" secondAttribute="centerY" id="zqT-G9-b2P"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lblFive" destination="M3i-k7-oOZ" id="xSs-IB-OTF"/>
+                <outlet property="lblOne" destination="m85-9R-XKE" id="cBq-S0-DKk"/>
+                <outlet property="lblThree" destination="xGm-WM-eQf" id="2KS-Eb-AzT"/>
+                <outlet property="lblTwo" destination="dzc-M5-xqE" id="bF7-bU-bcO"/>
+            </connections>
             <point key="canvasLocation" x="52.799999999999997" y="67.916041979010501"/>
         </tableViewCell>
     </objects>

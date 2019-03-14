@@ -10,7 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MEBrandMemberInfo;
+
+typedef void (^kMEBrandMemberInfoBlock)(MEBrandMemberInfo *model);
+
 @interface MEBrandManngerAllContentVC : MEBaseVC
+
+@property (nonatomic ,copy) kMEBrandMemberInfoBlock modelBlock;
 
 @end
 

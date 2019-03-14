@@ -7,6 +7,15 @@
 //
 
 #import "MEBrandTriangleCell.h"
+#import "MEBrandManngerAllModel.h"
+
+@interface MEBrandTriangleCell ()
+@property (weak, nonatomic) IBOutlet UILabel *lblOne;
+@property (weak, nonatomic) IBOutlet UILabel *lblTwo;
+@property (weak, nonatomic) IBOutlet UILabel *lblThree;
+@property (weak, nonatomic) IBOutlet UILabel *lblFive;
+
+@end
 
 @implementation MEBrandTriangleCell
 
@@ -16,10 +25,11 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setUIWithModel:(MEBrandManngerAllModel *)model{
+    _lblOne.text = kMeUnNilStr(model.Corporate.one);
+    _lblTwo.text = kMeUnNilStr(model.Corporate.two);
+    _lblThree.text = kMeUnNilStr(model.Corporate.three);
+    _lblFive.text = kMeUnNilStr(model.Corporate.five);
 }
 
 @end

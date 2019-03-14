@@ -10,11 +10,13 @@
 #import "MEBrandAbilityDataVC.h"
 #import "MEBrandAbilityVisterVC.h"
 #import "MEBrandAbilityAnalysisVC.h"
+#import "MEBrandAISortModel.h"
 
 @interface MEBrandAbilityManngerVC (){
     //0 能力 1数据 2来访
     NSInteger _selectIndex;
     UIButton *_selectBtn;
+    MEBrandAISortModel *_model;
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consTopMargin;
@@ -26,14 +28,25 @@
 @property (strong , nonatomic) MEBrandAbilityDataVC *dataVC;
 @property (strong , nonatomic) MEBrandAbilityVisterVC *visterVC;
 @property (strong , nonatomic) MEBrandAbilityAnalysisVC *analysisVC;
+@property (weak, nonatomic) IBOutlet UILabel *lblName;
+@property (weak, nonatomic) IBOutlet UIImageView *imgPic;
 
 @end
 
 @implementation MEBrandAbilityManngerVC
 
+- (instancetype)initWithModel:(MEBrandAISortModel *)model{
+    if(self = [super init]){
+        _model = model;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"能力模型";
+    _lblName.text = kMeUnNilStr(_model.store_name);
+    kSDLoadImg(_imgPic, kMeUnNilStr(_model.header_pic));
     _selectBtn = _btnAblity;
     _selectIndex = 0;
     _consTopMargin.constant = kMeNavBarHeight;
@@ -74,7 +87,7 @@
 
 - (MEBrandAbilityDataVC *)dataVC{
     if(!_dataVC){
-        _dataVC = [[MEBrandAbilityDataVC alloc]init];
+        _dataVC = [[MEBrandAbilityDataVC alloc]initWithModel:_model];
         _dataVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _dataVC.view.frame = CGRectMake(SCREEN_WIDTH,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kMEBrandAbilityManngerVCHeight);
         [self addChildViewController:_dataVC];
@@ -84,7 +97,7 @@
 
 - (MEBrandAbilityVisterVC *)visterVC{
     if(!_visterVC){
-        _visterVC = [[MEBrandAbilityVisterVC alloc]init];
+        _visterVC = [[MEBrandAbilityVisterVC alloc]initWithModel:_model];
         _visterVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _visterVC.view.frame = CGRectMake(SCREEN_WIDTH*2,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kMEBrandAbilityManngerVCHeight);
         [self addChildViewController:_visterVC];
@@ -94,7 +107,7 @@
 
 - (MEBrandAbilityAnalysisVC *)analysisVC{
     if(!_analysisVC){
-        _analysisVC = [[MEBrandAbilityAnalysisVC alloc]init];
+        _analysisVC = [[MEBrandAbilityAnalysisVC alloc]initWithModel:_model];
         _analysisVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _analysisVC.view.frame = CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kMEBrandAbilityManngerVCHeight);
         [self addChildViewController:_analysisVC];

@@ -14,7 +14,7 @@ const static CGFloat kMEBrandPieCellHeight = 273;
 
 @interface MEBrandPieCell : UITableViewCell
 
-- (void)setUiWithModel:(id)model;
+- (void)setUiWithModel:(NSArray *)model;
 
 @end
 

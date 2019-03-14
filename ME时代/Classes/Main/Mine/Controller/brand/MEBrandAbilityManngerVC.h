@@ -10,11 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MEBrandAISortModel;
 const static CGFloat kMEBrandAbilityManngerVCHeight = 150;
 
 
 @interface MEBrandAbilityManngerVC : MEBaseVC
-
+- (instancetype)initWithModel:(MEBrandAISortModel *)model;
 @end
 
 NS_ASSUME_NONNULL_END

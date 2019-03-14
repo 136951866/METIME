@@ -9,6 +9,7 @@
 #import "MEBrandAreasplineCell.h"
 #import "AAChartKit.h"
 #import "AAChartModel.h"
+#import "MEBrandManngerAllModel.h"
 
 @interface MEBrandAreasplineCell ()<AAChartViewDidFinishLoadDelegate>
 
@@ -30,13 +31,19 @@
     // Initialization code
 }
 
-- (void)setUiWithModel:(id)model title:(NSString *)title{
-    self.aaChartModel.categories = @[@"Java", @"Swift", @"Python", @"Ruby", @"PHP", @"Go",@"ssss"];//设置 X 轴坐标文字内容
+- (void)setUiWithModel:(NSArray *)model title:(NSString *)title{
+    NSMutableArray *arrTitle = [NSMutableArray array];
+    NSMutableArray *arrCount = [NSMutableArray array];
+    [model enumerateObjectsUsingBlock:^(MEBrandTotalModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [arrTitle addObject:kMeUnNilStr(obj.date)];
+        [arrCount addObject:@(obj.total)];
+    }];
+    self.aaChartModel.categories = arrTitle;
     self.aaChartModel.title = kMeUnNilStr(title);
     self.aaChartModel.series =@[
                             AASeriesElement.new
                             .nameSet(@"活跃度")
-                            .dataSet(@[@0.45, @1, @1.5, @2, @2.7, @0.62, @1])
+                            .dataSet(arrCount)
                            
                             ];
     [self.aaChartView aa_refreshChartWithChartModel:self.aaChartModel];

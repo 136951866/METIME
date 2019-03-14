@@ -21,6 +21,45 @@
 @implementation MEPublicNetWorkTool
 
 /*********************************************/
+#pragma makr - BRAND
+//能力排行
++ (void)postgetAbilityRankWithStoreId:(NSString*)storeId SuccessBlock:(RequestResponse)successBlock  failure:(kMeObjBlock)failure{
+    NSString *url = kGetApiWithUrl(MEIPcommongAbilityRank);
+    //    MBProgressHUD *HUD = [self commitWithHUD:@""];
+    [THTTPManager postWithParameter:@{@"token":kMeUnNilStr(kCurrentUser.token),@"store_id":kMeUnNilStr(storeId)} strUrl:url success:^(ZLRequestResponse *responseObject) {
+        //        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        //        [HUD hideAnimated:YES];
+        kMeCallBlock(failure,error);
+    }];
+}
+//数据分析
++ (void)postgetStoreDatAnalysisWithDate:(NSString *)date storeId:(NSString*)storeId SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSString *url = kGetApiWithUrl(MEIPcommongStoreDatAnalysis);
+    //    MBProgressHUD *HUD = [self commitWithHUD:@""];
+    [THTTPManager postWithParameter:@{@"token":kMeUnNilStr(kCurrentUser.token),@"date":kMeUnNilStr(date),@"store_id":kMeUnNilStr(storeId)} strUrl:url success:^(ZLRequestResponse *responseObject) {
+        //        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        //        [HUD hideAnimated:YES];
+        kMeCallBlock(failure,error);
+    }];
+}
+//总览
++ (void)postgetStoreOverviewWithDate:(NSString *)date SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSString *url = kGetApiWithUrl(MEIPcommongStoreOverview);
+//    MBProgressHUD *HUD = [self commitWithHUD:@""];
+    [THTTPManager postWithParameter:@{@"token":kMeUnNilStr(kCurrentUser.token),@"date":kMeUnNilStr(date)} strUrl:url success:^(ZLRequestResponse *responseObject) {
+//        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+//        [HUD hideAnimated:YES];
+        kMeCallBlock(failure,error);
+    }];
+}
+
+/*********************************************/
 #pragma makr - 公共
 //获取七牛云TOKEN
 + (void)postgetQiuNiuTokkenWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{

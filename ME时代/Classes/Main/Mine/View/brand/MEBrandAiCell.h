@@ -10,12 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class  MEBrandAISortModel;
 const static CGFloat kMEBrandAiCellHeight = 65;
 
 @interface MEBrandAiCell : UITableViewCell
 
-- (void)setUIWithModel:(id)model sortNum:(NSInteger)sortNum;
-- (void)setSortUIWithModel:(id)model sortNum:(NSInteger)sortNum;
+- (void)setUIWithModel:(MEBrandAISortModel *)model sortNum:(NSInteger)sortNum;
+- (void)setSortUIWithModel:(MEBrandAISortModel *)model sortNum:(NSInteger)sortNum;
 
 @end
 

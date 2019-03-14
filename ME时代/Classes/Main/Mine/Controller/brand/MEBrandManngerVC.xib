@@ -15,6 +15,9 @@
                 <outlet property="btnAll" destination="fWu-DZ-ovp" id="MFX-VF-0r3"/>
                 <outlet property="btnSort" destination="HVD-0u-IJU" id="wPp-SR-hQY"/>
                 <outlet property="consTopMargin" destination="bYO-7I-Akx" id="bSX-uc-qjO"/>
+                <outlet property="imgPic" destination="68j-bO-usN" id="RqP-cz-edc"/>
+                <outlet property="lblName" destination="N5L-wo-dlO" id="uQw-Oc-gb2"/>
+                <outlet property="lblStoreCount" destination="F6U-YE-chv" id="79b-af-6pW"/>
                 <outlet property="scrollview" destination="vlY-7C-1eS" id="Bwu-GA-B75"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewForBtn" destination="8dL-EN-rjh" id="KCz-b7-cqW"/>
@@ -38,14 +41,20 @@
                                         <constraint firstAttribute="height" constant="50" id="upn-O8-Qrd"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5L-wo-dlO">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5L-wo-dlO">
                                     <rect key="frame" x="80" y="22" width="250" height="18"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="ixE-nR-Gym"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6U-YE-chv">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6U-YE-chv">
                                     <rect key="frame" x="80" y="50" width="250" height="15"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="15" id="Xlq-G1-7jx"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>

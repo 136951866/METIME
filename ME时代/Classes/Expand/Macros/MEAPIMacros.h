@@ -38,6 +38,20 @@
 #define kNetInvateCode @"502"
 
 /*********************************************/
+#pragma makr - BRAND
+//总览
+#define MEIPcommongStoreOverview @"common/store/storeOverview"
+//排行榜
+#define MEIPcommongCustomerRankingList @"common/store/customerRankingList"
+//数据分析
+#define MEIPcommongStoreDatAnalysis @"common/store/storeDatAnalysis"
+//AI分析
+#define MEIPcommongAiRank @"common/store/aiRank"
+//能力排行
+#define MEIPcommongAbilityRank @"common/store/abilityRank"
+//来访记录
+#define MEIPcommongStoreAccessCount @"common/store/storeAccessCount"
+/*********************************************/
 #pragma makr - IM
 //获取tls用户信息
 #define MEIPcommongUserInfoByTls @"common/user/getUserInfoByTls"

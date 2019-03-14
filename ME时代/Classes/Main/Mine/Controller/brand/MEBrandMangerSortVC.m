@@ -10,12 +10,18 @@
 #import "MEBrandManngerVC.h"
 #import "MEBrandAiCell.h"
 #import "YBPopupMenu.h"
+#import "MEBrandAISortModel.h"
 
 const static CGFloat kselectViewHeight = 57;
 
-@interface MEBrandMangerSortVC ()<UITableViewDelegate, UITableViewDataSource,RefreshToolDelegate,JXCategoryViewDelegate,YBPopupMenuDelegate>{
+@interface MEBrandMangerSortVC ()<UITableViewDelegate, UITableViewDataSource,RefreshToolDelegate,JXCategoryViewDelegate>{
     NSInteger _currentType;
     UIButton *_currntBtn;
+    //1.按客户数 2.按互动数 3.按成交率
+    NSString *_type;
+    //1.客户总数 2.昨日新增客户
+    NSString *_date;
+    NSArray *_arrTitle;
 }
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -34,7 +40,9 @@ const static CGFloat kselectViewHeight = 57;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHexString:@"f4f4f4"];
-
+    _type = @"1";
+    _date = @"1";
+    _arrTitle = @[@"客户",@"互动",@"成交率"];
     self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, kCategoryViewHeight)];
     //    self.categoryView.lineStyle = JXCategoryLineStyle_None;
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
@@ -56,18 +64,24 @@ const static CGFloat kselectViewHeight = 57;
 #pragma mark - RefreshToolDelegate
 
 - (NSDictionary *)requestParameter{
-    [self.refresh.arrData addObjectsFromArray:@[@"",@"",@""]];
-    return @{@"token":kMeUnNilStr(kCurrentUser.token),
-             };
+    NSDictionary *dic = @{@"token":kMeUnNilStr(kCurrentUser.token),@"type":kMeUnNilStr(_type),@"date":kMeUnNilStr(_date)};
+    return dic;
 }
 
 - (void)handleResponse:(id)data{
     if(![data isKindOfClass:[NSArray class]]){
         return;
     }
-    //    [self.refresh.arrData addObjectsFromArray:[MEDistributionTeamModel mj_objectArrayWithKeyValuesArray:data]];
+    [self.refresh.arrData addObjectsFromArray:[MEBrandAISortModel mj_objectArrayWithKeyValuesArray:data]];
 }
 
+- (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index{
+    NSString *title = _arrTitle[index];
+    [_btnAll setTitle:[NSString stringWithFormat:@"%@总数",title] forState:UIControlStateNormal];
+    [_btnSort setTitle:[NSString stringWithFormat:@"昨日新增%@",title] forState:UIControlStateNormal];
+    _type = @(index+1).description;
+    [self.refresh reload];
+}
 
 #pragma mark ------------------ <UITableViewDelegate, UITableViewDataSource> ----
 
@@ -81,7 +95,8 @@ const static CGFloat kselectViewHeight = 57;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MEBrandAiCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandAiCell class]) forIndexPath:indexPath];
-    [cell setSortUIWithModel:@"" sortNum:indexPath.row];
+    MEBrandAISortModel *model = self.refresh.arrData[indexPath.row];
+    [cell setSortUIWithModel:model sortNum:indexPath.row];
     return cell;
 }
 
@@ -122,8 +137,6 @@ const static CGFloat kselectViewHeight = 57;
         _btnSort = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnSort.frame = CGRectMake(SCREEN_WIDTH/2, 0, SCREEN_WIDTH/2, kselectViewHeight);
         [_btnSort setTitle:@"昨日新增客户" forState:UIControlStateNormal];
-        [_btnSort setImage:[UIImage imageNamed:@"icon_more"] forState:UIControlStateNormal];
-        [_btnSort setButtonImageTitleStyle:ButtonImageTitleStyleRight padding:-(20 *kMeFrameScaleX())];
         [_btnSort setTitleColor:kMEblack forState:UIControlStateNormal];
         [_btnSort addTarget:self action:@selector(selectAction:) forControlEvents:UIControlEventTouchUpInside];
         _btnSort.titleLabel.font = kMeFont(13);
@@ -139,33 +152,24 @@ const static CGFloat kselectViewHeight = 57;
 }
 
 - (void)selectAction:(UIButton *)btn{
-    if(_currntBtn == btn && btn.tag == kMeViewBaseTag){
+    if(_currntBtn == btn ){
         return;
     }
     _currntBtn = btn;
     _lineView.centerX = _currntBtn.centerX;
-    if(btn.tag == kMeViewBaseTag+1){
-        kMeWEAKSELF
-        [YBPopupMenu showRelyOnView:btn titles:@[@"昨日新增客户",@"7天新增客户",@"30天新增客户"] icons:nil menuWidth:SCREEN_WIDTH/2 otherSettings:^(YBPopupMenu *popupMenu) {
-            popupMenu.priorityDirection = YBPopupMenuPriorityDirectionTop;
-            popupMenu.borderWidth = 1;
-            popupMenu.borderColor = kMEblack;
-            kMeSTRONGSELF
-            popupMenu.delegate = strongSelf;
-        }];
-    }
+    NSInteger index = kMeViewBaseTag -btn.tag;
+    _date = @(index+1).description;
+    [self.refresh reload];
 }
 
-- (void)ybPopupMenu:(YBPopupMenu *)ybPopupMenu didSelectedAtIndex:(NSInteger)index{
-    NSString *title = ybPopupMenu.titles[index];
-    [_btnSort setTitle:title forState:UIControlStateNormal];
-}
+
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:@""];
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommongCustomerRankingList)];
         _refresh.isDataInside = YES;
         _refresh.delegate = self;
+        _refresh.showMaskView = YES;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
             failView.backgroundColor = [UIColor whiteColor];
             failView.lblOfNodata.text = @"没有店铺";

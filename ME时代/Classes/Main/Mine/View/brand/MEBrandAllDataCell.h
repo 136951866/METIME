@@ -10,9 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MEBrandManngerAllModel;
 const static CGFloat kMEBrandAllDataCellHeight = 174;
 
 @interface MEBrandAllDataCell : UITableViewCell
+
+- (void)setUIWithModel:(MEBrandManngerAllModel *)model;
 
 @end
 

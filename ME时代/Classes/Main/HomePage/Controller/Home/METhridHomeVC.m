@@ -77,9 +77,7 @@ const static CGFloat kImgStore = 50;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogout) name:kUserLogout object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogin) name:kUserLogin object:nil];
     
-#warning --
-    MEBrandManngerVC *vc = [[MEBrandManngerVC alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 - (void)userLogout{
@@ -255,12 +253,15 @@ const static CGFloat kImgStore = 50;
 }
 
 - (void)toStore{
-    if(_stroeModel){
-        MENewStoreDetailsVC *details = [[MENewStoreDetailsVC alloc]initWithId:_stroeModel.store_id];
-        [self.navigationController pushViewController:details animated:YES];
-    }else{
-        self.tabBarController.selectedIndex = 1;
-    }
+#warning --
+    MEBrandManngerVC *vc = [[MEBrandManngerVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+//    if(_stroeModel){
+//        MENewStoreDetailsVC *details = [[MENewStoreDetailsVC alloc]initWithId:_stroeModel.store_id];
+//        [self.navigationController pushViewController:details animated:YES];
+//    }else{
+//        self.tabBarController.selectedIndex = 1;
+//    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

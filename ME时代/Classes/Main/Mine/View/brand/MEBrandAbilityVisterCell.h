@@ -10,9 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MEBrandAbilityVisterModel;
 const static CGFloat kMEBrandAbilityVisterCellHeight = 78;
 
 @interface MEBrandAbilityVisterCell : UITableViewCell
+
+- (void)setUiWithModel:(MEBrandAbilityVisterModel *)model;
 
 @end
 

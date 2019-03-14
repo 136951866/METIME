@@ -11,15 +11,28 @@
 #import "MEBrandAllDataCell.h"
 #import "MEBrandTriangleCell.h"
 #import "MEBrandAreasplineCell.h"
+#import "MEBrandManngerAllModel.h"
+#import "MEBrandPieCell.h"
+#import "MEBrandAISortModel.h"
 
 @interface MEBrandAbilityDataVC ()<UITableViewDelegate, UITableViewDataSource,JXCategoryViewDelegate>{
     NSInteger _currentType;
+    MEBrandManngerAllModel *_model;
+    MEBrandAISortModel *_sortModel;
 }
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
+@property (nonatomic, strong) UIView *maskView;
 @end
 
 @implementation MEBrandAbilityDataVC
+
+- (instancetype)initWithModel:(MEBrandAISortModel *)model{
+    if(self = [super init]){
+        _sortModel = model;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,34 +51,84 @@
     self.categoryView.titleSelectedColor = kMEPink;
     [self.view addSubview:self.categoryView];
     self.categoryView.defaultSelectedIndex = _currentType;
+    _maskView = [[UIView alloc]initWithFrame:self.view.bounds];
+    _maskView.hidden = YES;
+    [self.view addSubview:_maskView];
 }
 
 - (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index{
     _currentType = index;
+    kMeWEAKSELF
+    [self.tableView.mj_header beginRefreshing];
+    //    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _maskView.hidden = NO;
+    [MEPublicNetWorkTool postgetStoreDatAnalysisWithDate:@(_currentType+1).description storeId:_sortModel.store_id  SuccessBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        strongSelf->_model = [MEBrandManngerAllModel mj_objectWithKeyValues:responseObject.data];
+        [strongSelf.tableView reloadData];
+        [strongSelf.tableView.mj_header endRefreshing];
+        //        [hud hideAnimated:YES];
+        strongSelf->_maskView.hidden = YES;
+    } failure:^(id object) {
+        kMeSTRONGSELF
+        strongSelf->_model = [MEBrandManngerAllModel new];
+        [strongSelf.tableView reloadData];
+        [strongSelf.tableView.mj_header endRefreshing];
+        //        [hud hideAnimated:YES];
+        strongSelf->_maskView.hidden = YES;
+    }];
 }
 
 - (void)headrefresh{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.tableView.mj_header endRefreshing];
-    });
+    kMeWEAKSELF
+    //    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _maskView.hidden = NO;
+    
+    [MEPublicNetWorkTool postgetStoreDatAnalysisWithDate:@(_currentType+1).description storeId:_sortModel.store_id SuccessBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        strongSelf->_model = [MEBrandManngerAllModel mj_objectWithKeyValues:responseObject.data];
+        [strongSelf.tableView reloadData];
+        [strongSelf.tableView.mj_header endRefreshing];
+        //        [hud hideAnimated:YES];
+        strongSelf->_maskView.hidden = YES;
+        
+    } failure:^(id object) {
+        kMeSTRONGSELF
+        strongSelf->_model = [MEBrandManngerAllModel new];
+        [strongSelf.tableView reloadData];
+        [strongSelf.tableView.mj_header endRefreshing];
+        //        [hud hideAnimated:YES];
+        strongSelf->_maskView.hidden = YES;
+        
+    }];
 }
 
 #pragma mark ------------------ <UITableViewDelegate, UITableViewDataSource> ----
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.row == 0){
         MEBrandAllDataCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandAllDataCell class]) forIndexPath:indexPath];
+        [cell setUIWithModel:_model];
         return cell;
     }else if (indexPath.row == 1){
         MEBrandTriangleCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandTriangleCell class]) forIndexPath:indexPath];
+        [cell setUIWithModel:_model];
         return cell;
     }else if(indexPath.row == 2){
         MEBrandAreasplineCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandAreasplineCell class]) forIndexPath:indexPath];
-        [cell setUiWithModel:@"" title:@"近7日客户活跃度"];
+        [cell setUiWithModel:kMeUnArr(_model.alive_member) title:@"近7日客户活跃度"];
+        return cell;
+    }else if(indexPath.row == 3){
+        MEBrandPieCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandPieCell class]) forIndexPath:indexPath];
+        [cell setUiWithModel:kMeUnArr(_model.customer_interest)];
+        return cell;
+    }else if(indexPath.row == 4){
+        MEBrandAreasplineCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandAreasplineCell class]) forIndexPath:indexPath];
+        [cell setUiWithModel:kMeUnArr(_model.anew_member) title:@"近7日新增客户数"];
         return cell;
     }else{
         return [UITableViewCell new];
@@ -79,6 +142,10 @@
         return kMEBrandTriangleCellHeight;
     }else  if(indexPath.row == 2){
         return kMEBrandAreasplineCellHeight;
+    }else  if(indexPath.row == 3){
+        return kMEBrandPieCellHeight;
+    }else  if(indexPath.row == 4){
+        return kMEBrandAreasplineCellHeight;
     }else{
         return 0.1;
     }
@@ -90,6 +157,7 @@
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEBrandAllDataCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEBrandAllDataCell class])];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEBrandTriangleCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEBrandTriangleCell class])];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEBrandAreasplineCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEBrandAreasplineCell class])];
+        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEBrandPieCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEBrandPieCell class])];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.tableFooterView = [UIView new];
