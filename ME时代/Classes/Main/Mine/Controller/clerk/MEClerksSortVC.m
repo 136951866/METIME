@@ -119,6 +119,7 @@
         _refresh.delegate = self;
         _refresh.isGet = YES;
         _refresh.isDataInside = YES;
+        _refresh.showMaskView = YES;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
             failView.backgroundColor = [UIColor whiteColor];
             failView.lblOfNodata.text = @"没有店员";

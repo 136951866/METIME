@@ -32,7 +32,7 @@
 }
 
 - (void)setUiWithModel:(MEBrandAbilityAnalysisModel *)model{
-    NSInteger allCount = model.member_info.store_count;
+    NSInteger allCount = model.total_store;
     NSMutableArray *arrdata = [NSMutableArray array];
     if(allCount){
         CGFloat sale_rank =1-((CGFloat) model.sale_rank/allCount);
