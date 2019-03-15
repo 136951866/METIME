@@ -31,10 +31,11 @@
     // Initialization code
 }
 
-- (void)setUiWithModel:(NSArray *)model title:(NSString *)title{
+- (void)setUiWithModel:(NSArray *)model title:(NSString *)title subTitle:(NSString *)subTitle{
     NSMutableArray *arrTitle = [NSMutableArray array];
     NSMutableArray *arrCount = [NSMutableArray array];
-    [model enumerateObjectsUsingBlock:^(MEBrandTotalModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    NSMutableArray *temp = (NSMutableArray *)[[model reverseObjectEnumerator] allObjects];
+    [temp enumerateObjectsUsingBlock:^(MEBrandTotalModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [arrTitle addObject:kMeUnNilStr(obj.date)];
         [arrCount addObject:@(obj.total)];
     }];
@@ -42,7 +43,7 @@
     self.aaChartModel.title = kMeUnNilStr(title);
     self.aaChartModel.series =@[
                             AASeriesElement.new
-                            .nameSet(@"活跃度")
+                            .nameSet(subTitle)
                             .dataSet(arrCount)
                            
                             ];

@@ -155,7 +155,7 @@
         kMeSTRONGSELF
         switch (kCurrentUser.user_type) {
             case 1:{
-                //B
+                
                 strongSelf->_arrtype = @[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyActity),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)];
             }
                 break;

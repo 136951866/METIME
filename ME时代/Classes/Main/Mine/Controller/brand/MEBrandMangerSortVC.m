@@ -77,8 +77,14 @@ const static CGFloat kselectViewHeight = 57;
 
 - (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index{
     NSString *title = _arrTitle[index];
-    [_btnAll setTitle:[NSString stringWithFormat:@"%@总数",title] forState:UIControlStateNormal];
-    [_btnSort setTitle:[NSString stringWithFormat:@"昨日新增%@",title] forState:UIControlStateNormal];
+    if(index == 2){
+        [_btnAll setTitle:@"总成交率" forState:UIControlStateNormal];
+        [_btnSort setTitle:@"昨日新增成交率" forState:UIControlStateNormal];
+    }else{
+        [_btnAll setTitle:[NSString stringWithFormat:@"%@总数",title] forState:UIControlStateNormal];
+        [_btnSort setTitle:[NSString stringWithFormat:@"昨日新增%@",title] forState:UIControlStateNormal];
+    }
+
     _type = @(index+1).description;
     [self.refresh reload];
 }

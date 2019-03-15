@@ -113,7 +113,7 @@
         return cell;
     }else if(indexPath.row == 2){
         MEBrandAreasplineCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandAreasplineCell class]) forIndexPath:indexPath];
-        [cell setUiWithModel:kMeUnArr(_model.alive_member) title:@"近7日客户活跃度"];
+        [cell setUiWithModel:kMeUnArr(_model.alive_member) title:@"近7日客户活跃度" subTitle:@"活跃度"];
         return cell;
     }else if(indexPath.row == 3){
         MEBrandPieCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandPieCell class]) forIndexPath:indexPath];
@@ -121,7 +121,7 @@
         return cell;
     }else if(indexPath.row == 4){
         MEBrandAreasplineCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBrandAreasplineCell class]) forIndexPath:indexPath];
-        [cell setUiWithModel:kMeUnArr(_model.anew_member) title:@"近7日新增客户数"];
+        [cell setUiWithModel:kMeUnArr(_model.anew_member) title:@"近7日新增客户数" subTitle:@"客户数"];
         return cell;
     }else{
         return [UITableViewCell new];

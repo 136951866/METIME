@@ -90,7 +90,7 @@ const static CGFloat kMENineGridViewpadding = 3;
     }
     if(kMeUnArr(arr).count == 1){
         UIImageView *img = _arrImageView[0];
-        img.contentMode = UIViewContentModeScaleAspectFit;
+//        img.contentMode = UIViewContentModeScaleAspectFit;
         CGFloat w = (allW - (kMENineGridViewMagin*2) - kMENineGridViewpadding)/2;
         img.frame = CGRectMake(kMENineGridViewpadding, 0, w, w);
         kSDLoadImg(img, kMeUnNilStr(arr[0]));
@@ -105,8 +105,8 @@ const static CGFloat kMENineGridViewpadding = 3;
         kSDLoadImg(img, kMeUnNilStr(arr[0]));
         UIImageView *imgOne = _arrImageView[1];
         imgOne.frame = CGRectMake(kMENineGridViewpadding+w+kMENineGridViewpadding, 0, w, w);
-        imgOne.contentMode = UIViewContentModeScaleAspectFill;
-        imgOne.clipsToBounds = YES;
+//        imgOne.contentMode = UIViewContentModeScaleAspectFill;
+//        imgOne.clipsToBounds = YES;
         [self addSubview:imgOne];
         kSDLoadImg(imgOne, kMeUnNilStr(arr[1]));
     }else{
@@ -118,8 +118,8 @@ const static CGFloat kMENineGridViewpadding = 3;
             CGFloat picX = kMENineGridViewpadding + (w + kMENineGridViewpadding) * col;
             CGFloat picY = kMeUnArr(arr).count==3?0:kMENineGridViewpadding + (w + kMENineGridViewpadding) * row;
             img.frame = CGRectMake(picX, picY, w, w);
-            img.contentMode = UIViewContentModeScaleAspectFill;
-            img.clipsToBounds = YES;
+//            img.contentMode = UIViewContentModeScaleAspectFill;
+//            img.clipsToBounds = YES;
             [self addSubview:img];
             NSString *str  = arr[i];
             kSDLoadImg(img, kMeUnNilStr(str));

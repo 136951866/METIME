@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnAi;
 @property (weak, nonatomic) IBOutlet UIView *viewForBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPic;
+@property (weak, nonatomic) IBOutlet UIView *viewForCor;
 
 @end
 
@@ -55,7 +56,11 @@
     [_btnAll setBackgroundImage:[MECommonTool createImageWithColor:kMEPink] forState:UIControlStateSelected];
     [_btnSort setBackgroundImage:[MECommonTool createImageWithColor:kMEPink] forState:UIControlStateSelected];
     [_btnAi setBackgroundImage:[MECommonTool createImageWithColor:kMEPink] forState:UIControlStateSelected];
-    // Do any additional setup after loading the view from its nib.
+//    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(-15, 0, SCREEN_WIDTH+30, 89) byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii:CGSizeMake(60, 60)];
+//    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+//    maskLayer.frame = _viewForCor.bounds;
+//    maskLayer.path = maskPath.CGPath;
+//    _viewForCor.layer.mask = maskLayer;
 }
 
 - (IBAction)tapSelectAction:(UIButton *)sender {
