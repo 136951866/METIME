@@ -27,6 +27,7 @@
 #import "MECouponOrderVC.h"
 #import "MEBStoreMannagerVC.h"
 #import "MEMySelfExtractionOrderVC.h"
+#import "MEBrandManngerVC.h"
 
 @interface MEMyDistrbutionVC ()<UICollectionViewDelegate,UICollectionViewDataSource>{
     //c端model
@@ -144,8 +145,8 @@
             strongSelf->_bModel = [MEadminDistributionModel mj_objectWithKeyValues:responseObject.data];
             //订单总额
             CGFloat allMoney = strongSelf->_bModel.use_money + strongSelf->_bModel.ratio_money;
-            strongSelf->_arrData = @[@(MEMyMoney),@(MEMyTeam),@(MEMyLeave),@(MEMySuperior),@(MEMyCode),@(MEMyDataDeal),@(MEMyCash),@(MEMyCouponMoney)];
-            strongSelf->_arrDataStr = @[[NSString stringWithFormat:@"%.2f",allMoney],[NSString stringWithFormat:@"%@",@(strongSelf->_bModel.admin_team)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.level)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.superior)],@"",@"",@"",@""];
+            strongSelf->_arrData = @[@(MEMyMoney),@(MEMyTeam),@(MEMyLeave),@(MEMySuperior),@(MEMyCode),@(MEMyDataDeal),@(MEMyCash),@(MEMyCouponMoney),@(MEBrandMannager)];
+            strongSelf->_arrDataStr = @[[NSString stringWithFormat:@"%.2f",allMoney],[NSString stringWithFormat:@"%@",@(strongSelf->_bModel.admin_team)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.level)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.superior)],@"",@"",@"",@"",@""];
             //            [self.view addSubview:self.collectionView];
             strongSelf->_levStr = [NSString stringWithFormat:@"当前等级:%@",kMeUnNilStr(strongSelf->_bModel.level)];
             [strongSelf.collectionView reloadData];
@@ -267,6 +268,11 @@
         case MEMySelfExtractionOrder:{
             MEMySelfExtractionOrderVC *orderVC = [[MEMySelfExtractionOrderVC alloc]init];
             [self.navigationController pushViewController:orderVC animated:YES];
+        }
+            break;
+        case MEBrandMannager:{
+            MEBrandManngerVC *brandVC = [[MEBrandManngerVC alloc]init];
+            [self.navigationController pushViewController:brandVC animated:YES];
         }
             break;
         default:
