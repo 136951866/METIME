@@ -69,9 +69,15 @@ const static CGFloat MEBynamicPublishVCTextHeight = 135;
 
 - (void)pushlishAction:(UIButton *)btn{
     [self.view endEditing:YES];
+    NSString *content = kMeUnNilStr(_textView.textView.text);
+    if(content.length == 0 || self.arrModel.count ==0){
+        [MEShowViewTool showMessage:@"内容不能为空" view:self.view];
+        return;
+    }
+    
     _isError = NO;
     [_arrImage removeAllObjects];
-    NSString *content = kMeUnNilStr(_textView.textView.text);
+   
     kMeWEAKSELF
     dispatch_group_t group = dispatch_group_create();
     dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
