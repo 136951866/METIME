@@ -84,7 +84,7 @@
         
         UILabel *lblAll = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, 40)];
         lblAll.backgroundColor = [UIColor colorWithHexString:@"f4f4f4"];
-        lblAll.textColor =  [UIColor colorWithHexString:@"e1e1e1"];
+        lblAll.textColor =  [UIColor colorWithHexString:@"666666"];
         lblAll.text = [NSString stringWithFormat:@"以下商品被拆成%@个包裹",@(kMeUnArr(_model.express_detail).count).description];
         lblAll.font = kMeFont(15);
         lblAll.textAlignment = NSTextAlignmentCenter;
