@@ -55,6 +55,8 @@ const static CGFloat kByContentVIewDelWH = 17;
 - (UIImageView *)imageVIew{
     if(!_imageVIew){
         _imageVIew =  [[UIImageView alloc]init];
+        _imageVIew.contentMode = UIViewContentModeScaleAspectFill;
+        _imageVIew.clipsToBounds = YES;
     }
     return _imageVIew;
 }

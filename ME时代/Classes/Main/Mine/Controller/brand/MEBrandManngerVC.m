@@ -39,7 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"品牌管理";
-    _lblStoreCount.text =@"0";
+    _lblStoreCount.text =@"账号数量:0";
     _lblName.text = kMeUnNilStr(kCurrentUser.name);
     kSDLoadImg(_imgPic, kMeUnNilStr(kCurrentUser.header_pic));
     _selectBtn = _btnAll;
@@ -92,7 +92,7 @@
         kMeWEAKSELF
         _allVC.modelBlock = ^(MEBrandMemberInfo *model) {
             kMeSTRONGSELF
-            strongSelf.lblStoreCount.text = kMeUnNilStr(model.store_count);
+            strongSelf.lblStoreCount.text = [NSString stringWithFormat:@"账号数量:%@",kMeUnNilStr(model.store_count)];
             strongSelf.lblName.text = kMeUnNilStr(model.store_name);
             kSDLoadImg(strongSelf.imgPic, kMeUnNilStr(model.header_pic));
         };

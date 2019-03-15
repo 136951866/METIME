@@ -39,7 +39,6 @@
     _arrImageView = [NSMutableArray array];
     for (NSInteger i=0; i<9; i++) {
         MEBynamicPublishGridContentView *img = [[MEBynamicPublishGridContentView alloc]init];
-        img.contentMode = UIViewContentModeScaleAspectFit;
         img.userInteractionEnabled = YES;
         img.tag = i;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
@@ -71,7 +70,6 @@
             break;
         }
         MEBynamicPublishGridModel *model = arr[i];
-    
         MEBynamicPublishGridContentView *img = _arrImageView[i];
         img.block = ^{
             kMeSTRONGSELF

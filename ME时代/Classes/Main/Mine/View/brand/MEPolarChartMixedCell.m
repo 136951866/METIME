@@ -35,17 +35,17 @@
     NSInteger allCount = model.member_info.store_count;
     NSMutableArray *arrdata = [NSMutableArray array];
     if(allCount){
-        CGFloat sale_rank =(CGFloat) model.sale_rank/allCount;
+        CGFloat sale_rank =1-((CGFloat) model.sale_rank/allCount);
         [arrdata addObject:@(sale_rank)];
-        CGFloat communicate_rank = (CGFloat)model.communicate_rank/allCount;
+        CGFloat communicate_rank = 1 - ((CGFloat)model.communicate_rank/allCount);
         [arrdata addObject:@(communicate_rank)];
-        CGFloat product_rank = (CGFloat)model.product_rank/allCount;
+        CGFloat product_rank = 1 - ((CGFloat)model.product_rank/allCount);
         [arrdata addObject:@(product_rank)];
-        CGFloat activity_rank =(CGFloat) model.activity_rank/allCount;
+        CGFloat activity_rank =1 - ((CGFloat) model.activity_rank/allCount);
         [arrdata addObject:@(activity_rank)];
-        CGFloat sale_num_rank = (CGFloat)model.sale_num_rank/allCount;
+        CGFloat sale_num_rank = 1 - ((CGFloat)model.sale_num_rank/allCount);
         [arrdata addObject:@(sale_num_rank)];
-        CGFloat access_rank =(CGFloat) model.access_rank/allCount;
+        CGFloat access_rank =1 - ((CGFloat) model.access_rank/allCount);
         [arrdata addObject:@(access_rank)];
     }else{
         for (NSInteger i =0 ; i<6; i++) {

@@ -322,7 +322,7 @@
         [_btnRight setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _btnRight.cornerRadius = 2;
         _btnRight.clipsToBounds = YES;
-        _btnRight.frame = CGRectMake(0, 0, 63, 30);
+        _btnRight.frame = CGRectMake(0, 0, 30, 30);
         _btnRight.titleLabel.font = kMeFont(15);
         [_btnRight addTarget:self action:@selector(pushlishAction:) forControlEvents:UIControlEventTouchUpInside];
     }
