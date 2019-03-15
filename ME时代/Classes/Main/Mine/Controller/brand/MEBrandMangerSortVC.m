@@ -163,7 +163,7 @@ const static CGFloat kselectViewHeight = 57;
     }
     _currntBtn = btn;
     _lineView.centerX = _currntBtn.centerX;
-    NSInteger index = kMeViewBaseTag -btn.tag;
+    NSInteger index = btn.tag - kMeViewBaseTag;
     _date = @(index+1).description;
     [self.refresh reload];
 }

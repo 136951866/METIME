@@ -1237,6 +1237,7 @@
 
 + (void)postGoodsDetailWithGoodsId:(NSInteger)goodsId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"goodsId":@(goodsId),
+                          @"uid":kMeUnNilStr(kCurrentUser.uid)
                           };
     NSString *url = kGetApiWithUrl(MEIPcommonGoodsGoodsDetail);
     MBProgressHUD *HUD = [self commitWithHUD:@"获取详情中"];
@@ -1256,7 +1257,8 @@
 
 + (void)postGoodsDetailWithGoodsId:(NSInteger)goodsId seckillTime:(NSString*)seckillTime successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"goodsId":@(goodsId),
-                          @"seckill_time":kMeUnNilStr(seckillTime)
+                          @"seckill_time":kMeUnNilStr(seckillTime),
+                          @"uid":kMeUnNilStr(kCurrentUser.uid)
                           };
     NSString *url = kGetApiWithUrl(MEIPcommonGoodsGoodsDetail);
     MBProgressHUD *HUD = [self commitWithHUD:@"获取详情中"];
