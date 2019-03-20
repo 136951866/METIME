@@ -60,32 +60,39 @@
 }
 
 - (void)setUIWithModel:(MEBDataDealModel *)Model{
-    _lblGengerRate.text = [NSString stringWithFormat:@"%@:%@:%@",kMeUnNilStr(Model.member.man),kMeUnNilStr(Model.member.women),kMeUnNilStr(Model.member.privary)];
+//    _lblGengerRate.text = [NSString stringWithFormat:@"%@:%@:%@",kMeUnNilStr(Model.member.man),kMeUnNilStr(Model.member.women),kMeUnNilStr(Model.member.privary)];
     _lblAllUserCount.text = kMeUnNilStr(Model.member.total);
     _lblTodayUserCount.text = kMeUnNilStr(Model.member.today_new_member);
     _lblAllCost.text = kMeUnNilStr(Model.goods.total_sales);
-    _lblGenerCostRate.text = [NSString stringWithFormat:@"%@:%@:%@",kMeUnNilStr(Model.goods.man_sales),kMeUnNilStr(Model.goods.women_sales),kMeUnNilStr(Model.goods.privary_sales)];
+//    _lblGenerCostRate.text = [NSString stringWithFormat:@"%@:%@:%@",kMeUnNilStr(Model.goods.man_sales),kMeUnNilStr(Model.goods.women_sales),kMeUnNilStr(Model.goods.privary_sales)];
     _lblAllOrder.text = kMeUnNilStr(Model.order.total_order_count);
     _lblTodayOrder.text = kMeUnNilStr(Model.order.today_order_count);
-    _lblCanUserMoney.text = kMeUnNilStr(Model.brokerage.can_use_brokerage);
-    _lblNotUseMoney.text = kMeUnNilStr(Model.brokerage.settle_accounts_no);
-    _lblUsedMoney.text = kMeUnNilStr(Model.brokerage.settle_accounts_ok);
-    _lblTodayMoney.text = kMeUnNilStr(Model.brokerage.today_brokerage);
+    
+//    _lblCanUserMoney.text = kMeUnNilStr(Model.brokerage.can_use_brokerage);
+//    _lblNotUseMoney.text = kMeUnNilStr(Model.brokerage.settle_accounts_no);
+//    _lblUsedMoney.text = kMeUnNilStr(Model.brokerage.settle_accounts_ok);
+//    _lblTodayMoney.text = kMeUnNilStr(Model.brokerage.today_brokerage);
     
     
     _lblBusinessFollow.text = kMeUnNilStr(Model.business.follow);
-    _lblBusinessReserverDataRate.text = kMeUnNilStr(Model.business.reserveDealPercent);
+    
+//    _lblBusinessReserverDataRate.text = kMeUnNilStr(Model.business.reserveDealPercent);
+//    _lblBusinessAchievementPercent.text = kMeUnNilStr(Model.business.achievementPercent);
+
+    
+    
     _lblBusinessReserverMonth.text = kMeUnNilStr(Model.business.reserveMounth);
     _lblBusinessAchievementMounth.text = kMeUnNilStr(Model.business.achievementMounth);
-    _lblBusinessAchievementPercent.text = kMeUnNilStr(Model.business.achievementPercent);
+    
     
     _lblMarketTotalPeople.text = kMeUnNilStr(Model.marketing.totalPeople);
     _lblMarketTotalDeal.text = kMeUnNilStr(Model.marketing.totalDeal);
     
     _lblDealPeoplePercent.text = kMeUnNilStr(Model.storeProject.dealPeoplePercent);
-    _lblAllProjectPercent.text = kMeUnNilStr(Model.storeProject.allProjectPercent);
-    _lblNomalProjectPercent.text = kMeUnNilStr(Model.storeProject.nomalProjectPercent);
-    _lblPromotionProjectPercent.text = kMeUnNilStr(Model.storeProject.promotionProjectPercent);
+    
+//    _lblAllProjectPercent.text = kMeUnNilStr(Model.storeProject.allProjectPercent);
+//    _lblNomalProjectPercent.text = kMeUnNilStr(Model.storeProject.nomalProjectPercent);
+//    _lblPromotionProjectPercent.text = kMeUnNilStr(Model.storeProject.promotionProjectPercent);
 }
 
 - (IBAction)structAction:(UIButton *)sender {

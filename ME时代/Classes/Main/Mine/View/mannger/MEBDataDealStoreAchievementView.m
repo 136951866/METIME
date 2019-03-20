@@ -28,9 +28,9 @@
 }
 
 - (void)setUIWithModel:(MEBDataDealModel *)model{
-    _lblAchievementMemberNew.text = kMeUnNilStr(model.storeAchievement.AchievementMember.people);
-    _lblAchievementMemberOld.text = kMeUnNilStr(model.storeAchievement.AchievementMember.old);
-    _lblAchievementMemberActive.text = kMeUnNilStr(model.storeAchievement.AchievementMember.active);
+//    _lblAchievementMemberNew.text = kMeUnNilStr(model.storeAchievement.AchievementMember.people);
+//    _lblAchievementMemberOld.text = kMeUnNilStr(model.storeAchievement.AchievementMember.old);
+//    _lblAchievementMemberActive.text = kMeUnNilStr(model.storeAchievement.AchievementMember.active);
     _lblAchievementMouth.text = kMeUnNilStr(model.storeAchievement.AchievementMouth);
     [_viewforStruct setUIWithArr:kMeUnArr(model.storeAchievement.AchievementCatagery)];
     _consStructView.constant = [MEBDataDealStructView getViewWithArr:kMeUnArr(model.storeAchievement.AchievementCatagery)];

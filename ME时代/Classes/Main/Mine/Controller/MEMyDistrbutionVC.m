@@ -17,7 +17,8 @@
 #import "MEMoneyDetailedVC.h"
 #import "MEMineNewShareVC.h"
 #import "MEClerkManngerVC.h"
-#import "MEBDataDealVC.h"
+//#import "MEBDataDealVC.h"
+#import "MEBdataVC.h"
 #import "MEMyAppointmentVC.h"
 #import "MEGetCaseMainSVC.h"
 #import "MEWithdrawalVC.h"
@@ -241,7 +242,7 @@
             break;
             
         case MEMyDataDeal:{
-            MEBDataDealVC *vc = [[MEBDataDealVC alloc]init];
+            MEBdataVC *vc = [[MEBdataVC alloc]init];
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;

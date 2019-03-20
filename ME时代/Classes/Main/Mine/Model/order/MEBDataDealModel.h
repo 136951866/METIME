@@ -10,26 +10,26 @@
 
 @interface  MEBDataDealmemberModel: MEBaseModel
 
-@property (nonatomic, strong) NSString * man;
-@property (nonatomic, strong) NSString * privary;
+@property (nonatomic, assign) NSInteger  man;
+@property (nonatomic, assign) NSInteger  privary;
 @property (nonatomic, strong) NSString * today_new_member;
 @property (nonatomic, strong) NSString * total;
-@property (nonatomic, strong) NSString * women;
+@property (nonatomic, assign) NSInteger women;
 
 @end
 
 @interface MEBDataDealgoodsModel : MEBaseModel
-@property (nonatomic, strong) NSString * man_sales;
-@property (nonatomic, strong) NSString * privary_sales;
+@property (nonatomic, assign) NSInteger  man_sales;
+@property (nonatomic, assign) NSInteger  privary_sales;
 @property (nonatomic, strong) NSString * total_sales;
-@property (nonatomic, strong) NSString * women_sales;
+@property (nonatomic, assign) NSInteger  women_sales;
 @end
 
 @interface  MEBDataDealbrokerageModel: MEBaseModel
-@property (nonatomic, strong) NSString * can_use_brokerage;
-@property (nonatomic, strong) NSString * settle_accounts_ok;
-@property (nonatomic, strong) NSString * settle_accounts_no;
-@property (nonatomic, strong) NSString * today_brokerage;
+@property (nonatomic, assign) CGFloat  can_use_brokerage;
+@property (nonatomic, assign) CGFloat settle_accounts_ok;
+@property (nonatomic, assign) CGFloat settle_accounts_no;
+@property (nonatomic, assign) CGFloat today_brokerage;
 @end
 
 @interface MEBDataDealorderModel : MEBaseModel
@@ -40,10 +40,10 @@
 
 @interface MEBDataDealBusinessModel : MEBaseModel
 @property (nonatomic, strong) NSString * follow;
-@property (nonatomic, strong) NSString * reserveDealPercent;
+@property (nonatomic, assign) CGFloat  reserveDealPercent;
 @property (nonatomic, strong) NSString * reserveMounth;
 @property (nonatomic, strong) NSString * achievementMounth;
-@property (nonatomic, strong) NSString * achievementPercent;
+@property (nonatomic, assign) CGFloat achievementPercent;
 @end
 
 @interface MEBDataDealmarketingModel : MEBaseModel
@@ -53,9 +53,9 @@
 
 @interface MEBDataDealstoreProject : MEBaseModel
 @property (nonatomic, strong) NSString * dealPeoplePercent;
-@property (nonatomic, strong) NSString * allProjectPercent;
-@property (nonatomic, strong) NSString * nomalProjectPercent;
-@property (nonatomic, strong) NSString * promotionProjectPercent;
+@property (nonatomic, assign) CGFloat allProjectPercent;
+@property (nonatomic, assign) CGFloat nomalProjectPercent;
+@property (nonatomic, assign) CGFloat promotionProjectPercent;
 
 @end
 
@@ -63,7 +63,7 @@
 
 @interface MEBDataDealAchievementCatagery: MEBaseModel
 
-@property (nonatomic, strong) NSString * percent;
+@property (nonatomic, assign) CGFloat  percent;
 @property (nonatomic, strong) NSString * category_name;
 @property (nonatomic, strong) NSString * order_goods_status_name;
 
@@ -71,10 +71,10 @@
 
 @interface MEBDataDealAchievementMember: MEBaseModel
 
-@property (nonatomic, strong) NSString * old;
-@property (nonatomic, strong) NSString * people;
+@property (nonatomic, assign) NSInteger  old;
+@property (nonatomic, assign) NSInteger  people;
 //@property (nonatomic, strong) NSString * newPeople;
-@property (nonatomic, strong) NSString * active;
+@property (nonatomic, assign) NSInteger  active;
 
 @end
 
@@ -87,22 +87,22 @@
 @end
 
 @interface MEBDataDealGoodsNum: MEBaseModel
-@property (nonatomic, strong) NSString *count;
+@property (nonatomic, assign) CGFloat count;
 @property (nonatomic, strong) NSString *product_name;
 @property (nonatomic, strong) NSString *order_goods_status_name;
 @end
 
 @interface MEBDataDealAge: MEBaseModel
-@property (nonatomic, strong) NSString *one;
-@property (nonatomic, strong) NSString *two;
-@property (nonatomic, strong) NSString *three;
-@property (nonatomic, strong) NSString *five;
+@property (nonatomic, assign) CGFloat one;
+@property (nonatomic, assign) CGFloat two;
+@property (nonatomic, assign) CGFloat three;
+@property (nonatomic, assign) CGFloat five;
 @end
 
 @interface MEBDataDealageAccessStr: MEBaseModel
 
-@property (nonatomic, strong) NSString *small_software;
-@property (nonatomic, strong) NSString *app;
+@property (nonatomic, assign) CGFloat small_software;
+@property (nonatomic, assign) CGFloat app;
 @end
 
 @interface MEBDataDealageAccess: MEBaseModel
