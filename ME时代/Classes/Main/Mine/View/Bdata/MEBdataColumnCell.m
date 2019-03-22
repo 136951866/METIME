@@ -55,32 +55,7 @@
         [Xtitle addObject:kMeUnNilStr(cmodel.product_name)];
         [nummodel addObject:@(cmodel.count)];
     }
-    [Xtitle addObject:@"彩妆类"];
-    [nummodel addObject:@(11)];
-    
-    [Xtitle addObject:@"护肤类"];
-    [nummodel addObject:@(200)];
-    
-    [Xtitle addObject:@"身材管理类"];
-    [nummodel addObject:@(5)];
-    
-    [Xtitle addObject:@"仪器类"];
-    [nummodel addObject:@(1)];
-    
-    [Xtitle addObject:@"眼部定制套餐类"];
-    [nummodel addObject:@(11)];
-    
-    [Xtitle addObject:@"母婴类"];
-    [nummodel addObject:@(101)];
-    
-    [Xtitle addObject:@"钻石类"];
-    [nummodel addObject:@(11)];
-    
-    [Xtitle addObject:@"鳄鱼包系列类"];
-    [nummodel addObject:@(112)];
-    
-    
-    
+
     if(model.count == 0){
         [Xtitle addObject:@""];
         [nummodel addObject:@(0)];

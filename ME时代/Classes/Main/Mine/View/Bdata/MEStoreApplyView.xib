@@ -56,7 +56,7 @@
                     <rect key="frame" x="108" y="194" width="252" height="18"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OeL-Vg-gG7">
                     <rect key="frame" x="15" y="232" width="345" height="1"/>
@@ -78,7 +78,7 @@
                     <rect key="frame" x="108" y="253" width="252" height="18"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RvL-Wn-gHe">
                     <rect key="frame" x="0.0" y="291" width="375" height="10"/>
@@ -128,7 +128,7 @@
                     <rect key="frame" x="108" y="436" width="252" height="18"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIT-Mn-eeF">
                     <rect key="frame" x="15" y="474" width="345" height="1"/>

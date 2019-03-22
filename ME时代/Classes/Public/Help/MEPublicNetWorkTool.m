@@ -1572,10 +1572,29 @@
 }
 
 + (void)postStoreApplyWithModel:(MEStoreApplyParModel *)model SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
-    NSMutableDictionary *dic = [model mj_keyValues];
-    [dic removeObjectForKey:@"mask_imgModel"];
-    [dic removeObjectForKey:@"mask_info_imgModel"];
-    [dic removeObjectForKey:@"business_imagesModel"];
+//    NSMutableDictionary *dic = [model mj_keyValues];
+//    [dic removeObjectForKey:@"mask_imgModel"];
+//    [dic removeObjectForKey:@"mask_info_imgModel"];
+//    [dic removeObjectForKey:@"business_imagesModel"];
+    NSDictionary *dic = @{
+                          @"true_name":kMeUnNilStr(model.true_name),
+                          @"store_name":kMeUnNilStr(model.store_name),
+                          @"name":kMeUnNilStr(model.name),
+                          @"mobile":kMeUnNilStr(model.mobile),
+                          @"intro":kMeUnNilStr(model.intro),
+                          @"province":kMeUnNilStr(model.province),
+                          @"city":kMeUnNilStr(model.city),
+                          @"district":kMeUnNilStr(model.district),
+                          @"address":kMeUnNilStr(model.address),
+                          @"latitude":kMeUnNilStr(model.latitude),
+                          @"longitude":kMeUnNilStr(model.longitude),
+                          @"mask_img":kMeUnNilStr(model.mask_img),
+                          @"mask_info_img":kMeUnNilStr(model.mask_info_img),
+                          @"id_number":kMeUnNilStr(model.id_number),
+                          @"business_images":kMeUnNilStr(model.business_images),
+                          @"token":kMeUnNilStr(model.token),
+                          @"cellphone":kMeUnNilStr(model.cellphone)
+                          };
     NSLog(@"%@",dic);
     NSString *url = @"";
 #ifdef TestVersion
