@@ -21,6 +21,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.selectionStyle = 0;
     self.aaChartView.backgroundColor = [UIColor whiteColor];
     self.aaChartView.delegate = self;
     self.aaChartView.scrollEnabled = NO;//禁用 AAChartView 滚动效果
@@ -59,6 +60,8 @@
         _aaChartModel.xAxisCrosshairDashStyleType = AALineDashSyleTypeLongDashDotDot;
         _aaChartModel.subtitleAlign = AAChartSubtitleAlignTypeLeft;
         _aaChartModel.markerRadius = 0;
+        _aaChartModel.legendEnabled = NO;
+//        _aaChartModel.tooltipEnabled = NO;
     }
     return _aaChartModel;
 }

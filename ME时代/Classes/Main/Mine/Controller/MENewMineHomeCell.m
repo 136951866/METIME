@@ -26,7 +26,9 @@
 #import "MEArticelVC.h"
 #import "MEVisiterHomeVC.h"
 #import "MECouponOrderVC.h"
-
+#import "MEStoreApplyVC.h"
+#import "MEStoreApplyModel.h"
+#import "MEStoreApplyStatusVC.h"
 @interface MENewMineHomeCell()<UICollectionViewDelegate,UICollectionViewDataSource>{
     NSArray *_arrModel;
 }
@@ -126,11 +128,22 @@
             [homeVc.navigationController pushViewController:mobile animated:YES];
         }
             break;
-//        case MeCouponMoney:{
-//            MECouponOrderVC *mobile = [[MECouponOrderVC alloc]init];
-//            [homeVc.navigationController pushViewController:mobile animated:YES];
-//        }
-//            break;
+        case MeStoreApply:{
+            [MEPublicNetWorkTool postGetMemberStoreInfoWithsuccessBlock:^(ZLRequestResponse *responseObject) {
+                if(![responseObject.data isKindOfClass:[NSDictionary class]] || responseObject.data==nil){
+                    MEStoreApplyVC *vc = [[MEStoreApplyVC alloc]init];
+                    [homeVc.navigationController pushViewController:vc animated:YES];
+                }else{
+                    MEStoreApplyModel *model = [MEStoreApplyModel mj_objectWithKeyValues:responseObject.data];
+                    MEStoreApplyStatusVC *vc = [[MEStoreApplyStatusVC alloc]init];
+                    vc.model = model;
+                    [homeVc.navigationController pushViewController:vc animated:YES];
+                }
+            } failure:^(id object) {
+                
+            }];
+        }
+            break;
         default:
             break;
     }

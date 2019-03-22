@@ -17,6 +17,7 @@
 #import "MEAppointAttrModel.h"
 #import "MEWithdrawalParamModel.h"
 #import "MEBStoreMannagerEditModel.h"
+#import "MEStoreApplyParModel.h"
 
 @implementation MEPublicNetWorkTool
 
@@ -1544,6 +1545,58 @@
 
 
 #pragma mark - UserCentre
+
++ (void)postGetMemberStoreInfoWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{
+                          @"token":kMeUnNilStr(kCurrentUser.token),
+                          };
+    NSString *url = @"";
+#ifdef TestVersion
+    url = [@"http://test_dev.meshidai.com/api/" stringByAppendingString:MEIPcommonGetMemberStoreInfo];
+#else
+    url = [@"https://msd.meshidai.com/api/" stringByAppendingString:MEIPcommonGetMemberStoreInfo];
+#endif
+    MBProgressHUD *HUD = [self commitWithHUD:@"获取审核状态"];
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
+
++ (void)postStoreApplyWithModel:(MEStoreApplyParModel *)model SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSMutableDictionary *dic = [model mj_keyValues];
+    [dic removeObjectForKey:@"mask_imgModel"];
+    [dic removeObjectForKey:@"mask_info_imgModel"];
+    [dic removeObjectForKey:@"business_imagesModel"];
+    NSLog(@"%@",dic);
+    NSString *url = @"";
+#ifdef TestVersion
+    url = [@"http://test_dev.meshidai.com/api/" stringByAppendingString:MEIPcommonStoreApply];
+#else
+    url = [@"https://msd.meshidai.com/api/" stringByAppendingString:MEIPcommonStoreApply];
+#endif
+    MBProgressHUD *HUD = [self commitWithHUD:@"提交中"];
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
 
 + (void)getUserGetUserWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSString *url = kGetApiWithUrl(MEIPcommonGetUser);

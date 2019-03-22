@@ -42,8 +42,6 @@
     kMeWEAKSELF
     [YBPopupMenu showRelyOnView:btn titles:@[@"数据统计",@"门店业绩结构分析",@"门店顾客分析"] icons:nil menuWidth:170 otherSettings:^(YBPopupMenu *popupMenu) {
         popupMenu.priorityDirection = YBPopupMenuPriorityDirectionBottom;
-        popupMenu.borderWidth = 1;
-        popupMenu.borderColor = kMEblack;
         kMeSTRONGSELF
         popupMenu.delegate = strongSelf;
     }];
@@ -109,7 +107,7 @@
             return cell;
         }else if(indexPath.row == 4){
             MEBdataColumnCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBdataColumnCell class]) forIndexPath:indexPath];
-            [cell setUiWithModel:@[@(_model.storeProject.allProjectPercent),@(_model.storeProject.allProjectPercent),@(_model.storeProject.allProjectPercent)] Xtitle:@[@"各项目人均销售额",@"常规目人均销售额",@"促销项目人均销售额"] title:@"门店项目结构诊断" company:@"销售额"];
+            [cell setUiWithModel:@[@(_model.storeProject.allProjectPercent),@(_model.storeProject.nomalProjectPercent),@(_model.storeProject.promotionProjectPercent)] Xtitle:@[@"各项目人均销售额",@"常规目人均销售额",@"促销项目人均销售额"] title:@"门店项目结构诊断" company:@"销售额"];
             return cell;
         }else if(indexPath.row == 5){
             MEBdataColumnCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBdataColumnCell class]) forIndexPath:indexPath];
@@ -137,7 +135,7 @@
             return cell;
         }else if (indexPath.row == 1){
             MEBdataColumnCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBdataColumnCell class]) forIndexPath:indexPath];
-            [cell setUiWithModel:@[@(_model.storeCustomer.AccessTimesByMouth.small_software),@(_model.storeCustomer.AccessTimesByMouth.app)] Xtitle:@[@"小程序",@"APP"] title:@"顾客月均到店次数和标准值对比" company:@""];
+            [cell setUiWithModel:@[@(_model.storeCustomer.AccessTimesByMouth.small_software),@(_model.storeCustomer.AccessTimesByMouth.app)] Xtitle:@[@"小程序",@"APP"] title:@"顾客月均到店次数和标准值对比" company:@"对比"];
 //            MEBdataPieCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEBdataPieCell class]) forIndexPath:indexPath];
 //            [cell setUiWithModel:@[@(_model.storeCustomer.AccessTimesByMouth.small_software),@(_model.storeCustomer.AccessTimesByMouth.app)] Xtitle:@[@"小程序",@"APP"] title:@"顾客月均到店次数和标准值对比"];
             return cell;

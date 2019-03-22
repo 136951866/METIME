@@ -353,6 +353,10 @@
 
 /*********************************************/
 #pragma makr - UserCentre
+//获取当前用户的门店祥情
+#define MEIPcommonGetMemberStoreInfo @"common/store/getMemberStoreInfo"
+//门店申请、或修改申请
+#define MEIPcommonStoreApply @"common/store/storeApply"
 //一键已读
 #define MEIPcommonAllreadedNotice @"common/message/listRead"
 //已读消息

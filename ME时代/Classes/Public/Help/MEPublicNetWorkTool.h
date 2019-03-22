@@ -19,6 +19,7 @@
 @class MEAppointAttrModel;
 @class MEWithdrawalParamModel;
 @class MEBStoreMannagerEditModel;
+@class MEStoreApplyParModel;
 
 @interface MEPublicNetWorkTool : NSObject
 
@@ -315,6 +316,9 @@
 + (void)getUserGetCodeWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //获取权益
 + (void)getUserGetEquitiesWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+// 门店申请、或修改申请
++ (void)postStoreApplyWithModel:(MEStoreApplyParModel *)model SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
++ (void)postGetMemberStoreInfoWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 /***************************************/
 
 

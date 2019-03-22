@@ -40,7 +40,8 @@
     .seriesSet(@[
                  AASeriesElement.new
                  .nameSet(kMeUnNilStr(company))
-                 .dataSet(model),
+                 .dataSet(model)
+                 .colorByPointSet(@true),
                  ]
                );
     [self.aaChartView aa_refreshChartWithChartModel:self.aaChartModel];
@@ -54,6 +55,32 @@
         [Xtitle addObject:kMeUnNilStr(cmodel.product_name)];
         [nummodel addObject:@(cmodel.count)];
     }
+    [Xtitle addObject:@"彩妆类"];
+    [nummodel addObject:@(11)];
+    
+    [Xtitle addObject:@"护肤类"];
+    [nummodel addObject:@(200)];
+    
+    [Xtitle addObject:@"身材管理类"];
+    [nummodel addObject:@(5)];
+    
+    [Xtitle addObject:@"仪器类"];
+    [nummodel addObject:@(1)];
+    
+    [Xtitle addObject:@"眼部定制套餐类"];
+    [nummodel addObject:@(11)];
+    
+    [Xtitle addObject:@"母婴类"];
+    [nummodel addObject:@(101)];
+    
+    [Xtitle addObject:@"钻石类"];
+    [nummodel addObject:@(11)];
+    
+    [Xtitle addObject:@"鳄鱼包系列类"];
+    [nummodel addObject:@(112)];
+    
+    
+    
     if(model.count == 0){
         [Xtitle addObject:@""];
         [nummodel addObject:@(0)];
@@ -66,7 +93,7 @@
     .seriesSet(@[
                  AASeriesElement.new
                  .nameSet(kMeUnNilStr(company))
-                 .dataSet(nummodel),
+                 .dataSet(nummodel)
                  ]
                );
     [self.aaChartView aa_refreshChartWithChartModel:self.aaChartModel];
@@ -107,11 +134,13 @@
         .titleFontSizeSet(@15)
         .titleSet(@"")//图表主标题
         .subtitleSet(@"")//图表副标题
-        .yAxisLineWidthSet(@0)//Y轴轴线线宽为0即是隐藏Y轴轴线
+        .yAxisLineWidthSet(@1)//Y轴轴线线宽为0即是隐藏Y轴轴线
         .colorsThemeSet(@[@"#F9B43B",@"#F9553C",@"#8C3F63",@"#24789D"])//设置主体颜色数组
+        .easyGradientColorsSet(true)
         .yAxisTitleSet(@"")//设置 Y 轴标题
         .backgroundColorSet(@"#ffffff")
         .yAxisGridLineWidthSet(@1)
+        .yAxisLineWidthSet(@1)
         .seriesSet(@[
                      AASeriesElement.new
                      .nameSet(@"人数")
@@ -124,7 +153,7 @@
         _aaChartModel.yAxisTitle = @"";
         _aaChartModel.animationDuration = @10;//图形渲染动画时长为1200毫秒
         _aaChartModel.legendEnabled = NO;
-        _aaChartModel.tooltipEnabled = NO;
+//        _aaChartModel.tooltipEnabled = NO;
         _aaChartModel.yAxisGridLineWidth =@1;
         _aaChartModel.dataLabelEnabled = YES;
         _aaChartModel.dataLabelFontColor = @"#818181";

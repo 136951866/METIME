@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-const static CGFloat kMEBdataLineCellHeight = 392;
+const static CGFloat kMEBdataLineCellHeight = 413;
 
 @interface MEBdataLineCell : UITableViewCell
 - (void)setUiWithTitleArr:(NSArray *)arr NumArr:(NSArray*)numArr;
