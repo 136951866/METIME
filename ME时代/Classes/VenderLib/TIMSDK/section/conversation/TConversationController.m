@@ -67,7 +67,7 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRefreshConversations:) name:TUIKitNotification_TIMRefreshListener object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNetworkChanged:) name:TUIKitNotification_TIMConnListener object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNetworkChanged:) name:TUIKitNotification_TIMConnListener object:nil];
     [self updateConversations];
 }
 
@@ -122,31 +122,31 @@
     [self updateConversations];
 }
 
-- (void)onNetworkChanged:(NSNotification *)notification
-{
-    TNetStatus status = (TNetStatus)[notification.object intValue];
-    switch (status) {
-        case TNet_Status_Succ:
-            [_titleView setTitle:@"ME聊"];
-            [_titleView stopAnimating];
-            break;
-        case TNet_Status_Connecting:
-            [_titleView setTitle:@"连接中..."];
-            [_titleView startAnimating];
-            break;
-        case TNet_Status_Disconnect:
-            [_titleView setTitle:@"消息(未连接)"];
-            [_titleView stopAnimating];
-            break;
-        case TNet_Status_ConnFailed:
-            [_titleView setTitle:@"消息(未连接)"];
-            [_titleView stopAnimating];
-            break;
-            
-        default:
-            break;
-    }
-}
+//- (void)onNetworkChanged:(NSNotification *)notification
+//{
+//    TNetStatus status = (TNetStatus)[notification.object intValue];
+//    switch (status) {
+//        case TNet_Status_Succ:
+//            [_titleView setTitle:@"ME聊"];
+//            [_titleView stopAnimating];
+//            break;
+//        case TNet_Status_Connecting:
+//            [_titleView setTitle:@"连接中..."];
+//            [_titleView startAnimating];
+//            break;
+//        case TNet_Status_Disconnect:
+//            [_titleView setTitle:@"消息(未连接)"];
+//            [_titleView stopAnimating];
+//            break;
+//        case TNet_Status_ConnFailed:
+//            [_titleView setTitle:@"消息(未连接)"];
+//            [_titleView stopAnimating];
+//            break;
+//
+//        default:
+//            break;
+//    }
+//}
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
