@@ -11,7 +11,7 @@
 
 #warning -mustNotes 上线一定要注释/海报分享 MEIPcommonGetMemberStoreInfo MEIPcommonStoreApply 没有用BASEIP
 
-#define TestVersion
+//#define TestVersion
 
 //域名 develop
 #ifdef TestVersion
