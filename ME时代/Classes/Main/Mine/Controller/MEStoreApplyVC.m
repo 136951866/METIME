@@ -23,7 +23,7 @@
 }
 @property (nonatomic, strong) MEStoreApplyView *cview;
 @property (nonatomic, strong) UIScrollView *scrollerView;
-@property (nonatomic, strong) MEStoreApplyParModel *parModel;
+
 
 @end
 
@@ -172,7 +172,6 @@
             }
         });
     });
-    
 }
 
 - (void)dealActionWithType:(MEStoreApplyViewImgType )type{

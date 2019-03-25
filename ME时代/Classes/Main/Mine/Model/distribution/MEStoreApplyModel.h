@@ -48,6 +48,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString * true_name;
 @property (nonatomic, strong) NSString * updated_at;
 
+@property (nonatomic, strong) NSString * business_images_url;
+@property (nonatomic, strong) NSString * mask_img_url;
+@property (nonatomic, strong) NSString * mask_info_img_url;
 @end
 
 NS_ASSUME_NONNULL_END

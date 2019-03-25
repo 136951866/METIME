@@ -84,6 +84,16 @@
 
 
 - (void)reloadUI{
+    
+    _tfTrue_name.text = kMeUnNilStr(_model.true_name);
+    _tfname.text = kMeUnNilStr(_model.name);;
+    _tfcell_phone.text = kMeUnNilStr(_model.cellphone);;
+    _tfid_number.text = kMeUnNilStr(_model.id_number);;
+    
+    _tfstore_name.text = kMeUnNilStr(_model.store_name);;
+    _tfmobile.text = kMeUnNilStr(_model.mobile);;
+    _tfintro.text = kMeUnNilStr(_model.intro);;
+    
     MEBynamicPublishGridModel *business_imagesModel = _model.business_imagesModel;
     _btnbusinessDel.hidden = business_imagesModel.isAdd;
     _imgbusiness.image = business_imagesModel.image;

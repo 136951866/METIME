@@ -55,4 +55,5 @@
 + (NSMutableAttributedString *)fristStrWithFont:(UIFont *)font content:(NSString *)content;
 
 + (NSString *)getImagePath:(UIImage *)Image filename:(NSString*)filaname;
++ (NSString *)getNoCompressImagePath:(UIImage *)Image filename:(NSString*)filaname;
 @end

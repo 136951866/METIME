@@ -10,6 +10,7 @@
 #import "MEStoreApplyModel.h"
 #import "MEEnlargeTouchButton.h"
 #import "MEStoreApplyVC.h"
+#import "MEStoreApplyParModel.h"
 
 @interface MEStoreApplyStatusVC ()
 
@@ -64,7 +65,66 @@
 }
 
 - (IBAction)reApplyAction:(UIButton *)sender {
+    MBProgressHUD *hub =  [MEPublicNetWorkTool commitWithHUD:@"获取审核数据中.."];
+
     MEStoreApplyVC *vc = [[MEStoreApplyVC alloc]init];
+    MEStoreApplyParModel *parModel = [MEStoreApplyParModel new];
+    parModel.token = kMeUnNilStr(kCurrentUser.token);
+    parModel.true_name = kMeUnNilStr(_model.true_name);
+    parModel.store_name = kMeUnNilStr(_model.store_name);
+    parModel.name = kMeUnNilStr(_model.name);
+    parModel.mobile = kMeUnNilStr(_model.mobile);
+    parModel.intro = kMeUnNilStr(_model.intro);
+    parModel.province = kMeUnNilStr(_model.province);
+    parModel.city = kMeUnNilStr(_model.city);
+    parModel.district = kMeUnNilStr(_model.district);
+    parModel.address = kMeUnNilStr(_model.address);
+    parModel.latitude = kMeUnNilStr(_model.latitude);
+    parModel.longitude = kMeUnNilStr(_model.longitude);
+    parModel.mask_img = kMeUnNilStr(_model.mask_img);
+    parModel.mask_info_img = kMeUnNilStr(_model.mask_info_img);
+    parModel.id_number = kMeUnNilStr(_model.id_number);
+    parModel.business_images = kMeUnNilStr(_model.business_images);
+    parModel.cellphone = kMeUnNilStr(_model.cellphone);
+    
+    
+    if(kMeUnNilStr(_model.business_images_url).length){
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:_model.business_images_url]];
+        UIImage *image = [UIImage imageWithData:data];
+        MEBynamicPublishGridModel *business_imagesModel = [MEBynamicPublishGridModel modelWithImage:image isAdd:NO];
+        business_imagesModel.filePath = [MECommonTool getNoCompressImagePath:image filename: kMeUnNilStr(_model.business_images)];
+        parModel.business_imagesModel = business_imagesModel;
+  
+    }else{
+        MEBynamicPublishGridModel *business_imagesModel = [MEBynamicPublishGridModel modelWithImage:[UIImage imageNamed:@"icon_bynamicAdd"] isAdd:YES];
+        parModel.business_imagesModel = business_imagesModel;
+    }
+    
+    if(kMeUnNilStr(_model.mask_img_url).length){
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:_model.mask_img_url]];
+        UIImage *image = [UIImage imageWithData:data];
+        MEBynamicPublishGridModel *mask_imgModel = [MEBynamicPublishGridModel modelWithImage:image isAdd:NO];
+        mask_imgModel.filePath = [MECommonTool getNoCompressImagePath:image filename: kMeUnNilStr(_model.mask_img)];
+        parModel.mask_imgModel = mask_imgModel;
+        
+    }else{
+        MEBynamicPublishGridModel *mask_imgModel = [MEBynamicPublishGridModel modelWithImage:[UIImage imageNamed:@"icon_bynamicAdd"] isAdd:YES];
+        parModel.mask_imgModel = mask_imgModel;
+    }
+    
+    if(kMeUnNilStr(_model.mask_info_img_url).length){
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:_model.mask_info_img_url]];
+        UIImage *image = [UIImage imageWithData:data];
+        MEBynamicPublishGridModel *mask_info_imgModel = [MEBynamicPublishGridModel modelWithImage:image isAdd:NO];
+        mask_info_imgModel.filePath = [MECommonTool getNoCompressImagePath:image filename: kMeUnNilStr(_model.mask_info_img)];
+        parModel.mask_info_imgModel = mask_info_imgModel;
+        
+    }else{
+        MEBynamicPublishGridModel *mask_info_imgModel = [MEBynamicPublishGridModel modelWithImage:[UIImage imageNamed:@"icon_bynamicAdd"] isAdd:YES];
+        parModel.mask_info_imgModel = mask_info_imgModel;
+    }
+    vc.parModel = parModel;
+    [hub hideAnimated:YES];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
