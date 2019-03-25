@@ -41,21 +41,15 @@
     
 #pragma mark - init IM sdk
     [[TUIKit sharedInstance] initKit:sdkAppid accountType:sdkAccountType withConfig:[TUIKitConfig defaultConfig]];
-#warning --
+
     if([MEUserInfoModel isLogin] && kMeUnNilStr(kCurrentUser.tls_data.tls_id).length && kMeUnNilStr(kCurrentUser.tls_data.user_tls_key).length){
         NSLog(@"%@    %@",kMeUnNilStr(kCurrentUser.tls_data.tls_id),kMeUnNilStr(kCurrentUser.tls_data.user_tls_key));
-//        [[TUIKit sharedInstance] loginKit:kMeUnNilStr(kCurrentUser.tls_data.tls_id) userSig:kMeUnNilStr(kCurrentUser.tls_data.user_tls_key) succ:^{
-//            NSLog(@"sucess");
-//        } fail:^(int code, NSString *msg) {
-//            NSLog(@"fial");
-//        }];
+        [[TUIKit sharedInstance] loginKit:kMeUnNilStr(kCurrentUser.tls_data.tls_id) userSig:kMeUnNilStr(kCurrentUser.tls_data.user_tls_key) succ:^{
+            NSLog(@"sucess");
+        } fail:^(int code, NSString *msg) {
+            NSLog(@"fial");
+        }];
     }
-    
-    //    [[TIMFriendshipManager sharedInstance] GetSelfProfile:^(TIMUserProfile * profile) {
-    //        NSLog(@"GetSelfProfile identifier=%@ nickname=%@ allowType=%d", profile.identifier, profile.nickname, profile.allowType);
-    //    } fail:^(int code, NSString * err) {
-    //        NSLog(@"GetSelfProfile fail: code=%d err=%@", code, err);
-    //    }];
     
     if (@available(iOS 11.0, *)) {
         [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;

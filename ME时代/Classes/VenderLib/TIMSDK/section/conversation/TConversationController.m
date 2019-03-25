@@ -127,7 +127,7 @@
     TNetStatus status = (TNetStatus)[notification.object intValue];
     switch (status) {
         case TNet_Status_Succ:
-            [_titleView setTitle:@"消息"];
+            [_titleView setTitle:@"ME聊"];
             [_titleView stopAnimating];
             break;
         case TNet_Status_Connecting:
