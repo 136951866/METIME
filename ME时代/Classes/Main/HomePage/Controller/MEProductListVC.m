@@ -46,9 +46,9 @@
 
 - (NSDictionary *)requestParameter{
     if(_type == MEGoodsTypeNetCommendStyle){
-        return @{@"pageSize":@(100)};
+        return @{@"pageSize":@(100),@"uid":kMeUnNilStr(kCurrentUser.uid)};
     }
-    return @{@"type":@(_type),@"pageSize":@(100)};
+    return @{@"type":@(_type),@"pageSize":@(100),@"uid":kMeUnNilStr(kCurrentUser.uid)};
 }
 
 - (void)handleResponse:(id)data{

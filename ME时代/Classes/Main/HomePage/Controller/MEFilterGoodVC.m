@@ -52,7 +52,8 @@
 - (NSDictionary *)requestParameter{
     return @{@"category_id":kMeUnNilStr(_category_id),
              @"other":kMeUnNilStr(_other),
-             @"goods_price":kMeUnNilStr(_goods_price),
+             @"goods_price":kMeUnNilStr(_goods_price)
+             ,@"uid":kMeUnNilStr(kCurrentUser.uid)
              };
 }
 

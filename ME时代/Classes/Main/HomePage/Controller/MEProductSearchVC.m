@@ -70,7 +70,7 @@
 #pragma mark - RefreshToolDelegate
 
 - (NSDictionary *)requestParameter{
-    return @{@"keyword":kMeUnNilStr(_tfSearch.text),@"type":@"0",@"other":@""};
+    return @{@"keyword":kMeUnNilStr(_tfSearch.text),@"type":@"0",@"other":@"",@"uid":kMeUnNilStr(kCurrentUser.uid)};
 }
 
 - (void)handleResponse:(id)data{

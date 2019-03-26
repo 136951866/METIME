@@ -38,7 +38,7 @@
 #pragma mark - RefreshToolDelegate
 
 - (NSDictionary *)requestParameter{
-    return @{@"product_type":@"6"};
+    return @{@"product_type":@"6",@"uid":kMeUnNilStr(kCurrentUser.uid)};
 }
 
 - (void)handleResponse:(id)data{

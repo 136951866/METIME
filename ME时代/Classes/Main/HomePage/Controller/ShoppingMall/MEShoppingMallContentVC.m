@@ -86,6 +86,7 @@
         [self requestSD];
     }
     return @{@"category_id":@(_model.idField),
+             @"uid":kMeUnNilStr(kCurrentUser.uid)
              };
 }
 

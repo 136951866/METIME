@@ -1177,6 +1177,7 @@
 
 + (void)postHomeRecommendWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"other":@"is_recommend"
+                          ,@"uid":kMeUnNilStr(kCurrentUser.uid)
                           };
     NSString *url = kGetApiWithUrl(MEIPcommonFindGoods);
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
@@ -1192,6 +1193,7 @@
 
 + (void)postGoodsListTopWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"other":@"is_hot",
+                          ,@"uid":kMeUnNilStr(kCurrentUser.uid)
                           };
     NSString *url = kGetApiWithUrl(MEIPcommonFindGoods);
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
@@ -1208,6 +1210,7 @@
 
 + (void)postGoodsListWithType:(MEGoodsTypeNetStyle)type successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"type":@(type),
+                          @"uid":kMeUnNilStr(kCurrentUser.uid)
                           };
     NSString *url = kGetApiWithUrl(MEIPcommonGoodsGetGoodsList);
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
@@ -1223,6 +1226,7 @@
 
 + (void)postHomeNewGoodsListWithType:(NSString *)type successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"other":kMeUnNilStr(type),
+                          ,@"uid":kMeUnNilStr(kCurrentUser.uid)
                           };
     NSString *url = kGetApiWithUrl(MEIPcommonFindGoods);
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {

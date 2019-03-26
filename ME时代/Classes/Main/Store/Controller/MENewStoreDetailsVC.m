@@ -57,7 +57,7 @@
 #pragma mark - RefreshToolDelegate
 
 - (NSDictionary *)requestParameter{
-    return @{@"type":@(MEGoodsTypeNetServiceStyle),@"pageSize":@(100)};
+    return @{@"type":@(MEGoodsTypeNetServiceStyle),@"pageSize":@(100),@"uid":kMeUnNilStr(kCurrentUser.uid)};
 }
 
 - (void)handleResponse:(id)data{
