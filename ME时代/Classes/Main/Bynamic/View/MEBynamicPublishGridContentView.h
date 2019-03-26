@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MEBynamicPublishGridContentView : UIView
 
 - (void)setUIWithModel:(MEBynamicPublishGridModel*)model;
+- (void)setUIWIthUrl:(NSString *)url;
 @property (nonatomic, copy) kMeBasicBlock block;
 @property (nonatomic,strong)UIImageView *imageVIew;
 @end

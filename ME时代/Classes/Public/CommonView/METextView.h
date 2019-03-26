@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) UITextView  *placeholderTextView;
 
 + (instancetype )placeholderTextView;
+@property (nonatomic, copy) kMeTextBlock contenBlock;
 
 @end
 

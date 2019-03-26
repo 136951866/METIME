@@ -52,6 +52,11 @@ const static CGFloat kByContentVIewDelWH = 17;
     }
 }
 
+- (void)setUIWIthUrl:(NSString *)url{
+    self.btnDel.hidden = YES;
+    kSDLoadImg(self.imageVIew, kMeUnNilStr(url));
+}
+
 - (UIImageView *)imageVIew{
     if(!_imageVIew){
         _imageVIew =  [[UIImageView alloc]init];

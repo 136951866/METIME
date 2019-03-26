@@ -28,6 +28,9 @@
 #import "MEStoreModel.h"
 #import "MENewStoreDetailsVC.h"
 
+
+#import "MEDynamicGoodApplyVC.h"
+
 const static CGFloat kImgStore = 50;
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSInteger _selectTimeIndex;
@@ -251,12 +254,15 @@ const static CGFloat kImgStore = 50;
 }
 
 - (void)toStore{
-    if(_stroeModel){
-        MENewStoreDetailsVC *details = [[MENewStoreDetailsVC alloc]initWithId:_stroeModel.store_id];
-        [self.navigationController pushViewController:details animated:YES];
-    }else{
-        self.tabBarController.selectedIndex = 1;
-    }
+#warning --
+    MEDynamicGoodApplyVC *vc = [[MEDynamicGoodApplyVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+//    if(_stroeModel){
+//        MENewStoreDetailsVC *details = [[MENewStoreDetailsVC alloc]initWithId:_stroeModel.store_id];
+//        [self.navigationController pushViewController:details animated:YES];
+//    }else{
+//        self.tabBarController.selectedIndex = 1;
+//    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

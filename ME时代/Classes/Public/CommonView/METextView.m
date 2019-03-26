@@ -80,7 +80,7 @@
     }else{
         self.placeholderTextView.hidden =YES;
     }
-    
+    kMeCallBlock(self.contenBlock,[textView.text trimSpace]);
 //    //该判断用于联想输入
 //    if (textView.text.length > MAX_WORD_LIMIT)
 //    {

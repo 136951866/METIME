@@ -20,8 +20,14 @@
 @class MEWithdrawalParamModel;
 @class MEBStoreMannagerEditModel;
 @class MEStoreApplyParModel;
+@class MEDynamicGoodApplyModel;
 
 @interface MEPublicNetWorkTool : NSObject
+
+/*********************************************/
+#pragma makr - xunweishi
++ (void)postXunweishiApplyWithParModel:(MEDynamicGoodApplyModel *)model images:(NSString*)images successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+/*********************************************/
 
 /*********************************************/
 #pragma makr - BRAND

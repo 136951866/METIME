@@ -18,8 +18,41 @@
 #import "MEWithdrawalParamModel.h"
 #import "MEBStoreMannagerEditModel.h"
 #import "MEStoreApplyParModel.h"
+#import "MEDynamicGoodApplyModel.h"
 
 @implementation MEPublicNetWorkTool
+
+
+/*********************************************/
+#pragma makr - xunweishi
++ (void)postXunweishiApplyWithParModel:(MEDynamicGoodApplyModel *)model images:(NSString*)images successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{
+                          @"true_name":kMeUnNilStr(model.true_name),
+                          @"phone":kMeUnNilStr(model.phone),
+                          @"goods_name":kMeUnNilStr(model.goods_name),
+                          @"goods_detail":kMeUnNilStr(model.goods_detail),
+                          @"price":kMeUnNilStr(model.price),
+                          @"images":images,
+                          @"token":kMeUnNilStr(model.token),
+                          };
+    NSLog(@"%@",dic);
+    NSString *url = kGetApiWithUrl(MEIPcommongXunweishiApply);
+    MBProgressHUD *HUD = [self commitWithHUD:@"提交中"];
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
+
+/*********************************************/
 
 /*********************************************/
 #pragma makr - BRAND
@@ -1193,7 +1226,7 @@
 
 + (void)postGoodsListTopWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"other":@"is_hot",
-                          ,@"uid":kMeUnNilStr(kCurrentUser.uid)
+                          @"uid":kMeUnNilStr(kCurrentUser.uid)
                           };
     NSString *url = kGetApiWithUrl(MEIPcommonFindGoods);
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
@@ -1226,7 +1259,7 @@
 
 + (void)postHomeNewGoodsListWithType:(NSString *)type successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"other":kMeUnNilStr(type),
-                          ,@"uid":kMeUnNilStr(kCurrentUser.uid)
+                          @"uid":kMeUnNilStr(kCurrentUser.uid)
                           };
     NSString *url = kGetApiWithUrl(MEIPcommonFindGoods);
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
@@ -1554,12 +1587,12 @@
     NSDictionary *dic = @{
                           @"token":kMeUnNilStr(kCurrentUser.token),
                           };
-    NSString *url = @"";
-#ifdef TestVersion
-    url = [@"http://test_dev.meshidai.com/api/" stringByAppendingString:MEIPcommonGetMemberStoreInfo];
-#else
-    url = [@"https://msd.meshidai.com/api/" stringByAppendingString:MEIPcommonGetMemberStoreInfo];
-#endif
+    NSString *url = kGetApiWithUrl(MEIPcommonGetMemberStoreInfo);
+//#ifdef TestVersion
+//    url = [@"http://test_dev.meshidai.com/api/" stringByAppendingString:MEIPcommonGetMemberStoreInfo];
+//#else
+//    url = [@"https://msd.meshidai.com/api/" stringByAppendingString:MEIPcommonGetMemberStoreInfo];
+//#endif
     MBProgressHUD *HUD = [self commitWithHUD:@"获取审核状态"];
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
         [HUD hideAnimated:YES];
@@ -1600,12 +1633,12 @@
                           @"cellphone":kMeUnNilStr(model.cellphone)
                           };
     NSLog(@"%@",dic);
-    NSString *url = @"";
-#ifdef TestVersion
-    url = [@"http://test_dev.meshidai.com/api/" stringByAppendingString:MEIPcommonStoreApply];
-#else
-    url = [@"https://msd.meshidai.com/api/" stringByAppendingString:MEIPcommonStoreApply];
-#endif
+    NSString *url = kGetApiWithUrl(MEIPcommonStoreApply);
+//#ifdef TestVersion
+//    url = [@"http://test_dev.meshidai.com/api/" stringByAppendingString:MEIPcommonStoreApply];
+//#else
+//    url = [@"https://msd.meshidai.com/api/" stringByAppendingString:MEIPcommonStoreApply];
+//#endif
     MBProgressHUD *HUD = [self commitWithHUD:@"提交中"];
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
         [HUD hideAnimated:YES];

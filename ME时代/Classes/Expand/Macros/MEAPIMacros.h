@@ -9,14 +9,15 @@
 #ifndef MEAPIMacros_h
 #define MEAPIMacros_h
 
-#warning -mustNotes 上线一定要注释/海报分享 MEIPcommonGetMemberStoreInfo MEIPcommonStoreApply 没有用BASEIP
+#warning -mustNotes 上线一定要注释/海报分享
 
-//#define TestVersion
+#define TestVersion
 
 //域名 develop
 #ifdef TestVersion
 //#define BASEIP @"https://test.meshidai.com/api/"
-#define BASEIP @"https://develop.meshidai.com/api/"
+//#define BASEIP @"https://develop.meshidai.com/api/"
+#define BASEIP @"http://test_dev.meshidai.com/api/"
 #else
 #define BASEIP @"https://msd.meshidai.com/api/"
 #endif
@@ -36,6 +37,16 @@
 #define kNetTokenInvalid @"401"
 #define kNetError @"503"
 #define kNetInvateCode @"502"
+
+/*********************************************/
+#pragma makr - xunweishi
+
+//申请
+#define MEIPcommongXunweishiApply @"common/xunweishi/apply"
+//申请记录
+#define MEIPcommongXunweishiApplyList @"common/xunweishi/applyList"
+//申请祥情
+#define MEIPcommongXunweishiDetail @"common/xunweishi/detail"
 
 /*********************************************/
 #pragma makr - BRAND
