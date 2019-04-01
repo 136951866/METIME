@@ -77,6 +77,7 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         kMeSTRONGSELF
         [hub hideAnimated:YES];
+        kMeCallBlock(strongSelf->_finishBlcok);
         [strongSelf.navigationController popViewControllerAnimated:YES];
     });
 }

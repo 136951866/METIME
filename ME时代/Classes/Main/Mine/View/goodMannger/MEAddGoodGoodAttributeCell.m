@@ -37,7 +37,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnShowAll;
 @property (weak, nonatomic) IBOutlet UIButton *btnShowWebApp;
 @property (weak, nonatomic) IBOutlet UIButton *btnShowApp;
+@property (weak, nonatomic) IBOutlet MEBlockTextField *tfSpc;
 
+@property (weak, nonatomic) IBOutlet MEBlockTextField *tfGoodDetail;
 
 @end
 
@@ -91,6 +93,17 @@
     }else{
         _btnGoodRecommendDel.hidden = YES;
         _imgRecommend.image = [UIImage imageNamed:@"icon_bynamicAdd"];
+    }
+    if(_model.arrAddSpec.count==0){
+        _tfSpc.text = @"";
+    }else{
+        _tfSpc.text = @"已填写";
+    }
+    
+    if(kMeUnNilStr(_model.content).length){
+        _tfGoodDetail.text = @"已填写";
+    }else{
+        _tfGoodDetail.text = @"";
     }
     
     [self reloadBtn];

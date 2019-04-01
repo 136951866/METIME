@@ -553,6 +553,9 @@
             kMeSTRONGSELF
             MEGoodManngerSpecVC *vc = [[MEGoodManngerSpecVC alloc]initWithModel:strongSelf.addModel];
             vc.token = strongSelf->_token;
+            vc.finishBlcok = ^{
+                [strongSelf.tableView reloadData];
+            };
             [strongSelf.navigationController pushViewController:vc animated:YES];
         };
         _cell.selectImgBlock = ^(NSInteger index) {
@@ -564,6 +567,9 @@
             MERichTextVC *vc = [[MERichTextVC alloc]init];
             vc.model = strongSelf.addModel;
             vc.token = strongSelf->_token;
+            vc.finishBlcok = ^{
+                [strongSelf.tableView reloadData];
+            };
             [strongSelf.navigationController pushViewController:vc animated:YES];
         };
         return _cell;

@@ -16,6 +16,7 @@
 #import "MEGoodManngerAddSpecModel.h"
 #import <TZImagePickerController.h>
 #import "MEGoodManngerSpecBasicCell.h"
+#import "MEEnlargeTouchButton.h"
 
 @interface MEGoodManngerSpecVC ()<UITableViewDelegate, UITableViewDataSource,TZImagePickerControllerDelegate>{
     NSMutableArray *_arrSpec;
@@ -28,6 +29,8 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) MEGoodManngerSpecCell *cell;
 @property (nonatomic, strong) UIButton *btnAdd;
+@property (strong, nonatomic) MEEnlargeTouchButton *btnRight;
+
 @end
 
 @implementation MEGoodManngerSpecVC
@@ -43,6 +46,7 @@
     [super viewDidLoad];
     self.title = @"规格填写";
     _arrSpec = [NSMutableArray array];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[self btnRight]];
 //    _selectCount = 0;
     kMeWEAKSELF
     [MEPublicNetWorkTool postgetGoodSpecNameWithSuccessBlock:^(ZLRequestResponse *responseObject) {
@@ -60,6 +64,11 @@
         kMeSTRONGSELF
         [strongSelf.navigationController popViewControllerAnimated:YES];
     }];
+}
+
+- (void)popBackAction{
+    kMeCallBlock(_finishBlcok);
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark ------------------ <UITableViewDelegate, UITableViewDataSource> ----
@@ -247,6 +256,18 @@
     }
     return _btnAdd;
 }
-
+- (MEEnlargeTouchButton *)btnRight{
+    MEEnlargeTouchButton *btnRight= [MEEnlargeTouchButton buttonWithType:UIButtonTypeCustom];
+    btnRight.frame = CGRectMake(0, 0, 70, 25);
+    [btnRight setImage:[UIImage imageNamed:@"inc-xz"] forState:UIControlStateNormal];
+    [btnRight setTitle:@"返回" forState:UIControlStateNormal];
+    btnRight.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 26);
+    btnRight.titleEdgeInsets = UIEdgeInsetsMake(0, -14, 0, 0);
+    [btnRight setTitleColor:[UIColor colorWithHexString:@"e3e3e3"] forState:UIControlStateNormal];
+    btnRight.titleLabel.font = kMeFont(15);
+    [btnRight setTitleColor:kMEblack forState:UIControlStateNormal];
+    [btnRight addTarget:self action:@selector(popBackAction) forControlEvents:UIControlEventTouchUpInside];
+    return btnRight;
+}
 
 @end

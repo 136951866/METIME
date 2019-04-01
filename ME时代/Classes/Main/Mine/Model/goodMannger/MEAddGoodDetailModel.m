@@ -28,4 +28,8 @@ MEModelObjectClassInArrayWithDic(@{@"spec_ids_value":[MEAddGoodDetailSpecIdsValu
 
 @implementation MEAddGoodDetailModel
 MEModelObjectClassInArrayWithDic((@{@"spec_ids" : [MEAddGoodDetailSpecIdsModel class],@"spec_name" : [MEAddGoodDetailSpecNameModel class]}))
+
+//- (NSString *)content{
+//    return @"fdsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss<img style=\"width:100%\" src=\"http://images.meshidai.com/Fl4niy-VcRHz2G-xcsKZRmOL1mKG\" alt=\"暂无图片\" width=\"100%\" height=\"auto\"> <br><img style=\"width:100%\" src=\"http://images.meshidai.com/FuerLLEfbVo211M00HfTV9IFv9b5\" alt=\"暂无图片\"><br>";
+//}
 @end

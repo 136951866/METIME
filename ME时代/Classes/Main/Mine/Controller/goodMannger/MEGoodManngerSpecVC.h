@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MEGoodManngerSpecVC : MEBaseVC
 - (instancetype)initWithModel:(MEAddGoodModel *)model;
 @property (nonatomic, strong)NSString *token;
+@property (nonatomic, copy)kMeBasicBlock finishBlcok;
+
 @end
 
 NS_ASSUME_NONNULL_END

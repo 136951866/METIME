@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong) MEAddGoodModel *model;
 @property (nonatomic,strong) NSString *token;
+@property (nonatomic, copy) kMeBasicBlock finishBlcok;
+
 @end
 
 NS_ASSUME_NONNULL_END

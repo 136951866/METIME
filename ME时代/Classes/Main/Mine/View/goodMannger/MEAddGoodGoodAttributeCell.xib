@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="322" height="1018.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分成属性" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVY-jZ-E6m">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品属性" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVY-jZ-E6m">
                         <rect key="frame" x="15" y="10" width="69.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -691,8 +691,10 @@
                 <outlet property="imgGood" destination="hbB-r6-uv1" id="8HD-Xp-Yed"/>
                 <outlet property="imgGoodHot" destination="2NG-iQ-tuF" id="h1x-es-iIC"/>
                 <outlet property="imgRecommend" destination="yDF-Qt-sIT" id="D4I-0G-81W"/>
+                <outlet property="tfGoodDetail" destination="DJk-ub-eEk" id="60o-Tp-lci"/>
                 <outlet property="tfKey" destination="r6p-vq-l8E" id="nU3-Xu-1FI"/>
                 <outlet property="tfRestrict_num" destination="Zci-Wf-63d" id="LsM-tP-a6h"/>
+                <outlet property="tfSpc" destination="1U4-Cr-i1L" id="ibH-ce-k8x"/>
             </connections>
             <point key="canvasLocation" x="131.19999999999999" y="550.97451274362822"/>
         </tableViewCell>
