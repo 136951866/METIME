@@ -10,7 +10,10 @@
 
 
 @class ZLRequestResponse;
+@class MENetListModel;
 typedef void(^RequestResponse)(ZLRequestResponse *responseObject);
+typedef void(^MERequestNetListModelBlock)(MENetListModel *responseObject);
+
 #define THTTPManager [THTTPRequestOperationManager new]
 
 @interface THTTPRequestOperationManager : NSObject

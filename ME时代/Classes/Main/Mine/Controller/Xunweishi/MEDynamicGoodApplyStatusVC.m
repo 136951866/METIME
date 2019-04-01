@@ -11,7 +11,7 @@
 #import "MEEnlargeTouchButton.h"
 @interface MEDynamicGoodApplyStatusVC ()<JXCategoryViewDelegate,UIScrollViewDelegate>{
     NSArray *_arrType;
-    MEOrderStyle _currentType;
+    MEDynamicGoodApplyStatusContentType _currentType;
 }
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -25,7 +25,6 @@
 @implementation MEDynamicGoodApplyStatusVC
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
     [super viewDidLoad];
     self.title = @"申请记录";
     _arrType = @[@"待审核",@"申请成功",@"申请失败"] ;

@@ -132,6 +132,7 @@ NSUInteger const kSizeNum = 10;
                             strongSelf.allRows = count ;
                             [strongSelf.delegate handleResponse:responseObject.data[@"goods_search_response"][@"goods_list"]];
                         }else{
+                            strongSelf->_response = [MENetListModel mj_objectWithKeyValues:responseObject.data];
                             MENetListModel *nlModel = [MENetListModel mj_objectWithKeyValues:responseObject.data];
                             strongSelf.allRows = nlModel.count;
                             [strongSelf.delegate handleResponse:nlModel.data];

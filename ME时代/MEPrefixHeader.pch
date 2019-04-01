@@ -35,6 +35,7 @@
 #import "MEAlertView.h"//自定义alert
 #import "MECustomActionSheet.h"//自定义sheet
 #import "ZLRequestResponse.h"//网络请求最外层model
+#import "MENetListModel.h"
 #import "MEAllToolHeader.h"//工具类的header
 #import "MEView.h" //封装自定义view
 #import "ZLRefreshTool.h" //下拉请求数据封装

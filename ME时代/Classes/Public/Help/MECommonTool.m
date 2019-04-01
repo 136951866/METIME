@@ -159,7 +159,7 @@
 + (BOOL)compareOneDay:(NSString *)oneDayStr withAnotherDay:(NSString *)anotherDayStr{
     NSDateFormatter *df = [[NSDateFormatter alloc]init];
     [df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
-    [df setDateFormat:@"Y-M-d HH:mm"];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm"];
     NSDate *dt1 = [[NSDate alloc]init];
     NSDate *dt2 = [[NSDate alloc]init];
     dt1 = [df dateFromString:oneDayStr];
@@ -611,6 +611,7 @@
     [aString addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, 1)];
     return aString;
 }
+
 
 
 @end

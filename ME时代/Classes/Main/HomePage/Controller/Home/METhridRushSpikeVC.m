@@ -99,8 +99,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MERushBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MERushBuyCell class]) forIndexPath:indexPath];
-    METhridHomeRudeTimeModel *model = _arrRudeTime[_selectTimeIndex];
-    cell.time = kMeUnNilStr(model.time);
+    if(kMeUnArr(_arrRudeTime).count){
+        METhridHomeRudeTimeModel *model = _arrRudeTime[_selectTimeIndex];
+        cell.time = kMeUnNilStr(model.time);
+    }
     [cell setUIWithArr:self.refresh.arrData];
     return cell;
 }

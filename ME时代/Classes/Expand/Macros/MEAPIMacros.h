@@ -16,8 +16,8 @@
 //域名 develop
 #ifdef TestVersion
 //#define BASEIP @"https://test.meshidai.com/api/"
-//#define BASEIP @"https://develop.meshidai.com/api/"
-#define BASEIP @"http://test_dev.meshidai.com/api/"
+#define BASEIP @"https://develop.meshidai.com/api/"
+//#define BASEIP @"http://test_dev.meshidai.com/api/"
 #else
 #define BASEIP @"https://msd.meshidai.com/api/"
 #endif
@@ -38,6 +38,22 @@
 #define kNetError @"503"
 #define kNetInvateCode @"502"
 
+/*********************************************/
+#pragma makr - goodMannger
+//获取门店权限
+#define MEIPcommonggetStorePower @"common/store/getStorePower"
+//申请
+#define MEIPcommongGoodsGetStoreGoods @"common/goods/getStoreGoods"
+//获取规格
+#define MEIPcommonggetSpecName @"common/goods/getSpecName"
+//获取门店商品类型
+#define MEIPcommonggetStoreGoodsType @"common/goods/getStoreGoodsType"
+//添加修改商品
+#define MEIPcommonAddOrEditGoods @"common/goods/commonAddOrEditGoods"
+//删除自定义商品
+#define MEIPcommonDelStoreGoods @"common/goods/delStoreGoods"
+//门店自定义商品祥情
+#define MEIPcommonStoreGoodsDetail @"common/goods/storeGoodsDetail"
 /*********************************************/
 #pragma makr - xunweishi
 

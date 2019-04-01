@@ -21,8 +21,20 @@
 @class MEBStoreMannagerEditModel;
 @class MEStoreApplyParModel;
 @class MEDynamicGoodApplyModel;
+@class MEAddGoodModel;
 
 @interface MEPublicNetWorkTool : NSObject
+
+
+/*********************************************/
+#pragma makr - GoodMannger
++ (void)postgetStorePowerWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+//门店自定义商品祥情
++ (void)postgetStoreGoodsDetailWithProduct_id:(NSString*)pid SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+//删除自定义商品
+//商品规格
++ (void)postgetGoodSpecNameWithSuccessBlock:(RequestResponse)successBlock  failure:(kMeObjBlock)failure;
++ (void)postcommonAddOrEditGoodsWithParModel:(MEAddGoodModel *)model successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 
 /*********************************************/
 #pragma makr - xunweishi

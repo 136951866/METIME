@@ -19,9 +19,120 @@
 #import "MEBStoreMannagerEditModel.h"
 #import "MEStoreApplyParModel.h"
 #import "MEDynamicGoodApplyModel.h"
+#import "MEAddGoodModel.h"
 
 @implementation MEPublicNetWorkTool
+/*********************************************/
+#pragma makr - GoodMannger
 
+//
++ (void)postgetStorePowerWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSString *url = kGetApiWithUrl(MEIPcommonggetStorePower);
+    MBProgressHUD *HUD = [self commitWithHUD:@""];
+    [THTTPManager postWithParameter:@{@"token":kMeUnNilStr(kCurrentUser.token)} strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(failure,error);
+    }];
+}
+
++ (void)postgetStoreGoodsDetailWithProduct_id:(NSString*)pid SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSString *url = kGetApiWithUrl(MEIPcommonStoreGoodsDetail);
+    MBProgressHUD *HUD = [self commitWithHUD:@"获取详情中"];
+    [THTTPManager postWithParameter:@{@"token":kMeUnNilStr(kCurrentUser.token),@"id":kMeUnNilStr(pid)} strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(failure,error);
+    }];
+}
+
++ (void)postgetDelStoreGoodsWithProduct_id:(NSString*)pid SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSString *url = kGetApiWithUrl(MEIPcommonDelStoreGoods);
+    MBProgressHUD *HUD = [self commitWithHUD:@"删除中"];
+    [THTTPManager postWithParameter:@{@"token":kMeUnNilStr(kCurrentUser.token),@"product_id":kMeUnNilStr(pid)} strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(failure,error);
+    }];
+}
+
++ (void)postgetGoodSpecNameWithSuccessBlock:(RequestResponse)successBlock  failure:(kMeObjBlock)failure{
+    NSString *url = kGetApiWithUrl(MEIPcommonggetSpecName);
+        MBProgressHUD *HUD = [self commitWithHUD:@"获取规格"];
+    [THTTPManager postWithParameter:@{@"token":kMeUnNilStr(kCurrentUser.token)} strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(failure,error);
+    }];
+}
+
++ (void)postcommonAddOrEditGoodsWithParModel:(MEAddGoodModel *)model successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{
+                          @"token":kMeUnNilStr(model.token),
+                          @"list_order":kMeUnNilStr(model.list_order),
+                          @"title":kMeUnNilStr(model.title),
+                          @"desc":kMeUnNilStr(model.desc),
+                          @"market_price":kMeUnNilStr(model.market_price),
+                          @"money":kMeUnNilStr(model.money),
+                          @"postage":kMeUnNilStr(model.postage),
+                          
+                          @"store_product_type":@(model.store_product_type),
+                          @"ratio_after_sales":@(model.ratio_after_sales),
+                          @"ratio_marketing":@(model.ratio_marketing),
+                          @"ratio_store":@(model.ratio_store),
+                          @"images":kMeUnNilStr(model.images),
+                          @"images_hot":kMeUnNilStr(model.images_hot),
+                          @"image_rec":kMeUnNilStr(model.image_rec),
+                          
+                          @"group_num":kMeUnNilStr(model.group_num),
+                          @"over_time":kMeUnNilStr(model.over_time),
+                          @"red_packet":kMeUnNilStr(model.red_packet),
+                          @"start_time":kMeUnNilStr(model.start_time),
+                          @"end_time":kMeUnNilStr(model.end_time),
+                          
+                          @"keywords":kMeUnNilStr(model.keywords),
+                          @"state":@(model.state),
+                          @"product_position":@(model.product_position),
+                          @"is_new":@(model.is_new),
+                          @"is_hot":@(model.is_hot),
+                          @"is_recommend":@(model.is_recommend),
+                          @"is_clerk_share":@(model.is_clerk_share),
+                          
+                          @"restrict_num":kMeUnNilStr(model.restrict_num),
+                          @"category_id":kMeUnNilStr(model.category_id),
+                          @"content":kMeUnNilStr(model.content),
+                          @"product_id":kMeUnNilStr(model.product_id),
+                          @"spec_json":kMeUnNilStr(model.spec_json),
+                          @"spec_name":kMeUnNilStr(model.spec_name),
+                          @"warehouse":@"1"
+                          };
+    NSLog(@"%@",model.spec_json);
+    NSLog(@"%@",model.spec_name);
+    
+    NSLog(@"%@",dic);
+    NSString *url = kGetApiWithUrl(MEIPcommonAddOrEditGoods);
+    MBProgressHUD *HUD = [self commitWithHUD:@"提交中"];
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
 
 /*********************************************/
 #pragma makr - xunweishi

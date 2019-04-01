@@ -14,4 +14,7 @@
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, strong) id data;
 @property (nonatomic, strong) id result;
+@property (nonatomic, strong) NSString *putaway;
+@property (nonatomic, strong) NSString *soldout;
+
 @end

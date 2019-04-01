@@ -20,4 +20,6 @@
 //@property (nonatomic,assign) NSInteger amount;
 //for融云 test
 @property (nonatomic,strong) NSString *token;
+
+
 @end

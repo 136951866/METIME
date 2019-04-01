@@ -29,6 +29,8 @@
 #import "MEStoreApplyVC.h"
 #import "MEStoreApplyModel.h"
 #import "MEStoreApplyStatusVC.h"
+#import "MEDynamicGoodApplyVC.h"
+
 @interface MENewMineHomeCell()<UICollectionViewDelegate,UICollectionViewDataSource>{
     NSArray *_arrModel;
 }
@@ -142,6 +144,11 @@
             } failure:^(id object) {
                 
             }];
+        }
+            break;
+        case MeDynalApply:{
+            MEDynamicGoodApplyVC *vc = [[MEDynamicGoodApplyVC alloc]init];
+            [homeVc.navigationController pushViewController:vc animated:YES];
         }
             break;
         default:

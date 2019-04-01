@@ -40,6 +40,8 @@
 @property (nonatomic,assign) NSInteger allRows;
 //接口地址
 @property (nonatomic,copy) NSString *url;
+//返回的所有参数
+@property (nonatomic,copy) MENetListModel *response;
 @property (nonatomic,copy) kMeBasicBlock blockRefresh;
 
 @property (nonatomic, assign) BOOL errViewNotRefresh;
