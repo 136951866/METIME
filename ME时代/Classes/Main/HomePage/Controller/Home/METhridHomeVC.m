@@ -27,6 +27,7 @@
 #import "MENetListModel.h"
 #import "MEStoreModel.h"
 #import "MENewStoreDetailsVC.h"
+#import "MEGoodManngerVC.h"
 
 const static CGFloat kImgStore = 50;
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
@@ -251,12 +252,15 @@ const static CGFloat kImgStore = 50;
 }
 
 - (void)toStore{
-    if(_stroeModel){
-        MENewStoreDetailsVC *details = [[MENewStoreDetailsVC alloc]initWithId:_stroeModel.store_id];
-        [self.navigationController pushViewController:details animated:YES];
-    }else{
-        self.tabBarController.selectedIndex = 1;
-    }
+#warning --
+    MEGoodManngerVC *vc = [[MEGoodManngerVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+//    if(_stroeModel){
+//        MENewStoreDetailsVC *details = [[MENewStoreDetailsVC alloc]initWithId:_stroeModel.store_id];
+//        [self.navigationController pushViewController:details animated:YES];
+//    }else{
+//        self.tabBarController.selectedIndex = 1;
+//    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
