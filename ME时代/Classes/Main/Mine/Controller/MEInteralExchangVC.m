@@ -111,7 +111,7 @@ const static CGFloat kImgMainHeight = 114;
         _refresh.isDataInside = YES;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
             failView.backgroundColor = [UIColor whiteColor];
-            failView.lblOfNodata.text = @"没有地址";
+            failView.lblOfNodata.text = @"没有商品";
         }];
     }
     return _refresh;

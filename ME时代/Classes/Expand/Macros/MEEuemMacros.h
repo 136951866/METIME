@@ -77,7 +77,7 @@ typedef enum : NSUInteger {
     MESettlmemtExpressNum = 4,
     MESettlmemtRemark = 5
 } MEOrderSettlmentStyle;
-#define MEOrderSettlmentStyleTitle @[@"商品金额",@"运费",@"实付金额",@"配送方式",@"快递编号",@"备注"];
+#define MEOrderSettlmentStyleTitle @[@"订单金额",@"运费",@"实付金额",@"配送方式",@"快递编号",@"备注"];
 
 //预约
 typedef enum : NSUInteger {

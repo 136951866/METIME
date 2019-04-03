@@ -158,6 +158,9 @@
 }
 
 - (void)initWithSomething{
+    if(_powermodel.is_goods == 2){
+        kMeAlter(@"提示", @"您没有添加商品的权限");
+    }
     [self.view addSubview:self.tableView];
     UIView *viewForBottom = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-67, SCREEN_WIDTH, 67)];
     _btnAdd = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -185,6 +188,10 @@
 
 - (void)addGoodAction:(UIButton *)btn{
     [self.view endEditing:YES];
+    if(_powermodel.is_goods == 2){
+        kMeAlter(@"提示", @"您没有添加商品的权限");
+        return;
+    }
     if(!kMeUnNilStr(self.addModel.list_order).length){
         [MEShowViewTool showMessage:@"排序不能为空" view:kMeCurrentWindow];
         return;
