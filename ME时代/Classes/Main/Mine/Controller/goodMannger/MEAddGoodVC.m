@@ -216,6 +216,10 @@
         [MEShowViewTool showMessage:@"邮费不能为空" view:kMeCurrentWindow];
         return;
     }
+    if(!kMeUnNilStr(self.addModel.images).length){
+        [MEShowViewTool showMessage:@"商品图标不能为空" view:kMeCurrentWindow];
+        return;
+    }
     if(self.addModel.store_product_type == 7){
         if(!kMeUnNilStr(self.addModel.group_num).length){
             [MEShowViewTool showMessage:@"拼团人数不能为空" view:kMeCurrentWindow];
