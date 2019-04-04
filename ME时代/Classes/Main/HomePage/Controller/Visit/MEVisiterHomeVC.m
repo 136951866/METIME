@@ -235,13 +235,10 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        if(!_refresh){
-            _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonGetAccessUser)];
-            _refresh.delegate = self;
-            _refresh.showFailView = NO;
-            _refresh.isDataInside = YES;
-        }
-        return _refresh;
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonGetAccessUser)];
+        _refresh.delegate = self;
+        _refresh.showFailView = NO;
+        _refresh.isDataInside = YES;
     }
     return _refresh;
 }

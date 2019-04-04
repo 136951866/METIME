@@ -394,7 +394,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             if([conv getType] == TIM_SYSTEM){
                 continue;
             }
-
+            
             TIMMessage *msg = [conv getLastMsg];
             if(msg == nil){
                 continue;
@@ -406,10 +406,15 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             if([kMeUnNilStr([conv getReceiver]) isEqualToString:kMeUnNilStr(kCurrentUser.tls_data.tls_id)]){
                 continue;
             }
+            if([conv getUnReadMessageNum] == 0){
+                continue;
+            }
             unread +=[conv getUnReadMessageNum];
         }
         self.unMessageCount = unread;
         kNoticeReloadkUnMessage
+    }else{
+        self.unMessageCount = 0;
     }
 }
 

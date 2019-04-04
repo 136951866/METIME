@@ -48,4 +48,6 @@
 @property (nonatomic, assign) NSInteger type;
 //云IM
 @property (nonatomic, strong) NSString * tls_id;
+#warning --
+@property (nonatomic, strong) NSString * cellphone;
 @end

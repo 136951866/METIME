@@ -30,6 +30,7 @@
 #import "MEStoreApplyModel.h"
 #import "MEStoreApplyStatusVC.h"
 #import "MEDynamicGoodApplyVC.h"
+#import "MEPAVistorVC.h"
 
 @interface MENewMineHomeCell()<UICollectionViewDelegate,UICollectionViewDataSource>{
     NSArray *_arrModel;
@@ -152,7 +153,8 @@
         }
             break;
         case MePAVistor:{
-   
+            MEPAVistorVC *vc = [[MEPAVistorVC alloc]init];
+            [homeVc.navigationController pushViewController:vc animated:YES];
         }
             break;
             

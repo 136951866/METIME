@@ -259,10 +259,12 @@
 + (void)postUserInfoByTlsWithTls_id:(NSString *)tls_id successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"tls_id":kMeUnNilStr(tls_id),@"token":kMeUnNilStr(kCurrentUser.token)};
     NSString *url = kGetApiWithUrl(MEIPcommongUserInfoByTls);
+    MBProgressHUD *HUD = [self commitWithHUD:@""];
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
         kMeCallBlock(successBlock,responseObject);
     } failure:^(id error) {
-        
+        [HUD hideAnimated:YES];
     }];
 }
 
