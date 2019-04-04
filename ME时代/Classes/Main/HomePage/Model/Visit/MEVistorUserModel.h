@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSString * header_pic;
 @property (nonatomic, strong) NSString * address;
 @property (nonatomic, strong) NSString * sex;
+@property (nonatomic, strong) NSString * cellphone;
 
 @end
 
@@ -48,6 +49,5 @@
 @property (nonatomic, assign) NSInteger type;
 //云IM
 @property (nonatomic, strong) NSString * tls_id;
-#warning --
-@property (nonatomic, strong) NSString * cellphone;
+
 @end
