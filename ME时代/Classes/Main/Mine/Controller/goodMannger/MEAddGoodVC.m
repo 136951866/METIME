@@ -102,7 +102,7 @@
         addmodel.keywords = kMeUnNilStr(model.keywords);
         
         
-        addmodel.product_position = model.state;
+        addmodel.tool = model.product_position;
         addmodel.state = model.state;
         addmodel.is_new = model.is_new;
         addmodel.is_hot = model.is_hot;

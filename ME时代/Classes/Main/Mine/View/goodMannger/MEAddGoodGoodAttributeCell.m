@@ -153,11 +153,11 @@
     }
     
     //1全部显示 2小程序 3APP
-    if(_model.product_position == 1){
+    if(_model.tool == 1){
         _btnShowAll.selected = YES;
         _btnShowApp.selected = NO;
         _btnShowWebApp.selected = NO;
-    }else if (_model.product_position == 2){
+    }else if (_model.tool == 2){
         _btnShowAll.selected = NO;
         _btnShowApp.selected = NO;
         _btnShowWebApp.selected = YES;
@@ -197,7 +197,7 @@
 }
 
 - (IBAction)showAction:(UIButton *)sender {
-    _model.product_position = 2;
+    _model.tool = 2;
     [self reloadBtn];
 }
 

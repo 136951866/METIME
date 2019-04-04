@@ -387,7 +387,23 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         TIMManager *manager = [TIMManager sharedInstance];
         NSArray *convs = [manager getConversationList];
         for (TIMConversation *conv in convs) {
+            if(convs == nil){
+                continue;
+            }
+            
             if([conv getType] == TIM_SYSTEM){
+                continue;
+            }
+
+            TIMMessage *msg = [conv getLastMsg];
+            if(msg == nil){
+                continue;
+            }
+            
+            if(kMeUnNilStr([conv getReceiver]).length == 0){
+                continue;
+            }
+            if([kMeUnNilStr([conv getReceiver]) isEqualToString:kMeUnNilStr(kCurrentUser.tls_data.tls_id)]){
                 continue;
             }
             unread +=[conv getUnReadMessageNum];

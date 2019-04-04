@@ -100,7 +100,7 @@
                           
                           @"keywords":kMeUnNilStr(model.keywords),
                           @"state":@(model.state),
-                          @"product_position":@(model.product_position),
+                          @"tool":@(model.tool),
                           @"is_new":@(model.is_new),
                           @"is_hot":@(model.is_hot),
                           @"is_recommend":@(model.is_recommend),

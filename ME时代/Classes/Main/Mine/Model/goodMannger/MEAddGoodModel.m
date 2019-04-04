@@ -25,8 +25,7 @@
     model.is_recommend = 1;
     model.is_clerk_share = 1;
     model.state = 1;
-#warning -- 默认 小程序
-    model.product_position = 2;
+    model.tool = 2;
     model.ratio_after_sales = 0;
     model.ratio_marketing = 0;
     model.ratio_store = 0;

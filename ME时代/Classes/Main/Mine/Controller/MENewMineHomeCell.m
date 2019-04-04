@@ -151,6 +151,11 @@
             [homeVc.navigationController pushViewController:vc animated:YES];
         }
             break;
+        case MePAVistor:{
+   
+        }
+            break;
+            
         default:
             break;
     }

@@ -57,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSString *keywords;
 @property (nonatomic,assign) NSInteger state;//上架
 //1全部显示 2小程序 3APP
-@property (nonatomic,assign) NSInteger product_position//显示
+@property (nonatomic,assign) NSInteger tool//显示
 ;
 @property (nonatomic,assign) NSInteger is_new;//是否新品
 @property (nonatomic,assign) NSInteger is_hot;//爆款
