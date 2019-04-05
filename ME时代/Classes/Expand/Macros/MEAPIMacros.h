@@ -15,8 +15,8 @@
 
 //域名 develop
 #ifdef TestVersion
-//#define BASEIP @"https://test.meshidai.com/api/"
-#define BASEIP @"https://develop.meshidai.com/api/"
+#define BASEIP @"https://test.meshidai.com/api/"
+//#define BASEIP @"https://develop.meshidai.com/api/"
 //#define BASEIP @"http://test_dev.meshidai.com/api/"
 #else
 #define BASEIP @"https://msd.meshidai.com/api/"
