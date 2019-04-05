@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"访问记录";
+    self.title = @"获客图文";
     [self.view addSubview:self.tableView];
     [self.refresh addRefreshView];
     // Do any additional setup after loading the view.
