@@ -26,7 +26,7 @@
 - (void)setUIWithModel:(MEDistributionTeamModel *)model{
     kSDLoadImg(_imgPic, model.header_pic);
     _lblTitle.text = kMeUnNilStr(model.nick_name);
-    _lblDate.text = kMeUnNilStr(model.updated_at);
+    _lblDate.text = kMeUnNilStr(model.created_at);
 }
 
 @end
