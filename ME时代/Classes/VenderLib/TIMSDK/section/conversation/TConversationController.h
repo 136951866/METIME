@@ -18,4 +18,5 @@
 @interface TConversationController : UIViewController
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, weak) id<TConversationControllerDelegagte> delegate;
+@property (nonatomic, assign) BOOL isAi;
 @end

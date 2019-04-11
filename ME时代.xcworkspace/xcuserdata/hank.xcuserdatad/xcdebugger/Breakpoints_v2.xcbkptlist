@@ -390,7 +390,7 @@
                   moduleName = "ME&#x65f6;&#x4ee3;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hank/Desktop/METIME/ME%E6%97%B6%E4%BB%A3/Classes/Main/Mine/Controller/goodMannger/MEGoodManngerSpecVC.m"
-                  timestampString = "576061459.518402"
+                  timestampString = "576687677.249472"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "183"
@@ -405,7 +405,7 @@
                   moduleName = "ME&#x65f6;&#x4ee3;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hank/Desktop/METIME/ME%E6%97%B6%E4%BB%A3/Classes/Main/Mine/Controller/goodMannger/MEGoodManngerSpecVC.m"
-                  timestampString = "576061459.5243241"
+                  timestampString = "576687677.251375"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "181"
@@ -421,13 +421,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/Base/Controller/MERCConversationVC.m"
-            timestampString = "576056494.244505"
+            filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/Mine/Model/AI/MEAiCustomerDataModel.m"
+            timestampString = "576663985.6970299"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-initSomeThing"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "-setSex:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -437,13 +437,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/Base/Controller/MERCConversationVC.m"
-            timestampString = "576056494.244745"
+            filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/Mine/Model/AI/MEAiCustomerDataModel.m"
+            timestampString = "576663985.697351"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "-initSomeThing"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "-setSex:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -453,13 +453,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/Base/Controller/MERCConversationVC.m"
-            timestampString = "576056494.244828"
+            filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/Mine/Model/AI/MEAiCustomerDataModel.m"
+            timestampString = "576663985.697457"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "-initSomeThing"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "-setSex:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -469,13 +469,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ME&#x65f6;&#x4ee3;/AppDelegate/AppDelegate.m"
-            timestampString = "576065783.206581"
+            filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/Mine/Model/AI/MEAiCustomerDataModel.m"
+            timestampString = "576663985.697562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "386"
-            endingLineNumber = "386"
-            landmarkName = "-getImUnread"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "-setSex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/Mine/Controller/MEPAVistorVC.m"
+            timestampString = "576688323.51596"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "-handleResponse:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -22,8 +22,28 @@
 @class MEStoreApplyParModel;
 @class MEDynamicGoodApplyModel;
 @class MEAddGoodModel;
+@class MEAiCustomerDataModel;
 
 @interface MEPublicNetWorkTool : NSObject
+
+/*********************************************/
+#pragma makr - ai
+//设置用户标签
++ (void)postgetCustomerGetLabelWithLabel:(NSString*)label uid:(NSString*)uid SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+
+//获取标签列表
++ (void)postgetCustomerGetLabelWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+//实际跟进阶段   更新
++ (void)postgetCustomerupdateFollowWithUid:(NSString*)uid follow_up:(NSString*)follow_up SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+////修改客户资料
++ (void)postgetCustomerDetailWithModel:(MEAiCustomerDataModel*)model SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+//客户详情(雷达)
++ (void)postgetCustomerDetailWithUid:(NSString*)uid SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+//客户详情(雷达)
++ (void)postgetMemberBehaviorWithUid:(NSString*)uid SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+//雷达--行为
++ (void)postgetMemberBehaviorWithtype:(NSString*)type SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+
 
 
 /*********************************************/

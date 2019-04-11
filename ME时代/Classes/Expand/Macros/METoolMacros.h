@@ -265,6 +265,9 @@ NS_INLINE NSString *kMeFilePathAtDocumentWithName(NSString *fileNAme){
 //自提订单搜索历史记录
 #define kMESelfExtraceSearchVCSearchHistoriesCachePath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"kMESelfExtraceSearchVC.plist"]
 
+//客户搜索历史记录
+#define kMEMEAICustomerSearchVCHistoriesCachePath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"MEAICustomerSearchVC.plist"]
+
 //优惠卷搜索历史记录
 #define kMECouponSearchVCSearchHistoriesCachePath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"MECouponSearchVC.plist"]
 //文章搜索历史记录

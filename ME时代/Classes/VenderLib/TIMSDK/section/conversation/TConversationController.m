@@ -56,7 +56,10 @@
 {
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     _tableView.tableHeaderView  = [[UIView alloc]initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH , kMeNavBarHeight)];
-    _tableView.tableFooterView = [[UIView alloc] init];
+    if(_isAi){
+        _tableView.height = SCREEN_HEIGHT - kMeTabBarHeight;
+    }
+    _tableView.tableFooterView = [UIView new];
     _tableView.backgroundColor = TConversationController_Background_Color;
     _tableView.delegate = self;
     _tableView.dataSource = self;

@@ -29,7 +29,12 @@
 }
 
 - (NSDictionary *)requestParameter{
-    return @{@"token":kMeUnNilStr(kCurrentUser.token)};
+//    if(self.followUpMember){
+//        return @{@"token":kMeUnNilStr(kCurrentUser.token),@"type":@"1",@"uid":@"1"};
+//    }else{
+      return @{@"token":kMeUnNilStr(kCurrentUser.token)};
+//    }
+    
 }
 
 - (void)handleResponse:(id)data{
@@ -56,6 +61,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MEVistorUserModel *model = self.refresh.arrData[indexPath.row];
+    if(model.user == nil){
+        [MEShowViewTool showMessage:@"未获取到用户信息" view:self.view];
+        return;
+    }
+    if(kMeUnNilStr(model.tls_id).length == 0){
+        [MEShowViewTool showMessage:@"未获取到用户信息" view:self.view];
+        return;
+    }
+    if(kMeUnNilStr(model.user.cellphone).length == 0){
+        [MEShowViewTool showMessage:@"未获取到用户信息" view:self.view];
+        return;
+    }
     MECustomActionSheet *sheet = [[MECustomActionSheet alloc]initWithTitles:@[@"聊天",@"拨打电话"]];
     kMeWEAKSELF
     sheet.blockBtnTapHandle = ^(NSInteger index){
@@ -77,10 +94,11 @@
     };
     [sheet show];
 }
-
+#warning --
+//CGRectMake(0,kMeNavBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight)
 - (UITableView *)tableView{
     if(!_tableView){
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,kMeNavBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight-kMeTabBarHeight) style:UITableViewStylePlain];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEPAVistorCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEPAVistorCell class])];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
@@ -94,7 +112,11 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonGetAccessUser)];
+        NSString *apiSTr = kGetApiWithUrl(MEIPcommonGetAccessUser);
+//        if(self.followUpMember){
+//            apiSTr = kGetApiWithUrl(MEIPcommonaifollowUpMember);
+//        }
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:apiSTr];
         _refresh.delegate = self;
         _refresh.isDataInside = YES;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {

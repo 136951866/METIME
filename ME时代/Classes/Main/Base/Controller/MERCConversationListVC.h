@@ -10,4 +10,6 @@
 
 @interface MERCConversationListVC : MEBaseVC
 
+@property (nonatomic, assign) BOOL isAi;
+
 @end

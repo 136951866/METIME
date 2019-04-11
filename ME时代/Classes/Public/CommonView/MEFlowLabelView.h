@@ -15,6 +15,16 @@ NS_ASSUME_NONNULL_BEGIN
 + (CGFloat)getMEFlowLabelViewHeightWithArr:(NSArray *)arr;
 - (void)reloaWithArr:(NSArray *)arr;
 
+//宽度
+@property (nonatomic, assign) CGFloat flowLabelViewWdith;
+//高度
+@property (nonatomic, assign) CGFloat  flowLabelViewLabelHeight ;
+//@property (nonatomic, assign) CGFloat  flowLabelViewLabelMargin ;
+//@property (nonatomic, assign) CGFloat  flowLabelViewLabelPadding ;
+
++ (CGFloat)getCustomMEFlowLabelViewHeightWithArr:(NSArray *)arr wdith:(CGFloat)wdith LabelViewLabelHeight:(CGFloat)LabelViewLabelHeight font:(UIFont *)font;
+- (void)reloaCustomWithArr:(NSArray *)arr font:(UIFont *)font textColor:(UIColor *)textColor backGroundColor:(UIColor *)backGroundColor;
+
 @end
 
 NS_ASSUME_NONNULL_END

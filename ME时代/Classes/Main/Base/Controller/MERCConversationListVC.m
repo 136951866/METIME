@@ -25,9 +25,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.navBarHidden = NO;
     TConversationController *conv = [[TConversationController alloc] init];
+    conv.isAi = self.isAi;
     conv.delegate = self;
     [self addChildViewController:conv];
     [self.view addSubview:conv.view];

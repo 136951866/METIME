@@ -15,8 +15,8 @@
 
 //域名 develop
 #ifdef TestVersion
-#define BASEIP @"https://test.meshidai.com/api/"
-//#define BASEIP @"https://develop.meshidai.com/api/"
+//#define BASEIP @"https://test.meshidai.com/api/"
+#define BASEIP @"https://develop.meshidai.com/api/"
 //#define BASEIP @"http://test_dev.meshidai.com/api/"
 #else
 #define BASEIP @"https://msd.meshidai.com/api/"
@@ -37,6 +37,40 @@
 #define kNetTokenInvalid @"401"
 #define kNetError @"503"
 #define kNetInvateCode @"502"
+
+/*********************************************/
+#pragma makr - ai
+//查询 雷达(底部导航) 时间 访问人数数据信息
+#define MEIPcommonairadartime @"common/airadar/time"
+//互动次数查询
+#define MEIPcommonairadarcommunication @"common/airadar/communication"
+//雷达--行为
+#define MEIPcommonaigetMemberBehavior @"common/airadar/getMemberBehavior"
+//客户   -  加入时间
+#define MEIPcommonaigetjoinTime @"common/airadar/joinTime"
+//客户 -   活跃时间
+#define MEIPcommonaigetactive @"common/airadar/active"
+//客户 -   跟进
+#define MEIPcommonaigetupdateFollow @"common/airadar/follow"
+//客户搜索
+#define MEIPcommonaigetsearch @"common/airadar/search"
+//客户详情(雷达)
+#define MEIPcommonaigetMemberDetail @"common/airadar/getMemberDetail"
+//用户访问记录
+#define MEIPcommonaigetMemberVisit @"common/airadar/getMemberVisit"
+//获取客户资料
+#define MEIPcommonaigetCustomerDetail @"common/airadar/customerDetail"
+//修改客户资料
+#define MEIPcommonaiupdateDetail @"common/airadar/updateDetail"
+//实际跟进阶段   更新
+#define MEIPcommonaiupdateFollow @"common/airadar/updateFollow"
+//获取标签列表
+#define MEIPcommonaigetLabel @"common/label/getLabel"
+//设置用户标签
+#define MEIPcommonaisetMemberLabel @"common/user/setMemberLabel"
+//跟进投票用户（点击打电话时调用）
+#define MEIPcommonaifollowUpMember @"common/followup/followUpMember"
+/*********************************************/
 
 /*********************************************/
 #pragma makr - goodMannger

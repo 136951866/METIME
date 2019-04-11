@@ -42,14 +42,16 @@
 #pragma mark - init IM sdk
     [[TUIKit sharedInstance] initKit:sdkAppid accountType:sdkAccountType withConfig:[TUIKitConfig defaultConfig]];
 
-    if([MEUserInfoModel isLogin] && kMeUnNilStr(kCurrentUser.tls_data.tls_id).length && kMeUnNilStr(kCurrentUser.tls_data.user_tls_key).length){
-        NSLog(@"%@    %@",kMeUnNilStr(kCurrentUser.tls_data.tls_id),kMeUnNilStr(kCurrentUser.tls_data.user_tls_key));
-        [[TUIKit sharedInstance] loginKit:kMeUnNilStr(kCurrentUser.tls_data.tls_id) userSig:kMeUnNilStr(kCurrentUser.tls_data.user_tls_key) succ:^{
-            NSLog(@"sucess");
-        } fail:^(int code, NSString *msg) {
-            NSLog(@"fial");
-        }];
-    }
+#warning ---
+    
+//    if([MEUserInfoModel isLogin] && kMeUnNilStr(kCurrentUser.tls_data.tls_id).length && kMeUnNilStr(kCurrentUser.tls_data.user_tls_key).length){
+//        NSLog(@"%@    %@",kMeUnNilStr(kCurrentUser.tls_data.tls_id),kMeUnNilStr(kCurrentUser.tls_data.user_tls_key));
+//        [[TUIKit sharedInstance] loginKit:kMeUnNilStr(kCurrentUser.tls_data.tls_id) userSig:kMeUnNilStr(kCurrentUser.tls_data.user_tls_key) succ:^{
+//            NSLog(@"sucess");
+//        } fail:^(int code, NSString *msg) {
+//            NSLog(@"fial");
+//        }];
+//    }
     
     if (@available(iOS 11.0, *)) {
         [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;

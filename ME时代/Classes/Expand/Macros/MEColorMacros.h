@@ -17,6 +17,7 @@
 #define kMEHexColor(color) [UIColor colorWithHexString:color]
 #define kMEColorRGB(rgb)    [UIColor colorWithRed:(rgb)/255.0 green:(rgb)/255.0 blue:(rgb)/255.0 alpha:1.0]
 
+#define kME333333 [UIColor colorWithHexString:@"333333"]
 #define kMEf4f4f4 [UIColor colorWithHexString:@"f4f4f4"]
 #define kMEeeeeee [UIColor colorWithHexString:@"eeeeee"]
 #define kMEe3e3e3 [UIColor colorWithHexString:@"e3e3e3"]
