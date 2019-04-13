@@ -414,6 +414,8 @@
 		3671F86121B7B9AD00590046 /* MEGuideVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3671F86021B7B9AD00590046 /* MEGuideVC.m */; };
 		367721E42147681000C1463A /* MEMineHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 367721E22147681000C1463A /* MEMineHomeCell.m */; };
 		367721E52147681000C1463A /* MEMineHomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 367721E32147681000C1463A /* MEMineHomeCell.xib */; };
+		367A50952261D5CF008B3BC0 /* METhridHomeHotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 367A50932261D5CF008B3BC0 /* METhridHomeHotCell.m */; };
+		367A50962261D5CF008B3BC0 /* METhridHomeHotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 367A50942261D5CF008B3BC0 /* METhridHomeHotCell.xib */; };
 		367C05BD218FD14E0088C087 /* MENewHomePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 367C05BC218FD14E0088C087 /* MENewHomePage.m */; };
 		367C05C1218FD1700088C087 /* MENewHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 367C05BF218FD1700088C087 /* MENewHomeCell.m */; };
 		367C05C2218FD1700088C087 /* MENewHomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 367C05C0218FD1700088C087 /* MENewHomeCell.xib */; };
@@ -1662,6 +1664,9 @@
 		367721E12147681000C1463A /* MEMineHomeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MEMineHomeCell.h; path = View/home/MEMineHomeCell.h; sourceTree = SOURCE_ROOT; };
 		367721E22147681000C1463A /* MEMineHomeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MEMineHomeCell.m; path = View/home/MEMineHomeCell.m; sourceTree = SOURCE_ROOT; };
 		367721E32147681000C1463A /* MEMineHomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MEMineHomeCell.xib; path = View/home/MEMineHomeCell.xib; sourceTree = SOURCE_ROOT; };
+		367A50922261D5CF008B3BC0 /* METhridHomeHotCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = METhridHomeHotCell.h; sourceTree = "<group>"; };
+		367A50932261D5CF008B3BC0 /* METhridHomeHotCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = METhridHomeHotCell.m; sourceTree = "<group>"; };
+		367A50942261D5CF008B3BC0 /* METhridHomeHotCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = METhridHomeHotCell.xib; sourceTree = "<group>"; };
 		367C05BB218FD14E0088C087 /* MENewHomePage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MENewHomePage.h; sourceTree = "<group>"; };
 		367C05BC218FD14E0088C087 /* MENewHomePage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MENewHomePage.m; sourceTree = "<group>"; };
 		367C05BE218FD1700088C087 /* MENewHomeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MENewHomeCell.h; sourceTree = "<group>"; };
@@ -2943,6 +2948,9 @@
 				36D9E0C321F5BA5C00687580 /* METhridNavView.xib */,
 				36D9E0CA21F5C40000687580 /* METhridHomeNavView.h */,
 				36D9E0CB21F5C40000687580 /* METhridHomeNavView.m */,
+				367A50922261D5CF008B3BC0 /* METhridHomeHotCell.h */,
+				367A50932261D5CF008B3BC0 /* METhridHomeHotCell.m */,
+				367A50942261D5CF008B3BC0 /* METhridHomeHotCell.xib */,
 			);
 			path = Thrid;
 			sourceTree = "<group>";
@@ -5910,6 +5918,7 @@
 				3630071D2148DF7E00C88264 /* MEMineExchangeCell.xib in Resources */,
 				3601765E215B1B240080EB00 /* MEMoneyDetailedCell.xib in Resources */,
 				3645BBD8221BF2CC0042748C /* MEBStoreMannagerEditInfoVC.xib in Resources */,
+				367A50962261D5CF008B3BC0 /* METhridHomeHotCell.xib in Resources */,
 				3602A18E21424091004A6E1F /* ZLWKJSPOST.html in Resources */,
 				3628E80121C0FBC100D5405B /* MEGetCaseContentCell.xib in Resources */,
 				36FB082F218058CE003601FD /* MEProductSearchVC.xib in Resources */,
@@ -6440,6 +6449,7 @@
 				36F5E823222F68F1000B0241 /* TMessageResource.m in Sources */,
 				360EE7F021F575980048490E /* METhridHomeTimeSecionContentCell.m in Sources */,
 				360AF11321AFD7220039AB79 /* MEVisterDetailCell.m in Sources */,
+				367A50952261D5CF008B3BC0 /* METhridHomeHotCell.m in Sources */,
 				366019BB21E8666000F1BB37 /* MENewMineHomeContentCell.m in Sources */,
 				3652600E216F335A003E3CB4 /* MEStoreDetailCell.m in Sources */,
 				36FEEBBF214CE74C00060209 /* MEPayStatusVC.m in Sources */,

@@ -28,14 +28,17 @@
 #import "MEStoreModel.h"
 #import "MENewStoreDetailsVC.h"
 #import "MEAIHomeVC.h"
-
 #import "MEAIDataHomeTimeVC.h"
+#import "METhridHomeHotCell.h"
+#import <MediaPlayer/MediaPlayer.h>
+
 const static CGFloat kImgStore = 50;
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSInteger _selectTimeIndex;
     NSArray *_arrRudeBuy;
     NSArray *_arrRudeTime;
     NSArray *_arrCommonCoupon;
+    NSArray *_arrHot;
     METhridHomeModel *_homeModel;
     CGFloat _sectionHeaderHeight;
     CGFloat _alphaNum;
@@ -65,6 +68,7 @@ const static CGFloat kImgStore = 50;
     [self.view addSubview:self.navView];
     [self.view addSubview:self.imgStore];
     _selectTimeIndex = 0;
+    _arrHot = @[@"",@"",@""];//[NSArray array];
     _arrRudeBuy = [NSArray array];
     _arrCommonCoupon = [NSArray array];
     _arrRudeTime = [NSArray array];
@@ -253,43 +257,46 @@ const static CGFloat kImgStore = 50;
 }
 
 - (void)toStore{
-    
-#warning --
-    MEAIHomeVC *home = [[MEAIHomeVC alloc]init];
-    [self.navigationController pushViewController:home animated:YES];
-    
-//    if(_stroeModel){
-//        MENewStoreDetailsVC *details = [[MENewStoreDetailsVC alloc]initWithId:_stroeModel.store_id];
-//        [self.navigationController pushViewController:details animated:YES];
-//    }else{
-//        self.tabBarController.selectedIndex = 1;
-//    }
+    if(_stroeModel){
+        MENewStoreDetailsVC *details = [[MENewStoreDetailsVC alloc]initWithId:_stroeModel.store_id];
+        [self.navigationController pushViewController:details animated:YES];
+    }else{
+        self.tabBarController.selectedIndex = 1;
+    }
+}
+
+- (void)payWithModel:(id)model{
+    MPMoviePlayerViewController *vc = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:model]];
+    [[vc moviePlayer] prepareToPlay];
+    [self presentMoviePlayerViewControllerAnimated:vc];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return section?1:2;
+    return section?1:kMeUnArr(_arrHot).count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section==0){
-        if(indexPath.row==0){
-            MERushBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MERushBuyCell class]) forIndexPath:indexPath];
-            if(kMeUnArr(_arrRudeTime).count){
-                METhridHomeRudeTimeModel *model = _arrRudeTime[_selectTimeIndex];
-                cell.time = kMeUnNilStr(model.time);
-            }
-            [cell setUIWithArr:_arrRudeBuy];
-            return cell;
-        }else if (indexPath.row==1){
-            MECommondCouponCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECommondCouponCell class]) forIndexPath:indexPath];
-            [cell setUIWithArr:_arrCommonCoupon imgUrl:kMeUnNilStr(_homeModel.coupon_background.img)];
-            return cell;
+    if(indexPath.section== 0){
+        METhridHomeHotCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([METhridHomeHotCell class]) forIndexPath:indexPath];
+        kMeWEAKSELF
+        [cell setUIWIthModel:@"" payBlock:^{
+            kMeSTRONGSELF
+            [strongSelf payWithModel:@"https://media.w3.org/2010/05/sintel/trailer.mp4"];
+        }];
+        return cell;
+    }else if(indexPath.section==1){
+        MERushBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MERushBuyCell class]) forIndexPath:indexPath];
+        if(kMeUnArr(_arrRudeTime).count){
+            METhridHomeRudeTimeModel *model = _arrRudeTime[_selectTimeIndex];
+            cell.time = kMeUnNilStr(model.time);
         }
-    }else if (indexPath.section==1){
+        [cell setUIWithArr:_arrRudeBuy];
+        return cell;
+    }else if (indexPath.section==2){
         MECoupleHomeMainGoodGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainGoodGoodsCell class]) forIndexPath:indexPath];
         [cell setPinduoduoUIWithArr:self.refresh.arrData];
         kMeWEAKSELF
@@ -306,50 +313,36 @@ const static CGFloat kImgStore = 50;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section==0){
-        if(indexPath.row==0){
-            return [MERushBuyCell getCellHeightWithArr:_arrRudeBuy];
-        }else if (indexPath.row==1){
-            return [MECommondCouponCell getCellHeight];
-        }
-    }else if (indexPath.section==1){
+        return kMEThridHomeHotCellHeight;
+    }else if(indexPath.section==1){
+        return [MERushBuyCell getCellHeightWithArr:_arrRudeBuy];
+    }else if (indexPath.section==2){
         return [MECoupleHomeMainGoodGoodsCell getCellHeightWithArr:self.refresh.arrData];;
     }
     return 1;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section == 0 && indexPath.row == 1){
-        if(_homeModel && _homeModel.coupon_background && _homeModel.coupon_background.product_id){
-            METhridProductDetailsVC *details = [[METhridProductDetailsVC alloc]initWithId:_homeModel.coupon_background.product_id];
-            [self.navigationController pushViewController:details animated:YES];
-        }
-    }
+//    if(indexPath.section == 0 && indexPath.row == 1){
+//        if(_homeModel && _homeModel.coupon_background && _homeModel.coupon_background.product_id){
+//            METhridProductDetailsVC *details = [[METhridProductDetailsVC alloc]initWithId:_homeModel.coupon_background.product_id];
+//            [self.navigationController pushViewController:details animated:YES];
+//        }
+//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if(!section){
-        return kMEThridHomeTimeSecionViewHeight;
-    }
-    return 41;
+    return 52;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if(!section){
-        METhridHomeTimeSecionView *headview=[tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([METhridHomeTimeSecionView class])];
-        kMeWEAKSELF
-        [headview setUIWithArr:_arrRudeTime selectIndex:_selectTimeIndex selectBlock:^(NSInteger index) {
-            kMeSTRONGSELF
-            strongSelf->_selectTimeIndex = index;
-            [strongSelf getRushGoods];
-        }];
-        return headview;
-    }else{
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 41)];
-        view.backgroundColor = kMEf6f6f6;
-        UILabel *lbl = [MEView lblWithFram:CGRectMake(11, 0, SCREEN_WIDTH-22, 41) textColor:kMEblack str:@"拼多多优惠券" font:kMeFont(16)];
-        [view addSubview:lbl];
-        return view;
-    }
+    NSArray *arrTitle = @[@"爆款专区",@"限时抢购",@"拼多多卷"];
+    NSString *str = arrTitle[section];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 52)];
+    view.backgroundColor = kMEf6f6f6;
+    UILabel *lbl = [MEView lblWithFram:CGRectMake(11, 0, SCREEN_WIDTH-22, 52) textColor:kMEblack str:str font:kMeFont(18)];
+    [view addSubview:lbl];
+    return view;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -372,21 +365,10 @@ const static CGFloat kImgStore = 50;
     
     if(scrollView.contentOffset.y>=_alphaNum){
         _imgStore.hidden = NO;
-//        if (scrollView.contentOffset.y<=(_alphaNum + kMEThridHomeNavViewHeight)&&scrollView.contentOffset.y>=0) {
-//            _navView.hidden = NO;
-//            CGFloat alpha = scrollView.contentOffset.y/(kMEThridHomeNavViewHeight+_alphaNum);
-//            [_navView setStroeBackAlpha:alpha];
-//        } else if (scrollView.contentOffset.y>=(_alphaNum+kMEThridHomeNavViewHeight)) {
-//            [_navView setStroeBackAlpha:1];
-//            _navView.hidden = NO;
-//        }
     }else if (scrollView.contentOffset.y<0){
-//        _navView.hidden = YES;
         _imgStore.hidden = YES;
     }else{
          _imgStore.hidden = YES;
-//        _navView.hidden = NO;
-//        [_navView setStroeBackAlpha:0];
     }
 }
 
@@ -394,9 +376,9 @@ const static CGFloat kImgStore = 50;
     if(!_tableView){
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeTabBarHeight) style:UITableViewStylePlain];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MERushBuyCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MERushBuyCell class])];
-        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MECommondCouponCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MECommondCouponCell class])];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MECoupleHomeMainGoodGoodsCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MECoupleHomeMainGoodGoodsCell class])];
-        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([METhridHomeTimeSecionView class]) bundle:nil] forHeaderFooterViewReuseIdentifier:NSStringFromClass([METhridHomeTimeSecionView class])];
+        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([METhridHomeHotCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([METhridHomeHotCell class])];
+        
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.tableFooterView = [UIView new];

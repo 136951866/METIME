@@ -57,7 +57,7 @@
     [self addSubview:self.viewForBack];
     [self addSubview:self.viewForSearch];
     [self.viewForSearch addSubview:self.imageForSearch];
-    [self addSubview:self.btnNotice];
+//    [self addSubview:self.btnNotice];
     [self addSubview:self.btnSort];
     [self addSubview:self.viewForUnread];
 //    [self addSubview:self.viewForStore];
@@ -78,7 +78,7 @@
 
 - (UIView *)viewForUnread{
     if(!_viewForUnread){
-        _viewForUnread = [[UIView alloc]initWithFrame:CGRectMake(self.btnNotice.right-12, self.btnNotice.top+5,6, 6)];
+        _viewForUnread = [[UIView alloc]initWithFrame:CGRectMake(self.btnSort.right-12, self.btnSort.top+5,6, 6)];
         _viewForUnread.backgroundColor = [UIColor redColor];
         _viewForUnread.cornerRadius = 3;
         _viewForUnread.clipsToBounds = YES;
@@ -147,7 +147,7 @@
 
 - (UIView *)viewForSearch{
     if(!_viewForSearch){
-        _viewForSearch = [[UIView alloc]initWithFrame:CGRectMake(self.btnNotice.right+10, _top, self.width-110, 35)];
+        _viewForSearch = [[UIView alloc]initWithFrame:CGRectMake(10, _top, self.width-65, 35)];
         _viewForSearch.backgroundColor = [UIColor whiteColor];
         _viewForSearch.cornerRadius = 35/2;
         _viewForSearch.clipsToBounds = YES;
@@ -158,18 +158,18 @@
     return _viewForSearch;
 }
 
-- (UIButton *)btnNotice{
-    if(!_btnNotice){
-        _btnNotice = [MEView btnWithFrame:CGRectMake(10, _top, 35, 35) Img:[UIImage imageNamed:@"thirdHomeNotice"]];
-        [_btnNotice addTarget:self action:@selector(noticeAction:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _btnNotice;
-}
+//- (UIButton *)btnNotice{
+//    if(!_btnNotice){
+//        _btnNotice = [MEView btnWithFrame:CGRectMake(10, _top, 35, 35) Img:[UIImage imageNamed:@"thirdHomeNotice"]];
+//        [_btnNotice addTarget:self action:@selector(noticeAction:) forControlEvents:UIControlEventTouchUpInside];
+//    }
+//    return _btnNotice;
+//}
 
 - (UIButton *)btnSort{
     if(!_btnSort){
-        _btnSort = [MEView btnWithFrame:CGRectMake(self.viewForSearch.right+10, self.viewForSearch.top, 35, 35) Img:[UIImage imageNamed:@"thirdHomeSort"]];
-        [_btnSort addTarget:self action:@selector(sortAction:) forControlEvents:UIControlEventTouchUpInside];
+        _btnSort = [MEView btnWithFrame:CGRectMake(self.viewForSearch.right+10, self.viewForSearch.top, 35, 35) Img:[UIImage imageNamed:@"thirdHomeNotice"]];
+        [_btnSort addTarget:self action:@selector(noticeAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnSort;
 }
@@ -186,13 +186,13 @@
     }
 }
 
-- (void)sortAction:(UIButton*)btn{
-     METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
-    if(homeVC){
-        MEFilterVC *vc = [[MEFilterVC alloc]init];
-        [homeVC.navigationController pushViewController:vc animated:YES];
-    }
-}
+//- (void)sortAction:(UIButton*)btn{
+//     METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
+//    if(homeVC){
+//        MEFilterVC *vc = [[MEFilterVC alloc]init];
+//        [homeVC.navigationController pushViewController:vc animated:YES];
+//    }
+//}
 
 - (void)toNotice{
     METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
