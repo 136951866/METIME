@@ -24,6 +24,9 @@
 
 #import "MESNewHomePageVC.h"
 #import "MEBynamicHomeVC.h"
+//#import "MEShoppingMallVC.h"
+#import "MEFilterGoodVC.h"
+
 @interface METabBarVC ()<UITabBarControllerDelegate>
 
 @property (nonatomic, strong) MENewMineHomeVC *mine;
@@ -44,9 +47,11 @@
     METhridHomeVC *home = [[METhridHomeVC alloc] init];
     [self addChildVc:home title:@"首页" image:@"home" selectedImage:@"home_s"];
     
-    MEStoreHomeVC *store = [[MEStoreHomeVC alloc] init];
+//    MEStoreHomeVC *store = [[MEStoreHomeVC alloc] init];
+    MEFilterGoodVC *filter = [[MEFilterGoodVC alloc]initWithcategory_id:@"0" title:@"优选"];
+    filter.isHome = YES;
     //    MEIMageVC *store = [[MEIMageVC alloc]initWithType:MEMainStoreStyle];
-    [self addChildVc:store title:@"门店" image:@"store" selectedImage:@"store_s"];
+    [self addChildVc:filter title:@"优选" image:@"store" selectedImage:@"store_s"];
     
     
     MEBynamicHomeVC *dynamic = [[MEBynamicHomeVC alloc] init];
@@ -113,10 +118,10 @@
         childVc.title =@"ME时代会员优选";
         childVc.tabBarItem.title=@"首页";
     }
-    if([title isEqualToString:@"门店"]){
-        childVc.title =@"全部门店";
-        childVc.tabBarItem.title=@"门店";
-    }
+//    if([title isEqualToString:@"店铺"]){
+//        childVc.title =@"店铺";
+//        childVc.tabBarItem.title=@"店铺";
+//    }
     [self addChildViewController:nav];
 }
 

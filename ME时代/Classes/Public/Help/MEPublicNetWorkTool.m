@@ -1124,6 +1124,18 @@
 
 #pragma mark - HomePage
 
+//app第三版商业热门产品
++ (void)postGetappThridHomePagHotGoodWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{};
+    NSString *url = kGetApiWithUrl(MEIPcommonappYThirdHomeHotGood);
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        kMeCallBlock(failure,error);
+    }];
+}
+
+
 //app获取店铺信息
 + (void)postGetappHomePageDataWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"token":kMeUnNilStr(kCurrentUser.token)};

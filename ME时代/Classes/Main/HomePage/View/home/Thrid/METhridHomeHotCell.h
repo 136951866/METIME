@@ -10,11 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-const static CGFloat kMEThridHomeHotCellHeight = 168;
+@class METhridHomeHotGoodModel;
+const static CGFloat kMEThridHomeHotCellHeight = 214;
 
 @interface METhridHomeHotCell : UITableViewCell
 
-- (void)setUIWIthModel:(id)model payBlock:(kMeBasicBlock)payBlock;
+- (void)setUIWIthModel:(METhridHomeHotGoodModel *)model payBlock:(kMeBasicBlock)payBlock;
 
 @end
 

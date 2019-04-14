@@ -130,13 +130,13 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
 }
 
 - (IBAction)toStoreAction:(UIButton *)sender {
-    METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
-    if(_storeModel&&homeVC){
-        MENewStoreDetailsVC *details = [[MENewStoreDetailsVC alloc]initWithId:_storeModel.store_id];
-        [homeVC.navigationController pushViewController:details animated:YES];
-    }else{
-        homeVC.tabBarController.selectedIndex = 1;
-    }
+//    METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
+//    if(_storeModel&&homeVC){
+//        MENewStoreDetailsVC *details = [[MENewStoreDetailsVC alloc]initWithId:_storeModel.store_id];
+//        [homeVC.navigationController pushViewController:details animated:YES];
+//    }else{
+//        homeVC.tabBarController.selectedIndex = 1;
+//    }
 }
 
 
@@ -351,9 +351,11 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
 
 
 
-+ (CGFloat)getViewHeightWithModel:(METhridHomeModel *)model{
++ (CGFloat)getViewHeight{
+    CGFloat height = kMEThridHomeHeaderViewHeight - 178;
+    height+=(kSdHeight*kMeFrameScaleX());
 //    CGFloat heigth = 873 - kSdHeight - kSecondImageHeight;
-//    heigth+=(kSdHeight*kMeFrameScaleX());
+    
 //    heigth+=(kSecondImageHeight*kMeFrameScaleX());
 //    if(kMeFrameScaleX()<1){
 //        heigth-=kThridImageHeight;
@@ -362,7 +364,7 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
 //    if(!kMeUnArr(model.scare_buying_goods).count){
 //        heigth -=95;
 //    }
-    return 364;
+    return height;
 }
 
 @end

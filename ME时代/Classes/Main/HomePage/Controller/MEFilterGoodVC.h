@@ -11,5 +11,5 @@
 @interface MEFilterGoodVC : MEBaseVC
 
 - (instancetype)initWithcategory_id:(NSString *)category_id title:(NSString *)title;
-
+@property (nonatomic,assign) BOOL isHome;
 @end

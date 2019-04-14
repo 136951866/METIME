@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="METhridHomeHeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="389" height="364"/>
+            <rect key="frame" x="0.0" y="0.0" width="389" height="357"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzx-cp-lET" customClass="SDCycleScrollView">
@@ -100,10 +100,10 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZg-s4-Brm">
-                    <rect key="frame" x="0.0" y="265" width="389" height="91"/>
+                    <rect key="frame" x="0.0" y="265" width="389" height="92"/>
                     <subviews>
                         <button opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8x-d1-P14" customClass="MEMidelMiddelImageButton">
-                            <rect key="frame" x="194.5" y="0.0" width="97.5" height="91"/>
+                            <rect key="frame" x="194.5" y="0.0" width="97.5" height="92"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="京东劵" image="thirdHomeJd">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -113,7 +113,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDd-ER-kfR" customClass="MEMidelMiddelImageButton">
-                            <rect key="frame" x="97.5" y="0.0" width="97" height="91"/>
+                            <rect key="frame" x="97.5" y="0.0" width="97" height="92"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="拼多多券" image="thirdHomePdd">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -123,9 +123,9 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="1004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQr-Re-635" customClass="MEMidelMiddelImageButton">
-                            <rect key="frame" x="292" y="0.0" width="97" height="91"/>
+                            <rect key="frame" x="292" y="0.0" width="97" height="92"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <state key="normal" title="分类" image="thirdHomefl">
+                            <state key="normal" title="优选" image="thirdHomefl">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
@@ -133,7 +133,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oso-gh-tkZ" customClass="MEMidelMiddelImageButton">
-                            <rect key="frame" x="0.0" y="0.0" width="97.5" height="91"/>
+                            <rect key="frame" x="0.0" y="0.0" width="97.5" height="92"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="淘宝券" image="thirdHomeTbC">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -161,7 +161,7 @@
                         <constraint firstAttribute="bottom" secondItem="BQr-Re-635" secondAttribute="bottom" id="ila-We-XlV"/>
                         <constraint firstItem="sDd-ER-kfR" firstAttribute="width" secondItem="oso-gh-tkZ" secondAttribute="width" id="nHy-Ei-ZHF"/>
                         <constraint firstItem="sDd-ER-kfR" firstAttribute="top" secondItem="ZZg-s4-Brm" secondAttribute="top" id="q4m-YR-9jv"/>
-                        <constraint firstAttribute="height" constant="91" id="uNI-62-xN1"/>
+                        <constraint firstAttribute="height" constant="92" id="uNI-62-xN1"/>
                     </constraints>
                 </view>
             </subviews>
@@ -189,7 +189,7 @@
                 <outlet property="lblStoreName" destination="EOn-20-vdd" id="F7l-s2-mgT"/>
                 <outlet property="sdView" destination="jzx-cp-lET" id="xcN-eE-pkT"/>
             </connections>
-            <point key="canvasLocation" x="63.200000000000003" y="-89.055472263868069"/>
+            <point key="canvasLocation" x="63.200000000000003" y="-92.203898050974516"/>
         </view>
     </objects>
     <resources>

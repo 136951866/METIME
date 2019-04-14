@@ -16,9 +16,14 @@ const static CGFloat kSdHeight = 178;
 const static CGFloat kSecondImageHeight = 154;
 const static CGFloat kThridImageWidth = 177;
 const static CGFloat kThridImageHeight = 200;
+
+const static CGFloat kMEThridHomeHeaderViewHeight = 357;
+
+
 @interface METhridHomeHeaderView : UIView
 
-+ (CGFloat)getViewHeightWithModel:(METhridHomeModel *)model;
+//+ (CGFloat)getViewHeightWithModel:(METhridHomeModel *)model;
++ (CGFloat)getViewHeight;
 //- (void)setUIWithModel:(METhridHomeModel *)model;
 - (void)setUIWithModel:(METhridHomeModel *)model stroeModel:(MEStoreModel *)storemodel;
 

@@ -11,12 +11,12 @@
 
 #warning -mustNotes 上线一定要注释/海报分享
 
-#define TestVersion
+//#define TestVersion
 
 //域名 develop
 #ifdef TestVersion
-//#define BASEIP @"https://test.meshidai.com/api/"
-#define BASEIP @"https://develop.meshidai.com/api/"
+#define BASEIP @"https://test.meshidai.com/api/"
+//#define BASEIP @"https://develop.meshidai.com/api/"
 //#define BASEIP @"http://test_dev.meshidai.com/api/"
 #else
 #define BASEIP @"https://msd.meshidai.com/api/"
@@ -278,6 +278,10 @@
 #define MEIPcommonGetThridHomeBase @"common/home/getHomeBase"
 //app获取店铺信息
 #define MEIPcommonappHomePageData @"common/store/appHomePageData"
+
+//apphome 爆款专区
+#define MEIPcommonappYThirdHomeHotGood @"common/goods/getIndexHotGoods"
+
 /*********************************************/
 
 

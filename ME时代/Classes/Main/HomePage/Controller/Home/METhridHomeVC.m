@@ -30,7 +30,9 @@
 #import "MEAIHomeVC.h"
 #import "MEAIDataHomeTimeVC.h"
 #import "METhridHomeHotCell.h"
-#import <MediaPlayer/MediaPlayer.h>
+//#import <MediaPlayer/MediaPlayer.h>
+#import "MEBasePlayerVC.h"
+#import "METhridHomeHotGoodModel.h"
 
 const static CGFloat kImgStore = 50;
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
@@ -68,7 +70,7 @@ const static CGFloat kImgStore = 50;
     [self.view addSubview:self.navView];
     [self.view addSubview:self.imgStore];
     _selectTimeIndex = 0;
-    _arrHot = @[@"",@"",@""];//[NSArray array];
+    _arrHot = [NSArray array];
     _arrRudeBuy = [NSArray array];
     _arrCommonCoupon = [NSArray array];
     _arrRudeTime = [NSArray array];
@@ -81,7 +83,6 @@ const static CGFloat kImgStore = 50;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogout) name:kUserLogout object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogin) name:kUserLogin object:nil];
     
-
 }
 
 - (void)userLogout{
@@ -135,6 +136,7 @@ const static CGFloat kImgStore = 50;
             dispatch_semaphore_signal(semaphore);
         }];
     });
+    
     dispatch_group_async(group, queue, ^{
         [MEPublicNetWorkTool postThridHomeStyleWithSuccessBlock:^(ZLRequestResponse *responseObject) {
             kMeSTRONGSELF
@@ -144,6 +146,7 @@ const static CGFloat kImgStore = 50;
             dispatch_semaphore_signal(semaphore);
         }];
     });
+
     dispatch_group_async(group, queue, ^{
         [MEPublicNetWorkTool postGetPinduoduoCommondPoductWithSuccessBlock:^(ZLRequestResponse *responseObject) {
             kMeSTRONGSELF
@@ -153,6 +156,7 @@ const static CGFloat kImgStore = 50;
             dispatch_semaphore_signal(semaphore);
         }];
     });
+    
     dispatch_group_async(group, queue, ^{
         [MEPublicNetWorkTool postThridHomeGetSeckillTimeSuccessBlock:^(ZLRequestResponse *responseObject) {
             kMeSTRONGSELF
@@ -168,7 +172,25 @@ const static CGFloat kImgStore = 50;
             dispatch_semaphore_signal(semaphore);
         }];
     });
+    
+    dispatch_group_async(group, queue, ^{
+        [MEPublicNetWorkTool postGetappThridHomePagHotGoodWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            if ([responseObject.data isKindOfClass:[NSArray class]]) {
+                strongSelf->_arrHot =[METhridHomeHotGoodModel mj_objectArrayWithKeyValuesArray:responseObject.data];
+            }else{
+                strongSelf->_arrHot = [NSArray array];
+            }
+            dispatch_semaphore_signal(semaphore);
+        } failure:^(id object) {
+            kMeSTRONGSELF
+            strongSelf->_arrHot = [NSArray array];
+            dispatch_semaphore_signal(semaphore);
+        }];
+    });
+    
     dispatch_group_notify(group, queue, ^{
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
@@ -183,7 +205,7 @@ const static CGFloat kImgStore = 50;
             }
             strongSelf->_imgStore.hidden = YES;
 //            [strongSelf->_navView setStoreInfoWithModel:strongSelf->_stroeModel];
-            strongSelf->_headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [METhridHomeHeaderView getViewHeightWithModel:strongSelf->_homeModel]);
+//            strongSelf->_headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [METhridHomeHeaderView getViewHeightWithModel:strongSelf->_homeModel]);
             [strongSelf getRushGoods];
             strongSelf.tableView.tableHeaderView = strongSelf->_headerView;
             [strongSelf.tableView reloadData];
@@ -193,7 +215,8 @@ const static CGFloat kImgStore = 50;
 -(void)getRushGoods{
     if(!kMeUnArr(_arrRudeTime).count){
         _arrRudeBuy = @[];
-        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        [_tableView reloadData];
+//        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
         return;
     }
     METhridHomeRudeTimeModel *model = _arrRudeTime[_selectTimeIndex];
@@ -202,11 +225,13 @@ const static CGFloat kImgStore = 50;
         MENetListModel *nlModel = [MENetListModel mj_objectWithKeyValues:responseObject.data];
         kMeSTRONGSELF
         strongSelf->_arrRudeBuy =[METhridHomeRudeGoodModel mj_objectArrayWithKeyValuesArray:nlModel.data];
-        [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        [strongSelf.tableView reloadData];
+//        [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     } failure:^(id object) {
         kMeSTRONGSELF
         strongSelf->_arrRudeBuy = @[];
-        [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        [strongSelf.tableView reloadData];
+//        [strongSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     }];
 }
 
@@ -257,18 +282,20 @@ const static CGFloat kImgStore = 50;
 }
 
 - (void)toStore{
-    if(_stroeModel){
-        MENewStoreDetailsVC *details = [[MENewStoreDetailsVC alloc]initWithId:_stroeModel.store_id];
-        [self.navigationController pushViewController:details animated:YES];
-    }else{
-        self.tabBarController.selectedIndex = 1;
-    }
+//    if(_stroeModel){
+//        MENewStoreDetailsVC *details = [[MENewStoreDetailsVC alloc]initWithId:_stroeModel.store_id];
+//        [self.navigationController pushViewController:details animated:YES];
+//    }else{
+//        self.tabBarController.selectedIndex = 1;
+//    }
 }
 
-- (void)payWithModel:(id)model{
-    MPMoviePlayerViewController *vc = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:model]];
-    [[vc moviePlayer] prepareToPlay];
-    [self presentMoviePlayerViewControllerAnimated:vc];
+- (void)payWithModel:(NSString *)model{
+    MEBasePlayerVC *vc = [[MEBasePlayerVC alloc]initWithFileUrl:model];
+    [self.navigationController pushViewController:vc animated:YES];
+//    MPMoviePlayerViewController *vc = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:model]];
+//    [[vc moviePlayer] prepareToPlay];
+//    [self presentMoviePlayerViewControllerAnimated:vc];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -282,10 +309,11 @@ const static CGFloat kImgStore = 50;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section== 0){
         METhridHomeHotCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([METhridHomeHotCell class]) forIndexPath:indexPath];
+        METhridHomeHotGoodModel *model = _arrHot[indexPath.row];
         kMeWEAKSELF
-        [cell setUIWIthModel:@"" payBlock:^{
+        [cell setUIWIthModel:model payBlock:^{
             kMeSTRONGSELF
-            [strongSelf payWithModel:@"https://media.w3.org/2010/05/sintel/trailer.mp4"];
+            [strongSelf payWithModel:kMeUnNilStr(model.is_index_hot_video_url)];
         }];
         return cell;
     }else if(indexPath.section==1){
@@ -323,12 +351,12 @@ const static CGFloat kImgStore = 50;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if(indexPath.section == 0 && indexPath.row == 1){
-//        if(_homeModel && _homeModel.coupon_background && _homeModel.coupon_background.product_id){
-//            METhridProductDetailsVC *details = [[METhridProductDetailsVC alloc]initWithId:_homeModel.coupon_background.product_id];
-//            [self.navigationController pushViewController:details animated:YES];
-//        }
-//    }
+    if(indexPath.section == 0){
+        METhridHomeHotGoodModel *model = _arrHot[indexPath.row];
+        METhridProductDetailsVC *details = [[METhridProductDetailsVC alloc]initWithId:model.product_id];
+        [self.navigationController pushViewController:details animated:YES];
+    }
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -336,7 +364,7 @@ const static CGFloat kImgStore = 50;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    NSArray *arrTitle = @[@"爆款专区",@"限时抢购",@"拼多多卷"];
+    NSArray *arrTitle = @[@"爆款区",@"限时抢购",@"拼多多卷"];
     NSString *str = arrTitle[section];
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 52)];
     view.backgroundColor = kMEf6f6f6;
@@ -406,7 +434,7 @@ const static CGFloat kImgStore = 50;
 - (METhridHomeHeaderView *)headerView{
     if(!_headerView){
         _headerView = [[[NSBundle mainBundle]loadNibNamed:@"METhridHomeHeaderView" owner:nil options:nil] lastObject];
-        _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [METhridHomeHeaderView getViewHeightWithModel:_homeModel]);
+        _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [METhridHomeHeaderView getViewHeight]);
     }
     return _headerView;
 }

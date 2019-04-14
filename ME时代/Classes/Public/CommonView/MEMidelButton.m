@@ -15,7 +15,7 @@
         self.imageView.contentMode = UIViewContentModeCenter;
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.font = kMeTextFont12;
-        self.IWTabBarButtonImageRatio = 0.4;
+        self.IWTabBarButtonImageRatio = 0.5;
         [self setTitleColor:kMEblack forState:UIControlStateNormal];
     }
     return self;
