@@ -453,7 +453,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         //        NSString *type = contentDic[@"type"];
         //        NSInteger msg_id = [contentDic[@"msg_id"] integerValue];
         NSString *strType = kMeUnNilStr(model.type);
-        if(strType.length && [strType isEqualToString:@"1"] && [strType isEqualToString:@"2"]&& [strType isEqualToString:@"3"]&& [strType isEqualToString:@"7"]){
+        if([strType isEqualToString:@"1"] || [strType isEqualToString:@"2"]|| [strType isEqualToString:@"3"]|| [strType isEqualToString:@"7"]){
             //1跳商品  2跳订单详情 3更新 4B店铺访问 5C店铺访问 7预约管理 8投票
             HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:messageStr];
             alertView.isSupportRotating = YES;

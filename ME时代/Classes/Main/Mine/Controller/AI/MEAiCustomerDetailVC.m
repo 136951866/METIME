@@ -174,16 +174,20 @@ const static CGFloat bottomBtnHeight = 47;
 - (void)callAction{
     if(kMeUnNilStr(_model.cellphone).length == 0){
         [MEShowViewTool showMessage:@"未获取到用户信息" view:self.view];
+        return;
     }
+    [MEPublicNetWorkTool postgetIPcommonclerknotFollowUpMemberWithUid:@(_model.member_id).description type:4 SuccessBlock:nil failure:nil];
     [MECommonTool showWithTellPhone:kMeUnNilStr(_model.cellphone) inView:self.view];
 }
 
 - (void)messageAction{
     if(kMeUnNilStr(_model.tls_id).length == 0){
         [MEShowViewTool showMessage:@"未获取到用户信息" view:self.view];
+        return;
     }
     if([kMeUnNilStr(_model.tls_id) isEqualToString:kCurrentUser.tls_data.tls_id]){
         [MEShowViewTool showMessage:@"暂不支持和自己聊天" view:self.view];
+        return;
     }else{
         TConversationCellData *data = [[TConversationCellData alloc] init];
         data.convId = kMeUnNilStr(_model.tls_id);
@@ -214,6 +218,7 @@ const static CGFloat bottomBtnHeight = 47;
         _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url: kGetApiWithUrl(MEIPcommonaigetMemberVisit)];
         _refresh.delegate = self;
         _refresh.isDataInside = YES;
+        _refresh.showFailView = NO;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
             failView.backgroundColor = [UIColor whiteColor];
             failView.lblOfNodata.text = @"没有客户";
