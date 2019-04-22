@@ -141,7 +141,7 @@
             MEArticelModel *model = [MEArticelModel new];
             model.article_id = [urlStr integerValue];
             MEArticleDetailVC *vc = [[MEArticleDetailVC alloc]initWithModel:model];
-            [vc.navigationController pushViewController:vc animated:YES];
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case MEJpushServiceActiveType:{
