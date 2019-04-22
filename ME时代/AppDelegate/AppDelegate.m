@@ -489,16 +489,19 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                     [baseVC.navigationController pushViewController:dvc animated:YES];
                 }else if([strType isEqualToString:@"9"]){
                     NSString *urlStr = kMeUnNilStr(model.idField);
+                    NSLog(@"%@",urlStr);
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
                 }else if([strType isEqualToString:@"10"]){
+                    [baseVC.navigationController popToRootViewControllerAnimated:YES];
                     tabBarController.selectedIndex = 2;
                 }else if([strType isEqualToString:@"11"]){
                     NSString *urlStr = kMeUnNilStr(model.idField);
                     MEArticelModel *model = [MEArticelModel new];
                     model.article_id = [urlStr integerValue];
                     MEArticleDetailVC *vc = [[MEArticleDetailVC alloc]initWithModel:model];
-                    [vc.navigationController pushViewController:vc animated:YES];
+                    [baseVC.navigationController pushViewController:vc animated:YES];
                 }else if([strType isEqualToString:@"12"]){
+                    [baseVC.navigationController popToRootViewControllerAnimated:YES];
                     tabBarController.selectedIndex = 2;
                 }else{
                     
