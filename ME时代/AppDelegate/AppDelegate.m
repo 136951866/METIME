@@ -28,6 +28,8 @@
 
 #import "MEGuideVC.h"
 #import "MEAppointmentDetailVC.h"
+#import "MEArticleDetailVC.h"
+#import "MEArticelModel.h"
 
 @interface AppDelegate ()<WXApiDelegate,UNUserNotificationCenterDelegate,JPUSHRegisterDelegate>
 
@@ -453,8 +455,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         //        NSString *type = contentDic[@"type"];
         //        NSInteger msg_id = [contentDic[@"msg_id"] integerValue];
         NSString *strType = kMeUnNilStr(model.type);
-        if([strType isEqualToString:@"1"] || [strType isEqualToString:@"2"]|| [strType isEqualToString:@"3"]|| [strType isEqualToString:@"7"]){
+        if([strType isEqualToString:@"1"] || [strType isEqualToString:@"2"]|| [strType isEqualToString:@"3"]|| [strType isEqualToString:@"7"]|| [strType isEqualToString:@"9"]|| [strType isEqualToString:@"10"]|| [strType isEqualToString:@"11"]|| [strType isEqualToString:@"12"]){
             //1跳商品  2跳订单详情 3更新 4B店铺访问 5C店铺访问 7预约管理 8投票
+            //跳url 9
+            //跳动态 10
+            //跳文章 11
+            //跳营销活动 12
             HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:messageStr];
             alertView.isSupportRotating = YES;
             [alertView addButtonWithTitle:@"取消" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
@@ -481,6 +487,19 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 }else if ([strType isEqualToString:@"7"]){
                     MEAppointmentDetailVC *dvc = [[MEAppointmentDetailVC alloc]initWithReserve_sn:kMeUnNilStr(model.idField) userType:MEClientBTypeStyle];
                     [baseVC.navigationController pushViewController:dvc animated:YES];
+                }else if([strType isEqualToString:@"9"]){
+                    NSString *urlStr = kMeUnNilStr(model.idField);
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+                }else if([strType isEqualToString:@"10"]){
+                    tabBarController.selectedIndex = 2;
+                }else if([strType isEqualToString:@"11"]){
+                    NSString *urlStr = kMeUnNilStr(model.idField);
+                    MEArticelModel *model = [MEArticelModel new];
+                    model.article_id = [urlStr integerValue];
+                    MEArticleDetailVC *vc = [[MEArticleDetailVC alloc]initWithModel:model];
+                    [vc.navigationController pushViewController:vc animated:YES];
+                }else if([strType isEqualToString:@"12"]){
+                    tabBarController.selectedIndex = 2;
                 }else{
                     
                 }

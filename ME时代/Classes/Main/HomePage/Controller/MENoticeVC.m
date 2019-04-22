@@ -13,6 +13,8 @@
 #import "METhridProductDetailsVC.h"
 #import "MEMyOrderDetailVC.h"
 #import "MEAppointmentDetailVC.h"
+#import "MEArticleDetailVC.h"
+#import "MEArticelModel.h"
 
 @interface MENoticeVC ()<RefreshToolDelegate,UITableViewDelegate,UITableViewDataSource>{
 //    MEJpushType _type;
@@ -121,6 +123,29 @@
         case MEJpushServiceAppointType:{
             MEAppointmentDetailVC *dvc = [[MEAppointmentDetailVC alloc]initWithReserve_sn:kMeUnNilStr(model.ids) userType:MEClientBTypeStyle];
             [self.navigationController pushViewController:dvc animated:YES];
+        }
+            break;
+            
+        case MEJpushServiceUrlType:{
+            NSString *urlStr = kMeUnNilStr(model.ids);
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+        }
+            break;
+        case MEJpushServiceDynalType:{
+//            MEAppointmentDetailVC *dvc = [[MEAppointmentDetailVC alloc]initWithReserve_sn:kMeUnNilStr(model.ids) userType:MEClientBTypeStyle];
+//            [self.navigationController pushViewController:dvc animated:YES];
+        }
+            break;
+        case MEJpushServiceArticelType:{
+            NSString *urlStr = kMeUnNilStr(model.ids);
+            MEArticelModel *model = [MEArticelModel new];
+            model.article_id = [urlStr integerValue];
+            MEArticleDetailVC *vc = [[MEArticleDetailVC alloc]initWithModel:model];
+            [vc.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case MEJpushServiceActiveType:{
+
         }
             break;
         default:

@@ -232,7 +232,12 @@ typedef enum : NSUInteger {
     MEJpushVersionUpdateType = 3,
     MEJpushIntoStoreType = 4,
     MEJpushUnreadMessageType = 5,
-    MEJpushServiceAppointType = 7
+    MEJpushServiceAppointType = 7,
+    MEJpushServiceUrlType = 9,
+    MEJpushServiceDynalType = 10,
+    MEJpushServiceArticelType = 11,
+    MEJpushServiceActiveType = 12,
+
 } MEJpushType;
 
 #endif /* MEEuemMacros_h */

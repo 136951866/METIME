@@ -33,6 +33,7 @@
 //#import <MediaPlayer/MediaPlayer.h>
 #import "MEBasePlayerVC.h"
 #import "METhridHomeHotGoodModel.h"
+#import "MEAppHomeTitleModel.h"
 
 const static CGFloat kImgStore = 50;
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
@@ -45,6 +46,7 @@ const static CGFloat kImgStore = 50;
     CGFloat _sectionHeaderHeight;
     CGFloat _alphaNum;
     MEStoreModel *_stroeModel;
+    MEAppHomeTitleModel *_homeTitleModel;
 }
 
 @property (nonatomic, strong) UITableView           *tableView;
@@ -75,6 +77,8 @@ const static CGFloat kImgStore = 50;
     _arrCommonCoupon = [NSArray array];
     _arrRudeTime = [NSArray array];
     _homeModel = [METhridHomeModel new];
+    _homeTitleModel = [MEAppHomeTitleModel new];
+
     self.tableView.tableHeaderView = self.headerView;
     [self.refresh addRefreshView];
     [self getRushGood];
@@ -138,6 +142,16 @@ const static CGFloat kImgStore = 50;
     });
     
     dispatch_group_async(group, queue, ^{
+        [MEPublicNetWorkTool postGetappThridHomeGetAppHomeTitleWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            strongSelf->_homeTitleModel = [MEAppHomeTitleModel mj_objectWithKeyValues:responseObject.data];
+            dispatch_semaphore_signal(semaphore);
+        } failure:^(id object) {
+            dispatch_semaphore_signal(semaphore);
+        }];
+    });
+    
+    dispatch_group_async(group, queue, ^{
         [MEPublicNetWorkTool postThridHomeStyleWithSuccessBlock:^(ZLRequestResponse *responseObject) {
             kMeSTRONGSELF
             strongSelf->_homeModel = [METhridHomeModel mj_objectWithKeyValues:responseObject.data];
@@ -190,6 +204,7 @@ const static CGFloat kImgStore = 50;
     });
     
     dispatch_group_notify(group, queue, ^{
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
@@ -364,7 +379,7 @@ const static CGFloat kImgStore = 50;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    NSArray *arrTitle = @[@"爆款区",@"限时抢购",@"拼多多劵"];
+    NSArray *arrTitle = @[kMeUnNilStr(_homeTitleModel.hot_title).length?kMeUnNilStr(_homeTitleModel.hot_title):@"爆款区",kMeUnNilStr(_homeTitleModel.buying_title).length?kMeUnNilStr(_homeTitleModel.buying_title):@"限时抢购",kMeUnNilStr(_homeTitleModel.pdd_title).length?kMeUnNilStr(_homeTitleModel.pdd_title):@"拼多多劵"];
     NSString *str = arrTitle[section];
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 52)];
     view.backgroundColor = kMEf6f6f6;

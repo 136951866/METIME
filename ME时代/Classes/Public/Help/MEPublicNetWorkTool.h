@@ -185,6 +185,8 @@
 /***************************************/
 
 #pragma mark - HomePage
+//获取APP首页标题
++ (void)postGetappThridHomeGetAppHomeTitleWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //app第三版商业热门产品
 + (void)postGetappThridHomePagHotGoodWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //app获取店铺信息

@@ -11,7 +11,7 @@
 
 #warning -mustNotes 上线一定要注释/海报分享
 
-//#define TestVersion
+#define TestVersion
 
 //域名 develop
 #ifdef TestVersion
@@ -281,6 +281,9 @@
 
 //apphome 爆款专区
 #define MEIPcommonappYThirdHomeHotGood @"common/goods/getIndexHotGoods"
+
+//获取APP首页标题
+#define MEIPcommonGetAppHomeTitle @"getAppHomeTitle"
 
 /*********************************************/
 
