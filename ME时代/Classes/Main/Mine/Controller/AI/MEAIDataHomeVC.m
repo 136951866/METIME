@@ -34,7 +34,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor colorWithHexString:@"f4f4f4"];
-    _arrType = @[@"时间",@"行为",@" 人 ",@"获客图文"];
+    _arrType = @[@"时间",@"行为",@" 人 "];
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kMeNavBarHeight+kCategoryViewHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight-kMeTabBarHeight)];
     self.scrollView.delegate = self;
     self.scrollView.pagingEnabled = YES;
@@ -45,7 +45,7 @@
     [self.scrollView addSubview:self.timeVC.view];
     [self.scrollView addSubview:self.activeVC.view];
     [self.scrollView addSubview:self.pepleVC.view];
-    [self.scrollView addSubview:self.paVC.view];
+//    [self.scrollView addSubview:self.paVC.view];
 //    [self.scrollView addSubview:self.tpVC.view];
     [self.view addSubview:self.scrollView];
     self.scrollView.backgroundColor = [UIColor colorWithHexString:@"f4f4f4"];
@@ -116,15 +116,15 @@
     return _pepleVC;
 }
 
-- (MEPAVistorVC *)paVC{
-    if(!_paVC){
-        _paVC = [[MEPAVistorVC alloc]init];
-        _paVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        _paVC.view.frame = CGRectMake(SCREEN_WIDTH*3,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight-kMeTabBarHeight);
-        [self addChildViewController:_paVC];
-    }
-    return _paVC;
-}
+//- (MEPAVistorVC *)paVC{
+//    if(!_paVC){
+//        _paVC = [[MEPAVistorVC alloc]init];
+//        _paVC.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//        _paVC.view.frame = CGRectMake(SCREEN_WIDTH*3,0, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kCategoryViewHeight-kMeTabBarHeight);
+//        [self addChildViewController:_paVC];
+//    }
+//    return _paVC;
+//}
 
 //- (MEPAVistorVC *)tpVC{
 //    if(!_tpVC){

@@ -335,8 +335,9 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
                 break;
             case METhridHomeHeaderViewActiveSortType:
             {
-                MEFilterVC *vc = [[MEFilterVC alloc]init];
-                [homeVC.navigationController pushViewController:vc animated:YES];
+//                MEFilterVC *vc = [[MEFilterVC alloc]init];
+//                [homeVC.navigationController pushViewController:vc animated:YES];
+                homeVC.tabBarController.selectedIndex = 1;
             }
                 break;
                 
