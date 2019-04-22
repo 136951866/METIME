@@ -196,6 +196,10 @@ const static CGFloat bottomBtnHeight = 47;
         [MEShowViewTool showMessage:@"未获取到用户信息" view:self.view];
         return;
     }
+    if(kCurrentUser.user_type == 5){
+        [MEShowViewTool showMessage:@"店员暂无此权限" view:self.view];
+        return;
+    }
     if([kMeUnNilStr(_model.tls_id) isEqualToString:kCurrentUser.tls_data.tls_id]){
         [MEShowViewTool showMessage:@"暂不支持和自己聊天" view:self.view];
     }else{
