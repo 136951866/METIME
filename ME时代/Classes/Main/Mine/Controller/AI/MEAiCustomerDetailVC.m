@@ -56,8 +56,6 @@ const static CGFloat bottomBtnHeight = 47;
         strongSelf->_model = [MEAiCustomerDetailModel mj_objectWithKeyValues:responseObject.data];
         [strongSelf.tableView reloadData];
     } failure:^(id object) {
-        kMeSTRONGSELF
-        [strongSelf.navigationController popViewControllerAnimated:YES];
     }];
 }
 
@@ -187,7 +185,6 @@ const static CGFloat bottomBtnHeight = 47;
     }
     if([kMeUnNilStr(_model.tls_id) isEqualToString:kCurrentUser.tls_data.tls_id]){
         [MEShowViewTool showMessage:@"暂不支持和自己聊天" view:self.view];
-        return;
     }else{
         TConversationCellData *data = [[TConversationCellData alloc] init];
         data.convId = kMeUnNilStr(_model.tls_id);

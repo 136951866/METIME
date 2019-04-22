@@ -364,7 +364,7 @@ const static CGFloat kImgStore = 50;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    NSArray *arrTitle = @[@"爆款区",@"限时抢购",@"拼多多卷"];
+    NSArray *arrTitle = @[@"爆款区",@"限时抢购",@"拼多多劵"];
     NSString *str = arrTitle[section];
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 52)];
     view.backgroundColor = kMEf6f6f6;

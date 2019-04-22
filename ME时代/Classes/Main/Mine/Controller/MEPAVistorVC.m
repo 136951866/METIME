@@ -85,7 +85,6 @@
             }
             [MEPublicNetWorkTool postgetIPcommonclerknotFollowUpMemberWithUid:@(model.member_id).description type:type SuccessBlock:nil failure:nil];
             [MECommonTool showWithTellPhone:kMeUnNilStr(model.user.cellphone) inView:strongSelf.view];
-
         }else{
             if([kMeUnNilStr(model.tls_id) isEqualToString:kCurrentUser.tls_data.tls_id]){
                 [MEShowViewTool showMessage:@"暂不支持和自己聊天" view:strongSelf.view];
