@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) kMeBasicBlock LikeBlock;
 @property (nonatomic, copy) kMeBasicBlock CommentBlock;
 @property (nonatomic, copy) kMeBasicBlock delBlock;
+@property (nonatomic, copy) kMeBasicBlock saveBlock;
 @end
 
 NS_ASSUME_NONNULL_END

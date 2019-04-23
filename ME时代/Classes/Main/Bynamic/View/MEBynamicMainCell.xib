@@ -26,7 +26,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1111111111" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghp-wp-DWp">
-                        <rect key="frame" x="56" y="11" width="219" height="20"/>
+                        <rect key="frame" x="56" y="11" width="179" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="gjl-W2-6ec"/>
                         </constraints>
@@ -67,7 +67,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VU1-pZ-mG8">
-                        <rect key="frame" x="288" y="265" width="32" height="22"/>
+                        <rect key="frame" x="248" y="265" width="32" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="32" id="Bmh-wK-OBg"/>
                         </constraints>
@@ -77,7 +77,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLA-1h-SFt">
-                        <rect key="frame" x="248" y="265" width="32" height="22"/>
+                        <rect key="frame" x="208" y="265" width="32" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="32" id="MMz-u6-mLo"/>
                         </constraints>
@@ -88,7 +88,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yq6-HL-NRY">
-                        <rect key="frame" x="208" y="265" width="32" height="22"/>
+                        <rect key="frame" x="168" y="265" width="32" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="32" id="vCt-yl-x2S"/>
                         </constraints>
@@ -133,20 +133,42 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mue-hT-CW1">
-                        <rect key="frame" x="290" y="10" width="40" height="22"/>
+                        <rect key="frame" x="250" y="8.5" width="70" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="Fw3-h9-HwR"/>
+                            <constraint firstAttribute="height" constant="25" id="AZv-zG-jIn"/>
+                            <constraint firstAttribute="width" constant="70" id="Fw3-h9-HwR"/>
                         </constraints>
-                        <state key="normal" image="icon_dyDel">
-                            <color key="titleColor" red="1" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="一键分享">
+                            <color key="titleColor" red="1" green="0.53333333333333333" blue="0.64313725490196072" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="1" green="0.53333333329999999" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
-                            <action selector="delAction:" destination="jf8-r8-qz8" eventType="touchUpInside" id="bCD-vB-s27"/>
+                            <action selector="saveAction:" destination="jf8-r8-qz8" eventType="touchUpInside" id="0I4-za-IDb"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4h-sx-pb6">
+                        <rect key="frame" x="288" y="265" width="32" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="JPQ-2q-Uy9"/>
+                        </constraints>
+                        <state key="normal" image="dynalDel"/>
+                        <connections>
+                            <action selector="delAction:" destination="jf8-r8-qz8" eventType="touchUpInside" id="sBX-Rm-hbh"/>
                         </connections>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="VU1-pZ-mG8" secondAttribute="trailing" constant="10" id="05f-Mi-aGZ"/>
                     <constraint firstItem="hLA-1h-SFt" firstAttribute="leading" secondItem="yq6-HL-NRY" secondAttribute="trailing" constant="8" id="1aO-6b-XVa"/>
                     <constraint firstItem="oID-Dg-RwW" firstAttribute="top" secondItem="T5Y-jk-bf7" secondAttribute="bottom" constant="7" id="4Ts-Vy-bY7"/>
                     <constraint firstItem="M8g-5J-xkP" firstAttribute="leading" secondItem="T5Y-jk-bf7" secondAttribute="leading" id="5Ty-zt-SVj"/>
@@ -161,6 +183,7 @@
                     <constraint firstItem="53d-zV-9dU" firstAttribute="trailing" secondItem="T5Y-jk-bf7" secondAttribute="trailing" id="ULB-nG-3oY"/>
                     <constraint firstItem="VU1-pZ-mG8" firstAttribute="centerY" secondItem="Hnp-jR-rGS" secondAttribute="centerY" id="Ul3-yX-rlS"/>
                     <constraint firstItem="voh-0R-DgM" firstAttribute="leading" secondItem="FhL-3a-EZn" secondAttribute="leading" id="Xe8-cb-Qwq"/>
+                    <constraint firstItem="I4h-sx-pb6" firstAttribute="centerY" secondItem="VU1-pZ-mG8" secondAttribute="centerY" id="ZIW-sG-ddA"/>
                     <constraint firstAttribute="trailing" secondItem="T5Y-jk-bf7" secondAttribute="trailing" constant="10" id="aNO-He-IRJ"/>
                     <constraint firstItem="Hnp-jR-rGS" firstAttribute="leading" secondItem="T5Y-jk-bf7" secondAttribute="leading" id="cKG-f4-xsm"/>
                     <constraint firstAttribute="trailing" secondItem="voh-0R-DgM" secondAttribute="trailing" id="dBO-Jz-NI1"/>
@@ -173,16 +196,20 @@
                     <constraint firstItem="VU1-pZ-mG8" firstAttribute="top" secondItem="53d-zV-9dU" secondAttribute="bottom" constant="7" id="iOZ-7u-o6Q"/>
                     <constraint firstItem="hLA-1h-SFt" firstAttribute="centerY" secondItem="yq6-HL-NRY" secondAttribute="centerY" id="rsm-VW-2fX"/>
                     <constraint firstItem="Mue-hT-CW1" firstAttribute="leading" secondItem="Ghp-wp-DWp" secondAttribute="trailing" constant="15" id="saF-kF-Qdl"/>
-                    <constraint firstAttribute="trailing" secondItem="Mue-hT-CW1" secondAttribute="trailing" id="sty-ZS-LyZ"/>
+                    <constraint firstAttribute="trailing" secondItem="Mue-hT-CW1" secondAttribute="trailing" constant="10" id="sty-ZS-LyZ"/>
                     <constraint firstAttribute="trailing" secondItem="oID-Dg-RwW" secondAttribute="trailing" constant="7" id="tfX-na-IVu"/>
+                    <constraint firstItem="I4h-sx-pb6" firstAttribute="leading" secondItem="VU1-pZ-mG8" secondAttribute="trailing" constant="8" id="vih-eQ-Jid"/>
+                    <constraint firstAttribute="trailing" secondItem="I4h-sx-pb6" secondAttribute="trailing" constant="10" id="xtJ-oZ-7Bw"/>
                     <constraint firstAttribute="bottom" secondItem="M8g-5J-xkP" secondAttribute="bottom" constant="10" id="xvE-to-V9t"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="btnDel" destination="Mue-hT-CW1" id="mQH-WT-uNf"/>
+                <outlet property="btnDel" destination="I4h-sx-pb6" id="4oQ-Ty-cNC"/>
                 <outlet property="btnLike" destination="hLA-1h-SFt" id="g92-nd-ydJ"/>
                 <outlet property="btnShare" destination="VU1-pZ-mG8" id="QgW-ce-x2o"/>
                 <outlet property="consComentHeight" destination="ZGp-qc-jk9" id="sbM-lK-XXk"/>
+                <outlet property="consDelLeft" destination="vih-eQ-Jid" id="Bn8-0b-J7Y"/>
+                <outlet property="consDelW" destination="JPQ-2q-Uy9" id="c7s-UO-dNF"/>
                 <outlet property="consGridViewHeight" destination="bBb-jc-vDl" id="QIP-QG-T5e"/>
                 <outlet property="consStoreTitleHeight" destination="Bg7-Ks-VRq" id="1VX-FK-p0S"/>
                 <outlet property="consTitleHeight" destination="tFY-lp-kd8" id="bsj-su-PFB"/>
@@ -200,10 +227,10 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="dynalDel" width="16" height="15"/>
         <image name="dynamicComment" width="16" height="15"/>
         <image name="dynamicLike" width="17" height="15"/>
         <image name="dynamicLikeS" width="18.5" height="16"/>
         <image name="dynamicShare" width="16" height="15.5"/>
-        <image name="icon_dyDel" width="16" height="16"/>
     </resources>
 </document>

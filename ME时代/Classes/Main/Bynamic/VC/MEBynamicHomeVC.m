@@ -13,6 +13,7 @@
 #import "METhridProductDetailsVC.h"
 #import "IQKeyboardManager.h"
 #import "MEBynamicPublishVC.h"
+#import "ALAssetsLibrary+MECategory.h"
 
 @interface MEBynamicHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSInteger _comentIndex;}
@@ -142,6 +143,10 @@
         [aler addButtonWithTitle:@"取消"];
         [aler show];
     };
+    cell.saveBlock = ^{
+        kMeSTRONGSELF
+        [strongSelf saveAllPhotoWithIndex:indexPath.row];
+    };
     return cell;
 }
 
@@ -166,6 +171,62 @@
         [self.navigationController pushViewController:dvc animated:YES];
     }
 }
+
+- (void)saveAllPhotoWithIndex:(NSInteger)index{
+    MEBynamicHomeModel *model = self.refresh.arrData[index];
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = kMeUnNilStr(model.content);
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
+    __block BOOL isError = NO;
+    dispatch_group_async(group, queue, ^{
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+        [kMeUnArr(model.images) enumerateObjectsUsingBlock:^(NSString *urlString, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSURL *url = [NSURL URLWithString: urlString];
+            [manager diskImageExistsForURL:url completion:^(BOOL isInCache) {
+                UIImage *img;
+                if(isInCache){
+                    img =  [[manager imageCache] imageFromDiskCacheForKey:url.absoluteString];
+                }else{
+                    NSData *data = [NSData dataWithContentsOfURL:url];
+                    img = [UIImage imageWithData:data];
+                }
+                HUD.label.text = [NSString stringWithFormat:@"正在保存第%@张",@(idx+1)];
+                if(img){
+                    [library saveImage:img toAlbum:kMEAppName withCompletionBlock:^(NSError *error) {
+                        NSLog(@"%@",[error description]);
+                        if (!error) {
+                            dispatch_semaphore_signal(semaphore);
+                        }else{
+                            isError = YES;
+                            dispatch_semaphore_signal(semaphore);
+                            *stop = YES;
+                        }
+                    }];
+                }else{
+                    [MEShowViewTool showMessage:@"图片出错" view:kMeCurrentWindow];
+                    dispatch_semaphore_signal(semaphore);
+                }
+            }];
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        }];
+    });
+    
+    dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [HUD hideAnimated:YES];
+            if(isError){
+                [[[UIAlertView alloc]initWithTitle:@"无法保存" message:@"请在iPhone的“设置-隐私-照片”选项中，允许%@访问你的照片" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil, nil] show];
+            }else{
+                [[[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"图片已保存至您的手机相册并复制描述" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil, nil] show];
+            }
+        });
+    });
+}
+
 
 - (void)shareAction{
     MEShareTool *shareTool = [MEShareTool me_instanceForTarget:self];
