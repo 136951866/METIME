@@ -75,6 +75,7 @@
 #pragma mark - Public
  
 - (IBAction)comFirmAction:(UIButton *)sender {
+    [self.view endEditing:YES];
     kMeWEAKSELF
     [MEPublicNetWorkTool posteditPhoneWithPhone:kMeUnNilStr(kCurrentUser.mobile) code:kMeUnNilStr(_tfCaptcha.text) new_phone:kMeUnNilStr(_tfNnumber.text) successBlock:^(ZLRequestResponse *responseObject) {
         kMeSTRONGSELF
@@ -86,6 +87,7 @@
 }
 
 - (IBAction)captchaAction:(UIButton *)sender {
+    [self.view endEditing:YES];
     if(![MECommonTool isValidPhoneNum:kMeUnNilStr(_tfNnumber.text)]){
         [MEShowViewTool showMessage:@"手机格式不对" view:self.view];
         _tfNnumber.text = @"";

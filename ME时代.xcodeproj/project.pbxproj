@@ -316,6 +316,8 @@
 		36472B0921C8E15C00CC3E48 /* JXCategoryBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36472AE821C8E15C00CC3E48 /* JXCategoryBaseCell.m */; };
 		36472B0A21C8E15C00CC3E48 /* JXCategoryBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36472AE921C8E15C00CC3E48 /* JXCategoryBaseCellModel.m */; };
 		364822C6223A316C00B7B677 /* MEBrandAbilityAnalysisModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 364822C5223A316C00B7B677 /* MEBrandAbilityAnalysisModel.m */; };
+		3648D7D4226EED0900134F75 /* MEPNewAVistorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3648D7D3226EED0900134F75 /* MEPNewAVistorVC.m */; };
+		3648D7D7226EED5600134F75 /* MEPNewAVistorContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3648D7D6226EED5600134F75 /* MEPNewAVistorContentVC.m */; };
 		364B64F52174341F00094027 /* MEActiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 364B64F42174341E00094027 /* MEActiveVC.m */; };
 		364B64F9217496B200094027 /* MEWxLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 364B64F7217496B100094027 /* MEWxLoginVC.m */; };
 		364B64FA217496B200094027 /* MEWxLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 364B64F8217496B100094027 /* MEWxLoginVC.xib */; };
@@ -1495,6 +1497,10 @@
 		36472AE921C8E15C00CC3E48 /* JXCategoryBaseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCellModel.m; sourceTree = "<group>"; };
 		364822C4223A316C00B7B677 /* MEBrandAbilityAnalysisModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBrandAbilityAnalysisModel.h; sourceTree = "<group>"; };
 		364822C5223A316C00B7B677 /* MEBrandAbilityAnalysisModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBrandAbilityAnalysisModel.m; sourceTree = "<group>"; };
+		3648D7D2226EED0900134F75 /* MEPNewAVistorVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEPNewAVistorVC.h; sourceTree = "<group>"; };
+		3648D7D3226EED0900134F75 /* MEPNewAVistorVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEPNewAVistorVC.m; sourceTree = "<group>"; };
+		3648D7D5226EED5600134F75 /* MEPNewAVistorContentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEPNewAVistorContentVC.h; sourceTree = "<group>"; };
+		3648D7D6226EED5600134F75 /* MEPNewAVistorContentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEPNewAVistorContentVC.m; sourceTree = "<group>"; };
 		364B64F32174341E00094027 /* MEActiveVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEActiveVC.h; sourceTree = "<group>"; };
 		364B64F42174341E00094027 /* MEActiveVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEActiveVC.m; sourceTree = "<group>"; };
 		364B64F6217496B100094027 /* MEWxLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEWxLoginVC.h; sourceTree = "<group>"; };
@@ -5210,6 +5216,10 @@
 				36F02A7B225F144100408F5B /* MEAiCustomerDataVC.m */,
 				36F0809E225F3C4D001BD919 /* MEAiCustomerTagVC.h */,
 				36F0809F225F3C4D001BD919 /* MEAiCustomerTagVC.m */,
+				3648D7D2226EED0900134F75 /* MEPNewAVistorVC.h */,
+				3648D7D3226EED0900134F75 /* MEPNewAVistorVC.m */,
+				3648D7D5226EED5600134F75 /* MEPNewAVistorContentVC.h */,
+				3648D7D6226EED5600134F75 /* MEPNewAVistorContentVC.m */,
 			);
 			path = AI;
 			sourceTree = "<group>";
@@ -6178,6 +6188,7 @@
 				36E3EEC9221D519F006C79F6 /* MEJDCoupleMailDetalVC.m in Sources */,
 				36D9E0C221F5BA5000687580 /* METhridNavView.m in Sources */,
 				3637F06B224A0A11002C661E /* MEDynamicGoodApplyCell.m in Sources */,
+				3648D7D4226EED0900134F75 /* MEPNewAVistorVC.m in Sources */,
 				36472AF121C8E15C00CC3E48 /* JXCategoryIndicatorCellModel.m in Sources */,
 				367721E42147681000C1463A /* MEMineHomeCell.m in Sources */,
 				36F6AF4D21F8546800CF6684 /* MEBynamicCommentCell.m in Sources */,
@@ -6694,6 +6705,7 @@
 				36F5E839222F68F1000B0241 /* TAddGroupOptionView.m in Sources */,
 				36472AF621C8E15C00CC3E48 /* JXCategoryDotCellModel.m in Sources */,
 				366A9907214F4378008EE888 /* MEPublicNetWorkTool.m in Sources */,
+				3648D7D7226EED5600134F75 /* MEPNewAVistorContentVC.m in Sources */,
 				36F3B88021F80E480001F2F6 /* MENineGridView.m in Sources */,
 				3656829922360859006827A6 /* MEBrandAreasplineCell.m in Sources */,
 				369130A222363B6E008B1836 /* AAChart.m in Sources */,

@@ -467,6 +467,11 @@
 #define MEIPcommonCheckFirstBuy @"common/user/checkFirstBuy"
 //获取用户信息
 #define MEIPcommonGetUser @"common/user/getUser"
+
+//获客图文-海报
+#define MEIPcommonposterspostersVisitList @"common/posters/postersVisitList"
+//获客图文-文章
+#define MEIPcommonpostersarticleVisitList @"common/article/articleVisitList"
 /*********************************************/
 
 
