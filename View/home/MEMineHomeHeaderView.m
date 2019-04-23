@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lblNamWdith;
 @property (weak, nonatomic) IBOutlet UIButton *btnSet;
 @property (weak, nonatomic) IBOutlet UIButton *btnAllOrder;
-@property (weak, nonatomic) IBOutlet UILabel *lblLevel;
+
 
 @end
 

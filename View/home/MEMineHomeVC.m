@@ -80,6 +80,9 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self getUnMeaasge];
+    if([MEUserInfoModel isLogin] && _headerView){
+        _headerView.lblLevel.text =  [NSString stringWithFormat:@"手机:%@",kMeUnNilStr(kCurrentUser.mobile)];
+    }
 }
 
 - (void)getUnMeaasge{

@@ -13,7 +13,7 @@ const static CGFloat kMEMineHomeHeaderViewHeight = 280;
 
 - (void)reloadUIWithUserInfo;
 - (void)clearUIWithUserInfo;
-
+@property (weak, nonatomic) IBOutlet UILabel *lblLevel;
 @property (nonatomic, copy) kMeBasicBlock addPhoneBlock;
 
 @end

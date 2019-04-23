@@ -326,11 +326,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "View/home/MEMineHomeVC.m"
-            timestampString = "574339427.455585"
+            timestampString = "577697005.060472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "-loadData"
             landmarkType = "7">
          </BreakpointContent>
