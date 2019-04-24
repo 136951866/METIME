@@ -10,4 +10,6 @@
 
 @interface MEMyMobileVC : MEBaseVC
 
+@property (nonatomic, assign) BOOL isSuper;
+
 @end

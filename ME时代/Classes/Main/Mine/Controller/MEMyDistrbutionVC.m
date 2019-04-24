@@ -90,7 +90,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = _type==MEClientCTypeStyle?@"我的中心":@"管理中心";
+//    self.title = _type==MEClientCTypeStyle?@"我的中心":@"管理中心";
+    self.title = _type==MEClientCTypeStyle?@"我的美豆":@"我的佣金";
     _levStr = @"";
     _arrData = @[];
     _arrDataStr = @[];
@@ -111,10 +112,9 @@
             kMeSTRONGSELF
             strongSelf->_bModel = [MEadminDistributionModel mj_objectWithKeyValues:responseObject.data];
             //订单总额
-            CGFloat allMoney = strongSelf->_bModel.use_money + strongSelf->_bModel.ratio_money;
-            strongSelf->_arrData = @[@(MEMyMoney),@(MEMyTeam),@(MEMyLeave),@(MEMySuperior),@(MEMyCode),@(MEMyClerk),@(MEMyAppintMannger),@(MEMyDataDeal),@(MEMyCash),@(MEMyCouponMoney),@(MEMyStoreMannager),@(MEMySelfExtractionOrder)];
-            strongSelf->_arrDataStr = @[[NSString stringWithFormat:@"%.2f",allMoney],[NSString stringWithFormat:@"%@",@(strongSelf->_bModel.admin_team)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.level)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.superior)],@"",@"",@"",@"",@"",@"",@"",@""];
-//            [self.view addSubview:self.collectionView];
+//            CGFloat allMoney = strongSelf->_bModel.use_money + strongSelf->_bModel.ratio_money;
+//            strongSelf->_arrData = @[@(MEMyMoney),@(MEMyTeam),@(MEMyLeave),@(MEMySuperior),@(MEMyCode),@(MEMyClerk),@(MEMyAppintMannger),@(MEMyDataDeal),@(MEMyCash),@(MEMyCouponMoney),@(MEMyStoreMannager),@(MEMySelfExtractionOrder)];
+//            strongSelf->_arrDataStr = @[[NSString stringWithFormat:@"%.2f",allMoney],[NSString stringWithFormat:@"%@",@(strongSelf->_bModel.admin_team)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.level)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.superior)],@"",@"",@"",@"",@"",@"",@"",@""];
             strongSelf->_levStr = [NSString stringWithFormat:@"当前等级:%@",kMeUnNilStr(strongSelf->_bModel.level)];
             [strongSelf.collectionView reloadData];
             [strongSelf.collectionView.mj_header endRefreshing];
@@ -128,10 +128,9 @@
             kMeSTRONGSELF
             strongSelf->_bModel = [MEadminDistributionModel mj_objectWithKeyValues:responseObject.data];
             //订单总额
-            CGFloat allMoney = strongSelf->_bModel.use_money + strongSelf->_bModel.ratio_money;
-            strongSelf->_arrData = @[@(MEMyMoney),@(MEMyTeam),@(MEMyLeave),@(MEMySuperior),@(MEMyCode),@(MEMyDataDeal),@(MEMyCash),@(MEMyCouponMoney)];
-            strongSelf->_arrDataStr = @[[NSString stringWithFormat:@"%.2f",allMoney],[NSString stringWithFormat:@"%@",@(strongSelf->_bModel.admin_team)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.level)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.superior)],@"",@"",@"",@""];
-            //            [self.view addSubview:self.collectionView];
+//            CGFloat allMoney = strongSelf->_bModel.use_money + strongSelf->_bModel.ratio_money;
+//            strongSelf->_arrData = @[@(MEMyMoney),@(MEMyTeam),@(MEMyLeave),@(MEMySuperior),@(MEMyCode),@(MEMyDataDeal),@(MEMyCash),@(MEMyCouponMoney)];
+//            strongSelf->_arrDataStr = @[[NSString stringWithFormat:@"%.2f",allMoney],[NSString stringWithFormat:@"%@",@(strongSelf->_bModel.admin_team)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.level)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.superior)],@"",@"",@"",@""];
             strongSelf->_levStr = [NSString stringWithFormat:@"当前等级:%@",kMeUnNilStr(strongSelf->_bModel.level)];
             [strongSelf.collectionView reloadData];
             [strongSelf.collectionView.mj_header endRefreshing];
@@ -145,10 +144,9 @@
             kMeSTRONGSELF
             strongSelf->_bModel = [MEadminDistributionModel mj_objectWithKeyValues:responseObject.data];
             //订单总额
-            CGFloat allMoney = strongSelf->_bModel.use_money + strongSelf->_bModel.ratio_money;
-            strongSelf->_arrData = @[@(MEMyMoney),@(MEMyTeam),@(MEMyLeave),@(MEMySuperior),@(MEMyCode),@(MEMyDataDeal),@(MEMyCash),@(MEMyCouponMoney),@(MEBrandMannager)];
-            strongSelf->_arrDataStr = @[[NSString stringWithFormat:@"%.2f",allMoney],[NSString stringWithFormat:@"%@",@(strongSelf->_bModel.admin_team)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.level)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.superior)],@"",@"",@"",@"",@""];
-            //            [self.view addSubview:self.collectionView];
+//            CGFloat allMoney = strongSelf->_bModel.use_money + strongSelf->_bModel.ratio_money;
+//            strongSelf->_arrData = @[@(MEMyMoney),@(MEMyTeam),@(MEMyLeave),@(MEMySuperior),@(MEMyCode),@(MEMyDataDeal),@(MEMyCash),@(MEMyCouponMoney),@(MEBrandMannager)];
+//            strongSelf->_arrDataStr = @[[NSString stringWithFormat:@"%.2f",allMoney],[NSString stringWithFormat:@"%@",@(strongSelf->_bModel.admin_team)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.level)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.superior)],@"",@"",@"",@"",@""];
             strongSelf->_levStr = [NSString stringWithFormat:@"当前等级:%@",kMeUnNilStr(strongSelf->_bModel.level)];
             [strongSelf.collectionView reloadData];
             [strongSelf.collectionView.mj_header endRefreshing];
@@ -162,10 +160,9 @@
             kMeSTRONGSELF
             strongSelf->_bModel = [MEadminDistributionModel mj_objectWithKeyValues:responseObject.data];
             //订单总额
-            CGFloat allMoney = strongSelf->_bModel.use_money + strongSelf->_bModel.ratio_money;
-            strongSelf->_arrData = @[@(MEMyMoney),@(MEMyAppintMannger),@(MEMyLeave),@(MEMyBelongStore),@(MEMyCode),@(MEMyCash),@(MEMyMoneyDeal),@(MEMyCouponMoney)];
-            strongSelf->_arrDataStr = @[[NSString stringWithFormat:@"%.2f",allMoney],@"",[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.level)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.superior)],@"",@"",@"",@""];
-            //            [self.view addSubview:self.collectionView];
+//            CGFloat allMoney = strongSelf->_bModel.use_money + strongSelf->_bModel.ratio_money;
+//            strongSelf->_arrData = @[@(MEMyMoney),@(MEMyAppintMannger),@(MEMyLeave),@(MEMyBelongStore),@(MEMyCode),@(MEMyCash),@(MEMyMoneyDeal),@(MEMyCouponMoney)];
+//            strongSelf->_arrDataStr = @[[NSString stringWithFormat:@"%.2f",allMoney],@"",[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.level)],[NSString stringWithFormat:@"%@",kMeUnNilStr(strongSelf->_bModel.superior)],@"",@"",@"",@""];
             strongSelf->_levStr = [NSString stringWithFormat:@"当前等级:%@",kMeUnNilStr(strongSelf->_bModel.level)];
             [strongSelf.collectionView reloadData];
             [strongSelf.collectionView.mj_header endRefreshing];
@@ -178,10 +175,9 @@
         [MEPublicNetWorkTool getUserDistributionWithSuccessBlock:^(ZLRequestResponse *responseObject) {
             kMeSTRONGSELF
             strongSelf->_cModel = [MEDistributionCentreModel mj_objectWithKeyValues:responseObject.data];
-            CGFloat allBean = strongSelf->_cModel.wait_integral +  strongSelf->_cModel.integral;
-            strongSelf.arrData = @[@(MEDistributionMoney),@(MEDistributionOrder),@(MEMyTeam),@(MEMyCode),@(MEMyCouponMoney)];
-            strongSelf.arrDataStr = @[[NSString stringWithFormat:@"%@",@(allBean)],[NSString stringWithFormat:@"%@单",@(strongSelf->_cModel.count_order)],[NSString stringWithFormat:@"%@人",@(strongSelf->_cModel.count_user)],@"",@""];
-//            [strongSelf.view addSubview:self.collectionView];
+//            CGFloat allBean = strongSelf->_cModel.wait_integral +  strongSelf->_cModel.integral;
+//            strongSelf.arrData = @[@(MEDistributionMoney),@(MEDistributionOrder),@(MEMyTeam),@(MEMyCode),@(MEMyCouponMoney)];
+//            strongSelf.arrDataStr = @[[NSString stringWithFormat:@"%@",@(allBean)],[NSString stringWithFormat:@"%@单",@(strongSelf->_cModel.count_order)],[NSString stringWithFormat:@"%@人",@(strongSelf->_cModel.count_user)],@"",@""];
             [strongSelf.collectionView reloadData];
              [strongSelf.collectionView.mj_header endRefreshing];
         } failure:^(id object) {

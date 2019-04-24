@@ -113,7 +113,11 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(_type==MEClientCTypeStyle?MEIPcommonUserGetTeam:MEIPcommonUserGetAdminTeam)];
+        NSString *strAPi = MEIPcommonUserGetAdminTeam;
+        if(_type == MEClientTypeClerkStyle || _type==MEClientCTypeStyle){
+            strAPi = MEIPcommonUserGetTeam;
+        }
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(strAPi)];
         _refresh.isGet = YES;
         _refresh.isDataInside = YES;
         _refresh.delegate = self;

@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MENewMineHomeCell : UITableViewCell
 
-- (void)setUIWithAtrr:(NSArray *)arr;
+- (void)setUIWithAtrr:(NSArray *)arr title:(NSString*)title;
 + (CGFloat)getHeightWithArr:(NSArray *)arr;
 
 @end

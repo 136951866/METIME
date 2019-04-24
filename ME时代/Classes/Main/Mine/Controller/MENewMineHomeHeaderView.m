@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPic;
 @property (weak, nonatomic) IBOutlet UILabel *lblTel;
+@property (weak, nonatomic) IBOutlet UILabel *lblLeve;
 
 @end
 
@@ -35,13 +36,52 @@
 
 - (void)reloadUIWithUserInfo{
     _lblName.text = kMeUnNilStr(kCurrentUser.name);
+    
+//    NSMutableAttributedString * attriStr = [[NSMutableAttributedString alloc] initWithString:kMeUnNilStr(kCurrentUser.name)];
+//
+//    NSTextAttachment *attchImage = [[NSTextAttachment alloc] init];
+//    // 表情图片
+//    attchImage.image = [UIImage imageNamed:@"icon_chengzhangzhi"];
+//    // 设置图片大小
+//    attchImage.bounds = CGRectMake(0, 0, 15, 15);
+//    NSAttributedString *stringImage = [NSAttributedString attributedStringWithAttachment:attchImage];
+//    [attriStr insertAttributedString:stringImage atIndex:0];
+//
+//    _lblName.attributedText = attriStr;
+    
     kSDLoadImg(_imgPic, kMeUnNilStr(kCurrentUser.header_pic));
     _lblTel.text = [NSString stringWithFormat:@"手机:%@",kMeUnNilStr(kCurrentUser.mobile)];
+    switch (kCurrentUser.client_type ) {
+        case MEClientTypeClerkStyle:{
+            _lblLeve.text = [NSString stringWithFormat:@"当前等级:店员"];
+        }
+            break;
+        case MEClientBTypeStyle:{
+            _lblLeve.text = [NSString stringWithFormat:@"当前等级:体验中心"];
+        }
+            break;
+        case MEClientCTypeStyle:{
+            _lblLeve.text = [NSString stringWithFormat:@"当前等级:会员"];
+        }
+            break;
+        case MEClientOneTypeStyle:{
+            _lblLeve.text = [NSString stringWithFormat:@"当前等级:售后中心"];
+        }
+            break;
+        case MEClientTwoTypeStyle:{
+            _lblLeve.text = [NSString stringWithFormat:@"当前等级:营销中心"];
+        }
+            break;
+        default:
+            _lblLeve.text = @"";
+            break;
+    }
 }
 
 - (void)clearUIWithUserInfo{
     _lblName.text = @"";
     _lblTel.text = @"";
+    _lblLeve.text = @"";
     kSDLoadImg(_imgPic, @"");
 }
 

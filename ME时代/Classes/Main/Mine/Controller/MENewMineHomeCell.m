@@ -33,8 +33,31 @@
 //#import "MEPAVistorVC.h"
 #import "MEAIHomeVC.h"
 #import "MEPNewAVistorVC.h"
+
+#import "MECouponOrderVC.h"
+#import "MEBStoreMannagerVC.h"
+#import "MEMySelfExtractionOrderVC.h"
+#import "MEBrandManngerVC.h"
+#import "MEMoneyDetailedVC.h"
+#import "MEMineNewShareVC.h"
+#import "MEClerkManngerVC.h"
+//#import "MEBDataDealVC.h"
+#import "MEBdataVC.h"
+#import "MEMyAppointmentVC.h"
+#import "MEGetCaseMainSVC.h"
+#import "MEWithdrawalVC.h"
+#import "MEClerkStatisticsVC.h"
+#import "MEDistributionOrderVC.h"
+#import "MEDistributionMoneyVC.h"
+#import "MEDistributionTeamVC.h"
+#import "MEDistributionOrderMainVC.h"
+#import "MENewMineCellHeaderView.h"
+
 @interface MENewMineHomeCell()<UICollectionViewDelegate,UICollectionViewDataSource>{
     NSArray *_arrModel;
+    MEClientTypeStyle _type;
+    NSString *_levStr;
+    NSString *_title;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -57,6 +80,8 @@
     _collectionView.backgroundColor = [UIColor whiteColor];
     [_collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([MENewMineHomeContentCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([MENewMineHomeContentCell class])];
     [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView"];
+//    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader  withReuseIdentifier:@"HeaderView"];
+    [_collectionView  registerNib:[UINib nibWithNibName:NSStringFromClass([MENewMineCellHeaderView class]) bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([MENewMineCellHeaderView class])];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
 }
@@ -70,13 +95,13 @@
     }
     MEMineHomeCellStyle type = [_arrModel[indexPath.row] intValue];
     switch (type) {
-        case MeMyDistribution:{
+        case MeHomemeiodu:{
             //我的中心
             MEMyDistrbutionVC *dvc = [[MEMyDistrbutionVC alloc]initWithC];
             [homeVc.navigationController pushViewController:dvc animated:YES];
         }
             break;
-        case MeMyCentraManagertment:{
+        case MeHomeyongjing:{
             //管理中心
             MEMyDistrbutionVC *dvc = [[MEMyDistrbutionVC alloc]init];
             [homeVc.navigationController pushViewController:dvc animated:YES];
@@ -163,6 +188,90 @@
             [homeVc.navigationController pushViewController:vc animated:YES];
         }
             break;
+        case MeHomeshangji:{
+            MEMyMobileVC *mobile = [[MEMyMobileVC alloc]init];
+            mobile.isSuper = YES;
+            [homeVc.navigationController pushViewController:mobile animated:YES];
+        }
+            break;
+        case MeHomeCorderall:{
+            //C
+            MEDistributionOrderMainVC *orderVC = [[MEDistributionOrderMainVC alloc]init];
+            [homeVc.navigationController pushViewController:orderVC animated:YES];
+        }
+            
+            break;
+//        case MEDistributionMoney:{
+//            //            MEDistributionMoneyVC *vc = [[MEDistributionMoneyVC alloc]initWithModel:@""];
+//            //            [self.navigationController pushViewController:vc animated:YES];
+//        }
+            
+            break;
+        case MeHometuandui:{
+            MEDistributionTeamVC *vc = [[MEDistributionTeamVC alloc]initWithType:_type];
+            [homeVc.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case MeHomeorderall:{
+            //C以上
+            MEMoneyDetailedVC *vc = [[MEMoneyDetailedVC alloc]init];
+            [homeVc.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case MeHometuigcode:{
+            MEMineNewShareVC *vc = [[MEMineNewShareVC alloc]initWithLevel:_levStr];
+            [homeVc.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+            
+        case MeHomedianyuan:{
+            MEClerkManngerVC *clerkVC = [[MEClerkManngerVC alloc]init];
+            [homeVc.navigationController pushViewController:clerkVC animated:YES];
+        }
+            break;
+            
+        case MeHomeyuyue:{
+            MEMyAppointmentVC *dvc = [[MEMyAppointmentVC alloc]initWithType:MEAppointmenyUseing userType:MEClientBTypeStyle];
+            [homeVc.navigationController pushViewController:dvc animated:YES];
+        }
+            break;
+            
+        case MeHomedata:{
+            MEBdataVC *vc = [[MEBdataVC alloc]init];
+            [homeVc.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case Mehomeyongjitongji:{
+            MEClerkStatisticsVC *vc = [[MEClerkStatisticsVC alloc]initWithType:MEClientTypeClerkStyle memberId:@""];
+            [homeVc.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case MeHometixian:{
+            MEGetCaseMainSVC *vc = [[MEGetCaseMainSVC alloc]initWithType:MEGetCaseAllStyle];
+            [homeVc.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case MeHomejuanyngjing:{
+            MECouponOrderVC *couponVC = [[MECouponOrderVC alloc]init];
+            [homeVc.navigationController pushViewController:couponVC animated:YES];
+        }
+            break;
+        case MeHomedianpu:{
+            MEBStoreMannagerVC *storeVC = [[MEBStoreMannagerVC alloc]init];
+            [homeVc.navigationController pushViewController:storeVC animated:YES];
+        }
+            break;
+        case MeHomeziti:{
+            MEMySelfExtractionOrderVC *orderVC = [[MEMySelfExtractionOrderVC alloc]init];
+            [homeVc.navigationController pushViewController:orderVC animated:YES];
+        }
+            break;
+        case MeHomepinpaigli:{
+            MEBrandManngerVC *brandVC = [[MEBrandManngerVC alloc]init];
+            [homeVc.navigationController pushViewController:brandVC animated:YES];
+        }
+            break;
+            
             
         default:
             break;
@@ -184,14 +293,31 @@
     return CGSizeMake(SCREEN_WIDTH, 25);
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionReusableView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView" forIndexPath:indexPath];
-    footerView.backgroundColor = [UIColor clearColor];
-    return footerView;
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    return CGSizeMake(SCREEN_WIDTH-30, kMENewMineCellHeaderViewHeight);
 }
 
-
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+//        UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+//        headerView.backgroundColor = [UIColor whiteColor];
+//        UILabel *lbl = [MEView lblWithFram:CGRectMake(15, 0, SCREEN_WIDTH-60, 37) textColor:kMEblack str:kMeUnNilStr(_title) font:kMeFont(13)];
+//        lbl.backgroundColor = [UIColor whiteColor];
+//        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 36, SCREEN_WIDTH-30, 1)];
+//        view.backgroundColor = [UIColor colorWithHexString:@"F2F1F1"];
+//        [headerView addSubview:lbl];
+//        [headerView addSubview:view];
+//        return headerView;
+        MENewMineCellHeaderView *reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([MENewMineCellHeaderView class]) forIndexPath:indexPath];
+        reusableView.lblTitle.text = kMeUnNilStr(_title);
+        return reusableView;
+    }else{
+        UICollectionReusableView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView" forIndexPath:indexPath];
+        footerView.backgroundColor = [UIColor clearColor];
+        return footerView;
+    }
+}
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     return CGSizeMake(kMENewMineHomeContentCellWdith, kMENewMineHomeContentCellHeight);
@@ -209,8 +335,47 @@
     return 0;
 }
 
-- (void)setUIWithAtrr:(NSArray *)arr{
+- (void)setUIWithAtrr:(NSArray *)arr title:(NSString*)title{
     _arrModel = kMeUnArr(arr);
+    _title = kMeUnNilStr(title);
+    switch (kCurrentUser.user_type) {
+        case 1:{
+            _type = MEClientOneTypeStyle;
+            _levStr = @"当前等级:售后中心";
+        }
+            break;
+        case 2:{
+            _type = MEClientTwoTypeStyle;
+            _levStr = @"当前等级:营销中心";
+        }
+            break;
+        case 4:{
+            //C
+            _type = MEClientCTypeStyle;
+            _levStr = @"当前等级:普通会员";
+
+        }
+            break;
+        case 3:{
+            //B
+            _type = MEClientBTypeStyle;
+            _levStr = @"当前等级:体验中心";
+
+        }
+            break;
+        case 5:{
+            //clerk
+            _type = MEClientTypeClerkStyle;
+            _levStr = @"当前等级:店员";
+
+        }
+            break;
+        default:{
+            _type = MEClientTypeErrorStyle;
+            _levStr = @"";
+        }
+            break;
+    }
     [_collectionView reloadData];
 }
 
@@ -219,7 +384,7 @@
         return 0;
     }
     NSInteger section = (arr.count/3)+((arr.count%3)>0?1:0);
-    CGFloat height =  (section * kMENewMineHomeContentCellHeight)+25+15;
+    CGFloat height =  (section * kMENewMineHomeContentCellHeight)+25+15+37;
     return height;
 }
 
