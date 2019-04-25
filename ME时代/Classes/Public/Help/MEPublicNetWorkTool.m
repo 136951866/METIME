@@ -2189,7 +2189,7 @@
                           @"token":kMeUnNilStr(kCurrentUser.token),
                           };
     MBProgressHUD *HUD = [self commitWithHUD:@"获取二维码"];
-    [THTTPManager getWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
         [HUD hideAnimated:YES];
         kMeCallBlock(successBlock,responseObject);
     } failure:^(id error) {

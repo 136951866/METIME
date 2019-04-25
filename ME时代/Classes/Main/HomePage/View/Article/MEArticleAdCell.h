@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define kMEArticleAdCellWdith (SCREEN_WIDTH - 30)
+#define kMEArticleAdCellWdith (SCREEN_WIDTH - 20)
 const static CGFloat kMMEArticleAdCellheight = 0.1;
 
 
