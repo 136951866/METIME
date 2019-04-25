@@ -107,11 +107,13 @@ kTDWebViewCellDidFinishLoadNotificationMethod
             self.tableView.tableHeaderView = self.headerView;
             [self.headerView setUIWithModel:model];
             [self.headerView downSecondHandle:model.seckill_end_time];
+            self.bottomView.seckilltime = self.time;
             }
             break;
         case METhridProductDetailsVCNoticeType:{
             self.tableView.tableHeaderView = self.normalheaderView;
             [self.normalheaderView setUINoticeWithModel:model];
+            self.bottomView.seckilltime = self.time;
             [self.normalheaderView downSecondHandle:model.seckill_start_time];
         }
             break;
@@ -406,6 +408,7 @@ kTDWebViewCellDidFinishLoadNotificationMethod
     if(!_bottomView){
         _bottomView = [[[NSBundle mainBundle]loadNibNamed:@"MEProductDetailsBottomView" owner:nil options:nil] lastObject];
         _bottomView.btnGift.hidden = _type==METhridProductDetailsVCNormalType;//!self.isGift;
+        _bottomView.model = _model;
         kMeWEAKSELF
         _bottomView.buyBlock = ^{
             kMeSTRONGSELF

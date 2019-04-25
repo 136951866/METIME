@@ -10,6 +10,7 @@
 
 const static CGFloat kMEProductDetailsBottomViewHeight  = 50;
 
+@class MEGoodDetailModel;
 @interface MEProductDetailsBottomView : UIView
 
 @property (nonatomic, copy) kMeBasicBlock addShopcartBlock;
@@ -21,4 +22,8 @@ const static CGFloat kMEProductDetailsBottomViewHeight  = 50;
 //@property (nonatomic, assign) BOOL isGift;
 @property (weak, nonatomic) IBOutlet UIButton *btnGift;
 
+
+@property (nonatomic, strong) MEGoodDetailModel *model;
+//是秒杀 秒杀
+@property (nonatomic, strong) NSString *seckilltime;
 @end
