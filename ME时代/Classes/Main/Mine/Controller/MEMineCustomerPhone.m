@@ -7,12 +7,17 @@
 //
 
 #import "MEMineCustomerPhone.h"
+#import "MEStoreModel.h"
 
 #define kMeWorkPhone @"18102678630"
 #define kMeOffWorkPhone @"13580363686"
 
-@interface MEMineCustomerPhone ()
+@interface MEMineCustomerPhone (){
+    MEStoreModel *_stroeModel;
+}
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consTopMargin;
+@property (weak, nonatomic) IBOutlet UILabel *lblTel;
+@property (weak, nonatomic) IBOutlet UILabel *lblMobile;
 
 @end
 
@@ -24,7 +29,27 @@
     [super viewDidLoad];
     self.navBarHidden = YES;
     _consTopMargin.constant = kMeStatusBarHeight+k15Margin;
-    // Do any additional setup after loading the view from its nib.
+    kMeWEAKSELF
+    MBProgressHUD *HUD = [MEPublicNetWorkTool commitWithHUD:@""];
+    [MEPublicNetWorkTool postGetappHomePageDataWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        [HUD hideAnimated:YES];
+        if ([responseObject.data isKindOfClass:[NSDictionary class]]) {
+            strongSelf->_stroeModel = [MEStoreModel mj_objectWithKeyValues:responseObject.data];
+            strongSelf->_lblTel.text = kMeUnNilStr(strongSelf->_stroeModel.cellphone);
+           strongSelf->_lblMobile.text = kMeUnNilStr(strongSelf->_stroeModel.cellphone);
+        }else{
+            strongSelf->_stroeModel = nil;
+            strongSelf->_lblTel.text = kMeWorkPhone;
+            strongSelf->_lblMobile.text = kMeOffWorkPhone;
+        }
+    } failure:^(id object) {
+        kMeSTRONGSELF
+        [HUD hideAnimated:YES];
+        strongSelf->_stroeModel = nil;
+        strongSelf->_lblTel.text = kMeWorkPhone;
+        strongSelf->_lblMobile.text = kMeOffWorkPhone;
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -40,11 +65,11 @@
 #pragma mark - Private
 
 - (IBAction)workCallPhoneAction:(UIButton *)sender {
-    [MECommonTool showWithTellPhone:kMeWorkPhone inView:self.view];
+    [MECommonTool showWithTellPhone:kMeUnNilStr(_lblTel.text) inView:self.view];
 }
 
 - (IBAction)offWorkCallPhoneAction:(UIButton *)sender {
-    [MECommonTool showWithTellPhone:kMeOffWorkPhone inView:self.view];
+    [MECommonTool showWithTellPhone:kMeUnNilStr(_lblMobile.text) inView:self.view];
 }
 
 - (IBAction)backAction:(UIButton *)sender {
