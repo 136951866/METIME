@@ -53,9 +53,11 @@
     kMeWEAKSELF
     [MEPublicNetWorkTool postGetPinduoduoBrokerageDetailBaseWithSuccessBlock:^(ZLRequestResponse *responseObject) {
         kMeSTRONGSELF
-        if([responseObject.data isKindOfClass:[NSDictionary class]]){
-            strongSelf->_modeldatil = [MECouponDetailModel mj_objectWithKeyValues:responseObject.data];
-            [strongSelf->_headerView setUIWithModel:strongSelf->_modeldatil];
+        if(strongSelf){
+            if([responseObject.data isKindOfClass:[NSDictionary class]]){
+                strongSelf->_modeldatil = [MECouponDetailModel mj_objectWithKeyValues:responseObject.data];
+                [strongSelf->_headerView setUIWithModel:strongSelf->_modeldatil];
+            }
         }
     } failure:^(id object) {
         
