@@ -35,7 +35,7 @@
         kMeSTRONGSELF
         strongSelf.btnSave.hidden = NO;
         strongSelf.imgPic.hidden = NO;
-        kSDLoadImg(strongSelf->_imgCode, kMeUnNilStr(responseObject.data[@"image_url"]));
+        kSDLoadImg(strongSelf->_imgCode, kMeUnNilStr(responseObject.data));
     } failure:^(id object) {
         kMeSTRONGSELF
         [strongSelf.navigationController popViewControllerAnimated:YES];

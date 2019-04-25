@@ -28,5 +28,7 @@
 @property (nonatomic, strong) NSString * tips;
 @property (nonatomic, strong) NSString * title;
 @property (nonatomic, strong) NSString * updated_at;
-
+@property (nonatomic, strong) NSString * ad_images_url;
+@property (nonatomic, strong) NSString * ad_url;
+@property (nonatomic, assign) BOOL is_ad;
 @end

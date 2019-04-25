@@ -460,7 +460,7 @@
 //获取C端以上用户的订单明细 B
 #define MEIPcommonUserGetAdminOrder @"common/user/getAdminOrder"
 //获取C端二维码
-#define MEIPcommonUserGetCode @"common/user/getCode"
+#define MEIPcommonUserGetCode @"common/user/getWechatCode"
 //第二版 获取首页数据
 //#define MEIPGetHomePageData @"homePageData"
 //判断是否完成首单

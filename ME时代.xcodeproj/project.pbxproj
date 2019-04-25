@@ -644,6 +644,8 @@
 		36EBA97721FC2B240065BC92 /* MEGoodsCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBA97621FC2B240065BC92 /* MEGoodsCommentModel.m */; };
 		36ECE1002262F21500215472 /* METhridHomeHotGoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36ECE0FF2262F21500215472 /* METhridHomeHotGoodModel.m */; };
 		36ECE1372262FBB200215472 /* MEBasePlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36ECE1362262FBB200215472 /* MEBasePlayerVC.m */; };
+		36EE6998227149B900B10983 /* MEArticleAdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EE6996227149B900B10983 /* MEArticleAdCell.m */; };
+		36EE6999227149B900B10983 /* MEArticleAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EE6997227149B900B10983 /* MEArticleAdCell.xib */; };
 		36EEC2EC2181BA0200DEFCCB /* MEVActiveListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EEC2EB2181BA0200DEFCCB /* MEVActiveListVC.m */; };
 		36EEC2F02181BAB700DEFCCB /* MEActiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EEC2EE2181BAB700DEFCCB /* MEActiveCell.m */; };
 		36EEC2F12181BAB700DEFCCB /* MEActiveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EEC2EF2181BAB700DEFCCB /* MEActiveCell.xib */; };
@@ -2073,6 +2075,9 @@
 		36ECE0FF2262F21500215472 /* METhridHomeHotGoodModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = METhridHomeHotGoodModel.m; sourceTree = "<group>"; };
 		36ECE1352262FBB200215472 /* MEBasePlayerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBasePlayerVC.h; sourceTree = "<group>"; };
 		36ECE1362262FBB200215472 /* MEBasePlayerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBasePlayerVC.m; sourceTree = "<group>"; };
+		36EE6995227149B900B10983 /* MEArticleAdCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEArticleAdCell.h; sourceTree = "<group>"; };
+		36EE6996227149B900B10983 /* MEArticleAdCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEArticleAdCell.m; sourceTree = "<group>"; };
+		36EE6997227149B900B10983 /* MEArticleAdCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEArticleAdCell.xib; sourceTree = "<group>"; };
 		36EEC2EA2181BA0200DEFCCB /* MEVActiveListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEVActiveListVC.h; sourceTree = "<group>"; };
 		36EEC2EB2181BA0200DEFCCB /* MEVActiveListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEVActiveListVC.m; sourceTree = "<group>"; };
 		36EEC2ED2181BAB700DEFCCB /* MEActiveCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEActiveCell.h; sourceTree = "<group>"; };
@@ -5637,6 +5642,9 @@
 				36008A6C21B631F40007BB46 /* MEWebTitleCell.h */,
 				36008A6D21B631F40007BB46 /* MEWebTitleCell.m */,
 				36008A6E21B631F40007BB46 /* MEWebTitleCell.xib */,
+				36EE6995227149B900B10983 /* MEArticleAdCell.h */,
+				36EE6996227149B900B10983 /* MEArticleAdCell.m */,
+				36EE6997227149B900B10983 /* MEArticleAdCell.xib */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -6028,6 +6036,7 @@
 				36C01992214262230048734E /* MEProductCell.xib in Resources */,
 				3611F30D225DE6DE00F9883D /* MEAiCustomerDetailCell.xib in Resources */,
 				3645BBD3221BE2410042748C /* MEBStoreMannagerCell.xib in Resources */,
+				36EE6999227149B900B10983 /* MEArticleAdCell.xib in Resources */,
 				36F3B88521F8151F0001F2F6 /* MEProductDetailCommentCell.xib in Resources */,
 				366019BC21E8666000F1BB37 /* MENewMineHomeContentCell.xib in Resources */,
 				360034CC21AE9A7100BAF337 /* MEVistorVisterCell.xib in Resources */,
@@ -6684,6 +6693,7 @@
 				3628E7DB21C0AEB200D5405B /* MEBDataDealView.m in Sources */,
 				36C0851422019CF6008ADAC9 /* CLInputToolbar.m in Sources */,
 				36E284ED22375A10009F1563 /* MEBrandAbilityAnalysisCell.m in Sources */,
+				36EE6998227149B900B10983 /* MEArticleAdCell.m in Sources */,
 				36FD63E6213FA6AC009743C5 /* MEBaseVC.m in Sources */,
 				3683F79821CB40B2008139B0 /* MECoupleMailCell.m in Sources */,
 				36FDEFEB21B0CB0C0022D374 /* MECreatePosterVC.m in Sources */,

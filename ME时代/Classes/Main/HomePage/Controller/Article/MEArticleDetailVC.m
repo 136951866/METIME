@@ -11,10 +11,12 @@
 #import "MEArticelDetailModel.h"
 #import "TDWebViewCell.h"
 #import "MEWebTitleCell.h"
+#import "MEArticleAdCell.h"
 
 @interface MEArticleDetailVC ()<UITableViewDelegate,UITableViewDataSource>{
     MEArticelModel *_model;
     MEArticelDetailModel *_detailModel;
+    UIImage *_tmpImag;
 }
 //@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consTopMargin;
@@ -23,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnShare;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consBootom;
 @property (strong, nonatomic) TDWebViewCell                  *webCell;
+
 @end
 
 @implementation MEArticleDetailVC
@@ -54,6 +57,7 @@
 //    }
     _consTopMargin.constant = kMeNavBarHeight;
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TDWebViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([TDWebViewCell class])];
+    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEArticleAdCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEArticleAdCell class])];
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEWebTitleCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEWebTitleCell class])];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.showsVerticalScrollIndicator = NO;
@@ -67,11 +71,7 @@
         strongSelf->_detailModel = [MEArticelDetailModel mj_objectWithKeyValues:responseObject.data];
         strongSelf.title = kMeUnNilStr(strongSelf->_detailModel.title);
         kSDLoadImg(strongSelf.imgIcon, kMeUnNilStr(strongSelf->_detailModel.images_url));
-        CGFloat width = [UIScreen mainScreen].bounds.size.width - 20;
-        NSString *header = [NSString stringWithFormat:@"<head><style>img{max-width:%fpx !important;}</style></head>",width];
-//        [strongSelf->_webView loadHTMLString:[NSString stringWithFormat:@"%@%@",header,kMeUnNilStr(strongSelf->_detailModel.content)] baseURL:nil];
-        [strongSelf.webCell.webView loadHTMLString:[NSString stringWithFormat:@"%@%@",header,kMeUnNilStr(strongSelf->_detailModel.content)] baseURL:nil];
-        
+        [strongSelf initSomeThing];
     } failure:^(id object) {
         kMeSTRONGSELF
         [strongSelf.navigationController popViewControllerAnimated:YES];
@@ -80,6 +80,17 @@
 }
 
 kTDWebViewCellDidFinishLoadNotificationMethod
+
+- (void)initSomeThing{
+    CGFloat width = [UIScreen mainScreen].bounds.size.width - 20;
+    NSString *header = [NSString stringWithFormat:@"<head><style>img{max-width:%fpx !important;}</style></head>",width];
+    [self.webCell.webView loadHTMLString:[NSString stringWithFormat:@"%@%@",header,kMeUnNilStr(_detailModel.content)] baseURL:nil];
+    if(_detailModel.is_ad && kMeUnNilStr(_detailModel.ad_images_url).length){
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:_detailModel.ad_images_url]];
+        _tmpImag = [UIImage imageWithData:data];
+        [self.tableView reloadData];
+    }
+}
 
 - (IBAction)shareAction:(UIButton *)sender {
     if([MEUserInfoModel isLogin]){
@@ -94,29 +105,69 @@ kTDWebViewCellDidFinishLoadNotificationMethod
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if(_tmpImag){
+        return 3;
+    }
     return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row == 1){
-        return self.webCell;
+    if(_tmpImag){
+        if(indexPath.row == 1){
+            return self.webCell;
+        }else if(indexPath.row == 0){
+            MEWebTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEWebTitleCell class])];
+            [cell setUiWithModel:_detailModel];
+            return cell;
+        }else{
+            MEArticleAdCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEArticleAdCell class])];
+            kSDLoadImg(cell.imgPic, kMeUnNilStr(_detailModel.ad_images_url));
+            return cell;
+        }
     }else{
-        MEWebTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEWebTitleCell class])];
-        [cell setUiWithModel:_detailModel];
-        return cell;
+        if(indexPath.row == 1){
+            return self.webCell;
+        }else{
+            MEWebTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MEWebTitleCell class])];
+            [cell setUiWithModel:_detailModel];
+            return cell;
+        }
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row==1){
-        if(!_webCell){
-            return 0;
+    if(_tmpImag){
+        if(indexPath.row==1){
+            if(!_webCell){
+                return 0;
+            }else{
+                return [[self.webCell.webView stringByEvaluatingJavaScriptFromString: @"document.body.scrollHeight"] intValue];
+            }
+        }else if(indexPath.row == 0){
+            return [MEWebTitleCell getCellHeightWithModel:_detailModel];
         }else{
-            return [[self.webCell.webView stringByEvaluatingJavaScriptFromString: @"document.body.scrollHeight"] intValue];
+            return ((kMEArticleAdCellWdith * _tmpImag.size.height)/_tmpImag.size.width);
+        }
+    }else{
+        if(indexPath.row==1){
+            if(!_webCell){
+                return 0;
+            }else{
+                return [[self.webCell.webView stringByEvaluatingJavaScriptFromString: @"document.body.scrollHeight"] intValue];
+            }
+        }
+        else{
+            return [MEWebTitleCell getCellHeightWithModel:_detailModel];
         }
     }
-    else{
-        return [MEWebTitleCell getCellHeightWithModel:_detailModel];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row == 2 && _tmpImag){
+        NSString *url = kMeUnNilStr(_detailModel.ad_url);
+        if(url.length > 0){
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+        }
     }
 }
 
