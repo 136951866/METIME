@@ -175,7 +175,7 @@
             NSString *strAPi = [NSString stringWithFormat:@"https://develop.meshidai.com/meAuth.html?entrance=productShare&uid=%@&goodsid=%@&seckilltime=%@&command=%@",kMeUnNilStr(kCurrentUser.uid),kMeUnNilStr(strongSelf->_productId),kMeUnNilStr(strongSelf.seckilltime),kMeUnNilStr(strongSelf->_paoductIdEndoceStr)];
             
 #else
-            NSString *strAPi = [NSString stringWithFormat:@"https://msd.meshidai.com/meAuth.html?entrance=productShare&uid=%@&goodsid=%@&seckilltime=%@&command=%@",kMeUnNilStr(kCurrentUser.uid),kMeUnNilStr(strongSelf->_productId),kMeUnNilStr(sestrongSelflf.seckilltime),kMeUnNilStr(strongSelf->_paoductIdEndoceStr)];
+            NSString *strAPi = [NSString stringWithFormat:@"https://msd.meshidai.com/meAuth.html?entrance=productShare&uid=%@&goodsid=%@&seckilltime=%@&command=%@",kMeUnNilStr(kCurrentUser.uid),kMeUnNilStr(strongSelf->_productId),kMeUnNilStr(strongSelf.seckilltime),kMeUnNilStr(strongSelf->_paoductIdEndoceStr)];
 #endif
             
             shareTool.sharWebpageUrl = strAPi;

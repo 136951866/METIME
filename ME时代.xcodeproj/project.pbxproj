@@ -824,6 +824,10 @@
 		36F6B2C6224D0D53007FDD7A /* MEAddGoodStoreGoodsTypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F6B2C5224D0D53007FDD7A /* MEAddGoodStoreGoodsTypeVC.m */; };
 		36F744A722323C170061A799 /* MEBrandManngerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F744A522323C170061A799 /* MEBrandManngerVC.m */; };
 		36F744A822323C170061A799 /* MEBrandManngerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F744A622323C170061A799 /* MEBrandManngerVC.xib */; };
+		36FAD32F227299B300934925 /* MEBrandStoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD32E227299B300934925 /* MEBrandStoryVC.m */; };
+		36FAD33322729E6B00934925 /* MEBrandStoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD33222729E6B00934925 /* MEBrandStoryHeaderView.m */; };
+		36FAD33522729EA100934925 /* MEBrandStoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FAD33422729EA100934925 /* MEBrandStoryHeaderView.xib */; };
+		36FAD33E2272D46600934925 /* MEBrandStoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FAD33D2272D46600934925 /* MEBrandStoryModel.m */; };
 		36FB082E218058CE003601FD /* MEProductSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB082C218058CE003601FD /* MEProductSearchVC.m */; };
 		36FB082F218058CE003601FD /* MEProductSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FB082D218058CE003601FD /* MEProductSearchVC.xib */; };
 		36FB87A1224207AF000A7547 /* MEBdataStoreCustomerTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FB879F224207AF000A7547 /* MEBdataStoreCustomerTopCell.m */; };
@@ -2400,6 +2404,13 @@
 		36F744A422323C170061A799 /* MEBrandManngerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBrandManngerVC.h; sourceTree = "<group>"; };
 		36F744A522323C170061A799 /* MEBrandManngerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBrandManngerVC.m; sourceTree = "<group>"; };
 		36F744A622323C170061A799 /* MEBrandManngerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEBrandManngerVC.xib; sourceTree = "<group>"; };
+		36FAD32D227299B300934925 /* MEBrandStoryVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBrandStoryVC.h; sourceTree = "<group>"; };
+		36FAD32E227299B300934925 /* MEBrandStoryVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBrandStoryVC.m; sourceTree = "<group>"; };
+		36FAD33122729E6B00934925 /* MEBrandStoryHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBrandStoryHeaderView.h; sourceTree = "<group>"; };
+		36FAD33222729E6B00934925 /* MEBrandStoryHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBrandStoryHeaderView.m; sourceTree = "<group>"; };
+		36FAD33422729EA100934925 /* MEBrandStoryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEBrandStoryHeaderView.xib; sourceTree = "<group>"; };
+		36FAD33C2272D46600934925 /* MEBrandStoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBrandStoryModel.h; sourceTree = "<group>"; };
+		36FAD33D2272D46600934925 /* MEBrandStoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBrandStoryModel.m; sourceTree = "<group>"; };
 		36FB082B218058CE003601FD /* MEProductSearchVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEProductSearchVC.h; sourceTree = "<group>"; };
 		36FB082C218058CE003601FD /* MEProductSearchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEProductSearchVC.m; sourceTree = "<group>"; };
 		36FB082D218058CE003601FD /* MEProductSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEProductSearchVC.xib; sourceTree = "<group>"; };
@@ -4416,6 +4427,7 @@
 		36D66EE2213F8200000476FF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				36FAD32C2272999400934925 /* BrandStory */,
 				36F69B29225C82E6008E8DB0 /* AI */,
 				3670E462224B161200875058 /* goodMannger */,
 				3637F06E224A0AD2002C661E /* Xunweishi */,
@@ -4581,6 +4593,7 @@
 		36D66EE7213F8216000476FF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				36FAD33022729E4600934925 /* BrandStory */,
 				36F69B2A225C82ED008E8DB0 /* AI */,
 				3670E463224B162900875058 /* goodMannger */,
 				3637F05E224A09F7002C661E /* Xunweishi */,
@@ -4660,6 +4673,7 @@
 		36D66EEC213F822A000476FF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				36FAD33B2272D44D00934925 /* BrandStory */,
 				36F69B2B225C82F8008E8DB0 /* AI */,
 				3670E464224B163200875058 /* goodMannger */,
 				36E284E622375801009F1563 /* brand */,
@@ -5381,6 +5395,34 @@
 			path = brand;
 			sourceTree = "<group>";
 		};
+		36FAD32C2272999400934925 /* BrandStory */ = {
+			isa = PBXGroup;
+			children = (
+				36FAD32D227299B300934925 /* MEBrandStoryVC.h */,
+				36FAD32E227299B300934925 /* MEBrandStoryVC.m */,
+			);
+			path = BrandStory;
+			sourceTree = "<group>";
+		};
+		36FAD33022729E4600934925 /* BrandStory */ = {
+			isa = PBXGroup;
+			children = (
+				36FAD33122729E6B00934925 /* MEBrandStoryHeaderView.h */,
+				36FAD33222729E6B00934925 /* MEBrandStoryHeaderView.m */,
+				36FAD33422729EA100934925 /* MEBrandStoryHeaderView.xib */,
+			);
+			path = BrandStory;
+			sourceTree = "<group>";
+		};
+		36FAD33B2272D44D00934925 /* BrandStory */ = {
+			isa = PBXGroup;
+			children = (
+				36FAD33C2272D46600934925 /* MEBrandStoryModel.h */,
+				36FAD33D2272D46600934925 /* MEBrandStoryModel.m */,
+			);
+			path = BrandStory;
+			sourceTree = "<group>";
+		};
 		36FBDD832140D1F400A11BF4 /* PayMentPlatForm */ = {
 			isa = PBXGroup;
 			children = (
@@ -6024,6 +6066,7 @@
 				36B77BC721DDFC1C00B4A207 /* MECoupleHomeMainContentCell.xib in Resources */,
 				36F10A8C224E5E610006E5C1 /* KWEditorBar.xib in Resources */,
 				36B77BC221DDF71000B4A207 /* MECoupleHomeMainCell.xib in Resources */,
+				36FAD33522729EA100934925 /* MEBrandStoryHeaderView.xib in Resources */,
 				36F4C0AB2255DDE9005E2713 /* MEPAVistorCell.xib in Resources */,
 				36F10ABB224E6D7A0006E5C1 /* richText_editor.html in Resources */,
 				36F19EBC224C6FF600AD2E56 /* MEGoodManngerSpecBasicCell.xib in Resources */,
@@ -6291,6 +6334,7 @@
 				36D9E0CC21F5C40000687580 /* METhridHomeNavView.m in Sources */,
 				3617C31821D0CDEA00004072 /* MECoupleFilterNavView.m in Sources */,
 				36F5E849222F68F1000B0241 /* TConversationCell.m in Sources */,
+				36FAD33E2272D46600934925 /* MEBrandStoryModel.m in Sources */,
 				36F4288221FB5CE50028C3C8 /* MEFlowLabelView.m in Sources */,
 				367C84E52147962B00BEC7B1 /* MEDistrbutionCell.m in Sources */,
 				366D1CD721B522780004295E /* MESActivityModel.m in Sources */,
@@ -6455,6 +6499,7 @@
 				3691309322363B6E008B1836 /* AAYAxis.m in Sources */,
 				36F5E81E222F68F1000B0241 /* TKeyValueCell.m in Sources */,
 				3691309A22363B6E008B1836 /* AAArea.m in Sources */,
+				36FAD32F227299B300934925 /* MEBrandStoryVC.m in Sources */,
 				36E284DD2237520B009F1563 /* MEBrandAbilityVisterVC.m in Sources */,
 				3600B856217EF10700049F49 /* YBPopupMenuPath.m in Sources */,
 				369BDBE2224B613A00F3D056 /* MEAddGoodBasicCell.m in Sources */,
@@ -6680,6 +6725,7 @@
 				3630AC4821F6F9BE006C3F8D /* METhridProductDetailsTipCell.m in Sources */,
 				3691308722363B6E008B1836 /* AAGradientColor.m in Sources */,
 				3691309D22363B6E008B1836 /* AALegend.m in Sources */,
+				36FAD33322729E6B00934925 /* MEBrandStoryHeaderView.m in Sources */,
 				366D5B18214A46130021C1BB /* MESelectAddressVC.m in Sources */,
 				36445B3721C1F10B00CDBCBA /* MEWithdrawalVC.m in Sources */,
 				36F5E841222F68F1000B0241 /* TGroupMemberCell.m in Sources */,
