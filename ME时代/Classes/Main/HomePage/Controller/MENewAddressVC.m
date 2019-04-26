@@ -55,7 +55,7 @@
         _lblTip.hidden = YES;
         _attrModel = [[MEAddAddressAttrModel alloc]initWithAddressModel:_model];
     }else{
-        self.navigationItem.title = @"添加收获地址";
+        self.navigationItem.title = @"添加收货地址";
         _sDefault.on = NO;
         _btnDel.hidden = YES;
         _attrModel = [MEAddAddressAttrModel new];

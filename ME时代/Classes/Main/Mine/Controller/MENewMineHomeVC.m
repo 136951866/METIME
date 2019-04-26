@@ -59,6 +59,9 @@
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [self getUnMeaasge];
+    if([MEUserInfoModel isLogin] && _headerView){
+        _headerView.lblTel.text =  [NSString stringWithFormat:@"手机:%@",kMeUnNilStr(kCurrentUser.mobile)];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
