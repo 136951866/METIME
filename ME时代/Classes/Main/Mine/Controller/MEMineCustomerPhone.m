@@ -29,27 +29,27 @@
     [super viewDidLoad];
     self.navBarHidden = YES;
     _consTopMargin.constant = kMeStatusBarHeight+k15Margin;
-    kMeWEAKSELF
-    MBProgressHUD *HUD = [MEPublicNetWorkTool commitWithHUD:@""];
-    [MEPublicNetWorkTool postGetappHomePageDataWithSuccessBlock:^(ZLRequestResponse *responseObject) {
-        kMeSTRONGSELF
-        [HUD hideAnimated:YES];
-        if ([responseObject.data isKindOfClass:[NSDictionary class]]) {
-            strongSelf->_stroeModel = [MEStoreModel mj_objectWithKeyValues:responseObject.data];
-            strongSelf->_lblTel.text = kMeUnNilStr(strongSelf->_stroeModel.cellphone);
-           strongSelf->_lblMobile.text = kMeUnNilStr(strongSelf->_stroeModel.cellphone);
-        }else{
-            strongSelf->_stroeModel = nil;
-            strongSelf->_lblTel.text = kMeWorkPhone;
-            strongSelf->_lblMobile.text = kMeOffWorkPhone;
-        }
-    } failure:^(id object) {
-        kMeSTRONGSELF
-        [HUD hideAnimated:YES];
-        strongSelf->_stroeModel = nil;
-        strongSelf->_lblTel.text = kMeWorkPhone;
-        strongSelf->_lblMobile.text = kMeOffWorkPhone;
-    }];
+//    kMeWEAKSELF
+//    MBProgressHUD *HUD = [MEPublicNetWorkTool commitWithHUD:@""];
+//    [MEPublicNetWorkTool postGetappHomePageDataWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+//        kMeSTRONGSELF
+//        [HUD hideAnimated:YES];
+//        if ([responseObject.data isKindOfClass:[NSDictionary class]]) {
+//            strongSelf->_stroeModel = [MEStoreModel mj_objectWithKeyValues:responseObject.data];
+//            strongSelf->_lblTel.text = kMeUnNilStr(strongSelf->_stroeModel.cellphone);
+//           strongSelf->_lblMobile.text = kMeUnNilStr(strongSelf->_stroeModel.cellphone);
+//        }else{
+//            strongSelf->_stroeModel = nil;
+//            strongSelf->_lblTel.text = kMeWorkPhone;
+//            strongSelf->_lblMobile.text = kMeOffWorkPhone;
+//        }
+//    } failure:^(id object) {
+//        kMeSTRONGSELF
+//        [HUD hideAnimated:YES];
+//        strongSelf->_stroeModel = nil;
+        _lblTel.text = kMeWorkPhone;
+        _lblMobile.text = kMeOffWorkPhone;
+//    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated {

@@ -92,7 +92,7 @@
         _refresh.delegate = self;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
             failView.backgroundColor = [UIColor whiteColor];
-            failView.lblOfNodata.text = @"没有金额明细";
+            failView.lblOfNodata.text = @"没有佣金";
         }];
     }
     return _refresh;
