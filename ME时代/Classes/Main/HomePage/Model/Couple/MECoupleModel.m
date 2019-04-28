@@ -59,4 +59,9 @@
 }
 
 
+- (NSString *)coupon_click_url{
+#warning ---
+    return  [kMeUnNilStr(_coupon_click_url) stringByAppendingString:@"&relationId=2112683493"];;
+}
+
 @end

@@ -12,5 +12,5 @@
 
 //view加虚线边框
 -(void)addBottedlineWidth:(CGFloat)lineWidth lineColor:(UIColor *)lineColor;
-
+-(void)addRecBottedlineWidth:(CGFloat)lineWidth lineColor:(UIColor *)lineColor;
 @end
