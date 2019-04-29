@@ -15,17 +15,21 @@
 #import "MEFilterVC.h"
 #import "MEStoreModel.h"
 
-@interface METhridHomeNavView (){
+const static CGFloat kHomeCategoryViewHeight = 39;
+
+@interface METhridHomeNavView ()<JXCategoryViewDelegate>{
     CGFloat _top;
     CGFloat _touchArea;
 }
 
-@property (nonatomic, strong)UIView *viewForBack;
+//@property (nonatomic, strong)UIView *viewForBack;
 @property (nonatomic, strong)UIButton *btnNotice;
 @property (nonatomic, strong)UIButton *btnSort;
 @property (nonatomic, strong)UIView *viewForSearch;
 @property (nonatomic, strong)UIImageView *imageForSearch;
 @property (nonatomic, strong)UIView *viewForUnread;
+@property (nonatomic, strong) JXCategoryTitleView *categoryView;
+
 //@property (nonatomic, strong)UIView *viewForStore;
 //
 //@property (nonatomic, strong)UIImageView *imgStore;
@@ -52,9 +56,10 @@
 
 - (void)addSubUIView{
     self.userInteractionEnabled = YES;
-    _top = ((IS_iPhoneX==YES||IS_IPHONE_Xr==YES||IS_IPHONE_Xs==YES||IS_IPHONE_Xs_Max==YES) ? 36 : 25);
+    //22
+    _top = ((IS_iPhoneX==YES||IS_IPHONE_Xr==YES||IS_IPHONE_Xs==YES||IS_IPHONE_Xs_Max==YES) ? 49 : 25);
 //    _touchArea = kMEThridHomeNavViewHeight-(k5Margin*4)-kImgStore;
-    [self addSubview:self.viewForBack];
+//    [self addSubview:self.viewForBack];
     [self addSubview:self.viewForSearch];
     [self.viewForSearch addSubview:self.imageForSearch];
 //    [self addSubview:self.btnNotice];
@@ -62,7 +67,25 @@
     [self addSubview:self.viewForUnread];
 //    [self addSubview:self.viewForStore];
     self.viewForUnread.hidden = YES;
+    
+//    self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0,self.viewForSearch.bottom, SCREEN_WIDTH, kHomeCategoryViewHeight)];
+//    JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
+//    lineView.indicatorLineViewColor =  [UIColor whiteColor];
+//    lineView.indicatorLineViewHeight = 1;
+//
+//    self.categoryView.indicators = @[lineView];
+//
+//    self.categoryView.titles = @[@"精选",@"特卖",@"猜你喜欢",@"女装",@"美妆",@"母婴"];
+//    self.categoryView.delegate = self;
+//    self.categoryView.titleSelectedColor = [UIColor whiteColor];
+//    self.categoryView.titleColor =  [UIColor whiteColor];
+//    self.categoryView.defaultSelectedIndex = 0;
+//    [self addSubview:self.categoryView];
 }
+
+//- (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index{
+//    kMeCallBlock(_selectIndexBlock,index);
+//}
 
 - (void)setRead:(BOOL)read{
     self.viewForUnread.hidden = read;
@@ -86,70 +109,11 @@
     return _viewForUnread;
 }
 
-- (UIView *)viewForBack{
-    if(!_viewForBack){
-//        _viewForBack = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kMEThridHomeNavViewHeight-(k5Margin*4)-kImgStore)];
-        _viewForBack = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kMEThridHomeNavViewHeight)];
-        _viewForBack.backgroundColor = kMEea3782;
-        _viewForBack.alpha = 0;
-    }
-    return _viewForBack;
-}
-
-//- (UIView *)viewForStore{
-//    if(!_viewForStore){
-//        _viewForStore.userInteractionEnabled = NO;
-//        _viewForStore = [[UIView alloc]initWithFrame:CGRectMake(0, self.viewForBack.bottom, SCREEN_WIDTH, kImgStore+(k5Margin *4))];
-//        _viewForStore.backgroundColor = [UIColor clearColor];
-//        _viewForStore.alpha = 0;
-//
-//        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(10, k5Margin, SCREEN_WIDTH-20, kImgStore+(k5Margin*2))];
-//        view.cornerRadius = (kImgStore+(k5Margin*2))/2;
-//        view.clipsToBounds = YES;
-//        view.backgroundColor = [UIColor blackColor];
-//        view.alpha = 0.7;
-//        view.userInteractionEnabled = NO;
-//        [_viewForStore addSubview:view];
-//
-//        _imgStore = [[UIImageView alloc]initWithFrame:CGRectMake(10+((kImgStore+(k5Margin*2))/2), k5Margin*2, kImgStore, kImgStore)];
-//        _imgStore.userInteractionEnabled = NO;
-//        [_viewForStore addSubview:_imgStore];
-//
-//        _lblStoreName = [[UILabel alloc]initWithFrame:CGRectMake(_imgStore.right+10, k5Margin*2, self.width-kImgStore-(10+((kImgStore+(k5Margin*2))/2))-20, kImgStore)];
-//        _lblStoreName.userInteractionEnabled = NO;
-//        _lblStoreName.textColor = [UIColor whiteColor];
-//        _lblStoreName.font = kMeFont(15);
-//        [_viewForStore addSubview:_lblStoreName];
-//    }
-//    return _viewForStore;
-//}
-
-//- (void)setStoreInfoWithModel:(MEStoreModel *)model{
-//    if(model){
-//        kSDLoadImg(_imgStore, kMeUnNilStr(model.mask_img));
-//        NSShadow *shaow = [[NSShadow alloc]init];
-//        shaow.shadowBlurRadius = 1.0;
-//        shaow.shadowOffset = CGSizeZero;
-//        shaow.shadowColor = [UIColor blackColor];
-//        NSAttributedString *att = [[NSAttributedString alloc]initWithString:kMeUnNilStr(model.store_name) attributes:@{NSShadowAttributeName:shaow}];
-//        _lblStoreName.attributedText = att;
-//    }else{
-//        _imgStore.image = [UIImage imageNamed:@"icon-wgvilogo"];
-//        NSShadow *shaow = [[NSShadow alloc]init];
-//        shaow.shadowBlurRadius = 1.0;
-//        shaow.shadowOffset = CGSizeZero;
-//        shaow.shadowColor = [UIColor blackColor];
-//        NSAttributedString *att = [[NSAttributedString alloc]initWithString:@"ME时代旗舰店" attributes:@{NSShadowAttributeName:shaow}];
-//        _lblStoreName.attributedText = att;
-//    }
-//}
-
-
 - (UIView *)viewForSearch{
     if(!_viewForSearch){
-        _viewForSearch = [[UIView alloc]initWithFrame:CGRectMake(10, _top, self.width-65, 35)];
+        _viewForSearch = [[UIView alloc]initWithFrame:CGRectMake(10, _top, self.width-65, 32)];
         _viewForSearch.backgroundColor = [UIColor whiteColor];
-        _viewForSearch.cornerRadius = 35/2;
+        _viewForSearch.cornerRadius = 32/2;
         _viewForSearch.clipsToBounds = YES;
         UITapGestureRecognizer *search = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(searchProduct)];
         _viewForSearch.userInteractionEnabled = YES;
@@ -158,17 +122,10 @@
     return _viewForSearch;
 }
 
-//- (UIButton *)btnNotice{
-//    if(!_btnNotice){
-//        _btnNotice = [MEView btnWithFrame:CGRectMake(10, _top, 35, 35) Img:[UIImage imageNamed:@"thirdHomeNotice"]];
-//        [_btnNotice addTarget:self action:@selector(noticeAction:) forControlEvents:UIControlEventTouchUpInside];
-//    }
-//    return _btnNotice;
-//}
 
 - (UIButton *)btnSort{
     if(!_btnSort){
-        _btnSort = [MEView btnWithFrame:CGRectMake(self.viewForSearch.right+10, self.viewForSearch.top, 35, 35) Img:[UIImage imageNamed:@"thirdHomeNotice"]];
+        _btnSort = [MEView btnWithFrame:CGRectMake(self.viewForSearch.right+10, self.viewForSearch.top, 32, 32) Img:[UIImage imageNamed:@"thirdHomeNotice"]];
         [_btnSort addTarget:self action:@selector(noticeAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnSort;
@@ -186,25 +143,13 @@
     }
 }
 
-//- (void)sortAction:(UIButton*)btn{
-//     METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
-//    if(homeVC){
-//        MEFilterVC *vc = [[MEFilterVC alloc]init];
-//        [homeVC.navigationController pushViewController:vc animated:YES];
-//    }
-//}
 
 - (void)toNotice{
     METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
-//        if([kCurrentUser.mobile isEqualToString:AppstorePhone]){
-//            MERCConversationListVC *svc = [[MERCConversationListVC alloc]init];
-//            [homeVC.navigationController pushViewController:svc animated:YES];
-//        }else{
-        if(homeVC){
-            MENoticeVC *svc = [[MENoticeVC alloc]init];
-            [homeVC.navigationController pushViewController:svc animated:YES];
-        }
-//    }
+    if(homeVC){
+        MENoticeVC *svc = [[MENoticeVC alloc]init];
+        [homeVC.navigationController pushViewController:svc animated:YES];
+    }
 }
 
 - (UIImageView *)imageForSearch{
@@ -216,31 +161,6 @@
     return _imageForSearch;
 }
 
-- (void)setBackAlpha:(CGFloat)alpha{
-    _viewForBack.alpha = alpha;
-//    _viewForStore.alpha = alpha;
-    if(alpha>1){
-        _viewForBack.alpha = 1;
-//        _viewForStore.alpha = 1;
-    }
-    if(alpha<0){
-        _viewForBack.alpha = 0;
-//        _viewForStore.alpha = 0;
-    }
-}
-
-//- (void)setStroeBackAlpha:(CGFloat)alpha{
-////    _viewForBack.alpha = alpha;
-//    _viewForStore.alpha = alpha;
-//    if(alpha>1){
-////        _viewForBack.alpha = 1;
-//        _viewForStore.alpha = 1;
-//    }
-//    if(alpha<0){
-////        _viewForBack.alpha = 0;
-//        _viewForStore.alpha = 0;
-//    }
-//}
 
 
 @end

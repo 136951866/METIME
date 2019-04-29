@@ -558,7 +558,7 @@
 /*********************************************/
 #pragma makr - aboutUser
 
-//收货地址列表
+//微信授权登录
 #define MEIPAppAuthLogin @"app/auth/login"
 //app获取验证码
 #define MEIPAppGetCodel @"app/auth/getMesCode"
