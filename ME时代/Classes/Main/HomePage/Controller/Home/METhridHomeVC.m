@@ -344,7 +344,7 @@ const static CGFloat kImgStore = 50;
     }else if (indexPath.section==2){
         return [MECoupleHomeMainGoodGoodsCell getCellHeightWithArr:self.refresh.arrData];;
     }else{
-        return 1;
+        return 0.1;
     }
 }
 
