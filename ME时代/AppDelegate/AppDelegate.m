@@ -43,7 +43,6 @@
     
 #pragma mark - init IM sdk
     [[TUIKit sharedInstance] initKit:sdkAppid accountType:sdkAccountType withConfig:[TUIKitConfig defaultConfig]];
-#warning --
     if([MEUserInfoModel isLogin] && kMeUnNilStr(kCurrentUser.tls_data.tls_id).length && kMeUnNilStr(kCurrentUser.tls_data.user_tls_key).length){
         NSLog(@"%@    %@",kMeUnNilStr(kCurrentUser.tls_data.tls_id),kMeUnNilStr(kCurrentUser.tls_data.user_tls_key));
         [[TUIKit sharedInstance] loginKit:kMeUnNilStr(kCurrentUser.tls_data.tls_id) userSig:kMeUnNilStr(kCurrentUser.tls_data.user_tls_key) succ:^{
