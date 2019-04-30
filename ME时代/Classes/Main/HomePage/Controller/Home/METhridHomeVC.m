@@ -32,8 +32,9 @@
 //#import "METhridHomeHotCell.h"
 //#import <MediaPlayer/MediaPlayer.h>
 //#import "MEBasePlayerVC.h"
-#import "METhridHomeHotGoodModel.h"
+//#import "METhridHomeHotGoodModel.h"
 //#import "MEAppHomeTitleModel.h"
+#import "MEGoodModel.h"
 
 #import "METhridGoodsGoodSectionView.h"
 #import "METhridHomeCommondSectionView.h"
@@ -41,19 +42,19 @@
 #import "METhridHomeGoodGoodFilterCell.h"
 #import "METhridHomeGoodGoodMainCell.h"
 #import "METhridHomeTopCell.h"
-
+#import "MEHomeRecommendAndSpreebuyModel.h"
 
 const static CGFloat kImgStore = 50;
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     NSInteger _selectTimeIndex;
 //    NSArray *_arrRudeBuy;
     NSArray *_arrRudeTime;
-    NSArray *_arrCommonCoupon;
     NSArray *_arrHot;
     METhridHomeModel *_homeModel;
 //    CGFloat _sectionHeaderHeight;
     CGFloat _alphaNum;
     MEStoreModel *_stroeModel;
+    MEHomeRecommendAndSpreebuyModel *_spreebugmodel;
 //    MEAppHomeTitleModel *_homeTitleModel;
 }
 
@@ -80,7 +81,6 @@ const static CGFloat kImgStore = 50;
     [self.view addSubview:self.imgStore];
     _selectTimeIndex = 0;
     _arrHot = [NSArray array];
-    _arrCommonCoupon = [NSArray array];
     _arrRudeTime = [NSArray array];
     _homeModel = [METhridHomeModel new];
     self.tableView.tableHeaderView = self.headerView;
@@ -101,16 +101,20 @@ const static CGFloat kImgStore = 50;
 }
 
 - (void)setSdBackgroundColorWithIndex:(NSInteger)index{
-    if(index % 2){
-        self.tableView.mj_header.backgroundColor = kMEPink;
-        self.navView.backgroundColor = kMEPink;
-        self.view.backgroundColor = kMEPink;
-        self.headerView.viewForBack.backgroundColor = kMEPink;
-    }else{
-        self.tableView.mj_header.backgroundColor = kMEUnSelect;
-        self.navView.backgroundColor = kMEUnSelect;
-        self.view.backgroundColor = kMEUnSelect;
-        self.headerView.viewForBack.backgroundColor = kMEUnSelect;
+    NSArray *arr = kMeUnArr(_homeModel.top_banner);
+    if(arr.count<0 || index>arr.count){
+        return;
+    }
+    METhridHomeAdModel *model = arr[index];
+    if(kMeUnNilStr(model.color_start).length){
+        UIColor *color = [UIColor colorWithHexString:kMeUnNilStr(model.color_start)];
+        if(!color){
+            color = [UIColor colorWithHexString:@"#E52E26"];
+        }
+        self.tableView.mj_header.backgroundColor = color;
+        self.navView.backgroundColor = color;
+        self.view.backgroundColor = color;
+        self.headerView.viewForBack.backgroundColor = color;
     }
 }
 
@@ -174,21 +178,12 @@ const static CGFloat kImgStore = 50;
         }];
     });
 
-    dispatch_group_async(group, queue, ^{
-        [MEPublicNetWorkTool postGetPinduoduoCommondPoductWithSuccessBlock:^(ZLRequestResponse *responseObject) {
-            kMeSTRONGSELF
-            strongSelf->_arrCommonCoupon =[MECoupleModel mj_objectArrayWithKeyValuesArray:responseObject.data[@"goods_search_response"][@"goods_list"]];
-            dispatch_semaphore_signal(semaphore);
-        } failure:^(id object) {
-            dispatch_semaphore_signal(semaphore);
-        }];
-    });
     
     dispatch_group_async(group, queue, ^{
-        [MEPublicNetWorkTool postGetappThridHomePagHotGoodWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+        [MEPublicNetWorkTool postThridHomehomegetRecommendWithSuccessBlock:^(ZLRequestResponse *responseObject) {
             kMeSTRONGSELF
             if ([responseObject.data isKindOfClass:[NSArray class]]) {
-                strongSelf->_arrHot =[METhridHomeHotGoodModel mj_objectArrayWithKeyValuesArray:responseObject.data];
+                strongSelf->_arrHot =[MEGoodModel mj_objectArrayWithKeyValuesArray:responseObject.data];
             }else{
                 strongSelf->_arrHot = [NSArray array];
             }
@@ -199,6 +194,23 @@ const static CGFloat kImgStore = 50;
             dispatch_semaphore_signal(semaphore);
         }];
     });
+    
+    dispatch_group_async(group, queue, ^{
+        [MEPublicNetWorkTool postThridHomeRecommendAndSpreebuyWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            if([responseObject.data isKindOfClass:[NSDictionary class]]){
+                strongSelf->_spreebugmodel = [MEHomeRecommendAndSpreebuyModel mj_objectWithKeyValues:responseObject.data];
+            }else{
+                strongSelf->_spreebugmodel = nil;
+            }
+            dispatch_semaphore_signal(semaphore);
+        } failure:^(id object) {
+            kMeSTRONGSELF
+            strongSelf->_spreebugmodel = nil;
+            dispatch_semaphore_signal(semaphore);
+        }];
+    });
+    
     
     dispatch_group_notify(group, queue, ^{
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
@@ -250,7 +262,7 @@ const static CGFloat kImgStore = 50;
     if(self.refresh.pageIndex == 1){
         [self getNetWork];
     }
-    return @{@"sort_type":@"12"};
+    return @{@"type":@"3"};
 }
 
 - (void)handleResponse:(id)data{
@@ -284,16 +296,20 @@ const static CGFloat kImgStore = 50;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section== 0){
-        METhridHomeTopCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([METhridHomeTopCell class]) forIndexPath:indexPath];
-        [cell setUiWithModel:nil];
-        return cell;
+        if(_spreebugmodel){
+            METhridHomeTopCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([METhridHomeTopCell class]) forIndexPath:indexPath];
+            [cell setUiWithModel:_spreebugmodel];
+            return cell;
+        }else{
+            [UITableViewCell new];
+        }
     }else if(indexPath.section==1){
         if(indexPath.row == 0){
             METhridHomeGoodGoodFilterCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([METhridHomeGoodGoodFilterCell class]) forIndexPath:indexPath];
             return cell;
         }
         METhridHomeGoodGoodMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([METhridHomeGoodGoodMainCell class]) forIndexPath:indexPath];
-        METhridHomeHotGoodModel *model = _arrHot[indexPath.row-1];
+        MEGoodModel *model = _arrHot[indexPath.row-1];
         [cell setUIWithModel:model];
     }else if (indexPath.section==2){
         MECoupleHomeMainGoodGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainGoodGoodsCell class]) forIndexPath:indexPath];
@@ -312,7 +328,11 @@ const static CGFloat kImgStore = 50;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section==0){
-        return kMEThridHomeTopCellHeight;
+        if(_spreebugmodel){
+            return kMEThridHomeTopCellHeight;
+        }else{
+            return 0.1;
+        }
     }else if(indexPath.section==1){
         if(indexPath.row == 0){
             return [METhridHomeGoodGoodFilterCell getCellHeight];
@@ -325,8 +345,9 @@ const static CGFloat kImgStore = 50;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section == 1 && indexPath.row > 0){
-        METhridHomeHotGoodModel *model = _arrHot[indexPath.row-1];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    if(indexPath.section == 1 && indexPath.row > 0 && kMeUnArr(_arrHot).count>0){
+        MEGoodModel *model = _arrHot[indexPath.row-1];
         METhridProductDetailsVC *details = [[METhridProductDetailsVC alloc]initWithId:model.product_id];
         [self.navigationController pushViewController:details animated:YES];
     }

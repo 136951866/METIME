@@ -7,8 +7,14 @@
 //
 
 #import "METhridHomeTopCell.h"
+#import "MEHomeRecommendAndSpreebuyModel.h"
+#import "METhridProductDetailsVC.h"
+#import "METhridHomeVC.h"
 
-@interface METhridHomeTopCell ()
+
+@interface METhridHomeTopCell (){
+    MEHomeRecommendAndSpreebuyModel *_model;
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *lblFtitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblFDesc;
@@ -48,18 +54,30 @@
 }
 
 - (void)tapF{
-    
+    if(_model.recommend_goods){
+        METhridHomeVC *homevc = [MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
+        if(homevc){
+            METhridProductDetailsVC *details = [[METhridProductDetailsVC alloc]initWithId:_model.recommend_goods.product_id];
+            [homevc.navigationController pushViewController:details animated:YES];
+        }
+    }
 }
 
 - (void)tapS{
-    
+    if(_model.spreebuy_goods){
+        METhridHomeVC *homevc = [MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
+        if(homevc){
+            METhridProductDetailsVC *details = [[METhridProductDetailsVC alloc]initWithId:_model.spreebuy_goods.product_id];
+            details.time = kMeUnNilStr(_model.spreebuy_goods.time);
+            [homevc.navigationController pushViewController:details animated:YES];
+        }
+    }
 }
 
-- (void)setUiWithModel:(NSObject *)model{
-    kSDLoadImg(_imgfPic, kMeUnNilStr(@"1"));
-    
-    
-    NSString *ftitle = kMeUnNilStr(@"哈就是带");
+- (void)setUiWithModel:(MEHomeRecommendAndSpreebuyModel *)model{
+    _model = model;
+    kSDLoadImg(_imgfPic, kMeUnNilStr(model.recommend_goods.images_url));
+    NSString *ftitle = kMeUnNilStr(model.recommend_goods.title);
     CGFloat w = (SCREEN_WIDTH/2)-74-15-13-1;
     CGFloat h = 14;
     
@@ -69,9 +87,9 @@
     LabelFW = LabelFW>w?w:LabelFW;
     _consFw.constant = LabelFW;
     _lblFtitle.text = ftitle;
-    _lblFDesc.text = kMeUnNilStr(@"哈就是带");
+    _lblFDesc.text = kMeUnNilStr(model.recommend_goods.desc).length?kMeUnNilStr(model.recommend_goods.desc):kMeUnNilStr(model.recommend_goods.title);
     
-    NSString *fstr = [NSString stringWithFormat:@"¥%@ ¥%@",@(kMeUnNilStr(@"111").floatValue),@(kMeUnNilStr(@"11").floatValue)];
+    NSString *fstr = [NSString stringWithFormat:@"¥%@ ¥%@",@(kMeUnNilStr(model.recommend_goods.market_price).floatValue),@(kMeUnNilStr(model.recommend_goods.money).floatValue)];
     NSMutableAttributedString *faString = [[NSMutableAttributedString alloc]initWithString:fstr];
 
     NSUInteger firstLoc = 0;
@@ -83,12 +101,8 @@
 
     _lblFPrice.attributedText = faString;
     
-    
-    
-    
-    
-    kSDLoadImg(_imgSPic, kMeUnNilStr(@"2"));
-    NSString *Stitle = kMeUnNilStr(@"哈就就就就就就就就就就就就就就就就就就就就就就就就就就就就就就就就就就就是带");
+    kSDLoadImg(_imgSPic, kMeUnNilStr(model.spreebuy_goods.images_url));
+    NSString *Stitle = kMeUnNilStr(model.spreebuy_goods.title);
     CGRect srect = [Stitle boundingRectWithSize:CGSizeMake(w, h) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:kMeFont(10)} context:nil];
     
     CGFloat LabelSW = srect.size.width+12;
@@ -97,8 +111,9 @@
     
     
     _lblStitle.text = Stitle;
-    _lblSDesc.text = kMeUnNilStr(@"哈就就就就是带");
-    NSString *sstr = [NSString stringWithFormat:@"¥%@ ¥%@",@(kMeUnNilStr(@"222").floatValue),@(kMeUnNilStr(@"22").floatValue)];
+    _lblSDesc.text = kMeUnNilStr(model.spreebuy_goods.desc).length?kMeUnNilStr(model.spreebuy_goods.desc):kMeUnNilStr(model.spreebuy_goods.title);
+    
+    NSString *sstr = [NSString stringWithFormat:@"¥%@ ¥%@",@(kMeUnNilStr(model.spreebuy_goods.market_price).floatValue),@(kMeUnNilStr(model.spreebuy_goods.money).floatValue)];
     NSMutableAttributedString *saString = [[NSMutableAttributedString alloc]initWithString:sstr];
     
     NSUInteger sfirstLoc = 0;
@@ -107,7 +122,6 @@
     NSRange srange = NSMakeRange(sfirstLoc, ssecondLoc - sfirstLoc);
     [saString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"848484"] range:srange];
     [saString addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlineStyleSingle) range:srange];
-    
     _lblSPrice.attributedText = saString;
 }
 

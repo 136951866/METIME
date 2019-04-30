@@ -10,17 +10,26 @@
 
 
 @interface MECouponOrderSectionView ()
-
+{
+}
 @property (weak, nonatomic) IBOutlet UIView *viewForLine;
+@property (weak, nonatomic) IBOutlet UIView *viewForPddLine;
+@property (weak, nonatomic) IBOutlet UIView *viewForJdLine;
+
+
+
 @property (weak, nonatomic) IBOutlet UIButton *btnPinduoduo;
 @property (weak, nonatomic) IBOutlet UIButton *btnJd;
-@property (weak, nonatomic) IBOutlet UIView *viewForJdLine;
+@property (weak, nonatomic) IBOutlet UIButton *btnTb;
+
 
 
 @end
 
 @implementation MECouponOrderSectionView
-
+- (void)awakeFromNib{
+    [super awakeFromNib];
+}
 
 - (IBAction)pinduoduoAction:(UIButton *)sender {
     if(sender.selected == YES){
@@ -38,6 +47,15 @@
     kMeCallBlock(_selectBlock,MECouponOrderSectionViewJDType);
 }
 
+- (IBAction)tbAction:(UIButton *)sender {
+    if(sender.selected == YES){
+        return;
+    }
+    [self reloadUIWIthType:MECouponOrderSectionViewTBType];
+    kMeCallBlock(_selectBlock,MECouponOrderSectionViewTBType);
+}
+
+
 - (void)setType:(MECouponOrderSectionViewType)type{
     _type = type;
     [self reloadUIWIthType:type];
@@ -45,15 +63,30 @@
 
 - (void)reloadUIWIthType:(MECouponOrderSectionViewType)type{
     if(type==MECouponOrderSectionViewPinduoduoType){
-        _viewForJdLine.hidden = YES;
-        _viewForLine.hidden = NO;
         _btnPinduoduo.selected = YES;
-        _btnJd.selected = NO;
-    }else{
-        _viewForJdLine.hidden = NO;
+        _viewForPddLine.hidden = NO;
+        
+        
+        _viewForJdLine.hidden = YES;
         _viewForLine.hidden = YES;
-        _btnPinduoduo.selected = NO;
+        _btnTb.selected = NO;
+        _btnJd.selected = NO;
+    }else if(type==MECouponOrderSectionViewJDType){
         _btnJd.selected = YES;
+        _viewForJdLine.hidden = NO;
+        
+        _viewForPddLine.hidden = YES;
+        _viewForLine.hidden = YES;
+        _btnTb.selected = NO;
+        _btnPinduoduo.selected = NO;
+    }else{
+        _btnTb.selected = YES;
+        _viewForLine.hidden = NO;
+        
+        _viewForPddLine.hidden = YES;
+        _viewForJdLine.hidden = YES;
+        _btnJd.selected = NO;
+        _btnPinduoduo.selected = NO;
     }
 }
 

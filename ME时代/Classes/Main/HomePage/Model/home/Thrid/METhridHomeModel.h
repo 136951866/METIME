@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString * ad_img;
 @property (nonatomic, strong) NSString * ad_url;
 @property (nonatomic, assign) NSInteger product_id;
-
+@property (nonatomic, strong) NSString * color_start;
 @end
 
 @interface METhridHomeserviceModel : MEBaseModel

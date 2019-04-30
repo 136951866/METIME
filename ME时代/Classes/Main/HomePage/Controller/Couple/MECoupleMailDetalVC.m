@@ -15,6 +15,7 @@
 #import "MECouponInfo.h"
 #import "MEPinduoduoCoupleModel.h"
 #import "MEPinduoduoCoupleInfoModel.h"
+#import "MEAddTbView.h"
 
 #define MECoupleMailDetalVCbottomViewHeight 50
 
@@ -37,6 +38,8 @@
 @property (nonatomic,strong) UIView *bottomView;
 @property (nonatomic,strong) UIButton *btnShare;
 @property (nonatomic,strong) UIButton *btnBuy;
+@property (strong, nonatomic) MEAddTbView *addTbVIew;
+
 @end
 
 @implementation MECoupleMailDetalVC
@@ -203,7 +206,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 44;
-   
 }
 
 - (void)buyAction:(UIButton *)btn{
@@ -241,8 +243,9 @@
 }
 
 - (void)shareAction:(UIButton *)btn{
-    if(_pinduoduomodel){
-        if([MEUserInfoModel isLogin]){
+    if([MEUserInfoModel isLogin]){
+        if(_pinduoduomodel){
+            //拼多多
             if(_sharegoods_promotion_url){
                 MEShareTool *shareTool = [MEShareTool me_instanceForTarget:self];
                 shareTool.sharWebpageUrl = _sharegoods_promotion_url[@"we_app_web_view_short_url"];
@@ -279,30 +282,51 @@
                 }];
             }
         }else{
-            kMeWEAKSELF
-            [MELoginVC presentLoginVCWithSuccessHandler:^(id object) {
-                kMeSTRONGSELF
-                [strongSelf shareAction:nil];
-            } failHandler:nil];
+            if(kMeUnNilStr(kCurrentUser.relation_id).length == 0 || [kCurrentUser.relation_id isEqualToString:@"0"]){
+                [self openAddTbView];
+            }else{
+                //淘宝
+                if(kMeUnNilStr(_Tpwd).length){
+                    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+                    pasteboard.string = kMeUnNilStr(_Tpwd);
+                    [MEShowViewTool showMessage:@"分享口令复制成功,请发给朋友" view:self.view];
+                }else{
+                    kMeWEAKSELF
+                    NSString *rid = [NSString stringWithFormat:@"&relationId=%@",kCurrentUser.relation_id];
+                    NSString *str = [kMeUnNilStr(_detailModel.coupon_click_url) stringByAppendingString:rid];
+                    [MEPublicNetWorkTool postTaobaokeGetTpwdWithTitle:kMeUnNilStr(_detailModel.title) url:str logo:kMeUnNilStr(_detailModel.pict_url) successBlock:^(ZLRequestResponse *responseObject) {
+                        kMeSTRONGSELF
+                        strongSelf->_Tpwd = kMeUnNilStr(responseObject.data[@"tbk_tpwd_create_response"][@"data"][@"model"]);
+                        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+                        pasteboard.string = kMeUnNilStr(strongSelf->_Tpwd);
+                        [MEShowViewTool showMessage:@"分享口令复制成功,请发给朋友" view:strongSelf.view];
+                    } failure:^(id object) {
+                        
+                    }];
+                }
+            }
         }
     }else{
-        if(kMeUnNilStr(_Tpwd).length){
-            UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-            pasteboard.string = kMeUnNilStr(_Tpwd);
-            [MEShowViewTool showMessage:@"分享口令复制成功,请发给朋友" view:self.view];
-        }else{
-            kMeWEAKSELF
-            [MEPublicNetWorkTool postTaobaokeGetTpwdWithTitle:kMeUnNilStr(_detailModel.title) url:kMeUnNilStr(_detailModel.coupon_click_url) logo:kMeUnNilStr(_detailModel.pict_url) successBlock:^(ZLRequestResponse *responseObject) {
-                kMeSTRONGSELF
-                strongSelf->_Tpwd = kMeUnNilStr(responseObject.data[@"tbk_tpwd_create_response"][@"data"][@"model"]);
-                UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-                pasteboard.string = kMeUnNilStr(strongSelf->_Tpwd);
-                [MEShowViewTool showMessage:@"分享口令复制成功,请发给朋友" view:strongSelf.view];
-            } failure:^(id object) {
-                
-            }];
-        }
+        kMeWEAKSELF
+        [MELoginVC presentLoginVCWithSuccessHandler:^(id object) {
+            kMeSTRONGSELF
+            [strongSelf shareAction:nil];
+        } failHandler:nil];
     }
+}
+
+- (void)openAddTbView{
+    kMeWEAKSELF
+    [MEPublicNetWorkTool postShareTaobaokeGetInviterUrlWithsuccessBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        NSString *strApi = kMeUnNilStr(responseObject.data[@"url"]);
+        NSURL *url = [NSURL URLWithString:strApi];
+        [[UIApplication sharedApplication] openURL:url];
+        strongSelf.addTbVIew.url = strApi;
+        [strongSelf.addTbVIew show];
+    } failure:^(id object) {
+        
+    }];
 }
 
 - (void)openTb{
@@ -312,7 +336,7 @@
             NSString *newUrl = [str stringByReplacingOccurrencesOfString:@"https://mobile.yangkeduo.com/" withString:@"pinduoduo://com.xunmeng.pinduoduo/"];
             NSURL *url = [NSURL URLWithString:newUrl];
             [[UIApplication sharedApplication] openURL:url];
-        } else {
+        }else {
             NSURL *newurl = [NSURL URLWithString:kMeUnNilStr(_goods_promotion_url[@"short_url"])];
             [[UIApplication sharedApplication] openURL:newurl];
         }
@@ -404,6 +428,21 @@
         _btnShare.titleLabel.font = kMeFont(15);
     }
     return _btnShare;
+}
+
+- (MEAddTbView *)addTbVIew{
+    if(!_addTbVIew){
+        _addTbVIew = [[[NSBundle mainBundle]loadNibNamed:@"MEAddTbView" owner:nil options:nil] lastObject];
+        _addTbVIew.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        kMeWEAKSELF
+        _addTbVIew.finishBlock = ^(BOOL sucess) {
+            kMeSTRONGSELF
+            if(sucess){
+                
+            }
+        };
+    }
+    return _addTbVIew;
 }
 
 @end

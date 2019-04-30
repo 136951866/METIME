@@ -14,6 +14,7 @@
 #import "MECouponOrderSectionView.h"
 #import "MEJDCouponMoneyModel.h"
 #import "MEWithdrawalVC.h"
+#import "MECouponBtModel.h"
 
 @interface MECouponOrderVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
     MECouponDetailModel *_modeldatil;
@@ -32,7 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"优惠券明细";
-    _type = MECouponOrderSectionViewPinduoduoType;
+    _type = MECouponOrderSectionViewTBType;
     self.view.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
     self.tableView.tableHeaderView = self.headerView;
     [self.view addSubview:self.tableView];
@@ -70,8 +71,10 @@
     }
     if(_type == MECouponOrderSectionViewPinduoduoType){
         [self.refresh.arrData addObjectsFromArray:[MECouponMoneyModel mj_objectArrayWithKeyValuesArray:data]];
-    }else{
+    }else if(_type==MECouponOrderSectionViewJDType){
         [self.refresh.arrData addObjectsFromArray:[MEJDCouponMoneyModel mj_objectArrayWithKeyValuesArray:data]];
+    }else{
+        [self.refresh.arrData addObjectsFromArray:[MECouponBtModel mj_objectArrayWithKeyValuesArray:data]];
     }
 }
 
@@ -86,9 +89,12 @@
     if(_type == MECouponOrderSectionViewPinduoduoType){
          MECouponMoneyModel *model = self.refresh.arrData[indexPath.row];
         [cell setUIWithModel:model];
-    }else{
+    }else if(_type==MECouponOrderSectionViewJDType){
         MEJDCouponMoneyModel *model = self.refresh.arrData[indexPath.row];
         [cell setJDUIWithModel:model];
+    }else{
+        MECouponBtModel *model = self.refresh.arrData[indexPath.row];
+        [cell setTbUIWithModel:model];
     }
     return cell;
 }
@@ -105,8 +111,10 @@
         kMeSTRONGSELF
         if(index == MECouponOrderSectionViewPinduoduoType){
             strongSelf->_refresh.url = kGetApiWithUrl(MEIPcommonduoduokeGetBrokerageDetailGoods);
-        }else{
+        }else if(index==MECouponOrderSectionViewJDType){
             strongSelf->_refresh.url = kGetApiWithUrl(MEIPcommongetCommissionGoodsDetail);
+        }else{
+            strongSelf->_refresh.url = kGetApiWithUrl(MEIPcommonTaobaokecheckgetMyTbkOrder);
         }
         strongSelf->_type = index;
         [strongSelf.refresh reload];
@@ -138,7 +146,7 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonduoduokeGetBrokerageDetailGoods)];
+        _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommonTaobaokecheckgetMyTbkOrder)];
         _refresh.delegate = self;
         _refresh.showMaskView = YES;
         _refresh.isDataInside = YES;

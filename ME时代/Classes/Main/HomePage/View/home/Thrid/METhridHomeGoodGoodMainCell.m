@@ -7,7 +7,7 @@
 //
 
 #import "METhridHomeGoodGoodMainCell.h"
-#import "METhridHomeHotGoodModel.h"
+#import "MEGoodModel.h"
 
 @interface METhridHomeGoodGoodMainCell()
 
@@ -23,22 +23,22 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.selectionStyle = 0;
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     _lblTitle.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:16];
     _lblPrice.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:17];
     _lblPrice.adjustsFontSizeToFitWidth = YES;
     // Initialization code
 }
 
-- (void)setUIWithModel:(METhridHomeHotGoodModel *)model{
-    kSDLoadImg(_imgPic,kMeUnNilStr(model.product.images));
+- (void)setUIWithModel:(MEGoodModel *)model{
+    kSDLoadImg(_imgPic,kMeUnNilStr(model.images_url));
     _lblTitle.text = kMeUnNilStr(model.title);
-    _lblSubTitle.text = kMeUnNilStr(model.product.desc);
+    _lblSubTitle.text = kMeUnNilStr(model.desc).length?kMeUnNilStr(model.desc):kMeUnNilStr(model.title);
 //    _lblPrice.text = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.product.money).floatValue)];
     
 //    NSString *commStr = [NSString stringWithFormat:@"¥%@",@(kMeUnNilStr(model.product.market_price).floatValue)];
     
-    NSString *str = [NSString stringWithFormat:@"¥%@ ¥%@",@(kMeUnNilStr(model.product.money).floatValue),@(kMeUnNilStr(model.product.market_price).floatValue)];
+    NSString *str = [NSString stringWithFormat:@"¥%@ ¥%@",@(kMeUnNilStr(model.money).floatValue),@(kMeUnNilStr(model.market_price).floatValue)];
     
     NSMutableAttributedString *aString = [[NSMutableAttributedString alloc]initWithString:str];
     

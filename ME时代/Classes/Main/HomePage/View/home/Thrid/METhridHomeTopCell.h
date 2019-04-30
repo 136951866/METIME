@@ -12,10 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 const static CGFloat kMEThridHomeTopCellHeight = 142;
 
-
+@class MEHomeRecommendAndSpreebuyModel;
 @interface METhridHomeTopCell : UITableViewCell
 
-- (void)setUiWithModel:(NSObject *)model;
+- (void)setUiWithModel:(MEHomeRecommendAndSpreebuyModel *)model;
+
+//@property (nonatomic,copy)kMeBasicBlock fblock;
+//@property (nonatomic,copy)kMeBasicBlock sblock;
 
 @end
 

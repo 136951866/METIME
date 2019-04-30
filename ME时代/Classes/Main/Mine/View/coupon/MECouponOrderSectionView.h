@@ -10,8 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 typedef enum : NSUInteger {
+    MECouponOrderSectionViewTBType = 0,
     MECouponOrderSectionViewPinduoduoType,
-    MECouponOrderSectionViewJDType,
+    MECouponOrderSectionViewJDType
 } MECouponOrderSectionViewType;
 
 

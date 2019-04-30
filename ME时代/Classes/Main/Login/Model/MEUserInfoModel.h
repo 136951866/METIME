@@ -62,6 +62,8 @@ static NSString *kTokenKey = @"kTokenKey";
 @property (nonatomic, assign) NSInteger user_type;
 @property (nonatomic, assign) MEClientTypeStyle client_type;
 
+//淘宝的分享id
+@property (nonatomic, copy) NSString *relation_id;
 /**
  * admin_id : 舒
  * admin_team : 1

@@ -11,12 +11,14 @@
 const static CGFloat kMECouponOrderCellHeight = 144;
 @class MECouponMoneyModel;
 @class MEJDCouponMoneyModel;
+@class MECouponBtModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MECouponOrderCell : UITableViewCell
 
 - (void)setUIWithModel:(MECouponMoneyModel *)model;
 - (void)setJDUIWithModel:(MEJDCouponMoneyModel *)model;
+- (void)setTbUIWithModel:(MECouponBtModel *)model;
 
 @end
 

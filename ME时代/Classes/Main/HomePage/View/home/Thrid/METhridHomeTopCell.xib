@@ -28,7 +28,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhK-x5-cyC">
                         <rect key="frame" x="0.0" y="5" width="160" height="136.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r5x-Ke-D86">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r5x-Ke-D86">
                                 <rect key="frame" x="73" y="26" width="74" height="74"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="74" id="KO9-aa-L6Z"/>
@@ -109,7 +109,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkf-fk-PI3">
                         <rect key="frame" x="160" y="5" width="160" height="136.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IkS-m5-iaL">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IkS-m5-iaL">
                                 <rect key="frame" x="73" y="26" width="74" height="74"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="74" id="ZIm-oz-YgA"/>

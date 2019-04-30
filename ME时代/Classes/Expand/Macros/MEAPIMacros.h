@@ -15,8 +15,8 @@
 
 //域名 develop
 #ifdef TestVersion
-#define BASEIP @"https://test.meshidai.com/api/"
-//#define BASEIP @"https://develop.meshidai.com/api/"
+//#define BASEIP @"https://test.meshidai.com/api/"
+#define BASEIP @"https://develop.meshidai.com/api/"
 //#define BASEIP @"http://test_dev.meshidai.com/api/"
 #else
 #define BASEIP @"https://msd.meshidai.com/api/"
@@ -179,6 +179,16 @@
 #define MEIPcommonTaobaokeGetDgMaterialOptional @"common/taobaoke/dgMaterialOptional"
 //推广券信息查询
 #define MEIPcommonTaobaokeGetTbkCouponGet @"common/taobaoke/tbkCouponGet"
+
+
+//查找用户渠道
+#define MEIPcommonTaobaokecheckMemberRelation @"common/taobaoke/checkMemberRelation"
+//获取淘宝渠道备案URL
+#define MEIPcommonTaobaokecheckgetInviterUrl @"common/taobaoke/getInviterUrl"
+//获取我的淘优惠券明细
+#define MEIPcommonTaobaokecheckgetMyTbkOrder @"common/taobaoke/getMyTbkOrder"
+
+
 /*********************************************/
 
 
@@ -285,6 +295,10 @@
 //获取APP首页标题
 #define MEIPcommonGetAppHomeTitle @"getAppHomeTitle"
 
+//获取首页推荐产品(2019-04-30)
+#define MEIPcommonhomegetRecommend @"common/home/getRecommend"
+//获取推荐产品和抢购产品
+#define MEIPcommonhomegetRecommendAndSpreebuy @"common/home/recommendAndSpreebuy"
 /*********************************************/
 
 

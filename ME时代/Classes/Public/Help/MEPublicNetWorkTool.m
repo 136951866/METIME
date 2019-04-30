@@ -576,6 +576,36 @@
 
 #pragma makr - taobao
 
+//查找用户渠道
++ (void)postShareTaobaokeGetMemberRelationWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{@"token":kMeUnNilStr(kCurrentUser.token)};
+    NSString *urlApi = kGetApiWithUrl(MEIPcommonTaobaokecheckMemberRelation);
+    [THTTPManager postWithParameter:dic strUrl:urlApi success:^(ZLRequestResponse *responseObject) {
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        kMeCallBlock(failure,error);
+    }];
+}
+//获取淘宝渠道备案URL
++ (void)postShareTaobaokeGetInviterUrlWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{@"token":kMeUnNilStr(kCurrentUser.token)};
+    NSString *urlApi = kGetApiWithUrl(MEIPcommonTaobaokecheckgetInviterUrl);
+    MBProgressHUD *HUD = [self commitWithHUD:@""];
+    [THTTPManager postWithParameter:dic strUrl:urlApi success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
+
+
 //获取淘宝客Banner
 + (void)postAgetTbkBannerWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{@"tool":@"1",
@@ -1225,6 +1255,39 @@
         }else{
             [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
         }
+        kMeCallBlock(failure,error);
+    }];
+}
+
+//获取首页推荐产品(2019-04-30)
++ (void)postThridHomehomegetRecommendWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{};
+    NSString *url = kGetApiWithUrl(MEIPcommonhomegetRecommend);
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+//        if([error isKindOfClass:[ZLRequestResponse class]]){
+//            ZLRequestResponse *res = (ZLRequestResponse*)error;
+//            [MEShowViewTool showMessage:kMeUnNilStr(res.message) view:kMeCurrentWindow];
+//        }else{
+//            [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
+//        }
+        kMeCallBlock(failure,error);
+    }];
+}
+//获取推荐产品和抢购产品
++ (void)postThridHomeRecommendAndSpreebuyWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{};
+    NSString *url = kGetApiWithUrl(MEIPcommonhomegetRecommendAndSpreebuy);
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        //        if([error isKindOfClass:[ZLRequestResponse class]]){
+        //            ZLRequestResponse *res = (ZLRequestResponse*)error;
+        //            [MEShowViewTool showMessage:kMeUnNilStr(res.message) view:kMeCurrentWindow];
+        //        }else{
+        //            [MEShowViewTool showMessage:kApiError view:kMeCurrentWindow];
+        //        }
         kMeCallBlock(failure,error);
     }];
 }

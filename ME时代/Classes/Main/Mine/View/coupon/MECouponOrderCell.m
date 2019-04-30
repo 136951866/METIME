@@ -9,6 +9,7 @@
 #import "MECouponOrderCell.h"
 #import "MECouponMoneyModel.h"
 #import "MEJDCouponMoneyModel.h"
+#import "MECouponBtModel.h"
 
 @interface MECouponOrderCell()
 @property (weak, nonatomic) IBOutlet UIImageView *imgPic;
@@ -46,6 +47,16 @@
     _lblPrice.text =  [NSString stringWithFormat:@"消费金额¥%@",kMeUnNilStr(model.price)];
     _lblCommission.text = [NSString stringWithFormat:@"佣金估计¥%@",kMeUnNilStr(model.actualFee)];
     _lblStatus.text = kMeUnNilStr(model.status);
+}
+
+- (void)setTbUIWithModel:(MECouponBtModel *)model{
+    kSDLoadImg(_imgPic, kMeUnNilStr(model.pic_url));
+    _lblTitle.text = kMeUnNilStr(model.item_title);
+    _lblTime.text = [NSString stringWithFormat:@"下单时间:%@",kMeUnNilStr(model.create_time)];
+    
+    _lblPrice.text =  [NSString stringWithFormat:@"消费金额¥%@",kMeUnNilStr(model.price)];
+    _lblCommission.text = [NSString stringWithFormat:@"佣金估计¥%@",kMeUnNilStr(model.expected_money)];
+    _lblStatus.text = kMeUnNilStr(model.status_name);
 }
 
 @end
