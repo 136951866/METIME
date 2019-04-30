@@ -284,7 +284,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/Login/Controller/MELoginVC.m"
-            timestampString = "578309534.897357"
+            timestampString = "578314230.132477"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "248"
@@ -390,7 +390,7 @@
                   moduleName = "ME&#x65f6;&#x4ee3;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hank/Desktop/METIME/ME%E6%97%B6%E4%BB%A3/Classes/Main/Mine/Controller/goodMannger/MEGoodManngerSpecVC.m"
-                  timestampString = "578307133.671347"
+                  timestampString = "578313452.648663"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "183"
@@ -405,7 +405,7 @@
                   moduleName = "ME&#x65f6;&#x4ee3;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hank/Desktop/METIME/ME%E6%97%B6%E4%BB%A3/Classes/Main/Mine/Controller/goodMannger/MEGoodManngerSpecVC.m"
-                  timestampString = "578307133.674791"
+                  timestampString = "578313452.6531219"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "181"
@@ -506,7 +506,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/HomePage/View/goodDetail/MEProductDetailsBottomView.m"
-            timestampString = "577965067.067407"
+            timestampString = "578314230.154503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
@@ -522,7 +522,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/HomePage/View/goodDetail/MEProductDetailsBottomView.m"
-            timestampString = "577965067.086906"
+            timestampString = "578314230.187265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
@@ -564,6 +564,22 @@
             startingLineNumber = "125"
             endingLineNumber = "125"
             landmarkName = "-updateConversations"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ME&#x65f6;&#x4ee3;/Classes/Main/HomePage/View/goodDetail/MEProductDetailsBottomView.m"
+            timestampString = "578314230.188924"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "-getShareEncode"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

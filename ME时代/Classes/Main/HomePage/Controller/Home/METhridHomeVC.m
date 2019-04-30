@@ -307,10 +307,12 @@ const static CGFloat kImgStore = 50;
         if(indexPath.row == 0){
             METhridHomeGoodGoodFilterCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([METhridHomeGoodGoodFilterCell class]) forIndexPath:indexPath];
             return cell;
+        }else{
+            METhridHomeGoodGoodMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([METhridHomeGoodGoodMainCell class]) forIndexPath:indexPath];
+            MEGoodModel *model = _arrHot[indexPath.row-1];
+            [cell setUIWithModel:model];
+            return cell;
         }
-        METhridHomeGoodGoodMainCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([METhridHomeGoodGoodMainCell class]) forIndexPath:indexPath];
-        MEGoodModel *model = _arrHot[indexPath.row-1];
-        [cell setUIWithModel:model];
     }else if (indexPath.section==2){
         MECoupleHomeMainGoodGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainGoodGoodsCell class]) forIndexPath:indexPath];
         [cell setUIWithArr:self.refresh.arrData];

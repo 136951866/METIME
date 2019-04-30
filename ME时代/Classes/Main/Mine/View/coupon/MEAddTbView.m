@@ -37,7 +37,7 @@
         MERelationIdModel *relation_idmodel = [MERelationIdModel mj_objectWithKeyValues:responseObject.data];
         NSString *relation_id = kMeUnNilStr(relation_idmodel.relation_id);
         if(kMeUnNilStr(relation_id).length == 0 || [relation_id isEqualToString:@"0"]){
-            [MEShowViewTool SHOWHUDWITHHUD:HUD test:@"加入失败"];
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:@"加入失败,请先授权"];
             [strongSelf hideWithBlock:strongSelf.finishBlock isSucess:YES];
         }else{
             kCurrentUser.relation_id = kMeUnNilStr(relation_id);
