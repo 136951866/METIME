@@ -301,7 +301,7 @@ const static CGFloat kImgStore = 50;
             [cell setUiWithModel:_spreebugmodel];
             return cell;
         }else{
-            [UITableViewCell new];
+            return [UITableViewCell new];
         }
     }else if(indexPath.section==1){
         if(indexPath.row == 0){
@@ -324,8 +324,9 @@ const static CGFloat kImgStore = 50;
             [strongSelf.navigationController pushViewController:dvc animated:YES];
         };
         return cell;
+    }else{
+         return [UITableViewCell new];
     }
-    return [UITableViewCell new];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -342,8 +343,9 @@ const static CGFloat kImgStore = 50;
         return kMEThridHomeGoodGoodMainCellHeight;
     }else if (indexPath.section==2){
         return [MECoupleHomeMainGoodGoodsCell getCellHeightWithArr:self.refresh.arrData];;
+    }else{
+        return 1;
     }
-    return 1;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
