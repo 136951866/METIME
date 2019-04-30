@@ -35,6 +35,7 @@
     METhridHomeVC *homevc = [MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
     if(homevc){
         MECoupleMailVC *vc = [[MECoupleMailVC alloc]initWithType:MECouponSearchGoodGoodsType];
+        vc.titleStr = @"排行榜";
         [homevc.navigationController pushViewController:vc animated:YES];
     }
 }
@@ -44,6 +45,7 @@
     METhridHomeVC *homevc = [MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
     if(homevc){
         MECoupleMailVC *vc = [[MECoupleMailVC alloc]initWithType:MECouponSearchTeHuiType];
+        vc.titleStr = @"超值特惠专场";
         [homevc.navigationController pushViewController:vc animated:YES];
     }
 }
@@ -71,6 +73,7 @@
     METhridHomeVC *homevc = [MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
     if(homevc){
         MECoupleMailVC *vc = [[MECoupleMailVC alloc]initWithType:MECouponSearchTopBuyType];
+        vc.titleStr = @"今日热卖专场";
         [homevc.navigationController pushViewController:vc animated:YES];
     }
 }

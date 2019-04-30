@@ -95,7 +95,11 @@
                 str = @"优惠券";
                 break;
         }
-        self.title = str;
+        if(kMeUnNilStr(self.titleStr).length){
+            self.title = kMeUnNilStr(self.titleStr);
+        }else{
+           self.title = str;
+        }
     }else{
         self.title = _queryStr;
     }
