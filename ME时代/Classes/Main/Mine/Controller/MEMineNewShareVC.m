@@ -66,8 +66,6 @@
             [strongSelf.view addSubview:strongSelf.scrollerView];
             [strongSelf.view addSubview:strongSelf.btnSave];
             [strongSelf.scrollerView addSubview:strongSelf.cview];
-#warning ---
-            //新app add
             [strongSelf.cview setCode:kMeUnNilStr(responseObject.data) levStr:strongSelf->_lev];
         });
     } failure:^(id object) {
