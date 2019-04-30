@@ -51,7 +51,7 @@
         NSDictionary *info =  [[NSUserDefaults standardUserDefaults] objectForKey:kMeUnNilStr(_data.convId)];
         if(!info){
             _headImageView.image = [UIImage imageNamed:_data.head];
-            _titleLabel.text = _data.title;
+            _titleLabel.text = @"";
         }else{
             _data.infoDiv = info;
             NSString *headerpic = kMeUnNilStr(info[@"header_pic"]);

@@ -390,7 +390,7 @@
                   moduleName = "ME&#x65f6;&#x4ee3;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hank/Desktop/METIME/ME%E6%97%B6%E4%BB%A3/Classes/Main/Mine/Controller/goodMannger/MEGoodManngerSpecVC.m"
-                  timestampString = "578303119.799722"
+                  timestampString = "578307133.671347"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "183"
@@ -405,7 +405,7 @@
                   moduleName = "ME&#x65f6;&#x4ee3;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hank/Desktop/METIME/ME%E6%97%B6%E4%BB%A3/Classes/Main/Mine/Controller/goodMannger/MEGoodManngerSpecVC.m"
-                  timestampString = "578303119.8028491"
+                  timestampString = "578307133.674791"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "181"
@@ -539,6 +539,32 @@
             continueAfterRunningActions = "No"
             scope = "0"
             stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ME&#x65f6;&#x4ee3;/Classes/VenderLib/TIMSDK/section/conversation/TConversationController.m"
+            timestampString = "578307059.33145"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "-updateConversations"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

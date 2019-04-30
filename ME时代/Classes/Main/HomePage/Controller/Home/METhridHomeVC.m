@@ -102,7 +102,7 @@ const static CGFloat kImgStore = 50;
 
 - (void)setSdBackgroundColorWithIndex:(NSInteger)index{
     NSArray *arr = kMeUnArr(_homeModel.top_banner);
-    if(arr.count<0 || index>arr.count){
+    if(arr.count==0 || index>arr.count){
         return;
     }
     METhridHomeAdModel *model = arr[index];
