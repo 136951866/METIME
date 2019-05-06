@@ -35,8 +35,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithHexString:@"3092ff"];//[UIColor colorWithRed:15 green:106 blue:180 alpha:1];
-    _arrImage = @[@"guideone",@"guidetwo",@"guidethree"];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"0f0100"];//[UIColor colorWithRed:15 green:106 blue:180 alpha:1];
+    _arrImage = @[@"guideone",@"guidetwo",@"guidethree",@"guidefour"];
     self.scrollView.contentSize=CGSizeMake(SCREEN_WIDTH * _arrImage.count, SCREEN_HEIGHT);
     self.pageController.numberOfPages = _arrImage.count;
     CGFloat imageW = SCREEN_WIDTH;
@@ -48,7 +48,8 @@
             make.width.mas_equalTo(imageW);
             make.height.mas_equalTo(imageH);
             make.centerX.mas_equalTo((i * SCREEN_WIDTH));
-            make.centerY.mas_equalTo(0);
+//            make.centerY.mas_equalTo(0);
+             make.top.mas_equalTo(0);
         }];
         v.image = [UIImage imageNamed:kMeUnNilStr(_arrImage[i])];
     }
@@ -107,8 +108,8 @@
         _btnInApp = [UIButton buttonWithType:UIButtonTypeCustom];
         [_btnInApp addTarget:self action:@selector(intoApp:) forControlEvents:UIControlEventTouchUpInside];
         [_btnInApp setTitle:@"立即体验" forState:UIControlStateNormal];
-        [_btnInApp setBackgroundColor:kMEPink];
-        [_btnInApp setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_btnInApp setBackgroundColor:[UIColor colorWithHexString:@"f3c343"]];
+        [_btnInApp setTitleColor:[UIColor colorWithHexString:@"471b06"] forState:UIControlStateNormal];
         _btnInApp.cornerRadius = 45/2;
         _btnInApp.clipsToBounds = YES;
         _btnInApp.titleLabel.font = kMeFont(17);
