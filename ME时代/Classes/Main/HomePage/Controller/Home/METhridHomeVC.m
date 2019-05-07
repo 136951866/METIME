@@ -20,7 +20,9 @@
 #import "MERushBuyView.h"
 #import "METhridProductDetailsVC.h"
 #import "METhridHomeModel.h"
-
+#import "MECouponSearchVC.h"
+#import "MECoupleMailVC.h"
+#import "MENavigationVC.h"
 //#import "METhridHomeRudeTimeModel.h"
 //#import "METhridHomeRudeGoodModel.h"
 #import "MECoupleMailDetalVC.h"
@@ -56,6 +58,8 @@ const static CGFloat kImgStore = 50;
     MEStoreModel *_stroeModel;
     MEHomeRecommendAndSpreebuyModel *_spreebugmodel;
 //    MEAppHomeTitleModel *_homeTitleModel;
+    NSInteger _currentIndex;
+    NSArray *_arrDicParm;
 }
 
 @property (nonatomic, strong) UITableView           *tableView;
@@ -75,7 +79,10 @@ const static CGFloat kImgStore = 50;
     [super viewDidLoad];
     self.navBarHidden = YES;
     self.view.backgroundColor = kMEf5f4f4;
+    _currentIndex = 0;
     _alphaNum = (kSdHeight*kMeFrameScaleX())+80;
+    //@[@"精选",@"特卖",@"猜你喜欢",@"女装",@"美妆",@"母婴"];
+    _arrDicParm = @[@{@"type":@"3"},@{@"material_id":@"4094"},@{@"material_id":@"4092"},@{@"material_id":@"3767"},@{@"material_id":@"3763"},@{@"material_id":@"3760"}];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.navView];
     [self.view addSubview:self.imgStore];
@@ -262,7 +269,10 @@ const static CGFloat kImgStore = 50;
     if(self.refresh.pageIndex == 1){
         [self getNetWork];
     }
-    return @{@"type":@"3"};
+    NSDictionary *dic = _arrDicParm[_currentIndex];
+    NSLog(@"---------%@",dic);
+    return dic;
+//    return @{@"type":@"3"};
 }
 
 - (void)handleResponse:(id)data{
@@ -389,6 +399,16 @@ const static CGFloat kImgStore = 50;
     }
 }
 
+- (void)searchCoupon{
+    MECouponSearchVC *searchViewController = [MECouponSearchVC searchViewControllerWithHotSearches:@[] searchBarPlaceholder:@"搜索优惠券" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
+        MECoupleMailVC *dataVC = [[MECoupleMailVC alloc]initWithQuery:searchText];
+        [searchViewController.navigationController pushViewController:dataVC animated:YES];
+    }];
+    [searchViewController setSearchHistoriesCachePath:kMECouponSearchVCSearchHistoriesCachePath];
+    MENavigationVC *nav = [[MENavigationVC alloc] initWithRootViewController:searchViewController];
+    [self presentViewController:nav  animated:NO completion:nil];
+}
+
 - (UITableView *)tableView{
     if(!_tableView){
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kMEThridHomeNavViewHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeTabBarHeight-kMEThridHomeNavViewHeight) style:UITableViewStylePlain];
@@ -437,10 +457,20 @@ const static CGFloat kImgStore = 50;
 - (METhridHomeNavView *)navView{
     if(!_navView){
         _navView = [[METhridHomeNavView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kMEThridHomeNavViewHeight)];
-//        kMeWEAKSELF
-//        _navView.selectIndexBlock = ^(NSInteger index) {
-//            kMeSTRONGSELF
-//        };
+        kMeWEAKSELF
+        _navView.searchBlock = ^{
+            kMeSTRONGSELF
+            [strongSelf searchCoupon];
+        };
+        _navView.selectIndexBlock = ^(NSInteger index) {
+            kMeSTRONGSELF
+            if(index>=0 && index<6){
+                if(strongSelf->_currentIndex != index){
+                    strongSelf->_currentIndex = index;
+                    [strongSelf.refresh reload];
+                }
+            }
+        };
     }
     return _navView;
 }

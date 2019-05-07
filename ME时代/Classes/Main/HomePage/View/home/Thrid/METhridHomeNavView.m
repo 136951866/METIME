@@ -14,8 +14,7 @@
 #import "MENoticeVC.h"
 #import "MEFilterVC.h"
 #import "MEStoreModel.h"
-
-const static CGFloat kHomeCategoryViewHeight = 39;
+#import "MECoupleFilterVC.h"
 
 @interface METhridHomeNavView ()<JXCategoryViewDelegate>{
     CGFloat _top;
@@ -62,46 +61,47 @@ const static CGFloat kHomeCategoryViewHeight = 39;
 //    [self addSubview:self.viewForBack];
     [self addSubview:self.viewForSearch];
     [self.viewForSearch addSubview:self.imageForSearch];
-//    [self addSubview:self.btnNotice];
+    [self addSubview:self.btnNotice];
     [self addSubview:self.btnSort];
     [self addSubview:self.viewForUnread];
 //    [self addSubview:self.viewForStore];
     self.viewForUnread.hidden = YES;
     
-//    self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0,self.viewForSearch.bottom, SCREEN_WIDTH, kHomeCategoryViewHeight)];
-//    JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-//    lineView.indicatorLineViewColor =  [UIColor whiteColor];
-//    lineView.indicatorLineViewHeight = 1;
-//
-//    self.categoryView.indicators = @[lineView];
-//
-//    self.categoryView.titles = @[@"精选",@"特卖",@"猜你喜欢",@"女装",@"美妆",@"母婴"];
-//    self.categoryView.delegate = self;
-//    self.categoryView.titleSelectedColor = [UIColor whiteColor];
-//    self.categoryView.titleColor =  [UIColor whiteColor];
-//    self.categoryView.defaultSelectedIndex = 0;
-//    [self addSubview:self.categoryView];
+    self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0,self.viewForSearch.bottom, SCREEN_WIDTH, kHomeCategoryViewHeight)];
+    JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
+    lineView.indicatorLineViewColor =  [UIColor whiteColor];
+    lineView.indicatorLineViewHeight = 1;
+
+    self.categoryView.indicators = @[lineView];
+
+    self.categoryView.titles = @[@"精选",@"特卖",@"猜你喜欢",@"女装",@"美妆",@"母婴"];
+    self.categoryView.delegate = self;
+    self.categoryView.titleSelectedColor = [UIColor whiteColor];
+    self.categoryView.titleColor =  [UIColor whiteColor];
+    self.categoryView.defaultSelectedIndex = 0;
+    [self addSubview:self.categoryView];
 }
 
-//- (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index{
-//    kMeCallBlock(_selectIndexBlock,index);
-//}
+- (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index{
+    kMeCallBlock(_selectIndexBlock,index);
+}
 
 - (void)setRead:(BOOL)read{
     self.viewForUnread.hidden = read;
 }
 
 - (void)searchProduct{
-    METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
-    if(homeVC){
-        MEProductSearchVC *svc = [[MEProductSearchVC alloc]init];
-        [homeVC.navigationController pushViewController:svc animated:NO];
-    }
+    kMeCallBlock(_searchBlock);
+//    METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
+//    if(homeVC){
+//        MEProductSearchVC *svc = [[MEProductSearchVC alloc]init];
+//        [homeVC.navigationController pushViewController:svc animated:NO];
+//    }
 }
 
 - (UIView *)viewForUnread{
     if(!_viewForUnread){
-        _viewForUnread = [[UIView alloc]initWithFrame:CGRectMake(self.btnSort.right-12, self.btnSort.top+5,6, 6)];
+        _viewForUnread = [[UIView alloc]initWithFrame:CGRectMake(self.btnNotice.right-12, self.btnNotice.top+5,6, 6)];
         _viewForUnread.backgroundColor = [UIColor redColor];
         _viewForUnread.cornerRadius = 3;
         _viewForUnread.clipsToBounds = YES;
@@ -111,7 +111,7 @@ const static CGFloat kHomeCategoryViewHeight = 39;
 
 - (UIView *)viewForSearch{
     if(!_viewForSearch){
-        _viewForSearch = [[UIView alloc]initWithFrame:CGRectMake(10, _top, self.width-65, 32)];
+        _viewForSearch = [[UIView alloc]initWithFrame:CGRectMake(10+32+10, _top, self.width-104, 32)];
         _viewForSearch.backgroundColor = [UIColor whiteColor];
         _viewForSearch.cornerRadius = 32/2;
         _viewForSearch.clipsToBounds = YES;
@@ -125,10 +125,18 @@ const static CGFloat kHomeCategoryViewHeight = 39;
 
 - (UIButton *)btnSort{
     if(!_btnSort){
-        _btnSort = [MEView btnWithFrame:CGRectMake(self.viewForSearch.right+10, self.viewForSearch.top, 32, 32) Img:[UIImage imageNamed:@"thirdHomeNotice"]];
-        [_btnSort addTarget:self action:@selector(noticeAction:) forControlEvents:UIControlEventTouchUpInside];
+        _btnSort = [MEView btnWithFrame:CGRectMake(self.viewForSearch.right+10, self.viewForSearch.top, 32, 32) Img:[UIImage imageNamed:@"fourHomeSort"]];
+        [_btnSort addTarget:self action:@selector(sortAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnSort;
+}
+
+- (UIButton *)btnNotice{
+    if(!_btnNotice){
+        _btnNotice = [MEView btnWithFrame:CGRectMake(10, self.viewForSearch.top, 32, 32) Img:[UIImage imageNamed:@"thirdHomeNotice"]];
+        [_btnNotice addTarget:self action:@selector(noticeAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btnNotice;
 }
 
 - (void)noticeAction:(UIButton*)btn{
@@ -142,7 +150,13 @@ const static CGFloat kHomeCategoryViewHeight = 39;
         } failHandler:nil];
     }
 }
-
+- (void)sortAction:(UIButton*)btn{
+    METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
+    if(homeVC){
+        MECoupleFilterVC *svc = [[MECoupleFilterVC alloc]init];
+        [homeVC.navigationController pushViewController:svc animated:YES];
+    }
+}
 
 - (void)toNotice{
     METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
