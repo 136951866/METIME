@@ -15,14 +15,19 @@
 #import "MEBynamicPublishVC.h"
 #import "ALAssetsLibrary+MECategory.h"
 
-@interface MEBynamicHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
-    NSInteger _comentIndex;}
+@interface MEBynamicHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate,JXCategoryViewDelegate>{
+    NSInteger _comentIndex;
+    NSArray *_arrType;
+    //1 动态 2 每日爆款 3宣传素材
+    NSInteger _type;
+}
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) CLInputToolbar *inputToolbar;
 @property (nonatomic, strong) ZLRefreshTool         *refresh;
 @property (nonatomic, strong) UIView *maskView;
 @property (nonatomic, strong) UIButton *btnRight;
+@property (nonatomic, strong) JXCategoryTitleView *categoryView;
 
 @end
 
@@ -35,9 +40,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"动态";
+    _type = 1;
+     _arrType = @[@"动态",@"每日爆款",@"宣传素材"];
     if(![MEUserInfoModel isLogin]){
         
     }else{
+        [self.view addSubview:self.categoryView];
         [self.view addSubview:self.tableView];
         [self.refresh addRefreshView];
         [self setTextViewToolbar];
@@ -63,6 +71,7 @@
 //}
 
 - (void)userLogout{
+    _type = 1;
     [self.navigationController popToViewController:self animated:NO];
     [self.refresh.arrData removeAllObjects];
     self.refresh = nil;
@@ -74,6 +83,8 @@
     self.inputToolbar = nil;
     [self.maskView removeFromSuperview];
     self.maskView = nil;
+    [self.categoryView removeFromSuperview];
+    self.categoryView = nil;
     self.btnRight.hidden = YES;
 }
 
@@ -93,6 +104,8 @@
     }else{
         self.btnRight.hidden = YES;
     }
+    _type = 1;
+    [self.view addSubview:self.categoryView];
     [self.view addSubview:self.tableView];
     [self.refresh addRefreshView];
     [self setTextViewToolbar];
@@ -110,7 +123,14 @@
     [self.refresh.arrData addObjectsFromArray:[MEBynamicHomeModel mj_objectArrayWithKeyValuesArray:data]];
 }
 
-
+- (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index{
+    NSInteger currentindex = index+1;
+    if(currentindex == _type){
+        return;
+    }
+    _type = currentindex;
+    [self.refresh reload];
+}
 #pragma mark - tableView deleagte and sourcedata
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -348,7 +368,7 @@
 
 - (UITableView *)tableView{
     if(!_tableView){
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kMeNavBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kMeTabBarHeight) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kMeNavBarHeight+kCategoryViewHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kMeNavBarHeight-kMeTabBarHeight-kCategoryViewHeight) style:UITableViewStylePlain];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MEBynamicMainCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([MEBynamicMainCell class])];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
@@ -388,6 +408,25 @@
         [_btnRight addTarget:self action:@selector(pushlishAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnRight;
+}
+
+- (JXCategoryTitleView *)categoryView{
+    if(!_categoryView){
+        _categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0,kMeNavBarHeight, SCREEN_WIDTH, kCategoryViewHeight)];
+        JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
+        lineView.indicatorLineWidth = 55 *kMeFrameScaleX();
+        lineView.indicatorLineViewColor = kMEPink;//[UIColor colorWithHexString:@"333333"];
+        lineView.indicatorLineViewHeight = 2;
+        _categoryView.indicators = @[lineView];
+        //    self.categoryView.lineStyle = JXCategoryLineStyle_None;
+        _categoryView.titles = _arrType;
+        _categoryView.delegate = self;
+        _categoryView.titleSelectedColor = kMEPink;//[UIColor colorWithHexString:@"333333"];
+        _categoryView.titleColor =  [UIColor colorWithHexString:@"999999"];
+        
+        _categoryView.defaultSelectedIndex = 0;
+    }
+    return _categoryView;
 }
 
 @end
