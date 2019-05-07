@@ -2283,6 +2283,24 @@
         kMeCallBlock(failure,error);
     }];
 }
+
++ (void)getUserWebgetAgreementWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSString *url = kGetApiWithUrl(MEIPWebgetAgreement);
+    NSDictionary *dic = @{};
+    MBProgressHUD *HUD = [self commitWithHUD:@""];
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
 #pragma mark - Order
 //取消订单
 + (void)postDelOrderWithOrderSn:(NSString *)order_sn successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{

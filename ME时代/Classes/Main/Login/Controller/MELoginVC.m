@@ -13,6 +13,7 @@
 #import "MEWxAuthModel.h"
 #import "JPUSHService.h"
 #import "AppDelegate.h"
+#import "MECompandNoticeVC.h"
 
 #define kImgTopMargin (54.0 * kMeFrameScaleY())
 
@@ -295,6 +296,13 @@
     //
     //    }];
 }
+
+- (IBAction)protocolsAction:(UIButton *)sender {
+    MECompandNoticeVC *vc = [[MECompandNoticeVC alloc]init];
+    vc.isProctol = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 -(void)timerTick{
     kMeWEAKSELF

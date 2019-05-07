@@ -66,11 +66,11 @@
 
 - (void)requestNetWorkIsHead:(BOOL)isHead{
     [ZLFailLoadView removeFromView:self.tableView];
-    NSDictionary *dic = @{@"eliteId":@"16",
+    NSDictionary *dic = @{@"keyword":_queryStr,
                           @"pageSize":@"20",
                           @"page":@(_pageIndex)
                           };
-    NSString *url = kGetApiWithUrl(MEIPcommonjingdonggoodsJingFen);
+    NSString *url = kGetApiWithUrl(MEIPcommonjingdonggoodsgoodsQuery);
     
     kMeWEAKSELF
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {

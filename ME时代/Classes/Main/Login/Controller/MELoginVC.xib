@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -136,7 +136,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快速登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SdD-Is-0rp">
-                    <rect key="frame" x="163" y="537" width="49.5" height="15"/>
+                    <rect key="frame" x="162.5" y="537" width="50" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="DmT-CS-UE6"/>
                         <constraint firstAttribute="width" constant="50" id="Ktn-AJ-2q6"/>
@@ -171,21 +171,43 @@
                         <action selector="cancelAction:" destination="-1" eventType="touchUpInside" id="PrO-Iu-u89"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我已阅读并同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5M-bs-F56">
+                    <rect key="frame" x="25" y="440" width="86" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="《用户协议及隐私政策》" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpU-6n-Bt0">
+                    <rect key="frame" x="111" y="440" width="135" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.086274509799999996" green="0.61568627450000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iot-9O-nLZ">
+                    <rect key="frame" x="25" y="432.5" width="221" height="30"/>
+                    <connections>
+                        <action selector="protocolsAction:" destination="-1" eventType="touchUpInside" id="bDf-fJ-do4"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="wQV-9W-6Wh" firstAttribute="centerX" secondItem="3Qe-2S-qN9" secondAttribute="centerX" id="0zl-t8-qv9"/>
                 <constraint firstItem="kUv-Bc-eb3" firstAttribute="top" secondItem="nlp-an-WgL" secondAttribute="bottom" constant="42" id="1OO-rh-4df"/>
+                <constraint firstItem="f5M-bs-F56" firstAttribute="top" secondItem="kUv-Bc-eb3" secondAttribute="bottom" constant="10" id="2ZY-Wh-g5p"/>
                 <constraint firstItem="io3-JQ-WSo" firstAttribute="leading" secondItem="nlp-an-WgL" secondAttribute="trailing" constant="7" id="2rs-fv-ddc"/>
+                <constraint firstItem="Iot-9O-nLZ" firstAttribute="trailing" secondItem="gpU-6n-Bt0" secondAttribute="trailing" id="3JG-Bd-g5e"/>
                 <constraint firstItem="l5a-zu-Ech" firstAttribute="top" secondItem="nlp-an-WgL" secondAttribute="bottom" id="86g-Zn-qys"/>
                 <constraint firstItem="KQz-Dg-cti" firstAttribute="centerX" secondItem="3Qe-2S-qN9" secondAttribute="centerX" id="8en-Qd-wHA"/>
                 <constraint firstItem="l5a-zu-Ech" firstAttribute="leading" secondItem="3Qe-2S-qN9" secondAttribute="leading" constant="25" id="FHU-Cm-zAV"/>
                 <constraint firstItem="KQz-Dg-cti" firstAttribute="top" secondItem="wQV-9W-6Wh" secondAttribute="bottom" constant="54" id="G4C-oT-uPO"/>
+                <constraint firstItem="Iot-9O-nLZ" firstAttribute="leading" secondItem="f5M-bs-F56" secondAttribute="leading" id="GUU-i6-Yw7"/>
                 <constraint firstItem="1X5-gz-Jlc" firstAttribute="leading" secondItem="d0W-y6-HpJ" secondAttribute="leading" id="IKx-Hv-8Je"/>
                 <constraint firstAttribute="trailing" secondItem="l5a-zu-Ech" secondAttribute="trailing" constant="25" id="KDW-j3-eZr"/>
                 <constraint firstItem="537-mF-ZNp" firstAttribute="leading" secondItem="3Qe-2S-qN9" secondAttribute="leading" constant="25" id="LG9-v3-lSb"/>
                 <constraint firstItem="kUv-Bc-eb3" firstAttribute="leading" secondItem="R9L-Md-c5z" secondAttribute="leading" id="Ljc-ns-pxR"/>
                 <constraint firstItem="nlp-an-WgL" firstAttribute="leading" secondItem="R9L-Md-c5z" secondAttribute="leading" id="Myj-NG-fsV"/>
+                <constraint firstItem="gpU-6n-Bt0" firstAttribute="leading" secondItem="f5M-bs-F56" secondAttribute="trailing" id="O3Y-fB-8Um"/>
                 <constraint firstItem="R9L-Md-c5z" firstAttribute="top" secondItem="KQz-Dg-cti" secondAttribute="bottom" constant="44" id="PNF-wV-EiJ"/>
                 <constraint firstItem="io3-JQ-WSo" firstAttribute="trailing" secondItem="R9L-Md-c5z" secondAttribute="trailing" id="PsL-Ce-qmh"/>
                 <constraint firstItem="io3-JQ-WSo" firstAttribute="centerY" secondItem="nlp-an-WgL" secondAttribute="centerY" id="Qe0-yU-fMG"/>
@@ -196,11 +218,14 @@
                 <constraint firstItem="Xia-tC-vlz" firstAttribute="top" secondItem="SdD-Is-0rp" secondAttribute="bottom" constant="25" id="UTO-NH-e3D"/>
                 <constraint firstItem="nlp-an-WgL" firstAttribute="top" secondItem="R9L-Md-c5z" secondAttribute="bottom" constant="12" id="gWl-ad-1HF"/>
                 <constraint firstItem="1X5-gz-Jlc" firstAttribute="top" secondItem="d0W-y6-HpJ" secondAttribute="top" id="iCC-np-N1s"/>
+                <constraint firstItem="Iot-9O-nLZ" firstAttribute="centerY" secondItem="f5M-bs-F56" secondAttribute="centerY" id="kNW-kd-adQ"/>
+                <constraint firstItem="f5M-bs-F56" firstAttribute="leading" secondItem="kUv-Bc-eb3" secondAttribute="leading" id="kcw-oC-6CG"/>
                 <constraint firstAttribute="bottom" secondItem="Xia-tC-vlz" secondAttribute="bottom" constant="40" id="nOm-UX-m1m"/>
                 <constraint firstItem="wQV-9W-6Wh" firstAttribute="centerY" secondItem="d0W-y6-HpJ" secondAttribute="centerY" id="o6l-2e-P8j"/>
                 <constraint firstAttribute="trailing" secondItem="R9L-Md-c5z" secondAttribute="trailing" constant="25" id="oRb-jK-siy"/>
                 <constraint firstItem="Xia-tC-vlz" firstAttribute="centerX" secondItem="3Qe-2S-qN9" secondAttribute="centerX" id="oVK-UZ-8g8"/>
                 <constraint firstItem="537-mF-ZNp" firstAttribute="top" secondItem="R9L-Md-c5z" secondAttribute="bottom" id="qrZ-NK-3LQ"/>
+                <constraint firstItem="gpU-6n-Bt0" firstAttribute="centerY" secondItem="f5M-bs-F56" secondAttribute="centerY" id="s7E-sF-hhJ"/>
                 <constraint firstItem="d0W-y6-HpJ" firstAttribute="leading" secondItem="3Qe-2S-qN9" secondAttribute="leading" constant="25" id="scb-K4-acQ"/>
                 <constraint firstAttribute="trailing" secondItem="537-mF-ZNp" secondAttribute="trailing" constant="25" id="uKL-mT-bUV"/>
                 <constraint firstItem="Xia-tC-vlz" firstAttribute="centerX" secondItem="3Qe-2S-qN9" secondAttribute="centerX" id="yEh-Gt-efA"/>

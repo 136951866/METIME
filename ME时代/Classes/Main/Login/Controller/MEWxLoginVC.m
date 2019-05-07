@@ -11,6 +11,7 @@
 #import "MEWxAuthModel.h"
 #import "JPUSHService.h"
 #import "AppDelegate.h"
+#import "MECompandNoticeVC.h"
 
 @interface MEWxLoginVC (){
     BOOL _isNewUser;
@@ -154,6 +155,13 @@
         [self.addTelVIew show];
     }
 }
+
+- (IBAction)protocolsAction:(UIButton *)sender {
+    MECompandNoticeVC *vc = [[MECompandNoticeVC alloc]init];
+    vc.isProctol = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 //登录融云
 - (void)loginIm{

@@ -136,6 +136,9 @@
 
 /*********************************************/
 #pragma makr - JD
+//关键词商品查询接口
+#define MEIPcommonjingdonggoodsgoodsQuery @"common/jingdong/goodsQuery"
+
 //京粉精选商品查询接口
 #define MEIPcommonjingdonggoodsJingFen @"common/jingdong/goodsJingFen"
 //京东获取佣金商品详情
@@ -572,6 +575,8 @@
 /*********************************************/
 #pragma makr - aboutUser
 
+//电子协议
+#define MEIPWebgetAgreement @"common/web/getAgreement"
 //微信授权登录
 #define MEIPAppAuthLogin @"app/auth/login"
 //app获取验证码

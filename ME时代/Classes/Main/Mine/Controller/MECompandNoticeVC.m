@@ -27,7 +27,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"ME隐私权政策";
+    if(_isProctol){
+        self.title = @"电子协议及隐私政策";
+    }else{
+        self.title = @"ME隐私权政策";
+    }
     [self.view addSubview:self.tableView];
     kTDWebViewCellDidFinishLoadNotification
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(networkRequest)];
@@ -38,21 +42,40 @@ kTDWebViewCellDidFinishLoadNotificationMethod
 
 - (void)networkRequest{
     kMeWEAKSELF
-    [MEPublicNetWorkTool getUserGetEquitiesWithSuccessBlock:^(ZLRequestResponse *responseObject) {
-        kMeSTRONGSELF
-        strongSelf->_equities =  responseObject.data[@"equities"];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            CGFloat width = [UIScreen mainScreen].bounds.size.width - 20;
-            NSString *header = [NSString stringWithFormat:@"<head><style>img{max-width:%fpx !important;}</style></head>",width];
-            [strongSelf.webCell.webView loadHTMLString:[NSString stringWithFormat:@"%@%@",header,kMeUnNilStr(strongSelf->_equities)] baseURL:nil];
-            [strongSelf.tableView reloadData];
-            [strongSelf.tableView.mj_header endRefreshing];
-            [MBProgressHUD showMessage:@"" toView:strongSelf.view];
-        });
-    } failure:^(id object) {
-        kMeSTRONGSELF
-        [strongSelf.navigationController popViewControllerAnimated:YES];
-    }];
+    if(_isProctol){
+        [MEPublicNetWorkTool getUserWebgetAgreementWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            strongSelf->_equities =  responseObject.data[@"agreement"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                CGFloat width = [UIScreen mainScreen].bounds.size.width - 20;
+                NSString *header = [NSString stringWithFormat:@"<head><style>img{max-width:%fpx !important;}</style></head>",width];
+                [strongSelf.webCell.webView loadHTMLString:[NSString stringWithFormat:@"%@%@",header,kMeUnNilStr(strongSelf->_equities)] baseURL:nil];
+                [strongSelf.tableView reloadData];
+                [strongSelf.tableView.mj_header endRefreshing];
+                [MBProgressHUD showMessage:@"" toView:strongSelf.view];
+            });
+        } failure:^(id object) {
+            kMeSTRONGSELF
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+        }];
+    }else{
+        [MEPublicNetWorkTool getUserGetEquitiesWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+            kMeSTRONGSELF
+            strongSelf->_equities =  responseObject.data[@"equities"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                CGFloat width = [UIScreen mainScreen].bounds.size.width - 20;
+                NSString *header = [NSString stringWithFormat:@"<head><style>img{max-width:%fpx !important;}</style></head>",width];
+                [strongSelf.webCell.webView loadHTMLString:[NSString stringWithFormat:@"%@%@",header,kMeUnNilStr(strongSelf->_equities)] baseURL:nil];
+                [strongSelf.tableView reloadData];
+                [strongSelf.tableView.mj_header endRefreshing];
+                [MBProgressHUD showMessage:@"" toView:strongSelf.view];
+            });
+        } failure:^(id object) {
+            kMeSTRONGSELF
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+        }];
+    }
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

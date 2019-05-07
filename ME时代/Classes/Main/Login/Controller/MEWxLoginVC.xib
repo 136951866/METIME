@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -72,9 +72,29 @@
                         <action selector="otherLoginAction:" destination="-1" eventType="touchUpInside" id="8gG-7n-fXj"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我已阅读并同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbO-0G-jff">
+                    <rect key="frame" x="39" y="244" width="86" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="《用户协议及隐私政策》" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Y1-Kt-MkL">
+                    <rect key="frame" x="125" y="244" width="135" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.086274509799999996" green="0.61568627450000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D2G-qF-lxC">
+                    <rect key="frame" x="39" y="236.5" width="221" height="30"/>
+                    <connections>
+                        <action selector="protocolsAction:" destination="-1" eventType="touchUpInside" id="3fb-6p-dbp"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="6Y1-Kt-MkL" firstAttribute="centerY" secondItem="rbO-0G-jff" secondAttribute="centerY" id="3N7-f6-Dw9"/>
+                <constraint firstItem="6Y1-Kt-MkL" firstAttribute="leading" secondItem="rbO-0G-jff" secondAttribute="trailing" id="8jh-uX-gsN"/>
                 <constraint firstItem="NnK-Qc-Thj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="BB7-ez-Fph"/>
                 <constraint firstItem="63l-xq-YLv" firstAttribute="top" secondItem="tS3-FF-hy0" secondAttribute="bottom" constant="65" id="COq-Ud-Plh"/>
                 <constraint firstItem="uRr-LP-VCZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GSy-hQ-xTs"/>
@@ -84,10 +104,15 @@
                 <constraint firstItem="tS3-FF-hy0" firstAttribute="top" secondItem="NnK-Qc-Thj" secondAttribute="bottom" constant="30" id="OMq-aP-x8b"/>
                 <constraint firstItem="uRr-LP-VCZ" firstAttribute="top" secondItem="63l-xq-YLv" secondAttribute="bottom" constant="18" id="OTy-2x-U1H"/>
                 <constraint firstItem="63l-xq-YLv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QwP-8I-72S"/>
+                <constraint firstItem="D2G-qF-lxC" firstAttribute="centerY" secondItem="rbO-0G-jff" secondAttribute="centerY" id="W5E-d8-kly"/>
                 <constraint firstAttribute="trailing" secondItem="63l-xq-YLv" secondAttribute="trailing" id="br3-4a-3RI"/>
+                <constraint firstItem="D2G-qF-lxC" firstAttribute="trailing" secondItem="6Y1-Kt-MkL" secondAttribute="trailing" id="dDn-jR-cKo"/>
+                <constraint firstItem="rbO-0G-jff" firstAttribute="leading" secondItem="tS3-FF-hy0" secondAttribute="leading" id="hJk-x9-u87"/>
+                <constraint firstItem="D2G-qF-lxC" firstAttribute="leading" secondItem="rbO-0G-jff" secondAttribute="leading" id="jFm-sj-37e"/>
                 <constraint firstAttribute="trailing" secondItem="uRr-LP-VCZ" secondAttribute="trailing" id="lfc-xX-4RE"/>
                 <constraint firstItem="tS3-FF-hy0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="39" id="o7i-1c-bSG"/>
                 <constraint firstItem="yjd-h2-iMD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="qZ0-m8-PiG"/>
+                <constraint firstItem="rbO-0G-jff" firstAttribute="top" secondItem="tS3-FF-hy0" secondAttribute="bottom" constant="10" id="tgK-6X-bDJ"/>
                 <constraint firstItem="NnK-Qc-Thj" firstAttribute="top" secondItem="yjd-h2-iMD" secondAttribute="bottom" constant="80" id="v15-yW-047"/>
             </constraints>
         </view>

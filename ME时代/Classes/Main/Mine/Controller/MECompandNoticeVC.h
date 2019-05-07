@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MECompandNoticeVC : MEBaseVC
 
+//电子协议
+@property (nonatomic,assign) BOOL isProctol;
+
 @end
 
 NS_ASSUME_NONNULL_END
