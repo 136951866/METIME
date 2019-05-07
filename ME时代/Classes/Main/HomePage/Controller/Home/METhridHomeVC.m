@@ -489,6 +489,7 @@ const static CGFloat kImgStore = 50;
         _refresh.isPinduoduoCoupleMater = NO;
         _refresh.isDataInside = YES;
         _refresh.showFailView = NO;
+        _refresh.showMaskView = YES;
     }
     return _refresh;
 }

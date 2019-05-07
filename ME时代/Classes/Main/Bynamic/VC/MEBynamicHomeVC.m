@@ -389,6 +389,8 @@
         _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:kGetApiWithUrl(MEIPcommongetDynamicList)];
         _refresh.delegate = self;
         _refresh.isDataInside = YES;
+        _refresh.showMaskView = YES;
+
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
             failView.backgroundColor = [UIColor whiteColor];
             failView.lblOfNodata.text = @"没有动态";
