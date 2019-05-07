@@ -279,6 +279,8 @@
     kMeWEAKSELF
     vc.publishSucessBlock = ^{
         kMeSTRONGSELF
+        strongSelf->_type = 1;
+        [strongSelf.categoryView selectItemAtIndex:0];
         [strongSelf.refresh reload];
     };
     [self.navigationController pushViewController:vc animated:YES];
@@ -423,7 +425,6 @@
         _categoryView.delegate = self;
         _categoryView.titleSelectedColor = kMEPink;//[UIColor colorWithHexString:@"333333"];
         _categoryView.titleColor =  [UIColor colorWithHexString:@"999999"];
-        
         _categoryView.defaultSelectedIndex = 0;
     }
     return _categoryView;
