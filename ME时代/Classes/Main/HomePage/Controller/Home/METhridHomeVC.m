@@ -82,7 +82,7 @@ const static CGFloat kImgStore = 50;
     _currentIndex = 0;
     _alphaNum = (kSdHeight*kMeFrameScaleX())+80;
     //@[@"精选",@"特卖",@"猜你喜欢",@"女装",@"美妆",@"母婴"];
-    _arrDicParm = @[@{@"type":@"3"},@{@"material_id":@"4094"},@{@"material_id":@"4092"},@{@"material_id":@"3767"},@{@"material_id":@"3763"},@{@"material_id":@"3760"}];
+    _arrDicParm = @[@{@"type":@"3"},@{@"material_id":@"3756"},@{@"material_id":@"3786"},@{@"material_id":@"3767"},@{@"material_id":@"3763"},@{@"material_id":@"3760"}];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.navView];
     [self.view addSubview:self.imgStore];
@@ -329,9 +329,15 @@ const static CGFloat kImgStore = 50;
         kMeWEAKSELF
         cell.selectBlock = ^(NSInteger index) {
             kMeSTRONGSELF
-            MECoupleModel *model = strongSelf.refresh.arrData[index];
-            MECoupleMailDetalVC *dvc = [[MECoupleMailDetalVC alloc]initWithProductrId:model.num_iid couponId:kMeUnNilStr(model.coupon_id) couponurl:kMeUnNilStr(model.coupon_share_url)];
-            [strongSelf.navigationController pushViewController:dvc animated:YES];
+            MECoupleModel *model = self.refresh.arrData[indexPath.row];
+            if(kMeUnNilStr(model.coupon_id).length){
+                MECoupleMailDetalVC *dvc = [[MECoupleMailDetalVC alloc]initWithProductrId:model.num_iid couponId:kMeUnNilStr(model.coupon_id) couponurl:kMeUnNilStr(model.coupon_share_url)];
+                [strongSelf.navigationController pushViewController:dvc animated:YES];
+            }else{
+                MECoupleMailDetalVC *vc = [[MECoupleMailDetalVC alloc]initWithModel:model];
+                model.coupon_click_url = [NSString stringWithFormat:@"https:%@",kMeUnNilStr(model.coupon_share_url)];//;
+                [strongSelf.navigationController pushViewController:vc animated:YES];
+            }
         };
         return cell;
     }else{
