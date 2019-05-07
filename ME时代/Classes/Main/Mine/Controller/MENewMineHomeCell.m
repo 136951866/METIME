@@ -52,7 +52,7 @@
 #import "MEDistributionTeamVC.h"
 #import "MEDistributionOrderMainVC.h"
 #import "MENewMineCellHeaderView.h"
-
+#import "MeHomeNewGuideVC.h"
 @interface MENewMineHomeCell()<UICollectionViewDelegate,UICollectionViewDataSource>{
     NSArray *_arrModel;
     MEClientTypeStyle _type;
@@ -268,6 +268,11 @@
             break;
         case MeHomepinpaigli:{
             MEBrandManngerVC *brandVC = [[MEBrandManngerVC alloc]init];
+            [homeVc.navigationController pushViewController:brandVC animated:YES];
+        }
+            break;
+        case MeHomeNewGuide:{
+            MeHomeNewGuideVC *brandVC = [[MeHomeNewGuideVC alloc]init];
             [homeVc.navigationController pushViewController:brandVC animated:YES];
         }
             break;

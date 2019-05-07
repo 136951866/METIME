@@ -104,21 +104,21 @@
                 //B
 //                strongSelf->_arrtype = @[@[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyActity),@(MeDynalApply),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile),@(MePAVistor)],@[@(MeMyPoster),@(MeMyArticel),@(MemyData)]];
                 
-                strongSelf->_arrtype = @[@[@(MeHomeyongjing),@(MeHomeorderall),@(MeHometuandui),@(MeHomeshangji),@(MeHometixian),@(MeHomejuanyngjing),@(MePAVistor),@(MeHometuigcode)],@[@(MeMyAppointment),@(MeMyExchange),@(MeMyActity),@(MeDynalApply),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)],@[@(MeMyPoster),@(MeMyArticel),@(MemyData)]];
+                strongSelf->_arrtype = @[@[@(MeHomeyongjing),@(MeHomeorderall),@(MeHometuandui),@(MeHomeshangji),@(MeHometixian),@(MeHomejuanyngjing),@(MePAVistor),@(MeHometuigcode)],@[@(MeMyAppointment),@(MeMyExchange),@(MeMyActity),@(MeDynalApply),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile),@(MeHomeNewGuide)],@[@(MeMyPoster),@(MeMyArticel),@(MemyData)]];
                 strongSelf->_arrtypeTitle = @[@"商家管理",@"必备",@"获客"];
             }
                 break;
             case 2:{
                 //
 //                strongSelf->_arrtype = @[@[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyActity),@(MeDynalApply),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile),@(MePAVistor)],@[@(MeMyPoster),@(MeMyArticel),@(MemyData)]];
-                strongSelf->_arrtype = @[@[@(MeHomeyongjing),@(MeHomeorderall),@(MeHometuandui),@(MeHomeshangji),@(MeHometixian),@(MeHomejuanyngjing),@(MeHomepinpaigli),@(MePAVistor),@(MeHometuigcode)],@[@(MeMyAppointment),@(MeMyExchange),@(MeMyActity),@(MeDynalApply),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)],@[@(MeMyPoster),@(MeMyArticel),@(MemyData)]];
+                strongSelf->_arrtype = @[@[@(MeHomeyongjing),@(MeHomeorderall),@(MeHometuandui),@(MeHomeshangji),@(MeHometixian),@(MeHomejuanyngjing),@(MeHomepinpaigli),@(MePAVistor),@(MeHometuigcode)],@[@(MeMyAppointment),@(MeMyExchange),@(MeMyActity),@(MeDynalApply),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile),@(MeHomeNewGuide)],@[@(MeMyPoster),@(MeMyArticel),@(MemyData)]];
                 strongSelf->_arrtypeTitle = @[@"商家管理",@"必备",@"获客"];
             }
                 break;
             case 4:{
                 //C
 //                strongSelf->_arrtype = @[@[@(MeMyDistribution),@(MeMyExchange),@(MeMyAppointment),@(MeDynalApply),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile),@(MeStoreApply)]];
-                strongSelf->_arrtype = @[@[@(MeHomemeiodu),@(MeHomeCorderall),@(MeHometuandui),@(MeHometuigcode),@(MeHomejuanyngjing)],@[@(MeMyAppointment),@(MeMyExchange),@(MeDynalApply),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile),@(MeStoreApply)]];
+                strongSelf->_arrtype = @[@[@(MeHomemeiodu),@(MeHomeCorderall),@(MeHometuandui),@(MeHometuigcode),@(MeHomejuanyngjing)],@[@(MeMyAppointment),@(MeMyExchange),@(MeDynalApply),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile),@(MeStoreApply),@(MeHomeNewGuide)]];
                 strongSelf->_arrtypeTitle = @[@"中心管理",@"必备"];
             }
                 break;
@@ -126,7 +126,7 @@
                 //B
 //                strongSelf->_arrtype = @[@[@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyActity),@(MeDynalApply),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile),@(MePAVistor),@(MeAILEI)],@[@(MeMyPoster),@(MeMyArticel),@(MemyData)]];
                 strongSelf->_arrtype = @[@[@(MeHomeyongjing),@(MeHomeorderall),@(MeHometuandui),@(MeHomeshangji),@(MeHomedianyuan),@(MeHomeyuyue),@(MeHomedata),@(MeHomedianpu),@(MeHometixian),@(MeHomejuanyngjing),@(MeHomeziti),@(MeAILEI),@(MePAVistor),@(MeHometuigcode)],
-  @[@(MeMyAppointment),@(MeMyExchange),@(MeMyActity),@(MeDynalApply),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)],@[@(MeMyPoster),@(MeMyArticel),@(MemyData)]];
+  @[@(MeMyAppointment),@(MeMyExchange),@(MeMyActity),@(MeDynalApply),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile),@(MeHomeNewGuide)],@[@(MeMyPoster),@(MeMyArticel),@(MemyData)]];
                 strongSelf->_arrtypeTitle = @[@"商家管理",@"必备",@"获客"];
             }
                 break;
@@ -134,7 +134,7 @@
                 //clerk
 //                                strongSelf->_arrtype = @[@[@(MeMyDistribution),@(MeMyCentraManagertment),@(MeMyExchange),@(MeMyAppointment),@(MeMyActity),@(MeDynalApply),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile),@(MePAVistor),@(MeAILEI)],@[@(MeMyPoster),@(MeMyArticel),@(MemyData)]];
                 strongSelf->_arrtype = @[@[@(MeHomeyongjing),@(MeHomemeiodu),@(MeHomeCorderall),@(MeHomeorderall),@(MeHometuandui),@(MeHomeshangji),@(MeHomeyuyue),@(MeHometixian),@(MeHomejuanyngjing),@(MeAILEI),@(Mehomeyongjitongji),@(MePAVistor),@(MeHometuigcode)],
-  @[@(MeMyAppointment),@(MeMyExchange),@(MeMyActity),@(MeDynalApply),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile)],@[@(MeMyPoster),@(MeMyArticel),@(MemyData)]];
+  @[@(MeMyAppointment),@(MeMyExchange),@(MeMyActity),@(MeDynalApply),@(MeMyCustomer),@(MeMyCustomerPhone),@(MeMyAddress),@(MeMyMobile),@(MeHomeNewGuide)],@[@(MeMyPoster),@(MeMyArticel),@(MemyData)]];
                 strongSelf->_arrtypeTitle = @[@"商家管理",@"必备",@"获客"];
 
             }
