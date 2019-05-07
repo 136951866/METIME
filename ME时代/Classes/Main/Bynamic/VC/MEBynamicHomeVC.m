@@ -113,7 +113,7 @@
 #pragma mark - RefreshToolDelegate
 
 - (NSDictionary *)requestParameter{
-    return @{@"token":kMeUnNilStr(kCurrentUser.token),@"tool":@"1"};
+    return @{@"token":kMeUnNilStr(kCurrentUser.token),@"tool":@"1",@"show_type":@(_type)};
 }
 
 - (void)handleResponse:(id)data{

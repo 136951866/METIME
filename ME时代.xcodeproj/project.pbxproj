@@ -164,6 +164,7 @@
 		362850B9228156A400395352 /* MeHomeNewGuideVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 362850B8228156A400395352 /* MeHomeNewGuideVC.m */; };
 		362850BD228156EA00395352 /* MeHomeNewGuideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 362850BB228156EA00395352 /* MeHomeNewGuideCell.m */; };
 		362850BE228156EA00395352 /* MeHomeNewGuideCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362850BC228156EA00395352 /* MeHomeNewGuideCell.xib */; };
+		362850C122816CF400395352 /* MEJDCoupleHomeSearchDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 362850C022816CF400395352 /* MEJDCoupleHomeSearchDataVC.m */; };
 		3628E7C421C09CC100D5405B /* MEClerkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3628E7C221C09CC100D5405B /* MEClerkCell.m */; };
 		3628E7C521C09CC100D5405B /* MEClerkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3628E7C321C09CC100D5405B /* MEClerkCell.xib */; };
 		3628E7CA21C09EE800D5405B /* MEClerkManngerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3628E7C821C09EE800D5405B /* MEClerkManngerVC.m */; };
@@ -1252,6 +1253,8 @@
 		362850BA228156EA00395352 /* MeHomeNewGuideCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeHomeNewGuideCell.h; sourceTree = "<group>"; };
 		362850BB228156EA00395352 /* MeHomeNewGuideCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeHomeNewGuideCell.m; sourceTree = "<group>"; };
 		362850BC228156EA00395352 /* MeHomeNewGuideCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeHomeNewGuideCell.xib; sourceTree = "<group>"; };
+		362850BF22816CF400395352 /* MEJDCoupleHomeSearchDataVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEJDCoupleHomeSearchDataVC.h; sourceTree = "<group>"; };
+		362850C022816CF400395352 /* MEJDCoupleHomeSearchDataVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEJDCoupleHomeSearchDataVC.m; sourceTree = "<group>"; };
 		3628E7C121C09CC100D5405B /* MEClerkCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEClerkCell.h; sourceTree = "<group>"; };
 		3628E7C221C09CC100D5405B /* MEClerkCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEClerkCell.m; sourceTree = "<group>"; };
 		3628E7C321C09CC100D5405B /* MEClerkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEClerkCell.xib; sourceTree = "<group>"; };
@@ -3936,6 +3939,8 @@
 				368E066B221A9D5300B125DE /* MEJDCoupleHomeVC.m */,
 				36E3EEC7221D519F006C79F6 /* MEJDCoupleMailDetalVC.h */,
 				36E3EEC8221D519F006C79F6 /* MEJDCoupleMailDetalVC.m */,
+				362850BF22816CF400395352 /* MEJDCoupleHomeSearchDataVC.h */,
+				362850C022816CF400395352 /* MEJDCoupleHomeSearchDataVC.m */,
 			);
 			path = Couple;
 			sourceTree = "<group>";
@@ -6462,6 +6467,7 @@
 				36F4288221FB5CE50028C3C8 /* MEFlowLabelView.m in Sources */,
 				367C84E52147962B00BEC7B1 /* MEDistrbutionCell.m in Sources */,
 				366D1CD721B522780004295E /* MESActivityModel.m in Sources */,
+				362850C122816CF400395352 /* MEJDCoupleHomeSearchDataVC.m in Sources */,
 				EB2E1AC32150FF6500A26BE3 /* MEOrderDetailContentCell.m in Sources */,
 				36B77BBB21DDECB400B4A207 /* MECoupleHomeNavView.m in Sources */,
 				36371557218ADD310057E59F /* MEFilterGoodView.m in Sources */,
