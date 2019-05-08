@@ -236,7 +236,6 @@
             kMeSTRONGSELF
             [strongSelf.navigationController popViewControllerAnimated:YES];
         };
-#warning ---
         _navView.searchBlock = ^{
             kMeSTRONGSELF
             [strongSelf searchCoupon];
