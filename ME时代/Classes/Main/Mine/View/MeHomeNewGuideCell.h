@@ -10,9 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MeHomeNewGuideModel;
+
 @interface MeHomeNewGuideCell : UITableViewCell
 
-- (void)setUIWitModel:(NSObject *)model;
+- (void)setUIWitModel:(MeHomeNewGuideModel *)model;
 + (CGFloat)getCellHeight;
 @end
 

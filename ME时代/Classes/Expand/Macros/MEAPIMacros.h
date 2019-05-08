@@ -574,7 +574,8 @@
 
 /*********************************************/
 #pragma makr - aboutUser
-
+//新手指南
+#define MEIPguidegetList @"common/guide/getList"
 //电子协议
 #define MEIPWebgetAgreement @"common/web/getAgreement"
 //微信授权登录

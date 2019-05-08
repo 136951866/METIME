@@ -9,6 +9,7 @@
 #import "MeHomeNewGuideVC.h"
 #import "MeHomeNewGuideCell.h"
 #import "ZLWebVC.h"
+#import "MeHomeNewGuideModel.h"
 
 @interface MeHomeNewGuideVC ()<UITableViewDelegate, UITableViewDataSource,RefreshToolDelegate>
 
@@ -27,15 +28,14 @@
 }
 
 - (NSDictionary *)requestParameter{
-    [self.refresh.arrData addObjectsFromArray:@[@"",@"",@""]];
-    return @{};
+    return @{@"token":kMeUnNilStr(kCurrentUser.token)};
 }
 
 - (void)handleResponse:(id)data{
     if(![data isKindOfClass:[NSArray class]]){
         return;
     }
-    [self.refresh.arrData addObjectsFromArray:[NSObject mj_objectArrayWithKeyValuesArray:data]];
+    [self.refresh.arrData addObjectsFromArray:[MeHomeNewGuideModel mj_objectArrayWithKeyValuesArray:data]];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -44,7 +44,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MeHomeNewGuideCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MeHomeNewGuideCell class]) forIndexPath:indexPath];
-    NSObject *model = self.refresh.arrData[indexPath.row];
+    MeHomeNewGuideModel *model = self.refresh.arrData[indexPath.row];
     [cell setUIWitModel:model];
     return cell;
 }
@@ -54,6 +54,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //guideid
+    MeHomeNewGuideModel *model = self.refresh.arrData[indexPath.row];
     ZLWebVC *vc = [[ZLWebVC alloc]initWithUrl:kMeUnNilStr(@"http://www.baidu.com")];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -74,10 +76,10 @@
 
 - (ZLRefreshTool *)refresh{
     if(!_refresh){
-        NSString *apiSTr = kGetApiWithUrl(@"");
+        NSString *apiSTr = kGetApiWithUrl(MEIPguidegetList);
         _refresh = [[ZLRefreshTool alloc]initWithContentView:self.tableView url:apiSTr];
         _refresh.delegate = self;
-        _refresh.isDataInside = YES;
+//        _refresh.isDataInside = YES;
         [_refresh setBlockEditFailVIew:^(ZLFailLoadView *failView) {
             failView.backgroundColor = [UIColor whiteColor];
             failView.lblOfNodata.text = @"没有数据";

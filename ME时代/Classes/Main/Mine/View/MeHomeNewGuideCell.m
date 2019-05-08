@@ -7,6 +7,7 @@
 //
 
 #import "MeHomeNewGuideCell.h"
+#import "MeHomeNewGuideModel.h"
 
 @interface MeHomeNewGuideCell ()
 
@@ -23,8 +24,8 @@
     // Initialization code
 }
 
-- (void)setUIWitModel:(NSObject *)model{
-    kSDLoadImg(_imgpic, kMeUnNilStr(@""));
+- (void)setUIWitModel:(MeHomeNewGuideModel *)model{
+    kSDLoadImg(_imgpic, kMeUnNilStr(model.image));
 }
 
 + (CGFloat)getCellHeight{
