@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic ,strong) NSString *idField;
 @property (nonatomic ,strong) NSString *image;
-
+@property (nonatomic ,strong) NSString *url;
+@property (nonatomic ,strong) NSString *title;
 @end
 
 NS_ASSUME_NONNULL_END

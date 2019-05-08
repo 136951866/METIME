@@ -56,7 +56,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     //guideid
     MeHomeNewGuideModel *model = self.refresh.arrData[indexPath.row];
-    ZLWebVC *vc = [[ZLWebVC alloc]initWithUrl:kMeUnNilStr(@"http://www.baidu.com")];
+    ZLWebVC *vc = [[ZLWebVC alloc]initWithUrl:kMeUnNilStr(model.url)];
+    vc.isNeedH5Title = NO;
+    vc.title = kMeUnNilStr(model.title);
     [self.navigationController pushViewController:vc animated:YES];
 }
 
