@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if(_isProctol){
-        self.title = @"电子协议及隐私政策";
+        self.title = @"用户协议及隐私政策";
     }else{
         self.title = @"ME隐私权政策";
     }
