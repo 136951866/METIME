@@ -178,6 +178,10 @@
 
 /***************************************/
 #pragma mark - clerk
+//设置门店店员分佣比例
++ (void)postClerkCommissionPercentWithissetClerk:(BOOL)isset ratio:(NSString*)ratio successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+//获取店员系统设置分佣比例、及本店的设置
++ (void)postClerkCommissionPercentrWithsuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //删除店员
 + (void)postClerkToMemberWithmemberId:(NSString *)memberId successBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //会员升级为店员

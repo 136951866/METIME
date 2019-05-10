@@ -16,6 +16,7 @@
 #import "MEClerkModel.h"
 #import "YBPopupMenu.h"
 #import "MEClerksSortVC.h"
+#import "MEClerkCouponMangerVC.h"
 
 @interface MEClerkManngerVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate,YBPopupMenuDelegate>
 
@@ -127,7 +128,7 @@
 
 - (void)toAddClerk:(UIButton *)btn{
     kMeWEAKSELF
-    [YBPopupMenu showRelyOnView:btn titles:@[@"添加店员",@"店员排名"] icons:nil menuWidth:100 otherSettings:^(YBPopupMenu *popupMenu) {
+    [YBPopupMenu showRelyOnView:btn titles:@[@"添加店员",@"店员排名",@"店员优惠券分佣"] icons:nil menuWidth:100 otherSettings:^(YBPopupMenu *popupMenu) {
         popupMenu.priorityDirection = YBPopupMenuPriorityDirectionBottom;
         popupMenu.borderWidth = 1;
         popupMenu.borderColor = kMEblack;
@@ -145,8 +146,11 @@
             [strongSelf.refresh reload];
         };
         [self.navigationController pushViewController:vc animated:YES];
-    }else{
+    }else if (index == 1){
         MEClerksSortVC *vc = [[MEClerksSortVC alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        MEClerkCouponMangerVC *vc = [[MEClerkCouponMangerVC alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

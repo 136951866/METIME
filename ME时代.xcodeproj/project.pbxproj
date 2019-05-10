@@ -562,6 +562,8 @@
 		36A664BB2239FF0600A7B7DE /* MEBrandAISortModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A664BA2239FF0600A7B7DE /* MEBrandAISortModel.m */; };
 		36A664BE223A054E00A7B7DE /* MEBrandManngerAllModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A664BD223A054E00A7B7DE /* MEBrandManngerAllModel.m */; };
 		36A664C1223A2C9200A7B7DE /* MEBrandAbilityVisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A664C0223A2C9200A7B7DE /* MEBrandAbilityVisterModel.m */; };
+		36AE357B228467C700B0D00E /* MEClerkCouponMangerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AE3579228467C700B0D00E /* MEClerkCouponMangerVC.m */; };
+		36AE357C228467C700B0D00E /* MEClerkCouponMangerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36AE357A228467C700B0D00E /* MEClerkCouponMangerVC.xib */; };
 		36B00BA721F5ADCF00EF8898 /* MECommondCouponContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36B00BA521F5ADCF00EF8898 /* MECommondCouponContentCell.m */; };
 		36B00BA821F5ADCF00EF8898 /* MECommondCouponContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36B00BA621F5ADCF00EF8898 /* MECommondCouponContentCell.xib */; };
 		36B31DC822251E87004BA07B /* MEBNewDataDealView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36B31DC722251E87004BA07B /* MEBNewDataDealView.m */; };
@@ -741,6 +743,7 @@
 		36F5326D225ED70D00BF289F /* MEAiCustomerDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F5326C225ED70D00BF289F /* MEAiCustomerDetailModel.m */; };
 		36F53270225EDC2600BF289F /* MEAiCustomerDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F5326F225EDC2600BF289F /* MEAiCustomerDetailVC.m */; };
 		36F561462241D8B20070519E /* MEBdataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F561452241D8B20070519E /* MEBdataVC.m */; };
+		36F5AA8022850F5E00CCDA95 /* MEClerkCouponMangerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F5AA7F22850F5E00CCDA95 /* MEClerkCouponMangerModel.m */; };
 		36F5E76F222F6895000B0241 /* TUIKitResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 36F5E76C222F6893000B0241 /* TUIKitResource.bundle */; };
 		36F5E771222F6895000B0241 /* TUIKitFace.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 36F5E76E222F6895000B0241 /* TUIKitFace.bundle */; };
 		36F5E80E222F68F1000B0241 /* TSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F5E776222F68F0000B0241 /* TSwitchCell.m */; };
@@ -1960,6 +1963,9 @@
 		36A664BD223A054E00A7B7DE /* MEBrandManngerAllModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBrandManngerAllModel.m; sourceTree = "<group>"; };
 		36A664BF223A2C9200A7B7DE /* MEBrandAbilityVisterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBrandAbilityVisterModel.h; sourceTree = "<group>"; };
 		36A664C0223A2C9200A7B7DE /* MEBrandAbilityVisterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBrandAbilityVisterModel.m; sourceTree = "<group>"; };
+		36AE3578228467C700B0D00E /* MEClerkCouponMangerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEClerkCouponMangerVC.h; sourceTree = "<group>"; };
+		36AE3579228467C700B0D00E /* MEClerkCouponMangerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEClerkCouponMangerVC.m; sourceTree = "<group>"; };
+		36AE357A228467C700B0D00E /* MEClerkCouponMangerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEClerkCouponMangerVC.xib; sourceTree = "<group>"; };
 		36B00BA421F5ADCF00EF8898 /* MECommondCouponContentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECommondCouponContentCell.h; sourceTree = "<group>"; };
 		36B00BA521F5ADCF00EF8898 /* MECommondCouponContentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECommondCouponContentCell.m; sourceTree = "<group>"; };
 		36B00BA621F5ADCF00EF8898 /* MECommondCouponContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MECommondCouponContentCell.xib; sourceTree = "<group>"; };
@@ -2266,6 +2272,8 @@
 		36F5326F225EDC2600BF289F /* MEAiCustomerDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEAiCustomerDetailVC.m; sourceTree = "<group>"; };
 		36F561442241D8B20070519E /* MEBdataVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEBdataVC.h; sourceTree = "<group>"; };
 		36F561452241D8B20070519E /* MEBdataVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEBdataVC.m; sourceTree = "<group>"; };
+		36F5AA7E22850F5E00CCDA95 /* MEClerkCouponMangerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEClerkCouponMangerModel.h; sourceTree = "<group>"; };
+		36F5AA7F22850F5E00CCDA95 /* MEClerkCouponMangerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEClerkCouponMangerModel.m; sourceTree = "<group>"; };
 		36F5E76C222F6893000B0241 /* TUIKitResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TUIKitResource.bundle; sourceTree = "<group>"; };
 		36F5E76D222F6894000B0241 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
 		36F5E76E222F6895000B0241 /* TUIKitFace.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TUIKitFace.bundle; sourceTree = "<group>"; };
@@ -3120,6 +3128,9 @@
 				36445B3E21C20C2C00CDBCBA /* MEAddClerksVC.xib */,
 				363A6C0021E1A1F5008B303B /* MEClerksSortVC.h */,
 				363A6C0121E1A1F5008B303B /* MEClerksSortVC.m */,
+				36AE3578228467C700B0D00E /* MEClerkCouponMangerVC.h */,
+				36AE3579228467C700B0D00E /* MEClerkCouponMangerVC.m */,
+				36AE357A228467C700B0D00E /* MEClerkCouponMangerVC.xib */,
 			);
 			path = clerk;
 			sourceTree = "<group>";
@@ -3369,6 +3380,8 @@
 				36445B3A21C2054600CDBCBA /* MEClerkModel.m */,
 				36F528B221E6F2F500BB7388 /* MEClerksSortModel.h */,
 				36F528B321E6F2F500BB7388 /* MEClerksSortModel.m */,
+				36F5AA7E22850F5E00CCDA95 /* MEClerkCouponMangerModel.h */,
+				36F5AA7F22850F5E00CCDA95 /* MEClerkCouponMangerModel.m */,
 			);
 			path = clerk;
 			sourceTree = "<group>";
@@ -6150,6 +6163,7 @@
 				36F69B3C225C90BE008E8DB0 /* MEAIDataHomeTimeCell.xib in Resources */,
 				369D7E6F2241D46400A35DBB /* MEBdataPieCell.xib in Resources */,
 				36FFA6A221957160002B6FBE /* MEStoreSearchVC.xib in Resources */,
+				36AE357C228467C700B0D00E /* MEClerkCouponMangerVC.xib in Resources */,
 				367C84EE21479DDC00BEC7B1 /* MEMyDistributionReusableView.xib in Resources */,
 				36F3B87D21F8067E0001F2F6 /* METhridProductCommentHeaderView.xib in Resources */,
 				36FDE3CB218A8EFD00633C40 /* MEHomeSearchView.xib in Resources */,
@@ -6365,6 +6379,7 @@
 				3602A195214243E4004A6E1F /* MEStarControl.m in Sources */,
 				363D8E8821468FAF00D746DF /* MESkuBuyView.m in Sources */,
 				36F5E827222F68F1000B0241 /* TFileMessageCell.m in Sources */,
+				36F5AA8022850F5E00CCDA95 /* MEClerkCouponMangerModel.m in Sources */,
 				3670E470224B180A00875058 /* MEGoodManngerContentVC.m in Sources */,
 				36472AED21C8E15C00CC3E48 /* JXCategoryIndicatorImageView.m in Sources */,
 				36FB9E202199536300B3DDD3 /* MEUserPathModel.m in Sources */,
@@ -6515,6 +6530,7 @@
 				36FF4EBA21AFB6160099DDB8 /* MESNewHomePageView.m in Sources */,
 				36B77BD021DE05CE00B4A207 /* MECoupleHomeMainGoodGoodsCell.m in Sources */,
 				3628E80A21C10E9800D5405B /* MEClerkStatisticsVC.m in Sources */,
+				36AE357B228467C700B0D00E /* MEClerkCouponMangerVC.m in Sources */,
 				36A664BB2239FF0600A7B7DE /* MEBrandAISortModel.m in Sources */,
 				36F02A77225F0CFD00408F5B /* MEAiCustomerDataView.m in Sources */,
 				36F5E829222F68F1000B0241 /* TAddGroupController.m in Sources */,

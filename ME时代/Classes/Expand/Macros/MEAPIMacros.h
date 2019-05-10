@@ -261,6 +261,11 @@
 #define MEIPcommonMemberToClerk @"common/user/memberToClerk"
 //店员排名列表
 #define MEIPcommonMyClerkOrder @"common/user/myClerkOrder"
+//获取店员系统设置分佣比例、及本店的设置
+#define MEIPcommongetClerkCommissionPercent @"common/web/getClerkCommissionPercent"
+//设置门店店员分佣比例
+#define MEIPcommonsetClerkCommissionPercent @"common/store/setClerkCommissionPercent"
+
 /*********************************************/
 
 
