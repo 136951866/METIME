@@ -606,7 +606,7 @@
 //获取app版本
 #define MEIPGetAPPVersion @"getAppVersion"
 //新的获取app更新版本
-#define MENewIPGetAPPVersion @"checkAppVersion"
+#define MENewIPGetAPPVersion @"checkAppVersions"
 
 /*********************************************/
 

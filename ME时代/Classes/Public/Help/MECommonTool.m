@@ -15,7 +15,8 @@
 #import "METabBarVC.h"
 //#import "MEProductDetailsVC.h"
 #import "METhridProductDetailsVC.h"
-
+#import "MEFindView.h"
+#import "MEFindViewModel.h"
 
 @implementation MECommonTool
 
@@ -309,9 +310,11 @@
 }
 
 + (void)newCheckVersion{
+    
     [MEPublicNetWorkTool postGetNewAPPVersionWithSuccessBlock:^(ZLRequestResponse *responseObject) {
-        NSInteger stat = [responseObject.data integerValue];
-        NSString *msg = kMeUnNilStr(responseObject.message);
+        MEFindViewModel *model = [MEFindViewModel mj_objectWithKeyValues:responseObject.data];
+        NSInteger stat =model.status;
+//        NSString *msg = kMeUnNilStr(responseObject.message);
         switch (stat) {
             case 0:{
                     
@@ -319,27 +322,31 @@
                 break;
             case 1:
             {
-                HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:msg];
-                alertView.isSupportRotating = YES;
-                [alertView addButtonWithTitle:@"取消" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
-                }];
-                [alertView addButtonWithTitle:@"确定" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
-                    NSString *urlStr = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/cn/app/id%@?mt=8",kMEAppId];
-                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
-                }];
-                [alertView show];
+                MEFindView *view = [MEFindView getViewWithV:kMeUnNilStr(model.push_version) content:kMeUnNilStr(model.detail) isShowCancel:YES];
+                [view show];
+//                HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:msg];
+//                alertView.isSupportRotating = YES;
+//                [alertView addButtonWithTitle:@"取消" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
+//                }];
+//                [alertView addButtonWithTitle:@"确定" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
+//                    NSString *urlStr = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/cn/app/id%@?mt=8",kMEAppId];
+//                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+//                }];
+//                [alertView show];
             }
                 break;
             case 2:
             {
-                HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:msg];
-                alertView.isSupportRotating = YES;
-                [alertView addButtonWithTitle:@"确定" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
-                    MEExitVC *vc = [[MEExitVC alloc]init];
-                    [self presentViewController:vc animated:YES completion:nil];
-                }];
-                
-                [alertView show];
+                MEFindView *view = [MEFindView getViewWithV:kMeUnNilStr(model.push_version) content:kMeUnNilStr(model.detail) isShowCancel:NO];
+                [view show];
+//                HDAlertView *alertView = [HDAlertView alertViewWithTitle:@"提示" andMessage:msg];
+//                alertView.isSupportRotating = YES;
+//                [alertView addButtonWithTitle:@"确定" type:HDAlertViewButtonTypeDefault handler:^(HDAlertView *alertView) {
+//                    MEExitVC *vc = [[MEExitVC alloc]init];
+//                    [self presentViewController:vc animated:YES completion:nil];
+//                }];
+//
+//                [alertView show];
             }
                 break;
             default:
