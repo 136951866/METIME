@@ -143,11 +143,11 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
     if(storemodel){
         kSDLoadImg(_imgStore,kMeUnNilStr(storemodel.mask_img));
         _lblStoreName.text = kMeUnNilStr(storemodel.store_name);
-        _lblStoreDesc.text = kMeUnNilStr(storemodel.intro);
+        _lblStoreDesc.text = kMeUnNilStr(storemodel.cellphone);
     }else{
         _imgStore.image = [UIImage imageNamed:@"icon-wgvilogo"];
         _lblStoreName.text = @"ME时代旗舰店";
-        _lblStoreDesc.text = @"ME时代旗舰店";
+        _lblStoreDesc.text = @"33302156";
     }
     
 }
