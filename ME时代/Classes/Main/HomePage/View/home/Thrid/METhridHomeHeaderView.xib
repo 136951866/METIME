@@ -49,12 +49,12 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLz-tW-Wr6">
-                            <rect key="frame" x="307" y="0.0" width="55" height="70"/>
+                            <rect key="frame" x="322" y="0.0" width="40" height="70"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="55" id="eL1-a8-EN4"/>
+                                <constraint firstAttribute="width" constant="40" id="eL1-a8-EN4"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title=" 分享" image="homeShare">
+                            <state key="normal" title=" " image="thridHomeShare">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
@@ -62,7 +62,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EOn-20-vdd">
-                            <rect key="frame" x="64" y="15" width="233" height="18"/>
+                            <rect key="frame" x="64" y="15" width="198" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="18" id="PX4-V4-siM"/>
                             </constraints>
@@ -71,7 +71,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBw-5m-kGN">
-                            <rect key="frame" x="64" y="42" width="233" height="13"/>
+                            <rect key="frame" x="64" y="42" width="198" height="13"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="13" id="ULL-l8-3kt"/>
                             </constraints>
@@ -79,32 +79,37 @@
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PnZ-ln-rTi">
-                            <rect key="frame" x="0.0" y="0.0" width="307" height="70"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBx-mg-6uZ">
+                            <rect key="frame" x="272" y="0.0" width="40" height="70"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="Ucb-2b-5Sc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title=" " image="thridHomeChat">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
                             <connections>
-                                <action selector="toStoreAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="skT-qU-Y5A"/>
+                                <action selector="chatAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="gJg-2D-fmV"/>
                             </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="OBx-mg-6uZ" secondAttribute="bottom" id="1mr-gM-sWf"/>
                         <constraint firstAttribute="trailing" secondItem="gLz-tW-Wr6" secondAttribute="trailing" constant="10" id="2IY-H2-aQ5"/>
-                        <constraint firstItem="PnZ-ln-rTi" firstAttribute="leading" secondItem="QiX-5y-TyF" secondAttribute="leading" id="Beh-qS-vFF"/>
                         <constraint firstItem="EOn-20-vdd" firstAttribute="top" secondItem="QiX-5y-TyF" secondAttribute="top" constant="15" id="CzH-tF-1vR"/>
-                        <constraint firstItem="gLz-tW-Wr6" firstAttribute="leading" secondItem="EOn-20-vdd" secondAttribute="trailing" constant="10" id="D9V-Jd-ueg"/>
                         <constraint firstItem="bBw-5m-kGN" firstAttribute="top" secondItem="EOn-20-vdd" secondAttribute="bottom" constant="9" id="Hp6-eN-mwe"/>
+                        <constraint firstItem="OBx-mg-6uZ" firstAttribute="leading" secondItem="EOn-20-vdd" secondAttribute="trailing" constant="10" id="Nk0-on-eu1"/>
+                        <constraint firstItem="OBx-mg-6uZ" firstAttribute="leading" secondItem="bBw-5m-kGN" secondAttribute="trailing" constant="10" id="REP-kT-hBn"/>
                         <constraint firstAttribute="bottom" secondItem="gLz-tW-Wr6" secondAttribute="bottom" id="Wsc-KV-g1T"/>
                         <constraint firstItem="EOn-20-vdd" firstAttribute="leading" secondItem="qcK-SS-e62" secondAttribute="trailing" constant="10" id="bQN-HF-ptJ"/>
                         <constraint firstAttribute="height" constant="70" id="en2-M0-mSo"/>
+                        <constraint firstItem="gLz-tW-Wr6" firstAttribute="leading" secondItem="OBx-mg-6uZ" secondAttribute="trailing" constant="10" id="gtJ-kM-S3e"/>
                         <constraint firstItem="bBw-5m-kGN" firstAttribute="leading" secondItem="qcK-SS-e62" secondAttribute="trailing" constant="10" id="jUN-h9-sgS"/>
                         <constraint firstItem="qcK-SS-e62" firstAttribute="leading" secondItem="QiX-5y-TyF" secondAttribute="leading" constant="10" id="mWh-Nl-OLQ"/>
-                        <constraint firstItem="gLz-tW-Wr6" firstAttribute="leading" secondItem="bBw-5m-kGN" secondAttribute="trailing" constant="10" id="oMm-Q5-blB"/>
                         <constraint firstItem="qcK-SS-e62" firstAttribute="centerY" secondItem="QiX-5y-TyF" secondAttribute="centerY" id="p5l-Zs-rVe"/>
-                        <constraint firstItem="gLz-tW-Wr6" firstAttribute="leading" secondItem="PnZ-ln-rTi" secondAttribute="trailing" id="pVf-gz-nKi"/>
-                        <constraint firstAttribute="bottom" secondItem="PnZ-ln-rTi" secondAttribute="bottom" id="qXF-av-taj"/>
                         <constraint firstItem="gLz-tW-Wr6" firstAttribute="top" secondItem="QiX-5y-TyF" secondAttribute="top" id="sJZ-Oj-Ql5"/>
-                        <constraint firstItem="PnZ-ln-rTi" firstAttribute="top" secondItem="QiX-5y-TyF" secondAttribute="top" id="up2-Rc-Fqz"/>
+                        <constraint firstItem="OBx-mg-6uZ" firstAttribute="top" secondItem="QiX-5y-TyF" secondAttribute="top" id="zOL-5O-Y95"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -230,11 +235,12 @@
     </objects>
     <resources>
         <image name="home99juan" width="45" height="45"/>
-        <image name="homeShare" width="20" height="19"/>
         <image name="homebigjuan" width="45" height="45"/>
         <image name="thirdHomeJd" width="45" height="45"/>
         <image name="thirdHomePdd" width="45" height="45"/>
         <image name="thirdHomeTbC" width="45.5" height="45"/>
         <image name="thredbanc" width="375" height="74"/>
+        <image name="thridHomeChat" width="20" height="19.5"/>
+        <image name="thridHomeShare" width="20" height="19"/>
     </resources>
 </document>

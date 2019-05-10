@@ -22,6 +22,8 @@
 #import "MENewStoreDetailsVC.h"
 #import "MEFilterVC.h"
 #import "MECoupleMailVC.h"
+#import "MERCConversationListVC.h"
+#import "MERCConversationVC.h"
 
 typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
 //    METhridHomeHeaderViewActiveNewType = 0,
@@ -80,6 +82,37 @@ typedef NS_ENUM(NSUInteger, METhridHomeHeaderViewActiveType) {
 
 }
 
+- (IBAction)chatAction:(UIButton *)sender {
+    if([MEUserInfoModel isLogin]){
+        [self toChat];
+    }else{
+        kMeWEAKSELF
+        [MEWxLoginVC presentLoginVCWithSuccessHandler:^(id object) {
+            kMeSTRONGSELF
+//            [strongSelf toChat];
+        } failHandler:nil];
+    }
+}
+
+- (void)toChat{
+    METhridHomeVC *homeVC = (METhridHomeVC *)[MECommonTool getVCWithClassWtihClassName:[METhridHomeVC class] targetResponderView:self];
+    if(_storeModel){
+        if([kMeUnNilStr(_storeModel.tls_id) isEqualToString:kMeUnNilStr(kCurrentUser.tls_data.tls_id)]){
+            MERCConversationListVC *cvc = [[MERCConversationListVC alloc]init];
+            [homeVC.navigationController pushViewController:cvc animated:YES];
+        }else{
+            TConversationCellData *data = [[TConversationCellData alloc] init];
+            data.convId =kMeUnNilStr(_storeModel.tls_id);
+            data.convType = TConv_Type_C2C;
+            data.title = kMeUnNilStr(_storeModel.store_name);;
+            MERCConversationVC *chat = [[MERCConversationVC alloc] initWIthconversationData:data];
+            [homeVC.navigationController pushViewController:chat animated:YES];
+        }
+    }else{
+        MERCConversationListVC *cvc = [[MERCConversationListVC alloc]init];
+        [homeVC.navigationController pushViewController:cvc animated:YES];
+    }
+}
 
 
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didScrollToIndex:(NSInteger)index{
