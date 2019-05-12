@@ -272,7 +272,6 @@ const static CGFloat kImgStore = 50;
     NSDictionary *dic = _arrDicParm[_currentIndex];
     NSLog(@"---------%@",dic);
     return dic;
-//    return @{@"type":@"3"};
 }
 
 - (void)handleResponse:(id)data{
@@ -489,7 +488,7 @@ const static CGFloat kImgStore = 50;
         _refresh.isPinduoduoCoupleMater = NO;
         _refresh.isDataInside = YES;
         _refresh.showFailView = NO;
-        _refresh.showMaskView = YES;
+//        _refresh.showMaskView = YES;
     }
     return _refresh;
 }
