@@ -209,36 +209,50 @@
 }
 
 - (void)buyAction:(UIButton *)btn{
-    if(_pinduoduomodel){
-        if(_goods_promotion_url){
-             [self openTb];
+    if([MEUserInfoModel isLogin]){
+        if(_pinduoduomodel){
+            if(_goods_promotion_url){
+                [self openTb];
+            }else{
+                NSString *goodId = [NSString stringWithFormat:@"[%@]",kMeUnNilStr(_pinduoduomodel.goods_id)];
+                kMeWEAKSELF
+                [MEPublicNetWorkTool postPromotionUrlGenerateWithUid:kMeUnNilStr(kCurrentUser.uid) goods_id_list:goodId SuccessBlock:^(ZLRequestResponse *responseObject) {
+                    kMeSTRONGSELF
+                    NSArray *arr = responseObject.data[@"goods_promotion_url_generate_response"][@"goods_promotion_url_list"];
+                    if(arr && arr.count){
+                        strongSelf->_goods_promotion_url = arr[0];
+                    }
+                    [strongSelf openTb];
+                } failure:^(id object) {
+                    
+                }];
+            }
         }else{
-            NSString *goodId = [NSString stringWithFormat:@"[%@]",kMeUnNilStr(_pinduoduomodel.goods_id)];
-            kMeWEAKSELF
-            [MEPublicNetWorkTool postPromotionUrlGenerateWithUid:@"" goods_id_list:goodId SuccessBlock:^(ZLRequestResponse *responseObject) {
-                kMeSTRONGSELF
-                NSArray *arr = responseObject.data[@"goods_promotion_url_generate_response"][@"goods_promotion_url_list"];
-                if(arr && arr.count){
-                    strongSelf->_goods_promotion_url = arr[0];
+            if(kMeUnNilStr(kCurrentUser.relation_id).length == 0 || [kCurrentUser.relation_id isEqualToString:@"0"]){
+                [self openAddTbView];
+            }else{
+                if(kMeUnNilStr(_Tpwd).length){
+                    [self openTb];
+                }else{
+                    kMeWEAKSELF
+                    NSString *rid = [NSString stringWithFormat:@"&relationId=%@",kCurrentUser.relation_id];
+                    NSString *str = [kMeUnNilStr(_detailModel.coupon_click_url) stringByAppendingString:rid];
+                    [MEPublicNetWorkTool postTaobaokeGetTpwdWithTitle:kMeUnNilStr(_detailModel.title) url:str logo:kMeUnNilStr(_detailModel.pict_url) successBlock:^(ZLRequestResponse *responseObject) {
+                        kMeSTRONGSELF
+                        strongSelf->_Tpwd = kMeUnNilStr(responseObject.data[@"tbk_tpwd_create_response"][@"data"][@"model"]);
+                        [strongSelf openTb];
+                    } failure:^(id object) {
+                        
+                    }];
                 }
-                [strongSelf openTb];
-            } failure:^(id object) {
-                
-            }];
+            }
         }
     }else{
-        if(kMeUnNilStr(_Tpwd).length){
-            [self openTb];
-        }else{
-            kMeWEAKSELF
-            [MEPublicNetWorkTool postTaobaokeGetTpwdWithTitle:kMeUnNilStr(_detailModel.title) url:kMeUnNilStr(_detailModel.coupon_click_url) logo:kMeUnNilStr(_detailModel.pict_url) successBlock:^(ZLRequestResponse *responseObject) {
-                kMeSTRONGSELF
-                strongSelf->_Tpwd = kMeUnNilStr(responseObject.data[@"tbk_tpwd_create_response"][@"data"][@"model"]);
-                [strongSelf openTb];
-            } failure:^(id object) {
-                
-            }];
-        }
+        kMeWEAKSELF
+        [MELoginVC presentLoginVCWithSuccessHandler:^(id object) {
+            kMeSTRONGSELF
+            [strongSelf buyAction:nil];
+        } failHandler:nil];
     }
 }
 
@@ -348,7 +362,10 @@
         if ([[UIApplication sharedApplication] canOpenURL:url]) {
             [[UIApplication sharedApplication] openURL:url];
         } else {
-            NSURL *url = [NSURL URLWithString:kMeUnNilStr(_detailModel.coupon_click_url)];
+            NSString *rid = [NSString stringWithFormat:@"&relationId=%@",kCurrentUser.relation_id];
+            NSString *str = [kMeUnNilStr(_detailModel.coupon_click_url) stringByAppendingString:rid];
+            //kMeUnNilStr(_detailModel.coupon_click_url)
+            NSURL *url = [NSURL URLWithString:str];
             [[UIApplication sharedApplication] openURL:url];
         }
     }

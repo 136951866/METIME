@@ -488,7 +488,7 @@
     if(kMeUnNilStr(uid).length){
         dic = @{@"materialUrl":kMeUnNilStr(materialUrl),@"link":kMeUnNilStr(couponUrl),@"member_id":kMeUnNilStr(uid)};
     }
-    MBProgressHUD *HUD = [self commitWithHUD:@"生成推广链接中"];
+    MBProgressHUD *HUD = [self commitWithHUD:@""];
     NSString *url = kGetApiWithUrl(MEIPcommondJDgoodsPromotionUrlGenerate);
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
         [HUD hideAnimated:YES];
@@ -555,7 +555,7 @@
                 @"goods_id_list":kMeUnNilStr(goods_id_list)
                 };
     }
-    MBProgressHUD *HUD = [self commitWithHUD:@"生成推广链接中"];
+    MBProgressHUD *HUD = [self commitWithHUD:@""];
     NSString *url = kGetApiWithUrl(MEIPcommonduoduokegoodsPromotionUrlGenerate);
     [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
         [HUD hideAnimated:YES];

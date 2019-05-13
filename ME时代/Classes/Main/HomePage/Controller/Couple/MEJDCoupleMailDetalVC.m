@@ -81,25 +81,33 @@
 }
 
 - (void)buyAction:(UIButton *)btn{
-    if(kMeUnNilStr(_Tpwd).length){
-        [self openTb];
-    }else{
-        CouponContentInfo *couponInfoModel = [CouponContentInfo new];
-        if(kMeUnArr(_detailModel.couponInfo.couponList).count>0){
-            couponInfoModel = _detailModel.couponInfo.couponList[0];
-        }
-        kMeWEAKSELF
-        [MEPublicNetWorkTool postJDPromotionUrlGenerateWithUid:@"" materialUrl:kMeUnNilStr(_detailModel.materialUrl) couponUrl:kMeUnNilStr(couponInfoModel.link) successBlock:^(ZLRequestResponse *responseObject) {
-            if(responseObject.data[@"msg"]){
-                [MEShowViewTool showMessage:kMeUnNilStr(responseObject.data[@"msg"]) view:kMeCurrentWindow];
-            }else{
-                kMeSTRONGSELF
-                strongSelf->_Tpwd = responseObject.data[@"shortURL"];
-                [strongSelf openTb];
+    if([MEUserInfoModel isLogin]){
+        if(kMeUnNilStr(_Tpwd).length){
+            [self openTb];
+        }else{
+            CouponContentInfo *couponInfoModel = [CouponContentInfo new];
+            if(kMeUnArr(_detailModel.couponInfo.couponList).count>0){
+                couponInfoModel = _detailModel.couponInfo.couponList[0];
             }
-        } failure:^(id object) {
-            
-        }];
+            kMeWEAKSELF
+            [MEPublicNetWorkTool postJDPromotionUrlGenerateWithUid:kCurrentUser.uid materialUrl:kMeUnNilStr(_detailModel.materialUrl) couponUrl:kMeUnNilStr(couponInfoModel.link) successBlock:^(ZLRequestResponse *responseObject) {
+                if(responseObject.data[@"msg"]){
+                    [MEShowViewTool showMessage:kMeUnNilStr(responseObject.data[@"msg"]) view:kMeCurrentWindow];
+                }else{
+                    kMeSTRONGSELF
+                    strongSelf->_Tpwd = responseObject.data[@"shortURL"];
+                    [strongSelf openTb];
+                }
+            } failure:^(id object) {
+                
+            }];
+        }
+    }else{
+        kMeWEAKSELF
+        [MELoginVC presentLoginVCWithSuccessHandler:^(id object) {
+            kMeSTRONGSELF
+            [strongSelf buyAction:nil];
+        } failHandler:nil];
     }
 }
 
