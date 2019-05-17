@@ -64,8 +64,6 @@ const static CGFloat kMEHomeAddRedeemcodeVCBootomHeight = 67;
     }
     kMeWEAKSELF
     [MEPublicNetWorkTool postGetredeemcodeaddCodeWithImage:_imageStr SuccessBlock:^(ZLRequestResponse *responseObject) {
-        kMeSTRONGSELF
-        [strongSelf.navigationController popViewControllerAnimated:YES];
     } failure:^(id object) {
         
     }];

@@ -310,6 +310,9 @@
     }else{
         kMeWEAKSELF
         model.order_type = _goodModel.is_seckill==1? @"9":@"1";
+        if(_goodModel.product_type == 15){
+            model.order_type = @"15";
+        }
         model.uid = kMeUnNilStr(self.uid);
         [MEPublicNetWorkTool postCreateOrderWithAttrModel:model successBlock:^(ZLRequestResponse *responseObject) {
             kMeSTRONGSELF

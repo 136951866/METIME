@@ -57,7 +57,8 @@
 //预约
 @property (nonatomic, strong) NSString *reserve_num;
 @property (nonatomic, assign) NSInteger is_first_buy;
-
+//产品类型 15 兑换码商品
+@property (nonatomic, assign) NSInteger product_type;
 //销量
 @property (nonatomic, strong) NSString *sales;
 //访问量

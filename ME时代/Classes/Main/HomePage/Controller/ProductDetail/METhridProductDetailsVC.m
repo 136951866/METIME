@@ -416,7 +416,11 @@ kTDWebViewCellDidFinishLoadNotificationMethod
         };
         _bottomView.addShopcartBlock = ^{
             kMeSTRONGSELF
-            [strongSelf showBuyViewWithTypy:kpurchaseViewShoppingType];
+            if(strongSelf.model.product_type == 15){
+                [MEShowViewTool showMessage:@"该商品不支持加入购物车" view:kMeCurrentWindow];
+            }else{
+                [strongSelf showBuyViewWithTypy:kpurchaseViewShoppingType];
+            }
         };
         _bottomView.customBlock = ^{
             kMeSTRONGSELF
