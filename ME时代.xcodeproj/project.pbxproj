@@ -190,6 +190,7 @@
 		3628E80A21C10E9800D5405B /* MEClerkStatisticsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3628E80921C10E9800D5405B /* MEClerkStatisticsVC.m */; };
 		3628E81721C1121400D5405B /* MEClerkStatisticHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3628E81621C1121400D5405B /* MEClerkStatisticHeaderView.m */; };
 		3628E81921C1121D00D5405B /* MEClerkStatisticHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3628E81821C1121D00D5405B /* MEClerkStatisticHeaderView.xib */; };
+		362BE0F1228EB64B00DA235D /* MERedeemgetStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 362BE0F0228EB64B00DA235D /* MERedeemgetStatusModel.m */; };
 		362C9E5C21BE62560001AABD /* MEMineNewShareVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9E5B21BE62560001AABD /* MEMineNewShareVC.m */; };
 		362C9E5F21BE62F70001AABD /* MEMineNewShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 362C9E5E21BE62F70001AABD /* MEMineNewShareView.m */; };
 		362C9E6121BE63010001AABD /* MEMineNewShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362C9E6021BE63010001AABD /* MEMineNewShareView.xib */; };
@@ -461,6 +462,12 @@
 		3683F7C321CBBBC7008139B0 /* MEGiftMainNilCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3683F7C121CBBBC7008139B0 /* MEGiftMainNilCell.xib */; };
 		3683F7C621CBC7DD008139B0 /* MEProductGitfListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3683F7C521CBC7DD008139B0 /* MEProductGitfListVC.m */; };
 		3684D5CA224340C400644EE4 /* MEStoreApplyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3684D5C9224340C400644EE4 /* MEStoreApplyVC.m */; };
+		36860907228E80EA0074D401 /* METhridHomeExchangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36860905228E80EA0074D401 /* METhridHomeExchangeCell.m */; };
+		36860908228E80EA0074D401 /* METhridHomeExchangeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36860906228E80EA0074D401 /* METhridHomeExchangeCell.xib */; };
+		3686090B228E92190074D401 /* MERedeemcodeInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3686090A228E92190074D401 /* MERedeemcodeInfoModel.m */; };
+		3686090E228E95350074D401 /* MEHomeAddRedeemcodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3686090D228E95350074D401 /* MEHomeAddRedeemcodeVC.m */; };
+		36860912228E9CBC0074D401 /* MEHomeAddRedeemcodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36860910228E9CBC0074D401 /* MEHomeAddRedeemcodeCell.m */; };
+		36860913228E9CBC0074D401 /* MEHomeAddRedeemcodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36860911228E9CBC0074D401 /* MEHomeAddRedeemcodeCell.xib */; };
 		368ABE0621FB199A005FC0C9 /* MECompandNoticeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 368ABE0521FB199A005FC0C9 /* MECompandNoticeVC.m */; };
 		368ACD8F21CA1D0E009B87E6 /* MEGiftHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 368ACD8E21CA1D0E009B87E6 /* MEGiftHeaderView.m */; };
 		368ACD9121CA1D1B009B87E6 /* MEGiftHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368ACD9021CA1D1B009B87E6 /* MEGiftHeaderView.xib */; };
@@ -1303,6 +1310,8 @@
 		3628E81521C1121400D5405B /* MEClerkStatisticHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEClerkStatisticHeaderView.h; sourceTree = "<group>"; };
 		3628E81621C1121400D5405B /* MEClerkStatisticHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEClerkStatisticHeaderView.m; sourceTree = "<group>"; };
 		3628E81821C1121D00D5405B /* MEClerkStatisticHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEClerkStatisticHeaderView.xib; sourceTree = "<group>"; };
+		362BE0EF228EB64B00DA235D /* MERedeemgetStatusModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MERedeemgetStatusModel.h; sourceTree = "<group>"; };
+		362BE0F0228EB64B00DA235D /* MERedeemgetStatusModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MERedeemgetStatusModel.m; sourceTree = "<group>"; };
 		362C9E5A21BE62560001AABD /* MEMineNewShareVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEMineNewShareVC.h; sourceTree = "<group>"; };
 		362C9E5B21BE62560001AABD /* MEMineNewShareVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEMineNewShareVC.m; sourceTree = "<group>"; };
 		362C9E5D21BE62F70001AABD /* MEMineNewShareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MEMineNewShareView.h; path = "ME时代/Classes/Main/Mine/Controller/MEMineNewShareView.h"; sourceTree = SOURCE_ROOT; };
@@ -1787,6 +1796,16 @@
 		3683F7C521CBC7DD008139B0 /* MEProductGitfListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEProductGitfListVC.m; sourceTree = "<group>"; };
 		3684D5C8224340C400644EE4 /* MEStoreApplyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEStoreApplyVC.h; sourceTree = "<group>"; };
 		3684D5C9224340C400644EE4 /* MEStoreApplyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEStoreApplyVC.m; sourceTree = "<group>"; };
+		36860904228E80EA0074D401 /* METhridHomeExchangeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = METhridHomeExchangeCell.h; sourceTree = "<group>"; };
+		36860905228E80EA0074D401 /* METhridHomeExchangeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = METhridHomeExchangeCell.m; sourceTree = "<group>"; };
+		36860906228E80EA0074D401 /* METhridHomeExchangeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = METhridHomeExchangeCell.xib; sourceTree = "<group>"; };
+		36860909228E92190074D401 /* MERedeemcodeInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MERedeemcodeInfoModel.h; sourceTree = "<group>"; };
+		3686090A228E92190074D401 /* MERedeemcodeInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MERedeemcodeInfoModel.m; sourceTree = "<group>"; };
+		3686090C228E95350074D401 /* MEHomeAddRedeemcodeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEHomeAddRedeemcodeVC.h; sourceTree = "<group>"; };
+		3686090D228E95350074D401 /* MEHomeAddRedeemcodeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEHomeAddRedeemcodeVC.m; sourceTree = "<group>"; };
+		3686090F228E9CBC0074D401 /* MEHomeAddRedeemcodeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEHomeAddRedeemcodeCell.h; sourceTree = "<group>"; };
+		36860910228E9CBC0074D401 /* MEHomeAddRedeemcodeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEHomeAddRedeemcodeCell.m; sourceTree = "<group>"; };
+		36860911228E9CBC0074D401 /* MEHomeAddRedeemcodeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MEHomeAddRedeemcodeCell.xib; sourceTree = "<group>"; };
 		368ABE0421FB199A005FC0C9 /* MECompandNoticeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECompandNoticeVC.h; sourceTree = "<group>"; };
 		368ABE0521FB199A005FC0C9 /* MECompandNoticeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECompandNoticeVC.m; sourceTree = "<group>"; };
 		368ACD8D21CA1D0E009B87E6 /* MEGiftHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEGiftHeaderView.h; sourceTree = "<group>"; };
@@ -3079,6 +3098,12 @@
 				36E78CA02276EA3D009EC0E8 /* METhridHomeTopCell.h */,
 				36E78CA12276EA3D009EC0E8 /* METhridHomeTopCell.m */,
 				36E78CA22276EA3D009EC0E8 /* METhridHomeTopCell.xib */,
+				36860904228E80EA0074D401 /* METhridHomeExchangeCell.h */,
+				36860905228E80EA0074D401 /* METhridHomeExchangeCell.m */,
+				36860906228E80EA0074D401 /* METhridHomeExchangeCell.xib */,
+				3686090F228E9CBC0074D401 /* MEHomeAddRedeemcodeCell.h */,
+				36860910228E9CBC0074D401 /* MEHomeAddRedeemcodeCell.m */,
+				36860911228E9CBC0074D401 /* MEHomeAddRedeemcodeCell.xib */,
 			);
 			path = Thrid;
 			sourceTree = "<group>";
@@ -3092,6 +3117,8 @@
 				367EF27A21FB122B001766BD /* METhridRushSpikeVC.m */,
 				36ECE1352262FBB200215472 /* MEBasePlayerVC.h */,
 				36ECE1362262FBB200215472 /* MEBasePlayerVC.m */,
+				3686090C228E95350074D401 /* MEHomeAddRedeemcodeVC.h */,
+				3686090D228E95350074D401 /* MEHomeAddRedeemcodeVC.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -3266,6 +3293,10 @@
 				36A294B8226D70FF00AB3AD3 /* MEAppHomeTitleModel.m */,
 				3694C48E227835FD00CF11C5 /* MEHomeRecommendAndSpreebuyModel.h */,
 				3694C48F227835FD00CF11C5 /* MEHomeRecommendAndSpreebuyModel.m */,
+				36860909228E92190074D401 /* MERedeemcodeInfoModel.h */,
+				3686090A228E92190074D401 /* MERedeemcodeInfoModel.m */,
+				362BE0EF228EB64B00DA235D /* MERedeemgetStatusModel.h */,
+				362BE0F0228EB64B00DA235D /* MERedeemgetStatusModel.m */,
 			);
 			path = Thrid;
 			sourceTree = "<group>";
@@ -6061,6 +6092,7 @@
 				3628E7E521C0BC0C00D5405B /* MEAddClerkCell.xib in Resources */,
 				36E3D1E12171DF170033B192 /* MELogisticsHeaderView.xib in Resources */,
 				36445B3021C1E93A00CDBCBA /* MEWithdrawalView.xib in Resources */,
+				36860908228E80EA0074D401 /* METhridHomeExchangeCell.xib in Resources */,
 				36FEC25621AD345B00BB64A5 /* MEArticleCell.xib in Resources */,
 				360A992F21468598009775F4 /* MESkuBuyCell.xib in Resources */,
 				368E70BF21E5EE2D003009CA /* MENewProductDetailsHeaderView.xib in Resources */,
@@ -6120,6 +6152,7 @@
 				36008A7021B631F40007BB46 /* MEWebTitleCell.xib in Resources */,
 				3691308822363B6E008B1836 /* AAJSFiles.bundle in Resources */,
 				36E3EEC6221CFCDC006C79F6 /* MESearchNearAddressVC.xib in Resources */,
+				36860913228E9CBC0074D401 /* MEHomeAddRedeemcodeCell.xib in Resources */,
 				36E284D722374B26009F1563 /* MEBrandAbilityManngerVC.xib in Resources */,
 				365151CB21413D340044C763 /* MEHomeHeaderMenuView.xib in Resources */,
 				367721E52147681000C1463A /* MEMineHomeCell.xib in Resources */,
@@ -6316,6 +6349,7 @@
 				36F5E843222F68F1000B0241 /* TSettingController.m in Sources */,
 				36FEC24521AD24CC00BB64A5 /* MEMyPosterContentCell.m in Sources */,
 				36F4C0AA2255DDE9005E2713 /* MEPAVistorCell.m in Sources */,
+				36860907228E80EA0074D401 /* METhridHomeExchangeCell.m in Sources */,
 				36E284DA22374F6F009F1563 /* MEBrandAbilityDataVC.m in Sources */,
 				3601766C215B8CE10080EB00 /* ALAssetsLibrary+MECategory.m in Sources */,
 				367C84FE2147C2A200BEC7B1 /* MEOrderDetailView.m in Sources */,
@@ -6535,6 +6569,7 @@
 				36ECE1372262FBB200215472 /* MEBasePlayerVC.m in Sources */,
 				3600A73F215A15C700195484 /* MEAboutWeVC.m in Sources */,
 				36F5E847222F68F1000B0241 /* TConversationController.m in Sources */,
+				362BE0F1228EB64B00DA235D /* MERedeemgetStatusModel.m in Sources */,
 				3683F7AC21CB7E15008139B0 /* MECoupleDetailModle.m in Sources */,
 				3691309422363B6E008B1836 /* AACrosshair.m in Sources */,
 				36F5E83C222F68F1000B0241 /* TGroupMembersView.m in Sources */,
@@ -6697,6 +6732,7 @@
 				36F5E853222F68F1000B0241 /* VideoViewController.m in Sources */,
 				36EBA97721FC2B240065BC92 /* MEGoodsCommentModel.m in Sources */,
 				36472B0421C8E15C00CC3E48 /* JXCategoryFactory.m in Sources */,
+				3686090E228E95350074D401 /* MEHomeAddRedeemcodeVC.m in Sources */,
 				3645BBCB221BDC2F0042748C /* MEBStoreMannagerVC.m in Sources */,
 				3691308422363B6E008B1836 /* AAOptions.m in Sources */,
 				366D5AF9214A09BB0021C1BB /* MEMakeOrderSelectAddressView.m in Sources */,
@@ -6769,6 +6805,7 @@
 				36F10A8D224E5E610006E5C1 /* KWFontStyleBar.m in Sources */,
 				3630070A2148B49D00C88264 /* MEDistributionMoneyView.m in Sources */,
 				36A1B2BF218C006B0027E2EF /* MEFilterMainModel.m in Sources */,
+				36860912228E9CBC0074D401 /* MEHomeAddRedeemcodeCell.m in Sources */,
 				36017664215B83050080EB00 /* MEDistributionTeamModel.m in Sources */,
 				36E3D1DC2171DED60033B192 /* MELogisticsVC.m in Sources */,
 				36435C34214F79AF00F823B4 /* MEGoodSpecModel.m in Sources */,
@@ -6799,6 +6836,7 @@
 				36F5E816222F68F1000B0241 /* TUnReadView.m in Sources */,
 				36A401C52143F0FE00B0BD4F /* MEShoppingCartCell.m in Sources */,
 				36F6B2C6224D0D53007FDD7A /* MEAddGoodStoreGoodsTypeVC.m in Sources */,
+				3686090B228E92190074D401 /* MERedeemcodeInfoModel.m in Sources */,
 				3691309E22363B6E008B1836 /* AAMarker.m in Sources */,
 				3600A736215A079F00195484 /* MEMineSetVC.m in Sources */,
 				3650F3F42179BE1E007EA97F /* MEAppointmentModel.m in Sources */,

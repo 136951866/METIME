@@ -83,6 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray * scare_buying_goods;
 @property (nonatomic, strong) NSArray * service;
 @property (nonatomic, strong) NSArray * top_banner;
+@property (nonatomic, strong) NSString *member_of_the_ritual_image;
 
 @end
 

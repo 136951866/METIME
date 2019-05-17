@@ -193,6 +193,14 @@
 /***************************************/
 
 #pragma mark - HomePage
+
+//审核状态
++ (void)postcommonredeemgetStatusWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+//兑换信息
++ (void)postGetredeemcodeInfoWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+//添加兑换
++ (void)postGetredeemcodeaddCodeWithImage:(NSString*)image SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
+
 //获取APP首页标题
 + (void)postGetappThridHomeGetAppHomeTitleWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure;
 //app第三版商业热门产品

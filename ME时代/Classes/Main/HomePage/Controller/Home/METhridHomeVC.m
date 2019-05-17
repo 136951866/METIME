@@ -45,6 +45,9 @@
 #import "METhridHomeGoodGoodMainCell.h"
 #import "METhridHomeTopCell.h"
 #import "MEHomeRecommendAndSpreebuyModel.h"
+#import "METhridHomeExchangeCell.h"
+#import "MEHomeAddRedeemcodeVC.h"
+#import "MERedeemgetStatusModel.h"
 
 const static CGFloat kImgStore = 50;
 @interface METhridHomeVC ()<UITableViewDelegate,UITableViewDataSource,RefreshToolDelegate>{
@@ -296,15 +299,23 @@ const static CGFloat kImgStore = 50;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return section == 1?1+(kMeUnArr(_arrHot).count):1;
+    return section == 2?1+(kMeUnArr(_arrHot).count):1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section== 0){
+    if(indexPath.section == 0){
+        if(_homeModel && kMeUnNilStr(_homeModel.member_of_the_ritual_image).length){
+            METhridHomeExchangeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([METhridHomeExchangeCell class]) forIndexPath:indexPath];
+            kSDLoadImg(cell.imgPic, kMeUnNilStr(_homeModel.member_of_the_ritual_image));
+            return cell;
+        }else{
+            return [UITableViewCell new];
+        }
+    }else if(indexPath.section== 1){
         if(_spreebugmodel){
             METhridHomeTopCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([METhridHomeTopCell class]) forIndexPath:indexPath];
             [cell setUiWithModel:_spreebugmodel];
@@ -312,7 +323,7 @@ const static CGFloat kImgStore = 50;
         }else{
             return [UITableViewCell new];
         }
-    }else if(indexPath.section==1){
+    }else if(indexPath.section==2){
         if(indexPath.row == 0){
             METhridHomeGoodGoodFilterCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([METhridHomeGoodGoodFilterCell class]) forIndexPath:indexPath];
             return cell;
@@ -322,7 +333,7 @@ const static CGFloat kImgStore = 50;
             [cell setUIWithModel:model];
             return cell;
         }
-    }else if (indexPath.section==2){
+    }else if (indexPath.section==3){
         MECoupleHomeMainGoodGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MECoupleHomeMainGoodGoodsCell class]) forIndexPath:indexPath];
         [cell setUIWithArr:self.refresh.arrData];
         kMeWEAKSELF
@@ -345,18 +356,24 @@ const static CGFloat kImgStore = 50;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section==0){
+    if(indexPath.section == 0){
+        if(_homeModel && kMeUnNilStr(_homeModel.member_of_the_ritual_image).length){
+            return kMEThridHomeExchangeCellheight;
+        }else{
+            return 0.1;
+        }
+    }else if(indexPath.section==1){
         if(_spreebugmodel){
             return kMEThridHomeTopCellHeight;
         }else{
             return 0.1;
         }
-    }else if(indexPath.section==1){
+    }else if(indexPath.section==2){
         if(indexPath.row == 0){
             return [METhridHomeGoodGoodFilterCell getCellHeight];
         }
         return kMEThridHomeGoodGoodMainCellHeight;
-    }else if (indexPath.section==2){
+    }else if (indexPath.section==3){
         return [MECoupleHomeMainGoodGoodsCell getCellHeightWithArr:self.refresh.arrData];;
     }else{
         return 0.1;
@@ -365,17 +382,47 @@ const static CGFloat kImgStore = 50;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    if(indexPath.section == 1 && indexPath.row > 0 && kMeUnArr(_arrHot).count>0){
+    if(indexPath.section == 2 && indexPath.row > 0 && kMeUnArr(_arrHot).count>0){
         MEGoodModel *model = _arrHot[indexPath.row-1];
         METhridProductDetailsVC *details = [[METhridProductDetailsVC alloc]initWithId:model.product_id];
         [self.navigationController pushViewController:details animated:YES];
     }
+    
+    if(indexPath.section == 0 && _homeModel && kMeUnNilStr(_homeModel.member_of_the_ritual_image).length){
+        if([MEUserInfoModel isLogin]){
+            [self toReDeemVC];
+        }else{
+            [MEWxLoginVC presentLoginVCWithSuccessHandler:^(id object) {
+            } failHandler:nil];
+        }
+    }
+}
+
+- (void)toReDeemVC{
+    kMeWEAKSELF
+    [MEPublicNetWorkTool postcommonredeemgetStatusWithSuccessBlock:^(ZLRequestResponse *responseObject) {
+        kMeSTRONGSELF
+        MERedeemgetStatusModel *model = [MERedeemgetStatusModel mj_objectWithKeyValues:responseObject.data];
+        if(model.status == 1){
+            METhridProductDetailsVC *details = [[METhridProductDetailsVC alloc]initWithId:model.goods_id];
+            [strongSelf.navigationController pushViewController:details animated:YES];
+        }else{
+            MEHomeAddRedeemcodeVC *vc = [[MEHomeAddRedeemcodeVC alloc]init];
+            [strongSelf.navigationController pushViewController:vc animated:YES];
+        }
+    } failure:^(id object) {
+        
+    }];
+    
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if(section==0){
+    if(section == 0){
         return 0.1;
     }else if(section==1){
+        return 0.1;
+    }else if(section==2){
         return MEMEThridGoodsGoodSectionViewHeight;
     }else{
         return kMMEThridHomeCommondSectionViewHeight;
@@ -383,9 +430,11 @@ const static CGFloat kImgStore = 50;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if(section==0){
+    if(section == 0){
         return [UIView new];
     }else if(section==1){
+        return [UIView new];
+    }else if(section==2){
         METhridGoodsGoodSectionView *headview=[tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([METhridGoodsGoodSectionView class])];
         return headview;
     }else{
@@ -423,6 +472,7 @@ const static CGFloat kImgStore = 50;
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([METhridGoodsGoodSectionView class]) bundle:nil] forHeaderFooterViewReuseIdentifier:NSStringFromClass([METhridGoodsGoodSectionView class])];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([METhridHomeCommondSectionView class]) bundle:nil] forHeaderFooterViewReuseIdentifier:NSStringFromClass([METhridHomeCommondSectionView class])];
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([METhridHomeTopCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([METhridHomeTopCell class])];
+        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([METhridHomeExchangeCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([METhridHomeExchangeCell class])];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.tableFooterView = [UIView new];

@@ -11,7 +11,7 @@
 
 #warning -mustNotes 上线一定要注释/海报分享产品分享
 
-//#define TestVersion
+#define TestVersion
 
 //域名 develop
 #ifdef TestVersion
@@ -25,7 +25,7 @@
 #define kGetApiWithUrl(url) [BASEIP stringByAppendingString:url]
 
 
-#define MEIPgetQiniuToken @"getQiniuToken"
+#define MEIPgetQiniuToken @"getQiniuTokenPermanent"
 
 #pragma makr - TEST
 #define MEIPgetTokenByFour @"common/user/getTokenByFour"
@@ -281,6 +281,15 @@
 
 /*********************************************/
 #pragma makr - home
+
+//兑换审核状态
+#define MEIPcommonredeemgetStatus @"common/redeemcode/getStatus"
+
+//兑换信息
+#define MEIPcommonredeemcodeinfo @"common/redeemcode/info"
+//添加兑换
+#define MEIPcommonredeemcodeaddCode @"common/redeemcode/addCode"
+
 //获取秒杀商品
 #define MEIPcommonGetgetSeckillGoods @"common/home/getSeckillGoods"
 //获取秒杀时间

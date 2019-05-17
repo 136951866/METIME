@@ -1208,6 +1208,61 @@
 
 #pragma mark - HomePage
 
+//审核状态
++ (void)postcommonredeemgetStatusWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{@"token":kMeUnNilStr(kCurrentUser.token)};
+    NSString *url = kGetApiWithUrl(MEIPcommonredeemgetStatus);
+    MBProgressHUD *HUD = [self commitWithHUD:@"获取审核状态"];
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [HUD hideAnimated:YES];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
+//兑换信息
++ (void)postGetredeemcodeInfoWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{@"id":@"1",@"token":kMeUnNilStr(kCurrentUser.token)};
+    NSString *url = kGetApiWithUrl(MEIPcommonredeemcodeinfo);
+    MBProgressHUD *HUD = [self commitWithHUD:@""];
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        kMeCallBlock(successBlock,responseObject);
+        [HUD hideAnimated:YES];
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
+//添加兑换
++ (void)postGetredeemcodeaddCodeWithImage:(NSString*)image SuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
+    NSDictionary *dic = @{@"image":kMeUnNilStr(image),@"token":kMeUnNilStr(kCurrentUser.token)};
+    NSString *url = kGetApiWithUrl(MEIPcommonredeemcodeaddCode);
+    MBProgressHUD *HUD = [self commitWithHUD:@"上传中"];
+    [THTTPManager postWithParameter:dic strUrl:url success:^(ZLRequestResponse *responseObject) {
+        [MEShowViewTool SHOWHUDWITHHUD:HUD test:@"上传成功"];
+        kMeCallBlock(successBlock,responseObject);
+    } failure:^(id error) {
+        if([error isKindOfClass:[ZLRequestResponse class]]){
+            ZLRequestResponse *res = (ZLRequestResponse*)error;
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kMeUnNilStr(res.message)];
+        }else{
+            [MEShowViewTool SHOWHUDWITHHUD:HUD test:kApiError];
+        }
+        kMeCallBlock(failure,error);
+    }];
+}
+
 //获取APP首页标题
 + (void)postGetappThridHomeGetAppHomeTitleWithSuccessBlock:(RequestResponse)successBlock failure:(kMeObjBlock)failure{
     NSDictionary *dic = @{};
